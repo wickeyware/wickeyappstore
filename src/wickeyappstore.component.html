@@ -1,0 +1,28 @@
+<div *ngIf="showWickeyAppStore" class="fullscreen">
+  <div class="titlebar">
+    <h3 class="titletext">Featured Apps</h3>
+    <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="navClose" title="back"></button>
+    <div class="titlebottom"></div>
+  </div>
+  <div class="results-group">
+    <!--<div [ngBusy]="{busy: busy, message: 'Refreshing app store..'}" class="busy-spinner"></div>-->
+    <display-apps featured=true [apps]="apps" title="Featured" [showAppEmitter]="showAppDetail"></display-apps>
+    <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>
+    <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps>
+  </div>
+  <div class="footer">
+    <!--<div class="left">
+      Featured
+    </div>
+    <div class="center">
+      Top Charts
+    </div>
+    <div class="right">
+      Search
+    </div>-->
+    <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a>
+  </div>
+
+  <!-- <was-alert-popup [alert_table]="error_message"></was-alert-popup> -->
+  <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page>
+</div>

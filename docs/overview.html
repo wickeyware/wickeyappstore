@@ -1,0 +1,622 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>wickeyappstore</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	    <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">wickeyappstore</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="./index.html">wickeyappstore</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                         href="./overview.html" 
+                                        
+                                         href="./overview.html" 
+                                         class="active" >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="./modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="./components/AppDetailPageComponent.html" >AppDetailPageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AppReviewsPageComponent.html" >AppReviewsPageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="./injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/ErrorTable.html" >ErrorTable</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="./index.html">wickeyappstore</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                                href="./overview.html" 
+                                               
+                                                href="./overview.html" 
+                                                class="active" >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="./modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="./components/AppDetailPageComponent.html" >AppDetailPageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AppReviewsPageComponent.html" >AppReviewsPageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="./injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/ErrorTable.html" >ErrorTable</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content overview">
+                   <div class="content-data">
+<h3>Overview</h3>
+<div class="text-center">
+    <div id="module-graph-svg">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: dependencies Pages: 1 -->
+<svg width="1850pt" height="284pt"
+ viewBox="0.00 0.00 1850.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>dependencies</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-280 1846,-280 1846,4 -4,4"/>
+<text text-anchor="start" x="900.0091" y="-42.4" font-family="sans-serif" font-weight="bold" font-size="14.00" fill="#000000">Legend</text>
+<polygon fill="#ffffb3" stroke="transparent" points="687,-10 687,-30 707,-30 707,-10 687,-10"/>
+<text text-anchor="start" x="710.629" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Declarations</text>
+<polygon fill="#8dd3c7" stroke="transparent" points="800,-10 800,-30 820,-30 820,-10 800,-10"/>
+<text text-anchor="start" x="823.7251" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Module</text>
+<polygon fill="#80b1d3" stroke="transparent" points="886,-10 886,-30 906,-30 906,-10 886,-10"/>
+<text text-anchor="start" x="909.7812" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Bootstrap</text>
+<polygon fill="#fdb462" stroke="transparent" points="983,-10 983,-30 1003,-30 1003,-10 983,-10"/>
+<text text-anchor="start" x="1006.6732" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Providers</text>
+<polygon fill="#fb8072" stroke="transparent" points="1079,-10 1079,-30 1099,-30 1099,-10 1079,-10"/>
+<text text-anchor="start" x="1102.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
+<g id="clust1" class="cluster">
+<title>cluster_WickeyAppStoreModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="8,-70 8,-268 1834,-268 1834,-70 8,-70"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_WickeyAppStoreModule_imports</title>
+<polygon fill="none" stroke="#000000" points="616,-78 616,-130 1274,-130 1274,-78 616,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_WickeyAppStoreModule_exports</title>
+<polygon fill="none" stroke="#000000" points="16,-208 16,-260 1826,-260 1826,-208 16,-208"/>
+</g>
+<!-- CommonModule -->
+<g id="node1" class="node">
+<title>CommonModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1265.6681,-122 1262.6681,-126 1241.6681,-126 1238.6681,-122 1154.3319,-122 1154.3319,-86 1265.6681,-86 1265.6681,-122"/>
+<text text-anchor="middle" x="1210" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule</text>
+</g>
+<!-- WickeyAppStoreModule -->
+<g id="node6" class="node">
+<title>WickeyAppStoreModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1042.2394,-187 1039.2394,-191 1018.2394,-191 1015.2394,-187 885.7606,-187 885.7606,-151 1042.2394,-151 1042.2394,-187"/>
+<text text-anchor="middle" x="964" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">WickeyAppStoreModule</text>
+</g>
+<!-- CommonModule&#45;&gt;WickeyAppStoreModule -->
+<g id="edge1" class="edge">
+<title>CommonModule&#45;&gt;WickeyAppStoreModule</title>
+<path fill="none" stroke="#000000" d="M1199.1727,-122.2396C1199.1727,-137.5706 1199.1727,-157 1199.1727,-157 1199.1727,-157 1052.3091,-157 1052.3091,-157"/>
+<polygon fill="#000000" stroke="#000000" points="1052.3091,-153.5001 1042.3091,-157 1052.3091,-160.5001 1052.3091,-153.5001"/>
+</g>
+<!-- BrowserModule -->
+<g id="node2" class="node">
+<title>BrowserModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1136.4734,-122 1133.4734,-126 1112.4734,-126 1109.4734,-122 1029.5266,-122 1029.5266,-86 1136.4734,-86 1136.4734,-122"/>
+<text text-anchor="middle" x="1083" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">BrowserModule</text>
+</g>
+<!-- BrowserModule&#45;&gt;WickeyAppStoreModule -->
+<g id="edge2" class="edge">
+<title>BrowserModule&#45;&gt;WickeyAppStoreModule</title>
+<path fill="none" stroke="#000000" d="M1035.9415,-122.1061C1035.9415,-122.1061 1035.9415,-140.991 1035.9415,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="1032.4415,-140.9909 1035.9415,-150.991 1039.4415,-140.991 1032.4415,-140.9909"/>
+</g>
+<!-- FormsModule -->
+<g id="node3" class="node">
+<title>FormsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1011.8288,-122 1008.8288,-126 987.8288,-126 984.8288,-122 916.1712,-122 916.1712,-86 1011.8288,-86 1011.8288,-122"/>
+<text text-anchor="middle" x="964" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
+</g>
+<!-- FormsModule&#45;&gt;WickeyAppStoreModule -->
+<g id="edge3" class="edge">
+<title>FormsModule&#45;&gt;WickeyAppStoreModule</title>
+<path fill="none" stroke="#000000" d="M964,-122.1061C964,-122.1061 964,-140.991 964,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="960.5001,-140.9909 964,-150.991 967.5001,-140.991 960.5001,-140.9909"/>
+</g>
+<!-- HttpModule -->
+<g id="node4" class="node">
+<title>HttpModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="898.4387,-122 895.4387,-126 874.4387,-126 871.4387,-122 813.5613,-122 813.5613,-86 898.4387,-86 898.4387,-122"/>
+<text text-anchor="middle" x="856" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HttpModule</text>
+</g>
+<!-- HttpModule&#45;&gt;WickeyAppStoreModule -->
+<g id="edge4" class="edge">
+<title>HttpModule&#45;&gt;WickeyAppStoreModule</title>
+<path fill="none" stroke="#000000" d="M891.9246,-122.1061C891.9246,-122.1061 891.9246,-140.991 891.9246,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="888.4247,-140.9909 891.9246,-150.991 895.4247,-140.991 888.4247,-140.9909"/>
+</g>
+<!-- BrowserAnimationsModule -->
+<g id="node5" class="node">
+<title>BrowserAnimationsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="796.3019,-122 793.3019,-126 772.3019,-126 769.3019,-122 623.6981,-122 623.6981,-86 796.3019,-86 796.3019,-122"/>
+<text text-anchor="middle" x="710" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">BrowserAnimationsModule</text>
+</g>
+<!-- BrowserAnimationsModule&#45;&gt;WickeyAppStoreModule -->
+<g id="edge5" class="edge">
+<title>BrowserAnimationsModule&#45;&gt;WickeyAppStoreModule</title>
+<path fill="none" stroke="#000000" d="M722.9318,-122.2396C722.9318,-137.5706 722.9318,-157 722.9318,-157 722.9318,-157 875.7321,-157 875.7321,-157"/>
+<polygon fill="#000000" stroke="#000000" points="875.7321,-160.5001 885.7321,-157 875.732,-153.5001 875.7321,-160.5001"/>
+</g>
+<!-- WickeyAppStoreComponent  -->
+<g id="node7" class="node">
+<title>WickeyAppStoreComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1818.0218,-252 1635.9782,-252 1635.9782,-216 1818.0218,-216 1818.0218,-252"/>
+<text text-anchor="middle" x="1727" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">WickeyAppStoreComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;WickeyAppStoreComponent  -->
+<g id="edge6" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;WickeyAppStoreComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1042.4243,-163C1237.1289,-163 1727,-163 1727,-163 1727,-163 1727,-205.7157 1727,-205.7157"/>
+<polygon fill="#000000" stroke="#000000" points="1723.5001,-205.7157 1727,-215.7157 1730.5001,-205.7158 1723.5001,-205.7157"/>
+</g>
+<!-- WASAlertPopupComponent  -->
+<g id="node8" class="node">
+<title>WASAlertPopupComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1618.4824,-252 1437.5176,-252 1437.5176,-216 1618.4824,-216 1618.4824,-252"/>
+<text text-anchor="middle" x="1528" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">WASAlertPopupComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;WASAlertPopupComponent  -->
+<g id="edge7" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;WASAlertPopupComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1042.4218,-169C1197.3936,-169 1528,-169 1528,-169 1528,-169 1528,-205.8939 1528,-205.8939"/>
+<polygon fill="#000000" stroke="#000000" points="1524.5001,-205.8938 1528,-215.8939 1531.5001,-205.8939 1524.5001,-205.8938"/>
+</g>
+<!-- DisplayAppsComponent  -->
+<g id="node9" class="node">
+<title>DisplayAppsComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1419.9306,-252 1262.0694,-252 1262.0694,-216 1419.9306,-216 1419.9306,-252"/>
+<text text-anchor="middle" x="1341" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DisplayAppsComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;DisplayAppsComponent  -->
+<g id="edge8" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;DisplayAppsComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1042.5082,-175C1153.4902,-175 1342.8996,-175 1342.8996,-175 1342.8996,-175 1342.8996,-205.9775 1342.8996,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="1339.3996,-205.9774 1342.8996,-215.9775 1346.3996,-205.9775 1339.3996,-205.9774"/>
+</g>
+<!-- AppDetailPageComponent  -->
+<g id="node10" class="node">
+<title>AppDetailPageComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1244.3588,-252 1073.6412,-252 1073.6412,-216 1244.3588,-216 1244.3588,-252"/>
+<text text-anchor="middle" x="1159" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppDetailPageComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;AppDetailPageComponent  -->
+<g id="edge9" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;AppDetailPageComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1042.4196,-181C1074.9091,-181 1105.1538,-181 1105.1538,-181 1105.1538,-181 1105.1538,-205.7604 1105.1538,-205.7604"/>
+<polygon fill="#000000" stroke="#000000" points="1101.6538,-205.7604 1105.1538,-215.7604 1108.6538,-205.7604 1101.6538,-205.7604"/>
+</g>
+<!-- AppReviewsPageComponent  -->
+<g id="node11" class="node">
+<title>AppReviewsPageComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1056.3587,-252 871.6413,-252 871.6413,-216 1056.3587,-216 1056.3587,-252"/>
+<text text-anchor="middle" x="964" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppReviewsPageComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;AppReviewsPageComponent  -->
+<g id="edge10" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;AppReviewsPageComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M964,-187.1061C964,-187.1061 964,-205.991 964,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="960.5001,-205.9909 964,-215.991 967.5001,-205.991 960.5001,-205.9909"/>
+</g>
+<!-- AppGroupHorizontalComponent  -->
+<g id="node12" class="node">
+<title>AppGroupHorizontalComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="854.0748,-252 649.9252,-252 649.9252,-216 854.0748,-216 854.0748,-252"/>
+<text text-anchor="middle" x="752" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppGroupHorizontalComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;AppGroupHorizontalComponent  -->
+<g id="edge11" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;AppGroupHorizontalComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.4001,-181C858.03,-181 834.0342,-181 834.0342,-181 834.0342,-181 834.0342,-205.7604 834.0342,-205.7604"/>
+<polygon fill="#000000" stroke="#000000" points="830.5343,-205.7604 834.0342,-215.7604 837.5343,-205.7604 830.5343,-205.7604"/>
+</g>
+<!-- AppGroupVerticalComponent  -->
+<g id="node13" class="node">
+<title>AppGroupVerticalComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="631.7891,-252 442.2109,-252 442.2109,-216 631.7891,-216 631.7891,-252"/>
+<text text-anchor="middle" x="537" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppGroupVerticalComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;AppGroupVerticalComponent  -->
+<g id="edge12" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;AppGroupVerticalComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.6171,-175C786.2939,-175 627.8719,-175 627.8719,-175 627.8719,-175 627.8719,-205.9775 627.8719,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="624.3719,-205.9774 627.8719,-215.9775 631.3719,-205.9775 624.3719,-205.9774"/>
+</g>
+<!-- DisplayAppMiniComponent  -->
+<g id="node14" class="node">
+<title>DisplayAppMiniComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="423.712,-252 244.288,-252 244.288,-216 423.712,-216 423.712,-252"/>
+<text text-anchor="middle" x="334" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DisplayAppMiniComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;DisplayAppMiniComponent  -->
+<g id="edge13" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;DisplayAppMiniComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.4839,-169C716.6013,-169 334,-169 334,-169 334,-169 334,-205.8939 334,-205.8939"/>
+<polygon fill="#000000" stroke="#000000" points="330.5001,-205.8938 334,-215.8939 337.5001,-205.8939 330.5001,-205.8938"/>
+</g>
+<!-- DisplayAppFeaturedComponent  -->
+<g id="node15" class="node">
+<title>DisplayAppFeaturedComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="225.9641,-252 24.0359,-252 24.0359,-216 225.9641,-216 225.9641,-252"/>
+<text text-anchor="middle" x="125" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DisplayAppFeaturedComponent </text>
+</g>
+<!-- WickeyAppStoreModule&#45;&gt;DisplayAppFeaturedComponent  -->
+<g id="edge14" class="edge">
+<title>WickeyAppStoreModule&#45;&gt;DisplayAppFeaturedComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.446,-163C676.8758,-163 125,-163 125,-163 125,-163 125,-205.7157 125,-205.7157"/>
+<polygon fill="#000000" stroke="#000000" points="121.4999,-205.7158 125,-215.7157 128.4999,-205.7157 121.4999,-205.7158"/>
+</g>
+</g>
+</svg>
+
+    </div>
+    <div class="btn-group">
+        <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
+        <button id="reset" class="btn btn-default btn-sm">Reset</button>
+        <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
+    </div>
+</div>
+<div class="container-fluid overview">
+    <div class="row">
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-archive"></span></h4>
+                        <p class="card-text">
+                            <a href="./modules.html">1 module</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-cogs"></span></h4>
+                        <p class="card-text">9 components</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
+                        <p class="card-text">1 injectable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-info"></span></h4>
+                        <p class="card-text">1 interface</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script src="js/libs/svg-pan-zoom.min.js"></script>
+<script src="js/svg-pan-zoom.controls.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 0;</script>
+
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/search/search_index.js"></script>
+
+    </body>
+</html>

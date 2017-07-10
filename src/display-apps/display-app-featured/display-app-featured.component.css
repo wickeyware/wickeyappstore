@@ -1,0 +1,14 @@
+.img-featured {
+  display: inline-block;
+  position: relative;
+    width: -webkit-calc(80% - 30px);
+    width:    -moz-calc(80% - 30px);
+    width:         calc(80% - 30px);
+    margin-left: -webkit-calc(10% + 15px);
+    margin-left:    -moz-calc(10% + 15px);
+    margin-left:         calc(10% + 15px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 20px 20px 20px 20px;
+}

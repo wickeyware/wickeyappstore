@@ -1,0 +1,37 @@
+{
+  "name": "wickeyappstore",
+  "version": "0.1.14",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/wickeyware/wickeyappstore"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Michael Wickey",
+    "email": "wickeym@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "bugs": {
+    "url": "https://bitbucket.org/wickeyware/wickeyappstore/issues"
+  },
+  "typings": "wickeyappstore.d.ts",
+  "peerDependencies": {
+    "@angular/animations": "^4.0.0",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "angular2-busy": "^2.0.4",
+    "core-js": "^2.4.1",
+    "idb-keyval": "^2.3.0",
+    "rxjs": "^5.1.0",
+    "web-animations-js": "^2.2.5",
+    "zone.js": "^0.8.4"
+  }
+}

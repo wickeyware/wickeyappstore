@@ -1,0 +1,223 @@
+/* You can add global styles to this file, and also import other style files */
+/*html {
+  touch-action: manipulation;
+}*/
+h1 {
+  color: #369;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 150%;
+  /*font-weight: 500;*/
+}
+body {
+  /* margin: 0em; /* change to 0 after menu btn on main screen */
+  margin: auto;
+  font-size:100%;
+  min-width: 300px;
+}
+p {
+  font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */
+  line-height: 1em;  /* This keeps the line height proportional to the font size */
+}
+body, input[text], button {
+  color: #888;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+/* Don't allow text selection in buttons:
+http://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css?page=1&tab=votes#tab-top
+https://www.w3schools.com/cssref/css3_pr_user-select.asp
+Added iOS Safari http://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
+button {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+/*<p>
+  Selectable text.
+</p>
+<p class="noselect">
+  Unselectable text.
+</p>*/
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+input {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+/*...*/
+/* everything else */
+* {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+
+.navClose {
+    width: 36px;
+    height: 36px;
+    background-image: url(https://i.imgur.com/5cznqbh.png);
+    background-size: 30px;
+    background-position: 3px 3px;
+    left: 6px;
+    top: 6px;
+    position: absolute;
+    color: #e8e9eb;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: none;
+}
+
+.titlebar {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  display: block;
+  width: 100%;
+  height: 50px;
+  color: white;
+  font-size: medium;
+  background-color: #FF5402;
+  z-index: 17; /* Sit on top */
+  /*no select text/*
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+.titlebar .titlebottom {
+	  border-top: 1px solid #fff;
+    box-shadow: 0 -1px 0 0 #d2d2d3;
+    width: 100%;
+    background-color: #f5f5f7;
+}
+.titlebar .titletext {
+  display: inline-block;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-shadow: 0 2px 0 #A23300;
+  /*vertical-align: middle;*/
+  line-height: 50px;       /* the same as your div height */
+  /* This dictates the margin above and below the h3 tag, default is 1em and 0 for left/right */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.footer {    
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background: #FF5402;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 0 #A23300;
+    box-shadow: 0 0 1px #A23300;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 40px;       /* the same as your div height */
+    z-index: 17; /* Sit on top */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+      /*no select text/*
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+.footer .left {
+  display: inline-block;
+  width: -webkit-calc(33% - 2px);
+  width:    -moz-calc(33% - 2px);
+  width:         calc(33% - 2px);
+}
+.footer .center {
+  display: inline-block;
+  width: -webkit-calc(33% - 2px);
+  width:    -moz-calc(33% - 2px);
+  width:         calc(33% - 2px);
+}
+.footer .right {
+  display: inline-block;
+  width: -webkit-calc(33% - 2px);
+  width:    -moz-calc(33% - 2px);
+  width:         calc(33% - 2px);
+}
+
+
+/* angular2-busy */
+.busy-spinner {
+  position: relative;
+}
+
+.fullscreen{
+    display: block;
+    font-size: medium;
+    position: fixed; /* Stay in place */
+    color: white;
+    background-color: white; /* Fallback color */
+    top:0;
+    /*left:0;*/
+    width:100%;
+    height:100%;
+    overflow: auto; /* Enable scroll if needed */
+    z-index: 100; /* Sit on top */
+    margin:    0 auto;
+}
+
+/* Center modal content on screen: http://stackoverflow.com/questions/41377501/how-to-vertically-align-bootstrap-v4-modal-dialogs */
+.modal-dialog {
+  min-height: -webkit-calc(100vh - 60px);
+  min-height: -moz-calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .modal-dialog {
+    min-height: -webkit-calc(100vh - 20px);
+    min-height: -moz-calc(100vh - 20px);
+    min-height: calc(100vh - 20px);
+  }
+}
