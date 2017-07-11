@@ -19,10 +19,10 @@
 <!--Show the WickeyAppStore container-->
 <div *ngIf="showOverlay" class="alert-modal" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
   (click)="catchClick($event)">
-  <div class="titlebar">
-    <h3 class="titletext">Featured Apps</h3>
+  <div class="was-titlebar">
+    <h3 class="was-titletext">Featured Apps</h3>
     <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="navClose" title="back"></button>
-    <div class="titlebottom"></div>
+    <div class="was-titlebottom"></div>
   </div>
   <div class="results-group">
     <!--<div [ngBusy]="{busy: busy, message: 'Refreshing app store..'}" class="busy-spinner"></div>-->
@@ -30,7 +30,7 @@
     <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>
     <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps>
   </div>
-  <div class="footer">
+  <div class="was-footer">
     <!--<div class="left">
       Featured
     </div>

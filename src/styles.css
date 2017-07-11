@@ -78,7 +78,7 @@ input {
     border: none;
 }
 
-.titlebar {
+.was-titlebar {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   display: block;
@@ -97,13 +97,13 @@ input {
           user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
 }
-.titlebar .titlebottom {
+.was-titlebar .was-titlebottom {
 	  border-top: 1px solid #fff;
     box-shadow: 0 -1px 0 0 #d2d2d3;
     width: 100%;
     background-color: #f5f5f7;
 }
-.titlebar .titletext {
+.was-titlebar .was-titletext {
   display: inline-block;
   width: 100%;
   color: white;
@@ -118,7 +118,7 @@ input {
   -webkit-margin-after: 0em;
 }
 
-.footer {    
+.was-footer {    
     position: fixed;
     bottom: 0;
     height: 40px;
@@ -143,19 +143,19 @@ input {
     user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
 }
-.footer .left {
+.was-footer .left {
   display: inline-block;
   width: -webkit-calc(33% - 2px);
   width:    -moz-calc(33% - 2px);
   width:         calc(33% - 2px);
 }
-.footer .center {
+.was-footer .center {
   display: inline-block;
   width: -webkit-calc(33% - 2px);
   width:    -moz-calc(33% - 2px);
   width:         calc(33% - 2px);
 }
-.footer .right {
+.was-footer .right {
   display: inline-block;
   width: -webkit-calc(33% - 2px);
   width:    -moz-calc(33% - 2px);
