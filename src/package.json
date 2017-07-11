@@ -1,20 +1,35 @@
 {
   "name": "wickeyappstore",
-  "version": "0.1.14",
+  "version": "0.1.22",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/wickeyware/wickeyappstore"
+    "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm"
   },
   "license": "MIT",
   "author": {
     "name": "Michael Wickey",
     "email": "wickeym@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Tim Wickey",
+      "email": "wickeyware@gmail.com"
+    },
+    {
+      "name": "Michael Wickey",
+      "email": "wickeym@gmail.com"
+    }
+  ],
   "keywords": [
-    "angular"
+    "angular",
+    "wickeyappstore",
+    "appstore",
+    "pwa",
+    "progressive",
+    "webapp"
   ],
   "bugs": {
-    "url": "https://bitbucket.org/wickeyware/wickeyappstore/issues"
+    "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm/issues"
   },
   "typings": "wickeyappstore.d.ts",
   "peerDependencies": {

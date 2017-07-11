@@ -324,7 +324,7 @@ import { NgModule } from &#39;&#64;angular/core&#39;;
 import { AppComponent } from &#39;./app.component&#39;;
 
 // Import your library
-import { SampleModule } from &#39;wickeyappstore&#39;;
+import { WickeyAppStoreModule } from &#39;wickeyappstore&#39;;
 
 &#64;NgModule({
   declarations: [
@@ -333,8 +333,8 @@ import { SampleModule } from &#39;wickeyappstore&#39;;
   imports: [
     BrowserModule,
 
-    // Specify your library as an import
-    LibraryModule
+    // Specify as an import
+    WickeyAppStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -344,7 +344,8 @@ export class AppModule { }</code></pre><p>Once your library is imported, you can
 &lt;h1&gt;
   {{title}}
 &lt;/h1&gt;
-&lt;sampleComponent&gt;&lt;/sampleComponent&gt;</code></pre><h2 id="development">Development</h2>
+&lt;!-- appID is your WickeyAppStore app ID, and close will be called when app store closes--&gt;
+&lt;wickey-appstore [appID]=&quot;showXpromote&quot; (close)=&quot;closeXpromote($event)&quot;&gt;&lt;/wickey-appstore&gt;</code></pre><h2 id="development">Development</h2>
 <p>To generate all <code>*.js</code>, <code>*.d.ts</code> and <code>*.metadata.json</code> files:</p>
 <pre class="line-numbers"><code class="language-bash">$ npm run build</code></pre><p>To lint all <code>*.ts</code> files:</p>
 <pre class="line-numbers"><code class="language-bash">$ npm run lint</code></pre><h2 id="license">License</h2>

@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'wickeyappstore';
+import { WickeyAppStoreModule } from 'wickeyappstore';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,8 @@ import { SampleModule } from 'wickeyappstore';
   imports: [
     BrowserModule,
 
-    // Specify your library as an import
-    LibraryModule
+    // Specify as an import
+    WickeyAppStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -50,7 +50,8 @@ Once your library is imported, you can use its components, directives and pipes 
 <h1>
   {{title}}
 </h1>
-<sampleComponent></sampleComponent>
+<!-- appID is your WickeyAppStore app ID, and close will be called when app store closes-->
+<wickey-appstore [appID]="showXpromote" (close)="closeXpromote($event)"></wickey-appstore>
 ```
 
 ## Development

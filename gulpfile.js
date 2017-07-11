@@ -160,6 +160,13 @@ gulp.task('copy:manifest', function () {
   return gulp.src([`${srcFolder}/package.json`])
     .pipe(gulp.dest(distFolder));
 });
+/**
+ * 8.5. Copy styles.css from /src to /dist
+ */
+gulp.task('copy:globalstyles', function () {
+  return gulp.src([`${srcFolder}/styles.css`])
+    .pipe(gulp.dest(distFolder));
+});
 
 /**
  * 9. Copy README.md from / to /dist
@@ -193,6 +200,7 @@ gulp.task('compile', function () {
     'rollup:umd',
     'copy:build',
     'copy:manifest',
+    'copy:globalstyles',
     'copy:readme',
     'clean:build',
     'clean:tmp',

@@ -1,4 +1,24 @@
-<div *ngIf="showWickeyAppStore" class="fullscreen">
+<!--Generic base popover container-->
+<div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
+  <div class="icon-svg">
+    <svg viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
+      <path d="M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z" fill="#FF601F"/>
+      <path fill="#FF601F" d="M246.4 470.26l-58.46-32.86 111.28-198.06 58.48 32.86z"/><path fill="#FF601F" d="M402 470.26l58.47-32.86-111.3-198.06-58.46 32.86z"/>
+      <path fill="#FF601F" d="M299.22 239.32h49.98v23.53h-49.98z"/><path d="M169.18 186.6l79.36.7-45.4 71.03-33.96-71.72z" fill="#006AEB"/>
+      <path d="M158.94 328.2l-34.63-71.34-44.63 70.74 79.3.6z" fill="#007BEB"/><path d="M203.5 257.8l-34.23-71.5-45.04 70.68 79.26.82z" fill="#007BEB"/>
+      <path d="M124.26 256.93l79.27.8-44.6 70.48-34.67-71.24z" fill="#009BEB"/><path d="M167.06 469.75l79.36.5-44.32-71.7-35.04 71.2z" fill="#006AEB"/>
+      <path d="M158.95 328l-35.7 70.84-43.6-71.4 79.3.57z" fill="#007BEB"/><path d="M202.43 399.08l-35.3 70.98-43.96-71.35 79.26.4z" fill="#007BEB"/>
+      <path d="M123.2 398.77l79.27.38L158.95 328l-35.75 70.77z" fill="#009BEB"/><path d="M479.23 186.6l-79.36.7 45.38 71.03 33.98-71.72z" fill="#006AEB"/>
+      <path d="M489.46 328.2l34.63-71.34 44.64 70.74-79.3.6z" fill="#007BEB"/><path d="M444.9 257.8l34.24-71.5 45.04 70.68-79.27.82z" fill="#007BEB"/>
+      <path d="M524.14 256.93l-79.26.8 44.58 70.48 34.68-71.24z" fill="#009BEB"/><path d="M481.35 469.75l-79.36.5 44.3-71.7 35.02 71.2z" fill="#006AEB"/>
+      <path d="M489.46 328l35.7 70.84 43.6-71.4-79.3.57z" fill="#007BEB"/><path d="M445.97 399.08l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB"/>
+      <path d="M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z" fill="#009BEB"/>
+    </svg>
+  </div>
+</div>
+<!--Show the WickeyAppStore container-->
+<div *ngIf="showOverlay" class="alert-modal" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
+  (click)="catchClick($event)">
   <div class="titlebar">
     <h3 class="titletext">Featured Apps</h3>
     <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="navClose" title="back"></button>
@@ -22,7 +42,9 @@
     </div>-->
     <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a>
   </div>
-
   <!-- <was-alert-popup [alert_table]="error_message"></was-alert-popup> -->
   <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page>
 </div>
+<!--Cover the background with dark-->
+<!--This makes it modal. Closes with a touch anywhere-->
+<!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> -->

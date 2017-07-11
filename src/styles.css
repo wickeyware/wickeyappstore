@@ -14,17 +14,11 @@ h2, h3 {
   font-size: 150%;
   /*font-weight: 500;*/
 }
-body {
-  /* margin: 0em; /* change to 0 after menu btn on main screen */
-  margin: auto;
-  font-size:100%;
-  min-width: 300px;
-}
 p {
   font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */
   line-height: 1em;  /* This keeps the line height proportional to the font size */
 }
-body, input[text], button {
+input[text], button {
   color: #888;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -64,7 +58,6 @@ input {
 * {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
 
 .navClose {
     width: 36px;
@@ -186,7 +179,7 @@ input {
     width:100%;
     height:100%;
     overflow: auto; /* Enable scroll if needed */
-    z-index: 100; /* Sit on top */
+    z-index: 110; /* Sit on top */
     margin:    0 auto;
 }
 

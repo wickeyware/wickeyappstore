@@ -1,3 +1,16 @@
+.icon-container {
+    width: 70px;
+    height: 60px;
+}
+.icon-svg {
+    width: 40px;
+    margin: auto;
+    /*margin-left: 20px;*/
+}
+.icon-container:hover {
+    cursor: pointer;
+}
+
 .app-list {
   list-style-type: none;
   -webkit-margin-before: 0em;

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output, OnDestroy } from '@angular/core';
-
+import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
 // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
 // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
@@ -24,15 +24,74 @@ const DEFAULT_APP_LIST = [
     'app_version': 0.1, 'id': 4, 'icon': 'https://i.imgur.com/waPPNBt.png'
   }];
 
+/**
+ * @param {number} appID  The WickeyAppStore AppID {@link https://www.npmjs.com/package/wickeyappstore}
+ *
+ * @example
+ * Add to your main html component template
+ * <wickey-appstore [appID]="1231" (close)="onWickeyAppStoreClose($event)"></wickey-appstore>
+ *
+ * @returns      The store overlay, displaying the details of <appID> with reviews and purchase module.
+ */
 @Component({
   selector: 'wickey-appstore',
   templateUrl: './wickeyappstore.component.html',
   styleUrls: ['./wickeyappstore.component.css'],
-  providers: [ApiConnectionService]
+  providers: [ApiConnectionService],
+  animations: [
+    trigger('clickButtonTrigger', [
+      state('inactive', style({
+        transform: 'scale(1)',
+      })),
+      state('active', style({
+        transform: 'scale(1.2)',
+      })),
+      transition('inactive => active', animate('80ms ease-out')),
+      transition('active => inactive', animate('80ms ease-in'))
+    ]),
+    // ANIMATION FOR MODAL //
+    trigger('overlayAnimationTrigger', [
+      state('in', style({ opacity: '1' })),
+      state('out', style({ opacity: '0' })),
+      transition('in => out', [
+        // Animates back up and shrinks
+        animate('150ms ease-out', style({ opacity: .1, transform: 'scaleX(.98) scaleY(.9)' }))
+      ]),
+      // This defines an animation on element create (nothing to something)
+      transition(':enter', [
+        // Set start style, this is a temp style only exists during the animation
+        style({ opacity: .1, transform: 'scaleX(.98) scaleY(.9)' }),
+        // Define the animation, define easing out back function (http://cubic-bezier.com/#.23,.55,.11,1.21)
+        // Set the end style, the goal of the animation
+        animate('300ms cubic-bezier(.61,.02,.44,1.01)', style({ opacity: 1, transform: 'scale(1)' })),
+      ])
+    ]),
+    trigger('showEmailEditAnim', [
+      transition(':enter', [
+        // move the input box up to the other box
+        animate(300, keyframes([
+          style({ opacity: 0, transform: 'scale(.9)', offset: 0 }),
+          style({ opacity: 1, transform: 'scale(1.05)', offset: 0.35 }),
+          style({ opacity: 1, transform: 'scale(1)', offset: 1.0 })
+        ]))
+      ]),
+      transition(':leave', [
+        // move the input box up to the other box
+        animate(200, keyframes([
+          style({ opacity: 1, transform: 'scale(1)', offset: 0 }),
+          style({ opacity: 1, transform: 'scale(1.05)', offset: 0.35 }),
+          style({ opacity: 0, transform: 'scale(.8)', offset: 1.0 })
+        ]))
+      ]),
+    ]),
+  ]
 })
 export class WickeyAppStoreComponent implements OnInit, OnDestroy {
-  @Input() public showWickeyAppStore: number;
+  @Input() public appID: number;
   @Output() close = new EventEmitter<number>();
+  public clickState = 'inactive'; // this dictates the state of the clickable button
+  private overlayState = 'in'; // this dictates the animation state of the actual window
+  public showOverlay: number = null; // this dictates whether or not to show the overlay window
   public busy: Subscription;
   public error_message: ErrorTable;
   private test_alert = 0;
@@ -84,11 +143,29 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     //   .then(() => console.log('WickeyAppStoreComponent: db', this.user))
     //   .catch(this.handleError);
   }
-  goBack(): void {
-    // this.location.back();
-    // TODO: hide modal
-    this.showWickeyAppStore = null;
-    this.close.emit(1);
+
+  buttonClick() {
+    this.clickState = 'active'; // make the button animate on click
+    this.showOverlay = 1; // show the overlay
+    this.overlayState = 'in'; // set it to animate in
+  }
+  // this animates the buttonClick Over
+  buttonClickAnimationDone(event: AnimationEvent) {
+    if (this.clickState === 'active') {
+      this.clickState = 'inactive'; // make the button animate back
+    }
+  }
+  closeOverlay(): void {
+    this.overlayState = 'out';
+  }
+  catchClick(event: any): void {
+    event.stopPropagation();
+  }
+  // this closes the window after the animation is done
+  overlayAnimationDone(event: AnimationEvent) {
+    if (event.toState === 'out') {
+      this.closeMe();
+    }
   }
 
   updateParentHeight(): void {
@@ -166,7 +243,8 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   closeMe(): void {
     // this.closeIframe();
-    this.goBack();
+    this.showOverlay = null;
+    this.close.emit(1);
     // this.get_apps();
     // this.testAlertBox();
   }
