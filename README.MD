@@ -54,6 +54,11 @@ Once your library is imported, you can use its components, directives and pipes 
 <wickey-appstore [appID]="showXpromote" (close)="closeXpromote($event)"></wickey-appstore>
 ```
 
+Link CSS, or copy it into your styles.css:
+```code
+<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@0.1.23/styles.css">
+```
+
 ## Development
 
 To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
