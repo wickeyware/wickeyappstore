@@ -618,10 +618,10 @@
 
     <div class="tab-pane fade" id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div  *ngIf&#x3D;&quot;showApp&quot; class&#x3D;&quot;fullscreen sitontop&quot; [@pageOpen]&#x3D;&quot;in&quot;&gt;
-  &lt;div class&#x3D;&quot;titlebar&quot;&gt;
-    &lt;!--&lt;h3 class&#x3D;&quot;titletext&quot;&gt;Featured Apps&lt;/h3&gt;--&gt;
-    &lt;button (click)&#x3D;&quot;goBack()&quot; class&#x3D;&quot;navClose&quot; title&#x3D;&quot;back&quot;&gt;&lt;/button&gt;
-    &lt;div class&#x3D;&quot;titlebottom&quot;&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;was-titlebar&quot;&gt;
+    &lt;!--&lt;h3 class&#x3D;&quot;was-titletext&quot;&gt;Featured Apps&lt;/h3&gt;--&gt;
+    &lt;button (click)&#x3D;&quot;goBack()&quot; class&#x3D;&quot;was-navClose&quot; title&#x3D;&quot;back&quot;&gt;&lt;/button&gt;
+    &lt;div class&#x3D;&quot;was-titlebottom&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;page-content noselect&quot;&gt;
     &lt;div class&#x3D;&quot;titlearea&quot;&gt;
@@ -661,7 +661,7 @@
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  *ngIf="showApp" class="fullscreen sitontop" [@pageOpen]="in">  <div class="titlebar">    <!--<h3 class="titletext">Featured Apps</h3>-->    <button (click)="goBack()" class="navClose" title="back"></button>    <div class="titlebottom"></div>  </div>  <div class="page-content noselect">    <div class="titlearea">      <img src="{{selected_app?.icon}}" alt="App Icon" class="img-icon-large">      <p class="title"> {{selected_app?.name}}</p>      <button class="btn btn-block btn-get" (click)="launchApp()">Launch App</button>    </div>    <div class="solid-separator"></div>    <div class="description-title">Description</div>    <div class="description-body">{{selected_app?.text}}</div>  </div></div><!-- Pop up modal on error --><!-- <was-alert-popup [alert_table]="error_message"></was-alert-popup> --></div>'
+        var COMPONENT_TEMPLATE = '<div><div  *ngIf="showApp" class="fullscreen sitontop" [@pageOpen]="in">  <div class="was-titlebar">    <!--<h3 class="was-titletext">Featured Apps</h3>-->    <button (click)="goBack()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="page-content noselect">    <div class="titlearea">      <img src="{{selected_app?.icon}}" alt="App Icon" class="img-icon-large">      <p class="title"> {{selected_app?.name}}</p>      <button class="btn btn-block btn-get" (click)="launchApp()">Launch App</button>    </div>    <div class="solid-separator"></div>    <div class="description-title">Description</div>    <div class="description-body">{{selected_app?.text}}</div>  </div></div><!-- Pop up modal on error --><!-- <was-alert-popup [alert_table]="error_message"></was-alert-popup> --></div>'
     var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'AppReviewsPageComponent', 'selector': 'app-app-reviews-page'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'WASAlertPopupComponent', 'selector': 'was-alert-popup'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppDetailPageComponent'};
