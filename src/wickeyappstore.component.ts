@@ -143,7 +143,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     //   .then(() => console.log('WickeyAppStoreComponent: db', this.user))
     //   .catch(this.handleError);
   }
-
+  onAlertClose(data: any): void {
+    console.log('onAlertClose', data);
+  }
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
     this.showOverlay = 1; // show the overlay

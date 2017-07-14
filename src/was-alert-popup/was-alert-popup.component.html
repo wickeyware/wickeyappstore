@@ -84,11 +84,13 @@
           </span>
         </span>
       </div>
-      <div class="modal-was-footer">
+      <div class="modal-footer">
          <!--<button *ngIf="show_test"
         (@buttonWobble.done)="btnanimationDone($event)"
         [@buttonWobble]="button_state"
         type="button" class="btn btn-secondary btn-info" (click)="buttonWobble()" data-dismiss="modal">HI</button> -->
+        <button *ngIf="alert_table.button_action" type="button" class="btn btn-secondary btn-info" (click)="onButtonAction()"
+        data-dismiss="modal">{{alert_table.button_action}}</button>
         <button *ngIf="alert_table.video" type="button" class="btn btn-secondary btn-info" (click)="openVideo()" data-dismiss="modal">Demo Video</button>
         <button type="button" class="btn btn-secondary {{alert_table?.button_type}}" (click)="closeMe()" data-dismiss="modal">Close</button>
       </div>

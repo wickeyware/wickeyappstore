@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { ErrorTable } from '../app.models';
 
@@ -72,7 +72,9 @@ import { ErrorTable } from '../app.models';
 })
 
 export class WASAlertPopupComponent implements OnInit, OnChanges {
+  @Input() public some_var: any;
   @Input() public alert_table: ErrorTable;
+  @Output() close = new EventEmitter<any>();
   private show_video: boolean;
   private show_state = 'in';
   private show_test = false;
@@ -110,12 +112,15 @@ export class WASAlertPopupComponent implements OnInit, OnChanges {
     }
   }
 
+  onButtonAction(): void {
+    this.goBack('button_action');
+  }
 
-
-  goBack(): void {
+  goBack(_pass_data?: any): void {
     // hide modal
     this.alert_table = null;
     this.show_video = null;
+    this.close.emit(_pass_data);
   }
   openVideo(): void {
     console.log('openVideo');

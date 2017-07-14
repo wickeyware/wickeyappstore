@@ -8,5 +8,6 @@ export interface ErrorTable {
   button_type?: string;
   randcookie?: string;
   video?: string;
+  button_action?: string;
   helpmessage?: Array<Array<string>>; // Only can have up to 3 //
 }
