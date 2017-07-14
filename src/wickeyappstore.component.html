@@ -31,16 +31,16 @@
     <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps>
   </div>
   <div class="was-footer">
-    <!--<div class="left">
-      Featured
+    <div class="left">
+      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>
     </div>
     <div class="center">
-      Top Charts
+      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>
     </div>
     <div class="right">
-      Search
-    </div>-->
-    <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a>
+      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>
+    </div>
+    <!-- <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a> -->
   </div>
   <was-alert-popup [alert_table]="error_message"></was-alert-popup>
   <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page>
