@@ -6,7 +6,6 @@ import { ErrorTable } from '../app.models';
 
 // TODO: Make animation like stripe popup
 @Component({
-  // moduleId: module.id,
   selector: 'was-alert-popup',
   templateUrl: './was-alert-popup.component.html',
   styleUrls: ['./was-alert-popup.component.css'],
@@ -72,7 +71,6 @@ import { ErrorTable } from '../app.models';
 })
 
 export class WASAlertPopupComponent implements OnInit, OnChanges {
-  @Input() public some_var: any;
   @Input() public alert_table: ErrorTable;
   @Output() close = new EventEmitter<any>();
   private show_video: boolean;
