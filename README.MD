@@ -1,5 +1,7 @@
 # wickeyappstore
 
+AppStore for Progressive WebApps
+
 ## Installation
 
 To install this library, run:
