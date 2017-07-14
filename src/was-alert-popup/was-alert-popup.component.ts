@@ -72,8 +72,7 @@ import { ErrorTable } from '../app.models';
 })
 
 export class WASAlertPopupComponent implements OnInit, OnChanges {
-  @Input()
-  public alert_table: ErrorTable;
+  @Input() public alert_table: ErrorTable;
   private show_video: boolean;
   private show_state = 'in';
   private show_test = false;

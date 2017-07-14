@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 import { ApiConnectionService } from './api-connection.service';
-import { WASAlertPopupComponent } from './alert-popup/was-alert-popup.component';
+import { WASAlertPopupComponent } from './was-alert-popup/was-alert-popup.component';
 import { DisplayAppsComponent } from './display-apps/display-apps.component';
 import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
 import { AppReviewsPageComponent } from './display-apps/app-reviews-page/app-reviews-page.component';
@@ -19,7 +19,7 @@ import { DisplayAppFeaturedComponent } from './display-apps/display-app-featured
 
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
-export * from './alert-popup/was-alert-popup.component';
+export * from './was-alert-popup/was-alert-popup.component';
 export * from './display-apps/display-apps.component';
 export * from './display-apps/app-detail-page/app-detail-page.component';
 export * from './display-apps/app-reviews-page/app-reviews-page.component';
