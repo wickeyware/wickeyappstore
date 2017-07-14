@@ -107,7 +107,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log('WickeyAppStoreComponent: ngOnInit');
+    console.log('WickeyAppStoreComponent: ngOnInit appID:', this.appID);
     this.showCloseIframeBtn = true;  // this.inIframe();
     this.get_apps();
     // idbKeyval.get('apps')
