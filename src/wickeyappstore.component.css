@@ -2,8 +2,9 @@
     width: 70px;
     height: 60px;
 }
+/* maybe change size below to match up ^.*/
 .icon-svg {
-    width: 40px;
+    /*width: 40px;*/
     margin: auto;
     /*margin-left: 20px;*/
 }
