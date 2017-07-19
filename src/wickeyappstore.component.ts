@@ -108,6 +108,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('WickeyAppStoreComponent: ngOnInit appID:', this.appID);
+    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.showCloseIframeBtn = true;  // this.inIframe();
     this.get_apps();
     // idbKeyval.get('apps')
@@ -245,6 +246,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   closeMe(): void {
     // this.closeIframe();
+    document.getElementsByTagName('body')[0].style.overflow = 'auto';
     this.showOverlay = null;
     this.close.emit(1);
     // this.get_apps();
