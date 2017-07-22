@@ -1,5 +1,7 @@
+import { Subscription } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { Headers, RequestOptions, Response, Http } from '@angular/http';
+// import { Headers, RequestOptions, Response, Http } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -8,37 +10,38 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiConnectionService {
-  private app_api_url = 'https://api.wickeyappstore.com/apps';
+  private person_url = 'https://api.wickeyappstore.com/person/update/';
+  private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
+  private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
+  private app_url = 'https://api.wickeyappstore.com/apps/';
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) { }
 
   // THE OBSERVABLE WAY //
-  private handleError (error: Response | any) {
+  private handleError (error: HttpErrorResponse) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      if (err.message) {
-        errMsg = `${err.message}`;
+    console.log(error);
+    if (error.error instanceof Error) {
+      // A client-side or network error occurred. Handle it accordingly.
+      // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
+      if (navigator.onLine) {
+        errMsg = `${error.status} - ${error.statusText || ''} ${error.error.message}`;
       } else {
-        // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
-        if (navigator.onLine) {
-          errMsg = `${error.status} - ${error.statusText || ''} ${err.message}`;
-        } else {
-          errMsg = 'There is no Internet connection.';
-        }
+        errMsg = 'There is no Internet connection.';
       }
     } else {
-      errMsg = error.message ? error.message : error.toString();
+      // The backend returned an unsuccessful response code.
+      // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
+      errMsg = error.message ? error.error.error.message : error.toString();
     }
-    console.error(errMsg);
     return Observable.throw(errMsg);
   }
-  private extractData(res: Response) {
-    const body = res.json().data;
+  private extractData(res: any) {
+    console.log('extractData', res);
+    const body = res.data;
     // Add http status to body //
     body.status = res.status;
     if (body.settings) {
@@ -61,14 +64,34 @@ export class ApiConnectionService {
     return q_str.join('&');
   }
 
-// Returns app store apps {name: string, category: number, ordering: number}
-  get_apps(_params?: any): Observable<[any]> {
+  // Returns app store apps {name: string, category: number, ordering: number}
+  getApps(_params?: any): Observable<[any]> {
     const _query_string = this.encode_query_string(_params);
-    console.log('get_apps', _query_string);
-    return this.http.get(`${this.app_api_url}/?${_query_string}`)
-               .map((res: Response) => {
-                 return this.extractData(res).apps;
-                })
+    console.log('getApps', _query_string);
+    return this.http.get(`${this.app_url}/?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res).apps;
+          }).catch(this.handleError);
+  }
+
+  // Creates or updates person, returns person info
+  // person info also includes inapps and app settings
+  createPerson(apiobject: any): Observable<any> {
+    return this.http.post(this.person_url, apiobject)
+               .map(this.extractData)
+               .catch(this.handleError);
+  }
+  // Sends the email a recovery token
+  tokenPerson(email: string): Observable<any> {
+    return this.http.post(this.person_recover_token_url, {email: email})
+               .map(this.extractData)
+               .catch(this.handleError);
+  }
+  // Verify the recovery token
+  verifyPerson(email: string, verification_token: string, version: number): Observable<any> {
+    return this.http.post(this.person_recover_verify_url,
+      {email: email, verification_token: verification_token, version: version})
+               .map(this.extractData)
                .catch(this.handleError);
   }
 

@@ -8,6 +8,9 @@
     "types": [
       "jest",
       "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
     ]
   },
   "files": [

@@ -4,11 +4,16 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "rootDir": "./src",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2015",
       "dom"
     ],
-    "skipLibCheck": true,
-    "types": []
+    "skipLibCheck": true
   }
 }

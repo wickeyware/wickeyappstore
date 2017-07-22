@@ -1,5 +1,26 @@
 // Add all data models here
 
+export interface Settings {
+  app_version: number;
+  freebie_amount: number;
+}
+
+export interface User {
+  user_id: string;
+  coins?: number;
+  email?: string;
+  token_email?: string;
+  created_time?: string;
+  freebie_used?: boolean;
+  rated_app?: boolean;
+  settings?: Settings;
+  special_message?: {
+    title: string;
+    message: string;
+  };
+  logging_in?: boolean;
+}
+
 export interface ErrorTable {
   title: string;
   message: string;

@@ -1,13 +1,15 @@
 import { Component, EventEmitter, OnInit, Input, Output, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
+// TODO: add local storage from pwa here
 // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
 // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
 // const idbKeyval = require('../../node_modules/idb-keyval/idb-keyval.js');
 // const idbKeyval = require('../../node_modules/idb-keyval/dist/idb-keyval-min.js');
 
 import { ApiConnectionService } from './api-connection.service';
-import { ErrorTable } from './app.models';
+import { LocalStorageService } from './local-storage.service';
+import { User, ErrorTable } from './app.models';
 
 const DEFAULT_APP_LIST = [
   {
@@ -96,56 +98,177 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public error_message: ErrorTable;
   private test_alert = 0;
   title = 'apps yo';
-  public user = {};
+  public user: User;
   public apps = [];
   public selected_app: {};
   public showApp = null; // dictate if the app detail page shows up
   public showCloseIframeBtn = false;
+  private standalone: boolean;
+  private lut = [];
 
   constructor(
-    private apiConnectionService: ApiConnectionService
+    private apiConnectionService: ApiConnectionService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
     console.log('WickeyAppStoreComponent: ngOnInit appID:', this.appID);
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.showCloseIframeBtn = true;  // this.inIframe();
-    this.get_apps();
-    // idbKeyval.get('apps')
-    //   .then((value: any): void => {
-    //     if (typeof value !== 'undefined') {
-    //       this.apps = value;  // as Apps;
-    //       // normal load
-    //       console.log('load apps from db, refresh from server');
-    //       this.get_apps();  // UPDATE app list
-    //     } else {
-    //       // create new user
-    //       console.log('no apps in db, get apps from server');
-    //       this.get_apps();
-    //     }
-    //   }
-    //   )
-    //   .then(() => console.log('WickeyAppStoreComponent: db', this.user))
-    //   .catch(this.handleError);
-    // idbKeyval.get('user')
-    //   .then((value: any): void => {
-    //     if (typeof value !== 'undefined') {
-    //       this.user = value;  // as User;
-    //       // normal load
-    //       console.log('load user from db');
-    //       // this.createPerson();  // UPDATE user
-    //     } else {
-    //       // create new user
-    //       console.log('create new user');
-    //       // this.createNewUser();
-    //     }
-    //   }
-    //   )
-    //   .then(() => console.log('WickeyAppStoreComponent: db', this.user))
-    //   .catch(this.handleError);
+    // this.getApps();
+    this.localStorageService.get('apps')
+      .then((value: any): void => {
+        if (typeof value !== 'undefined') {
+          this.apps = value;  // as Apps;
+          // normal load
+          console.log('load apps from db, refresh from server');
+          this.getApps(false);  // UPDATE app list
+        } else {
+          // create new user
+          console.log('no apps in db, get apps from server');
+          this.getApps(true);
+        }
+      }
+      )
+      .catch(this.handleError);
+    this.localStorageService.get('user')
+      .then((value: any): void => {
+        if (typeof value !== 'undefined') {
+          this.user = value as User;
+          // normal load
+          console.log('load user from db');
+          this.createPerson();  // UPDATE user
+        } else {
+          // create new user
+          console.log('create new user');
+          this.createNewUser();
+        }
+      }
+      )
+      .then(() => console.log('AppComponent: db', this.user))
+      .catch(this.handleError);
+  }
+
+  checkStandalone(): void {
+    if (('standalone' in window.navigator) && !(<any>window.navigator).standalone) {
+      this.standalone = false;
+    } else {
+      this.standalone = true;
+    }
+  }
+
+  /**
+   * Fast UUID generator, RFC4122 version 4 compliant.
+   * @author Jeff Ward (jcward.com).
+   * @license MIT license
+   * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
+   **/
+  guid(): string {
+    for (let i = 0; i < 256; i++) { this.lut[i] = (i < 16 ? '0' : '') + (i).toString(16); }
+    let d0;
+    let d1;
+    let d2;
+    let d3;
+    if (typeof (window) !== 'undefined' && typeof (window.crypto) !== 'undefined'
+      && typeof (window.crypto.getRandomValues) !== 'undefined') {
+      const dvals = new Uint32Array(4);
+      window.crypto.getRandomValues(dvals);
+      d0 = dvals[0];
+      d1 = dvals[1];
+      d2 = dvals[2];
+      d3 = dvals[3];
+    } else {
+      d0 = Math.random()*0xffffffff|0;
+      d1 = Math.random()*0xffffffff|0;
+      d2 = Math.random()*0xffffffff|0;
+      d3 = Math.random()*0xffffffff|0;
+    }
+    return this.lut[d0&0xff]+this.lut[d0>>8&0xff]+this.lut[d0>>16&0xff]+this.lut[d0>>24&0xff]+'-'+
+      this.lut[d1&0xff]+this.lut[d1>>8&0xff]+'-'+this.lut[d1>>16&0x0f|0x40]+this.lut[d1>>24&0xff]+'-'+
+      this.lut[d2&0x3f|0x80]+this.lut[d2>>8&0xff]+'-'+this.lut[d2>>16&0xff]+this.lut[d2>>24&0xff]+
+      this.lut[d3&0xff]+this.lut[d3>>8&0xff]+this.lut[d3>>16&0xff]+this.lut[d3>>24&0xff];
+  }
+
+  createNewUser(): void {
+    console.warn('NO USER, CREATE USER');
+    // CREATE NEW USER //
+    // Get uuid then create user
+    this.user = {user_id: this.guid()};
+    this.createPerson();
+  }
+  createPerson(_show_onboard?: boolean): void {
+    console.log('ScrapeFormComponent: createPerson');
+    let apiobject = {user_id: this.user.user_id, email: this.user.email, version: .1, standalone: false};
+    // GET IF LAUNCHED FROM HOMESCREEN //
+    this.checkStandalone();
+    if (this.standalone) {
+      apiobject.standalone = this.standalone;
+    }
+    this.apiConnectionService
+      .createPerson(apiobject)
+      .subscribe((res) => {
+        // Handle results
+        // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
+        // PLUS: freebie_used, settings, inapps, rated_app
+        if (res.status === 201) {
+          console.log('ScrapeFormComponent: createPerson:NEW RETURN:', res);
+          // On new user/recover
+          // TODO: Add more of a verification
+          this.user = res;
+        } else {
+          console.log('ScrapeFormComponent: createPerson RETURN:', res);
+          // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
+          if (res.email && res.user_id) {
+            this.user.user_id = res.user_id;
+          }
+          this.user.email = res.email;
+          this.user.coins = res.coins;
+          this.user.created_time = res.created_time;
+          this.user.freebie_used = res.freebie_used;
+          this.user.settings = res.settings;
+        }
+        // UPDATE USER //
+        this.localStorageService.set('user', this.user);
+        if (res.special_message) {
+          this.error_message = {
+            title: res.special_message.title, message: res.special_message.message,
+            button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
+            helpmessage: [],
+            randcookie: `${Math.random()}${Math.random()}${Math.random()}`
+          };
+        }
+        // Add user context in sentry
+        // Raven.setUserContext({email: this.user.email, id: this.user.user_id});
+      }, (error) => {
+        // <any>error | this casts error to be any
+        if (!this.user.logging_in) {
+          if (typeof error === 'string' && error.startsWith('This email exists')) {
+            this.error_message = {
+              title: 'Attention!',
+              message: error,
+              header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+              helpmessage: [],
+              button_action: 'Login',
+              randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+            };
+          } else {
+            this.error_message = {
+              title: 'Attention!',
+              message: error,
+              header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+              helpmessage: [],
+              randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+            };
+          }
+        }
+      });
   }
   onAlertClose(data: any): void {
-    console.log('onAlertClose', data);
+    if (data) {
+      console.log('onAlertClose', data);
+    } else {
+      console.log('onAlertClose');
+    }
   }
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
@@ -188,22 +311,23 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     return Promise.reject(error.message || error);
   }
 
-  get_apps(): void {
-    this.busy = this.apiConnectionService
-      .get_apps()
+getApps(show_spinner: boolean): void {
+    if (show_spinner === false) {
+      this.apiConnectionService
+      .getApps()
       .subscribe((res) => {
-        console.log('get_apps RETURN:', res);
+        console.log('getApps RETURN:', res);
         this.apps = res;
         setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
-        // idbKeyval.set('apps', this.apps);
+        this.localStorageService.set('apps', this.apps);
       }, (error) => {
-        console.log('get_apps ERROR:', error);
+        console.log('getApps ERROR:', error);
         this.apps = DEFAULT_APP_LIST;
         this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
-        // idbKeyval.set('apps', this.apps);
+        this.localStorageService.set('apps', this.apps);
         this.error_message = {
           title: 'Attention',
           message: error,
@@ -212,6 +336,31 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
         };
       });
+    } else {
+      this.busy = this.apiConnectionService
+      .getApps()
+      .subscribe((res) => {
+        console.log('getApps RETURN:', res);
+        this.apps = res;
+        setTimeout(this.updateParentHeight, 200);
+        // UPDATE DB //
+        this.localStorageService.set('apps', this.apps);
+      }, (error) => {
+        console.log('getApps ERROR:', error);
+        this.apps = DEFAULT_APP_LIST;
+        this.updateParentHeight();
+        // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
+        // UPDATE DB //
+        this.localStorageService.set('apps', this.apps);
+        this.error_message = {
+          title: 'Attention',
+          message: error,
+          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+          helpmessage: [],
+          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+        };
+      });
+    }
   }
 
   showAppDetail = (_app: any) => {
@@ -249,7 +398,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     document.getElementsByTagName('body')[0].style.overflow = 'auto';
     this.showOverlay = null;
     this.close.emit(1);
-    // this.get_apps();
+    // this.getApps();
     // this.testAlertBox();
   }
 
@@ -278,5 +427,21 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       this.test_alert = 0;
     }
     this.test_alert += 1;
+  }
+
+  // POPOVER //
+  logoutUser(_data?: any) {
+    if (_data) {
+      console.log('logoutUser', _data);
+    } else {
+      console.log('logoutUser');
+    }
+  }
+  closeOnboardScreen(_data?: any) {
+    if (_data) {
+      console.log('closeOnboardScreen', _data);
+    } else {
+      console.log('closeOnboardScreen');
+    }
   }
 }
