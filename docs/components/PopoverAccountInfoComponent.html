@@ -103,7 +103,7 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
+                                    <a href="../components/PopoverAccountInfoComponent.html"  data-type="entity-link" class="active" >PopoverAccountInfoComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PopoverBaseComponent.html" >PopoverBaseComponent</a>
@@ -115,7 +115,7 @@
                                     <a href="../components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WickeyAppStoreComponent.html"  data-type="entity-link" class="active" >WickeyAppStoreComponent</a>
+                                    <a href="../components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -269,7 +269,7 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
+                                           <a href="../components/PopoverAccountInfoComponent.html"  data-type="entity-link" class="active" >PopoverAccountInfoComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PopoverBaseComponent.html" >PopoverBaseComponent</a>
@@ -281,7 +281,7 @@
                                            <a href="../components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WickeyAppStoreComponent.html"  data-type="entity-link" class="active" >WickeyAppStoreComponent</a>
+                                           <a href="../components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -352,7 +352,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>WickeyAppStoreComponent</li>
+  <li>PopoverAccountInfoComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -377,9 +377,17 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/wickeyappstore.component.ts</code>
+    <code>src/ui/popover/popover-account-info/popover-account-info.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Shows WickeyAppStore user account info in popover box.
+EXAMPLE: <ui-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></ui-popover-account-info></p>
+
+    </p>
 
 
     <p class="comment">
@@ -387,17 +395,12 @@
     </p>
     <p class="comment">
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
     <p class="comment">
         <h3>Example</h3>
     </p>
     <div class="io-description">
-                <div>
-                    <pre class="line-numbers"><code class="language-html">Add to your main html component template
-&lt;wickey-appstore [appID]=&quot;1231&quot; (close)=&quot;onWickeyAppStoreClose($event)&quot;&gt;&lt;/wickey-appstore&gt;</code></pre>
-                </div>
     </div>
 
 <section>
@@ -418,7 +421,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                     <code>
-                        ApiConnectionService
+                        DatePipe
                     </code>
                 </td>
             </tr>
@@ -426,19 +429,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>wickey-appstore</code></td>
+                <td class="col-md-9"><code>ui-popover-account-info</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>wickeyappstore.component.css</code></td>
+                <td class="col-md-9"><code>.popover-base/popover-base.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./wickeyappstore.component.html</code></td>
+                <td class="col-md-9"><code>./popover-account-info.component.html</code></td>
             </tr>
 
 
@@ -452,18 +455,53 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>appID</code>
+                            <code>html</code>
+                        </td>
+                        <td class="col-md-10">
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:76</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>isModal</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:75</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>user</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="../interfaces/User.html" target="_self" >User</a></code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/wickeyappstore.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:77</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -476,16 +514,16 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>close</code>
+                            <code>signout</code>
                         </td>
                         <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/wickeyappstore.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:78</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -498,12 +536,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(apiConnectionService: <a href="../injectables/ApiConnectionService.html">ApiConnectionService</a>, localStorageService: <a href="../injectables/LocalStorageService.html">LocalStorageService</a>)</code>
+                            <code>constructor(apiConnectionService: <a href="../injectables/ApiConnectionService.html">ApiConnectionService</a>, localStorageService: <a href="../injectables/LocalStorageService.html">LocalStorageService</a>, datePipe: <a href="https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html" target="_blank">DatePipe</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/wickeyappstore.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:88</a></div>
                                 </td>
                             </tr>
     
@@ -532,138 +570,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/wickeyappstore.component.ts:114</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> checkStandalone</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>checkStandalone()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/wickeyappstore.component.ts:152</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> guid</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>guid()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/wickeyappstore.component.ts:166</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Fast UUID generator, RFC4122 version 4 compliant.</p>
-    </div>
-    
-                                <div class="io-description">
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>string</code>
-    
-                                </div>
-                                    <div class="io-description">
-                                        
-                                    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> createNewUser</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>createNewUser()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/wickeyappstore.component.ts:192</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> createPerson</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>createPerson(_show_onboard: boolean)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/wickeyappstore.component.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:96</a></div>
                                 </td>
                             </tr>
     
@@ -694,7 +601,38 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/wickeyappstore.component.ts:266</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:98</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> editEmailClick</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>editEmailClick()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:105</a></div>
                                 </td>
                             </tr>
     
@@ -725,7 +663,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/wickeyappstore.component.ts:273</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:108</a></div>
                                 </td>
                             </tr>
     
@@ -756,7 +694,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="279" class="link-to-prism">src/wickeyappstore.component.ts:279</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:119</a></div>
                                 </td>
                             </tr>
     
@@ -787,7 +725,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/wickeyappstore.component.ts:284</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:124</a></div>
                                 </td>
                             </tr>
     
@@ -818,7 +756,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">src/wickeyappstore.component.ts:287</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:127</a></div>
                                 </td>
                             </tr>
     
@@ -849,7 +787,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="291" class="link-to-prism">src/wickeyappstore.component.ts:291</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:131</a></div>
                                 </td>
                             </tr>
     
@@ -868,175 +806,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> updateParentHeight</b>
+                            <b> isEmpty</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>updateParentHeight()</code>
+    <code>isEmpty(str: string)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">src/wickeyappstore.component.ts:297</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ngOnDestroy</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngOnDestroy()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="303" class="link-to-prism">src/wickeyappstore.component.ts:303</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> handleError</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock"></span>
-                            <code>handleError(error: any)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="308" class="link-to-prism">src/wickeyappstore.component.ts:308</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> getApps</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>getApps(show_spinner: boolean)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">src/wickeyappstore.component.ts:314</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> closeAppDetail</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>closeAppDetail(_val: number)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="372" class="link-to-prism">src/wickeyappstore.component.ts:372</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> inIframe</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>inIframe()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="377" class="link-to-prism">src/wickeyappstore.component.ts:377</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:140</a></div>
                                 </td>
                             </tr>
     
@@ -1055,19 +837,50 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> closeIframe</b>
+                            <b> canISignOut</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>closeIframe()</code>
+    <code>canISignOut()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="385" class="link-to-prism">src/wickeyappstore.component.ts:385</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:144</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>boolean</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> signoutfunc</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>signoutfunc()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:157</a></div>
                                 </td>
                             </tr>
     
@@ -1086,19 +899,143 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> closeMe</b>
+                            <b> getEmailString</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>closeMe()</code>
+    <code>getEmailString()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="396" class="link-to-prism">src/wickeyappstore.component.ts:396</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:175</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> getSaveEmailButtonText</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getSaveEmailButtonText()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:183</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> getSignoutButtonText</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getSignoutButtonText()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:191</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> accountAge</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>accountAge(create_time: number)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:199</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> updateEmail</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>updateEmail(email: string)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="237" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:237</a></div>
                                 </td>
                             </tr>
     
@@ -1117,81 +1054,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> testAlertBox</b>
+                            <b> updateUser</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>testAlertBox()</code>
+    <code>updateUser()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="405" class="link-to-prism">src/wickeyappstore.component.ts:405</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> logoutUser</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>logoutUser(_data: any)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="433" class="link-to-prism">src/wickeyappstore.component.ts:433</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> closeOnboardScreen</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>closeOnboardScreen(_data: any)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="440" class="link-to-prism">src/wickeyappstore.component.ts:440</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:243</a></div>
                                 </td>
                             </tr>
     
@@ -1217,18 +1092,24 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> apps</b>
+                            <b><span class="modifier">Public</span> alert_table</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>apps:     <code></code>
+                            <span class="modifier-icon fa fa-"></span><code>alert_table:     <code><a href="../interfaces/ErrorTable.html" target="_self" >ErrorTable</a></code>
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../interfaces/ErrorTable.html" target="_self" >ErrorTable</a></code>
+    
+                            </td>
+                        </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/wickeyappstore.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:80</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1237,12 +1118,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> busy</b>
+                            <b> busy</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>busy:     <code>Subscription</code>
+                            <code>busy:     <code>Subscription</code>
     </bcode>
                         </td>
                     </tr>
@@ -1254,7 +1135,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/wickeyappstore.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:79</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1279,53 +1160,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/wickeyappstore.component.ts:94</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> error_message</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>error_message:     <code><a href="../interfaces/ErrorTable.html" target="_self" >ErrorTable</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../interfaces/ErrorTable.html" target="_self" >ErrorTable</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/wickeyappstore.component.ts:98</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Private</span> lut</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>lut:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/wickeyappstore.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:81</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1345,12 +1180,12 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value : </i><code>in</code>
+                                <i>Default value : </i><code>out</code>
                             </td>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/wickeyappstore.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:82</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1359,83 +1194,24 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> selected_app</b>
+                            <b><span class="modifier">Private</span> showEditEmailState</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>selected_app:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/wickeyappstore.component.ts:103</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> showApp</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>showApp:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/wickeyappstore.component.ts:104</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> showAppDetail</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>showAppDetail:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">src/wickeyappstore.component.ts:366</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> showCloseIframeBtn</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>showCloseIframeBtn:     <code></code>
+                            <span class="modifier-icon fa fa-lock"></span><code>showEditEmailState:     <code>string</code>
     </bcode>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value : </i><code>false</code>
+                                <i>Type : </i>    <code>string</code>
+    
                             </td>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/wickeyappstore.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:86</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1461,7 +1237,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/wickeyappstore.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:83</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1470,24 +1246,24 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> standalone</b>
+                            <b><span class="modifier">Private</span> temp_email</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>standalone:     <code>boolean</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>temp_email:     <code>string</code>
     </bcode>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Type : </i>    <code>boolean</code>
+                                <i>Type : </i>    <code>string</code>
     
                             </td>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/wickeyappstore.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:88</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1496,74 +1272,23 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> test_alert</b>
+                            <b><span class="modifier">Public</span> version</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>test_alert:     <code></code>
+                            <span class="modifier-icon fa fa-"></span><code>version:     <code></code>
     </bcode>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value : </i><code>0</code>
+                                <i>Default value : </i><code>0.2.2</code>
                             </td>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/wickeyappstore.component.ts:99</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> title</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>title:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>apps yo</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/wickeyappstore.component.ts:100</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> user</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>user:     <code><a href="../interfaces/User.html" target="_self" >User</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../interfaces/User.html" target="_self" >User</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/wickeyappstore.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/ui/popover/popover-account-info/popover-account-info.component.ts:84</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1573,49 +1298,32 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, OnInit, Input, Output, OnDestroy } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Inject, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from &#x27;@angular/animations&#x27;;
+import { ApiConnectionService } from &#x27;../../../api-connection.service&#x27;;
+import { LocalStorageService } from &#x27;../../../local-storage.service&#x27;;
+import { User, ErrorTable } from &#x27;../../../app.models&#x27;;
 import { Subscription } from &#x27;rxjs/Rx&#x27;;
-// TODO: add local storage from pwa here
-// TODO: Can also do idb-keyval/dist/idb-keyval-min.js
-// http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
-// const idbKeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;);
-// const idbKeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/dist/idb-keyval-min.js&#x27;);
-
-import { ApiConnectionService } from &#x27;./api-connection.service&#x27;;
-import { LocalStorageService } from &#x27;./local-storage.service&#x27;;
-import { User, ErrorTable } from &#x27;./app.models&#x27;;
-
-const DEFAULT_APP_LIST &#x3D; [
-  {
-    &#x27;app_url&#x27;: &#x27;https://youtube.instaboost.social/&#x27;, &#x27;category&#x27;: 7, &#x27;is_featured&#x27;: false, &#x27;app_video&#x27;: null,
-    &#x27;name&#x27;: &#x27;Instaboost for Youtube&#x27;,
-    &#x27;title&#x27;: &#x60;Get 1000&#x27;s of Youtube Views, Likes, Subscribers, Shares, Favorites, and even Dislikes for YouTube, quickly, easily, and safely. Anonymous boost - NO password required!&#x60;,
-    &#x27;text&#x27;: &#x60;Youtube rewards videos and channels that are already popular by recommending them to people who might be interested in them. Boosting essentially causes the recommendation algorithm to kick in and show your content to many more people. In addition to that, people implicitly trust content that has lots of likes, so a boost is valuable in multiple ways. Get a jump start on your social media presence, and boost today!&#x60;,
-    &#x27;coins&#x27;: 0, &#x27;screenshot_1&#x27;: &#x27;https://i.imgur.com/waPPNBt.png&#x27;, &#x27;screenshot_3&#x27;: null, &#x27;screenshot_2&#x27;: null,
-    &#x27;reviews&#x27;: [], &#x27;created_time&#x27;: 1494256647,
-    &#x27;owner&#x27;: {
-      &#x27;username&#x27;: &#x27;wickeymme&#x27;, &#x27;phone_number&#x27;: &#x27;4048582928&#x27;, &#x27;freebie_used&#x27;: false, &#x27;user_id&#x27;: &#x27;wickeym&#x27;,
-      &#x27;app_creator&#x27;: true, &#x27;account_verified&#x27;: true, &#x27;email&#x27;: &#x27;wickeym@gmail.com&#x27;, &#x27;rated_app&#x27;: false
-    },
-    &#x27;app_version&#x27;: 0.1, &#x27;id&#x27;: 4, &#x27;icon&#x27;: &#x27;https://i.imgur.com/waPPNBt.png&#x27;
-  }];
+import { DatePipe } from &#x27;@angular/common&#x27;;
 
 /**
- * @param {number} appID  The WickeyAppStore AppID {@link https://www.npmjs.com/package/wickeyappstore}
+ * Shows WickeyAppStore user account info in popover box.
+ * EXAMPLE: &lt;ui-popover-account-info [isModal]&#x3D;&quot;true&quot; [user]&#x3D;&quot;user&quot; (signout)&#x3D;&quot;logoutUser($event)&quot;&gt;&lt;/ui-popover-account-info&gt;
  *
- * @example
- * Add to your main html component template
- * &lt;wickey-appstore [appID]&#x3D;&quot;1231&quot; (close)&#x3D;&quot;onWickeyAppStoreClose($event)&quot;&gt;&lt;/wickey-appstore&gt;
- *
- * @returns      The store overlay, displaying the details of &lt;appID&gt; with reviews and purchase module.
+ * @param {boolean} isModal Show up as modal vs info box
+ * @param {User} user The current user object
+ * @param {function} signout Emits to function if user signs out
+ * @export
+ * @class PopoverAccountInfoComponent
+ * @implements {OnInit}
  */
 @Component({
-  selector: &#x27;wickey-appstore&#x27;,
-  templateUrl: &#x27;./wickeyappstore.component.html&#x27;,
-  styleUrls: [&#x27;./wickeyappstore.component.css&#x27;],
-  providers: [ApiConnectionService],
+  selector: &#x27;ui-popover-account-info&#x27;,
+  templateUrl: &#x27;./popover-account-info.component.html&#x27;,
+  styleUrls: [&#x27;../popover-base/popover-base.component.css&#x27;],
+  providers: [DatePipe],
   animations: [
+
     trigger(&#x27;clickButtonTrigger&#x27;, [
       state(&#x27;inactive&#x27;, style({
         transform: &#x27;scale(1)&#x27;,
@@ -1663,192 +1371,49 @@ const DEFAULT_APP_LIST &#x3D; [
     ]),
   ]
 })
-export class WickeyAppStoreComponent implements OnInit, OnDestroy {
-  @Input() public appID: number;
-  @Output() close &#x3D; new EventEmitter&lt;number&gt;();
+export class PopoverAccountInfoComponent implements OnInit {
+  @Input() public isModal &#x3D; false; // if this is modal, then covers the whole screen with a background
+  @Input() public html &#x3D; &#x27;&#x27;; // this is the html to go in the container body
+  @Input() public user: User;
+  @Output() public signout: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  busy: Subscription;
+  public alert_table: ErrorTable;
   public clickState &#x3D; &#x27;inactive&#x27;; // this dictates the state of the clickable button
-  private overlayState &#x3D; &#x27;in&#x27;; // this dictates the animation state of the actual window
+  private overlayState &#x3D; &#x27;out&#x27;; // this dictates the animation state of the actual window
   public showOverlay: number &#x3D; null; // this dictates whether or not to show the overlay window
-  public busy: Subscription;
-  public error_message: ErrorTable;
-  private test_alert &#x3D; 0;
-  title &#x3D; &#x27;apps yo&#x27;;
-  public user: User;
-  public apps &#x3D; [];
-  public selected_app: {};
-  public showApp &#x3D; null; // dictate if the app detail page shows up
-  public showCloseIframeBtn &#x3D; false;
-  private standalone: boolean;
-  private lut &#x3D; [];
+  public version &#x3D; &#x27;0.2.2&#x27;;
+
+  private showEditEmailState: string &#x3D; null; // this dictates whether to show the edit email field and also the anim state
+
+  private temp_email: string;
 
   constructor(
     private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private datePipe: DatePipe
   ) { }
 
-  ngOnInit(): void {
-    console.log(&#x27;WickeyAppStoreComponent: ngOnInit appID:&#x27;, this.appID);
-    document.getElementsByTagName(&#x27;body&#x27;)[0].style.overflow &#x3D; &#x27;hidden&#x27;;
-    this.showCloseIframeBtn &#x3D; true;  // this.inIframe();
-    // this.getApps();
-    this.localStorageService.get(&#x27;apps&#x27;)
-      .then((value: any): void &#x3D;&gt; {
-        if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27;) {
-          this.apps &#x3D; value;  // as Apps;
-          // normal load
-          console.log(&#x27;load apps from db, refresh from server&#x27;);
-          this.getApps(false);  // UPDATE app list
-        } else {
-          // create new user
-          console.log(&#x27;no apps in db, get apps from server&#x27;);
-          this.getApps(true);
-        }
-      }
-      )
-      .catch(this.handleError);
-    this.localStorageService.get(&#x27;user&#x27;)
-      .then((value: any): void &#x3D;&gt; {
-        if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27;) {
-          this.user &#x3D; value as User;
-          // normal load
-          console.log(&#x27;load user from db&#x27;);
-          this.createPerson();  // UPDATE user
-        } else {
-          // create new user
-          console.log(&#x27;create new user&#x27;);
-          this.createNewUser();
-        }
-      }
-      )
-      .then(() &#x3D;&gt; console.log(&#x27;AppComponent: db&#x27;, this.user))
-      .catch(this.handleError);
-  }
-
-  checkStandalone(): void {
-    if ((&#x27;standalone&#x27; in window.navigator) &amp;&amp; !(&lt;any&gt;window.navigator).standalone) {
-      this.standalone &#x3D; false;
-    } else {
-      this.standalone &#x3D; true;
-    }
-  }
-
-  /**
-   * Fast UUID generator, RFC4122 version 4 compliant.
-   * @author Jeff Ward (jcward.com).
-   * @license MIT license
-   * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
-   **/
-  guid(): string {
-    for (let i &#x3D; 0; i &lt; 256; i++) { this.lut[i] &#x3D; (i &lt; 16 ? &#x27;0&#x27; : &#x27;&#x27;) + (i).toString(16); }
-    let d0;
-    let d1;
-    let d2;
-    let d3;
-    if (typeof (window) !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; typeof (window.crypto) !&#x3D;&#x3D; &#x27;undefined&#x27;
-      &amp;&amp; typeof (window.crypto.getRandomValues) !&#x3D;&#x3D; &#x27;undefined&#x27;) {
-      const dvals &#x3D; new Uint32Array(4);
-      window.crypto.getRandomValues(dvals);
-      d0 &#x3D; dvals[0];
-      d1 &#x3D; dvals[1];
-      d2 &#x3D; dvals[2];
-      d3 &#x3D; dvals[3];
-    } else {
-      d0 &#x3D; Math.random()*0xffffffff|0;
-      d1 &#x3D; Math.random()*0xffffffff|0;
-      d2 &#x3D; Math.random()*0xffffffff|0;
-      d3 &#x3D; Math.random()*0xffffffff|0;
-    }
-    return this.lut[d0&amp;0xff]+this.lut[d0&gt;&gt;8&amp;0xff]+this.lut[d0&gt;&gt;16&amp;0xff]+this.lut[d0&gt;&gt;24&amp;0xff]+&#x27;-&#x27;+
-      this.lut[d1&amp;0xff]+this.lut[d1&gt;&gt;8&amp;0xff]+&#x27;-&#x27;+this.lut[d1&gt;&gt;16&amp;0x0f|0x40]+this.lut[d1&gt;&gt;24&amp;0xff]+&#x27;-&#x27;+
-      this.lut[d2&amp;0x3f|0x80]+this.lut[d2&gt;&gt;8&amp;0xff]+&#x27;-&#x27;+this.lut[d2&gt;&gt;16&amp;0xff]+this.lut[d2&gt;&gt;24&amp;0xff]+
-      this.lut[d3&amp;0xff]+this.lut[d3&gt;&gt;8&amp;0xff]+this.lut[d3&gt;&gt;16&amp;0xff]+this.lut[d3&gt;&gt;24&amp;0xff];
-  }
-
-  createNewUser(): void {
-    console.warn(&#x27;NO USER, CREATE USER&#x27;);
-    // CREATE NEW USER //
-    // Get uuid then create user
-    this.user &#x3D; {user_id: this.guid()};
-    this.createPerson();
-  }
-  createPerson(_show_onboard?: boolean): void {
-    console.log(&#x27;ScrapeFormComponent: createPerson&#x27;);
-    let apiobject &#x3D; {user_id: this.user.user_id, email: this.user.email, version: .1, standalone: false};
-    // GET IF LAUNCHED FROM HOMESCREEN //
-    this.checkStandalone();
-    if (this.standalone) {
-      apiobject.standalone &#x3D; this.standalone;
-    }
-    this.apiConnectionService
-      .createPerson(apiobject)
-      .subscribe((res) &#x3D;&gt; {
-        // Handle results
-        // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
-        // PLUS: freebie_used, settings, inapps, rated_app
-        if (res.status &#x3D;&#x3D;&#x3D; 201) {
-          console.log(&#x27;ScrapeFormComponent: createPerson:NEW RETURN:&#x27;, res);
-          // On new user/recover
-          // TODO: Add more of a verification
-          this.user &#x3D; res;
-        } else {
-          console.log(&#x27;ScrapeFormComponent: createPerson RETURN:&#x27;, res);
-          // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
-          if (res.email &amp;&amp; res.user_id) {
-            this.user.user_id &#x3D; res.user_id;
-          }
-          this.user.email &#x3D; res.email;
-          this.user.coins &#x3D; res.coins;
-          this.user.created_time &#x3D; res.created_time;
-          this.user.freebie_used &#x3D; res.freebie_used;
-          this.user.settings &#x3D; res.settings;
-        }
-        // UPDATE USER //
-        this.localStorageService.set(&#x27;user&#x27;, this.user);
-        if (res.special_message) {
-          this.error_message &#x3D; {
-            title: res.special_message.title, message: res.special_message.message,
-            button_type: &#x27;btn-info&#x27;, header_bg: &#x27;#29B6F6&#x27;, header_color: &#x27;black&#x27;,
-            helpmessage: [],
-            randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;
-          };
-        }
-        // Add user context in sentry
-        // Raven.setUserContext({email: this.user.email, id: this.user.user_id});
-      }, (error) &#x3D;&gt; {
-        // &lt;any&gt;error | this casts error to be any
-        if (!this.user.logging_in) {
-          if (typeof error &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; error.startsWith(&#x27;This email exists&#x27;)) {
-            this.error_message &#x3D; {
-              title: &#x27;Attention!&#x27;,
-              message: error,
-              header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
-              helpmessage: [],
-              button_action: &#x27;Login&#x27;,
-              randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
-            };
-          } else {
-            this.error_message &#x3D; {
-              title: &#x27;Attention!&#x27;,
-              message: error,
-              header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
-              helpmessage: [],
-              randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
-            };
-          }
-        }
-      });
+  ngOnInit() {
   }
   onAlertClose(data: any): void {
-    if (data) {
-      console.log(&#x27;onAlertClose&#x27;, data);
-    } else {
-      console.log(&#x27;onAlertClose&#x27;);
+    if (data &#x3D;&#x3D;&#x3D; &#x27;button_action&#x27;) {
+      // this.logoutUser(data);
+      console.log(&#x27;LOG OUT USER&#x27;);
     }
+  }
+
+  editEmailClick() {
+    this.showEditEmailState &#x3D; &#x27;in&#x27;;
   }
   buttonClick() {
     this.clickState &#x3D; &#x27;active&#x27;; // make the button animate on click
-    this.showOverlay &#x3D; 1; // show the overlay
-    this.overlayState &#x3D; &#x27;in&#x27;; // set it to animate in
+    if (this.overlayState &#x3D;&#x3D;&#x3D; &#x27;out&#x27;) {
+      this.showOverlay &#x3D; 1; // show the overlay
+      this.overlayState &#x3D; &#x27;in&#x27;; // set it to animate in
+    } else {
+      this.overlayState &#x3D; &#x27;out&#x27;;
+    }
+
   }
   // this animates the buttonClick Over
   buttonClickAnimationDone(event: AnimationEvent) {
@@ -1865,215 +1430,216 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   // this closes the window after the animation is done
   overlayAnimationDone(event: AnimationEvent) {
     if (event.toState &#x3D;&#x3D;&#x3D; &#x27;out&#x27;) {
-      this.closeMe();
+      this.showOverlay &#x3D; null;
+      this.showEditEmailState &#x3D; null;
     }
   }
 
-  updateParentHeight(): void {
-    const height &#x3D; document.documentElement.scrollHeight;
-    console.log(&#x27;Resizing to &#x27; + height);
-    parent.postMessage(height, &#x27;*&#x27;);
+
+// test if the string is empty or null
+  isEmpty(str: string): boolean {
+    return (!str || 0 &#x3D;&#x3D;&#x3D; str.length);
   }
 
-  ngOnDestroy(): void {
-    console.log(&#x27;WickeyAppStoreComponent ngOnDestroy&#x27;);
-    // idbKeyval.set(&#x27;user&#x27;, this.user);
-  }
-
-  private handleError(error: any): Promise&lt;any&gt; {
-    // .catch(this.handleError);
-    console.error(&#x27;An error occurred&#x27;, error);  // for demo purposes
-    return Promise.reject(error.message || error);
-  }
-
-getApps(show_spinner: boolean): void {
-    if (show_spinner &#x3D;&#x3D;&#x3D; false) {
-      this.apiConnectionService
-      .getApps()
-      .subscribe((res) &#x3D;&gt; {
-        console.log(&#x27;getApps RETURN:&#x27;, res);
-        this.apps &#x3D; res;
-        setTimeout(this.updateParentHeight, 200);
-        // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
-      }, (error) &#x3D;&gt; {
-        console.log(&#x27;getApps ERROR:&#x27;, error);
-        this.apps &#x3D; DEFAULT_APP_LIST;
-        this.updateParentHeight();
-        // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-        // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
-        this.error_message &#x3D; {
-          title: &#x27;Attention&#x27;,
-          message: error,
-          header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
-          helpmessage: [],
-          randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
-        };
-      });
+  canISignOut(): boolean {
+    if (this.isEmpty(this.user.email) &#x3D;&#x3D;&#x3D; false) {
+      return true;
     } else {
-      this.busy &#x3D; this.apiConnectionService
-      .getApps()
-      .subscribe((res) &#x3D;&gt; {
-        console.log(&#x27;getApps RETURN:&#x27;, res);
-        this.apps &#x3D; res;
-        setTimeout(this.updateParentHeight, 200);
-        // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
-      }, (error) &#x3D;&gt; {
-        console.log(&#x27;getApps ERROR:&#x27;, error);
-        this.apps &#x3D; DEFAULT_APP_LIST;
-        this.updateParentHeight();
-        // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-        // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
-        this.error_message &#x3D; {
-          title: &#x27;Attention&#x27;,
-          message: error,
-          header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
-          helpmessage: [],
-          randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
-        };
-      });
-    }
-  }
-
-  showAppDetail &#x3D; (_app: any) &#x3D;&gt; {
-    this.selected_app &#x3D; _app;
-    this.showApp &#x3D; 1;
-    console.log(this.showApp);
-    // window.open(app_term, &#x27;_blank&#x27;);
-  }
-  closeAppDetail(_val: number): void {
-    console.log(&#x27;closed AppDetail&#x27;);
-    this.showApp &#x3D; null;
-  }
-
-  inIframe(): boolean {
-    try {
-        return window.self !&#x3D;&#x3D; window.top;
-    } catch (e) {
+      if (this.user.coins &#x3D;&#x3D;&#x3D; 0) {
+        // no email and no coins. Can sign out
         return true;
+      } else {
+        return false;
+      }
     }
   }
 
-  closeIframe(): void {
-    console.log(&#x27;closeIframe&#x27;);
-    try {
-      parent.postMessage(&#x27;close&#x27;, &#x27;*&#x27;);
-      // const someIframe &#x3D; window.parent.document.getElementById(&#x27;wickeyappstore&#x27;);
-      // someIframe.parentNode.removeChild(window.parent.document.getElementById(&#x27;wickeyappstore&#x27;));
-    } catch (error) {
-      console.error(&#x27;closeIframe&#x27;, error);
-    }
-  }
-
-  closeMe(): void {
-    // this.closeIframe();
-    document.getElementsByTagName(&#x27;body&#x27;)[0].style.overflow &#x3D; &#x27;auto&#x27;;
-    this.showOverlay &#x3D; null;
-    this.close.emit(1);
-    // this.getApps();
-    // this.testAlertBox();
-  }
-
-  testAlertBox() {
-    this.error_message &#x3D; {
-      title: &#x27;Attention!&#x27;, message: &#x27;Sorry had an oops&#x27;, helpmessage: [],
-      randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;
-    };
-    if (this.test_alert &#x3D;&#x3D;&#x3D; 0) {
-    } else if (this.test_alert &#x3D;&#x3D;&#x3D; 1) {
-      this.error_message.button_type &#x3D; &#x27;btn-info&#x27;;
-      this.error_message.header_color &#x3D; &#x27;black&#x27;;
-      this.error_message.header_bg &#x3D; &#x27;#29B6F6&#x27;;
-    } else if (this.test_alert &#x3D;&#x3D;&#x3D; 2) {
-      this.error_message.button_type &#x3D; &#x27;btn-success&#x27;;
-      this.error_message.header_color &#x3D; &#x27;black&#x27;;
-      this.error_message.header_bg &#x3D; &#x27;#66BB6A&#x27;;
-    } else if (this.test_alert &#x3D;&#x3D;&#x3D; 3) {
-      this.error_message.button_type &#x3D; &#x27;btn-warning&#x27;;
-      this.error_message.header_color &#x3D; &#x27;black&#x27;;
-      this.error_message.header_bg &#x3D; &#x27;#FFA726&#x27;;
+  signoutfunc(): void {
+    if (this.canISignOut() &#x3D;&#x3D;&#x3D; true) {
+      this.showOverlay &#x3D; null;
+      this.showEditEmailState &#x3D; null;
+      this.signout.emit(&#x27;&#x27;);
     } else {
-      this.error_message.button_type &#x3D; &#x27;btn-danger&#x27;;
-      this.error_message.header_color &#x3D; &#x27;black&#x27;;
-      this.error_message.header_bg &#x3D; &#x27;#EF5350&#x27;;
-      this.test_alert &#x3D; 0;
+      this.alert_table &#x3D; {
+        title: &#x27;Set your Email&#x27;,
+        message: &#x27;You cannot log out of an anonymous &#x27; +
+        &#x27;account or you will never be able to log back in. Please add a recovery email first.&#x27;,
+        header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
+        helpmessage: [],
+        randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
+      };
+      this.showEditEmailState &#x3D; &#x27;in&#x27;;
     }
-    this.test_alert +&#x3D; 1;
   }
 
-  // POPOVER //
-  logoutUser(_data?: any) {
-    if (_data) {
-      console.log(&#x27;logoutUser&#x27;, _data);
+  getEmailString(): string {
+    if (this.user.email) {
+      return this.user.email;
     } else {
-      console.log(&#x27;logoutUser&#x27;);
+      return &#x27;{ No Email Saved }&#x27;;
     }
   }
-  closeOnboardScreen(_data?: any) {
-    if (_data) {
-      console.log(&#x27;closeOnboardScreen&#x27;, _data);
+
+  getSaveEmailButtonText(): string {
+    if (this.user.email) {
+      return &#x27;Update&#x27;;
     } else {
-      console.log(&#x27;closeOnboardScreen&#x27;);
+      return &#x27;Add Email&#x27;;
     }
   }
+
+  getSignoutButtonText(): string {
+    if (this.canISignOut() &#x3D;&#x3D;&#x3D; false) {
+      return &#x27;How can I switch accounts&#x27;;
+    } else {
+      return &#x27;Log into another account&#x27;;
+    }
+  }
+
+  accountAge(create_time: number): string {
+
+    const date &#x3D; +new Date(create_time * 1000);
+    const currentDate &#x3D; +new Date();
+    const milisecondsDiff &#x3D; currentDate - date;
+    const secondsDiff &#x3D; milisecondsDiff / 1000;
+    const minutesDiff &#x3D; Math.floor(secondsDiff / 60);
+    const hoursDiff &#x3D; Math.floor(minutesDiff / 60);
+    const daysDiff &#x3D; Math.floor(hoursDiff / 24);
+    if (minutesDiff &lt; 5) {
+      return &#x27;This account is brand new&#x27;;
+    } else if (minutesDiff &lt; 10) {
+      return &#x27;This account was created a few minutes ago&#x27;;
+    } else if (minutesDiff &lt; 30) {
+      return &#x27;This account was created about a half hour ago&#x27;;
+    } else if (hoursDiff &lt; 2) {
+      return &#x27;This account was created about an hour ago&#x27;;
+    } else if (hoursDiff &lt; 6) {
+      return &#x27;This account is a few hours old&#x27;;
+    } else if (hoursDiff &lt; 18) {
+      return &#x27;This account is half a day old&#x27;;
+    } else if (daysDiff &lt; 2) {
+      return &#x27;This account is a day old&#x27;;
+    } else if (daysDiff &lt; 5) {
+      return &#x27;This account is a few days old&#x27;;
+    } else if (daysDiff &lt; 12) {
+      return &#x27;This account is about a week old&#x27;;
+    } else if (daysDiff &lt; 20) {
+      return &#x27;This account is a few weeks old&#x27;;
+    } else if (daysDiff &lt; 40) {
+      return &#x27;This account is about a month old&#x27;;
+    } else if (daysDiff &lt; 80) {
+      return &#x27;This account is a few months old&#x27;;
+    } else {
+      return &#x27;Created on &#x27; + this.datePipe.transform(create_time * 1000);
+    }
+  }
+
+  updateEmail(email: string): void {
+    console.log(email);
+    this.temp_email &#x3D; email;
+    this.updateUser();
+  }
+
+  updateUser(): void {
+    let apiobject &#x3D; {user_id: this.user.user_id, email: this.temp_email, version: .1};
+    this.showEditEmailState &#x3D; null;
+    this.busy &#x3D; this.apiConnectionService
+      .createPerson(apiobject)
+      .subscribe((res) &#x3D;&gt; {
+        // TODO: Handle results
+        // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
+        // PLUS: freebie_used, settings, inapps, rated_app
+        console.log(&#x27;updateUser RETURN:&#x27;, res);
+        // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
+        if (res.email &amp;&amp; res.user_id) {
+          this.user.user_id &#x3D; res.user_id;
+        }
+        this.user.email &#x3D; this.temp_email;
+        this.user.coins &#x3D; res.coins;
+        this.user.created_time &#x3D; res.created_time;
+        this.user.freebie_used &#x3D; res.freebie_used;
+        // UPDATE USER //
+        this.localStorageService.set(&#x27;user&#x27;, this.user);
+
+        this.alert_table &#x3D; {
+          title: &#x27;Email updated&#x27;,
+          message: &#x27;You have set your email to &#x27; + this.user.email,
+          button_type: &#x27;btn-success&#x27;, header_bg: &#x27;#66BB6A&#x27;, header_color: &#x27;black&#x27;,
+          helpmessage: [],
+          randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
+        };
+        // this.goBack();
+      }, (error) &#x3D;&gt; {
+        // &lt;any&gt;error | this casts error to be any
+        if (typeof error &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; error.startsWith(&#x27;This email exists&#x27;)) {
+          this.alert_table &#x3D; {
+            title: &#x27;Attention!&#x27;,
+            message: error,
+            header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
+            helpmessage: [],
+            button_action: &#x27;Login&#x27;,
+            randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
+          };
+        } else {
+          this.alert_table &#x3D; {
+            title: &#x27;Attention!&#x27;,
+            message: error,
+            header_bg: &#x27;#F44336&#x27;, header_color: &#x27;black&#x27;, button_type: &#x27;btn-danger&#x27;,
+            helpmessage: [],
+            randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
+          };
+        }
+      });
+  }
+
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;!--Generic base popover container--&gt;
-&lt;div id&#x3D;&quot;wickeyappstore&quot;  class&#x3D;&quot;icon-container&quot; [@clickButtonTrigger]&#x3D;&#x27;clickState&#x27; (click)&#x3D;&quot;buttonClick()&quot; (@clickButtonTrigger.done)&#x3D;&quot;buttonClickAnimationDone($event)&quot;&gt;
-  &lt;div class&#x3D;&quot;icon-svg&quot;&gt;
-    &lt;svg viewBox&#x3D;&quot;0 0 650 650&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill-rule&#x3D;&quot;evenodd&quot; clip-rule&#x3D;&quot;evenodd&quot; stroke-linejoin&#x3D;&quot;round&quot; stroke-miterlimit&#x3D;&quot;1.41&quot;&gt;
-      &lt;path d&#x3D;&quot;M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z&quot; fill&#x3D;&quot;#FF601F&quot;/&gt;
-      &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M246.4 470.26l-58.46-32.86 111.28-198.06 58.48 32.86z&quot;/&gt;&lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M402 470.26l58.47-32.86-111.3-198.06-58.46 32.86z&quot;/&gt;
-      &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M299.22 239.32h49.98v23.53h-49.98z&quot;/&gt;&lt;path d&#x3D;&quot;M169.18 186.6l79.36.7-45.4 71.03-33.96-71.72z&quot; fill&#x3D;&quot;#006AEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M158.94 328.2l-34.63-71.34-44.63 70.74 79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;&lt;path d&#x3D;&quot;M203.5 257.8l-34.23-71.5-45.04 70.68 79.26.82z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M124.26 256.93l79.27.8-44.6 70.48-34.67-71.24z&quot; fill&#x3D;&quot;#009BEB&quot;/&gt;&lt;path d&#x3D;&quot;M167.06 469.75l79.36.5-44.32-71.7-35.04 71.2z&quot; fill&#x3D;&quot;#006AEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M158.95 328l-35.7 70.84-43.6-71.4 79.3.57z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;&lt;path d&#x3D;&quot;M202.43 399.08l-35.3 70.98-43.96-71.35 79.26.4z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M123.2 398.77l79.27.38L158.95 328l-35.75 70.77z&quot; fill&#x3D;&quot;#009BEB&quot;/&gt;&lt;path d&#x3D;&quot;M479.23 186.6l-79.36.7 45.38 71.03 33.98-71.72z&quot; fill&#x3D;&quot;#006AEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M489.46 328.2l34.63-71.34 44.64 70.74-79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;&lt;path d&#x3D;&quot;M444.9 257.8l34.24-71.5 45.04 70.68-79.27.82z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M524.14 256.93l-79.26.8 44.58 70.48 34.68-71.24z&quot; fill&#x3D;&quot;#009BEB&quot;/&gt;&lt;path d&#x3D;&quot;M481.35 469.75l-79.36.5 44.3-71.7 35.02 71.2z&quot; fill&#x3D;&quot;#006AEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M489.46 328l35.7 70.84 43.6-71.4-79.3.57z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;&lt;path d&#x3D;&quot;M445.97 399.08l35.3 70.98 43.97-71.35-79.27.4z&quot; fill&#x3D;&quot;#007BEB&quot;/&gt;
-      &lt;path d&#x3D;&quot;M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z&quot; fill&#x3D;&quot;#009BEB&quot;/&gt;
-    &lt;/svg&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;!--Show the WickeyAppStore container--&gt;
-&lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;alert-modal&quot; [@overlayAnimationTrigger]&#x3D;&#x27;overlayState&#x27; (@overlayAnimationTrigger.done)&#x3D;&quot;overlayAnimationDone($event)&quot;
-  (click)&#x3D;&quot;catchClick($event)&quot;&gt;
-  &lt;div class&#x3D;&quot;was-titlebar&quot;&gt;
-    &lt;h3 class&#x3D;&quot;was-titletext&quot;&gt;Featured Apps&lt;/h3&gt;
-    &lt;button *ngIf&#x3D;&quot;showCloseIframeBtn&quot; (click)&#x3D;&quot;closeMe()&quot; class&#x3D;&quot;was-navClose&quot; title&#x3D;&quot;back&quot;&gt;&lt;/button&gt;
-    &lt;div class&#x3D;&quot;was-titlebottom&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;results-group&quot;&gt;
-    &lt;!--&lt;div [ngBusy]&#x3D;&quot;{busy: busy, message: &#x27;Refreshing app store..&#x27;}&quot; class&#x3D;&quot;busy-spinner&quot;&gt;&lt;/div&gt;--&gt;
-    &lt;display-apps featured&#x3D;true [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Featured&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
-    &lt;display-apps [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Best new apps&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
-    &lt;display-apps [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Most used apps&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;was-footer&quot;&gt;
-    &lt;div class&#x3D;&quot;left&quot;&gt;
-      &lt;a href&#x3D;&quot;https://wickeyappstore.com/assets/tos.html&quot; target&#x3D;&quot;WAS_Policies&quot;&gt;Terms&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;center&quot;&gt;
-      &lt;a href&#x3D;&quot;https://wickeyappstore.com/assets/refunds.html&quot; target&#x3D;&quot;WAS_Policies&quot;&gt;Refunds&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;right&quot;&gt;
-      &lt;a href&#x3D;&quot;https://wickeyappstore.com/assets/privacy.html&quot; target&#x3D;&quot;WAS_Policies&quot;&gt;Privacy&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;!-- &lt;a href&#x3D;&quot;https://wickeyappstore.com/&quot; target&#x3D;&quot;WickeyAppStore&quot;&gt;WickeyAppStore.com ™&lt;/a&gt; --&gt;
-  &lt;/div&gt;
-  &lt;was-alert-popup (close)&#x3D;&quot;onAlertClose($event)&quot; [alert_table]&#x3D;&quot;error_message&quot;&gt;&lt;/was-alert-popup&gt;
-  &lt;app-detail-page [selected_app]&#x3D;&quot;selected_app&quot; [showApp]&#x3D;&quot;showApp&quot; (close)&#x3D;&quot;closeAppDetail($event)&quot;&gt;&lt;/app-detail-page&gt;
-&lt;/div&gt;
-&lt;!--Cover the background with dark--&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!--Cover the background with dark--&gt;
 &lt;!--This makes it modal. Closes with a touch anywhere--&gt;
-&lt;!-- &lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;alert-modal&quot; (click)&#x3D;&quot;closeOverlay()&quot;&gt;&lt;/div&gt; --&gt;</code></pre>
+&lt;div *ngIf&#x3D;&quot;isModal&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;background-modal&quot; (click)&#x3D;&quot;closeOverlay()&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--Generic base popover container--&gt;
+&lt;div class&#x3D;&quot;icon-container&quot; [@clickButtonTrigger]&#x3D;&#x27;clickState&#x27; (click)&#x3D;&quot;buttonClick()&quot; (@clickButtonTrigger.done)&#x3D;&quot;buttonClickAnimationDone($event)&quot;&gt;
+    &lt;div class&#x3D;&quot;icon-svg&quot;&gt;
+        &lt;svg viewBox&#x3D;&quot;0 0 35 35&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill-rule&#x3D;&quot;evenodd&quot; clip-rule&#x3D;&quot;evenodd&quot; stroke-linejoin&#x3D;&quot;round&quot;
+            stroke-miterlimit&#x3D;&quot;1.4&quot;&gt;
+            &lt;circle cx&#x3D;&quot;881.3&quot; cy&#x3D;&quot;1200.5&quot; r&#x3D;&quot;34.3&quot; fill&#x3D;&quot;#F3F6F9&quot; stroke&#x3D;&quot;#004A99&quot; stroke-width&#x3D;&quot;5.9&quot; transform&#x3D;&quot;translate(-386.538 -532.71) scale(.45798)&quot;
+            /&gt;
+            &lt;path d&#x3D;&quot;M7.5 25.6c0-4.2 3-7.6 6.7-8.8-1.5-1-2.6-2.6-2.6-4.5C11.6 9.3 14 7 17 7s5.5 2.4 5.5 5.3c0 2-1 3.6-2.6 4.5 3.6 1.2 6.4 4.6 6.4 8.8h-19z&quot;
+                fill&#x3D;&quot;#515F81&quot; /&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;!--Make the text hide when this opens--&gt;
+    &lt;div *ngIf&#x3D;&quot;!showOverlay&quot; class&#x3D;&quot;title-text noselect&quot;&gt;Account&lt;/div&gt;
+    &lt;!--Show the popover container--&gt;
+    &lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;popover-container info-container-right&quot; [@overlayAnimationTrigger]&#x3D;&#x27;overlayState&#x27; (@overlayAnimationTrigger.done)&#x3D;&quot;overlayAnimationDone($event)&quot;
+        (click)&#x3D;&quot;catchClick($event)&quot;&gt;
+        &lt;div class&#x3D;&quot;db-FixedPopover-arrow db-arrow-right&quot;&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;db-FixedPopover-contents&quot; [innerHTML]&#x3D;&quot;html&quot;&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;db-MenuHeader&quot;&gt;
+            &lt;span *ngIf&#x3D;&quot;!showEditEmailState&quot;&gt;{{getEmailString()}}
+                &lt;span class&#x3D;&quot;Button-link&quot; (click)&#x3D;&quot;editEmailClick()&quot;&gt;Edit&lt;/span&gt;&lt;/span&gt;
+            &lt;div class&#x3D;&quot;emailGroup&quot; *ngIf&#x3D;&quot;showEditEmailState&quot; [@showEmailEditAnim]&#x3D;&#x27;showEditEmailState&#x27;&gt;
+                &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                    &lt;span class&#x3D;&quot;input-group-addon&quot; id&#x3D;&quot;basic-addon1&quot;&gt;@&lt;/span&gt;
+                    &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control highlight-input&quot; placeholder&#x3D;&quot;email&quot; aria-describedby&#x3D;&quot;basic-addon1&quot; (keyup.enter)&#x3D;&quot;updateEmail(emailInput.value); emailInput.blur()&quot;
+                        #emailInput value&#x3D;&quot;{{user.email}}&quot;&gt;
+                &lt;/div&gt;
+                &lt;button class&#x3D;&quot;btn btn-primary btn-block&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;updateEmail(emailInput.value);&quot;&gt;{{getSaveEmailButtonText()}}&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;db-MenuHeader-description d-flex justify-content-between&quot;&gt;&lt;span&gt;{{accountAge(user.created_time)}}&lt;/span&gt;v{{version}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div (click)&#x3D;&quot;signoutfunc()&quot; label&#x3D;&quot;Sign Out&quot; class&#x3D;&quot;db-MenuItem&quot;&gt;{{getSignoutButtonText()}}&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Pop up modal on error --&gt;
+&lt;was-alert-popup [alert_table]&#x3D;&quot;alert_table&quot; (close)&#x3D;&quot;onAlertClose($event)&quot;&gt;&lt;/was-alert-popup&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -2099,10 +1665,10 @@ getApps(show_spinner: boolean): void {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--Generic base popover container--><div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">  <div class="icon-svg">    <svg viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">      <path d="M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z" fill="#FF601F"/>      <path fill="#FF601F" d="M246.4 470.26l-58.46-32.86 111.28-198.06 58.48 32.86z"/><path fill="#FF601F" d="M402 470.26l58.47-32.86-111.3-198.06-58.46 32.86z"/>      <path fill="#FF601F" d="M299.22 239.32h49.98v23.53h-49.98z"/><path d="M169.18 186.6l79.36.7-45.4 71.03-33.96-71.72z" fill="#006AEB"/>      <path d="M158.94 328.2l-34.63-71.34-44.63 70.74 79.3.6z" fill="#007BEB"/><path d="M203.5 257.8l-34.23-71.5-45.04 70.68 79.26.82z" fill="#007BEB"/>      <path d="M124.26 256.93l79.27.8-44.6 70.48-34.67-71.24z" fill="#009BEB"/><path d="M167.06 469.75l79.36.5-44.32-71.7-35.04 71.2z" fill="#006AEB"/>      <path d="M158.95 328l-35.7 70.84-43.6-71.4 79.3.57z" fill="#007BEB"/><path d="M202.43 399.08l-35.3 70.98-43.96-71.35 79.26.4z" fill="#007BEB"/>      <path d="M123.2 398.77l79.27.38L158.95 328l-35.75 70.77z" fill="#009BEB"/><path d="M479.23 186.6l-79.36.7 45.38 71.03 33.98-71.72z" fill="#006AEB"/>      <path d="M489.46 328.2l34.63-71.34 44.64 70.74-79.3.6z" fill="#007BEB"/><path d="M444.9 257.8l34.24-71.5 45.04 70.68-79.27.82z" fill="#007BEB"/>      <path d="M524.14 256.93l-79.26.8 44.58 70.48 34.68-71.24z" fill="#009BEB"/><path d="M481.35 469.75l-79.36.5 44.3-71.7 35.02 71.2z" fill="#006AEB"/>      <path d="M489.46 328l35.7 70.84 43.6-71.4-79.3.57z" fill="#007BEB"/><path d="M445.97 399.08l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB"/>      <path d="M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z" fill="#009BEB"/>    </svg>  </div></div><!--Show the WickeyAppStore container--><div *ngIf="showOverlay" class="alert-modal" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"  (click)="catchClick($event)">  <div class="was-titlebar">    <h3 class="was-titletext">Featured Apps</h3>    <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="results-group">    <!--<div [ngBusy]="{busy: busy, message: \'Refreshing app store..\'}" class="busy-spinner"></div>-->    <display-apps featured=true [apps]="apps" title="Featured" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps>  </div>  <div class="was-footer">    <div class="left">      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>    </div>    <div class="center">      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>    </div>    <div class="right">      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>    </div>    <!-- <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a> -->  </div>  <was-alert-popup (close)="onAlertClose($event)" [alert_table]="error_message"></was-alert-popup>  <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page></div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> --></div>'
+        var COMPONENT_TEMPLATE = '<div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><div *ngIf="isModal">    <div *ngIf="showOverlay" class="background-modal" (click)="closeOverlay()"></div></div><!--Generic base popover container--><div class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">    <div class="icon-svg">        <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"            stroke-miterlimit="1.4">            <circle cx="881.3" cy="1200.5" r="34.3" fill="#F3F6F9" stroke="#004A99" stroke-width="5.9" transform="translate(-386.538 -532.71) scale(.45798)"            />            <path d="M7.5 25.6c0-4.2 3-7.6 6.7-8.8-1.5-1-2.6-2.6-2.6-4.5C11.6 9.3 14 7 17 7s5.5 2.4 5.5 5.3c0 2-1 3.6-2.6 4.5 3.6 1.2 6.4 4.6 6.4 8.8h-19z"                fill="#515F81" />        </svg>    </div>    <!--Make the text hide when this opens-->    <div *ngIf="!showOverlay" class="title-text noselect">Account</div>    <!--Show the popover container-->    <div *ngIf="showOverlay" class="popover-container info-container-right" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"        (click)="catchClick($event)">        <div class="db-FixedPopover-arrow db-arrow-right"></div>        <div class="db-FixedPopover-contents" [innerHTML]="html"></div>        <div class="db-MenuHeader">            <span *ngIf="!showEditEmailState">{{getEmailString()}}                <span class="Button-link" (click)="editEmailClick()">Edit</span></span>            <div class="emailGroup" *ngIf="showEditEmailState" [@showEmailEditAnim]=\'showEditEmailState\'>                <div class="input-group">                    <span class="input-group-addon" id="basic-addon1">@</span>                    <input type="email" class="form-control highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"                        #emailInput value="{{user.email}}">                </div>                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText()}}</button>            </div>            <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge(user.created_time)}}</span>v{{version}}</span>        </div>        <div (click)="signoutfunc()" label="Sign Out" class="db-MenuItem">{{getSignoutButtonText()}}</div>    </div></div><!-- Pop up modal on error --><was-alert-popup [alert_table]="alert_table" (close)="onAlertClose($event)"></was-alert-popup></div>'
     var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'AppReviewsPageComponent', 'selector': 'app-app-reviews-page'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'PopoverAccountInfoComponent', 'selector': 'ui-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'ui-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'ui-popover-login'},{'name': 'WASAlertPopupComponent', 'selector': 'was-alert-popup'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'WickeyAppStoreComponent'};
+    var ACTUAL_COMPONENT = {'name': 'PopoverAccountInfoComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
