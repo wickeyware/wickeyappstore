@@ -24,6 +24,7 @@ import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.
 
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
+export * from './local-storage.service';
 export * from './was-alert-popup/was-alert-popup.component';
 export * from './display-apps/display-apps.component';
 export * from './display-apps/app-detail-page/app-detail-page.component';
