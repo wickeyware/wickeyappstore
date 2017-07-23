@@ -5,12 +5,12 @@ import { trigger, state, style, animate, transition, AnimationEvent, keyframes }
 // use like this:
 // Can pass Global style.css styles.
 // allowed inputs: type, color, isModal, html
-//  <ui-popover-base [isModal]="false" 
+//  <was-popover-base [isModal]="false"
 //  html='<div class="popover-title">Love the </div><div class="popover-body">{{user.coins}} details a bunch of stuff!</div>'
-//  ></ui-popover-base>
+//  ></was-popover-base>
 
 @Component({
-  selector: 'ui-popover-base',
+  selector: 'was-popover-base',
   templateUrl: './popover-base.component.html',
   styleUrls: ['./popover-base.component.css'],
   animations: [

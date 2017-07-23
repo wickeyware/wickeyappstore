@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
 
@@ -8,7 +8,7 @@ import { User, ErrorTable } from '../../../app.models';
 
 /**
  * Shows login popover.
- * EXAMPLE: <ui-popover-login [user]="user" (close)="closeOnboardScreen($event)"></ui-popover-login>
+ * EXAMPLE: <was-popover-login [user]="user" (close)="closeOnboardScreen($event)"></was-popover-login>
  *
  * @param {User} user The current user object
  * @param {function} close Emits logged in user email to function on successful login
@@ -17,7 +17,7 @@ import { User, ErrorTable } from '../../../app.models';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'ui-popover-login',
+  selector: 'was-popover-login',
   templateUrl: './popover-login.component.html',
   styleUrls: ['../popover-base/popover-base.component.css'],
   animations: [

@@ -385,7 +385,7 @@
     </p>
     <p class="comment">
         <p>Shows WickeyAppStore user account info in popover box.
-EXAMPLE: <ui-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></ui-popover-account-info></p>
+EXAMPLE: <was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info></p>
 
     </p>
 
@@ -429,7 +429,7 @@ EXAMPLE: <ui-popover-account-info [isModal]="true" [user]="user" (signout)="logo
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ui-popover-account-info</code></td>
+                <td class="col-md-9"><code>was-popover-account-info</code></td>
             </tr>
 
             <tr>
@@ -1308,7 +1308,7 @@ import { DatePipe } from &#x27;@angular/common&#x27;;
 
 /**
  * Shows WickeyAppStore user account info in popover box.
- * EXAMPLE: &lt;ui-popover-account-info [isModal]&#x3D;&quot;true&quot; [user]&#x3D;&quot;user&quot; (signout)&#x3D;&quot;logoutUser($event)&quot;&gt;&lt;/ui-popover-account-info&gt;
+ * EXAMPLE: &lt;was-popover-account-info [isModal]&#x3D;&quot;true&quot; [user]&#x3D;&quot;user&quot; (signout)&#x3D;&quot;logoutUser($event)&quot;&gt;&lt;/was-popover-account-info&gt;
  *
  * @param {boolean} isModal Show up as modal vs info box
  * @param {User} user The current user object
@@ -1318,7 +1318,7 @@ import { DatePipe } from &#x27;@angular/common&#x27;;
  * @implements {OnInit}
  */
 @Component({
-  selector: &#x27;ui-popover-account-info&#x27;,
+  selector: &#x27;was-popover-account-info&#x27;,
   templateUrl: &#x27;./popover-account-info.component.html&#x27;,
   styleUrls: [&#x27;../popover-base/popover-base.component.css&#x27;],
   providers: [DatePipe],
@@ -1666,7 +1666,7 @@ export class PopoverAccountInfoComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><div *ngIf="isModal">    <div *ngIf="showOverlay" class="background-modal" (click)="closeOverlay()"></div></div><!--Generic base popover container--><div class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">    <div class="icon-svg">        <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"            stroke-miterlimit="1.4">            <circle cx="881.3" cy="1200.5" r="34.3" fill="#F3F6F9" stroke="#004A99" stroke-width="5.9" transform="translate(-386.538 -532.71) scale(.45798)"            />            <path d="M7.5 25.6c0-4.2 3-7.6 6.7-8.8-1.5-1-2.6-2.6-2.6-4.5C11.6 9.3 14 7 17 7s5.5 2.4 5.5 5.3c0 2-1 3.6-2.6 4.5 3.6 1.2 6.4 4.6 6.4 8.8h-19z"                fill="#515F81" />        </svg>    </div>    <!--Make the text hide when this opens-->    <div *ngIf="!showOverlay" class="title-text noselect">Account</div>    <!--Show the popover container-->    <div *ngIf="showOverlay" class="popover-container info-container-right" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"        (click)="catchClick($event)">        <div class="db-FixedPopover-arrow db-arrow-right"></div>        <div class="db-FixedPopover-contents" [innerHTML]="html"></div>        <div class="db-MenuHeader">            <span *ngIf="!showEditEmailState">{{getEmailString()}}                <span class="Button-link" (click)="editEmailClick()">Edit</span></span>            <div class="emailGroup" *ngIf="showEditEmailState" [@showEmailEditAnim]=\'showEditEmailState\'>                <div class="input-group">                    <span class="input-group-addon" id="basic-addon1">@</span>                    <input type="email" class="form-control highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"                        #emailInput value="{{user.email}}">                </div>                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText()}}</button>            </div>            <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge(user.created_time)}}</span>v{{version}}</span>        </div>        <div (click)="signoutfunc()" label="Sign Out" class="db-MenuItem">{{getSignoutButtonText()}}</div>    </div></div><!-- Pop up modal on error --><was-alert-popup [alert_table]="alert_table" (close)="onAlertClose($event)"></was-alert-popup></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'AppReviewsPageComponent', 'selector': 'app-app-reviews-page'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'PopoverAccountInfoComponent', 'selector': 'ui-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'ui-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'ui-popover-login'},{'name': 'WASAlertPopupComponent', 'selector': 'was-alert-popup'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'AppReviewsPageComponent', 'selector': 'app-app-reviews-page'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'WASAlertPopupComponent', 'selector': 'was-alert-popup'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PopoverAccountInfoComponent'};
 </script>

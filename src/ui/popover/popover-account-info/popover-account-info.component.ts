@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
 
 /**
  * Shows WickeyAppStore user account info in popover box.
- * EXAMPLE: <ui-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></ui-popover-account-info>
+ * EXAMPLE: <was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info>
  *
  * @param {boolean} isModal Show up as modal vs info box
  * @param {User} user The current user object
@@ -18,7 +18,7 @@ import { DatePipe } from '@angular/common';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'ui-popover-account-info',
+  selector: 'was-popover-account-info',
   templateUrl: './popover-account-info.component.html',
   styleUrls: ['../popover-base/popover-base.component.css'],
   providers: [DatePipe],
