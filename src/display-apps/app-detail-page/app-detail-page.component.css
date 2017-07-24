@@ -60,8 +60,9 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
-    font-weight: 280;
+    font-weight: 400;
     font-size: 1em;
+    line-height: 1.5;
 }
 .circle-separator {
     width: 90%;
