@@ -2,6 +2,17 @@
 /*html {
   touch-action: manipulation;
 }*/
+h1 {
+  color: #369;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 150%;
+}
 p {
   font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */
   line-height: 1em;  /* This keeps the line height proportional to the font size */
@@ -42,6 +53,8 @@ button {
 /* everything else */
 * {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .was-alert-modal {
