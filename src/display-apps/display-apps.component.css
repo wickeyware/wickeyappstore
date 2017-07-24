@@ -18,3 +18,8 @@
 .featuredapps {
   width: 100%;
 }
+h2 {
+  color: #444;
+  font-weight: lighter;
+  font-size: 150%;
+}
