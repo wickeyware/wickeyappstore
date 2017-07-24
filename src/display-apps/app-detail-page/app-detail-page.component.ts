@@ -37,9 +37,4 @@ export class AppDetailPageComponent implements OnInit {
     event.stopPropagation();
   }
 
-  launchApp(): void {
-    // This removes the spaces in the title name and uses it for the target
-    const windowname = this.selected_app.name.replace(/\s/g, '-');
-    window.open(this.selected_app.app_url, windowname);
-  }
 }

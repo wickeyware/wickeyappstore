@@ -1,4 +1,5 @@
 <div  *ngIf="showApp" class="fullscreen sitontop" [@pageOpen]="in">
+  <!-- <div [ngBusy]="{busy: busy, message: 'Getting app details..'}" class="busy-spinner"></div> -->
   <div class="was-titlebar">
     <!--<h3 class="was-titletext">Featured Apps</h3>-->
     <button (click)="goBack()" class="was-navClose" title="back"></button>
@@ -8,7 +9,7 @@
     <div class="titlearea">
       <img src="{{selected_app?.icon}}" alt="App Icon" class="img-icon-large">
       <p class="title"> {{selected_app?.name}}</p>
-      <button class="btn btn-block btn-get" (click)="launchApp()">Launch App</button>
+      <a class="btn btn-block btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Launch App</a>
     </div>
     <div class="solid-separator"></div>
     <div class="description-title">Description</div>
@@ -16,4 +17,4 @@
   </div>
 </div>
 <!-- Pop up modal on error -->
-<!-- <was-alert-popup [alert_table]="error_message"></was-alert-popup> -->
+<was-alert-popup [alert_table]="error_message"></was-alert-popup>
