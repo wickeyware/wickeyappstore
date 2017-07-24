@@ -8,19 +8,32 @@
   height: 100px;
   cursor: hand;
 }
-.app-list-item .img-thumbnail {
+.app-list-item {
   display: inline-block;
   position: relative;
   right: 0px;
   top: 0px;
   margin-bottom: 4px;
   width: 76px;
-  /*height: 80%;*/
+  height: 116px;
   min-width: 60px;
   min-height: 60px;
   z-index: 1;
+  border: none;
 }
-
+.appthumbnail {
+  display: inline-block;
+  position: relative;
+  right: 0px;
+  top: 0px;
+  margin-bottom: 4px; 
+  width: 76px;
+  min-width: 60px;
+  min-height: 60px;
+  z-index: 1;
+  /* border: 1px solid #ddd;
+  border-radius: 4px;; */
+}
 
 /*http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
 /* styles for '...' */ 
@@ -28,40 +41,5 @@
   font-size: .7em;
   /* hide text if it more than N lines  */
   overflow: hidden;
-  /* for set '...' in absolute position */
-  position: relative; 
-  /* use this value to count block height */
-  line-height: 1.2em;
-  /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 2.4em; 
-  /* fix problem when last visible word doesn't adjoin right side  */
-  /*text-align: justify;  */
-  /* place for '...' */
-  margin-right: -1em;
-  padding-right: 1em;
-}
-/* create the ... */
-.block-with-text:before {
-  /* points in the end */
-  content: '...';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of block */
-  right: 0;
-  bottom: 0;
-}
-/* hide ... if we have text, which is less than or equal to max lines */
-.block-with-text:after {
-  /* points in the end */
-  content: '';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of text */
-  right: 0;
-  /* set width and height */
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
-  /* bg color = bg color under block */
-  background: white;
+  height: 40px;
 }
