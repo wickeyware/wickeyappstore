@@ -1393,7 +1393,7 @@ export class PopoverLoginComponent implements OnInit {
           randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;,
         };
         this.user.logging_in &#x3D; true;
-        this.localStorageService.set(&#x27;user&#x27;, this.user);
+        this.localStorageService.set(&#x27;was-user&#x27;, this.user);
 
         this.showTokenState &#x3D; &#x27;sent&#x27;;
         this.sendButtonText &#x3D; &#x27;Resend the login token&#x27;;
@@ -1430,7 +1430,7 @@ export class PopoverLoginComponent implements OnInit {
         this.user.freebie_used &#x3D; res.freebie_used;
         this.user.settings &#x3D; res.settings;
         // UPDATE USER //
-        this.localStorageService.set(&#x27;user&#x27;, this.user).then(() &#x3D;&gt; {
+        this.localStorageService.set(&#x27;was-user&#x27;, this.user).then(() &#x3D;&gt; {
           // console.log(&#x27;verifyPerson good&#x27;, this.user);
           this.sendTokenState &#x3D; &#x27;inactive&#x27;;
           this.closeOverlay();
@@ -1446,7 +1446,7 @@ export class PopoverLoginComponent implements OnInit {
       }, (error) &#x3D;&gt; {
         // Set logging in process off //
         this.user.logging_in &#x3D; false;
-        this.localStorageService.set(&#x27;user&#x27;, this.user).then(() &#x3D;&gt; {
+        this.localStorageService.set(&#x27;was-user&#x27;, this.user).then(() &#x3D;&gt; {
           // console.log(&#x27;verifyPerson error&#x27;, this.user);
           this.sendTokenState &#x3D; &#x27;inactive&#x27;;
         });

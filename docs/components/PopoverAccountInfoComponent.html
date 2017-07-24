@@ -1559,7 +1559,7 @@ export class PopoverAccountInfoComponent implements OnInit {
         this.user.created_time &#x3D; res.created_time;
         this.user.freebie_used &#x3D; res.freebie_used;
         // UPDATE USER //
-        this.localStorageService.set(&#x27;user&#x27;, this.user);
+        this.localStorageService.set(&#x27;was-user&#x27;, this.user);
 
         this.alert_table &#x3D; {
           title: &#x27;Email updated&#x27;,

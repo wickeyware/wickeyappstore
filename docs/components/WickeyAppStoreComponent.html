@@ -1691,7 +1691,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     document.getElementsByTagName(&#x27;body&#x27;)[0].style.overflow &#x3D; &#x27;hidden&#x27;;
     this.showCloseIframeBtn &#x3D; true;  // this.inIframe();
     // this.getApps();
-    this.localStorageService.get(&#x27;apps&#x27;)
+    this.localStorageService.get(&#x27;was-apps&#x27;)
       .then((value: any): void &#x3D;&gt; {
         if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27;) {
           this.apps &#x3D; value;  // as Apps;
@@ -1706,7 +1706,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       }
       )
       .catch(this.handleError);
-    this.localStorageService.get(&#x27;user&#x27;)
+    this.localStorageService.get(&#x27;was-user&#x27;)
       .then((value: any): void &#x3D;&gt; {
         if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27;) {
           this.user &#x3D; value as User;
@@ -1803,7 +1803,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
           this.user.settings &#x3D; res.settings;
         }
         // UPDATE USER //
-        this.localStorageService.set(&#x27;user&#x27;, this.user);
+        this.localStorageService.set(&#x27;was-user&#x27;, this.user);
         if (res.special_message) {
           this.error_message &#x3D; {
             title: res.special_message.title, message: res.special_message.message,
@@ -1895,14 +1895,14 @@ getApps(show_spinner: boolean): void {
         this.apps &#x3D; res;
         setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
+        this.localStorageService.set(&#x27;was-apps&#x27;, this.apps);
       }, (error) &#x3D;&gt; {
         console.log(&#x27;getApps ERROR:&#x27;, error);
         this.apps &#x3D; DEFAULT_APP_LIST;
         this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
+        this.localStorageService.set(&#x27;was-apps&#x27;, this.apps);
         this.error_message &#x3D; {
           title: &#x27;Attention&#x27;,
           message: error,
@@ -1919,14 +1919,14 @@ getApps(show_spinner: boolean): void {
         this.apps &#x3D; res;
         setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
+        this.localStorageService.set(&#x27;was-apps&#x27;, this.apps);
       }, (error) &#x3D;&gt; {
         console.log(&#x27;getApps ERROR:&#x27;, error);
         this.apps &#x3D; DEFAULT_APP_LIST;
         this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
-        this.localStorageService.set(&#x27;apps&#x27;, this.apps);
+        this.localStorageService.set(&#x27;was-apps&#x27;, this.apps);
         this.error_message &#x3D; {
           title: &#x27;Attention&#x27;,
           message: error,
@@ -2043,7 +2043,7 @@ getApps(show_spinner: boolean): void {
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;!--Show the WickeyAppStore container--&gt;
-&lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;alert-modal&quot; [@overlayAnimationTrigger]&#x3D;&#x27;overlayState&#x27; (@overlayAnimationTrigger.done)&#x3D;&quot;overlayAnimationDone($event)&quot;
+&lt;div *ngIf&#x3D;&quot;showOverlay&quot; class&#x3D;&quot;was-alert-modal&quot; [@overlayAnimationTrigger]&#x3D;&#x27;overlayState&#x27; (@overlayAnimationTrigger.done)&#x3D;&quot;overlayAnimationDone($event)&quot;
   (click)&#x3D;&quot;catchClick($event)&quot;&gt;
   &lt;div class&#x3D;&quot;was-titlebar&quot;&gt;
     &lt;h3 class&#x3D;&quot;was-titletext&quot;&gt;Featured Apps&lt;/h3&gt;
@@ -2054,7 +2054,8 @@ getApps(show_spinner: boolean): void {
     &lt;!--&lt;div [ngBusy]&#x3D;&quot;{busy: busy, message: &#x27;Refreshing app store..&#x27;}&quot; class&#x3D;&quot;busy-spinner&quot;&gt;&lt;/div&gt;--&gt;
     &lt;display-apps featured&#x3D;true [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Featured&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
     &lt;display-apps [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Best new apps&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
-    &lt;display-apps [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Most used apps&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;!-- &lt;display-apps [apps]&#x3D;&quot;apps&quot; title&#x3D;&quot;Most used apps&quot; [showAppEmitter]&#x3D;&quot;showAppDetail&quot;&gt;&lt;/display-apps&gt; --&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;was-footer&quot;&gt;
     &lt;div class&#x3D;&quot;left&quot;&gt;
@@ -2099,7 +2100,7 @@ getApps(show_spinner: boolean): void {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--Generic base popover container--><div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">  <div class="icon-svg">    <svg viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">      <path d="M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z" fill="#FF601F"/>      <path fill="#FF601F" d="M246.4 470.26l-58.46-32.86 111.28-198.06 58.48 32.86z"/><path fill="#FF601F" d="M402 470.26l58.47-32.86-111.3-198.06-58.46 32.86z"/>      <path fill="#FF601F" d="M299.22 239.32h49.98v23.53h-49.98z"/><path d="M169.18 186.6l79.36.7-45.4 71.03-33.96-71.72z" fill="#006AEB"/>      <path d="M158.94 328.2l-34.63-71.34-44.63 70.74 79.3.6z" fill="#007BEB"/><path d="M203.5 257.8l-34.23-71.5-45.04 70.68 79.26.82z" fill="#007BEB"/>      <path d="M124.26 256.93l79.27.8-44.6 70.48-34.67-71.24z" fill="#009BEB"/><path d="M167.06 469.75l79.36.5-44.32-71.7-35.04 71.2z" fill="#006AEB"/>      <path d="M158.95 328l-35.7 70.84-43.6-71.4 79.3.57z" fill="#007BEB"/><path d="M202.43 399.08l-35.3 70.98-43.96-71.35 79.26.4z" fill="#007BEB"/>      <path d="M123.2 398.77l79.27.38L158.95 328l-35.75 70.77z" fill="#009BEB"/><path d="M479.23 186.6l-79.36.7 45.38 71.03 33.98-71.72z" fill="#006AEB"/>      <path d="M489.46 328.2l34.63-71.34 44.64 70.74-79.3.6z" fill="#007BEB"/><path d="M444.9 257.8l34.24-71.5 45.04 70.68-79.27.82z" fill="#007BEB"/>      <path d="M524.14 256.93l-79.26.8 44.58 70.48 34.68-71.24z" fill="#009BEB"/><path d="M481.35 469.75l-79.36.5 44.3-71.7 35.02 71.2z" fill="#006AEB"/>      <path d="M489.46 328l35.7 70.84 43.6-71.4-79.3.57z" fill="#007BEB"/><path d="M445.97 399.08l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB"/>      <path d="M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z" fill="#009BEB"/>    </svg>  </div></div><!--Show the WickeyAppStore container--><div *ngIf="showOverlay" class="alert-modal" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"  (click)="catchClick($event)">  <div class="was-titlebar">    <h3 class="was-titletext">Featured Apps</h3>    <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="results-group">    <!--<div [ngBusy]="{busy: busy, message: \'Refreshing app store..\'}" class="busy-spinner"></div>-->    <display-apps featured=true [apps]="apps" title="Featured" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps>  </div>  <div class="was-footer">    <div class="left">      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>    </div>    <div class="center">      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>    </div>    <div class="right">      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>    </div>    <!-- <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a> -->  </div>  <was-alert-popup (close)="onAlertClose($event)" [alert_table]="error_message"></was-alert-popup>  <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page></div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> --></div>'
+        var COMPONENT_TEMPLATE = '<div><!--Generic base popover container--><div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">  <div class="icon-svg">    <svg viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">      <path d="M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z" fill="#FF601F"/>      <path fill="#FF601F" d="M246.4 470.26l-58.46-32.86 111.28-198.06 58.48 32.86z"/><path fill="#FF601F" d="M402 470.26l58.47-32.86-111.3-198.06-58.46 32.86z"/>      <path fill="#FF601F" d="M299.22 239.32h49.98v23.53h-49.98z"/><path d="M169.18 186.6l79.36.7-45.4 71.03-33.96-71.72z" fill="#006AEB"/>      <path d="M158.94 328.2l-34.63-71.34-44.63 70.74 79.3.6z" fill="#007BEB"/><path d="M203.5 257.8l-34.23-71.5-45.04 70.68 79.26.82z" fill="#007BEB"/>      <path d="M124.26 256.93l79.27.8-44.6 70.48-34.67-71.24z" fill="#009BEB"/><path d="M167.06 469.75l79.36.5-44.32-71.7-35.04 71.2z" fill="#006AEB"/>      <path d="M158.95 328l-35.7 70.84-43.6-71.4 79.3.57z" fill="#007BEB"/><path d="M202.43 399.08l-35.3 70.98-43.96-71.35 79.26.4z" fill="#007BEB"/>      <path d="M123.2 398.77l79.27.38L158.95 328l-35.75 70.77z" fill="#009BEB"/><path d="M479.23 186.6l-79.36.7 45.38 71.03 33.98-71.72z" fill="#006AEB"/>      <path d="M489.46 328.2l34.63-71.34 44.64 70.74-79.3.6z" fill="#007BEB"/><path d="M444.9 257.8l34.24-71.5 45.04 70.68-79.27.82z" fill="#007BEB"/>      <path d="M524.14 256.93l-79.26.8 44.58 70.48 34.68-71.24z" fill="#009BEB"/><path d="M481.35 469.75l-79.36.5 44.3-71.7 35.02 71.2z" fill="#006AEB"/>      <path d="M489.46 328l35.7 70.84 43.6-71.4-79.3.57z" fill="#007BEB"/><path d="M445.97 399.08l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB"/>      <path d="M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z" fill="#009BEB"/>    </svg>  </div></div><!--Show the WickeyAppStore container--><div *ngIf="showOverlay" class="was-alert-modal" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"  (click)="catchClick($event)">  <div class="was-titlebar">    <h3 class="was-titletext">Featured Apps</h3>    <button *ngIf="showCloseIframeBtn" (click)="closeMe()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="results-group">    <!--<div [ngBusy]="{busy: busy, message: \'Refreshing app store..\'}" class="busy-spinner"></div>-->    <display-apps featured=true [apps]="apps" title="Featured" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>    <br><br>    <!-- <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps> -->  </div>  <div class="was-footer">    <div class="left">      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>    </div>    <div class="center">      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>    </div>    <div class="right">      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>    </div>    <!-- <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a> -->  </div>  <was-alert-popup (close)="onAlertClose($event)" [alert_table]="error_message"></was-alert-popup>  <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page></div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> --></div>'
     var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'AppReviewsPageComponent', 'selector': 'app-app-reviews-page'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'WASAlertPopupComponent', 'selector': 'was-alert-popup'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WickeyAppStoreComponent'};
