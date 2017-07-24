@@ -194,7 +194,7 @@ export class PopoverLoginComponent implements OnInit {
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
         };
         this.user.logging_in = true;
-        this.localStorageService.set('user', this.user);
+        this.localStorageService.set('was-user', this.user);
 
         this.showTokenState = 'sent';
         this.sendButtonText = 'Resend the login token';
@@ -231,7 +231,7 @@ export class PopoverLoginComponent implements OnInit {
         this.user.freebie_used = res.freebie_used;
         this.user.settings = res.settings;
         // UPDATE USER //
-        this.localStorageService.set('user', this.user).then(() => {
+        this.localStorageService.set('was-user', this.user).then(() => {
           // console.log('verifyPerson good', this.user);
           this.sendTokenState = 'inactive';
           this.closeOverlay();
@@ -247,7 +247,7 @@ export class PopoverLoginComponent implements OnInit {
       }, (error) => {
         // Set logging in process off //
         this.user.logging_in = false;
-        this.localStorageService.set('user', this.user).then(() => {
+        this.localStorageService.set('was-user', this.user).then(() => {
           // console.log('verifyPerson error', this.user);
           this.sendTokenState = 'inactive';
         });

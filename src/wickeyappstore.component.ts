@@ -116,7 +116,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.showCloseIframeBtn = true;  // this.inIframe();
     // this.getApps();
-    this.localStorageService.get('apps')
+    this.localStorageService.get('was-apps')
       .then((value: any): void => {
         if (typeof value !== 'undefined') {
           this.apps = value;  // as Apps;
@@ -131,7 +131,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       }
       )
       .catch(this.handleError);
-    this.localStorageService.get('user')
+    this.localStorageService.get('was-user')
       .then((value: any): void => {
         if (typeof value !== 'undefined') {
           this.user = value as User;
@@ -228,7 +228,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
           this.user.settings = res.settings;
         }
         // UPDATE USER //
-        this.localStorageService.set('user', this.user);
+        this.localStorageService.set('was-user', this.user);
         if (res.special_message) {
           this.error_message = {
             title: res.special_message.title, message: res.special_message.message,
@@ -320,14 +320,14 @@ getApps(show_spinner: boolean): void {
         this.apps = res;
         setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
-        this.localStorageService.set('apps', this.apps);
+        this.localStorageService.set('was-apps', this.apps);
       }, (error) => {
         console.log('getApps ERROR:', error);
         this.apps = DEFAULT_APP_LIST;
         this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
-        this.localStorageService.set('apps', this.apps);
+        this.localStorageService.set('was-apps', this.apps);
         this.error_message = {
           title: 'Attention',
           message: error,
@@ -344,14 +344,14 @@ getApps(show_spinner: boolean): void {
         this.apps = res;
         setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
-        this.localStorageService.set('apps', this.apps);
+        this.localStorageService.set('was-apps', this.apps);
       }, (error) => {
         console.log('getApps ERROR:', error);
         this.apps = DEFAULT_APP_LIST;
         this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
-        this.localStorageService.set('apps', this.apps);
+        this.localStorageService.set('was-apps', this.apps);
         this.error_message = {
           title: 'Attention',
           message: error,

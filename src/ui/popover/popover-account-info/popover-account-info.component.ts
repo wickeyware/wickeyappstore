@@ -259,7 +259,7 @@ export class PopoverAccountInfoComponent implements OnInit {
         this.user.created_time = res.created_time;
         this.user.freebie_used = res.freebie_used;
         // UPDATE USER //
-        this.localStorageService.set('user', this.user);
+        this.localStorageService.set('was-user', this.user);
 
         this.alert_table = {
           title: 'Email updated',
