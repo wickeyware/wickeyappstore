@@ -85,7 +85,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '0.4.0';
+  public version = '0.4.2';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
@@ -98,6 +98,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // TODO: getEmailString still has "Cannot read property 'email' of undefined", needs to check for undefined as well
     if (this.showOverlay && this.user === undefined) {
       console.log('WASaccount: load user');
       this.localStorageService.get('was-user').then((value: any) => this.user = value as User);

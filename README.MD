@@ -2,6 +2,8 @@
 
 AppStore for Progressive WebApps
 
+Check out the tutorial app: https://github.com/wickeyware/was-tutorial
+
 ## Installation
 
 To install this library, run:
