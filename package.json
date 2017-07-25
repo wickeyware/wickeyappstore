@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "0.3.9",
+  "version": "0.4.1",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",

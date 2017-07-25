@@ -8,10 +8,14 @@ import { User, ErrorTable } from '../../../app.models';
 
 /**
  * Shows login popover.
- * EXAMPLE: <was-popover-login [user]="user" (close)="closeOnboardScreen($event)"></was-popover-login>
  *
- * @param {User} user The current user object
- * @param {function} close Emits logged in user email to function on successful login
+ * @param {User} user OPTIONAL The current user object, if not passed in, loads from db
+ * @param {function} close OPTIONAL Emits logged in user email to function on successful login
+ *
+ * @example
+ * Add this wherever you want to display the login button
+ * <was-popover-login [user]="user" (close)="closeOnboardScreen($event)"></was-popover-login>
+ *
  * @export
  * @class PopoverLoginComponent
  * @implements {OnInit}
@@ -123,6 +127,10 @@ export class PopoverLoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.showOverlay && this.user === undefined) {
+      console.log('WASlogin: load user');
+      this.localStorageService.get('was-user').then((value: any) => this.user = value as User);
+    }
   }
   onAlertClose(data: any): void { }
   buttonClick() {
@@ -183,9 +191,6 @@ export class PopoverLoginComponent implements OnInit {
     this.busy = this.apiConnectionService
       .tokenPerson(email)
       .subscribe((res) => {
-        // TODO: Handle results
-        // message
-        // console.log(res);
         this.alert_table = {
           title: 'Check email (' + email + ')',
           message: 'The login token was sent. Enter it in token field to finish the login.',
@@ -220,7 +225,7 @@ export class PopoverLoginComponent implements OnInit {
         // TODO: Handle results
         // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
         // PLUS: freebie_used, settings, inapps, rated_app
-        console.log('verifyPerson RETURN:', res);
+        console.log('WASlogin: verifyPerson RETURN:', res);
         // Set logging in process off //
         this.showTokenState = null;
         this.user.logging_in = false;
@@ -232,7 +237,6 @@ export class PopoverLoginComponent implements OnInit {
         this.user.settings = res.settings;
         // UPDATE USER //
         this.localStorageService.set('was-user', this.user).then(() => {
-          // console.log('verifyPerson good', this.user);
           this.sendTokenState = 'inactive';
           this.closeOverlay();
           this.close.emit(this.user.email);
@@ -248,7 +252,6 @@ export class PopoverLoginComponent implements OnInit {
         // Set logging in process off //
         this.user.logging_in = false;
         this.localStorageService.set('was-user', this.user).then(() => {
-          // console.log('verifyPerson error', this.user);
           this.sendTokenState = 'inactive';
         });
         // <any>error | this casts error to be any

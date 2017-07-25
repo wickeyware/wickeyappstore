@@ -15,16 +15,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LocalStorageService {
   public use_cookie = false;
+  // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
+  // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
   public idbkeyval = require('../../node_modules/idb-keyval/idb-keyval.js'); // 'idb-keyval'
 
   constructor() {
     // CHECK IF BROWSER HAS INDEXEDDB //
     if (typeof navigator !== 'undefined' && !window.hasOwnProperty('indexedDB')) {
       this.use_cookie = true;
-      console.log('USE COOKIE STORAGE');
+      console.log('WASSTORAGE: USE COOKIE STORAGE');
     } else {
       this.use_cookie = false;
-      console.log('USE INDEXEDDB STORAGE');
+      console.log('WASSTORAGE: USE INDEXEDDB STORAGE');
     }
   }
   /**

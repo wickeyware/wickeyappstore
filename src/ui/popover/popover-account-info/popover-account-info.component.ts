@@ -8,11 +8,15 @@ import { DatePipe } from '@angular/common';
 
 /**
  * Shows WickeyAppStore user account info in popover box.
- * EXAMPLE: <was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info>
  *
- * @param {boolean} isModal Show up as modal vs info box
- * @param {User} user The current user object
- * @param {function} signout Emits to function if user signs out
+ * @param {boolean} isModal OPTIONAL Show up as modal vs info box [default false (info box)]
+ * @param {User} user OPTIONAL The current user object, if not passed in, loads from db
+ * @param {function} signout OPTIONAL Emits to function if user signs out
+ *
+ * @example
+ * Add this wherever you want to display the account info button
+ * <was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info>
+ *
  * @export
  * @class PopoverAccountInfoComponent
  * @implements {OnInit}
@@ -81,7 +85,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '0.2.2';
+  public version = '0.4.0';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
@@ -94,11 +98,15 @@ export class PopoverAccountInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.showOverlay && this.user === undefined) {
+      console.log('WASaccount: load user');
+      this.localStorageService.get('was-user').then((value: any) => this.user = value as User);
+    }
   }
   onAlertClose(data: any): void {
     if (data === 'button_action') {
       // this.logoutUser(data);
-      console.log('LOG OUT USER');
+      console.log('WASaccount: LOG OUT USER');
     }
   }
 
@@ -235,7 +243,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   }
 
   updateEmail(email: string): void {
-    console.log(email);
+    console.log('WASaccount: updateEmail', email);
     this.temp_email = email;
     this.updateUser();
   }
@@ -249,7 +257,7 @@ export class PopoverAccountInfoComponent implements OnInit {
         // TODO: Handle results
         // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
         // PLUS: freebie_used, settings, inapps, rated_app
-        console.log('updateUser RETURN:', res);
+        console.log('WASaccount: updateUser RETURN:', res);
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           this.user.user_id = res.user_id;

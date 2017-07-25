@@ -754,7 +754,7 @@ export class ApiConnectionService {
   private handleError (error: HttpErrorResponse) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
-    console.log(error);
+    console.log(&#x27;WASAPI: handleError&#x27;, error);
     if (error.error instanceof Error) {
       // A client-side or network error occurred. Handle it accordingly.
       // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
@@ -771,7 +771,7 @@ export class ApiConnectionService {
     return Observable.throw(errMsg);
   }
   private extractData(res: any) {
-    console.log(&#x27;extractData&#x27;, res);
+    // console.log(&#x27;WASAPI: extractData&#x27;, res);
     const body &#x3D; res.data;
     // Add http status to body //
     body.status &#x3D; res.status;
@@ -798,7 +798,7 @@ export class ApiConnectionService {
   // Returns app store apps {name: string, category: number, ordering: number}
   getApps(_params?: any): Observable&lt;[any]&gt; {
     const _query_string &#x3D; this.encode_query_string(_params);
-    console.log(&#x27;getApps&#x27;, _query_string);
+    console.log(&#x27;WASAPI: getApps&#x27;, _query_string);
     return this.http.get(&#x60;${this.app_url}/?${_query_string}&#x60;)
           .map((res: any) &#x3D;&gt; {
             return this.extractData(res).apps;

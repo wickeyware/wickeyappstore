@@ -1,15 +1,12 @@
-import { Component, EventEmitter, OnInit, Input, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
-// TODO: add local storage from pwa here
-// TODO: Can also do idb-keyval/dist/idb-keyval-min.js
-// http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
-// const idbKeyval = require('../../node_modules/idb-keyval/idb-keyval.js');
-// const idbKeyval = require('../../node_modules/idb-keyval/dist/idb-keyval-min.js');
 
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { User, ErrorTable } from './app.models';
+
+// TODO: Create service that gets/sets user, it will get the user from LocalStorage
 
 const DEFAULT_APP_LIST = [
   {
@@ -27,13 +24,15 @@ const DEFAULT_APP_LIST = [
   }];
 
 /**
- * @param {number} appID  The WickeyAppStore AppID {@link https://www.npmjs.com/package/wickeyappstore}
+ * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
+ *
+ * @param {function} close  Calls the close EventEmitter on close.
  *
  * @example
  * Add to your main html component template
- * <wickey-appstore [appID]="1231" (close)="onWickeyAppStoreClose($event)"></wickey-appstore>
+ * <wickey-appstore (close)="onWickeyAppStoreClose($event)"></wickey-appstore>
  *
- * @returns      The store overlay, displaying the details of <appID> with reviews and purchase module.
+ * @returns      The store overlay
  */
 @Component({
   selector: 'wickey-appstore',
@@ -89,7 +88,6 @@ const DEFAULT_APP_LIST = [
   ]
 })
 export class WickeyAppStoreComponent implements OnInit, OnDestroy {
-  @Input() public appID: number;
   @Output() close = new EventEmitter<number>();
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'in'; // this dictates the animation state of the actual window
@@ -97,12 +95,11 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public busy: Subscription;
   public error_message: ErrorTable;
   private test_alert = 0;
-  title = 'apps yo';
   public user: User;
   public apps = [];
   public selected_app: {};
   public showApp = null; // dictate if the app detail page shows up
-  public showCloseIframeBtn = false;
+  public showCloseBtn = true;
   private standalone: boolean;
   private lut = [];
 
@@ -112,20 +109,20 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log('WickeyAppStoreComponent: ngOnInit appID:', this.appID);
+    console.log('WAS: ngOnInit');
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-    this.showCloseIframeBtn = true;  // this.inIframe();
+    this.showCloseBtn = true;
     // this.getApps();
     this.localStorageService.get('was-apps')
       .then((value: any): void => {
         if (typeof value !== 'undefined') {
           this.apps = value;  // as Apps;
           // normal load
-          console.log('load apps from db, refresh from server');
+          console.log('WAS: load apps from db, refresh from server');
           this.getApps(false);  // UPDATE app list
         } else {
           // create new user
-          console.log('no apps in db, get apps from server');
+          console.log('WAS: no apps in db, get apps from server');
           this.getApps(true);
         }
       }
@@ -136,17 +133,15 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
         if (typeof value !== 'undefined') {
           this.user = value as User;
           // normal load
-          console.log('load user from db');
+          console.log('WAS: load user from db');
           this.createPerson();  // UPDATE user
         } else {
           // create new user
-          console.log('create new user');
+          console.log('WAS: create new user');
           this.createNewUser();
         }
       }
-      )
-      .then(() => console.log('AppComponent: db', this.user))
-      .catch(this.handleError);
+      ).catch(this.handleError);
   }
 
   checkStandalone(): void {
@@ -190,20 +185,20 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   createNewUser(): void {
-    console.warn('NO USER, CREATE USER');
+    console.warn('WAS: NO USER, CREATE USER');
     // CREATE NEW USER //
     // Get uuid then create user
     this.user = {user_id: this.guid()};
     this.createPerson();
   }
   createPerson(_show_onboard?: boolean): void {
-    console.log('ScrapeFormComponent: createPerson');
     let apiobject = {user_id: this.user.user_id, email: this.user.email, version: .1, standalone: false};
     // GET IF LAUNCHED FROM HOMESCREEN //
     this.checkStandalone();
     if (this.standalone) {
       apiobject.standalone = this.standalone;
     }
+    console.log('WAS: createPerson', apiobject);
     this.apiConnectionService
       .createPerson(apiobject)
       .subscribe((res) => {
@@ -211,12 +206,12 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
         // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
         // PLUS: freebie_used, settings, inapps, rated_app
         if (res.status === 201) {
-          console.log('ScrapeFormComponent: createPerson:NEW RETURN:', res);
+          console.log('WAS: createPerson:NEW RETURN:', res);
           // On new user/recover
           // TODO: Add more of a verification
           this.user = res;
         } else {
-          console.log('ScrapeFormComponent: createPerson RETURN:', res);
+          console.log('WAS: createPerson RETURN:', res);
           // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
           if (res.email && res.user_id) {
             this.user.user_id = res.user_id;
@@ -264,10 +259,10 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       });
   }
   onAlertClose(data: any): void {
-    if (data) {
-      console.log('onAlertClose', data);
+  if (data) {
+      console.log('WAS: onAlertClose', data);
     } else {
-      console.log('onAlertClose');
+      console.log('WAS: onAlertClose');
     }
   }
   buttonClick() {
@@ -301,13 +296,13 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('WickeyAppStoreComponent ngOnDestroy');
+    console.log('WAS ngOnDestroy');
     // idbKeyval.set('user', this.user);
   }
 
   private handleError(error: any): Promise<any> {
     // .catch(this.handleError);
-    console.error('An error occurred', error);  // for demo purposes
+    console.error('WAS: An error occurred', error);  // for demo purposes
     return Promise.reject(error.message || error);
   }
 
@@ -316,15 +311,15 @@ getApps(show_spinner: boolean): void {
       this.apiConnectionService
       .getApps()
       .subscribe((res) => {
-        console.log('getApps RETURN:', res);
+        console.log('WAS: getApps RETURN:', res);
         this.apps = res;
-        setTimeout(this.updateParentHeight, 200);
+        // setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
         this.localStorageService.set('was-apps', this.apps);
       }, (error) => {
-        console.log('getApps ERROR:', error);
+        console.log('WAS: getApps ERROR:', error);
         this.apps = DEFAULT_APP_LIST;
-        this.updateParentHeight();
+        // this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
         this.localStorageService.set('was-apps', this.apps);
@@ -340,15 +335,15 @@ getApps(show_spinner: boolean): void {
       this.busy = this.apiConnectionService
       .getApps()
       .subscribe((res) => {
-        console.log('getApps RETURN:', res);
+        console.log('WAS: getApps RETURN:', res);
         this.apps = res;
-        setTimeout(this.updateParentHeight, 200);
+        // setTimeout(this.updateParentHeight, 200);
         // UPDATE DB //
         this.localStorageService.set('was-apps', this.apps);
       }, (error) => {
-        console.log('getApps ERROR:', error);
+        console.log('WAS: getApps ERROR:', error);
         this.apps = DEFAULT_APP_LIST;
-        this.updateParentHeight();
+        // this.updateParentHeight();
         // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
         // UPDATE DB //
         this.localStorageService.set('was-apps', this.apps);
@@ -370,7 +365,7 @@ getApps(show_spinner: boolean): void {
     // window.open(app_term, '_blank');
   }
   closeAppDetail(_val: number): void {
-    console.log('closed AppDetail');
+    // console.log('closed AppDetail');
     this.showApp = null;
   }
 
@@ -432,16 +427,16 @@ getApps(show_spinner: boolean): void {
   // POPOVER //
   logoutUser(_data?: any) {
     if (_data) {
-      console.log('logoutUser', _data);
+      console.log('WAS: logoutUser', _data);
     } else {
-      console.log('logoutUser');
+      console.log('WAS: logoutUser');
     }
   }
   closeOnboardScreen(_data?: any) {
     if (_data) {
-      console.log('closeOnboardScreen', _data);
+      console.log('WAS: closeOnboardScreen', _data);
     } else {
-      console.log('closeOnboardScreen');
+      console.log('WAS: closeOnboardScreen');
     }
   }
 }

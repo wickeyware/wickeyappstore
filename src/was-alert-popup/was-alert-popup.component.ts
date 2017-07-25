@@ -81,7 +81,6 @@ export class WASAlertPopupComponent implements OnInit, OnChanges {
   constructor() { }
 
   changeState(): void {
-    console.log('changeState', this.show_state);
     this.show_state = (this.show_state === 'in' ? 'out' : 'in');
   }
 
@@ -103,7 +102,6 @@ export class WASAlertPopupComponent implements OnInit, OnChanges {
     }
   }
   btnanimationDone(event: AnimationEvent) {
-    console.log('Anim Done. Button state is: ', this.button_state);
     // this.button_state = 'start';
     if (event.toState === 'end') {
       this.button_state = 'start';
@@ -121,7 +119,7 @@ export class WASAlertPopupComponent implements OnInit, OnChanges {
     this.close.emit(_pass_data);
   }
   openVideo(): void {
-    console.log('openVideo');
+    console.log('WASAlert: openVideo');
     this.show_video = true;
     // Add video control, or listen for native fullscreen click
     // TIMEOUT till video element loads

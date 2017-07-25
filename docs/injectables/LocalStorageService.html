@@ -397,7 +397,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/local-storage.service.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/local-storage.service.ts:20</a></div>
                                         </td>
                                     </tr>
             
@@ -426,7 +426,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/local-storage.service.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/local-storage.service.ts:39</a></div>
                                         </td>
                                     </tr>
             
@@ -475,7 +475,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/local-storage.service.ts:60</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/local-storage.service.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -532,7 +532,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/local-storage.service.ts:111</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/local-storage.service.ts:113</a></div>
                                         </td>
                                     </tr>
             
@@ -581,7 +581,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/local-storage.service.ts:133</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/local-storage.service.ts:135</a></div>
                                         </td>
                                     </tr>
             
@@ -612,7 +612,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/local-storage.service.ts:141</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/local-storage.service.ts:143</a></div>
                                         </td>
                                     </tr>
             
@@ -643,7 +643,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/local-storage.service.ts:146</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/local-storage.service.ts:148</a></div>
                                         </td>
                                     </tr>
             
@@ -674,7 +674,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/local-storage.service.ts:157</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/local-storage.service.ts:159</a></div>
                                         </td>
                                     </tr>
             
@@ -711,7 +711,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/local-storage.service.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/local-storage.service.ts:20</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -761,16 +761,18 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
 @Injectable()
 export class LocalStorageService {
   public use_cookie &#x3D; false;
+  // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
+  // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
   public idbkeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;); // &#x27;idb-keyval&#x27;
 
   constructor() {
     // CHECK IF BROWSER HAS INDEXEDDB //
     if (typeof navigator !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; !window.hasOwnProperty(&#x27;indexedDB&#x27;)) {
       this.use_cookie &#x3D; true;
-      console.log(&#x27;USE COOKIE STORAGE&#x27;);
+      console.log(&#x27;WASSTORAGE: USE COOKIE STORAGE&#x27;);
     } else {
       this.use_cookie &#x3D; false;
-      console.log(&#x27;USE INDEXEDDB STORAGE&#x27;);
+      console.log(&#x27;WASSTORAGE: USE INDEXEDDB STORAGE&#x27;);
     }
   }
   /**
