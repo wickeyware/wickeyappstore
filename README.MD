@@ -1,4 +1,28 @@
-# wickeyappstore
+# WickeyAppStore
+## Progressive Web App Store 
+Reach the next One Billion users. **PWA** is a web app that make use of new Web and JavaScript API to deliver an  experience similar to a native app on the web.
+
+Apps on the WickeyAppStore must meet quality and security requirements:
+
+* **Safety** - must be served via HTTPS to ensure that the real content has not been tampered.
+* **Responsive** - can fit all resolutions like desktop, tablet and mobile.
+* **Progressive**- work in all modern browsers because they use progressive enhancement concepts.
+* **Connectivity independent** - need to work on any type of connection, including offline.
+* **Engageable** - using push notifications, "add to home" feature to be more app-like.
+
+## Benefits
+
+* **Trust** - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.
+* **Single Sign On** - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.
+* **Monetization** - we provide monetization tools including in-app purchases and ads.
+* **Traffic** - we feature unique and cool apps, and all apps benefit from being under one umbrella. 
+
+## Submit your app
+
+If you have an app you want to submit, email us at [wickeyappstore@gmail.com](mailto:wickeyappstore@gmail.com). 
+
+
+**NOTE**: Please check back frequently. We will keep this document updated all the time.
 
 AppStore for Progressive WebApps
 
@@ -50,12 +74,16 @@ export class AppModule { }
 Once your library is imported, you can use its components, directives and pipes in your Angular application:
 
 ```xml
-<!-- You can now use your library component in app.component.html -->
+<!-- You can now use your library component in app.component.html or wherever needed -->
 <h1>
   {{title}}
 </h1>
-<!-- appID is your WickeyAppStore app ID, and close will be called when app store closes-->
-<wickey-appstore [appID]="showXpromote" (close)="closeXpromote($event)"></wickey-appstore>
+<!-- Close will be called when app store closes-->
+<wickey-appstore (close)="onWASClose($event)"></wickey-appstore>
+<!-- A button, when clicked will show the account info modal and allow email add/edit -->
+<was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info>
+<!-- A button, when clicked will show the login overlay screen -->
+<was-popover-login [user]="user" (close)="closeLoginScreen($event)"></was-popover-login>
 ```
 
 Link CSS, or copy it into your styles.css:

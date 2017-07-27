@@ -348,7 +348,27 @@
                </div>
                <div class="content readme">
                    <div class="content-data">
-<h1 id="wickeyappstore">wickeyappstore</h1>
+<h1 id="wickeyappstore">WickeyAppStore</h1>
+<h2 id="progressive-web-app-store">Progressive Web App Store</h2>
+<p>Reach the next One Billion users. <strong>PWA</strong> is a web app that make use of new Web and JavaScript API to deliver an  experience similar to a native app on the web.</p>
+<p>Apps on the WickeyAppStore must meet quality and security requirements:</p>
+<ul>
+<li><strong>Safety</strong> - must be served via HTTPS to ensure that the real content has not been tampered.</li>
+<li><strong>Responsive</strong> - can fit all resolutions like desktop, tablet and mobile.</li>
+<li><strong>Progressive</strong>- work in all modern browsers because they use progressive enhancement concepts.</li>
+<li><strong>Connectivity independent</strong> - need to work on any type of connection, including offline.</li>
+<li><strong>Engageable</strong> - using push notifications, &quot;add to home&quot; feature to be more app-like.</li>
+</ul>
+<h2 id="benefits">Benefits</h2>
+<ul>
+<li><strong>Trust</strong> - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.</li>
+<li><strong>Single Sign On</strong> - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.</li>
+<li><strong>Monetization</strong> - we provide monetization tools including in-app purchases and ads.</li>
+<li><strong>Traffic</strong> - we feature unique and cool apps, and all apps benefit from being under one umbrella. </li>
+</ul>
+<h2 id="submit-your-app">Submit your app</h2>
+<p>If you have an app you want to submit, email us at <a href="mailto:wickeyappstore@gmail.com">wickeyappstore@gmail.com</a>. </p>
+<p><strong>NOTE</strong>: Please check back frequently. We will keep this document updated all the time.</p>
 <p>AppStore for Progressive WebApps</p>
 <p>Check out the tutorial app: <a href="https://github.com/wickeyware/was-tutorial">https://github.com/wickeyware/was-tutorial</a></p>
 <h2 id="installation">Installation</h2>
@@ -378,12 +398,16 @@ import { WickeyAppStoreModule } from &#39;wickeyappstore&#39;;
   bootstrap: [AppComponent]
 })
 export class AppModule { }</code></pre><p>Once your library is imported, you can use its components, directives and pipes in your Angular application:</p>
-<pre class="line-numbers"><code class="language-xml">&lt;!-- You can now use your library component in app.component.html --&gt;
+<pre class="line-numbers"><code class="language-xml">&lt;!-- You can now use your library component in app.component.html or wherever needed --&gt;
 &lt;h1&gt;
   {{title}}
 &lt;/h1&gt;
-&lt;!-- appID is your WickeyAppStore app ID, and close will be called when app store closes--&gt;
-&lt;wickey-appstore [appID]=&quot;showXpromote&quot; (close)=&quot;closeXpromote($event)&quot;&gt;&lt;/wickey-appstore&gt;</code></pre><p>Link CSS, or copy it into your styles.css:</p>
+&lt;!-- Close will be called when app store closes--&gt;
+&lt;wickey-appstore (close)=&quot;onWASClose($event)&quot;&gt;&lt;/wickey-appstore&gt;
+&lt;!-- A button, when clicked will show the account info modal and allow email add/edit --&gt;
+&lt;was-popover-account-info [isModal]=&quot;true&quot; [user]=&quot;user&quot; (signout)=&quot;logoutUser($event)&quot;&gt;&lt;/was-popover-account-info&gt;
+&lt;!-- A button, when clicked will show the login overlay screen --&gt;
+&lt;was-popover-login [user]=&quot;user&quot; (close)=&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;</code></pre><p>Link CSS, or copy it into your styles.css:</p>
 <pre class="line-numbers"><code class="language-code">&lt;!-- BOOTSTRAP 4 CSS (required by wickeyappstore) --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&quot; integrity=&quot;sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ&quot; crossorigin=&quot;anonymous&quot;&gt;
 &lt;!-- WickeyAppStore global css--&gt;
