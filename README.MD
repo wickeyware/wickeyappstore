@@ -1,6 +1,8 @@
 # WickeyAppStore
+Reach the next One Billion users, AppStore for Progressive WebApps.
+
 ## Progressive Web App Store 
-Reach the next One Billion users. **PWA** is a web app that make use of new Web and JavaScript API to deliver an  experience similar to a native app on the web.
+Reach the next One Billion users. WickeyAppStore is a full featured App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.
 
 Apps on the WickeyAppStore must meet quality and security requirements:
 
@@ -21,10 +23,9 @@ Apps on the WickeyAppStore must meet quality and security requirements:
 
 If you have an app you want to submit, email us at [wickeyappstore@gmail.com](mailto:wickeyappstore@gmail.com). 
 
-
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 
-AppStore for Progressive WebApps
+## Tutorial App
 
 Check out the tutorial app: https://github.com/wickeyware/was-tutorial
 
