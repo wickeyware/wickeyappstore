@@ -8,6 +8,7 @@ export interface Settings {
 export interface User {
   user_id: string;
   coins?: number;
+  data?: any;
   email?: string;
   token_email?: string;
   created_time?: string;

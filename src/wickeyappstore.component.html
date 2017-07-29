@@ -17,7 +17,7 @@
   </div>
 </div>
 <!--Show the WickeyAppStore container-->
-<div *ngIf="showOverlay" class="was-alert-modal" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
+<div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
   (click)="catchClick($event)">
   <div class="was-titlebar">
     <h3 class="was-titletext">Featured Apps</h3>

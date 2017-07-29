@@ -35,7 +35,7 @@ export class ApiConnectionService {
     } else {
       // The backend returned an unsuccessful response code.
       // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
-      errMsg = error.message ? error.error.error.message : error.toString();
+      errMsg = error.message ? error.message : error.error.error.message;
     }
     return Observable.throw(errMsg);
   }
@@ -44,12 +44,6 @@ export class ApiConnectionService {
     const body = res.data;
     // Add http status to body //
     body.status = res.status;
-    if (body.settings) {
-      if (body.settings.price_list && typeof body.settings.price_list === 'string') {
-        // PARSE this json, it is a json string
-        body.settings.price_list = JSON.parse(body.settings.price_list);
-      }
-    }
     return body;
   }
 
