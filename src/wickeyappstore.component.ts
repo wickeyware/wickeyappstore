@@ -110,7 +110,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('WAS: ngOnInit');
-    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.showCloseBtn = true;
     // this.getApps();
     this.localStorageService.get('was-apps')
@@ -264,13 +263,14 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       });
   }
   onAlertClose(data: any): void {
-  if (data) {
+    if (data) {
       console.log('WAS: onAlertClose', data);
     } else {
       console.log('WAS: onAlertClose');
     }
   }
   buttonClick() {
+    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.clickState = 'active'; // make the button animate on click
     this.showOverlay = 1; // show the overlay
     this.overlayState = 'in'; // set it to animate in
