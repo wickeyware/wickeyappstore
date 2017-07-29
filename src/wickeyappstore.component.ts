@@ -270,7 +270,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     }
   }
   buttonClick() {
-    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+    // document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.clickState = 'active'; // make the button animate on click
     this.showOverlay = 1; // show the overlay
     this.overlayState = 'in'; // set it to animate in
@@ -395,7 +395,7 @@ getApps(show_spinner: boolean): void {
 
   closeMe(): void {
     // this.closeIframe();
-    document.getElementsByTagName('body')[0].style.overflow = 'auto';
+    // document.getElementsByTagName('body')[0].style.overflow = 'auto';
     this.showOverlay = null;
     this.close.emit(1);
     // this.getApps();
