@@ -35,7 +35,12 @@ export class ApiConnectionService {
     } else {
       // The backend returned an unsuccessful response code.
       // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
-      errMsg = error.message ? error.message : error.error.error.message;
+      // TODO: Need to first check if error.error.error.message, then use error.message
+      if (error.error && error.error.error) {
+        errMsg = error.error.error.message;
+      } else {
+        errMsg = error.message;
+      }
     }
     return Observable.throw(errMsg);
   }
