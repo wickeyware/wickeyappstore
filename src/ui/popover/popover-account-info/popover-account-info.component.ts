@@ -85,7 +85,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '0.5.12';
+  public version = '0.5.13';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
@@ -264,7 +264,13 @@ export class PopoverAccountInfoComponent implements OnInit {
           this.user.user_id = res.user_id;
         }
         this.user.email = this.temp_email;
-        this.user.coins = res.coins;
+        // Add user_data
+        if (res.coins) {
+          this.user.coins = res.coins;
+        }
+        if (res.data) {
+          this.user.data = res.data;
+        }
         this.user.created_time = res.created_time;
         this.user.freebie_used = res.freebie_used;
         // UPDATE USER //

@@ -377,7 +377,13 @@ export class PopoverLoginComponent implements OnInit {
         this.user.logging_in = false;
         this.user.user_id = res.user_id;
         this.user.email = res.email;
-        this.user.coins = res.coins;
+        // Add user_data
+        if (res.coins) {
+          this.user.coins = res.coins;
+        }
+        if (res.data) {
+          this.user.data = res.data;
+        }
         this.user.created_time = res.created_time;
         this.user.freebie_used = res.freebie_used;
         this.user.settings = res.settings;
