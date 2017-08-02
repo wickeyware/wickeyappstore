@@ -2,7 +2,7 @@
 <!--This makes it modal. Add a close button top left
 
 <!--Generic base popover container-->
-<div class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
+<div *ngIf="!hidden" class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
   <div class="icon-svg">
     <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
@@ -13,7 +13,7 @@
     </svg>
   </div>
   <!--Make the text hide when this opens-->
-  <div *ngIf="!showOverlay" class="title-text noselect">Login</div>
+  <div *ngIf="!showOverlay" class="title-text noselect makewhite">Login</div>
   <!--Show the popover container-->
 
 </div>
@@ -55,32 +55,46 @@
     </span>
   </div>
   <div class="login-group">
+    <!-- <div [ngBusy]="{busy: busyEmail, message: 'Emailing your token...'}" class="busy-spinner"></div>
+    <div [ngBusy]="{busy: busyToken, message: 'Logging you in...'}" class="busy-spinner"></div> -->
     <div class="login-container">
       <div class="login-innermargin">
-        <div class="emailGroup" [@sendAnimation]='sendEmailState'>
-          <!-- <div class="vivid-desc">Type your account email</div> -->
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">@</span>
-            <input type="email" class="form-control" placeholder="email" aria-describedby="sizing-addon1" (keyup.enter)="tokenPerson(emailInput.value); emailInput.blur()"
-              #emailInput value="{{user?.token_email}}">
+        <form [formGroup]="emailForm">
+          <div class="emailGroup" [@sendAnimation]='sendEmailState'>
+            <div class="vivid-desc">Already have an account? Enter email</div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon bottom-square" id="basic-addon1">@</span>
+                <input id="emailInput" type="text" class="form-control bottom-square" formControlName="email" #emailInput placeholder="email"  [(ngModel)]="email_term">
+              </div>
+              <div *ngIf="formEmailErrors.email" class="alert-danger tab-left">
+                {{ formEmailErrors.email }}
+              </div>
+              <button class="btn btn-primary btn-block top-square" [hidden]="!emailForm.valid" (click)="tokenPerson(emailInput.value);">{{sendButtonText}}</button>
+            </div>
           </div>
-          <button class="btn btn-primary btn-block" type="button" [disabled]="isEmailButtonDisabled()" (click)="tokenPerson(emailInput.value);">{{sendButtonText}}</button>
-        </div>
-        <div class="tokenGroup" *ngIf="showTokenState" [@sendTokenAnimation]='sendTokenState'>
-          <div class="vivid-desc">Type the token from your email</div>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">#</span>
-            <input type="number" class="form-control highlight-input" placeholder="6 digit num" aria-describedby="basic-addon1" (keyup.enter)="verifyPerson(emailToken.value); emailToken.blur()"
-              #emailToken>
+        </form>
+        <form [formGroup]="tokenForm">
+          <div class="tokenGroup" *ngIf="showTokenState" [@sendTokenAnimation]='sendTokenState' (@sendTokenAnimation.done)="tokenAnimationDone($event)">
+            <div class="vivid-desc">Type the token from your email</div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon bottom-square" id="basic-addon1">@</span>
+                <input id="tokenInput" type="text" class="form-control bottom-square" formControlName="token" #tokenInput placeholder="token" [(ngModel)]="token_term">
+              </div>
+              <div *ngIf="formTokenErrors.token" class="alert-danger tab-left">
+                {{ formTokenErrors.token }}
+              </div>
+              <button class="btn btn-primary btn-block top-square" [hidden]="!tokenForm.valid" (click)="verifyPerson(tokenInput.value);">Login</button>
+            </div>
           </div>
-          <button class="btn btn-primary btn-block" type="button" [disabled]="isTokenButtonDisabled()" (click)="verifyPerson(emailToken.value);">Login</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <!--
-The launch button should be simple button or text style button That says Login. It will be placed
+The launch button should be simple button or text style button That says Login. It will be placed 
 in upper right or upper left of onboarding screen.
 -->
 <!-- Pop up modal on error -->

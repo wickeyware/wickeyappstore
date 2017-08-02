@@ -161,6 +161,26 @@ button {
   width:         calc(33% - 2px);
 }
 
+/* The pop-over classes */
+.popover-title {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #5b5b65;
+  text-shadow: 0 1px 0 #fff;
+  width: 280px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.popover-body {
+  text-align: left;
+  font-size: 1.0em;
+  font-weight: 300;
+  color: black;
+  margin: .4em;
+  line-height: 110%;
+}
+
 /* angular2-busy */
 .busy-spinner {
   position: relative;

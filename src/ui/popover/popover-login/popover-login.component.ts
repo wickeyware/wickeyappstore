@@ -1,3 +1,4 @@
+/* tslint:disable: member-ordering forin */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
@@ -6,6 +7,8 @@ import { ApiConnectionService } from '../../../api-connection.service';
 import { LocalStorageService } from '../../../local-storage.service';
 import { User, ErrorTable } from '../../../app.models';
 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { customValidator } from '../../../custom-validator.directive';
 /**
  * Shows login popover.
  *
@@ -102,6 +105,7 @@ import { User, ErrorTable } from '../../../app.models';
 export class PopoverLoginComponent implements OnInit {
   @Output() close: EventEmitter<string> = new EventEmitter();
   @Input() public user: User;
+  @Input() public hidden: false; // can choose to make the button invisiblemakewhite
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
@@ -111,39 +115,153 @@ export class PopoverLoginComponent implements OnInit {
   public sendButtonText = 'Login';
   public sendEmailState = 'inactive';
   public sendTokenState = 'inactive';
+  public token = '';
+  public email_term: string;
+  public token_term: string;
 
   public social_site: string;
   public game_name: string;
   public version: number;
 
-  busy: Subscription;
+  public busymessage = 'Sending your token...';
+  busyEmail: Subscription;
+  busyToken: Subscription;
 
   public alert_table: ErrorTable;
-
+  public emailForm: FormGroup;
+  public tokenForm: FormGroup;
 
   constructor(
     private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private fb: FormBuilder
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // console.log('ngOnInit - SSO');
+    this.buildEmailForm();
+    this.buildTokenForm();
     if (this.showOverlay && this.user === undefined) {
       console.log('WASlogin: load user');
-      this.localStorageService.get('was-user').then((value: any) => this.user = value as User);
+      this.localStorageService.get('was-user').then((value: any) => this.user = value as User).then(() => {
+        this.checkLoggingIn();
+      });
+    } else {
+      this.checkLoggingIn();
     }
   }
+
+  checkLoggingIn() {
+    setTimeout(() => {
+      if (this.user.logging_in) {
+        // console.log('ngOnInit: show SSO');
+        // then show the SSO
+        this.buttonClick();
+        this.showTokenState = 'sent';
+        this.sendButtonText = 'Send it again';
+        this.sendEmailState = 'inactive';
+        this.email_term = this.user.token_email;
+      }
+    }, 1000);
+  }
+
+  buildEmailForm(): void {
+    this.emailForm = this.fb.group({
+      'email': [this.user.email, [
+        Validators.required,
+        customValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i)]
+      ]
+    });
+    this.emailForm.valueChanges.subscribe(data => this.onEmailValueChanged(data));
+    this.onEmailValueChanged(); // (re)set validation messages now
+  }
+  onEmailValueChanged(data?: any) {
+    if (!this.emailForm) { return; }
+    const form = this.emailForm;
+
+    for (const field in this.formEmailErrors) {
+      // clear previous error message (if any)
+      this.formEmailErrors[field] = '';
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationEmailMessages[field];
+        for (const key in control.errors) {
+          this.formEmailErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+  // Add each of the form fields here that have validation
+  formEmailErrors = {
+    'email': '',
+  };
+  // Add all the possible errors for each form field
+  validationEmailMessages = {
+    'email': {
+      'required': 'Email is required.',
+      'minlength': 'Email must be at least 4 characters long.',
+      'forbiddenValue': 'Invalid email format.'
+    }
+  };
+
+  buildTokenForm(): void {
+    this.tokenForm = this.fb.group({
+      'token': [this.token, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(6),
+        customValidator(/^\d+$/i)]
+      ]
+    });
+    this.tokenForm.valueChanges.subscribe(data => this.onTokenValueChanged(data));
+    this.onTokenValueChanged(); // (re)set validation messages now
+  }
+  onTokenValueChanged(data?: any) {
+    if (!this.tokenForm) { return; }
+    const form = this.tokenForm;
+
+    // console.log('onTokenValueChanged');
+    for (const field in this.formTokenErrors) {
+      // clear previous error message (if any)
+      this.formTokenErrors[field] = '';
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationTokenMessages[field];
+        for (const key in control.errors) {
+          this.formTokenErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+  // Add each of the form fields here that have validation
+  formTokenErrors = {
+    'token': '',
+  };
+  // Add all the possible errors for each form field
+  validationTokenMessages = {
+    'token': {
+      'required': 'Enter your token.',
+      'minlength': 'Token must be 6 digits.',
+      'maxlength': 'Token must be 6 digits.',
+      'forbiddenValue': 'Numbers 1-9 only.'
+    }
+  };
+
+
   onAlertClose(data: any): void { }
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
     if (this.overlayState === 'out') {
       this.showOverlay = 1; // show the overlay
       this.overlayState = 'in'; // set it to animate in
-      // show token input, if logging in
-      if (this.user.logging_in === true) {
-        this.showTokenState = 'sent';
-      } else {
-        this.showTokenState = null;
-      }
+      // // show token input, if logging in
+      // if (this.user.logging_in === true) {
+      //   this.showTokenState = 'sent';
+      // } else {
+      //   this.showTokenState = null;
+      // }
     } else {
       this.overlayState = 'out';
     }
@@ -157,6 +275,9 @@ export class PopoverLoginComponent implements OnInit {
   }
   closeOverlay(): void {
     this.overlayState = 'out';
+    // Set logging in process off //
+    this.user.logging_in = false;
+    this.localStorageService.set('was-user', this.user);
   }
   catchClick(event: any): void {
     event.stopPropagation();
@@ -167,6 +288,25 @@ export class PopoverLoginComponent implements OnInit {
       this.showOverlay = null;
     } else if (event.toState === 'in') {
       // the window is loaded
+      setTimeout(() => {
+        if (this.showTokenState) {
+        } else {
+          // console.log('set to email focus');
+          document.getElementById('emailInput').focus();
+        }
+      }, 250);
+    }
+  }
+  // this shows the token field
+  tokenAnimationDone(event: AnimationEvent) {
+    // console.log('tokenanimation', event);
+    if (event.toState === 'inactive') {
+      setTimeout(() => {
+        // console.log('set to token focus');
+        this.token_term = '';
+        const tok = document.getElementById('tokenInput');
+        tok.focus();
+      }, 250);
     }
   }
 
@@ -188,7 +328,7 @@ export class PopoverLoginComponent implements OnInit {
   tokenPerson(email: string): void {
     this.user.token_email = email;
     this.sendEmailState = 'active';
-    this.busy = this.apiConnectionService
+    this.busyEmail = this.apiConnectionService
       .tokenPerson(email)
       .subscribe((res) => {
         this.alert_table = {
@@ -219,7 +359,7 @@ export class PopoverLoginComponent implements OnInit {
 
   verifyPerson(verification_token: string): void {
     this.sendTokenState = 'active';
-    this.busy = this.apiConnectionService
+    this.busyToken = this.apiConnectionService
       .verifyPerson(this.user.token_email, verification_token, this.version)
       .subscribe((res) => {
         // TODO: Handle results
@@ -227,7 +367,6 @@ export class PopoverLoginComponent implements OnInit {
         // PLUS: freebie_used, settings, inapps, rated_app
         console.log('WASlogin: verifyPerson RETURN:', res);
         // Set logging in process off //
-        this.showTokenState = null;
         this.user.logging_in = false;
         this.user.user_id = res.user_id;
         this.user.email = res.email;
@@ -237,7 +376,10 @@ export class PopoverLoginComponent implements OnInit {
         this.user.settings = res.settings;
         // UPDATE USER //
         this.localStorageService.set('was-user', this.user).then(() => {
+          this.sendButtonText = 'Login';
+          this.showTokenState = null;
           this.sendTokenState = 'inactive';
+          this.token = '';
           this.closeOverlay();
           this.close.emit(this.user.email);
         });

@@ -395,6 +395,7 @@ getApps(show_spinner: boolean): void {
 
   closeMe(): void {
     // this.closeIframe();
+    // TODO: Need to still do this
     // document.getElementsByTagName('body')[0].style.overflow = 'auto';
     this.showOverlay = null;
     this.close.emit(1);

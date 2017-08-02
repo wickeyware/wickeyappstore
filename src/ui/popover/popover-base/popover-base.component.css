@@ -54,19 +54,25 @@
     margin-top: -.6em;
     text-align: center;
 }
+.makewhite {
+    color: white;
+}
 
 .vivid-desc {
   text-align: left;
   /* color: black; */
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 300;
   color: #5b5b65;
   text-shadow: 0 1px 0 #fff;
   /* This dictates the margin above and below the h3 tag, default is 1em and 0 for left/right */
   -webkit-margin-before: .2em;
   -webkit-margin-after: .2em;
-  margin-left: 5px;
+  margin-left: 5px; 
   margin-top: 5px;
+}
+.tab-left {
+    padding-left: 5px;
 }
 
 .popover-container {
@@ -74,7 +80,7 @@
     /* width: 310px;
     height: 200px; */
     position: absolute;
-    background: #fff;
+    background: #fff; 
     box-shadow: 0 0 0 1px rgba(136,152,170,.1), 0 15px 35px 0 rgba(49,49,93,.1), 0 5px 15px 0 rgba(0,0,0,.08);
     border-radius: 4px;
     cursor: auto;
@@ -85,17 +91,17 @@
     right: -38px;
 }
 .db-arrow-right  {
-    right: 64px;
+    right: 64px; 
 }
 .info-container-left {
     left: 40px;
 }
 .db-arrow-left  {
-    left: 24px;
+    left: 24px; 
 }
 .db-FixedPopover-arrow {
     position: absolute;
-    top: -8px;
+    top: -8px; 
     height: 9px;
     width: 21px;
     /* This color gray #EBEBEB */
@@ -172,6 +178,14 @@ button:active {
     border: none;
     color: #3fb1eb;
 }
+.top-square {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.bottom-square {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 .signon-h1 {
     color: #525f7f;
     display: block;
@@ -203,7 +217,7 @@ button:active {
     height: 100%;
     position: relative;
     border-radius: 4px;
-    overflow: hidden;
+    overflow: auto;
     background:rgba(255, 255, 255, 1);
     border-color: rgb(255, 255, 255);
     box-shadow: 0 0 0 1px rgba(136,152,170,.1), 0 15px 35px 0 rgba(49,49,93,.1), 0 5px 15px 0 rgba(0,0,0,.08);

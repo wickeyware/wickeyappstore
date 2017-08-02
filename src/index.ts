@@ -21,6 +21,7 @@ import { DisplayAppFeaturedComponent } from './display-apps/display-app-featured
 import { PopoverBaseComponent } from './ui/popover/popover-base/popover-base.component';
 import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/popover-account-info.component';
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
+import { CustomValidatorDirective } from './custom-validator.directive';
 
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
@@ -37,6 +38,7 @@ export * from './display-apps/display-app-featured/display-app-featured.componen
 export * from './ui/popover/popover-base/popover-base.component';
 export * from './ui/popover/popover-account-info/popover-account-info.component';
 export * from './ui/popover/popover-login/popover-login.component';
+export * from './custom-validator.directive';
 
 @NgModule({
   imports: [
@@ -59,7 +61,8 @@ export * from './ui/popover/popover-login/popover-login.component';
     DisplayAppFeaturedComponent,
     PopoverBaseComponent,
     PopoverAccountInfoComponent,
-    PopoverLoginComponent
+    PopoverLoginComponent,
+    CustomValidatorDirective
   ],
   exports: [
     WickeyAppStoreComponent,
@@ -73,8 +76,9 @@ export * from './ui/popover/popover-login/popover-login.component';
     DisplayAppFeaturedComponent,
     PopoverBaseComponent,
     PopoverAccountInfoComponent,
-    PopoverLoginComponent
-  ]
+    PopoverLoginComponent,
+    CustomValidatorDirective
+  ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
