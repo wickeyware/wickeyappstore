@@ -139,18 +139,21 @@ export class PopoverLoginComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log('ngOnInit - SSO');
-    this.buildEmailForm();
-    this.buildTokenForm();
     if (this.showOverlay && this.user === undefined) {
       console.log('WASlogin: load user');
       this.localStorageService.get('was-user').then((value: any) => this.user = value as User).then(() => {
-        this.checkLoggingIn();
+        this.buildPageForms();
       });
     } else {
-      this.checkLoggingIn();
+      this.buildPageForms();
     }
   }
 
+  buildPageForms() {
+    this.buildEmailForm();
+    this.buildTokenForm();
+    this.checkLoggingIn();
+  }
   checkLoggingIn() {
     setTimeout(() => {
       if (this.user.logging_in) {
