@@ -13,7 +13,7 @@
     </svg>
   </div>
   <!--Make the text hide when this opens-->
-  <div *ngIf="!showOverlay" class="title-text noselect makewhite">Login</div>
+  <div *ngIf="!showOverlay" class="title-text noselect">SSO</div>
   <!--Show the popover container-->
 
 </div>
@@ -61,7 +61,7 @@
       <div class="login-innermargin">
         <form [formGroup]="emailForm">
           <div class="emailGroup" [@sendAnimation]='sendEmailState'>
-            <div class="vivid-desc">Already have an account? Enter email</div>
+            <div class="vivid-desc">Create/Login? Enter email</div>
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon bottom-square" id="basic-addon1">@</span>

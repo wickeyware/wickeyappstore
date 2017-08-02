@@ -145,7 +145,11 @@ export class PopoverLoginComponent implements OnInit {
         this.buildPageForms();
       });
     } else {
-      this.buildPageForms();
+      // console.log('WASlogin: user passed in', this.showOverlay, this.user);
+      // this.buildPageForms();
+      this.localStorageService.get('was-user').then((value: any) => this.user = value as User).then(() => {
+        this.buildPageForms();
+      });
     }
   }
 

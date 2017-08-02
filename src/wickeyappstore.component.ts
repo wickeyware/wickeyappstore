@@ -26,6 +26,7 @@ const DEFAULT_APP_LIST = [
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
  *
+ * @param {function} update  Calls the update EventEmitter on update events.
  * @param {function} close  Calls the close EventEmitter on close.
  *
  * @example
@@ -89,6 +90,7 @@ const DEFAULT_APP_LIST = [
 })
 export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter<number>();
+  @Output() update = new EventEmitter<any>();
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'in'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
@@ -131,6 +133,8 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       .then((value: any): void => {
         if (typeof value !== 'undefined') {
           this.user = value as User;
+          // NOTE: Notify parent which localStorage object was updated
+          this.update.emit('was-user');
           // normal load
           console.log('WAS: load user from db');
           this.createPerson();  // UPDATE user
@@ -227,7 +231,10 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
           this.user.settings = res.settings;
         }
         // UPDATE USER //
-        this.localStorageService.set('was-user', this.user);
+        this.localStorageService.set('was-user', this.user).then(() => {
+          // NOTE: Notify parent which localStorage object was updated
+          this.update.emit('was-user');
+        });
         if (res.special_message) {
           this.error_message = {
             title: res.special_message.title, message: res.special_message.message,

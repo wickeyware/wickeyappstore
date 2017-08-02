@@ -38,7 +38,7 @@
 /*http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
 /* styles for '...' */ 
 .block-with-text {
-  font-size: .4em;
+  font-size: .7em;
   /* hide text if it more than N lines  */
   overflow: hidden;
   height: 40px;
