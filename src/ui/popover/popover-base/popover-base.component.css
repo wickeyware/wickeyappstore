@@ -13,6 +13,7 @@
     margin:    0 auto;
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
+    overflow: auto; /* Enable scroll if needed */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
