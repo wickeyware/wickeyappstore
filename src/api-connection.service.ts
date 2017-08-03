@@ -14,6 +14,7 @@ export class ApiConnectionService {
   private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
   private app_url = 'https://api.wickeyappstore.com/apps/';
+  private featured_url = 'https://api.wickeyappstore.com/apps/featured/';
 
   constructor(
     private http: HttpClient
@@ -67,9 +68,25 @@ export class ApiConnectionService {
   getApps(_params?: any): Observable<[any]> {
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getApps', _query_string);
-    return this.http.get(`${this.app_url}/?${_query_string}`)
+    return this.http.get(`${this.app_url}?${_query_string}`)
           .map((res: any) => {
             return this.extractData(res).apps;
+          }).catch(this.handleError);
+  }
+
+  /**
+   * This returns a list of featured groups of apps.
+   *
+   * @param {*} [_params] None needed, just future proofing.
+   * @returns {Observable<[any]>} {"groups": [{"id": number, "title": string, "created_time": number, "apps": [_app, _app, ...]}, {}, ...]}
+   * @memberof ApiConnectionService
+   */
+  getFeaturedGroups(_params?: any): Observable<[any]> {
+    const _query_string = this.encode_query_string(_params);
+    console.log('getFeaturedGroups', _query_string);
+    return this.http.get(`${this.featured_url}?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res).groups;
           }).catch(this.handleError);
   }
 
