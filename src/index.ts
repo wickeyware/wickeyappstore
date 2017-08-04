@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {BusyModule} from 'angular2-busy';
+// Swiper //
+import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
+import { WasRoutingModule } from './was-routing/was-routing.module';
 
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 import { ApiConnectionService } from './api-connection.service';
@@ -48,7 +51,9 @@ export * from './custom-validator.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    WasRoutingModule,
+    BrowserAnimationsModule,
+    SwiperModule
     // BusyModule
   ],
   declarations: [

@@ -31,7 +31,7 @@ Check out the tutorial app: https://github.com/wickeyware/was-tutorial
 
 ## Installation
 
-To install this library, run:
+To install this library, run: (NOTE: Install all dependencies)
 
 ```bash
 $ npm install wickeyappstore --save
@@ -42,7 +42,7 @@ $ npm install wickeyappstore --save
 Once you have published your library to npm, you can import your library in any Angular application by running:
 
 ```bash
-$ npm install wickeyappstore
+$ npm install wickeyappstore --save
 ```
 
 and then from your Angular `AppModule`:
@@ -50,6 +50,8 @@ and then from your Angular `AppModule`:
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 
@@ -62,7 +64,8 @@ import { WickeyAppStoreModule } from 'wickeyappstore';
   ],
   imports: [
     BrowserModule,
-
+    RouterModule,
+    FormsModule,
     // Specify as an import
     WickeyAppStoreModule
   ],
@@ -93,6 +96,9 @@ Link CSS, or copy it into your styles.css:
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <!-- WickeyAppStore global css-->
 <link rel="stylesheet" href="https://unpkg.com/wickeyappstore@0.1.34/styles.css">
+<!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
 ```
 
 ## Development

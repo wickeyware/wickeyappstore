@@ -14,7 +14,7 @@
   right: 0px;
   top: 0px;
   margin-bottom: 4px;
-  width: 76px;
+  width: 96px;
   height: 116px;
   min-width: 60px;
   min-height: 60px;
@@ -38,11 +38,9 @@
 /*http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
 /* styles for '...' */ 
 .block-with-text {
-  font-size: .7em;
+  font-size: .8em;
   /* hide text if it more than N lines  */
   overflow: hidden;
   height: 40px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #888;
+   width: 96px; 
 }

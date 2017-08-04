@@ -1,3 +1,7 @@
-<p>
-  app-group-horizontal works!
-</p>
+<h2>{{title}}</h2>
+<!-- Swiper -->
+ <swiper [config]="config">
+  <div class="swiper-wrapper">
+    <display-app-mini class="swiper-slide" *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-mini>
+  </div>
+</swiper> 

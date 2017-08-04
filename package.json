@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "0.5.13",
+  "version": "0.6.9",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -55,6 +55,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "^7.0.39",
     "angular2-busy": "^2.0.4",
+    "angular2-useful-swiper": "^4.0.6",
     "codelyzer": "~2.0.0",
     "core-js": "^2.4.1",
     "del": "^2.2.2",

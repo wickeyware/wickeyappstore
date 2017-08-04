@@ -33,3 +33,19 @@ export interface ErrorTable {
   button_action?: string;
   helpmessage?: Array<Array<string>>; // Only can have up to 3 //
 }
+
+// {name: string, category: number, ordering: number}
+export interface App {
+  name: string;
+  category: number;
+  ordering: number;
+  icon: string;
+}
+
+//
+export interface AppGroup {
+  id: number;
+  title: string;
+  created_time: number;
+  apps: Array<App>;
+}

@@ -177,6 +177,10 @@ angular2-busy@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/angular2-busy/-/angular2-busy-2.0.4.tgz#82e4b1fbbcaf97bcfac09d237489cfe9e8c4b9f3"
 
+angular2-useful-swiper@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-4.0.6.tgz#1a56f764850cbcdbd771b4b5204222115c932063"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"

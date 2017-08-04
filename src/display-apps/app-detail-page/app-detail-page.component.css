@@ -12,7 +12,7 @@
     width:100%;
     height:100%;
     overflow: auto; /* Enable scroll if needed */
-    z-index: 110; /* Sit on top */
+    z-index: 100; /* Sit on top */
     margin:    0 auto;
 }
 .page-content {
@@ -60,9 +60,8 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
-    font-weight: 400;
+    font-weight: 280;
     font-size: 1em;
-    line-height: 1.5;
 }
 .circle-separator {
     width: 90%;
@@ -86,6 +85,6 @@
     width: 120px;
     position: relative;
     margin-top: -50px;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right:10px;
 }

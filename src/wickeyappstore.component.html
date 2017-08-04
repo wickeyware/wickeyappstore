@@ -25,11 +25,10 @@
     <div class="was-titlebottom"></div>
   </div>
   <div class="results-group">
-    <!--<div [ngBusy]="{busy: busy, message: 'Refreshing app store..'}" class="busy-spinner"></div>-->
-    <display-apps featured=true [apps]="apps" title="Featured" [showAppEmitter]="showAppDetail"></display-apps>
-    <display-apps [apps]="apps" title="Best new apps" [showAppEmitter]="showAppDetail"></display-apps>
+    <!-- <div [ngBusy]="{busy: busy, message: 'Refreshing app store..'}" class="busy-spinner"></div> -->
+    <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
+    <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
     <br><br>
-    <!-- <display-apps [apps]="apps" title="Most used apps" [showAppEmitter]="showAppDetail"></display-apps> -->
   </div>
   <div class="was-footer">
     <div class="left">
@@ -44,7 +43,7 @@
     <!-- <a href="https://wickeyappstore.com/" target="WickeyAppStore">WickeyAppStore.com ™</a> -->
   </div>
   <was-alert-popup (close)="onAlertClose($event)" [alert_table]="error_message"></was-alert-popup>
-  <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page>
+  <!-- <app-detail-page [selected_app]="selected_app" [showApp]="showApp" (close)="closeAppDetail($event)"></app-detail-page> -->
 </div>
 <!--Cover the background with dark-->
 <!--This makes it modal. Closes with a touch anywhere-->

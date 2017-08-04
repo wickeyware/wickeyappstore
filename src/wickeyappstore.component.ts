@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
@@ -99,6 +100,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   private test_alert = 0;
   public user: User;
   public apps = [];
+  public bannerApps = [];
   public selected_app: {};
   public showApp = null; // dictate if the app detail page shows up
   public showCloseBtn = true;
@@ -106,6 +108,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   private lut = [];
 
   constructor(
+    private router: Router,
     private apiConnectionService: ApiConnectionService,
     private localStorageService: LocalStorageService
   ) { }
@@ -113,18 +116,17 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('WAS: ngOnInit');
     this.showCloseBtn = true;
-    // this.getApps();
     this.localStorageService.get('was-apps')
       .then((value: any): void => {
         if (typeof value !== 'undefined') {
           this.apps = value;  // as Apps;
           // normal load
           console.log('WAS: load apps from db, refresh from server');
-          this.getApps(false);  // UPDATE app list
+          this.getFeaturedGroups(false);  // UPDATE app list
         } else {
           // create new user
           console.log('WAS: no apps in db, get apps from server');
-          this.getApps(true);
+          this.getFeaturedGroups(false);  // UPDATE app list
         }
       }
       )
@@ -318,62 +320,82 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     return Promise.reject(error.message || error);
   }
 
-getApps(show_spinner: boolean): void {
+  getFeaturedGroups(show_spinner: boolean): void {
     if (show_spinner === false) {
       this.apiConnectionService
-      .getApps()
-      .subscribe((res) => {
-        console.log('WAS: getApps RETURN:', res);
-        this.apps = res;
-        // setTimeout(this.updateParentHeight, 200);
-        // UPDATE DB //
-        this.localStorageService.set('was-apps', this.apps);
-      }, (error) => {
-        console.log('WAS: getApps ERROR:', error);
-        this.apps = DEFAULT_APP_LIST;
-        // this.updateParentHeight();
-        // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-        // UPDATE DB //
-        this.localStorageService.set('was-apps', this.apps);
-        this.error_message = {
-          title: 'Attention',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
-      });
+        .getFeaturedGroups()
+        .subscribe((res) => {
+          console.log('WAS: getFeaturedGroups RETURN:', res);
+          this.apps = res;
+          // setTimeout(this.updateParentHeight, 200);
+          // UPDATE DB //
+          this.localStorageService.set('was-apps', this.apps);
+        }, (error) => {
+          console.log('WAS: getFeaturedGroups ERROR:', error);
+          this.apps = DEFAULT_APP_LIST;
+          // this.updateParentHeight();
+          // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
+          // UPDATE DB //
+          this.localStorageService.set('was-apps', this.apps);
+          this.error_message = {
+            title: 'Attention',
+            message: error,
+            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+            helpmessage: [],
+            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+          };
+        });
     } else {
       this.busy = this.apiConnectionService
-      .getApps()
-      .subscribe((res) => {
-        console.log('WAS: getApps RETURN:', res);
-        this.apps = res;
-        // setTimeout(this.updateParentHeight, 200);
-        // UPDATE DB //
-        this.localStorageService.set('was-apps', this.apps);
-      }, (error) => {
-        console.log('WAS: getApps ERROR:', error);
-        this.apps = DEFAULT_APP_LIST;
-        // this.updateParentHeight();
-        // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-        // UPDATE DB //
-        this.localStorageService.set('was-apps', this.apps);
-        this.error_message = {
-          title: 'Attention',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
-      });
+        .getFeaturedGroups()
+        .subscribe((res) => {
+          console.log('WAS: getFeaturedGroups RETURN:', res);
+          this.apps = res;
+          // setTimeout(this.updateParentHeight, 200);
+          // UPDATE DB //
+          this.localStorageService.set('was-apps', this.apps);
+        }, (error) => {
+          console.log('WAS: getFeaturedGroups ERROR:', error);
+          this.apps = DEFAULT_APP_LIST;
+          // this.updateParentHeight();
+          // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
+          // UPDATE DB //
+          this.localStorageService.set('was-apps', this.apps);
+          this.error_message = {
+            title: 'Attention',
+            message: error,
+            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+            helpmessage: [],
+            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+          };
+        });
     }
+  }
+
+  // loop through the featured apps and get the banner group
+  getBannerFeaturedApps() {
+    for (const group of this.apps) {
+      if (group.title === 'Featured') {
+        return group.apps;
+      }
+    }
+  }
+  // loop through the featured apps and remove the banner group
+  getFeaturedApps() {
+    let otherapps = [];
+    for (const group of this.apps) {
+      if (group.title !== 'Featured') {
+        otherapps.push(group);
+      }
+    }
+    return otherapps;
   }
 
   showAppDetail = (_app: any) => {
     this.selected_app = _app;
     this.showApp = 1;
     console.log(this.showApp);
+    this.router.navigate(['was', _app.slug]);
     // window.open(app_term, '_blank');
   }
   closeAppDetail(_val: number): void {
