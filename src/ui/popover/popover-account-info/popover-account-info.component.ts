@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
-import { ApiConnectionService } from '../../../api-connection.service';
-import { LocalStorageService } from '../../../local-storage.service';
 import { UserService } from '../../../user.service';
 import { User, ErrorTable } from '../../../app.models';
 // import { Observable } from "rxjs/Observable";
@@ -86,7 +84,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '0.6.13';
+  public version = '1.0.4';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
@@ -94,8 +92,6 @@ export class PopoverAccountInfoComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService,
     private datePipe: DatePipe
   ) { }
 
@@ -210,8 +206,6 @@ export class PopoverAccountInfoComponent implements OnInit {
   get accountAge() {
     return this.userService.user.map((usr: User) => {
       const create_time = usr.created_time;
-      // TODO: ERROR HERE InvalidPipeArgument
-      console.log('accountAge', create_time);
       const date = +new Date(create_time * 1000);
       const currentDate = +new Date();
       const milisecondsDiff = currentDate - date;

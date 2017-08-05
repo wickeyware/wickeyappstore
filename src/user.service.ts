@@ -11,6 +11,7 @@ export interface UserParams {
   data?: any;
   email?: string;
   token_email?: string;
+  token?: string;
   freebie_used?: boolean;
   rated_app?: boolean;
   logging_in?: boolean;
@@ -153,8 +154,7 @@ export class UserService {
    * @memberof UserService
    */
   updateUser(userParams: UserParams): Observable<User> {
-    console.log('UserService\n==============\nUPDATE USER\n==============');
-    const currentUser = this._user.getValue();
+    let currentUser = this._user.getValue();
     if (this._createNewUser === true) {
       this._createNewUser = false;
       console.warn('UserService: NO USER, CREATE USER');
@@ -188,57 +188,108 @@ export class UserService {
       apiobject.standalone = this.standalone;
     }
     const _obs = this.apiConnectionService.createPerson(apiobject);
-      _obs.subscribe((res) => {
-        if (res.status === 201) {
-          console.log('UserService: updateUser: NEW RETURN:', res);
-          // On new user/recover
-          // TODO: Add more of a verification
-          this._user.next(res);
-        } else {
-          console.log('UserService: updateUser: RETURN:', res);
-          // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
-          if (res.email && res.user_id) {
-            currentUser.user_id = res.user_id;
-          }
-          currentUser.email = res.email;
-          if (res.coins) {
-            currentUser.coins = res.coins;
-          }
-          if (res.data) {
-            currentUser.data = res.data;
-          }
-          currentUser.created_time = res.created_time;
-          currentUser.freebie_used = res.freebie_used;
-          currentUser.settings = res.settings;
-          this._user.next(res);
+    _obs.subscribe((res) => {
+      if (res.status === 201) {
+        console.log('UserService: updateUser: NEW RETURN:', res);
+        // On new user/recover
+        // TODO: Add more of a verification
+        this._user.next(res);
+      } else {
+        console.log('UserService: updateUser: RETURN:', res);
+        currentUser = this._user.getValue();
+        // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
+        if (res.email && res.user_id) {
+          currentUser.user_id = res.user_id;
         }
-        // UPDATE USER //
-        this.localStorageService.set('was-user', res);
-        // TODO: Store this on User, set to nil on display
-        if (res.special_message) {
-          console.log(`UserService: updateUser: special_message:[${res.special_message}]`);
-          confirm(`${res.special_message.title}\n${res.special_message.message}`);
-          // this.error_message = {
-          //   title: res.special_message.title, message: res.special_message.message,
-          //   button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
-          //   helpmessage: [],
-          //   randcookie: `${Math.random()}${Math.random()}${Math.random()}`
-          // };
+        currentUser.email = res.email;
+        if (res.coins) {
+          currentUser.coins = res.coins;
         }
-        // Add user context in sentry
-        // Raven.setUserContext({email: this._user.email, id: this._user.user_id});
-      }, (error) => {
-        console.log(`UserService: updateUser: error:[${error}]`);
-        alert(`Attention!\n${error}`);
-        // <any>error | this casts error to be any
+        if (res.data) {
+          currentUser.data = res.data;
+        }
+        currentUser.created_time = res.created_time;
+        currentUser.freebie_used = res.freebie_used;
+        currentUser.settings = res.settings;
+        this._user.next(res);
+      }
+      // UPDATE USER //
+      this.localStorageService.set('was-user', res);
+      // NOTE: Handle special_message in calling component.
+      if (res.special_message) {
+        console.log(`UserService: updateUser: special_message:[${res.special_message}]`);
+        confirm(`${res.special_message.title}\n${res.special_message.message}`);
         // this.error_message = {
-        //   title: 'Attention!',
-        //   message: error,
-        //   header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+        //   title: res.special_message.title, message: res.special_message.message,
+        //   button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
         //   helpmessage: [],
-        //   randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+        //   randcookie: `${Math.random()}${Math.random()}${Math.random()}`
         // };
-      });
+      }
+      // Add user context in sentry
+      // Raven.setUserContext({email: this._user.email, id: this._user.user_id});
+    }, (error) => {
+      console.log(`UserService: updateUser: error:[${error}]`);
+      // NOTE: Handle errors in calling component.
+      // alert(`Attention!\n${error}`);
+      // <any>error | this casts error to be any
+    });
+    return _obs;
+  }
+
+  sendToken(userParams: UserParams): Observable<any> {
+    let _updatedUsr = this._user.getValue();
+    _updatedUsr.token_email = userParams.token_email;
+    this._user.next(_updatedUsr);
+    const _obs = this.apiConnectionService.tokenPerson(userParams.token_email);
+    _obs.subscribe((res) => {
+      _updatedUsr = this._user.getValue();
+      _updatedUsr.logging_in = true;
+      this._user.next(_updatedUsr);
+      this.localStorageService.set('was-user', _updatedUsr);
+    }, (error) => {
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  stopToken() {
+    let _updatedUsr = this._user.getValue();
+    _updatedUsr.logging_in = false;
+    this.localStorageService.set('was-user', _updatedUsr);
+  }
+
+  verifyToken(userParams: UserParams): Observable<any> {
+    console.log('============UserService verifyToken=========');
+    const _obs = this.apiConnectionService.verifyPerson(this._user.getValue().token_email, userParams.token, .1);
+    _obs.subscribe((res) => {
+      console.log('WASlogin: verifyPerson RETURN:', res);
+      // Set logging in process off //
+      const _updatedUsr = this._user.getValue();
+      _updatedUsr.logging_in = false;
+      _updatedUsr.user_id = res.user_id;
+      _updatedUsr.email = res.email;
+      // Add user_data
+      if (res.coins) {
+        _updatedUsr.coins = res.coins;
+      }
+      if (res.data) {
+        _updatedUsr.data = res.data;
+      }
+      _updatedUsr.created_time = res.created_time;
+      _updatedUsr.freebie_used = res.freebie_used;
+      _updatedUsr.settings = res.settings;
+      // UPDATE USER //
+      this.localStorageService.set('was-user', _updatedUsr);
+    }, (error) => {
+      // Set logging in process off //
+      const _updatedUsr = this._user.getValue();
+      _updatedUsr.logging_in = false;
+      this.localStorageService.set('was-user', _updatedUsr);
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
     return _obs;
   }
 

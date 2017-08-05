@@ -153,13 +153,13 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
-                                    <a href="../injectables/ApiConnectionService.html"  data-type="entity-link" class="active" >ApiConnectionService</a>
+                                    <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/UserService.html" >UserService</a>
+                                    <a href="../injectables/UserService.html"  data-type="entity-link" class="active" >UserService</a>
                                 </li>
                         </ul>
                     </li>
@@ -350,13 +350,13 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
-                                           <a href="../injectables/ApiConnectionService.html"  data-type="entity-link" class="active" >ApiConnectionService</a>
+                                           <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/UserService.html" >UserService</a>
+                                           <a href="../injectables/UserService.html"  data-type="entity-link" class="active" >UserService</a>
                                        </li>
                                </ul>
                            </li>
@@ -416,7 +416,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>ApiConnectionService</li>
+  <li>UserService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -434,9 +434,20 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/api-connection.service.ts</code>
+            <code>src/user.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The service to get/set a user.
+Following the example given here:
+<a href="http://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/">http://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/</a>
+Full code: <a href="https://github.com/jhades/angular2-rxjs-observable-data-services">https://github.com/jhades/angular2-rxjs-observable-data-services</a>
+Thanks @jhades</p>
+
+            </p>
 
             <section>
                 <h3 id="constructor">Constructor</h3>
@@ -444,12 +455,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(http: HttpClient)</code>
+                                    <code>constructor(apiConnectionService: <a href="../injectables/ApiConnectionService.html">ApiConnectionService</a>, localStorageService: <a href="../injectables/LocalStorageService.html">LocalStorageService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/api-connection.service.ts:17</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/user.service.ts:49</a></div>
                                         </td>
                                     </tr>
             
@@ -466,20 +477,82 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b> loadUser</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>loadUser()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/user.service.ts:83</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b><span class="modifier">Private</span> handleError</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>handleError(error: HttpErrorResponse)</code>
+                                    <code>handleError(error: any)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/api-connection.service.ts:24</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/user.service.ts:101</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> checkStandalone</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>checkStandalone()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/user.service.ts:107</a></div>
                                         </td>
                                     </tr>
             
@@ -498,61 +571,36 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> extractData</b>
+                                    <b> guid</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>extractData(res: any)</code>
+            <code>guid()</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/api-connection.service.ts:48</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/user.service.ts:121</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Fast UUID generator, RFC4122 version 4 compliant.</p>
+            </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>void</code>
-            
                                         </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> encode_query_string</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>encode_query_string(_obj: )</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/api-connection.service.ts:56</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>string</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -561,56 +609,25 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> getApps</b>
+                                    <b> updateUser</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getApps(_params: any)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/api-connection.service.ts:68</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getFeaturedGroups</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getFeaturedGroups(_params: any)</code>
+            <code>updateUser(userParams: <a href="../interfaces/UserParams.html">UserParams</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/api-connection.service.ts:84</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/user.service.ts:156</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>This returns a list of featured groups of apps.</p>
+                                        <div class="io-description"><p>Update User object, saves locally and to server.</p>
             </div>
             
                                         <div class="io-description">
@@ -618,10 +635,19 @@
                                                 <ul class="jsdoc-params">
                                                         <li>
                                                             <div>
-                                                                <b>_params</b>
+                                                                <b>app_coins</b>
                                                             </div>
                                                             <div>
-                                                                <p>None needed, just future proofing.</p>
+                                                                <p>OPTIONAL coins number, use it wherever/however.</p>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>app_data</b>
+                                                            </div>
+                                                            <div>
+                                                                <p>OPTIONAL data string, use it wherever/however (e.g. save JSON or other string encoded objects).</p>
             
                                                             </div>
                                                         </li>
@@ -632,8 +658,7 @@
             
                                         </div>
                                             <div class="io-description">
-                                                <p>{&quot;groups&quot;: [{&quot;id&quot;: number, &quot;title&quot;: string, &quot;created_time&quot;: number, &quot;apps&quot;: [_app, _app, ...]}, {}, ...]}</p>
-            
+                                                
                                             </div>
                                 </td>
                             </tr>
@@ -643,19 +668,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> createPerson</b>
+                                    <b> sendToken</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createPerson(apiobject: any)</code>
+            <code>sendToken(userParams: <a href="../interfaces/UserParams.html">UserParams</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/api-connection.service.ts:95</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">src/user.service.ts:240</a></div>
                                         </td>
                                     </tr>
             
@@ -674,19 +699,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> tokenPerson</b>
+                                    <b> stopToken</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>tokenPerson(email: string)</code>
+            <code>stopToken()</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/api-connection.service.ts:101</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">src/user.service.ts:257</a></div>
                                         </td>
                                     </tr>
             
@@ -694,7 +719,7 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -705,19 +730,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> verifyPerson</b>
+                                    <b> verifyToken</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>verifyPerson(email: string, verification_token: string, version: number)</code>
+            <code>verifyToken(userParams: <a href="../interfaces/UserParams.html">UserParams</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/api-connection.service.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/user.service.ts:263</a></div>
                                         </td>
                                     </tr>
             
@@ -743,23 +768,23 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> app_url</b>
+                                    <b><span class="modifier">Private</span> _createNewUser</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>app_url:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_createNewUser:     <code></code>
             </bcode>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>https://api.wickeyappstore.com/apps/</code>
+                                        <i>Default value : </i><code>false</code>
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/api-connection.service.ts:16</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/user.service.ts:47</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -768,23 +793,24 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> featured_url</b>
+                                    <b><span class="modifier">Private</span> _user</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>featured_url:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_user:     <code><a href="../interfaces/User.html" target="_self" >BehaviorSubject&lt;User&gt;</a></code>
             </bcode>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>https://api.wickeyappstore.com/apps/featured/</code>
+                                        <i>Type : </i>    <code><a href="../interfaces/User.html" target="_self" >BehaviorSubject&lt;User&gt;</a></code>
+            
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/api-connection.service.ts:17</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/user.service.ts:46</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -793,23 +819,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> person_recover_token_url</b>
+                                    <b> coins</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>person_recover_token_url:     <code></code>
+                                    <code>coins:     <code></code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>https://api.wickeyappstore.com/person/recovery/token/</code>
-                                    </td>
-                                </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/api-connection.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/user.service.ts:75</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -818,23 +839,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> person_recover_verify_url</b>
+                                    <b> data</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>person_recover_verify_url:     <code></code>
+                                    <code>data:     <code></code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>https://api.wickeyappstore.com/person/recovery/verify/</code>
-                                    </td>
-                                </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/api-connection.service.ts:15</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/user.service.ts:78</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -843,23 +859,103 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> person_url</b>
+                                    <b><span class="modifier">Private</span> lut</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>person_url:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>lut:     <code></code>
+            </bcode>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/user.service.ts:49</a></div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> standalone</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>standalone:     <code>boolean</code>
             </bcode>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>https://api.wickeyappstore.com/person/update/</code>
+                                        <i>Type : </i>    <code>boolean</code>
+            
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/api-connection.service.ts:13</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/user.service.ts:48</a></div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> user</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>user:     <code></code>
+            </bcode>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/user.service.ts:69</a></div>
+                                        </td>
+                                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Returns an user object as an observable.</p>
+            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                  <div class="io-description">
+                                          <b>Example :</b>
+                                              <div class="jsdoc-example-ul">
+                                                  <p>Use in angular template with the <code>async</code> pipe
+            userService.user | async
+            Subscribe in ts: userService.user.subscribe</p>
+            
+                                              </div>
+                                  </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> userObject</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>userObject:     <code></code>
+            </bcode>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/user.service.ts:72</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -867,120 +963,309 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Subscription } from &#x27;rxjs/Rx&#x27;;
-import { Injectable } from &#x27;@angular/core&#x27;;
-// import { Headers, RequestOptions, Response, Http } from &#x27;@angular/http&#x27;;
-import { HttpClient, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { ApiConnectionService } from &#x27;./api-connection.service&#x27;;
+import { LocalStorageService } from &#x27;./local-storage.service&#x27;;
+// import {Observable} from &#x27;rxjs/Observable&#x27;;
+import { Observable, BehaviorSubject } from &#x27;rxjs/Rx&#x27;;
+import { User } from &#x27;./app.models&#x27;;
+export * from &#x27;./app.models&#x27;;
 
-import { Observable } from &#x27;rxjs/Observable&#x27;;
-import &#x27;rxjs/add/operator/catch&#x27;;
-import &#x27;rxjs/add/observable/throw&#x27;;
-import &#x27;rxjs/add/operator/map&#x27;;
+export interface UserParams {
+  coins?: number;
+  data?: any;
+  email?: string;
+  token_email?: string;
+  token?: string;
+  freebie_used?: boolean;
+  rated_app?: boolean;
+  logging_in?: boolean;
+}
 
+/**
+ * The service to get/set a user.
+ * Following the example given here:
+ * http://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/
+ * Full code: https://github.com/jhades/angular2-rxjs-observable-data-services
+ * Thanks @jhades
+ *
+ * @example
+ * Import the service in the base &#x60;app.module.ts&#x60;
+ * &#x60;&#x60;&#x60;import { UserService, UserParams } from &#x27;./user.service&#x27;;&#x60;&#x60;&#x60;
+ * Add to the providers:
+ * &#x60;&#x60;&#x60;providers: [UserService, ...],&#x60;&#x60;&#x60;
+ * Import/Inject in any component this is to be used:
+ * &#x60;&#x60;&#x60;import { UserService } from &#x27;./user.service&#x27;;&#x60;&#x60;&#x60;
+ * Add to the local providers list, then inject it in the constructor
+ * &#x60;&#x60;&#x60;constructor(private userService: UserService) { }
+ * Get user:
+ * &#x60;&#x60;&#x60;this.userService.user();&#x60;&#x60;&#x60;
+ * Update user:
+ * &#x60;&#x60;&#x60;this.userService.updateUser(_user_obj);&#x60;&#x60;&#x60;
+ *
+ * @export
+ * @class UserService
+ */
 @Injectable()
-export class ApiConnectionService {
-  private person_url &#x3D; &#x27;https://api.wickeyappstore.com/person/update/&#x27;;
-  private person_recover_token_url &#x3D; &#x27;https://api.wickeyappstore.com/person/recovery/token/&#x27;;
-  private person_recover_verify_url &#x3D; &#x27;https://api.wickeyappstore.com/person/recovery/verify/&#x27;;
-  private app_url &#x3D; &#x27;https://api.wickeyappstore.com/apps/&#x27;;
-  private featured_url &#x3D; &#x27;https://api.wickeyappstore.com/apps/featured/&#x27;;
+export class UserService {
+  private _user: BehaviorSubject&lt;User&gt; &#x3D; new BehaviorSubject({user_id: undefined});
+  private _createNewUser &#x3D; false;
+  private standalone: boolean;
+  private lut &#x3D; [];
 
   constructor(
-    private http: HttpClient
-  ) { }
-
-  // THE OBSERVABLE WAY //
-  private handleError (error: HttpErrorResponse) {
-    // In a real world app, we might use a remote logging infrastructure
-    let errMsg: string;
-    console.log(&#x27;WASAPI: handleError&#x27;, error);
-    if (error.error instanceof Error) {
-      // A client-side or network error occurred. Handle it accordingly.
-      // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
-      if (navigator.onLine) {
-        errMsg &#x3D; &#x60;${error.status} - ${error.statusText || &#x27;&#x27;} ${error.error.message}&#x60;;
-      } else {
-        errMsg &#x3D; &#x27;There is no Internet connection.&#x27;;
-      }
-    } else {
-      // The backend returned an unsuccessful response code.
-      // {&quot;error&quot;: {&quot;message&quot;: string, code: number}} // where code is a http status code as-well as an internal error code.
-      // TODO: Need to first check if error.error.error.message, then use error.message
-      if (error.error &amp;&amp; error.error.error) {
-        errMsg &#x3D; error.error.error.message;
-      } else {
-        errMsg &#x3D; error.message;
-      }
-    }
-    return Observable.throw(errMsg);
-  }
-  private extractData(res: any) {
-    // console.log(&#x27;WASAPI: extractData&#x27;, res);
-    const body &#x3D; res.data;
-    // Add http status to body //
-    body.status &#x3D; res.status;
-    return body;
-  }
-
-  encode_query_string(_obj): string {
-    // http://stackoverflow.com/questions/1714786/query-string-encoding-of-a-javascript-object
-    const q_str &#x3D; [];
-    for (const _p in _obj) {
-      if (_obj.hasOwnProperty(_p)) {
-        q_str.push(encodeURIComponent(_p) + &#x27;&#x3D;&#x27; + encodeURIComponent(_obj[_p]));
-      }
-    }
-    return q_str.join(&#x27;&amp;&#x27;);
-  }
-
-  // Returns app store apps {name: string, category: number, ordering: number}
-  getApps(_params?: any): Observable&lt;[any]&gt; {
-    const _query_string &#x3D; this.encode_query_string(_params);
-    console.log(&#x27;WASAPI: getApps&#x27;, _query_string);
-    return this.http.get(&#x60;${this.app_url}?${_query_string}&#x60;)
-          .map((res: any) &#x3D;&gt; {
-            return this.extractData(res).apps;
-          }).catch(this.handleError);
+    private apiConnectionService: ApiConnectionService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.loadUser();
   }
 
   /**
-   * This returns a list of featured groups of apps.
+   * Returns an user object as an observable.
    *
-   * @param {*} [_params] None needed, just future proofing.
-   * @returns {Observable&lt;[any]&gt;} {&quot;groups&quot;: [{&quot;id&quot;: number, &quot;title&quot;: string, &quot;created_time&quot;: number, &quot;apps&quot;: [_app, _app, ...]}, {}, ...]}
-   * @memberof ApiConnectionService
+   * @example
+   * Use in angular template with the &#x60;async&#x60; pipe
+   * userService.user | async
+   * Subscribe in ts: userService.user.subscribe
+   *
+   * @readonly
+   * @memberof UserService
    */
-  getFeaturedGroups(_params?: any): Observable&lt;[any]&gt; {
-    const _query_string &#x3D; this.encode_query_string(_params);
-    console.log(&#x27;getFeaturedGroups&#x27;, _query_string);
-    return this.http.get(&#x60;${this.featured_url}?${_query_string}&#x60;)
-          .map((res: any) &#x3D;&gt; {
-            return this.extractData(res).groups;
-          }).catch(this.handleError);
+  get user() {
+    return this._user.asObservable();
+  }
+  get userObject() {
+    return this._user.getValue();
+  }
+  get coins() {
+    return this._user.getValue().coins;
+  }
+  get data() {
+    return this._user.getValue().data;
+  }
+  // TODO: Possibly create a userService.messages
+
+  loadUser() {
+    this.localStorageService.get(&#x27;was-user&#x27;)
+      .then((value: any): void &#x3D;&gt; {
+        if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; value.user_id !&#x3D;&#x3D; undefined) {
+          const _localUser &#x3D; value as User;
+          this._user.next(_localUser);
+          // normal load
+          console.log(&#x27;UserService loadUser: load user from db&#x27;, _localUser);
+          this.updateUser({});
+          this._createNewUser &#x3D; false;
+        } else {
+          // create new user
+          this._createNewUser &#x3D; true;
+          this.updateUser({});
+        }
+      }
+      ).catch(this.handleError);
+  }
+  private handleError(error: any): Promise&lt;any&gt; {
+    // .catch(this.handleError);
+    console.error(&#x27;UserService: An error occurred&#x27;, error);  // for demo purposes
+    return Promise.reject(error.message || error);
   }
 
-  // Creates or updates person, returns person info
-  // person info also includes inapps and app settings
-  createPerson(apiobject: any): Observable&lt;any&gt; {
-    return this.http.post(this.person_url, apiobject)
-               .map(this.extractData)
-               .catch(this.handleError);
+  checkStandalone(): void {
+    if ((&#x27;standalone&#x27; in window.navigator) &amp;&amp; !(&lt;any&gt;window.navigator).standalone) {
+      this.standalone &#x3D; false;
+    } else {
+      this.standalone &#x3D; true;
+    }
   }
-  // Sends the email a recovery token
-  tokenPerson(email: string): Observable&lt;any&gt; {
-    return this.http.post(this.person_recover_token_url, {email: email})
-               .map(this.extractData)
-               .catch(this.handleError);
+
+  /**
+   * Fast UUID generator, RFC4122 version 4 compliant.
+   * @author Jeff Ward (jcward.com).
+   * @license MIT license
+   * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
+   **/
+  guid(): string {
+    /* tslint:disable: no-bitwise */
+    for (let i &#x3D; 0; i &lt; 256; i++) { this.lut[i] &#x3D; (i &lt; 16 ? &#x27;0&#x27; : &#x27;&#x27;) + (i).toString(16); }
+    let d0;
+    let d1;
+    let d2;
+    let d3;
+    if (typeof (window) !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; typeof (window.crypto) !&#x3D;&#x3D; &#x27;undefined&#x27;
+      &amp;&amp; typeof (window.crypto.getRandomValues) !&#x3D;&#x3D; &#x27;undefined&#x27;) {
+      const dvals &#x3D; new Uint32Array(4);
+      window.crypto.getRandomValues(dvals);
+      d0 &#x3D; dvals[0];
+      d1 &#x3D; dvals[1];
+      d2 &#x3D; dvals[2];
+      d3 &#x3D; dvals[3];
+    } else {
+      d0 &#x3D; Math.random() * 0xffffffff | 0;
+      d1 &#x3D; Math.random() * 0xffffffff | 0;
+      d2 &#x3D; Math.random() * 0xffffffff | 0;
+      d3 &#x3D; Math.random() * 0xffffffff | 0;
+    }
+    return this.lut[d0 &amp; 0xff] + this.lut[d0&gt;&gt; 8 &amp; 0xff] + this.lut[d0 &gt;&gt; 16 &amp; 0xff] + this.lut[d0 &gt;&gt; 24 &amp; 0xff] + &#x27;-&#x27; +
+      this.lut[d1 &amp; 0xff] + this.lut[d1 &gt;&gt; 8 &amp; 0xff] + &#x27;-&#x27; + this.lut[d1 &gt;&gt; 16 &amp; 0x0f | 0x40] + this.lut[d1 &gt;&gt; 24 &amp; 0xff] + &#x27;-&#x27; +
+      this.lut[d2 &amp; 0x3f | 0x80] + this.lut[d2 &gt;&gt; 8 &amp; 0xff] + &#x27;-&#x27; + this.lut[d2 &gt;&gt; 16 &amp; 0xff] + this.lut[d2 &gt;&gt; 24 &amp; 0xff] +
+      this.lut[d3 &amp; 0xff] + this.lut[d3 &gt;&gt; 8 &amp; 0xff] + this.lut[d3 &gt;&gt; 16 &amp; 0xff] + this.lut[d3 &gt;&gt; 24 &amp; 0xff];
   }
-  // Verify the recovery token
-  verifyPerson(email: string, verification_token: string, version: number): Observable&lt;any&gt; {
-    console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;API verifyPerson&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    console.log(&#x27;API: verifyPerson&#x27;, email, verification_token, version);
-    return this.http.post(this.person_recover_verify_url,
-      {email: email, verification_token: verification_token, version: version})
-               .map(this.extractData)
-               .catch(this.handleError);
+
+  /**
+   * Update User object, saves locally and to server.
+   *
+   * @param {number} [app_coins] OPTIONAL coins number, use it wherever/however.
+   * @param {string} [app_data] OPTIONAL data string, use it wherever/however (e.g. save JSON or other string encoded objects).
+   * @returns {Observable&lt;any&gt;}
+   * @memberof UserService
+   */
+  updateUser(userParams: UserParams): Observable&lt;User&gt; {
+    let currentUser &#x3D; this._user.getValue();
+    if (this._createNewUser &#x3D;&#x3D;&#x3D; true) {
+      this._createNewUser &#x3D; false;
+      console.warn(&#x27;UserService: NO USER, CREATE USER&#x27;);
+      currentUser.user_id &#x3D; this.guid();
+    }
+    console.log(&#x27;updateUser:&#x27;, currentUser);
+    const apiobject &#x3D; {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: undefined, app_data: undefined,
+      email: undefined, freebie_used: undefined, rated_app: undefined};
+    if (userParams.email) {
+      apiobject.email &#x3D; userParams.email;
+    }
+    if (userParams.freebie_used) {
+      apiobject.freebie_used &#x3D; userParams.freebie_used;
+    }
+    if (userParams.rated_app) {
+      apiobject.rated_app &#x3D; userParams.rated_app;
+    }
+    if (userParams.coins) {
+      apiobject.app_coins &#x3D; userParams.coins;
+    } else {
+      apiobject.app_coins &#x3D; currentUser.coins;
+    }
+    if (userParams.data) {
+      apiobject.app_data &#x3D; userParams.data;
+    } else {
+      apiobject.app_data &#x3D; currentUser.data;
+    }
+    // GET IF LAUNCHED FROM HOMESCREEN //
+    this.checkStandalone();
+    if (this.standalone) {
+      apiobject.standalone &#x3D; this.standalone;
+    }
+    const _obs &#x3D; this.apiConnectionService.createPerson(apiobject);
+    _obs.subscribe((res) &#x3D;&gt; {
+      if (res.status &#x3D;&#x3D;&#x3D; 201) {
+        console.log(&#x27;UserService: updateUser: NEW RETURN:&#x27;, res);
+        // On new user/recover
+        // TODO: Add more of a verification
+        this._user.next(res);
+      } else {
+        console.log(&#x27;UserService: updateUser: RETURN:&#x27;, res);
+        currentUser &#x3D; this._user.getValue();
+        // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
+        if (res.email &amp;&amp; res.user_id) {
+          currentUser.user_id &#x3D; res.user_id;
+        }
+        currentUser.email &#x3D; res.email;
+        if (res.coins) {
+          currentUser.coins &#x3D; res.coins;
+        }
+        if (res.data) {
+          currentUser.data &#x3D; res.data;
+        }
+        currentUser.created_time &#x3D; res.created_time;
+        currentUser.freebie_used &#x3D; res.freebie_used;
+        currentUser.settings &#x3D; res.settings;
+        this._user.next(res);
+      }
+      // UPDATE USER //
+      this.localStorageService.set(&#x27;was-user&#x27;, res);
+      // NOTE: Handle special_message in calling component.
+      if (res.special_message) {
+        console.log(&#x60;UserService: updateUser: special_message:[${res.special_message}]&#x60;);
+        confirm(&#x60;${res.special_message.title}\n${res.special_message.message}&#x60;);
+        // this.error_message &#x3D; {
+        //   title: res.special_message.title, message: res.special_message.message,
+        //   button_type: &#x27;btn-info&#x27;, header_bg: &#x27;#29B6F6&#x27;, header_color: &#x27;black&#x27;,
+        //   helpmessage: [],
+        //   randcookie: &#x60;${Math.random()}${Math.random()}${Math.random()}&#x60;
+        // };
+      }
+      // Add user context in sentry
+      // Raven.setUserContext({email: this._user.email, id: this._user.user_id});
+    }, (error) &#x3D;&gt; {
+      console.log(&#x60;UserService: updateUser: error:[${error}]&#x60;);
+      // NOTE: Handle errors in calling component.
+      // alert(&#x60;Attention!\n${error}&#x60;);
+      // &lt;any&gt;error | this casts error to be any
+    });
+    return _obs;
   }
+
+  sendToken(userParams: UserParams): Observable&lt;any&gt; {
+    let _updatedUsr &#x3D; this._user.getValue();
+    _updatedUsr.token_email &#x3D; userParams.token_email;
+    this._user.next(_updatedUsr);
+    const _obs &#x3D; this.apiConnectionService.tokenPerson(userParams.token_email);
+    _obs.subscribe((res) &#x3D;&gt; {
+      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr.logging_in &#x3D; true;
+      this._user.next(_updatedUsr);
+      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+    }, (error) &#x3D;&gt; {
+      // &lt;any&gt;error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  stopToken() {
+    let _updatedUsr &#x3D; this._user.getValue();
+    _updatedUsr.logging_in &#x3D; false;
+    this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+  }
+
+  verifyToken(userParams: UserParams): Observable&lt;any&gt; {
+    console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService verifyToken&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
+    const _obs &#x3D; this.apiConnectionService.verifyPerson(this._user.getValue().token_email, userParams.token, .1);
+    _obs.subscribe((res) &#x3D;&gt; {
+      console.log(&#x27;WASlogin: verifyPerson RETURN:&#x27;, res);
+      // Set logging in process off //
+      const _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr.logging_in &#x3D; false;
+      _updatedUsr.user_id &#x3D; res.user_id;
+      _updatedUsr.email &#x3D; res.email;
+      // Add user_data
+      if (res.coins) {
+        _updatedUsr.coins &#x3D; res.coins;
+      }
+      if (res.data) {
+        _updatedUsr.data &#x3D; res.data;
+      }
+      _updatedUsr.created_time &#x3D; res.created_time;
+      _updatedUsr.freebie_used &#x3D; res.freebie_used;
+      _updatedUsr.settings &#x3D; res.settings;
+      // UPDATE USER //
+      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+    }, (error) &#x3D;&gt; {
+      // Set logging in process off //
+      const _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr.logging_in &#x3D; false;
+      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      // &lt;any&gt;error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  // addTodo(newTodo:Todo):Observable {
+  //   let obs &#x3D; this.todoBackendService.saveTodo(newTodo);
+  //   obs.subscribe(
+  //           res &#x3D;&gt; {
+  //               this._todos.next(this._todos.getValue().push(newTodo));
+  //           });
+  //   return obs;
+  // }
 
 }
 </code></pre>

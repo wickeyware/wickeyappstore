@@ -1,10 +1,8 @@
 /* tslint:disable: member-ordering forin */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription, Observable } from 'rxjs/Rx';
 
-import { ApiConnectionService } from '../../../api-connection.service';
-import { LocalStorageService } from '../../../local-storage.service';
 import { UserService } from '../../../user.service';
 import { User, ErrorTable } from '../../../app.models';
 
@@ -106,7 +104,6 @@ import { customValidator } from '../../../custom-validator.directive';
 export class PopoverLoginComponent implements OnInit {
   @Output() close: EventEmitter<string> = new EventEmitter();
   @Input() public hidden: false; // can choose to make the button invisiblemakewhite
-  public user: User;
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
@@ -134,15 +131,11 @@ export class PopoverLoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    // console.log('ngOnInit - SSO');
-    console.log('WASlogin: load user');
-    this.user = this.userService.userObject;
+    console.log('WASlogin: ngOnInit');
     this.buildPageForms();
   }
 
@@ -153,21 +146,21 @@ export class PopoverLoginComponent implements OnInit {
   }
   checkLoggingIn() {
     setTimeout(() => {
-      if (this.user.logging_in) {
+      if (this.userService.userObject.logging_in) {
         // console.log('ngOnInit: show SSO');
         // then show the SSO
         this.buttonClick();
         this.showTokenState = 'sent';
         this.sendButtonText = 'Send it again';
         this.sendEmailState = 'inactive';
-        this.email_term = this.user.token_email;
+        this.email_term = this.userService.userObject.token_email;
       }
     }, 1000);
   }
 
   buildEmailForm(): void {
     this.emailForm = this.fb.group({
-      'email': [this.user.email, [
+      'email': [this.userService.userObject.email, [
         Validators.required,
         customValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i)]
       ]
@@ -256,12 +249,6 @@ export class PopoverLoginComponent implements OnInit {
     if (this.overlayState === 'out') {
       this.showOverlay = 1; // show the overlay
       this.overlayState = 'in'; // set it to animate in
-      // // show token input, if logging in
-      // if (this.user.logging_in === true) {
-      //   this.showTokenState = 'sent';
-      // } else {
-      //   this.showTokenState = null;
-      // }
     } else {
       this.overlayState = 'out';
     }
@@ -276,8 +263,7 @@ export class PopoverLoginComponent implements OnInit {
   closeOverlay(): void {
     this.overlayState = 'out';
     // Set logging in process off //
-    this.user.logging_in = false;
-    this.localStorageService.set('was-user', this.user);
+    this.userService.stopToken();
   }
   catchClick(event: any): void {
     event.stopPropagation();
@@ -326,10 +312,9 @@ export class PopoverLoginComponent implements OnInit {
   }
 
   tokenPerson(email: string): void {
-    this.user.token_email = email;
     this.sendEmailState = 'active';
-    this.busyEmail = this.apiConnectionService
-      .tokenPerson(email)
+    this.busyEmail = this.userService
+      .sendToken({'token_email': email})
       .subscribe((res) => {
         this.alert_table = {
           title: 'Check email (' + email + ')',
@@ -338,9 +323,6 @@ export class PopoverLoginComponent implements OnInit {
           helpmessage: [],
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
         };
-        this.user.logging_in = true;
-        this.localStorageService.set('was-user', this.user);
-
         this.showTokenState = 'sent';
         this.sendButtonText = 'Resend the login token';
         this.sendEmailState = 'inactive';
@@ -358,37 +340,18 @@ export class PopoverLoginComponent implements OnInit {
   }
 
   verifyPerson(verification_token: string): void {
+    // TODO: This is called twice
+    console.log('============SSO verifyPerson=========');
     this.sendTokenState = 'active';
-    this.busyToken = this.apiConnectionService
-      .verifyPerson(this.user.token_email, verification_token, this.version)
+    this.busyToken = this.userService
+      .verifyToken({'token': verification_token})
       .subscribe((res) => {
-        // TODO: Handle results
-        // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
-        // PLUS: freebie_used, settings, inapps, rated_app
-        console.log('WASlogin: verifyPerson RETURN:', res);
-        // Set logging in process off //
-        this.user.logging_in = false;
-        this.user.user_id = res.user_id;
-        this.user.email = res.email;
-        // Add user_data
-        if (res.coins) {
-          this.user.coins = res.coins;
-        }
-        if (res.data) {
-          this.user.data = res.data;
-        }
-        this.user.created_time = res.created_time;
-        this.user.freebie_used = res.freebie_used;
-        this.user.settings = res.settings;
-        // UPDATE USER //
-        this.localStorageService.set('was-user', this.user).then(() => {
-          this.sendButtonText = 'Login';
-          this.showTokenState = null;
-          this.sendTokenState = 'inactive';
-          this.token = '';
-          this.closeOverlay();
-          this.close.emit(this.user.email);
-        });
+        this.sendButtonText = 'Login';
+        this.showTokenState = null;
+        this.sendTokenState = 'inactive';
+        this.token = '';
+        this.closeOverlay();
+        this.close.emit(res.email);
         this.alert_table = {
           title: 'Successful login',
           message: 'Log into ' + res.email + ' success!',
@@ -397,11 +360,7 @@ export class PopoverLoginComponent implements OnInit {
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
         };
       }, (error) => {
-        // Set logging in process off //
-        this.user.logging_in = false;
-        this.localStorageService.set('was-user', this.user).then(() => {
-          this.sendTokenState = 'inactive';
-        });
+        this.sendTokenState = 'inactive';
         // <any>error | this casts error to be any
         this.alert_table = {
           title: 'Attention!',

@@ -105,6 +105,8 @@ export class ApiConnectionService {
   }
   // Verify the recovery token
   verifyPerson(email: string, verification_token: string, version: number): Observable<any> {
+    console.log('============API verifyPerson=========');
+    console.log('API: verifyPerson', email, verification_token, version);
     return this.http.post(this.person_recover_verify_url,
       {email: email, verification_token: verification_token, version: version})
                .map(this.extractData)
