@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import { ApiConnectionService } from '../../../api-connection.service';
 import { LocalStorageService } from '../../../local-storage.service';
+import { UserService } from '../../../user.service';
 import { User, ErrorTable } from '../../../app.models';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -104,8 +105,8 @@ import { customValidator } from '../../../custom-validator.directive';
 })
 export class PopoverLoginComponent implements OnInit {
   @Output() close: EventEmitter<string> = new EventEmitter();
-  @Input() public user: User;
   @Input() public hidden: false; // can choose to make the button invisiblemakewhite
+  public user: User;
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
@@ -132,6 +133,7 @@ export class PopoverLoginComponent implements OnInit {
   public tokenForm: FormGroup;
 
   constructor(
+    private userService: UserService,
     private apiConnectionService: ApiConnectionService,
     private localStorageService: LocalStorageService,
     private fb: FormBuilder
@@ -139,18 +141,9 @@ export class PopoverLoginComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log('ngOnInit - SSO');
-    if (this.showOverlay && this.user === undefined) {
-      console.log('WASlogin: load user');
-      this.localStorageService.get('was-user').then((value: any) => this.user = value as User).then(() => {
-        this.buildPageForms();
-      });
-    } else {
-      // console.log('WASlogin: user passed in', this.showOverlay, this.user);
-      // this.buildPageForms();
-      this.localStorageService.get('was-user').then((value: any) => this.user = value as User).then(() => {
-        this.buildPageForms();
-      });
-    }
+    console.log('WASlogin: load user');
+    this.user = this.userService.userObject;
+    this.buildPageForms();
   }
 
   buildPageForms() {

@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
 import { WasRoutingModule } from './was-routing/was-routing.module';
 
+import { UserService } from './user.service';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
@@ -27,6 +28,7 @@ import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/p
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
 
+export * from './user.service';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
 export * from './local-storage.service';
@@ -86,12 +88,15 @@ export * from './custom-validator.directive';
     PopoverLoginComponent,
     CustomValidatorDirective
   ],
+  providers: [
+    ApiConnectionService, LocalStorageService, UserService
+  ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService]
+      providers: [ApiConnectionService, LocalStorageService, UserService]
     };
   }
 }

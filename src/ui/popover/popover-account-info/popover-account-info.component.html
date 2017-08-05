@@ -21,20 +21,20 @@
         (click)="catchClick($event)">
         <div class="db-FixedPopover-arrow db-arrow-right"></div>
         <div class="db-FixedPopover-contents" [innerHTML]="html"></div>
-        <div class="db-MenuHeader">
-            <span *ngIf="!showEditEmailState">{{getEmailString()}}
+        <div class="db-MenuHeader" *ngIf="userService.user | async as userobj">
+            <span *ngIf="!showEditEmailState">{{getEmailString | async}}
                 <span class="Button-link" (click)="editEmailClick()">Edit</span></span>
             <div class="emailGroup" *ngIf="showEditEmailState" [@showEmailEditAnim]='showEditEmailState'>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">@</span>
                     <input type="email" class="form-control highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"
-                        #emailInput value="{{user.email}}">
+                        #emailInput value="{{userobj.email}}">
                 </div>
-                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText()}}</button>
+                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText | async}}</button>
             </div>
-            <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge(user.created_time)}}</span>v{{version}}</span>
+            <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge | async}}</span>v{{version}}</span>
         </div>
-        <div (click)="signoutfunc()" label="Sign Out" class="db-MenuItem">{{getSignoutButtonText()}}</div>
+        <div (click)="signoutfunc()" label="Sign Out" class="db-MenuItem">{{getSignoutButtonText | async}}</div>
 
     </div>
 </div>

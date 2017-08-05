@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
+import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
 // import { slideInDownAnimation } from '../../../animations'; // Figure this out at some point
 
 // use like this:

@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { ApiConnectionService } from '../../../api-connection.service';
 import { LocalStorageService } from '../../../local-storage.service';
+import { UserService } from '../../../user.service';
 import { User, ErrorTable } from '../../../app.models';
-import { Subscription } from 'rxjs/Rx';
+// import { Observable } from "rxjs/Observable";
+import { Subscription, Observable } from 'rxjs/Rx';
 import { DatePipe } from '@angular/common';
 
 /**
@@ -78,32 +80,26 @@ import { DatePipe } from '@angular/common';
 export class PopoverAccountInfoComponent implements OnInit {
   @Input() public isModal = false; // if this is modal, then covers the whole screen with a background
   @Input() public html = ''; // this is the html to go in the container body
-  @Input() public user: User;
   @Output() public signout: EventEmitter<any> = new EventEmitter();
   busy: Subscription;
   public alert_table: ErrorTable;
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '0.5.13';
+  public version = '0.6.13';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
   private temp_email: string;
 
   constructor(
+    private userService: UserService,
     private apiConnectionService: ApiConnectionService,
     private localStorageService: LocalStorageService,
     private datePipe: DatePipe
   ) { }
 
-  ngOnInit() {
-    // TODO: getEmailString still has "Cannot read property 'email' of undefined", needs to check for undefined as well
-    if (this.showOverlay && this.user === undefined) {
-      console.log('WASaccount: load user');
-      this.localStorageService.get('was-user').then((value: any) => this.user = value as User);
-    }
-  }
+  ngOnInit() { }
   onAlertClose(data: any): void {
     if (data === 'button_action') {
       // this.logoutUser(data);
@@ -150,11 +146,11 @@ export class PopoverAccountInfoComponent implements OnInit {
     return (!str || 0 === str.length);
   }
 
-  canISignOut(): boolean {
-    if (this.isEmpty(this.user.email) === false) {
+  canISignOut(_email: string, _coins: number): boolean {
+    if (this.isEmpty(_email) === false) {
       return true;
     } else {
-      if (this.user.coins === 0) {
+      if (_coins === 0) {
         // no email and no coins. Can sign out
         return true;
       } else {
@@ -164,7 +160,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   }
 
   signoutfunc(): void {
-    if (this.canISignOut() === true) {
+    if (this.canISignOut(this.userService.userObject.email, this.userService.userObject.coins) === true) {
       this.showOverlay = null;
       this.showEditEmailState = null;
       this.signout.emit('');
@@ -181,130 +177,112 @@ export class PopoverAccountInfoComponent implements OnInit {
     }
   }
 
-  getEmailString(): string {
-    if (this.user.email) {
-      return this.user.email;
-    } else {
-      return '{ No Email Saved }';
-    }
+  get getEmailString() {
+    return this.userService.user.map((usr: User) => {
+      if (usr.email) {
+        return usr.email;
+      } else {
+        return '{ No Email Saved }';
+      }
+    });
   }
 
-  getSaveEmailButtonText(): string {
-    if (this.user.email) {
-      return 'Update';
-    } else {
-      return 'Add Email';
-    }
+  get getSaveEmailButtonText() {
+    return this.userService.user.map((usr: User) => {
+      if (usr.email) {
+        return 'Update';
+      } else {
+        return 'Add Email';
+      }
+    });
   }
 
-  getSignoutButtonText(): string {
-    if (this.canISignOut() === false) {
-      return 'How can I switch accounts';
-    } else {
-      return 'Log into another account';
-    }
+  get getSignoutButtonText() {
+    return this.userService.user.map((usr: User) => {
+      if (this.canISignOut(usr.email, usr.coins) === false) {
+        return 'How can I switch accounts';
+      } else {
+        return 'Log into another account';
+      }
+    });
   }
 
-  accountAge(create_time: number): string {
-
-    const date = +new Date(create_time * 1000);
-    const currentDate = +new Date();
-    const milisecondsDiff = currentDate - date;
-    const secondsDiff = milisecondsDiff / 1000;
-    const minutesDiff = Math.floor(secondsDiff / 60);
-    const hoursDiff = Math.floor(minutesDiff / 60);
-    const daysDiff = Math.floor(hoursDiff / 24);
-    if (minutesDiff < 5) {
-      return 'This account is brand new';
-    } else if (minutesDiff < 10) {
-      return 'This account was created a few minutes ago';
-    } else if (minutesDiff < 30) {
-      return 'This account was created about a half hour ago';
-    } else if (hoursDiff < 2) {
-      return 'This account was created about an hour ago';
-    } else if (hoursDiff < 6) {
-      return 'This account is a few hours old';
-    } else if (hoursDiff < 18) {
-      return 'This account is half a day old';
-    } else if (daysDiff < 2) {
-      return 'This account is a day old';
-    } else if (daysDiff < 5) {
-      return 'This account is a few days old';
-    } else if (daysDiff < 12) {
-      return 'This account is about a week old';
-    } else if (daysDiff < 20) {
-      return 'This account is a few weeks old';
-    } else if (daysDiff < 40) {
-      return 'This account is about a month old';
-    } else if (daysDiff < 80) {
-      return 'This account is a few months old';
-    } else {
-      return 'Created on ' + this.datePipe.transform(create_time * 1000);
-    }
+  get accountAge() {
+    return this.userService.user.map((usr: User) => {
+      const create_time = usr.created_time;
+      // TODO: ERROR HERE InvalidPipeArgument
+      console.log('accountAge', create_time);
+      const date = +new Date(create_time * 1000);
+      const currentDate = +new Date();
+      const milisecondsDiff = currentDate - date;
+      const secondsDiff = milisecondsDiff / 1000;
+      const minutesDiff = Math.floor(secondsDiff / 60);
+      const hoursDiff = Math.floor(minutesDiff / 60);
+      const daysDiff = Math.floor(hoursDiff / 24);
+      if (minutesDiff < 5) {
+        return 'This account is brand new';
+      } else if (minutesDiff < 10) {
+        return 'This account was created a few minutes ago';
+      } else if (minutesDiff < 30) {
+        return 'This account was created about a half hour ago';
+      } else if (hoursDiff < 2) {
+        return 'This account was created about an hour ago';
+      } else if (hoursDiff < 6) {
+        return 'This account is a few hours old';
+      } else if (hoursDiff < 18) {
+        return 'This account is half a day old';
+      } else if (daysDiff < 2) {
+        return 'This account is a day old';
+      } else if (daysDiff < 5) {
+        return 'This account is a few days old';
+      } else if (daysDiff < 12) {
+        return 'This account is about a week old';
+      } else if (daysDiff < 20) {
+        return 'This account is a few weeks old';
+      } else if (daysDiff < 40) {
+        return 'This account is about a month old';
+      } else if (daysDiff < 80) {
+        return 'This account is a few months old';
+      } else {
+        return 'Created on ' + this.datePipe.transform(create_time * 1000);
+      }
+    });
   }
 
   updateEmail(email: string): void {
     console.log('WASaccount: updateEmail', email);
     this.temp_email = email;
-    this.updateUser();
-  }
-
-  updateUser(): void {
-    let apiobject = {user_id: this.user.user_id, email: this.temp_email, version: .1};
-    this.showEditEmailState = null;
-    this.busy = this.apiConnectionService
-      .createPerson(apiobject)
-      .subscribe((res) => {
-        // TODO: Handle results
-        // Standard return: signature, paypal, allow_reward_push, next_reward, coins, isPro, user_id
-        // PLUS: freebie_used, settings, inapps, rated_app
-        console.log('WASaccount: updateUser RETURN:', res);
-        // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
-        if (res.email && res.user_id) {
-          this.user.user_id = res.user_id;
-        }
-        this.user.email = this.temp_email;
-        // Add user_data
-        if (res.coins) {
-          this.user.coins = res.coins;
-        }
-        if (res.data) {
-          this.user.data = res.data;
-        }
-        this.user.created_time = res.created_time;
-        this.user.freebie_used = res.freebie_used;
-        // UPDATE USER //
-        this.localStorageService.set('was-user', this.user);
-
+    this.busy = this.userService.updateUser({email: this.temp_email}).subscribe((res) => {
+      console.log('updateEmail: RETURN', res);
+      this.alert_table = {
+        title: 'Email updated',
+        message: 'You have set your email to ' + res.email,
+        button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
+        helpmessage: [],
+        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+      };
+    }, (error) => {
+      console.log('updateEmail: RETURN ERROR', error);
+      // <any>error | this casts error to be any
+      if (typeof error === 'string' && error.startsWith('This email exists')) {
         this.alert_table = {
-          title: 'Email updated',
-          message: 'You have set your email to ' + this.user.email,
-          button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
+          title: 'Attention!',
+          message: error,
+          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+          helpmessage: [],
+          button_action: 'Login',
+          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+        };
+      } else {
+        this.alert_table = {
+          title: 'Attention!',
+          message: error,
+          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
           helpmessage: [],
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
         };
-        // this.goBack();
-      }, (error) => {
-        // <any>error | this casts error to be any
-        if (typeof error === 'string' && error.startsWith('This email exists')) {
-          this.alert_table = {
-            title: 'Attention!',
-            message: error,
-            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-            helpmessage: [],
-            button_action: 'Login',
-            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-          };
-        } else {
-          this.alert_table = {
-            title: 'Attention!',
-            message: error,
-            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-            helpmessage: [],
-            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-          };
-        }
-      });
+      }
+    });
   }
 
 }

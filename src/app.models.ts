@@ -11,7 +11,7 @@ export interface User {
   data?: any;
   email?: string;
   token_email?: string;
-  created_time?: string;
+  created_time?: number;
   freebie_used?: boolean;
   rated_app?: boolean;
   settings?: Settings;
