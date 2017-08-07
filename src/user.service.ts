@@ -160,7 +160,7 @@ export class UserService {
       console.warn('UserService: NO USER, CREATE USER');
       currentUser.user_id = this.guid();
     }
-    console.log('updateUser:', currentUser);
+    console.log('UserService: updateUser:', currentUser);
     const apiobject = {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: undefined, app_data: undefined,
       email: undefined, freebie_used: undefined, rated_app: undefined};
     if (userParams.email) {
@@ -238,6 +238,7 @@ export class UserService {
   }
 
   sendToken(userParams: UserParams): Observable<any> {
+    console.log('============UserService sendToken=========');
     let _updatedUsr = this._user.getValue();
     _updatedUsr.token_email = userParams.token_email;
     this._user.next(_updatedUsr);

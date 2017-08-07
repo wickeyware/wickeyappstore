@@ -340,8 +340,6 @@ export class PopoverLoginComponent implements OnInit {
   }
 
   verifyPerson(verification_token: string): void {
-    // TODO: This is called twice
-    console.log('============SSO verifyPerson=========');
     this.sendTokenState = 'active';
     this.busyToken = this.userService
       .verifyToken({'token': verification_token})

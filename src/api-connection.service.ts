@@ -1,9 +1,9 @@
-import { Subscription } from 'rxjs/Rx';
+import { Subscription, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 // import { Headers, RequestOptions, Response, Http } from '@angular/http';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
@@ -66,12 +66,13 @@ export class ApiConnectionService {
 
   // Returns app store apps {name: string, category: number, ordering: number}
   getApps(_params?: any): Observable<[any]> {
+    // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getApps', _query_string);
     return this.http.get(`${this.app_url}?${_query_string}`)
           .map((res: any) => {
             return this.extractData(res).apps;
-          }).catch(this.handleError);
+          }).catch(this.handleError).share();
   }
 
   /**
@@ -82,35 +83,37 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   getFeaturedGroups(_params?: any): Observable<[any]> {
+    // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
-    console.log('getFeaturedGroups', _query_string);
+    console.log('WASAPI: getFeaturedGroups', _query_string);
     return this.http.get(`${this.featured_url}?${_query_string}`)
           .map((res: any) => {
             return this.extractData(res).groups;
-          }).catch(this.handleError);
+          }).catch(this.handleError).share();
   }
 
   // Creates or updates person, returns person info
   // person info also includes inapps and app settings
   createPerson(apiobject: any): Observable<any> {
+    // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_url, apiobject)
                .map(this.extractData)
-               .catch(this.handleError);
+               .catch(this.handleError).share();
   }
   // Sends the email a recovery token
   tokenPerson(email: string): Observable<any> {
+    // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_token_url, {email: email})
                .map(this.extractData)
-               .catch(this.handleError);
+               .catch(this.handleError).share();
   }
   // Verify the recovery token
   verifyPerson(email: string, verification_token: string, version: number): Observable<any> {
-    console.log('============API verifyPerson=========');
-    console.log('API: verifyPerson', email, verification_token, version);
+    // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
       {email: email, verification_token: verification_token, version: version})
                .map(this.extractData)
-               .catch(this.handleError);
+               .catch(this.handleError).share();
   }
 
 }
