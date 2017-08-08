@@ -162,9 +162,9 @@ export class PopoverLoginComponent implements OnInit {
     return this.userService.user.map((usr: User) => {
       let _loginMsg = '';
       if (usr.email && usr.email.length > 3) {
-          _loginMsg = 'Create an account or Login?';
-        } else {
           _loginMsg = 'Login to another account?';
+        } else {
+          _loginMsg = 'Create an account or Login?';
         }
       return _loginMsg;
     });
@@ -329,9 +329,13 @@ export class PopoverLoginComponent implements OnInit {
     this.busyEmail = this.userService
       .sendToken({'token_email': email})
       .subscribe((res) => {
+        let _alertMessage = 'The login token was sent. Enter it in token field to finish the login.';
+        if (res.new_account) {
+          _alertMessage = 'The verification token was sent. Enter it in token field to finish creating account.';
+        }
         this.alert_table = {
           title: 'Check email (' + email + ')',
-          message: 'The login token was sent. Enter it in token field to finish the login.',
+          message: _alertMessage,
           button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
           helpmessage: [],
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,

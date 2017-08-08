@@ -259,11 +259,12 @@ export class UserService {
 
   verifyToken(userParams: UserParams): Observable<any> {
     console.log('============UserService verifyToken=========');
-    const _obs = this.apiConnectionService.verifyPerson(this._user.getValue().token_email, userParams.token, .1);
+    let _updatedUsr = this._user.getValue();
+    const _obs = this.apiConnectionService.verifyPerson(_updatedUsr.token_email, _updatedUsr.user_id, userParams.token, .1);
     _obs.subscribe((res) => {
       console.log('WASlogin: verifyPerson RETURN:', res);
       // Set logging in process off //
-      const _updatedUsr = this._user.getValue();
+      _updatedUsr = this._user.getValue();
       _updatedUsr.logging_in = false;
       _updatedUsr.user_id = res.user_id;
       _updatedUsr.email = res.email;

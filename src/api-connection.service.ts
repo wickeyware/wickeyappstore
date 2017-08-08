@@ -108,10 +108,10 @@ export class ApiConnectionService {
                .catch(this.handleError).share();
   }
   // Verify the recovery token
-  verifyPerson(email: string, verification_token: string, version: number): Observable<any> {
+  verifyPerson(email: string, user_id: string, verification_token: string, version: number): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
-      {email: email, verification_token: verification_token, version: version})
+      {email: email, user_id: user_id, verification_token: verification_token, version: version})
                .map(this.extractData)
                .catch(this.handleError).share();
   }
