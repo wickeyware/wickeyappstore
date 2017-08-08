@@ -158,6 +158,17 @@ export class PopoverLoginComponent implements OnInit {
       }
     }, 1000);
   }
+  get loginMessage() {
+    return this.userService.user.map((usr: User) => {
+      let _loginMsg = '';
+      if (usr.email && usr.email.length > 3) {
+          _loginMsg = 'Create an account or Login?';
+        } else {
+          _loginMsg = 'Login to another account?';
+        }
+      return _loginMsg;
+    });
+  }
 
   buildEmailForm(): void {
     this.emailForm = this.fb.group({
