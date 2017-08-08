@@ -84,7 +84,19 @@ gulp.task('rollup:fesm', function () {
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@angular/platform-browser',
+        '@angular/forms',
+        '@angular/common/http',
+        '@angular/platform-browser/animations',
+        '@angular/router',
+        '@angular/animations',
+        'rxjs/Rx',
+        'rxjs/add/operator/catch',
+        'rxjs/add/observable/throw',
+        'rxjs/add/operator/map',
+        'rxjs/add/operator/switchMap',
+        'angular2-useful-swiper'
       ],
 
       // Format of generated bundle
@@ -117,7 +129,19 @@ gulp.task('rollup:umd', function () {
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@angular/platform-browser',
+        '@angular/forms',
+        '@angular/common/http',
+        '@angular/platform-browser/animations',
+        '@angular/router',
+        '@angular/animations',
+        'rxjs/Rx',
+        'rxjs/add/operator/catch',
+        'rxjs/add/observable/throw',
+        'rxjs/add/operator/map',
+        'rxjs/add/operator/switchMap',
+        'angular2-useful-swiper'
       ],
 
       // Format of generated bundle

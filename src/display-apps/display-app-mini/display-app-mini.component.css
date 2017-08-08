@@ -42,5 +42,6 @@
   /* hide text if it more than N lines  */
   overflow: hidden;
   height: 40px;
-   width: 96px; 
+  width: 96px; 
+  color: #000000;
 }

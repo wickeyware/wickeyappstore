@@ -28,6 +28,9 @@ import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/p
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
 
+export * from 'angular2-useful-swiper';
+export * from './was-routing/was-routing.module';
+export * from './animations';
 export * from './user.service';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
