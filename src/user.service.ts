@@ -174,13 +174,9 @@ export class UserService {
     }
     if (userParams.coins) {
       apiobject.app_coins = userParams.coins;
-    } else {
-      apiobject.app_coins = currentUser.coins;
     }
     if (userParams.data) {
       apiobject.app_data = userParams.data;
-    } else {
-      apiobject.app_data = currentUser.data;
     }
     // GET IF LAUNCHED FROM HOMESCREEN //
     this.checkStandalone();
