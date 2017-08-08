@@ -9,14 +9,15 @@ import { User, ErrorTable } from '../../../app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { customValidator } from '../../../custom-validator.directive';
 /**
- * Shows login popover.
+ * Shows SSO popover. Can be used to create or login to accounts via an email.
+ * All logins and new emails will be verified by token, else user will stay unverified.
  *
- * @param {User} user OPTIONAL The current user object, if not passed in, loads from db
+ * @param {boolean} hidden OPTIONAL Set if text should be hidden.
  * @param {function} close OPTIONAL Emits logged in user email to function on successful login
  *
  * @example
- * Add this wherever you want to display the login button
- * <was-popover-login [user]="user" (close)="closeOnboardScreen($event)"></was-popover-login>
+ * Add this wherever you want to display the SSO button
+ * <was-popover-login #loginpopover (close)="closeOnboardScreen($event)"></was-popover-login>
  *
  * @export
  * @class PopoverLoginComponent
@@ -110,7 +111,7 @@ export class PopoverLoginComponent implements OnInit {
 
   public showLoginState: string = null;
   public showTokenState: string = null;
-  public sendButtonText = 'Login';
+  public sendButtonText = 'Create/Login';
   public sendEmailState = 'inactive';
   public sendTokenState = 'inactive';
   public token = '';
@@ -312,6 +313,7 @@ export class PopoverLoginComponent implements OnInit {
   }
 
   tokenPerson(email: string): void {
+    // NOTE: If email doesn't exist add to their account, send token, set account to verified after token entered
     this.sendEmailState = 'active';
     this.busyEmail = this.userService
       .sendToken({'token_email': email})
@@ -344,15 +346,21 @@ export class PopoverLoginComponent implements OnInit {
     this.busyToken = this.userService
       .verifyToken({'token': verification_token})
       .subscribe((res) => {
-        this.sendButtonText = 'Login';
+        this.sendButtonText = 'Create/Login';
         this.showTokenState = null;
         this.sendTokenState = 'inactive';
         this.token = '';
         this.closeOverlay();
         this.close.emit(res.email);
+        let _alertTitle = 'Successful login';
+        let _alertMessage = 'Log into ' + res.email + ' success!';
+        if (res.account_created) {
+          _alertTitle = 'Successfully created account';
+          _alertMessage = 'Created an account with ' + res.email;
+        }
         this.alert_table = {
-          title: 'Successful login',
-          message: 'Log into ' + res.email + ' success!',
+          title: _alertTitle,
+          message: _alertMessage,
           button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
           helpmessage: [],
           randcookie: `${Math.random()}${Math.random()}${Math.random()}`,

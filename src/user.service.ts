@@ -238,7 +238,7 @@ export class UserService {
     let _updatedUsr = this._user.getValue();
     _updatedUsr.token_email = userParams.token_email;
     this._user.next(_updatedUsr);
-    const _obs = this.apiConnectionService.tokenPerson(userParams.token_email);
+    const _obs = this.apiConnectionService.tokenPerson(userParams.token_email, _updatedUsr.user_id);
     _obs.subscribe((res) => {
       _updatedUsr = this._user.getValue();
       _updatedUsr.logging_in = true;

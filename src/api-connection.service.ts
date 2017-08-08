@@ -101,9 +101,9 @@ export class ApiConnectionService {
                .catch(this.handleError).share();
   }
   // Sends the email a recovery token
-  tokenPerson(email: string): Observable<any> {
+  tokenPerson(email: string, user_id: string): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_recover_token_url, {email: email})
+    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id})
                .map(this.extractData)
                .catch(this.handleError).share();
   }
