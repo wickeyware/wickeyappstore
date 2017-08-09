@@ -8,6 +8,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 
+// TODO: ADD PURCHASES
+
 @Injectable()
 export class ApiConnectionService {
   private person_url = 'https://api.wickeyappstore.com/person/update/';

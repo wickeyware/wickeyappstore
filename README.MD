@@ -1,6 +1,11 @@
 # WickeyAppStore
 Reach the next One Billion users, AppStore for Progressive WebApps.
 
+## Tutorial App
+Check out a tutorial app: 
+REPO: https://github.com/wickeyware/was-tutorial/ 
+LIVE DEMO: https://wickeyware.github.io/was-tutorial/
+
 ## Progressive Web App Store 
 Reach the next One Billion users. WickeyAppStore is a full featured App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.
 
@@ -79,15 +84,15 @@ Once your library is imported, you can use its components, directives and pipes 
 
 ```xml
 <!-- You can now use your library component in app.component.html or wherever needed -->
+<!-- Be sure to add a router-outlet, WAS apps have unique urls -->
+<router-outlet></router-outlet>
 <h1>
   {{title}}
 </h1>
-<!-- Close will be called when app store closes-->
+<!-- The WAS button, when clicked will show the store. Close will be called when app store closes-->
 <wickey-appstore (close)="onWASClose($event)"></wickey-appstore>
-<!-- A button, when clicked will show the account info modal and allow email add/edit -->
-<was-popover-account-info [isModal]="true" [user]="user" (signout)="logoutUser($event)"></was-popover-account-info>
-<!-- A button, when clicked will show the login overlay screen -->
-<was-popover-login [user]="user" (close)="closeLoginScreen($event)"></was-popover-login>
+<!-- A button, when clicked will show the SSO overlay screen (create or login to accounts) -->
+<was-popover-login #loginpopover (close)="closeLoginScreen($event)"></was-popover-login>
 ```
 
 Link CSS, or copy it into your styles.css:

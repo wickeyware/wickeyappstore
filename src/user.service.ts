@@ -16,6 +16,7 @@ export interface UserParams {
   rated_app?: boolean;
   logging_in?: boolean;
 }
+// TODO: ADD PURCHASES
 
 /**
  * The service to get/set a user.
