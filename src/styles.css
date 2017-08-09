@@ -109,7 +109,7 @@ button {
   text-align: center;
   font-size: 1.5em;
   font-weight: 300;
-  text-shadow: 0 2px 0 #A23300;
+  text-shadow: 0 1px 0 #A23300;
   /*vertical-align: middle;*/
   line-height: 50px;       /* the same as your div height */
   /* This dictates the margin above and below the h3 tag, default is 1em and 0 for left/right */

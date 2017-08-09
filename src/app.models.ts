@@ -1,5 +1,4 @@
 // Add all data models here
-
 export interface Settings {
   app_version: number;
   freebie_amount: number;
@@ -34,12 +33,24 @@ export interface ErrorTable {
   helpmessage?: Array<Array<string>>; // Only can have up to 3 //
 }
 
-// {name: string, category: number, ordering: number}
 export interface App {
-  name: string;
+  name: string; // app name
+  title: string; // long name
+  text: string; // full app text
   category: number;
-  ordering: number;
   icon: string;
+  featured_image?: string;
+  app_version: string;
+  created_time: number;
+  owner: string;
+  review_average?: number;
+  review_count?: number;
+  screenshot_1?: string;
+  screenshot_2?: string;
+  screenshot_3?: string;
+  app_video?: string;
+  has_inapps?: boolean;
+
 }
 
 //

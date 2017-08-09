@@ -10,6 +10,7 @@ export class AppGroupHorizontalComponent implements OnInit {
   @Input() public title: string;
   @Input() public apps: AppGroup;
   @Input() public showAppEmitter: EventEmitter<string>;
+  public showVerticalList; // dictate if the full screen vertical list is shown
 
   public config: Object = {
     pagination: '.swiper-pagination',
@@ -40,6 +41,14 @@ export class AppGroupHorizontalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+  showVerticalListApps() {
+    console.log('showVerticalListApps');
+    this.showVerticalList = 1;
+  }
+  closeVerticalListApps(_val: number): void {
+    console.log('closeVerticalListApps');
+    this.showVerticalList = null;
   }
 
 }

@@ -1,3 +1,12 @@
-<p>
-  app-group-vertical works!
-</p>
+<div *ngIf="open" class="fullscreen" [@pageOpen]="in">
+  <div class="was-titlebar">
+    <h3 class="was-titletext">{{title}}</h3>
+    <button (click)="goBack($event)" class="was-navClose" title="back"></button>
+    <div class="was-titlebottom"></div>
+  </div>
+  <div class="page-content noselect">
+    <display-app-fullwidth *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-fullwidth>
+  </div>
+</div>
+<!-- Pop up modal on error -->
+<was-alert-popup [alert_table]="error_message"></was-alert-popup>

@@ -1,10 +1,6 @@
 .app-list-background {
   background-color: white;
-  padding: .01rem .25rem;
-  margin: 3px auto 3px auto;
-  border-radius: 4px;
   width: 100%;
-  min-width: 90px;
   z-index: 0;
 }
 .was-titlebar {
@@ -17,4 +13,5 @@
 }
 .featuredapps {
   width: 100%;
+  margin-bottom: 10px;
 }

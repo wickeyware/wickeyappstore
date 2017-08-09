@@ -18,7 +18,7 @@ export class DisplayAppFeaturedComponent implements OnInit {
     spaceBetween: 20,
     autoplay: 4750,
     autoplayDisableOnInteraction: false,
-    initialSlide: 1, // slide number which you want to show-- 0 by default
+    // initialSlide: 1, // slide number which you want to show-- 0 by default
     // loop: true, // This doesn't work. First slide doesn't load image
   };
 

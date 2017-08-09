@@ -1,5 +1,7 @@
-<swiper [config]="config">
-    <div class="swiper-wrapper">
-        <img class="img-featured swiper-slide" *ngFor="let _app of apps" [src]="_app.featured_image" alt="featured-image" (click)="showApp_Detail(_app)">
-    </div>
-</swiper>
+<div class="test-div-inner">
+    <swiper [config]="config">
+        <div class="swiper-wrapper">
+            <img class="img-featured swiper-slide" *ngFor="let _app of apps" [src]="_app.featured_image" alt="featured-image" (click)="showApp_Detail(_app)">
+        </div>
+    </swiper>
+</div>

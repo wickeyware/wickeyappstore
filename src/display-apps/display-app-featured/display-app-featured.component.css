@@ -1,3 +1,15 @@
+.test-div-inner {
+    /* Padding Bottom = (Image Height / Image Width) * 100% */ 
+    /* http://andyshora.com/css-image-container-padding-hack.html */
+    padding-bottom:42%; 
+    height:0;
+    position:relative;
+}
+.img-container {
+    height: -webkit-calc(100% - 30px)!important;
+    height:    -moz-calc(100% - 30px)!important;
+    height:         calc(100% - 30px)!important; 
+}
 .img-featured {
   display: inline-block;
   position: relative;

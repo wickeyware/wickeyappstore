@@ -1,19 +1,33 @@
-<div class="fullscreen sitontop">
+<div class="fullscreen">
   <!-- <div [ngBusy]="{busy: busy, message: 'Getting app details..'}" class="busy-spinner"></div> -->
   <div class="was-titlebar">
-    <!--<h3 class="was-titletext">Featured Apps</h3>-->
+    <p class="was-titletext">App Details</p>
     <button (click)="goBack()" class="was-navClose" title="back"></button>
     <div class="was-titlebottom"></div>
   </div>
   <div class="page-content noselect">
-    <div class="titlearea">
-      <img src="{{selected_app?.icon}}" alt="App Icon" class="img-icon-large">
-      <p class="title"> {{selected_app?.name}}</p>
-      <a class="btn btn-block btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Launch App</a>
+    <div class="top-container">
+      <div class="left-display-group">
+        <img src="{{selected_app?.icon}}" alt="App Icon" class="appthumbnail">
+      </div>
+      <div class="right-display-group">
+        <div class="top-right-display-block">
+          <div class="title"> {{selected_app?.name}}</div>
+          <div class="subtitle">{{selected_app?.owner}}</div>
+        </div>
+        <div class="bottom-right-display-block">
+          <a class="btn btn-block btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Launch App</a>
+        </div>
+      </div>
     </div>
+    <!-- Add the screenshot container
+    Description container 
+    App Information -->
+
     <div class="solid-separator"></div>
     <div class="description-title">Description</div>
     <div class="description-body">{{selected_app?.text}}</div>
+
   </div>
 </div>
 <!-- Pop up modal on error -->
