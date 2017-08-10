@@ -2,9 +2,12 @@
 Reach the next One Billion users, AppStore for Progressive WebApps.
 
 ## Tutorial App
-Check out a tutorial app: 
-REPO: https://github.com/wickeyware/was-tutorial/ 
+Check out a tutorial app:  
+REPO: https://github.com/wickeyware/was-tutorial/  
 LIVE DEMO: https://wickeyware.github.io/was-tutorial/
+
+## App Store
+https://wickeyappstore.com/
 
 ## Progressive Web App Store 
 Reach the next One Billion users. WickeyAppStore is a full featured App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.
