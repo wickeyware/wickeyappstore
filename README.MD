@@ -33,9 +33,6 @@ If you have an app you want to submit, email us at [wickeyappstore@gmail.com](ma
 
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 
-## Tutorial App
-
-Check out the tutorial app: https://github.com/wickeyware/was-tutorial
 
 ## Installation
 

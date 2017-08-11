@@ -5,7 +5,7 @@
     <button (click)="goBack()" class="was-navClose" title="back"></button>
     <div class="was-titlebottom"></div>
   </div>
-  <div class="page-content noselect">
+  <div class="page-content">
     <div class="top-container">
       <div class="left-display-group">
         <img src="{{selected_app?.icon}}" alt="App Icon" class="appthumbnail">
@@ -20,13 +20,31 @@
         </div>
       </div>
     </div>
-    <!-- Add the screenshot container
-    Description container 
-    App Information -->
-
     <div class="solid-separator"></div>
-    <div class="description-title">Description</div>
+    <div *ngIf="hasscreenshots">
+      <h3 class="lower-title-text">Screenshots</h3>
+      <swiper [config]="config">
+        <div class="swiper-wrapper">
+          <div class="screenshot-group swiper-slide">
+            <img class="img-screenshot" src={{selected_app?.screenshot_1}} alt="screenshot">
+          </div>
+          <div class="screenshot-group swiper-slide">
+            <img class="img-screenshot" src={{selected_app?.screenshot_2}} alt="screenshot">
+          </div>
+          <div class="screenshot-group swiper-slide">
+            <img class="img-screenshot" src={{selected_app?.screenshot_3}} alt="screenshot">
+          </div>
+        </div>
+      </swiper>
+      <div class="dark-circle-separator"></div>
+    </div>
+    <h3 class="lower-title-text">Description</h3>
     <div class="description-body">{{selected_app?.text}}</div>
+    <div class="dark-circle-separator"></div>
+    <h3 class="lower-title-text">Information</h3>
+    <div class="description-body">Seller: {{selected_app?.owner}}</div>
+    <div class="description-body">Category: {{selected_app?.category | getCategory}}</div>
+    <br><br><br>
 
   </div>
 </div>

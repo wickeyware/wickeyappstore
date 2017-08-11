@@ -30,6 +30,8 @@ import { PopoverBaseComponent } from './ui/popover/popover-base/popover-base.com
 import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/popover-account-info.component';
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
+// REVIEWS //
+import { ReviewsComponent } from './ui/reviews/reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
 
@@ -52,6 +54,7 @@ export * from './display-apps/display-app-fullwidth/display-app-fullwidth.compon
 export * from './ui/popover/popover-base/popover-base.component';
 export * from './ui/popover/popover-account-info/popover-account-info.component';
 export * from './ui/popover/popover-login/popover-login.component';
+export * from './ui/reviews/reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
 
@@ -82,6 +85,7 @@ export * from './pipes/get-category.pipe';
     PopoverLoginComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
+    ReviewsComponent,
     GetCategoryPipe
   ],
   exports: [
@@ -99,6 +103,7 @@ export * from './pipes/get-category.pipe';
     PopoverLoginComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
+    ReviewsComponent,
     GetCategoryPipe
   ],
   providers: [

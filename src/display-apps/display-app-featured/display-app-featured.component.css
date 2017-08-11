@@ -5,11 +5,7 @@
     height:0;
     position:relative;
 }
-.img-container {
-    height: -webkit-calc(100% - 30px)!important;
-    height:    -moz-calc(100% - 30px)!important;
-    height:         calc(100% - 30px)!important; 
-}
+
 .img-featured {
   display: inline-block;
   position: relative;
@@ -30,12 +26,6 @@
 
 swiper {
     width: 100%; 
-}
-
-.swiper-container {
-    width: 100%;
-    height: 300px;
-    margin: 20px auto;
 }
 .swiper-slide {
     text-align: center;
