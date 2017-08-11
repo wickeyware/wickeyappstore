@@ -4,7 +4,7 @@ import { ErrorTable } from '../../app.models';
 import { Subscription } from 'rxjs/Rx';
 
 @Component({
-  selector: 'ui-reviews',
+  selector: 'was-reviews',
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.css'],
   animations: [
