@@ -7,8 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
-
-// TODO: ADD PURCHASES
+import { Review, Inapp } from './app.models';
 
 @Injectable()
 export class ApiConnectionService {
@@ -17,6 +16,14 @@ export class ApiConnectionService {
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
   private app_url = 'https://api.wickeyappstore.com/apps/';
   private featured_url = 'https://api.wickeyappstore.com/apps/featured/';
+  private purchases_url = 'https://api.wickeyappstore.com/purchases/';
+  private reviews_url = 'https://api.wickeyappstore.com/reviews/';
+  // TODO: Add BlueSnap APIS
+  // bluesnap
+  // bluesnap/wallet/
+  // bluesnap/token/
+  // bluesnap/shopper/
+
 
   constructor(
     private http: HttpClient
@@ -116,6 +123,82 @@ export class ApiConnectionService {
       {email: email, user_id: user_id, verification_token: verification_token, version: version})
                .map(this.extractData)
                .catch(this.handleError).share();
+  }
+
+  /**
+  * Returns a list of reviews for a store app.
+  *
+  * @example
+  * this.apiConnectionService.getReviews({'storeapp_id': this.selected_app.id}).subscribe((_reviews: any) => {
+  *  console.log(_reviews);
+  * });
+  * @param {"storeapp_id": number} [_params] storeapp_id (id of the storeapp)
+  * @returns {Observable<[Review]>} [{"id":number,"title":string,"text":string,"rating":number,"last_modified":number},..]
+  * @memberof ApiConnectionService
+  */
+  getReviews(_params?: any): Observable<[Review]> {
+    const _query_string = this.encode_query_string(_params);
+    console.log('getReviews', _query_string);
+    return this.http.get(`${this.reviews_url}?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res).reviews;
+          }).catch(this.handleError).share();
+  }
+
+  /**
+   * Creates a new review or edits an existing one.
+   *
+   * @example
+   * this.apiConnectionService.setReview({'user_id':string,'title':string,'text':string,'rating':number}).subscribe((_data: any) => {
+   *  console.log(_data);
+   * });
+   * @param {*} _review {'user_id':string,'title':string,'text':string,'rating':number}
+   * @returns {Observable<any>}
+   * @memberof ApiConnectionService
+   */
+  setReview(_params: any): Observable<any> {
+    return this.http.post(this.reviews_url, _params)
+          .map(this.extractData)
+          .catch(this.handleError).share();
+  }
+
+  /**
+  * Returns a list of inapps for the app.
+  *
+  * @example
+  * this.apiConnectionService.getInapps().subscribe((_inapps: any) => {
+  *  console.log(_inapps);
+  * });
+  * @param @param {*} [_params] None needed, just future proofing.
+  * @returns {Observable<[Inapp]>} List of inapps
+  * @memberof ApiConnectionService
+  */
+  getInapps(_params?: any): Observable<[Review]> {
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.purchases_url}?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res).inapps;
+          }).catch(this.handleError).share();
+  }
+
+  /**
+   * Creates a new purchase.
+   *
+   * @example
+   * this.apiConnectionService.setPurchase(
+   * {'user_id':string,'purchase_id':string,'receipt':string,'pay_amount':number,'email':string,'first_name':string,
+   * 'last_name':string,'zip_code':string,'apple_wallet_token'?:string}
+   * ).subscribe((_data: any) => {
+   *  console.log(_data);
+   * });
+   * @param {*} _params The parameters listed in the example.
+   * @returns {Observable<any>} Returns a standard user object (same as createPerson)
+   * @memberof ApiConnectionService
+   */
+  setPurchase(_params: any): Observable<any> {
+    return this.http.post(this.purchases_url, _params)
+          .map(this.extractData)
+          .catch(this.handleError).share();
   }
 
 }
