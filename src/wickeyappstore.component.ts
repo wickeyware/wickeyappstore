@@ -104,6 +104,58 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public selected_app: {};
   public showCloseBtn = true;
 
+
+  // Add the main menu button
+  public WAS_options = {
+    radius: 235,
+    defaultPosition: 'bottomLeft',
+    buttonOpacity: 0.85,
+    defaultOpen: false,
+    spinable: false,
+  };
+
+  public WAS_wings = [
+    // {
+    //   'title': 'Leave a Review',
+    //   'color': '#ea2a29',
+    //   'icon': {
+    //     'name': 'glyphicon glyphicon-asterisk',
+    //   },
+    //   'name': 'review',
+    // },
+    {
+      'title': 'Open the Store',
+      'color': '#f16729',
+      'icon': {
+        'name': 'fa fa-laptop'
+      },
+      'name': 'store',
+    }
+  ];
+
+  public WAS_gutter = { top: 30, left: 10, right: 10, bottom: 30 };
+
+  public WAS_startAngles = {
+    topLeft: 20,
+    topRight: 130,
+    bottomRight: 186,
+    bottomLeft: 324
+  };
+
+  public WASMenuClick(open: any) {
+    // returns true or false
+  }
+  public WASWingClick(event: any) {
+    // returns the 'wings' object of the clicked
+    if (event.name === 'review') {
+      console.log('leave a review');
+    } else if (event.name === 'store') {
+      console.log('open was');
+      this.showOverlay = 1; // show the overlay
+      this.overlayState = 'in'; // set it to animate in
+    }
+  }
+
   constructor(
     private router: Router,
     private userService: UserService,

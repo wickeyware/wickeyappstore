@@ -1,0 +1,33 @@
+<div class="wing wing-{{index}}" [@scaleWing]="scaleWingState">
+    <svg class="wing-svg" width="100%" height="100%"
+         (panstart)="onPanStart($event)"
+         (panmove)="spinMenu($event)"
+         (panend)="onPanEnd($event)">
+        <path style="pointer-events:auto;"
+              (tap)="onClick()"
+              (mouseover)="onMouseOver()"
+              (mouseout)="onMouseOut()"
+              [attr.fill]="wing.color"
+              [attr.d]="svgPath"></path>
+        <text class="wing-text"
+              *ngIf="!menuConfig.onlyIcons"
+              x="50%"
+              y="50%"
+              dominant-baseline="central"
+              style="text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);"
+              [ngStyle]="{'font-size': menuConfig.wingFontSize + 'px'}"
+              [attr.text-anchor]="wingTextStyle.textAnchor"
+              [attr.transform]="'rotate('+ wingTextStyle.textRotate + ', ' + menuConfig.radius/2  + ', ' + menuConfig.radius/2 + ')'"
+              [attr.fill]="wing.titleColor || menuConfig.wingFontColor">{{wing.title}}
+        </text>
+    </svg>
+    <i class="{{wing.icon.name}}"
+       #wingIconElm
+       *ngIf="menuConfig.showIcons || menuConfig.onlyIcons"
+       [ngStyle]="{
+            'color': wing.icon.color || menuConfig.wingFontColor,
+            'font-size': iconSize + 'px',
+            'width': iconSize + 'px',
+            'height': iconSize + 'px'
+       }"></i>
+</div>

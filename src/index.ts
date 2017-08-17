@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {BusyModule} from 'angular2-busy';
 // SWIPER //
 import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
@@ -34,6 +34,13 @@ import { CustomValidatorDirective } from './custom-validator.directive';
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
+// WAS MENU //
+import { MenuContainerComponent } from './ui/was_menu/menu-container.component';
+import { MenuOptions } from './ui/was_menu/menu-options.service';
+import { MenuWingComponent } from './ui/was_menu/menu-wing.component';
+import { SpinService } from './ui/was_menu/menu-spin.service';
+/* HammerJS */
+import 'hammerjs';
 
 export * from 'angular2-useful-swiper';
 export * from './was-routing/was-routing.module';
@@ -57,6 +64,11 @@ export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/reviews/reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
+export * from './ui/was_menu/menu-container.component';
+export * from './ui/was_menu/menu-options.service';
+export * from './ui/was_menu/menu-wing.component';
+export * from './ui/was_menu/menu-spin.service';
+
 
 @NgModule({
   imports: [
@@ -67,7 +79,7 @@ export * from './pipes/get-category.pipe';
     HttpClientModule,
     WasRoutingModule,
     BrowserAnimationsModule,
-    SwiperModule
+    SwiperModule,
     // BusyModule
   ],
   declarations: [
@@ -86,7 +98,9 @@ export * from './pipes/get-category.pipe';
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
-    GetCategoryPipe
+    GetCategoryPipe,
+    MenuContainerComponent,
+    MenuWingComponent,
   ],
   exports: [
     WickeyAppStoreComponent,
@@ -107,7 +121,7 @@ export * from './pipes/get-category.pipe';
     GetCategoryPipe
   ],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService
+    ApiConnectionService, LocalStorageService, UserService, MenuOptions, SpinService,
   ],
 })
 export class WickeyAppStoreModule {
