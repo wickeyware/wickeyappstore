@@ -91,7 +91,6 @@
   },
   "dependencies": {
     "event-stream": "^3.3.4",
-    "ng2-fan-menu": "^1.0.1",
     "opn": "^5.1.0",
     "send": "^0.15.3"
   }
