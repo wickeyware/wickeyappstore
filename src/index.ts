@@ -34,10 +34,7 @@ import { CustomValidatorDirective } from './custom-validator.directive';
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
-// Fan Menu //
-import { FanMenuModule } from 'ng2-fan-menu';
 
-export * from 'ng2-fan-menu';
 export * from 'angular2-useful-swiper';
 export * from './was-routing/was-routing.module';
 export * from './animations';
@@ -70,8 +67,7 @@ export * from './pipes/get-category.pipe';
     HttpClientModule,
     WasRoutingModule,
     BrowserAnimationsModule,
-    SwiperModule,
-    FanMenuModule
+    SwiperModule
     // BusyModule
   ],
   declarations: [
