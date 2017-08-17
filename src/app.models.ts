@@ -9,11 +9,6 @@ export interface User {
   coins?: number;
   data?: any;
   email?: string;
-  pro_user?: boolean;
-  first_name?: string;
-  last_name?: string;
-  zip_code?: string;
-  bs_id?: number;
   token_email?: string;
   created_time?: number;
   freebie_used?: boolean;
@@ -39,7 +34,6 @@ export interface ErrorTable {
 }
 
 export interface App {
-  id: number; // app id
   name: string; // app name
   title: string; // long name
   text: string; // full app text
@@ -65,23 +59,4 @@ export interface AppGroup {
   title: string;
   created_time: number;
   apps: Array<App>;
-}
-
-export interface Review {
-  id: number;
-  title: string;
-  text: string;
-  rating: number;
-  last_modified?: number;
-}
-
-export interface Inapp {
-  storeapp_id: number;
-  purchase_id: string;
-  description: string;
-  pro_mode: boolean;
-  price: number;
-  coins: number
-  paypal_checkout?: string;
-  bluesnap_checkout?: string;
 }

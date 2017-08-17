@@ -3,7 +3,7 @@ import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 // import {Observable} from 'rxjs/Observable';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
-import { User, Review, Inapp } from './app.models';
+import { User } from './app.models';
 export * from './app.models';
 
 export interface UserParams {
@@ -190,9 +190,7 @@ export class UserService {
         console.log('UserService: updateUser: NEW RETURN:', res);
         // On new user/recover
         // TODO: Add more of a verification
-        // UPDATE USER //
         this._user.next(res);
-        this.localStorageService.set('was-user', res);
       } else {
         console.log('UserService: updateUser: RETURN:', res);
         currentUser = this._user.getValue();
@@ -200,39 +198,20 @@ export class UserService {
         if (res.email && res.user_id) {
           currentUser.user_id = res.user_id;
         }
-        if (res.email) {
-          currentUser.email = res.email;
-        }
-        if (res.bs_id) {
-          currentUser.bs_id = res.bs_id;
-        }
-        if (res.pro_user) {
-          currentUser.pro_user = res.pro_user;
-        }
-        if (res.first_name) {
-          currentUser.first_name = res.first_name;
-        }
-        if (res.last_name) {
-          currentUser.last_name = res.last_name;
-        }
-        if (res.zip_code) {
-          currentUser.zip_code = res.zip_code;
-        }
+        currentUser.email = res.email;
         if (res.coins) {
           currentUser.coins = res.coins;
         }
         if (res.data) {
           currentUser.data = res.data;
         }
-        if (res.rated_app) {
-          currentUser.rated_app = res.rated_app;
-        }
         currentUser.created_time = res.created_time;
         currentUser.freebie_used = res.freebie_used;
         currentUser.settings = res.settings;
-        this._user.next(currentUser);
-        this.localStorageService.set('was-user', currentUser);
+        this._user.next(res);
       }
+      // UPDATE USER //
+      this.localStorageService.set('was-user', res);
       // NOTE: Handle special_message in calling component.
       if (res.special_message) {
         console.log(`UserService: updateUser: special_message:[${res.special_message}]`);
@@ -276,7 +255,6 @@ export class UserService {
   stopToken() {
     let _updatedUsr = this._user.getValue();
     _updatedUsr.logging_in = false;
-    this._user.next(_updatedUsr);
     this.localStorageService.set('was-user', _updatedUsr);
   }
 
@@ -291,18 +269,6 @@ export class UserService {
       _updatedUsr.logging_in = false;
       _updatedUsr.user_id = res.user_id;
       _updatedUsr.email = res.email;
-      if (res.pro_user) {
-        _updatedUsr.pro_user = res.pro_user;
-      }
-      if (res.first_name) {
-        _updatedUsr.first_name = res.first_name;
-      }
-      if (res.last_name) {
-        _updatedUsr.last_name = res.last_name;
-      }
-      if (res.zip_code) {
-        _updatedUsr.zip_code = res.zip_code;
-      }
       // Add user_data
       if (res.coins) {
         _updatedUsr.coins = res.coins;
@@ -310,132 +276,21 @@ export class UserService {
       if (res.data) {
         _updatedUsr.data = res.data;
       }
-      if (res.rated_app) {
-        _updatedUsr.rated_app = res.rated_app;
-      }
       _updatedUsr.created_time = res.created_time;
       _updatedUsr.freebie_used = res.freebie_used;
       _updatedUsr.settings = res.settings;
       // UPDATE USER //
-      this._user.next(_updatedUsr);
       this.localStorageService.set('was-user', _updatedUsr);
     }, (error) => {
       // Set logging in process off //
-      _updatedUsr = this._user.getValue();
+      const _updatedUsr = this._user.getValue();
       _updatedUsr.logging_in = false;
-      this._user.next(_updatedUsr);
       this.localStorageService.set('was-user', _updatedUsr);
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
     });
     return _obs;
   }
-
-  // TODO: TEST create review
-  createReview(_title: string, _text: string, _rating: number): Observable<any> {
-    console.log('============UserService createReview=========');
-    let _updatedUsr = this._user.getValue();
-    let _review = {'user_id': _updatedUsr.user_id, 'title': _title, 'text': _text, 'rating': _rating}
-    const _obs = this.apiConnectionService.setReview(_review);
-    _obs.subscribe((res) => {
-      console.log('UserService: createReview RETURN:', res);
-      _updatedUsr = this._user.getValue();
-      // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
-      if (res.email && res.user_id) {
-        _updatedUsr.user_id = res.user_id;
-      }
-      if (res.pro_user) {
-        _updatedUsr.pro_user = res.pro_user;
-      }
-      if (res.coins) {
-        _updatedUsr.coins = res.coins;
-      }
-      if (res.data) {
-        _updatedUsr.data = res.data;
-      }
-      if (res.created_time) {
-        _updatedUsr.created_time = res.created_time;
-      }
-      if (res.rated_app) {
-        _updatedUsr.rated_app = res.rated_app;
-      }
-      if (res.freebie_used) {
-        _updatedUsr.freebie_used = res.freebie_used;
-      }
-      if (res.settings) {
-        _updatedUsr.settings = res.settings;
-      }
-      // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
-    }, (error) => {
-      console.log(`UserService: createReview: error:[${error}]`);
-      // <any>error | this casts error to be any
-      // NOTE: Handle errors in calling component.
-    });
-    return _obs;
-  }
-  // TODO: TEST create purchase
-  createPurchase(_purchase_id: string, _receipt: string, _amount: number,
-    _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
-    console.log('============UserService createPurchase=========');
-    let _updatedUsr = this._user.getValue();
-    let _purchase = {'user_id': _updatedUsr.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
-    'pay_amount': _amount, 'email': _updatedUsr.email, 'first_name': _first_name, 'last_name': _last_name,
-    'zip_code': _zip_code, 'apple_wallet_token': _wallet_token}
-    const _obs = this.apiConnectionService.setPurchase(_purchase);
-    _obs.subscribe((res) => {
-      console.log('UserService: createPurchase RETURN:', res);
-      _updatedUsr = this._user.getValue();
-      // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
-      if (res.email && res.user_id) {
-        _updatedUsr.user_id = res.user_id;
-      }
-      if (res.email) {
-        _updatedUsr.email = res.email;
-      }
-      if (res.pro_user) {
-        _updatedUsr.pro_user = res.pro_user;
-      }
-      if (res.first_name) {
-        _updatedUsr.first_name = res.first_name;
-      }
-      if (res.last_name) {
-        _updatedUsr.last_name = res.last_name;
-      }
-      if (res.zip_code) {
-        _updatedUsr.zip_code = res.zip_code;
-      }
-      if (res.coins) {
-        _updatedUsr.coins = res.coins;
-      }
-      if (res.data) {
-        _updatedUsr.data = res.data;
-      }
-      if (res.created_time) {
-        _updatedUsr.created_time = res.created_time;
-      }
-      if (res.rated_app) {
-        _updatedUsr.rated_app = res.rated_app;
-      }
-      if (res.freebie_used) {
-        _updatedUsr.freebie_used = res.freebie_used;
-      }
-      if (res.settings) {
-        _updatedUsr.settings = res.settings;
-      }
-      // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
-    }, (error) => {
-      console.log(`UserService: createPurchase: error:[${error}]`);
-      // <any>error | this casts error to be any
-      // NOTE: Handle errors in calling component.
-    });
-    return _obs;
-  }
-
-  // TODO: Add BlueSnap APIS
 
   // addTodo(newTodo:Todo):Observable {
   //   let obs = this.todoBackendService.saveTodo(newTodo);
