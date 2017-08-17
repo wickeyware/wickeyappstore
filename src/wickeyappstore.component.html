@@ -16,6 +16,8 @@
     </svg>
   </div>
 </div> -->
+<app-menu-container [options]="WAS_options" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></app-menu-container>
+
 <!--Show the WickeyAppStore container-->
 <div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
   (click)="catchClick($event)">
@@ -48,5 +50,3 @@
 <!--Cover the background with dark-->
 <!--This makes it modal. Closes with a touch anywhere-->
 <!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> -->
-
-<app-menu-container [options]="WAS_options" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></app-menu-container>
