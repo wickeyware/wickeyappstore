@@ -1,5 +1,5 @@
 <!--Generic base popover container-->
-<div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
+<!-- <div id="wickeyappstore"  class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
   <div class="icon-svg">
     <svg viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
       <path d="M380.6 390.36c0-3.33-2.7-6.03-6.04-6.03h-91.24c-3.34 0-6.04 2.7-6.04 6.03v12.08c0 3.34 2.7 6.04 6.04 6.04h91.24c3.33 0 6.04-2.7 6.04-6.04v-12.08z" fill="#FF601F"/>
@@ -15,7 +15,7 @@
       <path d="M525.2 398.77l-79.27.38L489.46 328l35.74 70.77z" fill="#009BEB"/>
     </svg>
   </div>
-</div>
+</div> -->
 <!--Show the WickeyAppStore container-->
 <div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
   (click)="catchClick($event)">
@@ -48,3 +48,5 @@
 <!--Cover the background with dark-->
 <!--This makes it modal. Closes with a touch anywhere-->
 <!-- <div *ngIf="showOverlay" class="alert-modal" (click)="closeOverlay()"></div> -->
+
+<app-menu-container [options]="WAS_options" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></app-menu-container>
