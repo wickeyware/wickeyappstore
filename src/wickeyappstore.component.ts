@@ -114,14 +114,14 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   };
 
   public WAS_wings = [
-    {
-      'title': 'Leave a Review',
-      'color': '#ea2a29',
-      'icon': {
-        'name': 'glyphicon glyphicon-asterisk',
-      },
-      'name': 'review',
-    },
+    // {
+    //   'title': 'Leave a Review',
+    //   'color': '#ea2a29',
+    //   'icon': {
+    //     'name': 'glyphicon glyphicon-asterisk',
+    //   },
+    //   'name': 'review',
+    // },
     {
       'title': 'Open the Store',
       'color': '#f16729',
