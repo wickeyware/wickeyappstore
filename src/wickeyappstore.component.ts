@@ -119,7 +119,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     //   'title': 'Leave a Review',
     //   'color': '#ea2a29',
     //   'icon': {
-    //     'name': 'glyphicon glyphicon-asterisk',
+    //     'name': 'fa fa-send',
     //   },
     //   'name': 'review',
     // },
@@ -127,7 +127,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       'title': 'Open the Store',
       'color': '#f16729',
       'icon': {
-        'name': 'fa fa-laptop'
+        'name': 'fa fa-shopping-bag'
       },
       'name': 'store',
     }
