@@ -32,6 +32,8 @@ import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.
 import { CustomValidatorDirective } from './custom-validator.directive';
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
+import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
+import { AppGroupReviewsComponent } from './display-apps/app-group-reviews/app-group-reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
 // WAS FAN MENU IMPORT //
@@ -58,6 +60,8 @@ export * from './ui/popover/popover-base/popover-base.component';
 export * from './ui/popover/popover-account-info/popover-account-info.component';
 export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/reviews/reviews.component';
+export * from './display-apps/display-app-review/display-app-review.component';
+export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
 // WAS FAN MENU EXPORT //
@@ -93,6 +97,8 @@ export * from './ui/was_menu/menu.module';
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
+    DisplayAppReviewComponent,
+    AppGroupReviewsComponent,
     GetCategoryPipe
   ],
   exports: [
@@ -111,6 +117,8 @@ export * from './ui/was_menu/menu.module';
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
+    DisplayAppReviewComponent,
+    AppGroupReviewsComponent,
     GetCategoryPipe
   ],
   providers: [

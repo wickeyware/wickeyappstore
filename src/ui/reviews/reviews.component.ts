@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { ErrorTable } from '../../app.models';
 import { Subscription } from 'rxjs/Rx';
@@ -40,14 +40,14 @@ import { Subscription } from 'rxjs/Rx';
 })
 
 export class ReviewsComponent implements OnInit {
-
+  @Input() public store_app: any;
+  @Output() changeReviewState = new EventEmitter<string>();
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
-  public showOverlay: number = null; // this dictates whether or not to show the overlay window
 
-  public social_site: string;
-  public game_name: string;
-  public version: number;
+  public stars = 4.5;
+  public showstars;
+  public appID;
 
   busy: Subscription;
 
@@ -58,12 +58,17 @@ export class ReviewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.store_app.review_average) {
+      this.showstars = true;
+      this.stars = this.store_app.review_average;
+      this.appID = this.store_app.id;
+    }
   }
   onAlertClose(data: any): void { }
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
+
     if (this.overlayState === 'out') {
-      this.showOverlay = 1; // show the overlay
       this.overlayState = 'in'; // set it to animate in
     } else {
       this.overlayState = 'out';
@@ -72,8 +77,10 @@ export class ReviewsComponent implements OnInit {
   }
   // this animates the buttonClick Over
   buttonClickAnimationDone(event: AnimationEvent) {
+    console.log('buttonClickAnimationDone',this.clickState ,this.overlayState);
     if (this.clickState === 'active') {
       this.clickState = 'inactive'; // make the button animate back
+      this.changeReviewState.emit('open');
     }
   }
   closeOverlay(): void {
@@ -85,7 +92,6 @@ export class ReviewsComponent implements OnInit {
   // this closes the window after the animation is done
   overlayAnimationDone(event: AnimationEvent) {
     if (event.toState === 'out') {
-      this.showOverlay = null;
     } else if (event.toState === 'in') {
       // the window is loaded
     }

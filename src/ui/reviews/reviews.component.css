@@ -17,31 +17,19 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    background-color: rgb(245,245,245);
+    background-color: rgb(211, 24, 24);
     z-index: 10; /* Sit on top */
 }
 .icon-container {
-    width: 70px;
-    height: 60px;
-}
-.icon-container-small {
-    width: 70px;
+    /* background-color: pink; */
+    display: inline-block;
+    width: 100px;
     height: 30px;
-    z-index: 1000 !important;
+    font-size: 0; /*This removes the separator between divs as whitespace is rendered. https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements*/
 }
 .icon-svg {
-    width: 40px;
-    margin: auto;
-    /*margin-left: 20px;*/
-}
-.icon-svg-small {
-    width: 20px;
-    margin: auto;
-    /*margin-left: 20px;*/
-}
-.icon-svg-large {
-    width: 80px;
-    top: 60px;
+    display: inline-block;
+    width: 12px;
     margin: auto;
     /*margin-left: 20px;*/
 }
@@ -49,10 +37,12 @@
     cursor: pointer;
 }
 .title-text {
+    display: inline-block;
     font-weight: 400;
     font-size: 13px;
-    margin-top: -.6em;
+    /* margin-top: -.6em; */
     text-align: center;
+    color: black;
 }
 
 .vivid-desc {
@@ -107,6 +97,9 @@
 .db-FixedPopover-contents {
     border-radius: 4px;
     overflow: hidden;
+}
+.reviews-container {
+    width: 100%;
 }
 
 .db-MenuHeader {

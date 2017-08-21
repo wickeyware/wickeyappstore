@@ -1,0 +1,13 @@
+<div *ngIf="open" class="fullscreen" [@pageOpen]="in">
+  <div class="was-titlebar">
+    <h3 class="was-titletext">{{title}}</h3>
+    <button (click)="closeReviews($event)" class="was-navClose" title="back"></button>
+    <div class="was-titlebottom"></div>
+  </div>
+  <div class="page-content noselect">
+    <!-- <div [ngBusy]="{busy: busy, message: 'Getting reviews..'}" class="busy-spinner"></div> -->
+    <display-app-review *ngFor="let _review of reviews" [review]="_review"></display-app-review>
+  </div>
+</div>
+<!-- Pop up modal on error -->
+<was-alert-popup [alert_table]="error_message"></was-alert-popup>

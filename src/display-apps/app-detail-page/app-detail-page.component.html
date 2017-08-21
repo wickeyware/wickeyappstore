@@ -16,7 +16,9 @@
           <div class="subtitle">{{selected_app?.owner}}</div>
         </div>
         <div class="bottom-right-display-block">
-          <a class="btn btn-block btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Launch App</a>
+            <was-reviews *ngIf="selected_app" [store_app]="selected_app" (changeReviewState)="handleReviews($event)"></was-reviews> 
+           <!-- Make so on iphone 5 the layout fits.  -->
+          <a class="btn btn-block btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Open App</a>
         </div>
       </div>
     </div>
@@ -50,3 +52,4 @@
 </div>
 <!-- Pop up modal on error -->
 <was-alert-popup [alert_table]="error_message"></was-alert-popup>
+<app-group-reviews *ngIf="selected_app" [open]="showReviews" (close)="handleReviews($event)" [storeapp_id]="selected_app.id" [title]="getReviewTitle()"></app-group-reviews>

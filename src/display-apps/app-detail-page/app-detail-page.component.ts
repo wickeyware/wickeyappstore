@@ -29,6 +29,8 @@ export class AppDetailPageComponent implements OnInit {
   public selected_app: any;
   public error_message: ErrorTable;
   public hasscreenshots;
+  public selected_app_test = 'hello';
+  public showReviews;
 
 public config: Object = {
     pagination: '.swiper-pagination',
@@ -67,6 +69,18 @@ public config: Object = {
 
   goBack(): void {
     this.router.navigate(['']);
+  }
+
+  handleReviews(state: string) {
+    console.log ('handle review state' , state);
+    if (state === 'open') {
+      this.showReviews = 1;
+    } else {
+      this.showReviews = null;
+    }
+  }
+  getReviewTitle() {
+    return this.selected_app.name;
   }
 
 }

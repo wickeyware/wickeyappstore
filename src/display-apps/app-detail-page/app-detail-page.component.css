@@ -8,7 +8,7 @@
 .fullscreen{
     display: block;
     font-size: medium;
-    position: fixed; /* Stay in place */
+    position: static; /* Stay in place */
     color: white;
     background-color: white; /* Fallback color */
     top:0;
@@ -76,10 +76,23 @@
 }
 
 .btn-get {
+    display: inline-block;
     background-color: black;
     color: white;
-    width: 120px;
+    width: 110px;
     margin: auto 10px auto auto; 
+}
+@media (max-width: 380px) {
+    .btn-get {
+        margin-left: -10px;
+        width: -webkit-calc(100% - 135px)!important;
+        width:    -moz-calc(100% - 135px)!important;
+        width:         calc(100% - 135px)!important; 
+    }
+}
+
+.btn-get:hover {
+    cursor: pointer;
 }
 .title {
     font-weight: 300;
