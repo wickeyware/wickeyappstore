@@ -129,7 +129,7 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     /**
      * Indicate the button text animation done
      * */
-    public animationDone() {
+    public animationDone(_event: any) {
         this.allowTransition = true;
     }
 

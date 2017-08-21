@@ -11,11 +11,15 @@ import { MenuWingComponent } from './menu-wing.component';
 import { SpinService } from './menu-spin.service';
 
 /* HammerJS */
-import 'hammerjs';
+// import 'hammerjs';
+
+export * from './menu-container.component';
+export * from './menu-options.service';
+export * from './menu-wing.component';
+export * from './menu-spin.service';
 
 @NgModule({
     declarations: [
-        // Components / Directives/ Pipes
         MenuContainerComponent,
         MenuWingComponent,
     ],

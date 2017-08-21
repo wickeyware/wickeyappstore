@@ -34,14 +34,10 @@ import { CustomValidatorDirective } from './custom-validator.directive';
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
-// WAS MENU //
-import { MenuContainerComponent } from './ui/was_menu/menu-container.component';
-import { MenuOptions } from './ui/was_menu/menu-options.service';
-import { MenuWingComponent } from './ui/was_menu/menu-wing.component';
-import { SpinService } from './ui/was_menu/menu-spin.service';
-/* HammerJS */
-import 'hammerjs';
+// WAS FAN MENU IMPORT //
+import { FanMenuModule } from './ui/was_menu/menu.module';
 
+// EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
 export * from './was-routing/was-routing.module';
 export * from './animations';
@@ -64,10 +60,8 @@ export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/reviews/reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
-export * from './ui/was_menu/menu-container.component';
-export * from './ui/was_menu/menu-options.service';
-export * from './ui/was_menu/menu-wing.component';
-export * from './ui/was_menu/menu-spin.service';
+// WAS FAN MENU EXPORT //
+export * from './ui/was_menu/menu.module';
 
 
 @NgModule({
@@ -80,6 +74,7 @@ export * from './ui/was_menu/menu-spin.service';
     WasRoutingModule,
     BrowserAnimationsModule,
     SwiperModule,
+    FanMenuModule
     // BusyModule
   ],
   declarations: [
@@ -98,9 +93,7 @@ export * from './ui/was_menu/menu-spin.service';
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
-    GetCategoryPipe,
-    MenuContainerComponent,
-    MenuWingComponent,
+    GetCategoryPipe
   ],
   exports: [
     WickeyAppStoreComponent,
@@ -121,7 +114,7 @@ export * from './ui/was_menu/menu-spin.service';
     GetCategoryPipe
   ],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService, MenuOptions, SpinService,
+    ApiConnectionService, LocalStorageService, UserService,
   ],
 })
 export class WickeyAppStoreModule {
