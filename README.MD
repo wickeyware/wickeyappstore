@@ -104,6 +104,7 @@ Link CSS, or copy it into your styles.css:
 <!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 ```
 
 ## Development
