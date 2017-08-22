@@ -1,4 +1,5 @@
 <!--Generic base popover container-->
+<was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen()"></was-popover-review>
 <app-menu-container [options]="WAS_options" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></app-menu-container>
 
 <!--Show the WickeyAppStore container-->

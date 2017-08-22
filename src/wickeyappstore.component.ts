@@ -103,6 +103,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public bannerApps = [];
   public selected_app: {};
   public showCloseBtn = true;
+  public writeAReview = null;
 
 
   // Add the main menu button
@@ -115,14 +116,14 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   };
 
   public WAS_wings = [
-    // {
-    //   'title': 'Leave a Review',
-    //   'color': '#ea2a29',
-    //   'icon': {
-    //     'name': 'fa fa-send',
-    //   },
-    //   'name': 'review',
-    // },
+    {
+      'title': 'Leave a Review',
+      'color': '#ea2a29',
+      'icon': {
+        'name': 'fa fa-send',
+      },
+      'name': 'review',
+    },
     {
       'title': 'Open the Store',
       'color': '#f16729',
@@ -149,6 +150,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     // returns the 'wings' object of the clicked
     if (event.name === 'review') {
       console.log('leave a review');
+      this.openReview();
     } else if (event.name === 'store') {
       console.log('open was');
       this.showOverlay = 1; // show the overlay
@@ -180,6 +182,14 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       }
       )
       .catch(this.handleError);
+  }
+
+  openReview(): void {
+    this.writeAReview = 1;
+  }
+  closeReviewScreen(): void {
+    console.log('the review screen was closed');
+    this.writeAReview = null;
   }
 
   onAlertClose(data: any): void {

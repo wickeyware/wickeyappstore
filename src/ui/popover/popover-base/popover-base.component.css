@@ -13,13 +13,12 @@
     margin:    0 auto;
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
-    overflow: auto; /* Enable scroll if needed */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     background-color: rgb(245,245,245);
-    z-index: 10; /* Sit on top */
+    z-index: 1000; /* Sit on top */
 }
 .icon-container {
     width: 70px;
@@ -49,28 +48,49 @@
 .icon-container:hover {
     cursor: pointer;
 }
+.icon-svg-stars {
+    display: inline-block;
+    width: 18px;
+    margin: auto;
+    /*margin-left: 20px;*/
+}
+
+.bump-over {
+    padding-left: 10px;
+}
+
+.bump-down {
+    padding-top: 20px;
+}
 .title-text {
-    font-weight: 400;
-    font-size: 13px;
-    margin-top: -.6em;
+    font-weight: 300;
+    font-size: 12px;
     text-align: center;
 }
+.appthumbnail {
+    display: inline-block;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    margin: auto;
+    width: 76px;
+    min-width: 60px;
+    min-height: 60px;
+    z-index: 1;
+  }
 
 .vivid-desc {
   text-align: left;
   /* color: black; */
   font-size: 1em;
-  font-weight: 300;
+  font-weight: 500;
   color: #5b5b65;
   text-shadow: 0 1px 0 #fff;
   /* This dictates the margin above and below the h3 tag, default is 1em and 0 for left/right */
   -webkit-margin-before: .2em;
   -webkit-margin-after: .2em;
-  margin-left: 5px; 
+  margin-left: 5px;
   margin-top: 5px;
-}
-.tab-left {
-    padding-left: 5px;
 }
 
 .popover-container {
@@ -78,7 +98,7 @@
     /* width: 310px;
     height: 200px; */
     position: absolute;
-    background: #fff; 
+    background: #fff;
     box-shadow: 0 0 0 1px rgba(136,152,170,.1), 0 15px 35px 0 rgba(49,49,93,.1), 0 5px 15px 0 rgba(0,0,0,.08);
     border-radius: 4px;
     cursor: auto;
@@ -89,17 +109,17 @@
     right: -38px;
 }
 .db-arrow-right  {
-    right: 64px; 
+    right: 64px;
 }
 .info-container-left {
     left: 40px;
 }
 .db-arrow-left  {
-    left: 24px; 
+    left: 24px;
 }
 .db-FixedPopover-arrow {
     position: absolute;
-    top: -8px; 
+    top: -8px;
     height: 9px;
     width: 21px;
     /* This color gray #EBEBEB */
@@ -171,18 +191,22 @@
     margin: 20px;
     font-size: 2em;
 }
+.send-style {
+    padding-top: 10px;
+    margin: 20px;
+    font-size: 1.2em;
+    float: left!important;
+    color: #0066EF;
+    opacity: 1;
+}
 button:active {
     outline: none;
     border: none;
     color: #3fb1eb;
 }
-.top-square {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-}
-.bottom-square {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+.center-block {
+    display: block;
+    text-align: center;
 }
 .signon-h1 {
     color: #525f7f;
@@ -215,7 +239,7 @@ button:active {
     height: 100%;
     position: relative;
     border-radius: 4px;
-    overflow: auto;
+    overflow: hidden;
     background:rgba(255, 255, 255, 1);
     border-color: rgb(255, 255, 255);
     box-shadow: 0 0 0 1px rgba(136,152,170,.1), 0 15px 35px 0 rgba(49,49,93,.1), 0 5px 15px 0 rgba(0,0,0,.08);
