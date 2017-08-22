@@ -1,6 +1,8 @@
 <!--Cover the whole screen with add a review window-->
 <div *ngIf="showReview" class="fullscreen-modal" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
 (click)="catchClick($event)">
+<!-- <was-spinner [busy]="busyLoad" [message]='"Loading review.."'></was-spinner> -->
+<was-spinner [busy]="busySubmit" [message]='"Submitting review.."'></was-spinner>
 <!-- close button -->
 <button type="button" class="close-style close" data-dismiss="modal" (click)="closeOverlay()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <button type="button" class="send-style close" data-dismiss="modal" (click)="testValidReview()" aria-label="Send"><span aria-hidden="true">Send</span></button>

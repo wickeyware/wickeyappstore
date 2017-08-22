@@ -181,10 +181,6 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2-busy@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/angular2-busy/-/angular2-busy-2.0.4.tgz#82e4b1fbbcaf97bcfac09d237489cfe9e8c4b9f3"
-
 angular2-useful-swiper@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-4.0.6.tgz#1a56f764850cbcdbd771b4b5204222115c932063"
@@ -3770,15 +3766,6 @@ tsconfig@^6.0.0:
 tsickle@^0.21.0:
   version "0.21.6"
   resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.21.6.tgz#53b01b979c5c13fdb13afb3fb958177e5991588d"
-  dependencies:
-    minimist "^1.2.0"
-    mkdirp "^0.5.1"
-    source-map "^0.5.6"
-    source-map-support "^0.4.2"
-
-tsickle@^0.23.6:
-  version "0.23.6"
-  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.23.6.tgz#fcee57a5cb7f92a8c3a9e578ee0a286427dcfacd"
   dependencies:
     minimist "^1.2.0"
     mkdirp "^0.5.1"

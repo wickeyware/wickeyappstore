@@ -11,7 +11,7 @@
     <div class="was-titlebottom"></div>
   </div>
   <div class="results-group">
-    <!-- <div [ngBusy]="{busy: busy, message: 'Refreshing app store..'}" class="busy-spinner"></div> -->
+    <was-spinner [busy]="busy" [message]='"Refreshing app store.."'></was-spinner>
     <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
     <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
     <br><br>

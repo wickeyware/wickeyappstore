@@ -56,7 +56,6 @@
     "@compodoc/compodoc": "^1.0.0-beta.14",
     "@types/jasmine": "2.5.38",
     "@types/node": "^7.0.39",
-    "angular2-busy": "^2.0.4",
     "angular2-useful-swiper": "^4.0.6",
     "codelyzer": "~3.1.2",
     "core-js": "^2.4.1",

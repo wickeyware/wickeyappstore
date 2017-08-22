@@ -92,7 +92,8 @@ export class PopoverReviewComponent implements OnInit {
   public game_name: string;
   public version: number;
 
-  busy: Subscription;
+  public busyLoad: Subscription;
+  public busySubmit: Subscription;
 
 
 
@@ -104,10 +105,11 @@ export class PopoverReviewComponent implements OnInit {
 
   ngOnInit() {
     console.log('WAS Review ngOnInit:');
-    const tempSub = this.userService.user.subscribe((usr: User) => {
-      if (usr.user_id) {
+    // TODO: Don't allow leave review without email
+    this.busyLoad = this.userService.user.subscribe((usr: User) => {
+      if (usr.user_id && usr.email) {
+        this.busyLoad.unsubscribe();
         this.loadReview(usr.user_id);
-        tempSub.unsubscribe();
       }
     });
   }
@@ -135,10 +137,10 @@ export class PopoverReviewComponent implements OnInit {
   }
 
   loadReview(_user_id) {
-    this.apiConnectionService.getReviews(
+    this.busyLoad = this.apiConnectionService.getReviews(
       {'user_id': _user_id}
     ).subscribe((_reviews: any) => {
-      console.log('WAStutorial loadReview', _reviews);
+      console.log('WAS loadReview', _reviews);
       try {
         this.titleText = _reviews[0].title;
         this.reviewText = _reviews[0].text;
@@ -148,7 +150,7 @@ export class PopoverReviewComponent implements OnInit {
   }
 
   testValidReview(): void {
-    if (this.stars == 0) {
+    if (this.stars === 0) {
       this.error_message = {
         title: 'Attention!',
         message: 'Please choose Star Rating',
@@ -167,12 +169,12 @@ export class PopoverReviewComponent implements OnInit {
 
     // Need to get the stars, title, and text
     const _title = this.titleText;
-    const _text = this.reviewText; 
-    const _rating = this.stars; 
+    const _text = this.reviewText;
+    const _rating = this.stars;
 
-    this.userService.createReview(_title, _text, _rating)
+    this.busySubmit = this.userService.createReview(_title, _text, _rating)
       .subscribe((usr) => {
-        console.log('WASTutorial leaveReview: RETURN:', usr);
+        console.log('WAS leaveReview: RETURN:', usr);
         // NOTE: all user APIS can return a `special_message`
         if (usr.special_message) {
           this.error_message = {
@@ -187,7 +189,7 @@ export class PopoverReviewComponent implements OnInit {
       }, (error) => {
         // <any>error | this casts error to be any
         // NOTE: Can handle error return messages
-        console.log('WASTutorial leaveReview: RETURN ERROR:', error);
+        console.log('WAS leaveReview: RETURN ERROR:', error);
         this.error_message = {
           title: 'Attention!',
           message: error,

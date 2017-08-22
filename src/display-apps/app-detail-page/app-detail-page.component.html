@@ -1,5 +1,5 @@
 <div class="fullscreen">
-  <!-- <div [ngBusy]="{busy: busy, message: 'Getting app details..'}" class="busy-spinner"></div> -->
+  <was-spinner [busy]="busy" [message]='"Getting app details.."'></was-spinner>
   <div class="was-titlebar">
     <p class="was-titletext">App Details</p>
     <button (click)="goBack()" class="was-navClose" title="back"></button>

@@ -1,0 +1,110 @@
+.alert-modal {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2147483647; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/**
+ * The following css is almost a copy of the css from the angular2-busy busy.less file.
+ * https://github.com/devyumao/angular2-busy
+ *
+ * Many thanks to:
+ * @author yumao<yuzhang.lille@gmail.com>
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 Yumao
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+.was-spinner-box-wrapper {
+  text-align: center;
+}
+
+.was-spinner-box {
+  position: relative;
+  display: inline-block;
+  z-index: 1003;
+  padding: 12px 14px;
+  border: 1px solid #d8d8d8;
+  border-top: 0;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  background: #f8f8f8;
+  color: #333;
+}
+
+.was-spinner-box-text {
+  display: inline-block;
+  margin-left: 6px;
+  max-width: 400px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.was-spinner-box-spinner {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+
+  div {
+      position: absolute;
+      left: 44.5%;
+      top: 37%;
+      width: 10%;
+      height: 26%;
+      background: #666;
+      border-radius: 50px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+      opacity: 0;
+      animation: busy-spinner-anim 1s linear infinite;
+  }
+
+  .generate-bars(@n, @i: 1) when (@i =< @n) {
+      .bar@{i} {
+          transform: rotate(unit(360 / 12 * (@i - 1), deg)) translate(0, -142%);
+          animation-delay: unit(-1 + 1 / 12 * (@i - 1), s);
+      }
+      .generate-bars(@n, (@i + 1));
+  }
+
+  .generate-bars(12);
+}
+
+@keyframes busy-spinner-anim {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0.25;
+  }
+}

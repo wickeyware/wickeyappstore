@@ -54,7 +54,7 @@ public config: Object = {
       ).subscribe((_selected_app: any) => {
         console.log(_selected_app);
         this.selected_app = _selected_app[0];
-        this.busy = null;
+        this.busy.unsubscribe();
         if (this.selected_app.screenshot_1) {
           this.hasscreenshots = true;
         }

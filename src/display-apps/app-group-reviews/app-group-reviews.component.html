@@ -5,7 +5,7 @@
     <div class="was-titlebottom"></div>
   </div>
   <div class="page-content noselect">
-    <!-- <div [ngBusy]="{busy: busy, message: 'Getting reviews..'}" class="busy-spinner"></div> -->
+    <was-spinner [busy]="busy" [message]='"Getting reviews.."'></was-spinner>
     <display-app-review *ngFor="let _review of reviews" [review]="_review"></display-app-review>
   </div>
 </div>

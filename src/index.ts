@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {BusyModule} from 'angular2-busy';
 // SWIPER //
 import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
 // ROUTING //
@@ -15,6 +14,7 @@ import { UserService } from './user.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 // WAS CORE //
+import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 import { WASAlertPopupComponent } from './was-alert-popup/was-alert-popup.component';
 import { DisplayAppsComponent } from './display-apps/display-apps.component';
@@ -45,6 +45,7 @@ export * from 'angular2-useful-swiper';
 export * from './was-routing/was-routing.module';
 export * from './animations';
 export * from './user.service';
+export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
 export * from './local-storage.service';
@@ -81,9 +82,9 @@ export * from './ui/was_menu/menu.module';
     BrowserAnimationsModule,
     SwiperModule,
     FanMenuModule
-    // BusyModule
   ],
   declarations: [
+    WasSpinnerComponent,
     WickeyAppStoreComponent,
     WASAlertPopupComponent,
     DisplayAppsComponent,
@@ -105,6 +106,7 @@ export * from './ui/was_menu/menu.module';
     GetCategoryPipe
   ],
   exports: [
+    WasSpinnerComponent,
     WickeyAppStoreComponent,
     WASAlertPopupComponent,
     DisplayAppsComponent,

@@ -55,8 +55,8 @@
     </span>
   </div>
   <div class="login-group">
-    <!-- <div [ngBusy]="{busy: busyEmail, message: 'Emailing your token...'}" class="busy-spinner"></div>
-    <div [ngBusy]="{busy: busyToken, message: 'Logging you in...'}" class="busy-spinner"></div> -->
+    <was-spinner [busy]="busyEmail" [message]='"Emailing your token.."'></was-spinner>
+    <was-spinner [busy]="busyToken" [message]='"Logging you in.."'></was-spinner>
     <div class="login-container">
       <div class="login-innermargin">
         <form [formGroup]="emailForm">
