@@ -84,7 +84,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '1.5.5';
+  public version = '1.5.6';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 

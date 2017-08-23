@@ -57,10 +57,14 @@ export class ReviewsComponent implements OnInit {
   constructor(
   ) { }
 
+  // https://stackoverflow.com/questions/19390644/round-number-to-nearest-5-decimal
+  roundHalf(n: number): number {
+    return parseFloat((Math.round(n * 2) / 2).toFixed(1));
+  }
   ngOnInit() {
     if (this.store_app.review_average) {
       this.showstars = true;
-      this.stars = this.store_app.review_average;
+      this.stars = this.roundHalf(this.store_app.review_average);
       this.appID = this.store_app.id;
     }
   }

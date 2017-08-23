@@ -3,7 +3,7 @@
 
 <!--Generic base popover container-->
 <div *ngIf="showstars" class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
-  <div class="icon-svg">
+  <div class="icon-svg">  <!-- 1 -->
     <!-- Full Star. This is the lowest rating possible-->
     <svg *ngIf="stars>=1" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
@@ -11,7 +11,7 @@
       />
     </svg>
   </div>
-  <div class="icon-svg">
+  <div class="icon-svg"> <!-- 2 -->
     <!-- Empty Star -->
     <svg *ngIf="stars<=1" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
@@ -34,7 +34,7 @@
       />
     </svg>
   </div>
-  <div class="icon-svg">
+  <div class="icon-svg"> <!-- 3 -->
     <!-- Empty Star -->
     <svg *ngIf="stars<=2" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
@@ -57,7 +57,7 @@
       />
     </svg>
   </div>
-  <div class="icon-svg">
+  <div class="icon-svg"> <!-- 4 -->
     <!-- Empty Star -->
     <svg *ngIf="stars<=3" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
@@ -80,7 +80,7 @@
       />
     </svg>
   </div>
-  <div class="icon-svg">
+  <div class="icon-svg"> <!-- 5 -->
     <!-- Empty Star -->
     <svg *ngIf="stars<=4" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
