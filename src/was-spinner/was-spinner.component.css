@@ -75,36 +75,72 @@
   width: 25px;
   height: 25px;
   vertical-align: middle;
-
-  div {
-      position: absolute;
-      left: 44.5%;
-      top: 37%;
-      width: 10%;
-      height: 26%;
-      background: #666;
-      border-radius: 50px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, .2);
-      opacity: 0;
-      animation: busy-spinner-anim 1s linear infinite;
-  }
-
-  .generate-bars(@n, @i: 1) when (@i =< @n) {
-      .bar@{i} {
-          transform: rotate(unit(360 / 12 * (@i - 1), deg)) translate(0, -142%);
-          animation-delay: unit(-1 + 1 / 12 * (@i - 1), s);
-      }
-      .generate-bars(@n, (@i + 1));
-  }
-
-  .generate-bars(12);
 }
-
+.was-spinner-box-spinner div {
+  position: absolute;
+  left: 44.5%;
+  top: 37%;
+  width: 10%;
+  height: 26%;
+  background: #666;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: busy-spinner-anim 1s linear infinite;
+}
+.was-spinner-box-spinner .bar1 {
+  transform: rotate(0deg) translate(0, -142%);
+  animation-delay: -1s;
+}
+.was-spinner-box-spinner .bar2 {
+  transform: rotate(30deg) translate(0, -142%);
+  animation-delay: -0.91666667s;
+}
+.was-spinner-box-spinner .bar3 {
+  transform: rotate(60deg) translate(0, -142%);
+  animation-delay: -0.83333333s;
+}
+.was-spinner-box-spinner .bar4 {
+  transform: rotate(90deg) translate(0, -142%);
+  animation-delay: -0.75s;
+}
+.was-spinner-box-spinner .bar5 {
+  transform: rotate(120deg) translate(0, -142%);
+  animation-delay: -0.66666667s;
+}
+.was-spinner-box-spinner .bar6 {
+  transform: rotate(150deg) translate(0, -142%);
+  animation-delay: -0.58333333s;
+}
+.was-spinner-box-spinner .bar7 {
+  transform: rotate(180deg) translate(0, -142%);
+  animation-delay: -0.5s;
+}
+.was-spinner-box-spinner .bar8 {
+  transform: rotate(210deg) translate(0, -142%);
+  animation-delay: -0.41666667s;
+}
+.was-spinner-box-spinner .bar9 {
+  transform: rotate(240deg) translate(0, -142%);
+  animation-delay: -0.33333333s;
+}
+.was-spinner-box-spinner .bar10 {
+  transform: rotate(270deg) translate(0, -142%);
+  animation-delay: -0.25s;
+}
+.was-spinner-box-spinner .bar11 {
+  transform: rotate(300deg) translate(0, -142%);
+  animation-delay: -0.16666667s;
+}
+.was-spinner-box-spinner .bar12 {
+  transform: rotate(330deg) translate(0, -142%);
+  animation-delay: -0.08333333s;
+}
 @keyframes busy-spinner-anim {
   from {
-      opacity: 1;
+    opacity: 1;
   }
   to {
-      opacity: 0.25;
+    opacity: 0.25;
   }
 }

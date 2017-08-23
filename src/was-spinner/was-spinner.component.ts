@@ -11,7 +11,7 @@ const timing = '.3s ease';
 @Component({
   selector: 'was-spinner',
   templateUrl: './was-spinner.component.html',
-  styleUrls: ['./was-spinner.component.less'],
+  styleUrls: ['./was-spinner.component.css'],
   animations: [
     trigger('flyInOut', [
         transition('void => *', [
