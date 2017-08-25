@@ -15,6 +15,7 @@ export interface UserParams {
   freebie_used?: boolean;
   rated_app?: boolean;
   logging_in?: boolean;
+  push_id?: string;
 }
 // TODO: ADD PURCHASES
 
@@ -162,8 +163,8 @@ export class UserService {
       currentUser.user_id = this.guid();
     }
     console.log('UserService: updateUser:', currentUser);
-    const apiobject = {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: undefined, app_data: undefined,
-      email: undefined, freebie_used: undefined, rated_app: undefined};
+    const apiobject = {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
+      email: null, freebie_used: null, rated_app: null, push_id: null};
     if (userParams.email) {
       apiobject.email = userParams.email;
     }
@@ -178,6 +179,9 @@ export class UserService {
     }
     if (userParams.data) {
       apiobject.app_data = userParams.data;
+    }
+    if (userParams.push_id) {
+      apiobject.push_id = userParams.push_id;
     }
     // GET IF LAUNCHED FROM HOMESCREEN //
     this.checkStandalone();
@@ -226,6 +230,9 @@ export class UserService {
         }
         if (res.rated_app) {
           currentUser.rated_app = res.rated_app;
+        }
+        if (res.push_id) {
+          currentUser.push_id = res.push_id;
         }
         currentUser.created_time = res.created_time;
         currentUser.freebie_used = res.freebie_used;
@@ -313,6 +320,9 @@ export class UserService {
       if (res.rated_app) {
         _updatedUsr.rated_app = res.rated_app;
       }
+      if (res.push_id) {
+        _updatedUsr.push_id = res.push_id;
+      }
       _updatedUsr.created_time = res.created_time;
       _updatedUsr.freebie_used = res.freebie_used;
       _updatedUsr.settings = res.settings;
@@ -331,7 +341,6 @@ export class UserService {
     return _obs;
   }
 
-  // TODO: TEST create review
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
     console.log('============UserService createReview=========');
     let _updatedUsr = this._user.getValue();
@@ -364,6 +373,9 @@ export class UserService {
       }
       if (res.settings) {
         _updatedUsr.settings = res.settings;
+      }
+      if (res.push_id) {
+        _updatedUsr.push_id = res.push_id;
       }
       // UPDATE USER //
       this._user.next(_updatedUsr);
@@ -423,6 +435,9 @@ export class UserService {
       }
       if (res.settings) {
         _updatedUsr.settings = res.settings;
+      }
+      if (res.push_id) {
+        _updatedUsr.push_id = res.push_id;
       }
       // UPDATE USER //
       this._user.next(_updatedUsr);

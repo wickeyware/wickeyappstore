@@ -24,6 +24,7 @@ export interface User {
     message: string;
   };
   logging_in?: boolean;
+  push_id?: string;
 }
 
 export interface ErrorTable {
@@ -56,7 +57,7 @@ export interface App {
   screenshot_3?: string;
   app_video?: string;
   has_inapps?: boolean;
-
+  has_offerwall?: boolean;
 }
 
 //
