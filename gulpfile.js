@@ -4,6 +4,9 @@ var gulp = require('gulp'),
   ngc = require('@angular/compiler-cli/src/main').main,
   rollup = require('gulp-rollup'),
   rename = require('gulp-rename'),
+  sass = require('gulp-sass'),
+  cleancss = require('gulp-clean-css'),
+  concatCss = require('gulp-concat-css'),
   del = require('del'),
   runSequence = require('run-sequence'),
   inlineResources = require('./tools/gulp/inline-resources');
@@ -186,9 +189,12 @@ gulp.task('copy:manifest', function () {
 });
 /**
  * 8.5. Copy styles.css from /src to /dist
+ * for sass and multiple files
+ * .pipe(sass()).pipe(concatCss("styles.css"))
  */
 gulp.task('copy:globalstyles', function () {
   return gulp.src([`${srcFolder}/styles.css`])
+    .pipe(cleancss({compatibility: 'ie8'}))
     .pipe(gulp.dest(distFolder));
 });
 

@@ -180,8 +180,3 @@ button {
   margin: .4em;
   line-height: 110%;
 }
-
-/* angular2-busy */
-.busy-spinner {
-  position: relative;
-}
