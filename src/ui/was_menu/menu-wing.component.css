@@ -4,7 +4,7 @@
   height: 100%;
   position: absolute;
   transform-origin: 0px 50%;
-  transition: all .3s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   cursor: pointer;
   user-select: none;
   pointer-events: none;
@@ -14,9 +14,11 @@
   width: inherit;
   height: inherit;
   transform-origin: inherit;
-
-  i {
-    text-align: center;
-    transform-origin: 50% 50%;
-  }
+}
+.wing i {
+  text-align: center;
+  transform-origin: 50% 50%;
+}
+.wing-text {
+  width: 100%;
 }

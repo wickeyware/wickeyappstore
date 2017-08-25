@@ -1,8 +1,6 @@
 <div class="wing wing-{{index}}" [@scaleWing]="scaleWingState">
     <svg class="wing-svg" width="100%" height="100%"
-         (panstart)="onPanStart($event)"
-         (panmove)="spinMenu($event)"
-         (panend)="onPanEnd($event)">
+         >
         <path style="pointer-events:auto;"
               (tap)="onClick()"
               (mouseover)="onMouseOver()"

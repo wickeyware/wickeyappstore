@@ -13,7 +13,6 @@ export class IMenuConfig {
     offset?: number;
     showIcons?: boolean;
     onlyIcons?: boolean;
-    spinable?: boolean;
     wingFontSize?: number;
     wingFontWeight?: number;
     wingFontColor?: string;
@@ -50,7 +49,6 @@ export class MenuOptions {
         offset: 25, // The gap between the menu button and the menu item wings.
         showIcons: true, // A flag that determines whether to show icon.
         onlyIcons: false, // A flag that determines whether only show all icons and hide the wing title
-        spinable: false, // A flag that determines whether the menu could be spin.
         wingFontSize: 16,
         wingFontWeight: 600,
         wingFontColor: '#ffffff',
@@ -131,13 +129,13 @@ export class MenuOptions {
             'topRight': {
                 'top': this.gutter.top,
                 'left': window.innerWidth - this.menuConfig.buttonWidth - this.gutter.right,
-                'textAnchor': 'end',
+                'textAnchor': 'middle',
                 'textRotate': 180,
             },
             'bottomRight': {
                 'top': window.innerHeight - this.menuConfig.buttonWidth - this.gutter.bottom,
                 'left': window.innerWidth - this.menuConfig.buttonWidth - this.gutter.right,
-                'textAnchor': 'end',
+                'textAnchor': 'middle',
                 'textRotate': 180,
             },
             'bottomLeft': {

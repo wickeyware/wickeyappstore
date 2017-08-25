@@ -23,33 +23,30 @@
   color: #ffffff;
   font-size: 14px;
   transition: opacity 200ms ease-in;
-
-  .img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    pointer-events: none;
-    vertical-align: middle;
-    display: block;
-  }
-
-  span {
-    display: block;
-    vertical-align: middle;
-    pointer-events: none;
-  }
-
-  .btn-cross {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-  }
+}
+.menu-btn .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+  vertical-align: middle;
+  display: block;
+}
+.menu-btn span {
+  display: block;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.menu-btn .btn-cross {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .menu-wings {

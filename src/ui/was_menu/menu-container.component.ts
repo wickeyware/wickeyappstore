@@ -9,12 +9,12 @@ import {
 import { animate, animateChild, group, query, style, transition, trigger } from '@angular/animations';
 import { MenuOptions, IMenuConfig, IMenuWing } from './menu-options.service';
 import { Subscription } from 'rxjs/Subscription';
-import { SpinService } from './menu-spin.service';
+// import { SpinService } from './menu-spin.service';
 
 @Component({
-    selector: 'app-menu-container',
+    selector: 'was-menu-container',
     templateUrl: './menu-container.component.html',
-    styleUrls: ['./menu-container.component.scss'],
+    styleUrls: ['./menu-container.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
         trigger('btnText', [
@@ -22,11 +22,11 @@ import { SpinService } from './menu-spin.service';
                 query(':leave', style({opacity: 1, transform: 'scale(1)'})),
                 query(':enter', style({opacity: 0, transform: 'scale(0)'})),
                 group([
-                    query(':enter', animate('300ms cubic-bezier(0.35, 0, 0.25, 1)', style({
+                    query(':enter', animate('180ms cubic-bezier(0.35, 0, 0.25, 1)', style({
                         opacity: 1,
                         transform: 'scale(1)'
                     }))),
-                    query(':leave', animate('300ms cubic-bezier(0.35, 0, 0.25, 1)', style({
+                    query(':leave', animate('180ms cubic-bezier(0.35, 0, 0.25, 1)', style({
                         opacity: 0,
                         transform: 'scale(0)'
                     })))
@@ -41,12 +41,13 @@ import { SpinService } from './menu-spin.service';
         ]),
         trigger('menuState', [
             transition(':enter', [
-                style({transform: 'scale(0)'}),
-                animate('500ms cubic-bezier(0.680, -0.550, 0.265, 1.550)', style({transform: 'scale(1)'})),
-                // query('@rotateWing', animateChild()) This throws this error --> query("@rotateWing", { optional: true })
+              style({transform: 'scale(0)'}),
+              animate('300ms cubic-bezier(0.680, -0.550, 0.265, 1.550)', style({transform: 'scale(1)'})),
+              // Changed line from: `query('@rotateWing', animateChild())`
+            //   query('@rotateWing', animateChild(), { optional: true })
             ]),
             transition(':leave', [
-                animate('500ms cubic-bezier(0.680, -0.550, 0.265, 1.550)', style({transform: 'scale(0)'}))
+                animate('300ms cubic-bezier(0.680, -0.550, 0.265, 1.550)', style({transform: 'scale(0)'}))
             ]),
         ])
     ],
@@ -74,9 +75,6 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     // false if the menu btn is clicked to close the menu.
     @Output() public onMenuBtnClicked = new EventEmitter<boolean>();
 
-    // Emit true if the whole menu list is being spun
-    @Output() public onMenuListSpinning = new EventEmitter<boolean>();
-
     public menuBtnStyle: Object;
     public menuWingsStyle: Object;
     public svgPath: string;
@@ -86,10 +84,8 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     public top: number; // for draggingMenu animation
     public left: number; // for draggingMenu animation
 
-    private allowTransition: boolean = true; // a flag to indicate if button text animation finished
-    private isDragging: boolean = false; // A flag to indicate the drag move begins
-    private isSpinning: boolean = false; // A flag to indicate if the menuList is spinning
-    private menuSpunSubscriptionId: Subscription;
+    private allowTransition = true; // a flag to indicate if button text animation finished
+    private isDragging = false; // A flag to indicate the drag move begins
 
     /**
      * Binding host element to @menuState animation
@@ -104,7 +100,6 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     public draggingState = {value: false, params: {top: this.top, left: this.left}};
 
     constructor( private menuOptions: MenuOptions,
-                 private spinService: SpinService,
                  private renderer: Renderer2,
                  private elm: ElementRef) {
     }
@@ -118,12 +113,10 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
         this.calculateSvgPath();
         this.setHostElementPosition(this.positionClass);
 
-        this.menuSpunSubscriptionId =
-            this.spinService.wingSpun.subscribe(( data: number ) => this.spinMenu(data));
     }
 
     public ngOnDestroy(): void {
-        this.menuSpunSubscriptionId.unsubscribe();
+
     }
 
     /**
@@ -137,14 +130,22 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
      * Emit the wing that has been clicked
      * */
     public clickWing( wing: IMenuWing ): void {
-        this.onWingSelected.emit(wing);
+        // if they click a menu, then close the menu
+        setTimeout(() => {
+            // do stuff
+            this.toggleMenu();
+         }, 200);
+         setTimeout(() => {
+            // do stuff
+            this.onWingSelected.emit(wing);
+         }, 300);
     }
 
     /**
      * Emit the wing that has been mouse over
      * */
     public hoverWing( wing: IMenuWing ): void {
-        if (!this.isDragging && !this.isSpinning) {
+        if (!this.isDragging ) { // && !this.isSpinning
             this.onWingHovered.emit(wing);
         }
     }
@@ -153,6 +154,7 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
      * Toggle the menu list
      * */
     public toggleMenu() {
+        console.log('toggle Menu');
         if (this.allowTransition) {
             this.wingsState = !this.wingsState;
             this.allowTransition = false;
@@ -230,25 +232,6 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
         if (this.menuConfig.buttonOpacity < 1 && !this.wingsState) {
             this.menuBtnStyle['opacity'] = this.menuConfig.buttonOpacity;
         }
-    }
-
-    /**
-     * Spin the whole menu list
-     * set the menuList transform style
-     * */
-    public spinMenu( deg: number ): void {
-        this.renderer.setStyle(this.menuWingsElm.nativeElement, 'transform', 'rotate(' + deg + 'deg)');
-    }
-
-    /**
-     * Change the isSpinning flag
-     * */
-    public toggleSpinningState( state: boolean ): void {
-        if(state) {
-            this.onMenuListSpinning.emit(true);
-        }
-        this.isSpinning = state;
-        return;
     }
 
     /**

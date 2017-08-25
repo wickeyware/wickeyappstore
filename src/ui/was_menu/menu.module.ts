@@ -29,7 +29,6 @@ import { NgModule } from '@angular/core';
 import { MenuContainerComponent } from './menu-container.component';
 import { MenuOptions } from './menu-options.service';
 import { MenuWingComponent } from './menu-wing.component';
-import { SpinService } from './menu-spin.service';
 
 /* HammerJS */
 // import 'hammerjs';
@@ -37,7 +36,7 @@ import { SpinService } from './menu-spin.service';
 export * from './menu-container.component';
 export * from './menu-options.service';
 export * from './menu-wing.component';
-export * from './menu-spin.service';
+// export * from './menu-spin.service';
 
 @NgModule({
     declarations: [
@@ -53,7 +52,6 @@ export * from './menu-spin.service';
     ],
     providers: [
         MenuOptions,
-        SpinService,
     ]
 })
 export class FanMenuModule {
