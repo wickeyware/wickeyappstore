@@ -1,10 +1,10 @@
 /* eslint-disable */
+// sass = require('gulp-sass'),
 var gulp = require('gulp'),
   path = require('path'),
   ngc = require('@angular/compiler-cli/src/main').main,
   rollup = require('gulp-rollup'),
   rename = require('gulp-rename'),
-  sass = require('gulp-sass'),
   cleancss = require('gulp-clean-css'),
   concatCss = require('gulp-concat-css'),
   del = require('del'),
