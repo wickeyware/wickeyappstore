@@ -13,6 +13,7 @@ import { WasRoutingModule } from './was-routing/was-routing.module';
 import { UserService } from './user.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
+import { WasAppService } from './was-app.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
@@ -45,6 +46,7 @@ export * from 'angular2-useful-swiper';
 export * from './was-routing/was-routing.module';
 export * from './animations';
 export * from './user.service';
+export * from './was-app.service';
 export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
@@ -128,14 +130,14 @@ export * from './ui/was_menu/menu.module';
     GetCategoryPipe
   ],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService,
+    ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService, UserService]
+      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService]
     };
   }
 }

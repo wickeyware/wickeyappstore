@@ -31,9 +31,9 @@ export interface UserParams {
  * ```import { UserService, UserParams } from './user.service';```
  * Add to the providers:
  * ```providers: [UserService, ...],```
- * Import/Inject in any component this is to be used:
+ * Import in any component this is to be used:
  * ```import { UserService } from './user.service';```
- * Add to the local providers list, then inject it in the constructor
+ * Inject it in the constructor
  * ```constructor(private userService: UserService) { }
  * Get user:
  * ```this.userService.user();```

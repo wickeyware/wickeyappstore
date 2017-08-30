@@ -3,27 +3,9 @@ import { trigger, state, style, animate, transition, AnimationEvent, keyframes }
 import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
-import { ApiConnectionService } from './api-connection.service';
-import { LocalStorageService } from './local-storage.service';
 import { UserService } from './user.service';
-import { User, ErrorTable } from './app.models';
-
-// TODO: Create service that gets/sets user, it will get the user from LocalStorage
-
-const DEFAULT_APP_LIST = [
-  {
-    'app_url': 'https://youtube.instaboost.social/', 'category': 7, 'is_featured': false, 'app_video': null,
-    'name': 'Instaboost for Youtube',
-    'title': `Get 1000's of Youtube Views, Likes, Subscribers, Shares, Favorites, and even Dislikes for YouTube, quickly, easily, and safely. Anonymous boost - NO password required!`,
-    'text': `Youtube rewards videos and channels that are already popular by recommending them to people who might be interested in them. Boosting essentially causes the recommendation algorithm to kick in and show your content to many more people. In addition to that, people implicitly trust content that has lots of likes, so a boost is valuable in multiple ways. Get a jump start on your social media presence, and boost today!`,
-    'coins': 0, 'screenshot_1': 'https://i.imgur.com/waPPNBt.png', 'screenshot_3': null, 'screenshot_2': null,
-    'reviews': [], 'created_time': 1494256647,
-    'owner': {
-      'username': 'wickeymme', 'phone_number': '4048582928', 'freebie_used': false, 'user_id': 'wickeym',
-      'app_creator': true, 'account_verified': true, 'email': 'wickeym@gmail.com', 'rated_app': false
-    },
-    'app_version': 0.1, 'id': 4, 'icon': 'https://i.imgur.com/waPPNBt.png'
-  }];
+import { WasAppService } from './was-app.service';
+import { User, ErrorTable, AppGroup, App } from './app.models';
 
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
@@ -41,7 +23,6 @@ const DEFAULT_APP_LIST = [
   selector: 'wickey-appstore',
   templateUrl: './wickeyappstore.component.html',
   styleUrls: ['./wickeyappstore.component.css'],
-  providers: [ApiConnectionService],
   animations: [
     trigger('clickButtonTrigger', [
       state('inactive', style({
@@ -161,27 +142,13 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private userService: UserService,
-    private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService
+    private wasAppService: WasAppService
   ) { }
 
   ngOnInit(): void {
     console.log('WAS: ngOnInit');
     this.showCloseBtn = true;
-    this.localStorageService.get('was-apps')
-      .then((value: any): void => {
-        if (typeof value !== 'undefined') {
-          this.apps = value;  // as Apps;
-          // normal load
-          console.log('WAS: load apps from db, refresh from server');
-          this.getFeaturedGroups(false);  // UPDATE app list
-        } else {
-          console.log('WAS: no apps in db, get apps from server');
-          this.getFeaturedGroups(false);  // UPDATE app list
-        }
-      }
-      )
-      .catch(this.handleError);
+    this.getFeaturedGroups();
   }
 
   openReview(): void {
@@ -234,54 +201,21 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     return Promise.reject(error.message || error);
   }
 
-  getFeaturedGroups(show_spinner: boolean): void {
-    if (show_spinner === false) {
-      this.apiConnectionService
-        .getFeaturedGroups()
-        .subscribe((res) => {
-          console.log('WAS: getFeaturedGroups RETURN:', res);
-          this.apps = res;
-          // UPDATE DB //
-          this.localStorageService.set('was-apps', this.apps);
-        }, (error) => {
-          console.log('WAS: getFeaturedGroups ERROR:', error);
-          this.apps = DEFAULT_APP_LIST;
-          // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-          // UPDATE DB //
-          this.localStorageService.set('was-apps', this.apps);
-          this.error_message = {
-            title: 'Attention',
-            message: error,
-            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-            helpmessage: [],
-            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-          };
-        });
-    } else {
-      this.busy = this.apiConnectionService
-        .getFeaturedGroups()
-        .subscribe((res) => {
-          console.log('WAS: getFeaturedGroups RETURN:', res);
-          this.apps = res;
-          // UPDATE DB //
-          this.localStorageService.set('was-apps', this.apps);
-        }, (error) => {
-          console.log('WAS: getFeaturedGroups ERROR:', error);
-          this.apps = DEFAULT_APP_LIST;
-          // TODO: USE DEFAULT LIST FOR DEV PURPOSE, REMOVE FOR PRODUCTION //
-          // UPDATE DB //
-          this.localStorageService.set('was-apps', this.apps);
-          this.error_message = {
-            title: 'Attention',
-            message: error,
-            header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-            helpmessage: [],
-            randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-          };
-        });
-    }
+  getFeaturedGroups(): void {
+    this.wasAppService.appGroups.subscribe((res) => {
+      console.log('WAS: appGroups RETURN:', res);
+      this.apps = res;
+    }, (error) => {
+      console.log('WAS: appGroups ERROR:', error);
+      this.error_message = {
+        title: 'Attention',
+        message: error,
+        header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
+        helpmessage: [],
+        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
+      };
+    });
   }
-
   // loop through the featured apps and get the banner group
   getBannerFeaturedApps() {
     for (const group of this.apps) {

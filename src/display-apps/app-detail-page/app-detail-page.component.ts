@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 // import { trigger, style, animate, transition } from '@angular/animations';
 import { ApiConnectionService } from '../../api-connection.service';
+import { WasAppService } from '../../was-app.service';
 import { slideInDownAnimation } from '../../animations';
 import { ErrorTable } from '../../app.models';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
@@ -42,19 +43,30 @@ public config: Object = {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private apiConnectionService: ApiConnectionService
+    private apiConnectionService: ApiConnectionService,
+    private wasAppService: WasAppService
   ) { }
 
   ngOnInit() {
-    console.log('AppDetailPageComponent: ngOnInit');
-    // TODO: add busy spinner here
+    // TODO: Load more reviews on reviews open
     this.busy = this.route.paramMap
       .switchMap((params: ParamMap) =>
-        this.apiConnectionService.getApps({ 'slug': params.get('slug') })
+        this.wasAppService.appFromSlug(params.get('slug'))
       ).subscribe((_selected_app: any) => {
-        console.log(_selected_app);
-        this.selected_app = _selected_app[0];
-        this.busy.unsubscribe();
+        console.log('AppDetailPageComponent', _selected_app);
+        if (_selected_app[0] !== undefined) {
+          _selected_app = _selected_app[0];
+        }
+        this.selected_app = _selected_app;
+        if (this.busy) {
+          this.busy.unsubscribe();
+        } else {
+          setTimeout(() => {
+            if (this.busy) {
+              this.busy.unsubscribe();
+            }
+          }, 40);
+        }
         if (this.selected_app.screenshot_1) {
           this.hasscreenshots = true;
         }
