@@ -94,7 +94,7 @@ export class PopoverReviewComponent implements OnInit {
 
   public busyLoad: Subscription;
   public busySubmit: Subscription;
-
+  public review_msg = '';
 
 
   constructor(
@@ -126,9 +126,10 @@ export class PopoverReviewComponent implements OnInit {
     if (event.toState === 'out') {
       this.showReview = null;
       this.overlayState = 'in';
-      this.close.emit();
+      this.close.emit(this.review_msg);
     } else if (event.toState === 'in') {
       // the window is loaded
+      this.review_msg = '';
     }
   }
 
@@ -176,16 +177,17 @@ export class PopoverReviewComponent implements OnInit {
       .subscribe((usr) => {
         console.log('WAS leaveReview: RETURN:', usr);
         // NOTE: all user APIS can return a `special_message`
-        if (usr.special_message) {
-          this.error_message = {
-            title: usr.special_message.title, message: usr.special_message.message,
-            button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
-            helpmessage: [],
-            randcookie: `${Math.random()}${Math.random()}${Math.random()}`
-          };
-        }
-
+        // if (usr.special_message) {
+        //   this.error_message = {
+        //     title: usr.special_message.title, message: usr.special_message.message,
+        //     button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
+        //     helpmessage: [],
+        //     randcookie: `${Math.random()}${Math.random()}${Math.random()}`
+        //   };
+        // }
+        this.review_msg = 'success';
         this.submitState = 'inactive';
+        this.closeOverlay();
       }, (error) => {
         // <any>error | this casts error to be any
         // NOTE: Can handle error return messages

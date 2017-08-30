@@ -1,6 +1,7 @@
 <!--Generic base popover container-->
-<was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen()"></was-popover-review>
+<was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen($event)"></was-popover-review>
 <was-menu-container [options]="WAS_options" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></was-menu-container>
+<was-up #wasup></was-up>
 
 <!--Show the WickeyAppStore container-->
 <div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"

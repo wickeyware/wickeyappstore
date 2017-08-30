@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnDestroy, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
 import { User, ErrorTable, AppGroup, App } from './app.models';
+import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
 
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
@@ -85,6 +86,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public selected_app: {};
   public showCloseBtn = true;
   public writeAReview = null;
+  @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
 
 
   // Add the main menu button
@@ -150,12 +152,19 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.showCloseBtn = true;
     this.getFeaturedGroups();
   }
+  openwasup(): void {
+    console.log(this.wasup);
+    this.wasup.open('Review Sent', 'Thanks for your feedback.', 'fa fa-pencil-square-o fa-5x');
+  }
 
   openReview(): void {
     this.writeAReview = 1;
   }
-  closeReviewScreen(): void {
-    console.log('the review screen was closed');
+  closeReviewScreen(message: string): void {
+    console.log('the review screen was closed', message);
+    if ( message === 'success') {
+      this.openwasup();
+    }
     this.writeAReview = null;
   }
 
@@ -246,9 +255,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   inIframe(): boolean {
     try {
-        return window.self !== window.top;
+      return window.self !== window.top;
     } catch (e) {
-        return true;
+      return true;
     }
   }
 

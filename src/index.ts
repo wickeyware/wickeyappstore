@@ -32,6 +32,7 @@ import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/p
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
 import { PopoverReviewComponent } from './ui/popover/popover-review/popover-review.component';
+import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
@@ -64,6 +65,7 @@ export * from './ui/popover/popover-base/popover-base.component';
 export * from './ui/popover/popover-account-info/popover-account-info.component';
 export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/popover/popover-review/popover-review.component';
+export * from './ui/popover/popover-up/popover-up.component';
 export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
@@ -100,6 +102,7 @@ export * from './ui/was_menu/menu.module';
     PopoverAccountInfoComponent,
     PopoverLoginComponent,
     PopoverReviewComponent,
+    PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
@@ -122,6 +125,7 @@ export * from './ui/was_menu/menu.module';
     PopoverAccountInfoComponent,
     PopoverLoginComponent,
     PopoverReviewComponent,
+    PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
     ReviewsComponent,
