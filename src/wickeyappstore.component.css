@@ -61,6 +61,10 @@
   /*left: 0;*/
   height: 100%; 
   width: 100%;
+  /* Enable scroll if needed */
+  overflow-x: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 a {
