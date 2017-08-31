@@ -3,7 +3,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 // import { trigger, style, animate, transition } from '@angular/animations';
-import { ApiConnectionService } from '../../api-connection.service';
 import { WasAppService } from '../../was-app.service';
 import { slideInDownAnimation } from '../../animations';
 import { ErrorTable } from '../../app.models';
@@ -43,7 +42,6 @@ public config: Object = {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private apiConnectionService: ApiConnectionService,
     private wasAppService: WasAppService
   ) { }
 

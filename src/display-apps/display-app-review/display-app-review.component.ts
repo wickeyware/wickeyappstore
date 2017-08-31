@@ -13,7 +13,7 @@ export class DisplayAppReviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('init display-app-review');
+    // console.log('init display-app-review');
     this.stars = this.review.rating;
   }
 

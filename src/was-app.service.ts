@@ -20,6 +20,12 @@ import { AppGroup, App } from './app.models';
  * Get appGroups:
  * NOTE: this.wasAppService.appGroups() is an Observable, this.wasAppService.appGroupsObject() is the currently stored object.
  * ```this.wasAppService.appGroups();```
+ * To use in html:
+ * ```
+ * <div *ngIf="wasAppService.appGroups | async as grpobj">
+ *   <p *ngFor="let _app of grpobj">{{_app | json}}}</p>
+ * </div>
+ * ```
  *
  * @export
  * @class WasAppService
