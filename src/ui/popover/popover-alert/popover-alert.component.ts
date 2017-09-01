@@ -78,6 +78,12 @@ export class WASAlertComponent implements OnInit {
     this.emitmessage = 'cancel';
     this.closeOverlay();
   }
+  getCancelTitle(): string {
+    if ( this.alert.btn ) {
+      return 'Cancel';
+    }
+    return 'Close';
+  }
   action(): void {
     this.emitmessage = this.alert.btn.action;
     this.closeOverlay();
