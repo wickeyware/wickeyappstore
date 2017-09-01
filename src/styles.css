@@ -2,11 +2,29 @@
 /*html {
   touch-action: manipulation;
 }*/
+h1 {
+  color: #369;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 150%;
+  /*font-weight: 500;*/
+}
+body {
+  /* margin: 0em; /* change to 0 after menu btn on main screen */
+  margin: auto;
+  font-size:100%;
+  min-width: 300px;
+}
 p {
   font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */
   line-height: 1em;  /* This keeps the line height proportional to the font size */
 }
-input[text], button {
+body, input[text], button {
   color: #888;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -38,6 +56,9 @@ button {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+input {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
 /*...*/
 /* everything else */
 * {
@@ -45,17 +66,17 @@ button {
 }
 
 .was-fullscreen {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2147483640; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: white;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2147483640; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
 }
 
 .was-navClose {
@@ -86,7 +107,7 @@ button {
   color: white;
   font-size: medium;
   background-color: #FF5402;
-  z-index: 17; /* Sit on top */
+  z-index: 17; 
   /*no select text/*
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -117,7 +138,7 @@ button {
   -webkit-margin-after: 0em;
 }
 
-.was-footer {    
+.was-footer {
     position: fixed;
     bottom: 0;
     height: 40px;
@@ -130,7 +151,7 @@ button {
     font-size: 1em;
     font-weight: 300;
     line-height: 40px;       /* the same as your div height */
-    z-index: 17; /* Sit on top */
+    z-index: 17; 
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
       /*no select text/*
@@ -179,4 +200,53 @@ button {
   color: black;
   margin: .4em;
   line-height: 110%;
+}
+
+/* angular2-busy */
+.busy-spinner {
+  position: relative;
+}
+
+
+.was-btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  text-decoration: none;
+  
+  font-size: 1rem;
+  border-radius: .25rem;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.was-btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+.was-btn-action {
+  color: #fff;
+  background-color: #1BA923;
+  border-color: #1BA923;
+}
+.was-btn-secondary {
+  color: #292b2c;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.was-btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #5bc0de;
 }

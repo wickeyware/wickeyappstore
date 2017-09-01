@@ -97,8 +97,6 @@ Once your library is imported, you can use its components, directives and pipes 
 
 Link CSS, or copy it into your styles.css:
 ```code
-<!-- BOOTSTRAP 4 CSS (required by wickeyappstore) -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <!-- WickeyAppStore global css-->
 <link rel="stylesheet" href="https://unpkg.com/wickeyappstore@0.1.34/styles.css">
 <!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->

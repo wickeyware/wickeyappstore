@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 
 import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
-import { User, ErrorTable, AppGroup, App } from './app.models';
+import { User, AppGroup, App } from './app.models';
 import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
+import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
@@ -79,7 +80,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   private overlayState = 'in'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
   public busy: Subscription;
-  public error_message: ErrorTable;
   private test_alert = 0;
   public apps = [];
   public bannerApps = [];
@@ -87,6 +87,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public showCloseBtn = true;
   public writeAReview = null;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
 
 
   // Add the main menu button
@@ -162,19 +163,12 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
   closeReviewScreen(message: string): void {
     console.log('the review screen was closed', message);
-    if ( message === 'success') {
+    if (message === 'success') {
       this.openwasup();
     }
     this.writeAReview = null;
   }
 
-  onAlertClose(data: any): void {
-    if (data) {
-      console.log('WAS: onAlertClose', data);
-    } else {
-      console.log('WAS: onAlertClose');
-    }
-  }
   buttonClick() {
     // document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     this.clickState = 'active'; // make the button animate on click
@@ -216,13 +210,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       this.apps = res;
     }, (error) => {
       console.log('WAS: appGroups ERROR:', error);
-      this.error_message = {
-        title: 'Attention',
-        message: error,
-        header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-        helpmessage: [],
-        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-      };
+      this.wasalert.open(
+        { title: 'Attention', text: error } // Login error
+      );
     });
   }
   // loop through the featured apps and get the banner group
@@ -280,33 +270,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.close.emit(1);
     // this.getApps();
     // this.testAlertBox();
-  }
-
-  testAlertBox() {
-    this.error_message = {
-      title: 'Attention!', message: 'Sorry had an oops', helpmessage: [],
-      randcookie: `${Math.random()}${Math.random()}${Math.random()}`
-    };
-    if (this.test_alert === 0) {
-    } else if (this.test_alert === 1) {
-      this.error_message.button_type = 'btn-info';
-      this.error_message.header_color = 'black';
-      this.error_message.header_bg = '#29B6F6';
-    } else if (this.test_alert === 2) {
-      this.error_message.button_type = 'btn-success';
-      this.error_message.header_color = 'black';
-      this.error_message.header_bg = '#66BB6A';
-    } else if (this.test_alert === 3) {
-      this.error_message.button_type = 'btn-warning';
-      this.error_message.header_color = 'black';
-      this.error_message.header_bg = '#FFA726';
-    } else {
-      this.error_message.button_type = 'btn-danger';
-      this.error_message.header_color = 'black';
-      this.error_message.header_bg = '#EF5350';
-      this.test_alert = 0;
-    }
-    this.test_alert += 1;
   }
 
   // POPOVER //

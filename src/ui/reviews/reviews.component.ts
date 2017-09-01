@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
-import { ErrorTable } from '../../app.models';
+import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 import { Subscription } from 'rxjs/Rx';
 
 @Component({
@@ -40,6 +40,7 @@ import { Subscription } from 'rxjs/Rx';
 })
 
 export class ReviewsComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public store_app: any;
   @Output() changeReviewState = new EventEmitter<string>();
   public clickState = 'inactive'; // this dictates the state of the clickable button
@@ -50,9 +51,6 @@ export class ReviewsComponent implements OnInit {
   public appID;
 
   busy: Subscription;
-
-  public alert_table: ErrorTable;
-
 
   constructor(
   ) { }
@@ -68,7 +66,7 @@ export class ReviewsComponent implements OnInit {
       this.appID = this.store_app.id;
     }
   }
-  onAlertClose(data: any): void { }
+
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
 

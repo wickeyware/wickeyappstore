@@ -1,12 +1,12 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 // import { trigger, style, animate, transition } from '@angular/animations';
 import { WasAppService } from '../../was-app.service';
 import { slideInDownAnimation } from '../../animations';
-import { ErrorTable } from '../../app.models';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
+import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 
 @Component({
   selector: 'app-detail-page',
@@ -15,6 +15,7 @@ import { GetCategoryPipe } from '../../pipes/get-category.pipe';
   animations: [slideInDownAnimation]
 })
 export class AppDetailPageComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   // ANIMATION TO USE, Set the routeAnimation property to true since we only care about the :enter and :leave states
   // https://angular.io/guide/router#adding-animations-to-the-routed-component
   @HostBinding('@routeAnimation') routeAnimation = true;
@@ -27,7 +28,6 @@ export class AppDetailPageComponent implements OnInit {
   @HostBinding('style.height') height = '100%';
   public busy: Subscription;
   public selected_app: any;
-  public error_message: ErrorTable;
   public hasscreenshots;
   public selected_app_test = 'hello';
   public showReviews;

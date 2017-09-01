@@ -1,11 +1,12 @@
-import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
 
 import { ApiConnectionService } from '../../../api-connection.service';
 import { LocalStorageService } from '../../../local-storage.service';
-import { User, ErrorTable } from '../../../app.models';
+import { User } from '../../../app.models';
 import { UserService } from '../../../user.service';
+import { WASAlertComponent } from '../../../ui/popover/popover-alert/popover-alert.component';
 
 /**
  * Shows write-a-review popover.
@@ -75,10 +76,10 @@ import { UserService } from '../../../user.service';
   ]
 })
 export class PopoverReviewComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Output() close: EventEmitter<string> = new EventEmitter();
   @Input() public showReview: number = null; // this dictates whether or not to show the overlay window
 
-  public error_message: any;
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'in'; // this dictates the animation state of the actual window
   public reviewText = '';
@@ -113,7 +114,6 @@ export class PopoverReviewComponent implements OnInit {
       }
     });
   }
-  onAlertClose(data: any): void { }
 
   closeOverlay(): void {
     this.overlayState = 'out';
@@ -152,13 +152,9 @@ export class PopoverReviewComponent implements OnInit {
 
   testValidReview(): void {
     if (this.stars === 0) {
-      this.error_message = {
-        title: 'Attention!',
-        message: 'Please choose Star Rating',
-        header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-        helpmessage: [],
-        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-      };
+      this.wasalert.open(
+        { title: 'Attention', text: 'Please choose Star Rating' } // Login error
+      );
     } else {
       this.sendReview();
     }
@@ -176,15 +172,6 @@ export class PopoverReviewComponent implements OnInit {
     this.busySubmit = this.userService.createReview(_title, _text, _rating)
       .subscribe((usr) => {
         console.log('WAS leaveReview: RETURN:', usr);
-        // NOTE: all user APIS can return a `special_message`
-        // if (usr.special_message) {
-        //   this.error_message = {
-        //     title: usr.special_message.title, message: usr.special_message.message,
-        //     button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
-        //     helpmessage: [],
-        //     randcookie: `${Math.random()}${Math.random()}${Math.random()}`
-        //   };
-        // }
         this.review_msg = 'success';
         this.submitState = 'inactive';
         this.closeOverlay();
@@ -192,13 +179,9 @@ export class PopoverReviewComponent implements OnInit {
         // <any>error | this casts error to be any
         // NOTE: Can handle error return messages
         console.log('WAS leaveReview: RETURN ERROR:', error);
-        this.error_message = {
-          title: 'Attention!',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Attention', text: error } // Login error
+        );
         this.submitState = 'inactive';
       });
 

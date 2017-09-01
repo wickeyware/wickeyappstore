@@ -1,10 +1,11 @@
 /* tslint:disable: member-ordering forin */
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Subscription, Observable } from 'rxjs/Rx';
+import { WASAlertComponent } from '../../../ui/popover/popover-alert/popover-alert.component';
 
 import { UserService } from '../../../user.service';
-import { User, ErrorTable } from '../../../app.models';
+import { User } from '../../../app.models';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { customValidator } from '../../../custom-validator.directive';
@@ -103,6 +104,7 @@ import { customValidator } from '../../../custom-validator.directive';
   ]
 })
 export class PopoverLoginComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Output() close: EventEmitter<string> = new EventEmitter();
   @Input() public hidden: false; // can choose to make the button invisiblemakewhite
   public clickState = 'inactive'; // this dictates the state of the clickable button
@@ -126,7 +128,6 @@ export class PopoverLoginComponent implements OnInit {
   busyEmail: Subscription;
   busyToken: Subscription;
 
-  public alert_table: ErrorTable;
   public emailForm: FormGroup;
   public tokenForm: FormGroup;
 
@@ -255,7 +256,6 @@ export class PopoverLoginComponent implements OnInit {
   };
 
 
-  onAlertClose(data: any): void { }
   buttonClick() {
     this.clickState = 'active'; // make the button animate on click
     if (this.overlayState === 'out') {
@@ -333,25 +333,17 @@ export class PopoverLoginComponent implements OnInit {
         if (res.new_account) {
           _alertMessage = 'The verification token was sent. Enter it in token field to finish creating account.';
         }
-        this.alert_table = {
-          title: 'Check email (' + email + ')',
-          message: _alertMessage,
-          button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Check email (' + email + ')', text: _alertMessage } // Login error
+        );
         this.showTokenState = 'sent';
         this.sendButtonText = 'Resend the login token';
         this.sendEmailState = 'inactive';
       }, (error) => {
         // <any>error | this casts error to be any
-        this.alert_table = {
-          title: 'Attention!',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Attention', text: error } // Login error
+        );
         this.sendEmailState = 'inactive';
       });
   }
@@ -373,23 +365,15 @@ export class PopoverLoginComponent implements OnInit {
           _alertTitle = 'Successfully created account';
           _alertMessage = 'Created an account with ' + res.email;
         }
-        this.alert_table = {
-          title: _alertTitle,
-          message: _alertMessage,
-          button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: _alertTitle, text: _alertMessage } // Login error
+        );
       }, (error) => {
         this.sendTokenState = 'inactive';
         // <any>error | this casts error to be any
-        this.alert_table = {
-          title: 'Attention!',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Attention', text: error } // Login error
+        );
       });
   }
 }

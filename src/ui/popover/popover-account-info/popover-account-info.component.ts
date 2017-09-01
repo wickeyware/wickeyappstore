@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { UserService } from '../../../user.service';
-import { User, ErrorTable } from '../../../app.models';
+import { User } from '../../../app.models';
+import { WASAlertComponent } from '../../../ui/popover/popover-alert/popover-alert.component';
 // import { Observable } from "rxjs/Observable";
 import { Subscription, Observable } from 'rxjs/Rx';
 import { DatePipe } from '@angular/common';
@@ -76,15 +77,16 @@ import { DatePipe } from '@angular/common';
   ]
 })
 export class PopoverAccountInfoComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public isModal = false; // if this is modal, then covers the whole screen with a background
   @Input() public html = ''; // this is the html to go in the container body
   @Output() public signout: EventEmitter<any> = new EventEmitter();
   busy: Subscription;
-  public alert_table: ErrorTable;
+
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
-  public version = '1.6.2';
+  public version = '1.7.0';
 
   private showEditEmailState: string = null; // this dictates whether to show the edit email field and also the anim state
 
@@ -96,12 +98,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
-  onAlertClose(data: any): void {
-    if (data === 'button_action') {
-      // this.logoutUser(data);
-      console.log('WASaccount: LOG OUT USER');
-    }
-  }
+
 
   editEmailClick() {
     this.showEditEmailState = 'in';
@@ -137,7 +134,7 @@ export class PopoverAccountInfoComponent implements OnInit {
   }
 
 
-// test if the string is empty or null
+  // test if the string is empty or null
   isEmpty(str: string): boolean {
     return (!str || 0 === str.length);
   }
@@ -161,14 +158,12 @@ export class PopoverAccountInfoComponent implements OnInit {
       this.showEditEmailState = null;
       this.signout.emit('');
     } else {
-      this.alert_table = {
-        title: 'Set your Email',
-        message: 'You cannot log out of an anonymous ' +
-        'account or you will never be able to log back in. Please add a recovery email first.',
-        header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-        helpmessage: [],
-        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-      };
+      this.wasalert.open(
+        {
+          title: 'Set your Email', text: 'You cannot log out of an anonymous ' +
+          'account or you will never be able to log back in. Please add a recovery email first.'
+        } // Login error
+      );
       this.showEditEmailState = 'in';
     }
   }
@@ -246,35 +241,22 @@ export class PopoverAccountInfoComponent implements OnInit {
   updateEmail(email: string): void {
     console.log('WASaccount: updateEmail', email);
     this.temp_email = email;
-    this.busy = this.userService.updateUser({email: this.temp_email}).subscribe((res) => {
+    this.busy = this.userService.updateUser({ email: this.temp_email }).subscribe((res) => {
       console.log('updateEmail: RETURN', res);
-      this.alert_table = {
-        title: 'Email updated',
-        message: 'You have set your email to ' + res.email,
-        button_type: 'btn-success', header_bg: '#66BB6A', header_color: 'black',
-        helpmessage: [],
-        randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-      };
+      this.wasalert.open(
+        { title: 'Email updated', text: 'You have set your email to ' + res.email } // Login error
+      );
     }, (error) => {
       console.log('updateEmail: RETURN ERROR', error);
       // <any>error | this casts error to be any
       if (typeof error === 'string' && error.startsWith('This email exists')) {
-        this.alert_table = {
-          title: 'Attention!',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          button_action: 'Login',
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Attention', text: error } // Login error
+        );
       } else {
-        this.alert_table = {
-          title: 'Attention!',
-          message: error,
-          header_bg: '#F44336', header_color: 'black', button_type: 'btn-danger',
-          helpmessage: [],
-          randcookie: `${Math.random()}${Math.random()}${Math.random()}`,
-        };
+        this.wasalert.open(
+          { title: 'Attention', text: error } // Login error
+        );
       }
     });
   }

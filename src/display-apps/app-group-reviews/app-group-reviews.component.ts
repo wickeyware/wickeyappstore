@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { ErrorTable } from '../../app.models';
 import { AppGroup } from '../../app.models';
 import { ApiConnectionService } from '../../api-connection.service';
 import { Subscription } from 'rxjs/Rx';
+import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 
 @Component({
   selector: 'app-group-reviews',
@@ -23,11 +23,11 @@ import { Subscription } from 'rxjs/Rx';
   ]
 })
 export class AppGroupReviewsComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public open: number;
   @Input() public title: string;
   @Input() public storeapp_id: string;
   @Output() close = new EventEmitter<string>();
-  public error_message: ErrorTable;
   busy: Subscription;
   public reviews;
 

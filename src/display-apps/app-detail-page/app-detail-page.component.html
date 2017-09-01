@@ -56,6 +56,6 @@
   </div>
 </div>
 <!-- Pop up modal on error -->
-<was-alert-popup [alert_table]="error_message"></was-alert-popup>
+<was-alert #wasalert></was-alert>
 <app-group-reviews *ngIf="selected_app" [open]="showReviews" (close)="handleReviews($event)" [storeapp_id]="selected_app.id"
   [title]="getReviewTitle()"></app-group-reviews>

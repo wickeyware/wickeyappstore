@@ -17,7 +17,6 @@ import { WasAppService } from './was-app.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
-import { WASAlertPopupComponent } from './was-alert-popup/was-alert-popup.component';
 import { DisplayAppsComponent } from './display-apps/display-apps.component';
 import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
 import { AppReviewsPageComponent } from './display-apps/app-reviews-page/app-reviews-page.component';
@@ -33,6 +32,7 @@ import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.
 import { CustomValidatorDirective } from './custom-validator.directive';
 import { PopoverReviewComponent } from './ui/popover/popover-review/popover-review.component';
 import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
+import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
@@ -52,7 +52,6 @@ export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
 export * from './local-storage.service';
-export * from './was-alert-popup/was-alert-popup.component';
 export * from './display-apps/display-apps.component';
 export * from './display-apps/app-detail-page/app-detail-page.component';
 export * from './display-apps/app-reviews-page/app-reviews-page.component';
@@ -66,6 +65,7 @@ export * from './ui/popover/popover-account-info/popover-account-info.component'
 export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/popover/popover-review/popover-review.component';
 export * from './ui/popover/popover-up/popover-up.component';
+export * from './ui/popover/popover-alert/popover-alert.component';
 export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
@@ -90,7 +90,6 @@ export * from './ui/was_menu/menu.module';
   declarations: [
     WasSpinnerComponent,
     WickeyAppStoreComponent,
-    WASAlertPopupComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppReviewsPageComponent,
@@ -102,6 +101,7 @@ export * from './ui/was_menu/menu.module';
     PopoverAccountInfoComponent,
     PopoverLoginComponent,
     PopoverReviewComponent,
+    WASAlertComponent,
     PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
@@ -113,7 +113,6 @@ export * from './ui/was_menu/menu.module';
   exports: [
     WasSpinnerComponent,
     WickeyAppStoreComponent,
-    WASAlertPopupComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppReviewsPageComponent,
@@ -125,6 +124,7 @@ export * from './ui/was_menu/menu.module';
     PopoverAccountInfoComponent,
     PopoverLoginComponent,
     PopoverReviewComponent,
+    WASAlertComponent,
     PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,

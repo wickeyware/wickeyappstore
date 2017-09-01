@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { ErrorTable } from '../../app.models';
 import { AppGroup } from '../../app.models';
+import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 
 @Component({
   selector: 'app-group-vertical',
@@ -21,12 +21,12 @@ import { AppGroup } from '../../app.models';
   ]
 })
 export class AppGroupVerticalComponent implements OnInit {
+  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public open: number;
   @Output() close = new EventEmitter<number>();
   @Input() public title: string;
   @Input() public apps: AppGroup;
   @Input() public showAppEmitter: EventEmitter<string>;
-  public error_message: ErrorTable;
   constructor() { }
 
   ngOnInit() {
