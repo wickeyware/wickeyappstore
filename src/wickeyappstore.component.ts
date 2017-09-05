@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
 import { User, AppGroup, App } from './app.models';
 import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
+import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 
 /**
@@ -88,7 +89,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public writeAReview = null;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
-
+  @ViewChild(PopoverLoginComponent) waslogin: PopoverLoginComponent;
 
   // Add the main menu button
   public WAS_options = {
@@ -159,7 +160,19 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   openReview(): void {
-    this.writeAReview = 1;
+    if (this.isVerifiedUser()) {
+      this.wasalert.open(
+        { title: 'Login to leave a Review', text: 'Do you wish to log in?', btn: { title: 'Login', action: 'login' } } // Login error
+      );
+    } else {
+      this.writeAReview = 1;
+    }
+  }
+  closeLoginScreen(_data?: any) {
+    // this only returns if logged in. But double check by testing if emailed returned
+    if (this.isEmpty(_data) === false ) {
+      this.openReview();
+    }
   }
   closeReviewScreen(message: string): void {
     console.log('the review screen was closed', message);
@@ -167,6 +180,26 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       this.openwasup();
     }
     this.writeAReview = null;
+  }
+
+  // test if the string is empty or null
+  isEmpty(str: string): boolean {
+    return (!str || 0 === str.length);
+  }
+
+  isVerifiedUser(): boolean {
+    console.log('verified user', this.userService.userObject.email);
+    if (this.isEmpty( this.userService.userObject.email ) === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  closealert(action: string) {
+    console.log('alert was closed', action);
+    if (action === 'login') {
+      this.waslogin.buttonClick();
+    }
   }
 
   buttonClick() {
