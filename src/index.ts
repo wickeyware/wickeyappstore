@@ -19,7 +19,6 @@ import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 import { DisplayAppsComponent } from './display-apps/display-apps.component';
 import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
-import { AppReviewsPageComponent } from './display-apps/app-reviews-page/app-reviews-page.component';
 import { AppGroupHorizontalComponent } from './display-apps/app-group-horizontal/app-group-horizontal.component';
 import { AppGroupVerticalComponent } from './display-apps/app-group-vertical/app-group-vertical.component';
 import { DisplayAppMiniComponent } from './display-apps/display-app-mini/display-app-mini.component';
@@ -54,7 +53,6 @@ export * from './api-connection.service';
 export * from './local-storage.service';
 export * from './display-apps/display-apps.component';
 export * from './display-apps/app-detail-page/app-detail-page.component';
-export * from './display-apps/app-reviews-page/app-reviews-page.component';
 export * from './display-apps/app-group-horizontal/app-group-horizontal.component';
 export * from './display-apps/app-group-vertical/app-group-vertical.component';
 export * from './display-apps/display-app-mini/display-app-mini.component';
@@ -92,7 +90,6 @@ export * from './ui/was_menu/menu.module';
     WickeyAppStoreComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
-    AppReviewsPageComponent,
     AppGroupHorizontalComponent,
     AppGroupVerticalComponent,
     DisplayAppMiniComponent,
@@ -115,7 +112,6 @@ export * from './ui/was_menu/menu.module';
     WickeyAppStoreComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
-    AppReviewsPageComponent,
     AppGroupHorizontalComponent,
     AppGroupVerticalComponent,
     DisplayAppMiniComponent,

@@ -264,14 +264,35 @@
 .close-style {
     margin: 20px;
     font-size: 2em;
+    float: right;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    opacity: 0.5;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
 }
 .send-style {
     padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
     margin: 20px;
     font-size: 1.2em;
     float: left!important;
     color: #0066EF;
     opacity: 1;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
 }
 button:active {
     outline: none;

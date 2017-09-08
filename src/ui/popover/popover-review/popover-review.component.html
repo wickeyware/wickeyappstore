@@ -4,8 +4,8 @@
 <!-- <was-spinner [busy]="busyLoad" [message]='"Loading review.."'></was-spinner> -->
 <was-spinner [busy]="busySubmit" [message]='"Submitting review.."'></was-spinner>
 <!-- close button -->
-<button type="button" class="close-style close" data-dismiss="modal" (click)="closeOverlay()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<button type="button" class="send-style close" data-dismiss="modal" (click)="testValidReview()" aria-label="Send"><span aria-hidden="true">Send</span></button>
+<button type="button" class="close-style" data-dismiss="modal" (click)="closeOverlay()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="send-style" data-dismiss="modal" (click)="testValidReview()" aria-label="Send"><span aria-hidden="true">Send</span></button>
 <div class="center-block bump-down">
   <div class="title-text">Tap a Star to Rate</div>
   <div class="icon-svg-stars" (click)="clickStar(1)">
@@ -100,13 +100,13 @@
   <div class="login-container">
     <div class="login-innermargin">
       <div class="emailGroup" [@submitAnimation]='submitState'>
-        <div class="input-group">
-          <input type="text" maxlength=64 class="form-control" placeholder="Title" aria-describedby="basic-addon1" (keyup.enter)="titleInput.blur()" [(ngModel)]="titleText" #titleInput="ngModel">
+        <div class="was-input-group">
+          <input type="text" maxlength=64 class="was-form-control" placeholder="Title" aria-describedby="basic-addon1" (keyup.enter)="titleInput.blur()" [(ngModel)]="titleText" #titleInput="ngModel">
         </div>
       </div>
       <div class="tokenGroup" [@submitAnimation]='submitState'>
-        <div class="input-group">
-          <textarea type="text" rows="10" maxlength=1000 class="form-control highlight-input" placeholder="Review (Optional)" aria-describedby="basic-addon1"
+        <div class="was-input-group">
+          <textarea type="text" rows="10" maxlength=1000 class="was-form-control was-highlight-input" placeholder="Review (Optional)" aria-describedby="basic-addon1"
             (keyup.enter)="textArea.blur()" [(ngModel)]="reviewText" #reviewInput="ngModel"></textarea>
         </div>
       </div>

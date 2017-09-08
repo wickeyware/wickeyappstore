@@ -25,9 +25,9 @@
             <span *ngIf="!showEditEmailState">{{getEmailString | async}}
                 <span class="Button-link" (click)="editEmailClick()">Edit</span></span>
             <div class="emailGroup" *ngIf="showEditEmailState" [@showEmailEditAnim]='showEditEmailState'>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">@</span>
-                    <input type="email" class="form-control highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"
+                <div class="was-input-group">
+                    <span class="was-input-group-addon" id="basic-addon1">@</span>
+                    <input type="email" class="was-form-control was-highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"
                         #emailInput value="{{userobj.email}}">
                 </div>
                 <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText | async}}</button>

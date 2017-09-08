@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, OnDestroy, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -13,12 +13,12 @@ import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.comp
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
  *
- * @param {function} update  Calls the update EventEmitter on update events.
  * @param {function} close  Calls the close EventEmitter on close.
  *
  * @example
  * Add to your main html component template
  * <wickey-appstore (close)="onWickeyAppStoreClose($event)"></wickey-appstore>
+ * <wickey-appstore initialPosition="topRight"></wickey-appstore> topLeft/topRight/bottomLeft/bottomRight
  *
  * @returns      The store overlay
  */
@@ -77,6 +77,7 @@ import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.comp
 export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter<number>();
   @Output() update = new EventEmitter<any>();
+  @Input() public initialPosition = 'bottomLeft'; // bottomLeft, bottomRight, topLeft, topRight
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'in'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
@@ -92,13 +93,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   @ViewChild(PopoverLoginComponent) waslogin: PopoverLoginComponent;
 
   // Add the main menu button
-  public WAS_options = {
-    radius: 235,
-    defaultPosition: 'bottomLeft',
-    buttonOpacity: 0.85,
-    defaultOpen: false,
-    spinable: false,
-  };
 
   public WAS_wings = [
     {
@@ -127,7 +121,16 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     bottomRight: 186,
     bottomLeft: 324
   };
-
+  // add as a function so we can edit the starting location
+  WAS_options(): any {
+    return {
+      radius: 235,
+      defaultPosition: this.initialPosition,
+      buttonOpacity: 0.85,
+      defaultOpen: false,
+      spinable: false
+    };
+  }
   public WASMenuClick(open: any) {
     // returns true or false
   }
@@ -148,6 +151,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private wasAppService: WasAppService
   ) { }
+
 
   ngOnInit(): void {
     console.log('WAS: ngOnInit');
@@ -170,7 +174,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
   closeLoginScreen(_data?: any) {
     // this only returns if logged in. But double check by testing if emailed returned
-    if (this.isEmpty(_data) === false ) {
+    if (this.isEmpty(_data) === false) {
       this.openReview();
     }
   }
@@ -189,7 +193,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   isVerifiedUser(): boolean {
     console.log('verified user', this.userService.userObject.email);
-    if (this.isEmpty( this.userService.userObject.email ) === false) {
+    if (this.isEmpty(this.userService.userObject.email) === false) {
       return false;
     } else {
       return true;
