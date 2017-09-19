@@ -2,7 +2,7 @@
 <!--This makes it modal. Add a close button top left
 
 <!--Generic base popover container-->
-<div *ngIf="!hidden" class="icon-container" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
+<div *ngIf="!hidden" class="icon-container fix-position" [@clickButtonTrigger]='clickState' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">
   <div class="icon-svg">
     <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.4">
