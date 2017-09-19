@@ -22,7 +22,7 @@ export class AppDetailPageComponent implements OnInit {
   // STYLE OF OUTER DIV/PAGE
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'fixed';
-  @HostBinding('style.z-index') zIndex = 100;
+  @HostBinding('style.z-index') zIndex = 2147483638;
   @HostBinding('style.top') top = 0;
   @HostBinding('style.width') width = '100%';
   @HostBinding('style.height') height = '100%';
