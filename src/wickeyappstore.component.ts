@@ -17,7 +17,7 @@ import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.comp
  *
  * @example
  * Add to your main html component template
- * <wickey-appstore (close)="onWickeyAppStoreClose($event)"></wickey-appstore>
+ * <wickey-appstore (open)="gamePause()" (close)="gameResume()"></wickey-appstore>
  * <wickey-appstore initialPosition="topRight"></wickey-appstore> topLeft/topRight/bottomLeft/bottomRight
  *
  * @returns      The store overlay
@@ -75,8 +75,8 @@ import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.comp
   ]
 })
 export class WickeyAppStoreComponent implements OnInit, OnDestroy {
-  @Output() close = new EventEmitter<number>();
-  @Output() update = new EventEmitter<any>();
+  @Output() open = new EventEmitter<any>();
+  @Output() close = new EventEmitter<any>();
   @Input() public initialPosition = 'bottomLeft'; // bottomLeft, bottomRight, topLeft, topRight
   public clickState = 'inactive'; // this dictates the state of the clickable button
   private overlayState = 'in'; // this dictates the animation state of the actual window
@@ -170,6 +170,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       );
     } else {
       this.writeAReview = 1;
+      this.open.emit(); // send back a message that full screen portion of the app store is opening
     }
   }
   closeLoginScreen(_data?: any) {
@@ -184,6 +185,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       this.openwasup();
     }
     this.writeAReview = null;
+    this.close.emit(); // send back a message that full screen portion of the app store is closed
   }
 
   // test if the string is empty or null
@@ -211,6 +213,8 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.clickState = 'active'; // make the button animate on click
     this.showOverlay = 1; // show the overlay
     this.overlayState = 'in'; // set it to animate in
+
+    this.open.emit(); // send back a message that full screen portion of the app store is opening
   }
   // this animates the buttonClick Over
   buttonClickAnimationDone(event: AnimationEvent) {
@@ -280,33 +284,10 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     // console.log('closed AppDetail');
   }
 
-  inIframe(): boolean {
-    try {
-      return window.self !== window.top;
-    } catch (e) {
-      return true;
-    }
-  }
-
-  closeIframe(): void {
-    console.log('closeIframe');
-    try {
-      parent.postMessage('close', '*');
-      // const someIframe = window.parent.document.getElementById('wickeyappstore');
-      // someIframe.parentNode.removeChild(window.parent.document.getElementById('wickeyappstore'));
-    } catch (error) {
-      console.error('closeIframe', error);
-    }
-  }
-
+ 
   closeMe(): void {
-    // this.closeIframe();
-    // TODO: Need to still do this
-    // document.getElementsByTagName('body')[0].style.overflow = 'auto';
     this.showOverlay = null;
-    this.close.emit(1);
-    // this.getApps();
-    // this.testAlertBox();
+    this.close.emit(); // send back a message that full screen portion of the app store is closed
   }
 
   // POPOVER //
