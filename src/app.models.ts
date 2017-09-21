@@ -32,6 +32,7 @@ export interface App {
   name: string; // app name
   title: string; // long name
   text: string; // full app text
+  slug?: string;
   category: number;
   icon: string;
   featured_image?: string;
@@ -43,6 +44,7 @@ export interface App {
   screenshot_1?: string;
   screenshot_2?: string;
   screenshot_3?: string;
+  screenshot_4?: string;
   app_video?: string;
   has_inapps?: boolean;
   has_offerwall?: boolean;

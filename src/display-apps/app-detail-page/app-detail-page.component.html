@@ -35,11 +35,14 @@
           <div class="screenshot-group swiper-slide">
             <img class="img-screenshot" src={{selected_app?.screenshot_1}} alt="screenshot">
           </div>
-          <div class="screenshot-group swiper-slide">
+          <div *ngIf="selected_app?.screenshot_2" class="screenshot-group swiper-slide">
             <img class="img-screenshot" src={{selected_app?.screenshot_2}} alt="screenshot">
           </div>
-          <div class="screenshot-group swiper-slide">
+          <div *ngIf="selected_app?.screenshot_3" class="screenshot-group swiper-slide">
             <img class="img-screenshot" src={{selected_app?.screenshot_3}} alt="screenshot">
+          </div>
+          <div *ngIf="selected_app?.screenshot_4" class="screenshot-group swiper-slide">
+            <img class="img-screenshot" src={{selected_app.screenshot_4}} alt="screenshot">
           </div>
         </div>
       </swiper>
