@@ -1,0 +1,852 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>wickeyappstore</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">wickeyappstore</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">wickeyappstore</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/FanMenuModule.html"  data-type="entity-link" class="active" >FanMenuModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppDetailPageComponent.html" >AppDetailPageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AppGroupReviewsComponent.html" >AppGroupReviewsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DisplayAppFullwidthComponent.html" >DisplayAppFullwidthComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DisplayAppReviewComponent.html" >DisplayAppReviewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MenuContainerComponent.html" >MenuContainerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MenuWingComponent.html" >MenuWingComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopoverBaseComponent.html" >PopoverBaseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopoverLoginComponent.html" >PopoverLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopoverReviewComponent.html" >PopoverReviewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopoverUpComponent.html" >PopoverUpComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WASAlertComponent.html" >WASAlertComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/IMenuConfig.html" >IMenuConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/IMenuWing.html" >IMenuWing</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MenuOptions.html" >MenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/UserService.html" >UserService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/WasAppService.html" >WasAppService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/App.html" >App</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Inapp.html" >Inapp</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Review.html" >Review</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Settings.html" >Settings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/User.html" >User</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/UserParams.html" >UserParams</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/GetCategoryPipe.html" >GetCategoryPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">wickeyappstore</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/FanMenuModule.html"  data-type="entity-link" class="active" >FanMenuModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppDetailPageComponent.html" >AppDetailPageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AppGroupReviewsComponent.html" >AppGroupReviewsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DisplayAppFullwidthComponent.html" >DisplayAppFullwidthComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DisplayAppReviewComponent.html" >DisplayAppReviewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MenuContainerComponent.html" >MenuContainerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MenuWingComponent.html" >MenuWingComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopoverBaseComponent.html" >PopoverBaseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopoverLoginComponent.html" >PopoverLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopoverReviewComponent.html" >PopoverReviewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopoverUpComponent.html" >PopoverUpComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WASAlertComponent.html" >WASAlertComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/IMenuConfig.html" >IMenuConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/IMenuWing.html" >IMenuWing</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MenuOptions.html" >MenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/UserService.html" >UserService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/WasAppService.html" >WasAppService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/App.html" >App</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Inapp.html" >Inapp</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Review.html" >Review</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Settings.html" >Settings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/User.html" >User</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/UserParams.html" >UserParams</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/GetCategoryPipe.html" >GetCategoryPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+  <li>Modules</li>
+  <li>FanMenuModule</li>
+</ol>
+
+      <div class="text-center">
+          <div id="module-graph-svg">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: dependencies Pages: 1 -->
+<svg width="541pt" height="284pt"
+ viewBox="0.00 0.00 541.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>dependencies</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-280 537,-280 537,4 -4,4"/>
+<text text-anchor="start" x="245.5091" y="-42.4" font-family="sans-serif" font-weight="bold" font-size="14.00" fill="#000000">Legend</text>
+<polygon fill="#ffffb3" stroke="transparent" points="32.5,-10 32.5,-30 52.5,-30 52.5,-10 32.5,-10"/>
+<text text-anchor="start" x="56.129" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Declarations</text>
+<polygon fill="#8dd3c7" stroke="transparent" points="145.5,-10 145.5,-30 165.5,-30 165.5,-10 145.5,-10"/>
+<text text-anchor="start" x="169.2251" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Module</text>
+<polygon fill="#80b1d3" stroke="transparent" points="231.5,-10 231.5,-30 251.5,-30 251.5,-10 231.5,-10"/>
+<text text-anchor="start" x="255.2812" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Bootstrap</text>
+<polygon fill="#fdb462" stroke="transparent" points="328.5,-10 328.5,-30 348.5,-30 348.5,-10 328.5,-10"/>
+<text text-anchor="start" x="352.1732" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Providers</text>
+<polygon fill="#fb8072" stroke="transparent" points="424.5,-10 424.5,-30 444.5,-30 444.5,-10 424.5,-10"/>
+<text text-anchor="start" x="448.2258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
+<g id="clust1" class="cluster">
+<title>cluster_FanMenuModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="8,-70 8,-268 525,-268 525,-70 8,-70"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_FanMenuModule_declarations</title>
+<polygon fill="none" stroke="#000000" points="168,-78 168,-130 517,-130 517,-78 168,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_FanMenuModule_exports</title>
+<polygon fill="none" stroke="#000000" points="155,-208 155,-260 343,-260 343,-208 155,-208"/>
+</g>
+<g id="clust8" class="cluster">
+<title>cluster_FanMenuModule_providers</title>
+<polygon fill="none" stroke="#000000" points="16,-78 16,-130 160,-130 160,-78 16,-78"/>
+</g>
+<!-- MenuContainerComponent -->
+<g id="node1" class="node">
+<title>MenuContainerComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="508.6993,-122 339.3007,-122 339.3007,-86 508.6993,-86 508.6993,-122"/>
+<text text-anchor="middle" x="424" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MenuContainerComponent</text>
+</g>
+<!-- FanMenuModule -->
+<g id="node3" class="node">
+<title>FanMenuModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="305.7064,-187 302.7064,-191 281.7064,-191 278.7064,-187 192.2936,-187 192.2936,-151 305.7064,-151 305.7064,-187"/>
+<text text-anchor="middle" x="249" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">FanMenuModule</text>
+</g>
+<!-- MenuContainerComponent&#45;&gt;FanMenuModule -->
+<g id="edge1" class="edge">
+<title>MenuContainerComponent&#45;&gt;FanMenuModule</title>
+<path fill="none" stroke="#000000" d="M424,-122.1061C424,-141.3391 424,-169 424,-169 424,-169 315.8175,-169 315.8175,-169"/>
+<polygon fill="#000000" stroke="#000000" points="315.8175,-165.5001 305.8175,-169 315.8175,-172.5001 315.8175,-165.5001"/>
+</g>
+<!-- MenuWingComponent -->
+<g id="node2" class="node">
+<title>MenuWingComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="321.5968,-122 176.4032,-122 176.4032,-86 321.5968,-86 321.5968,-122"/>
+<text text-anchor="middle" x="249" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MenuWingComponent</text>
+</g>
+<!-- MenuWingComponent&#45;&gt;FanMenuModule -->
+<g id="edge2" class="edge">
+<title>MenuWingComponent&#45;&gt;FanMenuModule</title>
+<path fill="none" stroke="#000000" d="M249,-122.1061C249,-122.1061 249,-140.991 249,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="245.5001,-140.9909 249,-150.991 252.5001,-140.991 245.5001,-140.9909"/>
+</g>
+<!-- MenuContainerComponent  -->
+<g id="node4" class="node">
+<title>MenuContainerComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="335.1995,-252 162.8005,-252 162.8005,-216 335.1995,-216 335.1995,-252"/>
+<text text-anchor="middle" x="249" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">MenuContainerComponent </text>
+</g>
+<!-- FanMenuModule&#45;&gt;MenuContainerComponent  -->
+<g id="edge3" class="edge">
+<title>FanMenuModule&#45;&gt;MenuContainerComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249,-187.1061C249,-187.1061 249,-205.991 249,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="245.5001,-205.9909 249,-215.991 252.5001,-205.991 245.5001,-205.9909"/>
+</g>
+<!-- MenuOptions -->
+<g id="node5" class="node">
+<title>MenuOptions</title>
+<ellipse fill="#fdb462" stroke="#000000" cx="88" cy="-104" rx="64.2881" ry="18"/>
+<text text-anchor="middle" x="88" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MenuOptions</text>
+</g>
+<!-- MenuOptions&#45;&gt;FanMenuModule -->
+<g id="edge4" class="edge">
+<title>MenuOptions&#45;&gt;FanMenuModule</title>
+<path fill="none" stroke="#000000" d="M88,-122.1061C88,-141.3391 88,-169 88,-169 88,-169 182.2374,-169 182.2374,-169"/>
+<polygon fill="#000000" stroke="#000000" points="182.2375,-172.5001 192.2374,-169 182.2374,-165.5001 182.2375,-172.5001"/>
+</g>
+</g>
+</svg>
+
+          </div>
+          <div class="btn-group">
+              <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
+              <button id="reset" class="btn btn-default btn-sm">Reset</button>
+              <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
+          </div>
+      </div>
+      <script src="../js/libs/svg-pan-zoom.min.js"></script>
+      <script src="../js/svg-pan-zoom.controls.js"></script>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/ui/was_menu/menu.module.ts</code>
+        </p>
+
+
+        <div class="container-fluid module">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" title="Official documentation about module declarations"><span class="fa fa-info-circle"></span></a></h3>
+                    <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="../components/MenuContainerComponent.html">MenuContainerComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/MenuWingComponent.html">MenuWingComponent</a>
+                            </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Providers<a href="https://angular.io/api/core/NgModule#providers" target="_blank" title="Official documentation about module providers"><span class="fa fa-info-circle"></a></h3>
+                    <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="../injectables/MenuOptions.html" >MenuOptions</a>
+                            </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span class="fa fa-info-circle"></a></h3>
+                    <ul class="list-group">
+                            <li class="list-group-item">
+                                    <a href="../components/MenuContainerComponent.html" >MenuContainerComponent</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { MenuContainerComponent } from &#x27;./menu-container.component&#x27;;
+import { MenuOptions } from &#x27;./menu-options.service&#x27;;
+import { MenuWingComponent } from &#x27;./menu-wing.component&#x27;;
+
+/* HammerJS */
+// import &#x27;hammerjs&#x27;;
+
+export * from &#x27;./menu-container.component&#x27;;
+export * from &#x27;./menu-options.service&#x27;;
+export * from &#x27;./menu-wing.component&#x27;;
+// export * from &#x27;./menu-spin.service&#x27;;
+
+@NgModule({
+    declarations: [
+        MenuContainerComponent,
+        MenuWingComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+    ],
+    exports: [
+        MenuContainerComponent,
+    ],
+    providers: [
+        MenuOptions,
+    ]
+})
+export class FanMenuModule {
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

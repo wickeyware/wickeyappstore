@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -44,16 +44,16 @@
     "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm/issues"
   },
   "devDependencies": {
-    "@angular/animations": "^4.3.5",
-    "@angular/common": "^4.3.5",
-    "@angular/compiler": "^4.3.5",
-    "@angular/compiler-cli": "^4.3.5",
-    "@angular/core": "^4.3.5",
-    "@angular/forms": "^4.3.5",
-    "@angular/platform-browser": "^4.3.5",
-    "@angular/platform-browser-dynamic": "^4.3.5",
-    "@angular/router": "^4.3.5",
-    "@compodoc/compodoc": "^1.0.0-beta.14",
+    "@angular/animations": "^4.4.3",
+    "@angular/common": "^4.4.3",
+    "@angular/compiler": "^4.4.3",
+    "@angular/compiler-cli": "^4.4.3",
+    "@angular/core": "^4.4.3",
+    "@angular/forms": "^4.4.3",
+    "@angular/platform-browser": "^4.4.3",
+    "@angular/platform-browser-dynamic": "^4.4.3",
+    "@angular/router": "^4.4.3",
+    "@compodoc/compodoc": "^1.0.1",
     "@types/jasmine": "2.5.38",
     "@types/node": "^7.0.39",
     "angular2-useful-swiper": "^4.0.6",
@@ -86,7 +86,7 @@
     "tslint": "~5.6.0",
     "typescript": "^2.4.0",
     "web-animations-js": "^2.3.1",
-    "zone.js": "^0.8.16"
+    "zone.js": "^0.8.17"
   },
   "engines": {
     "node": ">=6.0.0"

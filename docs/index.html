@@ -36,16 +36,16 @@
                         <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
                         <ul class="links">
                                 <li class="link">
-                                    <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
-                                <li class="link">
-                                    <a  href="./overview.html" 
+                                    <a 
                                         
                                          href="./overview.html" 
-                                        
+                                         href="./overview.html" 
                                         >
                                         <span class="fa fa-th"></span>Overview
                                     </a>
+                                </li>
+                                <li class="link">
+                                  <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                         </ul>
                     </li>
@@ -58,12 +58,15 @@
                             >
                                 <span class="fa fa-archive"></span>
                                 <span class="link-name">Modules</span>
-                                <span class="fa fa-angle-up"></span>
+                                <span class="fa fa-angle-down"></span>
                             </div>
                         </a>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="./modules/FanMenuModule.html" >FanMenuModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="./modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
@@ -79,9 +82,9 @@
                             >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="fa fa-angle-up"></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-components-links"
                             >
                                 <li class="link">
@@ -91,19 +94,31 @@
                                     <a href="./components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                    <a href="./components/AppGroupReviewsComponent.html" >AppGroupReviewsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./components/AppReviewsPageComponent.html" >AppReviewsPageComponent</a>
+                                    <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/DisplayAppFullwidthComponent.html" >DisplayAppFullwidthComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/DisplayAppReviewComponent.html" >DisplayAppReviewComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/MenuContainerComponent.html" >MenuContainerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/MenuWingComponent.html" >MenuWingComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
@@ -115,7 +130,19 @@
                                     <a href="./components/PopoverLoginComponent.html" >PopoverLoginComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
+                                    <a href="./components/PopoverReviewComponent.html" >PopoverReviewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PopoverUpComponent.html" >PopoverUpComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/ReviewsComponent.html" >ReviewsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WASAlertComponent.html" >WASAlertComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
@@ -129,9 +156,9 @@
                             >
                             <span class="fa fa-code"></span>
                             <span>Directives</span>
-                            <span class="fa fa-angle-up"></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-directives-links"
                             >
                                 <li class="link">
@@ -140,6 +167,25 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="./classes/IMenuConfig.html" >IMenuConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/IMenuWing.html" >IMenuWing</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
@@ -147,9 +193,9 @@
                             >
                             <span class="fa fa-long-arrow-down"></span>
                             <span>Injectables</span>
-                            <span class="fa fa-angle-up"></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
@@ -159,7 +205,13 @@
                                     <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./injectables/MenuOptions.html" >MenuOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="./injectables/UserService.html" >UserService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/WasAppService.html" >WasAppService</a>
                                 </li>
                         </ul>
                     </li>
@@ -170,9 +222,9 @@
                             >
                             <span class="fa fa-info"></span>
                             <span>Interfaces</span>
-                            <span class="fa fa-angle-up"></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
@@ -182,7 +234,10 @@
                                     <a href="./interfaces/AppGroup.html" >AppGroup</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./interfaces/ErrorTable.html" >ErrorTable</a>
+                                    <a href="./interfaces/Inapp.html" >Inapp</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/Review.html" >Review</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/Settings.html" >Settings</a>
@@ -193,14 +248,52 @@
                                 <li class="link">
                                     <a href="./interfaces/UserParams.html" >UserParams</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./interfaces/WasAlertTable.html" >WasAlertTable</a>
+                                </li>
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="./pipes/GetCategoryPipe.html" >GetCategoryPipe</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="./miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="./miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="./miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
                     </li>
+            
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -233,16 +326,16 @@
                                <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
                                <ul class="links">
                                        <li class="link">
-                                           <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
-                                       <li class="link">
-                                           <a  href="./overview.html" 
+                                           <a 
                                                
                                                 href="./overview.html" 
-                                               
+                                                href="./overview.html" 
                                                >
                                                <span class="fa fa-th"></span>Overview
                                            </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                </ul>
                            </li>
@@ -255,12 +348,15 @@
                                    >
                                        <span class="fa fa-archive"></span>
                                        <span class="link-name">Modules</span>
-                                       <span class="fa fa-angle-up"></span>
+                                       <span class="fa fa-angle-down"></span>
                                    </div>
                                </a>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="./modules/FanMenuModule.html" >FanMenuModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
@@ -276,9 +372,9 @@
                    >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="fa fa-angle-up"></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="components-links"
                    >
                                        <li class="link">
@@ -288,19 +384,31 @@
                                            <a href="./components/AppGroupHorizontalComponent.html" >AppGroupHorizontalComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
+                                           <a href="./components/AppGroupReviewsComponent.html" >AppGroupReviewsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./components/AppReviewsPageComponent.html" >AppReviewsPageComponent</a>
+                                           <a href="./components/AppGroupVerticalComponent.html" >AppGroupVerticalComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/DisplayAppFeaturedComponent.html" >DisplayAppFeaturedComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/DisplayAppFullwidthComponent.html" >DisplayAppFullwidthComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/DisplayAppMiniComponent.html" >DisplayAppMiniComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/DisplayAppReviewComponent.html" >DisplayAppReviewComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/MenuContainerComponent.html" >MenuContainerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/MenuWingComponent.html" >MenuWingComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/PopoverAccountInfoComponent.html" >PopoverAccountInfoComponent</a>
@@ -312,7 +420,19 @@
                                            <a href="./components/PopoverLoginComponent.html" >PopoverLoginComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./components/WASAlertPopupComponent.html" >WASAlertPopupComponent</a>
+                                           <a href="./components/PopoverReviewComponent.html" >PopoverReviewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PopoverUpComponent.html" >PopoverUpComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/ReviewsComponent.html" >ReviewsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WASAlertComponent.html" >WASAlertComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/WickeyAppStoreComponent.html" >WickeyAppStoreComponent</a>
@@ -326,9 +446,9 @@
                    >
                                    <span class="fa fa-code"></span>
                                    <span>Directives</span>
-                                   <span class="fa fa-angle-up"></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="directives-links"
                    >
                                        <li class="link">
@@ -337,6 +457,25 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./classes/IMenuConfig.html" >IMenuConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/IMenuWing.html" >IMenuWing</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -344,9 +483,9 @@
                    >
                                    <span class="fa fa-long-arrow-down"></span>
                                    <span>Injectables</span>
-                                   <span class="fa fa-angle-up"></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="injectables-links"
                    >
                                        <li class="link">
@@ -356,7 +495,13 @@
                                            <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./injectables/MenuOptions.html" >MenuOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./injectables/UserService.html" >UserService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/WasAppService.html" >WasAppService</a>
                                        </li>
                                </ul>
                            </li>
@@ -367,9 +512,9 @@
                    >
                                    <span class="fa fa-info"></span>
                                    <span>Interfaces</span>
-                                   <span class="fa fa-angle-up"></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="interfaces-links"
                    >
                                        <li class="link">
@@ -379,7 +524,10 @@
                                            <a href="./interfaces/AppGroup.html" >AppGroup</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./interfaces/ErrorTable.html" >ErrorTable</a>
+                                           <a href="./interfaces/Inapp.html" >Inapp</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/Review.html" >Review</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/Settings.html" >Settings</a>
@@ -390,14 +538,52 @@
                                        <li class="link">
                                            <a href="./interfaces/UserParams.html" >UserParams</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./interfaces/WasAlertTable.html" >WasAlertTable</a>
+                                       </li>
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./pipes/GetCategoryPipe.html" >GetCategoryPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="./miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="./miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="./miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -408,10 +594,15 @@
                    
                    </nav>
                </div>
-               <div class="content readme">
+               <div class="content getting-started">
                    <div class="content-data">
+
 <h1 id="wickeyappstore">WickeyAppStore</h1>
 <p>Reach the next One Billion users, AppStore for Progressive WebApps.</p>
+<h2 id="tutorial-app">Tutorial App</h2>
+<p>Check out a tutorial app:<br>REPO: <a href="https://github.com/wickeyware/was-tutorial/">https://github.com/wickeyware/was-tutorial/</a><br>LIVE DEMO: <a href="https://wickeyware.github.io/was-tutorial/">https://wickeyware.github.io/was-tutorial/</a></p>
+<h2 id="app-store">App Store</h2>
+<p><a href="https://wickeyappstore.com/">https://wickeyappstore.com/</a></p>
 <h2 id="progressive-web-app-store">Progressive Web App Store</h2>
 <p>Reach the next One Billion users. WickeyAppStore is a full featured App Store for <strong>PWA</strong> web-apps. A <strong>PWA</strong> makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.</p>
 <p>Apps on the WickeyAppStore must meet quality and security requirements:</p>
@@ -432,8 +623,6 @@
 <h2 id="submit-your-app">Submit your app</h2>
 <p>If you have an app you want to submit, email us at <a href="mailto:wickeyappstore@gmail.com">wickeyappstore@gmail.com</a>. </p>
 <p><strong>NOTE</strong>: Please check back frequently. We will keep this document updated all the time.</p>
-<h2 id="tutorial-app">Tutorial App</h2>
-<p>Check out the tutorial app: <a href="https://github.com/wickeyware/was-tutorial">https://github.com/wickeyware/was-tutorial</a></p>
 <h2 id="installation">Installation</h2>
 <p>To install this library, run: (NOTE: Install all dependencies)</p>
 <pre class="line-numbers"><code class="language-bash">$ npm install wickeyappstore --save</code></pre><h2 id="consuming-your-library">Consuming your library</h2>
@@ -465,26 +654,27 @@ import { WickeyAppStoreModule } from &#39;wickeyappstore&#39;;
 })
 export class AppModule { }</code></pre><p>Once your library is imported, you can use its components, directives and pipes in your Angular application:</p>
 <pre class="line-numbers"><code class="language-xml">&lt;!-- You can now use your library component in app.component.html or wherever needed --&gt;
+&lt;!-- Be sure to add a router-outlet, WAS apps have unique urls --&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
 &lt;h1&gt;
   {{title}}
 &lt;/h1&gt;
-&lt;!-- Close will be called when app store closes--&gt;
+&lt;!-- The WAS button, when clicked will show the store. Close will be called when app store closes--&gt;
 &lt;wickey-appstore (close)=&quot;onWASClose($event)&quot;&gt;&lt;/wickey-appstore&gt;
-&lt;!-- A button, when clicked will show the account info modal and allow email add/edit --&gt;
-&lt;was-popover-account-info [isModal]=&quot;true&quot; [user]=&quot;user&quot; (signout)=&quot;logoutUser($event)&quot;&gt;&lt;/was-popover-account-info&gt;
-&lt;!-- A button, when clicked will show the login overlay screen --&gt;
-&lt;was-popover-login [user]=&quot;user&quot; (close)=&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;</code></pre><p>Link CSS, or copy it into your styles.css:</p>
-<pre class="line-numbers"><code class="language-code">&lt;!-- BOOTSTRAP 4 CSS (required by wickeyappstore) --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&quot; integrity=&quot;sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ&quot; crossorigin=&quot;anonymous&quot;&gt;
-&lt;!-- WickeyAppStore global css--&gt;
+&lt;!-- A button, when clicked will show the SSO overlay screen (create or login to accounts) --&gt;
+&lt;was-popover-login #loginpopover (close)=&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;</code></pre><p>Link CSS, or copy it into your styles.css:</p>
+<pre class="line-numbers"><code class="language-code">&lt;!-- WickeyAppStore global css--&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/wickeyappstore&#64;0.1.34/styles.css&quot;&gt;
 &lt;!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper --&gt;
   &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js&quot;&gt;&lt;/script&gt;</code></pre><h2 id="development">Development</h2>
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://hammerjs.github.io/dist/hammer.min.js&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;</code></pre><h2 id="development">Development</h2>
 <p>To generate all <code>*.js</code>, <code>*.d.ts</code> and <code>*.metadata.json</code> files:</p>
 <pre class="line-numbers"><code class="language-bash">$ npm run build</code></pre><p>To lint all <code>*.ts</code> files:</p>
 <pre class="line-numbers"><code class="language-bash">$ npm run lint</code></pre><h2 id="license">License</h2>
 <p>MIT © <a href="mailto:wickeym@gmail.com">Michael Wickey</a></p>
+
 
 
 
