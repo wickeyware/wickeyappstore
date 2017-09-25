@@ -67,14 +67,29 @@
     width: 100%;
      /* background-color: peru;  */
 }
-
+.was-share-btn {
+    width: 36px;
+    height: 36px;
+    background-size: 30px;
+    background-position: 3px 3px;
+    right: 6px;
+    top: 6px;
+    position: absolute;
+    color: #006AEB;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: none;
+}
 .appthumbnail {
     display: block;
     margin: 5px auto;
     width: 110px;
     height: 110px;
 }
-
 .btn-get {
     display: inline-block;
     background-color: black;
@@ -90,7 +105,6 @@
         width:         calc(100% - 135px)!important; 
     }
 }
-
 .btn-get:hover {
     cursor: pointer;
 }
@@ -114,7 +128,6 @@
     width: 100%;
     color: black;
 }
-
 .solid-separator {
 	border-top: 4px solid #FF5402;
     box-shadow: 0 -1px 0 0 #FFAF81;
@@ -124,7 +137,6 @@
     width:    -moz-calc(100% - 10px);
     width:         calc(100% - 10px);
 }
-
 .lower-title-text {
     margin: 10px;
 }
@@ -141,7 +153,6 @@
     height: 366px; 
     width: 210px;
 }
-
 /* The Screenshot stuff */
 .swiper-slide {
     text-align: center;
@@ -161,12 +172,6 @@
     -webkit-align-items: center;
     align-items: center;
 }
-
-
-
-
-
-
 .description-body {
     color: rgb(50,50,50);
     margin-left: 10px;
@@ -175,8 +180,6 @@
     font-weight: 280;
     font-size: 1em;
 }
-
-
 .light-circle-separator {
     width: 90%;
     height: 1px;
@@ -191,4 +194,3 @@
     background-image: radial-gradient(circle,rgba(0,0,0,.21),rgba(0,0,0,0));
     margin: 10px auto;
 }
-

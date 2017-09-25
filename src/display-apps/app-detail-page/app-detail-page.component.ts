@@ -4,9 +4,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 // import { trigger, style, animate, transition } from '@angular/animations';
 import { WasAppService } from '../../was-app.service';
+import { ClipboardService } from '../../clipboard.service';
 import { slideInDownAnimation } from '../../animations';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
 import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
+import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.component';
 
 @Component({
   selector: 'app-detail-page',
@@ -16,6 +18,7 @@ import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.
 })
 export class AppDetailPageComponent implements OnInit {
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
+  @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   // ANIMATION TO USE, Set the routeAnimation property to true since we only care about the :enter and :leave states
   // https://angular.io/guide/router#adding-animations-to-the-routed-component
   @HostBinding('@routeAnimation') routeAnimation = true;
@@ -42,7 +45,8 @@ public config: Object = {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private wasAppService: WasAppService
+    private wasAppService: WasAppService,
+    private clipboardService: ClipboardService,
   ) { }
 
   ngOnInit() {
@@ -75,6 +79,16 @@ public config: Object = {
     // .catch(this.handleError);
     console.error('An error occurred', error);  // for demo purposes
     return Promise.reject(error.message || error);
+  }
+
+  onShareBtn() {
+    const _app_url = `https://wickeyappstore.com/app/${this.selected_app.slug}`;
+    this.clipboardService.copy(_app_url).then((val: string) => {
+      this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
+      console.log('Copied link to clipboard', _app_url);
+    }).catch((err: any) => {
+      console.error(err);
+    });
   }
 
   goBack(): void {
