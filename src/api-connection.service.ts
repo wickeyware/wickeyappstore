@@ -45,11 +45,12 @@ export class ApiConnectionService {
     } else {
       // The backend returned an unsuccessful response code.
       // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
-      // TODO: Need to first check if error.error.error.message, then use error.message
-      if (error.error && error.error.error) {
-        errMsg = error.error.error.message;
-      } else {
-        errMsg = error.message;
+      try {
+        const errorObj = JSON.parse(error.error);
+        errMsg = errorObj.error.message;
+      } catch (locerror) {
+        errMsg = locerror.toString();
+        console.error('API: + LOCAL Error:', error, locerror);
       }
     }
     return Observable.throw(errMsg);

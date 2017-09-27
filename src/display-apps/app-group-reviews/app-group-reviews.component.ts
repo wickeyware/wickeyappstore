@@ -41,6 +41,11 @@ export class AppGroupReviewsComponent implements OnInit {
     this.busy = this.apiConnectionService.getReviews({ 'storeapp_id': this.storeapp_id }).subscribe((_reviews: any) => {
       console.log(_reviews);
       this.reviews = _reviews;
+    }, (error) => {
+      console.log('AppGroupReviewsComponent: ERROR:', error);
+      this.wasalert.open(
+        { title: 'Attention', text: error }
+      );
     });
 
   }

@@ -72,6 +72,11 @@ public config: Object = {
         if (this.selected_app.screenshot_1) {
           this.hasscreenshots = true;
         }
+      }, (error) => {
+        console.log('AppDetailPageComponent: ERROR:', error);
+        this.wasalert.open(
+          { title: 'Attention', text: error }
+        );
       });
   }
 
@@ -87,7 +92,7 @@ public config: Object = {
       this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
       console.log('Copied link to clipboard', _app_url);
     }).catch((err: any) => {
-      console.error(err);
+      console.error('onShareBtn', err);
     });
   }
 
