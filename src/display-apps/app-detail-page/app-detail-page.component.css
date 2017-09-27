@@ -67,6 +67,15 @@
     width: 100%;
      /* background-color: peru;  */
 }
+.was-share-link {
+    position: fixed;
+    font-size: 16px;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    left: -100px;
+    top: -100px;
+  }
 .was-share-btn {
     width: 36px;
     height: 36px;

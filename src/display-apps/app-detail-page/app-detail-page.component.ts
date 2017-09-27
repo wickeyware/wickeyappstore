@@ -1,5 +1,6 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, HostBinding, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 // import { trigger, style, animate, transition } from '@angular/animations';
@@ -34,6 +35,7 @@ export class AppDetailPageComponent implements OnInit {
   public hasscreenshots;
   public selected_app_test = 'hello';
   public showReviews;
+  private dom: Document;
 
 public config: Object = {
     pagination: '.swiper-pagination',
@@ -43,11 +45,14 @@ public config: Object = {
   };
 
   constructor(
+    @Inject( DOCUMENT ) dom: Document,
     private route: ActivatedRoute,
     private router: Router,
     private wasAppService: WasAppService,
     private clipboardService: ClipboardService,
-  ) { }
+  ) {
+    this.dom = dom;
+  }
 
   ngOnInit() {
     // TODO: Load more reviews on reviews open
@@ -86,14 +91,49 @@ public config: Object = {
     return Promise.reject(error.message || error);
   }
 
+  performCopyLink() {
+    let wasSuccessful = false;
+    const shareLink = this.dom.querySelector('.was-share-link');
+    const userAgent = navigator.userAgent || navigator.vendor || (<any>window).opera;
+    if (/iPad|iPhone|iPod/.test(userAgent) && !(<any>window).MSStream) {
+      const range = this.dom.createRange();
+      range.selectNode(shareLink);
+      window.getSelection().addRange(range);
+      console.log(shareLink);
+      (<any>shareLink).setSelectionRange(0, 999999);
+      wasSuccessful = this.dom.execCommand('copy');
+      console.log('iOS Copy email command was ', (wasSuccessful ? 'successful' : 'unsuccessful'));
+      window.getSelection().removeAllRanges();
+    } else {
+      (<any>shareLink).select();
+      wasSuccessful = this.dom.execCommand('copy');
+      console.log('Copy was ', (wasSuccessful ? 'successful' : 'unsuccessful'));
+    }
+    if (wasSuccessful === false) {
+      throw({name: 'CopyError', message: 'unsuccessful copy'});
+    }
+    (<any>shareLink).blur();
+    // scroll back to top
+    window.scrollTo(0, 0);
+    this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
+  }
+
   onShareBtn() {
-    const _app_url = `https://wickeyappstore.com/app/${this.selected_app.slug}`;
-    this.clipboardService.copy(_app_url).then((val: string) => {
-      this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
-      console.log('Copied link to clipboard', _app_url);
-    }).catch((err: any) => {
-      console.error('onShareBtn', err);
-    });
+    try {
+      this.performCopyLink();
+    } catch (shareError) {
+      console.error('onShareBtn', shareError);
+      this.wasalert.open(
+        { title: 'Copy Error', text: `Share link is: https://wickeyappstore.com/app/${this.selected_app.slug}` }
+      );
+    }
+    // const _app_url = `https://wickeyappstore.com/app/${this.selected_app.slug}`;
+    // this.clipboardService.copy(_app_url).then((val: string) => {
+    //   this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
+    //   console.log('Copied link to clipboard', _app_url);
+    // }).catch((err: any) => {
+    //   console.error('onShareBtn', err);
+    // });
   }
 
   goBack(): void {
