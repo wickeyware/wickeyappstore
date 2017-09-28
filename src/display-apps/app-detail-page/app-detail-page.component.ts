@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, HostBinding, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 // import { trigger, style, animate, transition } from '@angular/animations';
 import { WasAppService } from '../../was-app.service';
 import { ClipboardService } from '../../clipboard.service';

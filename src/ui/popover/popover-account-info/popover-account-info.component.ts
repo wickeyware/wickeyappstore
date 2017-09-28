@@ -3,8 +3,8 @@ import { trigger, state, style, animate, transition, AnimationEvent, keyframes }
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
 import { WASAlertComponent } from '../../../ui/popover/popover-alert/popover-alert.component';
-// import { Observable } from "rxjs/Observable";
-import { Subscription, Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { DatePipe } from '@angular/common';
 
 /**

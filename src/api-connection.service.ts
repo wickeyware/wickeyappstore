@@ -1,9 +1,10 @@
-import { Subscription, Observable } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import { Injectable } from '@angular/core';
 // import { Headers, RequestOptions, Response, Http } from '@angular/http';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';

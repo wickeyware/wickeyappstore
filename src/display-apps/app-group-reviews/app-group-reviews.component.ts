@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AppGroup } from '../../app.models';
 import { ApiConnectionService } from '../../api-connection.service';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 
 @Component({

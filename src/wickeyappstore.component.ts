@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 
 import { UserService } from './user.service';

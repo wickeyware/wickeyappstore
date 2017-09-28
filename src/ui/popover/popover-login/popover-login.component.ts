@@ -1,7 +1,8 @@
 /* tslint:disable: member-ordering forin */
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
-import { Subscription, Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { WASAlertComponent } from '../../../ui/popover/popover-alert/popover-alert.component';
 
 import { UserService } from '../../../user.service';

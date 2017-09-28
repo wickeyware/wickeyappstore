@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit, Input } from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 const inactiveStyle = style({
   opacity: 0,
