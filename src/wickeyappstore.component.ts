@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
 
 import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
@@ -86,6 +85,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public apps = [];
   public bannerApps = [];
   public selected_app: {};
+  public showAppDetails;
   public showCloseBtn = true;
   public writeAReview = null;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
@@ -147,7 +147,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private router: Router,
     private userService: UserService,
     private wasAppService: WasAppService
   ) { }
@@ -277,14 +276,17 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   showAppDetail = (_app: any) => {
     this.selected_app = _app;
-    this.router.navigate(['was', _app.slug]);
-    // window.open(app_term, '_blank');
+    this.handleAppDetail('open');
   }
-  closeAppDetail(_val: number): void {
-    // console.log('closed AppDetail');
+  handleAppDetail(_state: string) {
+    console.log('handleAppDetail', _state);
+    if (_state === 'open') {
+      this.showAppDetails = 1;
+    } else {
+      this.selected_app = null;
+      this.showAppDetails = null;
+    }
   }
-
- 
   closeMe(): void {
     this.showOverlay = null;
     this.close.emit(); // send back a message that full screen portion of the app store is closed

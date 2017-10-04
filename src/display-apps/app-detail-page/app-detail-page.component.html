@@ -1,8 +1,8 @@
-<div class="fullscreen">
+<div *ngIf="open" class="fullscreen" [@pageOpen]="in">
   <was-spinner [busy]="busy" [message]='"Getting app details.."'></was-spinner>
   <div class="was-titlebar">
     <p class="was-titletext">App Details</p>
-    <button (click)="goBack()" class="was-navClose" title="back"></button>
+    <button (click)="goBack($event)" class="was-navClose" title="back"></button>
     <textarea class="was-share-link">https://wickeyappstore.com/app/{{selected_app?.slug}}</textarea>
     <button (click)="onShareBtn()" class="was-share-btn" title="share"><i class="fa fa-share fa-2x" aria-hidden="true"></i></button>
     <div class="was-titlebottom"></div>

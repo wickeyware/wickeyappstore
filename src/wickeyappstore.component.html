@@ -25,7 +25,7 @@
   </div> 
 </div>
 
-<router-outlet></router-outlet>
+<was-detail-page class="was-fullscreen" *ngIf="selected_app" [open]="showAppDetails" (close)="handleAppDetail($event)" [selected_app]="selected_app"></was-detail-page>
 <!--Generic base popover container-->
 <was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen($event)"></was-popover-review>
 <was-menu-container [options]="WAS_options()" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></was-menu-container>

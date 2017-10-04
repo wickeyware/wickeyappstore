@@ -7,8 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // SWIPER //
 import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
-// ROUTING //
-import { WasRoutingModule } from './was-routing/was-routing.module';
 // SERVICES //
 import { UserService } from './user.service';
 import { ApiConnectionService } from './api-connection.service';
@@ -44,7 +42,6 @@ import { FanMenuModule } from './ui/was_menu/menu.module';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
-export * from './was-routing/was-routing.module';
 export * from './animations';
 export * from './user.service';
 export * from './was-app.service';
@@ -82,7 +79,6 @@ export * from './ui/was_menu/menu.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    WasRoutingModule,
     BrowserAnimationsModule,
     SwiperModule,
     FanMenuModule
