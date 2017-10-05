@@ -75,8 +75,8 @@ export class MenuWingComponent implements OnChanges, OnInit, AfterViewInit, OnDe
         // When the menu's position changes,
         // recalculate each wing's and its icon rotation degrees
         if (changes['position']) {
-            console.log('ngOnChanges');
-            console.log(this.position, this.menuOptions.StartAngles, this.menuOptions.StartAngles[this.position]);
+            // console.log('ngOnChanges');
+            // console.log(this.position, this.menuOptions.StartAngles, this.menuOptions.StartAngles[this.position]);
             // bottomRight {topLeft: 20, topRight: 130, bottomRight: 186, bottomLeft: 324}
 
             this.startAngles = this.menuOptions.StartAngles[this.position];
@@ -86,7 +86,7 @@ export class MenuWingComponent implements OnChanges, OnInit, AfterViewInit, OnDe
             this.setWingTransformStyle();
             this.wingTextStyle = this.menuOptions.MenuPositions[this.position];
 
-            console.log(this.rotateWingState, this.rotateDeg, this.wingTextStyle);
+            // console.log(this.rotateWingState, this.rotateDeg, this.wingTextStyle);
 
         }
 

@@ -1,12 +1,11 @@
 import 'rxjs/add/operator/switchMap';
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
-import { trigger, style, animate, transition } from '@angular/animations';
+import { AnimationEvent } from '@angular/animations';
+import { enterLeaveAnim } from '../../animations';
 import { Subscription } from 'rxjs/Subscription';
-// import { trigger, style, animate, transition } from '@angular/animations';
 import { WasAppService } from '../../was-app.service';
 import { ClipboardService } from '../../clipboard.service';
-import { slideInDownAnimation } from '../../animations';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
 import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.component';
@@ -15,30 +14,22 @@ import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.compo
   selector: 'was-detail-page',
   templateUrl: './app-detail-page.component.html',
   styleUrls: ['./app-detail-page.component.css'],
-  animations: [
-    // ANIMATION FOR MODAL //
-    trigger('pageOpen', [
-      transition(':leave', [
-        animate('200ms ease-out', style({ transform: 'translateY(-100%)' }))
-      ]),
-      transition(':enter', [
-        style({ transform: 'translateY(-100%)' }),
-        animate('200ms ease-out', style({ transform: 'translateY(0)' }))
-      ])
-    ])
-  ]
+  animations: [enterLeaveAnim]
 })
 export class AppDetailPageComponent implements OnInit {
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
-  @Input() public selected_app: any;
-  @Input() public open: number;
   @Output() close = new EventEmitter<string>();
   public busy: Subscription;
+  public selected_app: any;
   public hasscreenshots;
   public selected_app_test = 'hello';
   public showReviews;
   private dom: Document;
+  public showMe: number = null; // this dictates whether or not to show the overlay window
+  // this is the container the item shows in.
+  // To get a proper leave animation this container needs to stay until anim is done. That is why it is here.
+  public showContainer: number = null;
 
 public config: Object = {
     pagination: '.swiper-pagination',
@@ -55,35 +46,57 @@ public config: Object = {
     this.dom = dom;
   }
 
-  ngOnInit() {
-    // TODO: Load more reviews on reviews open
-    // this.busy = this.route.paramMap
-    //   .switchMap((params: ParamMap) =>
-    //     this.wasAppService.appFromSlug(params.get('slug'))
-    //   ).subscribe((_selected_app: any) => {
-    //     console.log('AppDetailPageComponent', _selected_app);
-    //     if (_selected_app[0] !== undefined) {
-    //       _selected_app = _selected_app[0];
-    //     }
-    //     this.selected_app = _selected_app;
-    //     if (this.busy) {
-    //       this.busy.unsubscribe();
-    //     } else {
-    //       setTimeout(() => {
-    //         if (this.busy) {
-    //           this.busy.unsubscribe();
-    //         }
-    //       }, 40);
-    //     }
-    //     if (this.selected_app.screenshot_1) {
-    //       this.hasscreenshots = true;
-    //     }
-    //   }, (error) => {
-    //     console.log('AppDetailPageComponent: ERROR:', error);
-    //     this.wasalert.open(
-    //       { title: 'Attention', text: error }
-    //     );
-    //   });
+  ngOnInit() {}
+
+  open(_app: any): void {
+    // NOTE: Could pass only slug too, simply add `_slug: string` to params.
+    // if ( _slug ) { this.slug = _slug; }
+    // this.busy = this.wasAppService.appFromSlug(_slug).subscribe((_selected_app: any) => {
+    //   console.log('AppDetailPageComponent', _selected_app);
+    //   if (_selected_app[0] !== undefined) {
+    //     _selected_app = _selected_app[0];
+    //   }
+    //   this.selected_app = _selected_app;
+    //   if (this.busy) {
+    //     this.busy.unsubscribe();
+    //   } else {
+    //     setTimeout(() => {
+    //       if (this.busy) {
+    //         this.busy.unsubscribe();
+    //       }
+    //     }, 40);
+    //   }
+    //   if (this.selected_app.screenshot_1) {
+    //     this.hasscreenshots = true;
+    //   }
+    // }, (error) => {
+    //   console.log('AppDetailPageComponent: ERROR:', error);
+    //   this.wasalert.open(
+    //     { title: 'Attention', text: error }
+    //   );
+    // });
+    this.selected_app = _app;
+    if (this.selected_app.screenshot_1) {
+      this.hasscreenshots = true;
+    } else {
+      this.hasscreenshots = false;
+    }
+    this.showContainer = 1; // show the container (instantly)
+    this.showMe = 1; // and show the animated window (:enter)
+  }
+  closeOverlay(event: any): void {
+    // event.stopPropagation();
+    this.showMe = null; // begins the (:leave) anim
+  }
+  // this closes the window after the animation is done
+  overlayAnimationDone(event: AnimationEvent) {
+    if (event.toState === 'void') {
+      this.showContainer = null; // closes the container (instant)
+       // this is where it notifes the parent that the message is closed (if we want to implement)
+       this.close.emit('close');
+    } else if (event.fromState === 'void') {
+      // when it is finished opening
+    }
   }
 
   private handleError(error: any): Promise<any> {
@@ -137,15 +150,9 @@ public config: Object = {
     // });
   }
 
-  goBack(event: any): void {
-    event.stopPropagation();
-    this.open = null;
-    this.close.emit('close');
-  }
-
-  handleReviews(state: string) {
-    console.log ('handle review state' , state);
-    if (state === 'open') {
+  handleReviews(_state: string) {
+    console.log ('handle review state' , _state);
+    if (_state === 'open') {
       this.showReviews = 1;
     } else {
       this.showReviews = null;

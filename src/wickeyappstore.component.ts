@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
 import { User, AppGroup, App } from './app.models';
+import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
 import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
@@ -85,9 +86,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public apps = [];
   public bannerApps = [];
   public selected_app: {};
-  public showAppDetails;
   public showCloseBtn = true;
   public writeAReview = null;
+  @ViewChild(AppDetailPageComponent) appDetailPage: AppDetailPageComponent;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @ViewChild(PopoverLoginComponent) waslogin: PopoverLoginComponent;
@@ -158,7 +159,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.getFeaturedGroups();
   }
   openwasup(): void {
-    console.log(this.wasup);
     this.wasup.open('Review Sent', 'Thanks for your feedback.', 'fa fa-pencil-square-o fa-5x');
   }
 
@@ -276,16 +276,12 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   showAppDetail = (_app: any) => {
     this.selected_app = _app;
-    this.handleAppDetail('open');
+    // this.handleAppDetail('open');
+    this.appDetailPage.open(_app);
   }
-  handleAppDetail(_state: string) {
-    console.log('handleAppDetail', _state);
-    if (_state === 'open') {
-      this.showAppDetails = 1;
-    } else {
-      this.selected_app = null;
-      this.showAppDetails = null;
-    }
+  onAppDetailClose(_state: string) {
+    console.log('onAppDetailClose', _state);
+    this.selected_app = null;
   }
   closeMe(): void {
     this.showOverlay = null;

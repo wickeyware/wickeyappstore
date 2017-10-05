@@ -1,17 +1,18 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
+import { AnimationEvent } from '@angular/animations';
+import { enterLeaveAnim } from '../../../animations';
 import { WasAlertTable } from '../../../app.models';
 
 
 /**
  * Shows a was-up popover.
- * OPTION ONE: place 
+ * OPTION ONE: place
  *    <was-alert #wasalert ></was-alert> in html file
  * Optional param:
  * Can set a close emitter. You need to do this if you add an action button, else you cannot get the action.
  *    <was-alert #wasalert (close)="closealert($event)"></was-alert>
  *
- * Call from anywhere in html. 
+ * Call from anywhere in html.
  *    (click)="wasalert.open({ title: 'Hey', text: 'message', btn: {title: 'title', action: 'action'}})"
  *
  * OPTION two. Show from typescript
@@ -33,18 +34,7 @@ import { WasAlertTable } from '../../../app.models';
   selector: 'was-alert',
   templateUrl: './popover-alert.component.html',
   styleUrls: ['../popover-base/popover-base.component.css'],
-  animations: [
-    // ANIMATION FOR MODAL //
-    trigger('enterLeaveAnim', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scaleX(.98) scaleY(.9)' }),
-        animate('300ms cubic-bezier(.61,.02,.44,1.01)', style({ opacity: 1, transform: 'scale(1)' })),
-      ]),
-      transition(':leave', [
-        animate('300ms cubic-bezier(.61,.02,.44,1.01)', style({ opacity: 0, transform: 'scale(.5)' })),
-      ])
-    ])
-  ]
+  animations: [enterLeaveAnim]
 })
 export class WASAlertComponent implements OnInit {
   @Output() close: EventEmitter<any> = new EventEmitter();

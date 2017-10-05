@@ -124,7 +124,16 @@ export class WasAppService {
   loadApps() {
     this.localStorageService.get('was-apps')
       .then((value: any): void => {
-        if (typeof value !== 'undefined' && value.id !== undefined) {
+        let _hasLocalApps = false;
+        try {
+          if (typeof value !== 'undefined' && value[0].id !== undefined) {
+            _hasLocalApps = true;
+          }
+        } catch (_loc_error) {
+          console.error('WasAppService loadApps', _loc_error);
+          _hasLocalApps = false;
+        }
+        if (_hasLocalApps === true) {
           const _localApps = value;
           this._appGroups.next(_localApps);
           this.createAppIndexKey(_localApps);
