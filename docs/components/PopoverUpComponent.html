@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -634,21 +658,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Shows a was-up popover.
-OPTION ONE: place 
-    <was-up #wasup></was-up> in html file
-Optional param:
-Can set a close emitter 
-    <was-up #wasup (close)="closewasup()"></was-up></p>
-<p>Call from anywhere in html. 
-    (click)=&quot;wasup.open(&#39;title&#39;,&#39;text&#39;,&#39;fa icon&#39;)&quot;</p>
-<p>OPTION two. Show from typescript
-Add <was-up #wasup></was-up> to html file same as before
-...then...
-Add the following to typescript file:
-    import { ViewChild } from &#39;@angular/core&#39;;
-    import { PopoverUpComponent } from &#39;./ui/popover/popover-up/popover-up.component&#39;;
-under --&gt; export class AppComponent {...}</p>
+        <p>Shows a was-up popover.</p>
 
     </p>
 
@@ -664,6 +674,24 @@ under --&gt; export class AppComponent {...}</p>
         <h3>Example</h3>
     </p>
     <div class="io-description">
+                <div>
+                    <pre class="line-numbers"><code class="language-html">OPTION ONE: place following in component html file
+&lt;was-up #wasup&gt;&lt;/was-up&gt;
+
+Optional param:
+Can set a close emitter
+&lt;was-up #wasup (close)=&quot;closewasup()&quot;&gt;&lt;/was-up&gt;
+
+Call from anywhere in html.
+(click)=&quot;wasup.open('title','text','fa icon')&quot;</code></pre>
+                </div>
+                <div>
+                    <pre class="line-numbers"><code class="language-html">OPTION two. Show from typescript
+Add &lt;was-up #wasup&gt;&lt;/was-up&gt; to html file same as before
+...then...
+Add the following to typescript file:
+import { ViewChild } from '</code></pre>
+                </div>
     </div>
 
 <section>
@@ -786,7 +814,7 @@ under --&gt; export class AppComponent {...}</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -811,7 +839,7 @@ under --&gt; export class AppComponent {...}</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:45</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -842,7 +870,7 @@ under --&gt; export class AppComponent {...}</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -874,7 +902,7 @@ under --&gt; export class AppComponent {...}</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:59</a></div>
                                 </td>
                             </tr>
     
@@ -906,12 +934,14 @@ under --&gt; export class AppComponent {...}</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:68</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Opens a was-up</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -932,7 +962,8 @@ under --&gt; export class AppComponent {...}</p>
                                                       </td>
                                                       <td>
                                                       </td>
-                                                      <td></td>
+                                                      <td><p>The was-up title</p>
+    </td>
                                                     </tr>
                                                     <tr>
                                                       <td>text</td>
@@ -941,7 +972,8 @@ under --&gt; export class AppComponent {...}</p>
                                                       </td>
                                                       <td>
                                                       </td>
-                                                      <td></td>
+                                                      <td><p>The main body text</p>
+    </td>
                                                     </tr>
                                                     <tr>
                                                       <td>faIcon</td>
@@ -950,7 +982,8 @@ under --&gt; export class AppComponent {...}</p>
                                                       </td>
                                                       <td>
                                                       </td>
-                                                      <td></td>
+                                                      <td><p>The font-awesome icon</p>
+    </td>
                                                     </tr>
                                             </tbody>
                                         </table>
@@ -985,7 +1018,7 @@ under --&gt; export class AppComponent {...}</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:80</a></div>
                                 </td>
                             </tr>
     
@@ -1052,7 +1085,7 @@ under --&gt; export class AppComponent {...}</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -1081,7 +1114,7 @@ under --&gt; export class AppComponent {...}</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -1110,7 +1143,7 @@ under --&gt; export class AppComponent {...}</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:49</a></div>
                                 </td>
                             </tr>
     
@@ -1138,7 +1171,7 @@ under --&gt; export class AppComponent {...}</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:47</a></div>
                                 </td>
                             </tr>
     
@@ -1166,7 +1199,7 @@ under --&gt; export class AppComponent {...}</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/ui/popover/popover-up/popover-up.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -1179,31 +1212,38 @@ under --&gt; export class AppComponent {...}</p>
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Output, EventEmitter } from &#x27;@angular/core&#x27;;
-import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from &#x27;@angular/animations&#x27;;
+import { AnimationEvent } from &#x27;@angular/animations&#x27;;
+import { enterLeaveAnim } from &#x27;../../../animations&#x27;;
 
 
 /**
  * Shows a was-up popover.
- * OPTION ONE: place 
- *    &lt;was-up #wasup&gt;&lt;/was-up&gt; in html file
+ *
+ * @example
+ * OPTION ONE: place following in component html file
+ * &lt;was-up #wasup&gt;&lt;/was-up&gt;
+ *
  * Optional param:
- * Can set a close emitter 
- *    &lt;was-up #wasup (close)&#x3D;&quot;closewasup()&quot;&gt;&lt;/was-up&gt;
+ * Can set a close emitter
+ * &lt;was-up #wasup (close)&#x3D;&quot;closewasup()&quot;&gt;&lt;/was-up&gt;
  *
- * Call from anywhere in html. 
- *    (click)&#x3D;&quot;wasup.open(&#x27;title&#x27;,&#x27;text&#x27;,&#x27;fa icon&#x27;)&quot;
+ * Call from anywhere in html.
+ * (click)&#x3D;&quot;wasup.open(&#x27;title&#x27;,&#x27;text&#x27;,&#x27;fa icon&#x27;)&quot;
  *
+ * @example
  * OPTION two. Show from typescript
  * Add &lt;was-up #wasup&gt;&lt;/was-up&gt; to html file same as before
  * ...then...
  * Add the following to typescript file:
- *    import { ViewChild } from &#x27;@angular/core&#x27;;
- *    import { PopoverUpComponent } from &#x27;./ui/popover/popover-up/popover-up.component&#x27;;
+ * import { ViewChild } from &#x27;@angular/core&#x27;;
+ * import { PopoverUpComponent } from &#x27;./ui/popover/popover-up/popover-up.component&#x27;;
+ *
  * under --&gt; export class AppComponent {...}
- *    @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
- *    openwasup(): void {
-        this.wasup.open(&#x27;title&#x27;, &#x27;text&#x27;, &#x27;fa icon optional&#x27;);
-      }
+ * @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
+ * openwasup(): void {
+ *   this.wasup.open(&#x27;title&#x27;, &#x27;text&#x27;, &#x27;fa icon optional&#x27;);
+ * }
+ *
  * @export
  * @class PopoverUpComponent
  * @implements {Component, OnInit}
@@ -1212,18 +1252,7 @@ import { trigger, state, style, animate, transition, AnimationEvent, keyframes }
   selector: &#x27;was-up&#x27;,
   templateUrl: &#x27;./popover-up.component.html&#x27;,
   styleUrls: [&#x27;../popover-base/popover-base.component.css&#x27;],
-  animations: [
-    // ANIMATION FOR MODAL //
-    trigger(&#x27;enterLeaveAnim&#x27;, [
-      transition(&#x27;:enter&#x27;, [
-        style({ opacity: 0, transform: &#x27;scaleX(.98) scaleY(.9)&#x27; }),
-        animate(&#x27;300ms cubic-bezier(.61,.02,.44,1.01)&#x27;, style({ opacity: 1, transform: &#x27;scale(1)&#x27; })),
-      ]),
-      transition(&#x27;:leave&#x27;, [
-        animate(&#x27;300ms cubic-bezier(.61,.02,.44,1.01)&#x27;, style({ opacity: 0, transform: &#x27;scale(.5)&#x27; })),
-      ])
-    ])
-  ]
+  animations: [enterLeaveAnim]
 })
 export class PopoverUpComponent implements OnInit {
   @Output() close: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
@@ -1243,6 +1272,12 @@ export class PopoverUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Opens a was-up
+   * @param title The was-up title
+   * @param text The main body text
+   * @param faIcon The font-awesome icon
+   */
   open(title: string, text: string, faIcon: string): void {
     // set the optional variables
     if ( title ) { this.title &#x3D; title; }
@@ -1314,7 +1349,7 @@ export class PopoverUpComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!--Show the popover container--><div *ngIf="showContainer" class="full-screen-hidden">  <div *ngIf="showMe" class="wasup-container" [@enterLeaveAnim] (@enterLeaveAnim.done)="overlayAnimationDone($event)">    <div class="wasup-alert">      <div class="wasup-title">{{title}}</div>      <div class="wasup-body">        <div class="wasup-icon">          <i class={{faIcon}} aria-hidden="true"></i>        </div>        <br> {{text}}      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'PopoverUpComponent'};
 </script>

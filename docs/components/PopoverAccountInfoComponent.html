@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -1837,8 +1861,8 @@ import { trigger, state, style, animate, transition, AnimationEvent, keyframes }
 import { UserService } from &#x27;../../../user.service&#x27;;
 import { User } from &#x27;../../../app.models&#x27;;
 import { WASAlertComponent } from &#x27;../../../ui/popover/popover-alert/popover-alert.component&#x27;;
-// import { Observable } from &quot;rxjs/Observable&quot;;
-import { Subscription, Observable } from &#x27;rxjs/Rx&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 import { DatePipe } from &#x27;@angular/common&#x27;;
 
 /**
@@ -2169,7 +2193,7 @@ export class PopoverAccountInfoComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!--Cover the background with dark--><!--This makes it modal. Closes with a touch anywhere--><div *ngIf="isModal">    <div *ngIf="showOverlay" class="background-modal" (click)="closeOverlay()"></div></div><!--Generic base popover container--><div class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">    <div class="icon-svg">        <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"            stroke-miterlimit="1.4">            <circle cx="881.3" cy="1200.5" r="34.3" fill="#F3F6F9" stroke="#004A99" stroke-width="5.9" transform="translate(-386.538 -532.71) scale(.45798)"            />            <path d="M7.5 25.6c0-4.2 3-7.6 6.7-8.8-1.5-1-2.6-2.6-2.6-4.5C11.6 9.3 14 7 17 7s5.5 2.4 5.5 5.3c0 2-1 3.6-2.6 4.5 3.6 1.2 6.4 4.6 6.4 8.8h-19z"                fill="#515F81" />        </svg>    </div>    <!--Make the text hide when this opens-->    <div *ngIf="!showOverlay" class="title-text noselect">Account</div>    <!--Show the popover container-->    <div *ngIf="showOverlay" class="popover-container info-container-right" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"        (click)="catchClick($event)">        <div class="db-FixedPopover-arrow db-arrow-right"></div>        <div class="db-FixedPopover-contents" [innerHTML]="html"></div>        <div class="db-MenuHeader" *ngIf="userService.user | async as userobj">            <span *ngIf="!showEditEmailState">{{getEmailString | async}}                <span class="Button-link" (click)="editEmailClick()">Edit</span></span>            <div class="emailGroup" *ngIf="showEditEmailState" [@showEmailEditAnim]=\'showEditEmailState\'>                <div class="was-input-group">                    <span class="was-input-group-addon" id="basic-addon1">@</span>                    <input type="email" class="was-form-control was-highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"                        #emailInput value="{{userobj.email}}">                </div>                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText | async}}</button>            </div>            <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge | async}}</span>v{{version}}</span>        </div>        <div (click)="signoutfunc()" label="Sign Out" class="db-MenuItem">{{getSignoutButtonText | async}}</div>    </div></div><!-- Pop up modal on error --><was-alert #wasalert></was-alert></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'PopoverAccountInfoComponent'};
 </script>

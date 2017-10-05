@@ -45,7 +45,7 @@
                                     </a>
                                 </li>
                                 <li class="link">
-                                  <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                  <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
                                     <a href="./changelog.html"
@@ -347,7 +347,7 @@
                                            </a>
                                        </li>
                                        <li class="link">
-                                         <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                         <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
                                            <a href="./changelog.html"
@@ -621,85 +621,14 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="wickeyappstore">WickeyAppStore</h1>
-<p>Reach the next One Billion users, AppStore for Progressive WebApps.</p>
-<h2 id="tutorial-app">Tutorial App</h2>
-<p>Check out a tutorial app:<br>REPO: <a href="https://github.com/wickeyware/was-tutorial/">https://github.com/wickeyware/was-tutorial/</a><br>LIVE DEMO: <a href="https://wickeyware.github.io/was-tutorial/">https://wickeyware.github.io/was-tutorial/</a></p>
-<h2 id="app-store">App Store</h2>
-<p><a href="https://wickeyappstore.com/">https://wickeyappstore.com/</a></p>
-<h2 id="progressive-web-app-store">Progressive Web App Store</h2>
-<p>Reach the next One Billion users. WickeyAppStore is a full featured App Store for <strong>PWA</strong> web-apps. A <strong>PWA</strong> makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.</p>
-<p>Apps on the WickeyAppStore must meet quality and security requirements:</p>
+<p><a name="1.9.6"></a></p>
+<h1 id="1-9-6-2017-10-05-">1.9.6 (2017-10-05)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
-<li><strong>Safety</strong> - must be served via HTTPS to ensure that the real content has not been tampered.</li>
-<li><strong>Responsive</strong> - can fit all resolutions like desktop, tablet and mobile.</li>
-<li><strong>Progressive</strong>- work in all modern browsers because they use progressive enhancement concepts.</li>
-<li><strong>Connectivity independent</strong> - need to work on any type of connection, including offline.</li>
-<li><strong>Engageable</strong> - using push notifications, &quot;add to home&quot; feature to be more app-like.</li>
+<li><strong>README</strong> Updated QuickStart in readme</li>
+<li><strong>docs</strong> Fixed documentation on was-up</li>
+<li><strong>docs</strong> Added documentation on was-spinner</li>
 </ul>
-<h2 id="benefits">Benefits</h2>
-<ul>
-<li><strong>Trust</strong> - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.</li>
-<li><strong>Single Sign On</strong> - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.</li>
-<li><strong>Monetization</strong> - we provide monetization tools including in-app purchases and ads.</li>
-<li><strong>Traffic</strong> - we feature unique and cool apps, and all apps benefit from being under one umbrella. </li>
-</ul>
-<h2 id="submit-your-app">Submit your app</h2>
-<p>If you have an app you want to submit, email us at <a href="mailto:wickeyappstore@gmail.com">wickeyappstore@gmail.com</a>. </p>
-<p><strong>NOTE</strong>: Please check back frequently. We will keep this document updated all the time.</p>
-<h2 id="quickstart">QuickStart</h2>
-<p>To install this library, run: (NOTE: Install all dependencies)</p>
-<pre class="line-numbers"><code class="language-bash">$ npm install wickeyappstore --save</code></pre><p>Link external dependencies in the header of your index.html</p>
-<pre class="line-numbers"><code class="language-html">&lt;!-- WickeyAppStore global css--&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/wickeyappstore&#64;1.9.5/styles.css&quot;&gt;
-&lt;!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper --&gt;
-&lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;</code></pre><p>and then from your Angular <code>AppModule</code>:</p>
-<pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
-import { NgModule } from &#39;&#64;angular/core&#39;;
-import { FormsModule } from &#39;&#64;angular/forms&#39;;
-import { AppComponent } from &#39;./app.component&#39;;
-// Import Wickey AppStore
-import { WickeyAppStoreModule } from &#39;wickeyappstore&#39;;
-
-&#64;NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    FormsModule,
-    // Specify as an import
-    WickeyAppStoreModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }</code></pre><p>Once WickeyAppStoreModule is imported, you can use its components, directives and pipes in your Angular application:</p>
-<pre class="line-numbers"><code class="language-html">&lt;!-- Put Wickey Appstore in the bootstrapped component --&gt;
-&lt;!--******************************************
-**
-  IMPORTANT The lines BELOW are REQUIRED
-**
-***********************************************--&gt;
-&lt;!-- A button, when clicked will show the SSO overlay screen (create or login to accounts) --&gt;
-&lt;was-popover-login #loginpopover (close)=&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;
-&lt;was-spinner [busy]=&quot;busy&quot; [message]=&#39;&quot;Please wait..&quot;&#39;&gt;&lt;/was-spinner&gt;
-&lt;was-alert #wasalert (close)=&quot;closealert($event)&quot;&gt;&lt;/was-alert&gt;
-&lt;!-- The WAS button, when clicked will show the store. Close will be called when app store closes --&gt;
-&lt;wickey-appstore initialPosition=&quot;bottomLeft&quot; (close)=&quot;onWASClose($event)&quot;&gt;&lt;/wickey-appstore&gt;
-&lt;!--******************************************
-**
-  Your app goes below.
-**
-***********************************************--&gt;
-&lt;h1&gt;
-  Welcome to my app: {{name}}
-&lt;/h1&gt;</code></pre><h2 id="license">License</h2>
-<p>MIT © <a href="mailto:wickeyappstore@gmail.com">WickeyWare, LLC</a></p>
 
 
 

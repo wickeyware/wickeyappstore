@@ -5,26 +5,32 @@ import { enterLeaveAnim } from '../../../animations';
 
 /**
  * Shows a was-up popover.
- * OPTION ONE: place
- *    <was-up #wasup></was-up> in html file
+ *
+ * @example
+ * OPTION ONE: place following in component html file
+ * <was-up #wasup></was-up>
+ *
  * Optional param:
  * Can set a close emitter
- *    <was-up #wasup (close)="closewasup()"></was-up>
+ * <was-up #wasup (close)="closewasup()"></was-up>
  *
  * Call from anywhere in html.
- *    (click)="wasup.open('title','text','fa icon')"
+ * (click)="wasup.open('title','text','fa icon')"
  *
+ * @example
  * OPTION two. Show from typescript
  * Add <was-up #wasup></was-up> to html file same as before
  * ...then...
  * Add the following to typescript file:
- *    import { ViewChild } from '@angular/core';
- *    import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
+ * import { ViewChild } from '@angular/core';
+ * import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
+ *
  * under --> export class AppComponent {...}
- *    @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
- *    openwasup(): void {
-        this.wasup.open('title', 'text', 'fa icon optional');
-      }
+ * @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
+ * openwasup(): void {
+ *   this.wasup.open('title', 'text', 'fa icon optional');
+ * }
+ *
  * @export
  * @class PopoverUpComponent
  * @implements {Component, OnInit}
@@ -53,6 +59,12 @@ export class PopoverUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Opens a was-up
+   * @param title The was-up title
+   * @param text The main body text
+   * @param faIcon The font-awesome icon
+   */
   open(title: string, text: string, faIcon: string): void {
     // set the optional variables
     if ( title ) { this.title = title; }

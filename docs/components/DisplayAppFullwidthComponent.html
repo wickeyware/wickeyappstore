@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -991,7 +1015,7 @@ export class DisplayAppFullwidthComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="app-fullwidth-item">  <div class="thumbnail-display-group" (click)="showApp_Detail()">    <img src="{{store_app?.icon}}" alt="App Icon" class="appthumbnail">  </div>  <div class="text-display-block" (click)="showApp_Detail()">     <div class="text-title">{{store_app?.name}}</div>      <div class="text-category">{{store_app.category | getCategory}}</div>   </div>  <div class="get-display-block">     <a class="was-btn btn-get" href={{store_app?.app_url}} target={{store_app?.slug}}>GET</a>         <div *ngIf="hasInapps" class="text-app-msg">In-App Purchases</div>    </div>  <div class="solid-separator-bar"></div></div></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'DisplayAppFullwidthComponent'};
 </script>

@@ -8,6 +8,24 @@ const inactiveStyle = style({
 });
 const timing = '.3s ease';
 
+/**
+ * A spinner where busy is an Observable, it will show a spinner as long as the subscription is live
+ *
+ * @example
+ * Add to component html
+ * <was-spinner [busy]="busy" [message]='"Please wait.."'></was-spinner>
+ *
+ * In the component ts add:
+ * import { Subscription } from 'rxjs/Subscription';
+ * ...
+ * public busy: Subscription;
+ * ...
+ * this.busy = some_observable.subscribe();
+ *
+ * @export
+ * @class WasSpinnerComponent
+ * @implements {DoCheck}
+ */
 @Component({
   selector: 'was-spinner',
   templateUrl: './was-spinner.component.html',

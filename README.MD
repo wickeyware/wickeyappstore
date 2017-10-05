@@ -34,7 +34,7 @@ If you have an app you want to submit, email us at [wickeyappstore@gmail.com](ma
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 
 
-## Installation
+## QuickStart
 
 To install this library, run: (NOTE: Install all dependencies)
 
@@ -42,12 +42,15 @@ To install this library, run: (NOTE: Install all dependencies)
 $ npm install wickeyappstore --save
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install wickeyappstore --save
+Link external dependencies in the header of your index.html
+```html
+<!-- WickeyAppStore global css-->
+<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@1.9.5/styles.css">
+<!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 ```
 
 and then from your Angular `AppModule`:
@@ -56,11 +59,8 @@ and then from your Angular `AppModule`:
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router'
-
 import { AppComponent } from './app.component';
-
-// Import your library
+// Import Wickey AppStore
 import { WickeyAppStoreModule } from 'wickeyappstore';
 
 @NgModule({
@@ -80,46 +80,31 @@ import { WickeyAppStoreModule } from 'wickeyappstore';
 export class AppModule { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+Once WickeyAppStoreModule is imported, you can use its components, directives and pipes in your Angular application:
 
-```xml
-<!-- You can now use your library component in app.component.html or wherever needed -->
-<!-- Be sure to add a router-outlet, WAS apps have unique urls -->
-<router-outlet></router-outlet>
-<h1>
-  {{title}}
-</h1>
-<!-- The WAS button, when clicked will show the store. Close will be called when app store closes-->
-<wickey-appstore (close)="onWASClose($event)"></wickey-appstore>
+```html
+<!-- Put Wickey Appstore in the bootstrapped component -->
+<!--******************************************
+**
+  IMPORTANT The lines BELOW are REQUIRED
+**
+***********************************************-->
 <!-- A button, when clicked will show the SSO overlay screen (create or login to accounts) -->
 <was-popover-login #loginpopover (close)="closeLoginScreen($event)"></was-popover-login>
-```
-
-Link CSS, or copy it into your styles.css:
-```code
-<!-- WickeyAppStore global css-->
-<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@0.1.34/styles.css">
-<!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-```
-
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
+<was-spinner [busy]="busy" [message]='"Please wait.."'></was-spinner>
+<was-alert #wasalert (close)="closealert($event)"></was-alert>
+<!-- The WAS button, when clicked will show the store. Close will be called when app store closes -->
+<wickey-appstore initialPosition="bottomLeft" (close)="onWASClose($event)"></wickey-appstore>
+<!--******************************************
+**
+  Your app goes below.
+**
+***********************************************-->
+<h1>
+  Welcome to my app: {{name}}
+</h1>
 ```
 
 ## License
 
-MIT © [Michael Wickey](mailto:wickeym@gmail.com)
+MIT © [WickeyWare, LLC](mailto:wickeyappstore@gmail.com)

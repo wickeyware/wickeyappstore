@@ -29,18 +29,23 @@ export interface UserParams {
  * Thanks @jhades
  *
  * @example
- * Import the service in the base `app.module.ts`
- * ```import { UserService, UserParams } from './user.service';```
+ * Import the service in the base `app.module.ts
+ * import { UserService, UserParams } from './user.service';
+ *
  * Add to the providers:
- * ```providers: [UserService, ...],```
+ * providers: [UserService, ...],
+ *
  * Import in any component this is to be used:
- * ```import { UserService } from './user.service';```
+ * import { UserService } from './user.service';
+ *
  * Inject it in the constructor
- * ```constructor(private userService: UserService) { }
+ * constructor(private userService: UserService) { }
+ *
  * Get user:
- * ```this.userService.user();```
+ * this.userService.user();
+ *
  * Update user:
- * ```this.userService.updateUser(_user_obj);```
+ * this.userService.updateUser(_user_obj);
  *
  * @export
  * @class UserService

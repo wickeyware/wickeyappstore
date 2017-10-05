@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -634,7 +658,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Shows a button when clicked will open the WickeyAppStore {@link <a href="https://www.npmjs.com/package/wickeyappstore}">https://www.npmjs.com/package/wickeyappstore}</a></p>
+        <p>Shows a button when clicked will open the WickeyAppStore {@link <a href="https://www.npmjs.com/package/wickeyappstore">https://www.npmjs.com/package/wickeyappstore</a> }</p>
 
     </p>
 
@@ -708,6 +732,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                 <a href="#appDetailPage">appDetailPage</a>
+                            </li>
                             <li>
                                 <span class="modifier">Public</span> <a href="#apps">apps</a>
                             </li>
@@ -783,9 +810,6 @@
                                  <a href="#closealert">closealert</a>
                             </li>
                             <li>
-                                 <a href="#closeAppDetail">closeAppDetail</a>
-                            </li>
-                            <li>
                                  <a href="#closeLoginScreen">closeLoginScreen</a>
                             </li>
                             <li>
@@ -826,6 +850,9 @@
                             </li>
                             <li>
                                  <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                 <a href="#onAppDetailClose">onAppDetailClose</a>
                             </li>
                             <li>
                                  <a href="#openReview">openReview</a>
@@ -889,12 +916,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank">Router</a>, userService: <a href="../injectables/UserService.html">UserService</a>, wasAppService: <a href="../injectables/WasAppService.html">WasAppService</a>)</code>
+                            <code>constructor(userService: <a href="../injectables/UserService.html">UserService</a>, wasAppService: <a href="../injectables/WasAppService.html">WasAppService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/wickeyappstore.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/wickeyappstore.component.ts:148</a></div>
                                 </td>
                             </tr>
     
@@ -912,15 +939,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                    <tr>
-                                                      <td>router</td>
-                                                      <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank" >Router</a></code>
-                                                      </td>
-                                                      <td>
-                                                      </td>
-                                                      <td></td>
-                                                    </tr>
                                                     <tr>
                                                       <td>userService</td>
                                                       <td>
@@ -1038,7 +1056,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">src/wickeyappstore.component.ts:211</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/wickeyappstore.component.ts:210</a></div>
                                 </td>
                             </tr>
     
@@ -1070,7 +1088,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/wickeyappstore.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">src/wickeyappstore.component.ts:219</a></div>
                                 </td>
                             </tr>
     
@@ -1131,7 +1149,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/wickeyappstore.component.ts:228</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">src/wickeyappstore.component.ts:227</a></div>
                                 </td>
                             </tr>
     
@@ -1192,7 +1210,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/wickeyappstore.component.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/wickeyappstore.component.ts:203</a></div>
                                 </td>
                             </tr>
     
@@ -1240,67 +1258,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="closeAppDetail"></a>
-                            <span class="name"><b> closeAppDetail</b><a href="#closeAppDetail"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>closeAppDetail(_val: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">src/wickeyappstore.component.ts:283</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Type</td>
-                                                    <td>Optional</td>
-                                                    <td>Description</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                      <td>_val</td>
-                                                      <td>
-                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                                      </td>
-                                                      <td>
-                                                      </td>
-                                                      <td></td>
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                                    <div class="io-description">
-                                        
-                                    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <a name="closeLoginScreen"></a>
                             <span class="name"><b> closeLoginScreen</b><a href="#closeLoginScreen"><span class="fa fa-link"></span></a></span>
                         </td>
@@ -1314,7 +1271,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/wickeyappstore.component.ts:176</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/wickeyappstore.component.ts:175</a></div>
                                 </td>
                             </tr>
     
@@ -1376,7 +1333,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">src/wickeyappstore.component.ts:288</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="286" class="link-to-prism">src/wickeyappstore.component.ts:286</a></div>
                                 </td>
                             </tr>
     
@@ -1408,7 +1365,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">src/wickeyappstore.component.ts:301</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="299" class="link-to-prism">src/wickeyappstore.component.ts:299</a></div>
                                 </td>
                             </tr>
     
@@ -1470,7 +1427,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/wickeyappstore.component.ts:225</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/wickeyappstore.component.ts:224</a></div>
                                 </td>
                             </tr>
     
@@ -1502,7 +1459,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/wickeyappstore.component.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/wickeyappstore.component.ts:181</a></div>
                                 </td>
                             </tr>
     
@@ -1563,7 +1520,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="260" class="link-to-prism">src/wickeyappstore.component.ts:260</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">src/wickeyappstore.component.ts:259</a></div>
                                 </td>
                             </tr>
     
@@ -1595,7 +1552,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="268" class="link-to-prism">src/wickeyappstore.component.ts:268</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="267" class="link-to-prism">src/wickeyappstore.component.ts:267</a></div>
                                 </td>
                             </tr>
     
@@ -1627,7 +1584,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/wickeyappstore.component.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">src/wickeyappstore.component.ts:247</a></div>
                                 </td>
                             </tr>
     
@@ -1660,7 +1617,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="242" class="link-to-prism">src/wickeyappstore.component.ts:242</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">src/wickeyappstore.component.ts:241</a></div>
                                 </td>
                             </tr>
     
@@ -1721,7 +1678,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/wickeyappstore.component.ts:192</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/wickeyappstore.component.ts:191</a></div>
                                 </td>
                             </tr>
     
@@ -1782,7 +1739,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/wickeyappstore.component.ts:196</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/wickeyappstore.component.ts:195</a></div>
                                 </td>
                             </tr>
     
@@ -1814,7 +1771,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">src/wickeyappstore.component.ts:294</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">src/wickeyappstore.component.ts:292</a></div>
                                 </td>
                             </tr>
     
@@ -1876,7 +1833,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">src/wickeyappstore.component.ts:238</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="237" class="link-to-prism">src/wickeyappstore.component.ts:237</a></div>
                                 </td>
                             </tr>
     
@@ -1927,6 +1884,67 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="onAppDetailClose"></a>
+                            <span class="name"><b> onAppDetailClose</b><a href="#onAppDetailClose"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>onAppDetailClose(_state: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">src/wickeyappstore.component.ts:282</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>_state</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="openReview"></a>
                             <span class="name"><b> openReview</b><a href="#openReview"><span class="fa fa-link"></span></a></span>
                         </td>
@@ -1940,7 +1958,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/wickeyappstore.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/wickeyappstore.component.ts:165</a></div>
                                 </td>
                             </tr>
     
@@ -2004,7 +2022,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">src/wickeyappstore.component.ts:232</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">src/wickeyappstore.component.ts:231</a></div>
                                 </td>
                             </tr>
     
@@ -2065,7 +2083,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/wickeyappstore.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/wickeyappstore.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2098,7 +2116,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/wickeyappstore.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/wickeyappstore.component.ts:135</a></div>
                                 </td>
                             </tr>
     
@@ -2160,7 +2178,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/wickeyappstore.component.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/wickeyappstore.component.ts:138</a></div>
                                 </td>
                             </tr>
     
@@ -2211,6 +2229,40 @@
             <h3 id="inputs">
                 Properties
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="appDetailPage"></a>
+                            <span class="name"><b> appDetailPage</b><a href="#appDetailPage"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>appDetailPage:     <code><a href="../interfaces/App.html" target="_self" >AppDetailPageComponent</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../interfaces/App.html" target="_self" >AppDetailPageComponent</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/wickeyappstore.component.ts:91</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -2387,7 +2439,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="278" class="link-to-prism">src/wickeyappstore.component.ts:278</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">src/wickeyappstore.component.ts:277</a></div>
                                 </td>
                             </tr>
     
@@ -2495,7 +2547,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/wickeyappstore.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/wickeyappstore.component.ts:117</a></div>
                                 </td>
                             </tr>
     
@@ -2518,7 +2570,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/wickeyappstore.component.ts:118</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/wickeyappstore.component.ts:119</a></div>
                                 </td>
                             </tr>
     
@@ -2541,7 +2593,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/wickeyappstore.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/wickeyappstore.component.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -2575,7 +2627,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/wickeyappstore.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/wickeyappstore.component.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -2609,7 +2661,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/wickeyappstore.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/wickeyappstore.component.ts:94</a></div>
                                 </td>
                             </tr>
     
@@ -2643,7 +2695,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/wickeyappstore.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/wickeyappstore.component.ts:92</a></div>
                                 </td>
                             </tr>
     
@@ -2680,18 +2732,18 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild } from &#x27;@angular/core&#x27;;
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from &#x27;@angular/animations&#x27;;
-import { Subscription } from &#x27;rxjs/Rx&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 
 import { UserService } from &#x27;./user.service&#x27;;
 import { WasAppService } from &#x27;./was-app.service&#x27;;
 import { User, AppGroup, App } from &#x27;./app.models&#x27;;
+import { AppDetailPageComponent } from &#x27;./display-apps/app-detail-page/app-detail-page.component&#x27;;
 import { PopoverUpComponent } from &#x27;./ui/popover/popover-up/popover-up.component&#x27;;
 import { PopoverLoginComponent } from &#x27;./ui/popover/popover-login/popover-login.component&#x27;;
 import { WASAlertComponent } from &#x27;./ui/popover/popover-alert/popover-alert.component&#x27;;
 
 /**
- * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
+ * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore }
  *
  * @param {function} close  Calls the close EventEmitter on close.
  *
@@ -2768,6 +2820,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public selected_app: {};
   public showCloseBtn &#x3D; true;
   public writeAReview &#x3D; null;
+  @ViewChild(AppDetailPageComponent) appDetailPage: AppDetailPageComponent;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @ViewChild(PopoverLoginComponent) waslogin: PopoverLoginComponent;
@@ -2827,7 +2880,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private router: Router,
     private userService: UserService,
     private wasAppService: WasAppService
   ) { }
@@ -2839,7 +2891,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.getFeaturedGroups();
   }
   openwasup(): void {
-    console.log(this.wasup);
     this.wasup.open(&#x27;Review Sent&#x27;, &#x27;Thanks for your feedback.&#x27;, &#x27;fa fa-pencil-square-o fa-5x&#x27;);
   }
 
@@ -2957,14 +3008,13 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   showAppDetail &#x3D; (_app: any) &#x3D;&gt; {
     this.selected_app &#x3D; _app;
-    this.router.navigate([&#x27;was&#x27;, _app.slug]);
-    // window.open(app_term, &#x27;_blank&#x27;);
+    // this.handleAppDetail(&#x27;open&#x27;);
+    this.appDetailPage.open(_app);
   }
-  closeAppDetail(_val: number): void {
-    // console.log(&#x27;closed AppDetail&#x27;);
+  onAppDetailClose(_state: string) {
+    console.log(&#x27;onAppDetailClose&#x27;, _state);
+    this.selected_app &#x3D; null;
   }
-
- 
   closeMe(): void {
     this.showOverlay &#x3D; null;
     this.close.emit(); // send back a message that full screen portion of the app store is closed
@@ -3017,13 +3067,14 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   &lt;/div&gt; 
 &lt;/div&gt;
 
-&lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;was-detail-page #appDetailPage (close)&#x3D;&quot;onAppDetailClose($event)&quot;&gt;&lt;/was-detail-page&gt;
 &lt;!--Generic base popover container--&gt;
 &lt;was-popover-review [showReview]&#x3D;&quot;writeAReview&quot; (close)&#x3D;&quot;closeReviewScreen($event)&quot;&gt;&lt;/was-popover-review&gt;
 &lt;was-menu-container [options]&#x3D;&quot;WAS_options()&quot; [gutter]&#x3D;&quot;WAS_gutter&quot; [startAngles]&#x3D;&quot;WAS_startAngles&quot; [wings]&#x3D;&quot;WAS_wings&quot; (onMenuBtnClicked)&#x3D;&quot;WASMenuClick($event)&quot; (onWingSelected)&#x3D;&quot;WASWingClick($event)&quot;&gt;&lt;/was-menu-container&gt;
 &lt;was-up #wasup&gt;&lt;/was-up&gt;
 &lt;was-alert #wasalert (close)&#x3D;&quot;closealert($event)&quot;&gt;&lt;/was-alert&gt;
-&lt;was-popover-login #loginpopover [hidden]&#x3D;&quot;true&quot; (close)&#x3D;&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;</code></pre>
+&lt;was-popover-login #loginpopover [hidden]&#x3D;&quot;true&quot; (close)&#x3D;&quot;closeLoginScreen($event)&quot;&gt;&lt;/was-popover-login&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -3049,8 +3100,8 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--Show the WickeyAppStore container--><div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"  (click)="catchClick($event)">  <div class="was-titlebar">    <h3 class="was-titletext">Featured Apps</h3>    <button *ngIf="showCloseBtn" (click)="closeMe()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="results-group">    <was-spinner [busy]="busy" [message]=\'"Refreshing app store.."\'></was-spinner>    <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>    <br><br>  </div>  <div class="was-footer">    <div class="left">      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>    </div>    <div class="center">      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>    </div>    <div class="right">      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>    </div>  </div> </div><router-outlet></router-outlet><!--Generic base popover container--><was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen($event)"></was-popover-review><was-menu-container [options]="WAS_options()" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></was-menu-container><was-up #wasup></was-up><was-alert #wasalert (close)="closealert($event)"></was-alert><was-popover-login #loginpopover [hidden]="true" (close)="closeLoginScreen($event)"></was-popover-login></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+        var COMPONENT_TEMPLATE = '<div><!--Show the WickeyAppStore container--><div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]=\'overlayState\' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"  (click)="catchClick($event)">  <div class="was-titlebar">    <h3 class="was-titletext">Featured Apps</h3>    <button *ngIf="showCloseBtn" (click)="closeMe()" class="was-navClose" title="back"></button>    <div class="was-titlebottom"></div>  </div>  <div class="results-group">    <was-spinner [busy]="busy" [message]=\'"Refreshing app store.."\'></was-spinner>    <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>    <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>    <br><br>  </div>  <div class="was-footer">    <div class="left">      <a href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">Terms</a>    </div>    <div class="center">      <a href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">Refunds</a>    </div>    <div class="right">      <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>    </div>  </div> </div><was-detail-page #appDetailPage (close)="onAppDetailClose($event)"></was-detail-page><!--Generic base popover container--><was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen($event)"></was-popover-review><was-menu-container [options]="WAS_options()" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></was-menu-container><was-up #wasup></was-up><was-alert #wasalert (close)="closealert($event)"></was-alert><was-popover-login #loginpopover [hidden]="true" (close)="closeLoginScreen($event)"></was-popover-login></div>'
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'WickeyAppStoreComponent'};
 </script>

@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -1786,8 +1810,8 @@ export class MenuWingComponent implements OnChanges, OnInit, AfterViewInit, OnDe
         // When the menu&#x27;s position changes,
         // recalculate each wing&#x27;s and its icon rotation degrees
         if (changes[&#x27;position&#x27;]) {
-            console.log(&#x27;ngOnChanges&#x27;);
-            console.log(this.position, this.menuOptions.StartAngles, this.menuOptions.StartAngles[this.position]);
+            // console.log(&#x27;ngOnChanges&#x27;);
+            // console.log(this.position, this.menuOptions.StartAngles, this.menuOptions.StartAngles[this.position]);
             // bottomRight {topLeft: 20, topRight: 130, bottomRight: 186, bottomLeft: 324}
 
             this.startAngles &#x3D; this.menuOptions.StartAngles[this.position];
@@ -1797,7 +1821,7 @@ export class MenuWingComponent implements OnChanges, OnInit, AfterViewInit, OnDe
             this.setWingTransformStyle();
             this.wingTextStyle &#x3D; this.menuOptions.MenuPositions[this.position];
 
-            console.log(this.rotateWingState, this.rotateDeg, this.wingTextStyle);
+            // console.log(this.rotateWingState, this.rotateDeg, this.wingTextStyle);
 
         }
 
@@ -1928,7 +1952,7 @@ export class MenuWingComponent implements OnChanges, OnInit, AfterViewInit, OnDe
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="wing wing-{{index}}" [@scaleWing]="scaleWingState">    <svg class="wing-svg" width="100%" height="100%"         >        <path style="pointer-events:auto;"              (tap)="onClick()"              (mouseover)="onMouseOver()"              (mouseout)="onMouseOut()"              [attr.fill]="wing.color"              [attr.d]="svgPath"></path>        <text class="wing-text"              *ngIf="!menuConfig.onlyIcons"              x="50%"              y="50%"              dominant-baseline="central"              style="text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);"              [ngStyle]="{\'font-size\': menuConfig.wingFontSize + \'px\'}"              [attr.text-anchor]="wingTextStyle.textAnchor"              [attr.transform]="\'rotate(\'+ wingTextStyle.textRotate + \', \' + menuConfig.radius/2  + \', \' + menuConfig.radius/2 + \')\'"              [attr.fill]="wing.titleColor || menuConfig.wingFontColor">{{wing.title}}        </text>    </svg>    <i class="{{wing.icon.name}}"       #wingIconElm       *ngIf="menuConfig.showIcons || menuConfig.onlyIcons"       [ngStyle]="{            \'color\': wing.icon.color || menuConfig.wingFontColor,            \'font-size\': iconSize + \'px\',            \'width\': iconSize + \'px\',            \'height\': iconSize + \'px\'       }"></i></div></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'MenuWingComponent'};
 </script>

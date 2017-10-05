@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -1400,7 +1424,7 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from &#x27;@angular/core&#x27;;
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from &#x27;@angular/animations&#x27;;
 import { WASAlertComponent } from &#x27;../../ui/popover/popover-alert/popover-alert.component&#x27;;
-import { Subscription } from &#x27;rxjs/Rx&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 
 @Component({
   selector: &#x27;was-reviews&#x27;,
@@ -1640,7 +1664,7 @@ export class ReviewsComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!--Cover the whole screen with reviews window--><!--This makes it modal. Add a close button top left<!--Generic base popover container--><div *ngIf="showstars" class="icon-container" [@clickButtonTrigger]=\'clickState\' (click)="buttonClick()" (@clickButtonTrigger.done)="buttonClickAnimationDone($event)">  <div class="icon-svg">  <!-- 1 -->    <!-- Full Star. This is the lowest rating possible-->    <svg *ngIf="stars>=1" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />    </svg>  </div>  <div class="icon-svg"> <!-- 2 -->    <!-- Empty Star -->    <svg *ngIf="stars<=1" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.2L35.6 9.2 29 29H9.2l16.3 12.6L19 62l16.7-12.6L52.2 62l-6.4-20.4z" fill="#fff" fill-rule="nonzero"      />    </svg>    <!-- Half Star -->    <svg *ngIf="stars==1.5" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.3L35.6 9.2v40.2L52.3 62 46 41.6z" fill="#fff" fill-rule="nonzero" />    </svg>    <!-- Full Star -->    <svg *ngIf="stars>=2" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />    </svg>  </div>  <div class="icon-svg"> <!-- 3 -->    <!-- Empty Star -->    <svg *ngIf="stars<=2" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.2L35.6 9.2 29 29H9.2l16.3 12.6L19 62l16.7-12.6L52.2 62l-6.4-20.4z" fill="#fff" fill-rule="nonzero"      />    </svg>    <!-- Half Star -->    <svg *ngIf="stars==2.5" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.3L35.6 9.2v40.2L52.3 62 46 41.6z" fill="#fff" fill-rule="nonzero" />    </svg>    <!-- Full Star -->    <svg *ngIf="stars>=3" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />    </svg>  </div>  <div class="icon-svg"> <!-- 4 -->    <!-- Empty Star -->    <svg *ngIf="stars<=3" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.2L35.6 9.2 29 29H9.2l16.3 12.6L19 62l16.7-12.6L52.2 62l-6.4-20.4z" fill="#fff" fill-rule="nonzero"      />    </svg>    <!-- Half Star -->    <svg *ngIf="stars==3.5" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.3L35.6 9.2v40.2L52.3 62 46 41.6z" fill="#fff" fill-rule="nonzero" />    </svg>    <!-- Full Star -->    <svg *ngIf="stars>=4" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />    </svg>  </div>  <div class="icon-svg"> <!-- 5 -->    <!-- Empty Star -->    <svg *ngIf="stars<=4" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.2L35.6 9.2 29 29H9.2l16.3 12.6L19 62l16.7-12.6L52.2 62l-6.4-20.4z" fill="#fff" fill-rule="nonzero"      />    </svg>    <!-- Half Star -->    <svg *ngIf="stars==4.5" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />      <path d="M45.8 41.6L62 29H42.3L35.6 9.2v40.2L52.3 62 46 41.6z" fill="#fff" fill-rule="nonzero" />    </svg>    <!-- Full Star -->    <svg *ngIf="stars>=5" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.4">      <path d="M49.3 43.7l22-17H44.5L35.5 0l-8.8 26.7H0l22 17-8.6 27.6 22.3-17 22.2 17-9-27.6z" fill="#E99700" fill-rule="nonzero"      />    </svg>  </div>  <span class="title-text noselect">( {{store_app.review_count}} )</span></div><!-- Pop up modal on error --><was-alert #wasalert></was-alert></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'ReviewsComponent'};
 </script>

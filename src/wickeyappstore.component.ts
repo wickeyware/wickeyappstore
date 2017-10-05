@@ -11,7 +11,7 @@ import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.
 import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 
 /**
- * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore}
+ * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore }
  *
  * @param {function} close  Calls the close EventEmitter on close.
  *

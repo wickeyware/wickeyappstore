@@ -47,6 +47,18 @@
                                 <li class="link">
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
@@ -66,9 +78,6 @@
                             >
                                 <li class="link">
                                     <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -200,6 +209,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -337,6 +349,18 @@
                                        <li class="link">
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -356,9 +380,6 @@
                    >
                                        <li class="link">
                                            <a href="../modules/FanMenuModule.html" >FanMenuModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/WasRoutingModule.html" >WasRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/WickeyAppStoreModule.html" >WickeyAppStoreModule</a>
@@ -490,6 +511,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html" >ApiConnectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -630,6 +654,13 @@
     <code>src/was-spinner/was-spinner.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A spinner where busy is an Observable, it will show a spinner as long as the subscription is live</p>
+
+    </p>
 
 
     <p class="comment">
@@ -639,6 +670,22 @@
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/DoCheck-interface.html" target="_blank" >DoCheck</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+                <div>
+                    <pre class="line-numbers"><code class="language-html">Add to component html
+&lt;was-spinner [busy]=&quot;busy&quot; [message]='&quot;Please wait..&quot;'&gt;&lt;/was-spinner&gt;
+
+In the component ts add:
+import { Subscription } from 'rxjs/Subscription';
+...
+public busy: Subscription;
+...
+this.busy = some_observable.subscribe();</code></pre>
+                </div>
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -742,7 +789,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/was-spinner/was-spinner.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/was-spinner/was-spinner.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -768,7 +815,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/was-spinner/was-spinner.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/was-spinner/was-spinner.component.ts:46</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -789,7 +836,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/was-spinner/was-spinner.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/was-spinner/was-spinner.component.ts:47</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -821,7 +868,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/was-spinner/was-spinner.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/was-spinner/was-spinner.component.ts:56</a></div>
                                 </td>
                             </tr>
     
@@ -865,7 +912,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/was-spinner/was-spinner.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/was-spinner/was-spinner.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -879,7 +926,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, DoCheck, OnInit, Input } from &#x27;@angular/core&#x27;;
 import {trigger, state, style, transition, animate} from &#x27;@angular/animations&#x27;;
-import { Subscription } from &#x27;rxjs/Rx&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 
 const inactiveStyle &#x3D; style({
   opacity: 0,
@@ -887,6 +934,24 @@ const inactiveStyle &#x3D; style({
 });
 const timing &#x3D; &#x27;.3s ease&#x27;;
 
+/**
+ * A spinner where busy is an Observable, it will show a spinner as long as the subscription is live
+ *
+ * @example
+ * Add to component html
+ * &lt;was-spinner [busy]&#x3D;&quot;busy&quot; [message]&#x3D;&#x27;&quot;Please wait..&quot;&#x27;&gt;&lt;/was-spinner&gt;
+ *
+ * In the component ts add:
+ * import { Subscription } from &#x27;rxjs/Subscription&#x27;;
+ * ...
+ * public busy: Subscription;
+ * ...
+ * this.busy &#x3D; some_observable.subscribe();
+ *
+ * @export
+ * @class WasSpinnerComponent
+ * @implements {DoCheck}
+ */
 @Component({
   selector: &#x27;was-spinner&#x27;,
   templateUrl: &#x27;./was-spinner.component.html&#x27;,
@@ -983,7 +1048,7 @@ export class WasSpinnerComponent implements DoCheck {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="showSpinner" class="alert-modal" @flyInOut>  <!-- <div class="d-flex flex-row justify-content-center">      <div class="d-inline-flex was-spinner-box">        <i class="fa fa-spinner fa-spin fa-2x p-4" aria-hidden="true"></i>        <p class="p-4 was-spinner-box-text">{{message}}</p>      </div>  </div> -->  <div class="was-spinner-box-wrapper">      <div class="was-spinner-box">          <div class="was-spinner-box-spinner">              <div class="bar1"></div>              <div class="bar2"></div>              <div class="bar3"></div>              <div class="bar4"></div>              <div class="bar5"></div>              <div class="bar6"></div>              <div class="bar7"></div>              <div class="bar8"></div>              <div class="bar9"></div>              <div class="bar10"></div>              <div class="bar11"></div>              <div class="bar12"></div>          </div>          <div class="was-spinner-box-text">{{message}}</div>      </div>  </div><div></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'app-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'MenuContainerComponent', 'selector': 'was-menu-container'},{'name': 'MenuWingComponent', 'selector': 'app-menu-wing'},{'name': 'PopoverAccountInfoComponent', 'selector': 'was-popover-account-info'},{'name': 'PopoverBaseComponent', 'selector': 'was-popover-base'},{'name': 'PopoverLoginComponent', 'selector': 'was-popover-login'},{'name': 'PopoverReviewComponent', 'selector': 'was-popover-review'},{'name': 'PopoverUpComponent', 'selector': 'was-up'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WASAlertComponent', 'selector': 'was-alert'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'WasSpinnerComponent'};
 </script>
