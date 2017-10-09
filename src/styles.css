@@ -108,7 +108,7 @@ input {
   font-size: medium;
   background-color: #FF5402;
   z-index: 17; 
-  /*no select text/*
+  /* no select text */
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -154,7 +154,7 @@ input {
     z-index: 17; 
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
-      /*no select text/*
+    /* no select text */
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
