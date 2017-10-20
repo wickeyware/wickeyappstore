@@ -1,3 +1,11 @@
+<a name="1.9.11"></a>
+# 1.9.11 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Fix/Add missing css for invalid input error message in global style.css
+
+
 <a name="1.9.10"></a>
 # 1.9.10 (2017-10-20)
 

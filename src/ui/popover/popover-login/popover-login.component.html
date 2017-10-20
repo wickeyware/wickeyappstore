@@ -67,7 +67,7 @@
                 <span class="was-input-group-addon" id="basic-addon1">@</span>
                 <input id="emailInput" type="text" class="was-form-control" formControlName="email" #emailInput placeholder="email"  [(ngModel)]="email_term">
               </div>
-              <div *ngIf="formEmailErrors.email" class="alert-danger tab-left">
+              <div *ngIf="formEmailErrors.email" class="was-alert-danger">
                 {{ formEmailErrors.email }}
               </div>
               <button class="was-btn was-btn-primary was-btn-block" [hidden]="!emailForm.valid" (click)="tokenPerson(emailInput.value);">{{sendButtonText}}</button>
@@ -82,7 +82,7 @@
                 <span class="was-input-group-addon" id="basic-addon1">@</span>
                 <input id="tokenInput" type="text" class="was-form-control" formControlName="token" #tokenInput placeholder="token" [(ngModel)]="token_term">
               </div>
-              <div *ngIf="formTokenErrors.token" class="alert-danger tab-left">
+              <div *ngIf="formTokenErrors.token" class="was-alert-danger">
                 {{ formTokenErrors.token }}
               </div>
               <button class="was-btn was-btn-primary was-btn-block" [hidden]="!tokenForm.valid" (click)="verifyPerson(tokenInput.value);">Login</button>

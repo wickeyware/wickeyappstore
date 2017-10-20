@@ -263,6 +263,12 @@ input {
   display: none!important;
 }
 
+was-alert-danger {
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+}
+
 .was-input-group {
   position: relative;
   display: -webkit-box;
