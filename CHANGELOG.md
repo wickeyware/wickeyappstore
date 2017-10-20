@@ -1,3 +1,11 @@
+<a name="1.9.10"></a>
+# 1.9.10 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Add missing [hidden] css for SSO buttons in global style.css. This ensures SSO button is hidden on invalid input
+
+
 <a name="1.9.9"></a>
 # 1.9.9 (2017-10-20)
 

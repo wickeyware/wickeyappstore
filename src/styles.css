@@ -259,6 +259,9 @@ input {
   background-color: #5bc0de;
   border-color: #5bc0de;
 }
+[hidden] {
+  display: none!important;
+}
 
 .was-input-group {
   position: relative;
