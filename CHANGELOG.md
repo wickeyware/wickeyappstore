@@ -1,3 +1,11 @@
+<a name="1.9.12"></a>
+# 1.9.11 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Fix typo in last build
+
+
 <a name="1.9.11"></a>
 # 1.9.11 (2017-10-20)
 

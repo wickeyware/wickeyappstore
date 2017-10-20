@@ -263,7 +263,7 @@ input {
   display: none!important;
 }
 
-was-alert-danger {
+.was-alert-danger {
   background-color: #f2dede;
   border-color: #ebcccc;
   color: #a94442;
