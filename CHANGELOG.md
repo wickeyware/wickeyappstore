@@ -1,5 +1,13 @@
+<a name="1.9.13"></a>
+# 1.9.13 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Add font size to alert danger css in global styles.css
+
+
 <a name="1.9.12"></a>
-# 1.9.11 (2017-10-20)
+# 1.9.12 (2017-10-20)
 
 ### Bug Fixes
 
