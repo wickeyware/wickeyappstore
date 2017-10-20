@@ -1,3 +1,11 @@
+<a name="1.9.9"></a>
+# 1.9.9 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Fix/Add missing css for SSO buttons in global style.css
+
+
 <a name="1.9.8"></a>
 # 1.9.8 (2017-10-20)
 

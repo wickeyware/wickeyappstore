@@ -30,7 +30,7 @@
                     <input type="email" class="was-form-control was-highlight-input" placeholder="email" aria-describedby="basic-addon1" (keyup.enter)="updateEmail(emailInput.value); emailInput.blur()"
                         #emailInput value="{{userobj.email}}">
                 </div>
-                <button class="btn btn-primary btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText | async}}</button>
+                <button class="was-btn was-btn-primary was-btn-block" type="button" (click)="updateEmail(emailInput.value);">{{getSaveEmailButtonText | async}}</button>
             </div>
             <span class="db-MenuHeader-description d-flex justify-content-between"><span>{{accountAge | async}}</span>v{{version}}</span>
         </div>
