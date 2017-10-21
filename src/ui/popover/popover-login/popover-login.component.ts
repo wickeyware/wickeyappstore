@@ -287,26 +287,26 @@ export class PopoverLoginComponent implements OnInit {
       this.showOverlay = null;
     } else if (event.toState === 'in') {
       // the window is loaded
-      setTimeout(() => {
-        if (this.showTokenState) {
-        } else {
-          // console.log('set to email focus');
-          document.getElementById('emailInput').focus();
-        }
-      }, 250);
+      // setTimeout(() => {
+      //   if (this.showTokenState) {
+      //   } else {
+      //     // console.log('set to email focus');
+      //     document.getElementById('emailInput').focus();
+      //   }
+      // }, 250);
     }
   }
   // this shows the token field
   tokenAnimationDone(event: AnimationEvent) {
     // console.log('tokenanimation', event);
-    if (event.toState === 'inactive') {
-      setTimeout(() => {
-        // console.log('set to token focus');
-        this.token_term = '';
-        const tok = document.getElementById('tokenInput');
-        tok.focus();
-      }, 250);
-    }
+    // if (event.toState === 'inactive') {
+    //   setTimeout(() => {
+    //     // console.log('set to token focus');
+    //     this.token_term = '';
+    //     const tok = document.getElementById('tokenInput');
+    //     tok.focus();
+    //   }, 250);
+    // }
   }
 
   isEmailButtonDisabled() {
