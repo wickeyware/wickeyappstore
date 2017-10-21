@@ -107,7 +107,7 @@
       <div class="tokenGroup" [@submitAnimation]='submitState'>
         <div class="was-input-group">
           <textarea type="text" maxlength=1000 class="was-form-control was-review-body" placeholder="Review (Optional)" aria-describedby="basic-addon1"
-            (keyup.enter)="textArea.blur()" [(ngModel)]="reviewText" #reviewInput="ngModel"></textarea>
+            (keyup.enter)="reviewInput.blur()" [(ngModel)]="reviewText" #reviewInput="ngModel"></textarea>
         </div>
       </div>
     </div>

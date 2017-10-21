@@ -124,6 +124,10 @@
   version "2.53.42"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.42.tgz#74cb77fb6052edaff2a8984ddafd88d419f25cac"
 
+"@types/swiper@^3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-3.4.4.tgz#70ea3215ff336dcb6043596419e0a6c73b5567ea"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -180,9 +184,11 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2-useful-swiper@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-4.0.6.tgz#1a56f764850cbcdbd771b4b5204222115c932063"
+angular2-useful-swiper@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-5.0.0.tgz#cf4281b01dda71ee1c9795a33e222732cdb1c0d5"
+  dependencies:
+    "@types/swiper" "^3.4.4"
 
 ansi-regex@^2.0.0:
   version "2.1.1"

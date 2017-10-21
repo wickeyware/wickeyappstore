@@ -1,3 +1,13 @@
+<a name="1.9.14"></a>
+# 1.9.14 (2017-10-20)
+
+### Bug Fixes
+
+* **styles** Make X to close clickable area larger (SSO and review modal)
+* **SSO** Remove auto focus on email and token fields, iOS has issues (did not allow immediate selection).
+* **REVIEW** Fix typo in textarea
+
+
 <a name="1.9.13"></a>
 # 1.9.13 (2017-10-20)
 
