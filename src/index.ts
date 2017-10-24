@@ -12,7 +12,6 @@ import { UserService } from './user.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { WasAppService } from './was-app.service';
-import { ClipboardService } from './clipboard.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
@@ -49,7 +48,6 @@ export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
 export * from './local-storage.service';
-export * from './clipboard.service';
 export * from './display-apps/display-apps.component';
 export * from './display-apps/app-detail-page/app-detail-page.component';
 export * from './display-apps/app-group-horizontal/app-group-horizontal.component';
@@ -128,14 +126,14 @@ export * from './ui/was_menu/menu.module';
     GetCategoryPipe
   ],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService, WasAppService, ClipboardService
+    ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService, ClipboardService]
+      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService]
     };
   }
 }

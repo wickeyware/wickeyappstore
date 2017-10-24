@@ -5,7 +5,6 @@ import { AnimationEvent } from '@angular/animations';
 import { enterLeaveAnim } from '../../animations';
 import { Subscription } from 'rxjs/Subscription';
 import { WasAppService } from '../../was-app.service';
-import { ClipboardService } from '../../clipboard.service';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
 import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
 import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.component';
@@ -40,8 +39,7 @@ public config: Object = {
 
   constructor(
     @Inject( DOCUMENT ) dom: Document,
-    private wasAppService: WasAppService,
-    private clipboardService: ClipboardService,
+    private wasAppService: WasAppService
   ) {
     this.dom = dom;
   }
@@ -141,13 +139,6 @@ public config: Object = {
         { title: 'Copy Error', text: `Share link is: https://wickeyappstore.com/app/${this.selected_app.slug}` }
       );
     }
-    // const _app_url = `https://wickeyappstore.com/app/${this.selected_app.slug}`;
-    // this.clipboardService.copy(_app_url).then((val: string) => {
-    //   this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
-    //   console.log('Copied link to clipboard', _app_url);
-    // }).catch((err: any) => {
-    //   console.error('onShareBtn', err);
-    // });
   }
 
   handleReviews(_state: string) {
