@@ -112,7 +112,6 @@ export class PopoverLoginComponent implements OnInit {
   private overlayState = 'out'; // this dictates the animation state of the actual window
   public showOverlay: number = null; // this dictates whether or not to show the overlay window
 
-  public showLoginState: string = null;
   public showTokenState: string = null;
   public sendButtonText = 'Create/Login';
   public sendEmailState = 'inactive';
@@ -324,6 +323,10 @@ export class PopoverLoginComponent implements OnInit {
     }
   }
 
+  goBack(): void {
+    this.showTokenState = null;
+  }
+
   tokenPerson(email: string): void {
     // NOTE: If email doesn't exist add to their account, send token, set account to verified after token entered
     this.sendEmailState = 'active';
@@ -340,6 +343,7 @@ export class PopoverLoginComponent implements OnInit {
         this.showTokenState = 'sent';
         this.sendButtonText = 'Resend the login token';
         this.sendEmailState = 'inactive';
+        this.token_term = ''; // clear last token if it exists.
       }, (error) => {
         // <any>error | this casts error to be any
         this.wasalert.open(

@@ -328,6 +328,9 @@ input {
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
+.was-form-group {
+  margin-bottom: 1rem;
+}
 .was-hightlight-input {
   border: 1px solid rgba(87, 170, 240, 0.78);
 }

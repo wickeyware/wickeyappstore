@@ -45,7 +45,7 @@ $ npm install wickeyappstore --save
 Link external dependencies in the header of your index.html
 ```html
 <!-- WickeyAppStore global css-->
-<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@1.9.5/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@1.9.15/styles.css">
 <!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>

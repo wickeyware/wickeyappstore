@@ -266,8 +266,22 @@
 }
 .close-style {
     padding: 20px;
-    font-size: 2em;
+    font-size: 1.6em;
     float: right;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    opacity: 0.5;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+}
+.was-top-left-btn {
+    padding: 20px;
+    font-size: 1.6em;
+    float: left;
     font-weight: 700;
     line-height: 1;
     color: rgb(0, 0, 0);
@@ -341,11 +355,36 @@ button:active {
     width: -webkit-calc(100% - 20px);
     width:    -moz-calc(100% - 20px);
     width:         calc(100% - 20px);
-    height: -webkit-calc(100% - 20px);
+    /* height: -webkit-calc(100% - 20px);
     height:    -moz-calc(100% - 20px);
-    height:         calc(100% - 20px);
+    height:         calc(100% - 20px); */
     margin: 10px 10px;
 }
 .was-review-body{
     height: 100px;
+}
+
+.was-sso-Button {
+    white-space: nowrap;
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    margin-top: 8px;
+    line-height: 40px;
+    padding: 0 14px;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    background: #fff;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    color: #0078EF;
+    text-decoration: none;
+    transition: all .15s ease;
+    text-align: center;
+}
+.was-sso-Button-Primary {
+    color: #fff!important;
+    background: #0078EF;
 }

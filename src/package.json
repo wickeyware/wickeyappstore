@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "1.9.14",
+  "version": "1.9.15",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm"
@@ -42,7 +42,7 @@
     "@angular/forms": "^4.3.5",
     "@angular/platform-browser": "^4.3.5",
     "@angular/platform-browser-dynamic": "^4.3.5",
-    "angular2-useful-swiper": "^4.0.6",
+    "angular2-useful-swiper": "^5.0.1",
     "core-js": "^2.4.1",
     "idb-keyval": "^2.3.0",
     "rxjs": "^5.4.3",

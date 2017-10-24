@@ -184,9 +184,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2-useful-swiper@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-5.0.0.tgz#cf4281b01dda71ee1c9795a33e222732cdb1c0d5"
+angular2-useful-swiper@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-5.0.1.tgz#fc87fe59cb1129b8175004aa4fa239e5f5da35f0"
   dependencies:
     "@types/swiper" "^3.4.4"
 

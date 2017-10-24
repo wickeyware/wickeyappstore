@@ -1,3 +1,13 @@
+<a name="1.9.15"></a>
+# 1.9.15 (2017-10-24)
+
+### Bug Fixes
+
+* **ClipboardService** Remove the ClipboardService, since it is not used.
+* **SSO** Update to new format to negate the cursor bug on iOS (Thanks @tim).
+* **API** Fix error when api returned error from server, correctly display error message.
+
+
 <a name="1.9.14"></a>
 # 1.9.14 (2017-10-20)
 
