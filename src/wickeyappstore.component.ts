@@ -86,8 +86,10 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public apps = [];
   public bannerApps = [];
   public selected_app: {};
+  public selectedAppList: AppGroup;
   public showCloseBtn = true;
   public writeAReview = null;
+  public showVerticalList: boolean; // dictate if the full screen vertical list is shown
   @ViewChild(AppDetailPageComponent) appDetailPage: AppDetailPageComponent;
   @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
@@ -150,7 +152,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private wasAppService: WasAppService
-  ) { }
+  ) {
+    this.showVerticalList = false;
+  }
 
 
   ngOnInit(): void {
@@ -302,5 +306,15 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     } else {
       console.log('WAS: closeOnboardScreen');
     }
+  }
+
+  showAppList = (_appList: AppGroup) => {
+    console.log('showVerticalListApps');
+    this.selectedAppList = _appList;
+    this.showVerticalList = true;
+  }
+  closeVerticalListApps(_val: number): void {
+    console.log('closeVerticalListApps');
+    this.showVerticalList = false;
   }
 }

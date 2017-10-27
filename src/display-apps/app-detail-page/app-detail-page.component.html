@@ -1,63 +1,66 @@
-<div *ngIf="showContainer" class="full-screen-hidden">
-  <div *ngIf="showMe" class="was-fullscreen" [@enterLeaveAnim] (@enterLeaveAnim.done)="overlayAnimationDone($event)">
+<div *ngIf="showContainer" class="was-popup-container">
+  <div *ngIf="showMe" class="was-popup" [@enterLeaveAnim] (@enterLeaveAnim.done)="overlayAnimationDone($event)">
     <was-spinner [busy]="busy" [message]='"Getting app details.."'></was-spinner>
+    <div class="was-page-content-margin">&nbsp;</div>
     <div class="was-titlebar">
       <p class="was-titletext">App Details</p>
       <button (click)="closeOverlay($event)" class="was-navClose" title="back"></button>
       <textarea class="was-share-link">https://wickeyappstore.com/app/{{selected_app?.slug}}</textarea>
-      <button (click)="onShareBtn()" class="was-share-btn" title="share"><i class="fa fa-share fa-2x" aria-hidden="true"></i></button>
-      <div class="was-titlebottom"></div>
+      <button (click)="onShareBtn()" class="was-share-btn" title="share"><i class="fa fa-share-alt fa-2x" aria-hidden="true"></i></button>
+      <!-- <div class="was-titlebottom"></div> -->
     </div>
-    <div class="page-content">
-      <div class="top-container">
-        <div class="left-display-group">
-          <img src="{{selected_app?.icon}}" alt="App Icon" class="appthumbnail">
+    <div class="was-popup-content">
+      <div class="was-popup-panel">
+        <div class="top-container">
+          <div class="left-display-group">
+            <img src="{{selected_app?.icon}}" alt="App Icon" class="appthumbnail">
+          </div>
+          <div class="right-display-group">
+            <div class="top-right-display-block">
+              <div class="title"> {{selected_app?.name}}</div>
+              <div class="subtitle">{{selected_app?.owner}}</div>
+            </div>
+            <div class="bottom-right-display-block">
+              <was-reviews *ngIf="selected_app" [store_app]="selected_app" (changeReviewState)="handleReviews($event)"></was-reviews>
+              <!-- Make so on iphone 5 the layout fits.  -->
+              <a class="was-btn btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Open App</a>
+            </div>
+          </div>
         </div>
-        <div class="right-display-group">
-          <div class="top-right-display-block">
-            <div class="title"> {{selected_app?.name}}</div>
-            <div class="subtitle">{{selected_app?.owner}}</div>
-          </div>
-          <div class="bottom-right-display-block">
-            <was-reviews *ngIf="selected_app" [store_app]="selected_app" (changeReviewState)="handleReviews($event)"></was-reviews>
-            <!-- Make so on iphone 5 the layout fits.  -->
-            <a class="was-btn btn-get" href={{selected_app?.app_url}} target={{selected_app?.slug}}>Open App</a>
-          </div>
+        <div class="solid-separator"></div>
+        <div *ngIf="hasscreenshots">
+          <h3 class="lower-title-text">Screenshots</h3>
+          <swiper [config]="config">
+            <div class="swiper-wrapper">
+              <div *ngIf="selected_app.app_video" class="screenshot-group swiper-slide">
+                <video width=100% height=100% controls>
+                  <source src={{selected_app?.app_video}} type="video/mp4">
+                </video>
+              </div>
+              <div class="screenshot-group swiper-slide">
+                <img class="img-screenshot was-loading" src={{selected_app?.screenshot_1}} alt="screenshot">
+              </div>
+              <div *ngIf="selected_app?.screenshot_2" class="screenshot-group swiper-slide">
+                <img class="img-screenshot was-loading" src={{selected_app?.screenshot_2}} alt="screenshot">
+              </div>
+              <div *ngIf="selected_app?.screenshot_3" class="screenshot-group swiper-slide">
+                <img class="img-screenshot was-loading" src={{selected_app?.screenshot_3}} alt="screenshot">
+              </div>
+              <div *ngIf="selected_app?.screenshot_4" class="screenshot-group swiper-slide">
+                <img class="img-screenshot was-loading" src={{selected_app.screenshot_4}} alt="screenshot">
+              </div>
+            </div>
+          </swiper>
+          <div class="dark-circle-separator"></div>
         </div>
-      </div>
-      <div class="solid-separator"></div>
-      <div *ngIf="hasscreenshots">
-        <h3 class="lower-title-text">Screenshots</h3>
-        <swiper [config]="config">
-          <div class="swiper-wrapper">
-            <div *ngIf="selected_app.app_video" class="screenshot-group swiper-slide">
-              <video width=100% height=100% controls>
-                <source src={{selected_app?.app_video}} type="video/mp4">
-              </video>
-            </div>
-            <div class="screenshot-group swiper-slide">
-              <img class="img-screenshot was-loading" src={{selected_app?.screenshot_1}} alt="screenshot">
-            </div>
-            <div *ngIf="selected_app?.screenshot_2" class="screenshot-group swiper-slide">
-              <img class="img-screenshot was-loading" src={{selected_app?.screenshot_2}} alt="screenshot">
-            </div>
-            <div *ngIf="selected_app?.screenshot_3" class="screenshot-group swiper-slide">
-              <img class="img-screenshot was-loading" src={{selected_app?.screenshot_3}} alt="screenshot">
-            </div>
-            <div *ngIf="selected_app?.screenshot_4" class="screenshot-group swiper-slide">
-              <img class="img-screenshot was-loading" src={{selected_app.screenshot_4}} alt="screenshot">
-            </div>
-          </div>
-        </swiper>
+        <h3 class="lower-title-text">Description</h3>
+        <div class="description-body">{{selected_app?.text}}</div>
         <div class="dark-circle-separator"></div>
+        <h3 class="lower-title-text">Information</h3>
+        <div class="description-body">Seller: {{selected_app?.owner}}</div>
+        <div class="description-body">Category: {{selected_app?.category | getCategory}}</div>
+        <br><br><br>
       </div>
-      <h3 class="lower-title-text">Description</h3>
-      <div class="description-body">{{selected_app?.text}}</div>
-      <div class="dark-circle-separator"></div>
-      <h3 class="lower-title-text">Information</h3>
-      <div class="description-body">Seller: {{selected_app?.owner}}</div>
-      <div class="description-body">Category: {{selected_app?.category | getCategory}}</div>
-      <br><br><br>
     </div>
     <!-- Pop up modal on error -->
     <was-alert #wasalert></was-alert>

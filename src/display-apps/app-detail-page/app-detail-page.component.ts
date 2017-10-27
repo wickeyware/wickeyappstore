@@ -130,7 +130,7 @@ public config: Object = {
     this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
   }
 
-  onShareBtn() {
+  doLinkCopy() {
     try {
       this.performCopyLink();
     } catch (shareError) {
@@ -138,6 +138,22 @@ public config: Object = {
       this.wasalert.open(
         { title: 'Copy Error', text: `Share link is: https://wickeyappstore.com/app/${this.selected_app.slug}` }
       );
+    }
+  }
+
+  onShareBtn() {
+    if ((<any>navigator).share !== undefined) {
+      (<any>navigator).share({
+        title: this.selected_app.name,
+        text: this.selected_app.title,
+        url: `https://wickeyappstore.com/app/${this.selected_app.slug}`})
+        .then(() => console.log('Successful share'))
+        .catch((error) => {
+          console.log('Error sharing', error);
+          this.doLinkCopy();
+        });
+    } else {
+      this.doLinkCopy();
     }
   }
 

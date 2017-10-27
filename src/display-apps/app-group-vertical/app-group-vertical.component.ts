@@ -24,7 +24,6 @@ export class AppGroupVerticalComponent implements OnInit {
   @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public open: number;
   @Output() close = new EventEmitter<number>();
-  @Input() public title: string;
   @Input() public apps: AppGroup;
   @Input() public showAppEmitter: EventEmitter<string>;
   constructor() { }
@@ -32,7 +31,6 @@ export class AppGroupVerticalComponent implements OnInit {
   ngOnInit() {
   }
   goBack(event: any): void {
-    // TODO: hide modal
     this.open = null;
     this.close.emit(1);
     event.stopPropagation();

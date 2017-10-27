@@ -1,11 +1,16 @@
-<div *ngIf="open" class="fullscreen" [@pageOpen]="in">
-  <div class="was-titlebar">
-    <h3 class="was-titletext">{{title}}</h3>
-    <button (click)="goBack($event)" class="was-navClose" title="back"></button>
-    <div class="was-titlebottom"></div>
-  </div>
-  <div class="page-content noselect">
-    <display-app-fullwidth *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-fullwidth>
+<div *ngIf="open" class="was-popup-container" [@pageOpen]="in">
+  <div class="was-popup">
+    <div class="was-page-content-margin">&nbsp;</div>
+    <div class="was-titlebar">
+      <h3 class="was-titletext">{{apps.title}}</h3>
+      <button (click)="goBack($event)" class="was-navClose" title="back"></button>
+      <div class="was-titlebottom"></div>
+    </div>
+    <div class="was-popup-content noselect">
+      <div class="was-popup-panel">
+        <display-app-fullwidth *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-fullwidth>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Pop up modal on error -->

@@ -1,12 +1,17 @@
-<div *ngIf="open" class="fullscreen" [@pageOpen]="in">
-  <div class="was-titlebar">
-    <h3 class="was-titletext">{{title}}</h3>
-    <button (click)="closeReviews($event)" class="was-navClose" title="back"></button>
-    <div class="was-titlebottom"></div>
-  </div>
-  <div class="page-content noselect">
-    <was-spinner [busy]="busy" [message]='"Getting reviews.."'></was-spinner>
-    <display-app-review *ngFor="let _review of reviews" [review]="_review"></display-app-review>
+<div *ngIf="open" class="was-popup-container" [@pageOpen]="in">
+  <div class="was-popup">
+    <div class="was-page-content-margin">&nbsp;</div>
+    <div class="was-titlebar">
+      <h3 class="was-titletext">{{title}}</h3>
+      <button (click)="closeReviews($event)" class="was-navClose" title="back"></button>
+      <div class="was-titlebottom"></div>
+    </div>
+    <div class="was-popup-content noselect">
+      <div class="was-popup-panel">
+        <was-spinner [busy]="busy" [message]='"Getting reviews.."'></was-spinner>
+        <display-app-review *ngFor="let _review of reviews" [review]="_review"></display-app-review>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Pop up modal on error -->

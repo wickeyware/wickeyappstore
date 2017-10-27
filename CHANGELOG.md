@@ -1,3 +1,12 @@
+<a name="1.9.16"></a>
+# 1.9.16 (2017-10-27)
+
+### Bug Fixes
+
+* **styles** Fix the janky scrolling issues and the multiple scroll bars.
+* **AppDetailsPage** Add web share, if web share exists on device (else copy link).
+
+
 <a name="1.9.15"></a>
 # 1.9.15 (2017-10-24)
 
