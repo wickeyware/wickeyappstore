@@ -27,7 +27,8 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "wickeyappstore.js",
-    "flatModuleId": "wickeyappstore"
+    "flatModuleId": "wickeyappstore",
+    "preserveWhitespaces": false
   },
   "files": [
     "./index.ts"

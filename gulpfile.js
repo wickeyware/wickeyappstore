@@ -9,6 +9,7 @@ var gulp = require('gulp'),
   concatCss = require('gulp-concat-css'),
   del = require('del'),
   runSequence = require('run-sequence'),
+  resolve = require('rollup-plugin-node-resolve'),
   inlineResources = require('./tools/gulp/inline-resources');
 
 const rootFolder = path.join(__dirname);
@@ -62,6 +63,7 @@ gulp.task('ngc', function () {
         throw new Error('ngc compilation failed');
       }
     });
+  // return ngc(['-p', `${tmpFolder}/tsconfig.es5.json`]);
 });
 
 /**
@@ -75,7 +77,7 @@ gulp.task('rollup:fesm', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // Allow mixing of hypothetical and actual files. "Actual" files can be files
       // accessed by Rollup or produced by plugins further down the chain.
@@ -83,6 +85,13 @@ gulp.task('rollup:fesm', function () {
       // when subdirectories are used in the `src` directory.
       allowRealFiles: true,
 
+      plugins: [resolve({
+        // pass custom options to the resolve plugin
+        customResolveOptions: {
+          moduleDirectory: 'node_modules'
+        }
+      })],
+      
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
@@ -123,14 +132,19 @@ gulp.task('rollup:umd', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // Allow mixing of hypothetical and actual files. "Actual" files can be files
       // accessed by Rollup or produced by plugins further down the chain.
       // This prevents errors like: 'path/file' does not exist in the hypothetical file system
       // when subdirectories are used in the `src` directory.
       allowRealFiles: true,
-
+      plugins: [resolve({
+        // pass custom options to the resolve plugin
+        customResolveOptions: {
+          moduleDirectory: 'node_modules'
+        }
+      })],
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
@@ -164,7 +178,7 @@ gulp.task('rollup:umd', function () {
       // The name to use for the module for UMD/IIFE bundles
       // (required for bundles with exports)
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#modulename
-      moduleName: 'wickeyappstore',
+      name: 'wickeyappstore',
 
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
       globals: {

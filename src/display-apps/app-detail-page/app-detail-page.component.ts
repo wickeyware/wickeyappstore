@@ -1,4 +1,3 @@
-import 'rxjs/add/operator/switchMap';
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
@@ -38,7 +37,7 @@ public config: Object = {
   };
 
   constructor(
-    @Inject( DOCUMENT ) dom: Document,
+    @Inject( DOCUMENT ) dom: any,
     private wasAppService: WasAppService
   ) {
     this.dom = dom;

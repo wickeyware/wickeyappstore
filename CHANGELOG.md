@@ -1,3 +1,11 @@
+<a name="1.9.17"></a>
+# 1.9.17 (2017-11-06)
+
+### Bug Fixes
+
+* **packages** Begin upgrade process to angular 5, angular cli 1.5, rxjs 5.5.2, and typescript 2.4.3
+
+
 <a name="1.9.16"></a>
 # 1.9.16 (2017-10-27)
 

@@ -1,10 +1,10 @@
-import { animate, AnimationEntryMetadata, state, style, transition, trigger } from '@angular/core';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 // Component transition animations
 /**
  * Slides in from left to right. Closes by sliding down.
  */
-export const slideInDownAnimation: AnimationEntryMetadata =
+export const slideInDownAnimation: AnimationTriggerMetadata =
   trigger('routeAnimation', [
     state('*',
       style({
@@ -30,7 +30,7 @@ export const slideInDownAnimation: AnimationEntryMetadata =
 /**
  * Used on Modals. Scales/Fades open and closed.
  */
-export const enterLeaveAnim: AnimationEntryMetadata =
+export const enterLeaveAnim: AnimationTriggerMetadata =
 trigger('enterLeaveAnim', [
   transition(':enter', [
     style({ opacity: 0, transform: 'scaleX(.98) scaleY(.9)' }),

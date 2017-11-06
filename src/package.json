@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "1.9.16",
+  "version": "1.9.17",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm"
@@ -35,18 +35,19 @@
   },
   "typings": "wickeyappstore.d.ts",
   "peerDependencies": {
-    "@angular/animations": "^4.3.5",
-    "@angular/common": "^4.3.5",
-    "@angular/compiler": "^4.3.5",
-    "@angular/core": "^4.3.5",
-    "@angular/forms": "^4.3.5",
-    "@angular/platform-browser": "^4.3.5",
-    "@angular/platform-browser-dynamic": "^4.3.5",
+    "@angular/animations": "^5.0.0",
+    "@angular/common": "^5.0.0",
+    "@angular/compiler": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/platform-browser-dynamic": "^5.0.0",
     "angular2-useful-swiper": "^5.0.1",
     "core-js": "^2.4.1",
     "idb-keyval": "^2.3.0",
-    "rxjs": "^5.4.3",
+    "rxjs": "^5.5.2",
     "web-animations-js": "^2.3.1",
+    "typescript": "^2.4.2",
     "zone.js": "^0.8.16"
   }
 }
