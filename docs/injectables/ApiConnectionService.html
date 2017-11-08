@@ -48,14 +48,14 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="../license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -211,9 +211,6 @@
                                     <a href="../injectables/ApiConnectionService.html"  data-type="entity-link" class="active" >ApiConnectionService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ClipboardService.html" >ClipboardService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
                                 </li>
                                 <li class="link">
@@ -350,14 +347,14 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="../license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -511,9 +508,6 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ApiConnectionService.html"  data-type="entity-link" class="active" >ApiConnectionService</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/ClipboardService.html" >ClipboardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
@@ -686,6 +680,9 @@
                                     <li>
                                         <span class="modifier">Private</span> <a href="#reviews_url">reviews_url</a>
                                     </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#wasstore_url">wasstore_url</a>
+                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -699,6 +696,9 @@
                                 <ul class="index-list">
                                     <li>
                                          <a href="#createPerson">createPerson</a>
+                                    </li>
+                                    <li>
+                                         <a href="#deleteWASStore">deleteWASStore</a>
                                     </li>
                                     <li>
                                          <a href="#encode_query_string">encode_query_string</a>
@@ -719,6 +719,9 @@
                                          <a href="#getReviews">getReviews</a>
                                     </li>
                                     <li>
+                                         <a href="#getWASStore">getWASStore</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#handleError">handleError</a>
                                     </li>
                                     <li>
@@ -726,6 +729,9 @@
                                     </li>
                                     <li>
                                          <a href="#setReview">setReview</a>
+                                    </li>
+                                    <li>
+                                         <a href="#setWASStore">setWASStore</a>
                                     </li>
                                     <li>
                                          <a href="#tokenPerson">tokenPerson</a>
@@ -751,7 +757,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/api-connection.service.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/api-connection.service.ts:18</a></div>
                                         </td>
                                     </tr>
             
@@ -809,7 +815,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/api-connection.service.ts:108</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/api-connection.service.ts:105</a></div>
                                         </td>
                                     </tr>
             
@@ -857,6 +863,79 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="deleteWASStore"></a>
+                                    <span class="name"><b> deleteWASStore</b><a href="#deleteWASStore"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>deleteWASStore(_params: literal type)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/api-connection.service.ts:261</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Deletes a value(s) for the requested key(s).</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_params</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys=&#39;key1,&#39;)</p>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                                <b>Example :</b>
+                                                    <div>
+                                                        <pre class="line-numbers"><code class="language-html">this.apiConnectionService.deleteWASStore(
+            {&amp;#39;user_id&amp;#39;:string,&amp;#39;keys&amp;#39;:string}
+            ).subscribe((_data: any) =&amp;gt; {
+            console.log(_data);
+            });</code></pre>
+                                                    </div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <p>Returns a standard user object.</p>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="encode_query_string"></a>
                                     <span class="name"><b> encode_query_string</b><a href="#encode_query_string"><span class="fa fa-link"></span></a></span>
                                 </td>
@@ -870,7 +949,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/api-connection.service.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/api-connection.service.ts:64</a></div>
                                         </td>
                                     </tr>
             
@@ -931,7 +1010,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/api-connection.service.ts:59</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/api-connection.service.ts:56</a></div>
                                         </td>
                                     </tr>
             
@@ -992,7 +1071,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/api-connection.service.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/api-connection.service.ts:76</a></div>
                                         </td>
                                     </tr>
             
@@ -1054,7 +1133,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/api-connection.service.ts:96</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/api-connection.service.ts:93</a></div>
                                         </td>
                                     </tr>
             
@@ -1120,7 +1199,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/api-connection.service.ts:178</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/api-connection.service.ts:175</a></div>
                                         </td>
                                     </tr>
             
@@ -1192,7 +1271,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/api-connection.service.ts:141</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/api-connection.service.ts:138</a></div>
                                         </td>
                                     </tr>
             
@@ -1250,6 +1329,79 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="getWASStore"></a>
+                                    <span class="name"><b> getWASStore</b><a href="#getWASStore"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>getWASStore(_params: literal type)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/api-connection.service.ts:216</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Gets a value(s) for requested key(s).</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_params</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys=&#39;key1,&#39;)</p>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                                <b>Example :</b>
+                                                    <div>
+                                                        <pre class="line-numbers"><code class="language-html">this.apiConnectionService.getWASStore(
+            {&amp;#39;user_id&amp;#39;:string,&amp;#39;keys&amp;#39;:string}
+            ).subscribe((_data: any) =&amp;gt; {
+            console.log(_data);
+            });</code></pre>
+                                                    </div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <p>Returns a standard user object with was_data.</p>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="handleError"></a>
                                     <span class="name"><b><span class="modifier">Private</span> handleError</b><a href="#handleError"><span class="fa fa-link"></span></a></span>
                                 </td>
@@ -1264,7 +1416,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/api-connection.service.ts:34</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/api-connection.service.ts:31</a></div>
                                         </td>
                                     </tr>
             
@@ -1325,7 +1477,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">src/api-connection.service.ts:200</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/api-connection.service.ts:197</a></div>
                                         </td>
                                     </tr>
             
@@ -1399,7 +1551,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/api-connection.service.ts:161</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/api-connection.service.ts:158</a></div>
                                         </td>
                                     </tr>
             
@@ -1455,6 +1607,79 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="setWASStore"></a>
+                                    <span class="name"><b> setWASStore</b><a href="#setWASStore"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>setWASStore(_params: literal type)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">src/api-connection.service.ts:239</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Stores/Updates all values to respective key in passed in json was_data.</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_params</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>string: user_id, json: was_data where was_data is format {key:value,...}</p>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                                <b>Example :</b>
+                                                    <div>
+                                                        <pre class="line-numbers"><code class="language-html">this.apiConnectionService.setWASStore(
+            {&amp;#39;user_id&amp;#39;:string,&amp;#39;was_data&amp;#39;:{key:value,...}}
+            ).subscribe((_data: any) =&amp;gt; {
+            console.log(_data);
+            });</code></pre>
+                                                    </div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <p>Returns a standard user object with was_data.</p>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="tokenPerson"></a>
                                     <span class="name"><b> tokenPerson</b><a href="#tokenPerson"><span class="fa fa-link"></span></a></span>
                                 </td>
@@ -1468,7 +1693,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/api-connection.service.ts:115</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/api-connection.service.ts:112</a></div>
                                         </td>
                                     </tr>
             
@@ -1538,7 +1763,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/api-connection.service.ts:122</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/api-connection.service.ts:119</a></div>
                                         </td>
                                     </tr>
             
@@ -1637,7 +1862,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/api-connection.service.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/api-connection.service.ts:14</a></div>
                                         </td>
                                     </tr>
             
@@ -1665,7 +1890,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/api-connection.service.ts:19</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/api-connection.service.ts:15</a></div>
                                         </td>
                                     </tr>
             
@@ -1693,7 +1918,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/api-connection.service.ts:16</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/api-connection.service.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1721,7 +1946,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/api-connection.service.ts:17</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/api-connection.service.ts:13</a></div>
                                         </td>
                                     </tr>
             
@@ -1749,7 +1974,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/api-connection.service.ts:15</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/api-connection.service.ts:11</a></div>
                                         </td>
                                     </tr>
             
@@ -1777,7 +2002,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/api-connection.service.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/api-connection.service.ts:16</a></div>
                                         </td>
                                     </tr>
             
@@ -1805,7 +2030,35 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/api-connection.service.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/api-connection.service.ts:17</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="wasstore_url"></a>
+                                    <span class="name"><b><span class="modifier">Private</span> wasstore_url</b><a href="#wasstore_url"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>wasstore_url:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>https://api.wickeyappstore.com/wasstore/</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/api-connection.service.ts:18</a></div>
                                         </td>
                                     </tr>
             
@@ -1813,6 +2066,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1823,10 +2077,6 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 
 import { Observable } from &#x27;rxjs/Observable&#x27;;
-import &#x27;rxjs/add/operator/share&#x27;;
-import &#x27;rxjs/add/operator/catch&#x27;;
-import &#x27;rxjs/add/observable/throw&#x27;;
-import &#x27;rxjs/add/operator/map&#x27;;
 import { Review, Inapp } from &#x27;./app.models&#x27;;
 
 @Injectable()
@@ -1838,6 +2088,7 @@ export class ApiConnectionService {
   private featured_url &#x3D; &#x27;https://api.wickeyappstore.com/apps/featured/&#x27;;
   private purchases_url &#x3D; &#x27;https://api.wickeyappstore.com/purchases/&#x27;;
   private reviews_url &#x3D; &#x27;https://api.wickeyappstore.com/reviews/&#x27;;
+  private wasstore_url &#x3D; &#x27;https://api.wickeyappstore.com/wasstore/&#x27;;
   // TODO: Add BlueSnap APIS
   // bluesnap
   // bluesnap/wallet/
@@ -1851,11 +2102,10 @@ export class ApiConnectionService {
 
   // THE OBSERVABLE WAY //
   private handleError (error: HttpErrorResponse) {
-    // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     console.log(&#x27;WASAPI: handleError&#x27;, error);
     if (error.error instanceof Error) {
-      // A client-side or network error occurred. Handle it accordingly.
+      // A client-side or network error occurred.
       // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
       if (navigator.onLine) {
         errMsg &#x3D; &#x60;${error.status} - ${error.statusText || &#x27;&#x27;} ${error.error.message}&#x60;;
@@ -1866,10 +2116,11 @@ export class ApiConnectionService {
       // The backend returned an unsuccessful response code.
       // {&quot;error&quot;: {&quot;message&quot;: string, code: number}} // where code is a http status code as-well as an internal error code.
       try {
-        const errorObj &#x3D; JSON.parse(error.error);
+        const errorObj &#x3D; error.error;  // JSON.parse(error.error)
         errMsg &#x3D; errorObj.error.message;
       } catch (locerror) {
-        errMsg &#x3D; locerror.toString();
+        // errMsg &#x3D; locerror.toString();
+        errMsg &#x3D; error.message;
         console.error(&#x27;API: + LOCAL Error:&#x27;, error, locerror);
       }
     }
@@ -2020,6 +2271,74 @@ export class ApiConnectionService {
     return this.http.post(this.purchases_url, _params)
           .map(this.extractData)
           .catch(this.handleError).share();
+  }
+
+  /**
+   * Gets a value(s) for requested key(s).
+   *
+   * @example
+   * this.apiConnectionService.getWASStore(
+   * {&#x27;user_id&#x27;:string,&#x27;keys&#x27;:string}
+   * ).subscribe((_data: any) &#x3D;&gt; {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys&#x3D;&#x27;key1,&#x27;)
+   * @returns {Observable&lt;any&gt;} Returns a standard user object with was_data.
+   * @memberof ApiConnectionService
+   */
+  getWASStore(_params: {user_id: string, keys: string}): Observable&lt;{}&gt; {
+    console.log(&#x27;WASAPI: getWASStore _params&#x27;, _params);
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string &#x3D; this.encode_query_string(_params);
+    console.log(&#x27;WASAPI: getWASStore&#x27;, _query_string);
+    return this.http.get(&#x60;${this.wasstore_url}?${_query_string}&#x60;)
+          .map((res: any) &#x3D;&gt; {
+            return this.extractData(res).was_data;
+          }).catch(this.handleError).share();
+  }
+  /**
+   * Stores/Updates all values to respective key in passed in json was_data.
+   *
+   * @example
+   * this.apiConnectionService.setWASStore(
+   * {&#x27;user_id&#x27;:string,&#x27;was_data&#x27;:{key:value,...}}
+   * ).subscribe((_data: any) &#x3D;&gt; {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, json: was_data where was_data is format {key:value,...}
+   * @returns {Observable&lt;any&gt;} Returns a standard user object with was_data.
+   * @memberof ApiConnectionService
+   */
+  setWASStore(_params: {user_id: string, was_data: {}}): Observable&lt;any&gt; {
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string &#x3D; this.encode_query_string(_params);
+    console.log(&#x27;WASAPI: getWASStore&#x27;, _query_string);
+    return this.http.post(this.wasstore_url, _params)
+          .map((res: any) &#x3D;&gt; {
+            return this.extractData(res);
+          }).catch(this.handleError).share();
+  }
+  /**
+   * Deletes a value(s) for the requested key(s).
+   *
+   * @example
+   * this.apiConnectionService.deleteWASStore(
+   * {&#x27;user_id&#x27;:string,&#x27;keys&#x27;:string}
+   * ).subscribe((_data: any) &#x3D;&gt; {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys&#x3D;&#x27;key1,&#x27;)
+   * @returns {Observable&lt;any&gt;} Returns a standard user object.
+   * @memberof ApiConnectionService
+   */
+  deleteWASStore(_params: {user_id: string, keys: string}): Observable&lt;any&gt; {
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string &#x3D; this.encode_query_string(_params);
+    console.log(&#x27;WASAPI: deleteWASStore&#x27;, _query_string);
+    return this.http.delete(&#x60;${this.wasstore_url}?${_query_string}&#x60;)
+          .map((res: any) &#x3D;&gt; {
+            return this.extractData(res);
+          }).catch(this.handleError).share();
   }
 
 }

@@ -455,6 +455,44 @@ export class UserService {
     return _obs;
   }
 
+  getStore(_keys: string[]): Observable<{}> {
+    console.log('============UserService getStore=========');
+    let _updatedUsr = this._user.getValue();
+    let _apiobject = {'user_id': _updatedUsr.user_id, 'keys': _keys.join(',')}
+    const _obs = this.apiConnectionService.getWASStore(_apiobject);
+    // _obs.subscribe((res) => {
+    //   console.log('UserService: getStore RETURN:', res);
+    // }, (error) => {
+    //   console.log(`UserService: getStore: error:[${error}]`);
+    // });
+    return _obs;
+  }
+  setStore(_was_data: {}): Observable<any> {
+    console.log('============UserService setStore=========');
+    // TODO: Update local list too
+    let _updatedUsr = this._user.getValue();
+    let _apiobject = {'user_id': _updatedUsr.user_id, 'was_data': _was_data}
+    const _obs = this.apiConnectionService.setWASStore(_apiobject);
+    // _obs.subscribe((res) => {
+    //   console.log('UserService: setStore RETURN:', res);
+    // }, (error) => {
+    //   console.log(`UserService: setStore: error:[${error}]`);
+    // });
+    return _obs;
+  }
+  deleteStore(_keys: string[]): Observable<any> {
+    console.log('============UserService deleteStore=========');
+    // TODO: Update local list too
+    let _updatedUsr = this._user.getValue();
+    let _apiobject = {'user_id': _updatedUsr.user_id, 'keys': _keys.join(',')}
+    const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
+    // _obs.subscribe((res) => {
+    //   console.log('UserService: deleteStore RETURN:', res);
+    // }, (error) => {
+    //   console.log(`UserService: deleteStore: error:[${error}]`);
+    // });
+    return _obs;
+  }
   // TODO: Add BlueSnap APIS
 
   // addTodo(newTodo:Todo):Observable {

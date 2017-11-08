@@ -15,6 +15,7 @@ export class ApiConnectionService {
   private featured_url = 'https://api.wickeyappstore.com/apps/featured/';
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
   private reviews_url = 'https://api.wickeyappstore.com/reviews/';
+  private wasstore_url = 'https://api.wickeyappstore.com/wasstore/';
   // TODO: Add BlueSnap APIS
   // bluesnap
   // bluesnap/wallet/
@@ -28,11 +29,10 @@ export class ApiConnectionService {
 
   // THE OBSERVABLE WAY //
   private handleError (error: HttpErrorResponse) {
-    // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     console.log('WASAPI: handleError', error);
     if (error.error instanceof Error) {
-      // A client-side or network error occurred. Handle it accordingly.
+      // A client-side or network error occurred.
       // http://stackoverflow.com/questions/39571231/how-to-check-whether-user-has-internet-connection-or-not-in-angular2
       if (navigator.onLine) {
         errMsg = `${error.status} - ${error.statusText || ''} ${error.error.message}`;
@@ -46,7 +46,8 @@ export class ApiConnectionService {
         const errorObj = error.error;  // JSON.parse(error.error)
         errMsg = errorObj.error.message;
       } catch (locerror) {
-        errMsg = locerror.toString();
+        // errMsg = locerror.toString();
+        errMsg = error.message;
         console.error('API: + LOCAL Error:', error, locerror);
       }
     }
@@ -197,6 +198,74 @@ export class ApiConnectionService {
     return this.http.post(this.purchases_url, _params)
           .map(this.extractData)
           .catch(this.handleError).share();
+  }
+
+  /**
+   * Gets a value(s) for requested key(s).
+   *
+   * @example
+   * this.apiConnectionService.getWASStore(
+   * {'user_id':string,'keys':string}
+   * ).subscribe((_data: any) => {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
+   * @returns {Observable<any>} Returns a standard user object with was_data.
+   * @memberof ApiConnectionService
+   */
+  getWASStore(_params: {user_id: string, keys: string}): Observable<{}> {
+    console.log('WASAPI: getWASStore _params', _params);
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string = this.encode_query_string(_params);
+    console.log('WASAPI: getWASStore', _query_string);
+    return this.http.get(`${this.wasstore_url}?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res).was_data;
+          }).catch(this.handleError).share();
+  }
+  /**
+   * Stores/Updates all values to respective key in passed in json was_data.
+   *
+   * @example
+   * this.apiConnectionService.setWASStore(
+   * {'user_id':string,'was_data':{key:value,...}}
+   * ).subscribe((_data: any) => {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, json: was_data where was_data is format {key:value,...}
+   * @returns {Observable<any>} Returns a standard user object with was_data.
+   * @memberof ApiConnectionService
+   */
+  setWASStore(_params: {user_id: string, was_data: {}}): Observable<any> {
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string = this.encode_query_string(_params);
+    console.log('WASAPI: getWASStore', _query_string);
+    return this.http.post(this.wasstore_url, _params)
+          .map((res: any) => {
+            return this.extractData(res);
+          }).catch(this.handleError).share();
+  }
+  /**
+   * Deletes a value(s) for the requested key(s).
+   *
+   * @example
+   * this.apiConnectionService.deleteWASStore(
+   * {'user_id':string,'keys':string}
+   * ).subscribe((_data: any) => {
+   *  console.log(_data);
+   * });
+   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
+   * @returns {Observable<any>} Returns a standard user object.
+   * @memberof ApiConnectionService
+   */
+  deleteWASStore(_params: {user_id: string, keys: string}): Observable<any> {
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string = this.encode_query_string(_params);
+    console.log('WASAPI: deleteWASStore', _query_string);
+    return this.http.delete(`${this.wasstore_url}?${_query_string}`)
+          .map((res: any) => {
+            return this.extractData(res);
+          }).catch(this.handleError).share();
   }
 
 }

@@ -1,100 +1,100 @@
-<a name="1.9.17"></a>
-# 1.9.17 (2017-11-06)
+# Changelog
 
-### Bug Fixes
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all)
+
+This shows all commits since last release (actually, currently all commits).
+
+## [1.10.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.10.0) - 2017-11-08
+
+### Added
+
+* **UserService** Add UserService.store to get/add/update/delete date from the WASStore (persistant cloud storage).
+           TODO: Add small example
+* **docs** Re-build docs
+
+### Deprecated
+
+* **UserService** Deprecate UserService.data, use the new UserService.store to get/add/update/delete date from the WASStore (persistant cloud storage).
+
+## [1.9.17](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.17) - 2017-11-06
+
+### Fixed
 
 * **packages** Begin upgrade process to angular 5, angular cli 1.5, rxjs 5.5.2, and typescript 2.4.3
 
+## [1.9.16](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.16) - 2017-10-27
 
-<a name="1.9.16"></a>
-# 1.9.16 (2017-10-27)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Fix the janky scrolling issues and the multiple scroll bars.
 * **AppDetailsPage** Add web share, if web share exists on device (else copy link).
 
+## [1.9.15](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.15) - 2017-10-24
 
-<a name="1.9.15"></a>
-# 1.9.15 (2017-10-24)
-
-### Bug Fixes
+### Fixed
 
 * **ClipboardService** Remove the ClipboardService, since it is not used.
 * **SSO** Update to new format to negate the cursor bug on iOS (Thanks @tim).
 * **API** Fix error when api returned error from server, correctly display error message.
 
+## [1.9.14](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.14) - 2017-10-20
 
-<a name="1.9.14"></a>
-# 1.9.14 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Make X to close clickable area larger (SSO and review modal)
 * **SSO** Remove auto focus on email and token fields, iOS has issues (did not allow immediate selection).
 * **REVIEW** Fix typo in textarea
 
+## [1.9.13](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.13) - 2017-10-20
 
-<a name="1.9.13"></a>
-# 1.9.13 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Add font size to alert danger css in global styles.css
 
+## [1.9.12](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.12) - 2017-10-20
 
-<a name="1.9.12"></a>
-# 1.9.12 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Fix typo in last build
 
+## [1.9.11](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.11) - 2017-10-20
 
-<a name="1.9.11"></a>
-# 1.9.11 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Fix/Add missing css for invalid input error message in global style.css
 
+## [1.9.10](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.10) - 2017-10-20
 
-<a name="1.9.10"></a>
-# 1.9.10 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Add missing [hidden] css for SSO buttons in global style.css. This ensures SSO button is hidden on invalid input
 
+## [1.9.9](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.9) - 2017-10-20
 
-<a name="1.9.9"></a>
-# 1.9.9 (2017-10-20)
-
-### Bug Fixes
+#### Fixed
 
 * **styles** Fix/Add missing css for SSO buttons in global style.css
 
+## [1.9.8](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.8) - 2017-10-20
 
-<a name="1.9.8"></a>
-# 1.9.8 (2017-10-20)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Fix/Add missing css for SSO in global style.css
 
+## [1.9.7](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.7) - 2017-10-09
 
-<a name="1.9.7"></a>
-# 1.9.7 (2017-10-09)
-
-### Bug Fixes
+### Fixed
 
 * **styles** Fix syntax error in global style.css
 
+## [1.9.6](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.6) - 2017-10-05
 
-<a name="1.9.6"></a>
-# 1.9.6 (2017-10-05)
-
-### Bug Fixes
+### Fixed
 
 * **README** Updated QuickStart in readme
 * **docs** Fixed documentation on was-up

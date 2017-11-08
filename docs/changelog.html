@@ -48,14 +48,14 @@
                                   <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="./changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
                                 <li class="link">
-                                    <a href="./license.html"
-                                        >
+                                        <a href="./license.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>LICENSE
                                     </a>
                                 </li>
@@ -211,9 +211,6 @@
                                     <a href="./injectables/ApiConnectionService.html" >ApiConnectionService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./injectables/ClipboardService.html" >ClipboardService</a>
-                                </li>
-                                <li class="link">
                                     <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
                                 </li>
                                 <li class="link">
@@ -350,14 +347,14 @@
                                          <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="./changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
                                        <li class="link">
-                                           <a href="./license.html"
-                                               >
+                                               <a href="./license.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>LICENSE
                                            </a>
                                        </li>
@@ -513,9 +510,6 @@
                                            <a href="./injectables/ApiConnectionService.html" >ApiConnectionService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./injectables/ClipboardService.html" >ClipboardService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
                                        </li>
                                        <li class="link">
@@ -621,9 +615,84 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<p><a name="1.9.6"></a></p>
-<h1 id="1-9-6-2017-10-05-">1.9.6 (2017-10-05)</h1>
-<h3 id="bug-fixes">Bug Fixes</h3>
+<h1 id="changelog">Changelog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="-unreleased-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-all-"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all">Unreleased</a></h2>
+<p>This shows all commits since last release (actually, currently all commits).</p>
+<h2 id="-1-10-0-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-10-0-2017-11-08"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.10.0">1.10.0</a> - 2017-11-08</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong>UserService</strong> Add UserService.store to get/add/update/delete date from the WASStore (persistant cloud storage).<pre class="line-numbers"><code class="language-none">     TODO: Add small example</code></pre></li>
+<li><strong>docs</strong> Re-build docs</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li><strong>UserService</strong> Deprecate UserService.data, use the new UserService.store to get/add/update/delete date from the WASStore (persistant cloud storage).</li>
+</ul>
+<h2 id="-1-9-17-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-17-2017-11-06"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.17">1.9.17</a> - 2017-11-06</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>packages</strong> Begin upgrade process to angular 5, angular cli 1.5, rxjs 5.5.2, and typescript 2.4.3</li>
+</ul>
+<h2 id="-1-9-16-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-16-2017-10-27"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.16">1.9.16</a> - 2017-10-27</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Fix the janky scrolling issues and the multiple scroll bars.</li>
+<li><strong>AppDetailsPage</strong> Add web share, if web share exists on device (else copy link).</li>
+</ul>
+<h2 id="-1-9-15-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-15-2017-10-24"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.15">1.9.15</a> - 2017-10-24</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>ClipboardService</strong> Remove the ClipboardService, since it is not used.</li>
+<li><strong>SSO</strong> Update to new format to negate the cursor bug on iOS (Thanks @tim).</li>
+<li><strong>API</strong> Fix error when api returned error from server, correctly display error message.</li>
+</ul>
+<h2 id="-1-9-14-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-14-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.14">1.9.14</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Make X to close clickable area larger (SSO and review modal)</li>
+<li><strong>SSO</strong> Remove auto focus on email and token fields, iOS has issues (did not allow immediate selection).</li>
+<li><strong>REVIEW</strong> Fix typo in textarea</li>
+</ul>
+<h2 id="-1-9-13-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-13-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.13">1.9.13</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Add font size to alert danger css in global styles.css</li>
+</ul>
+<h2 id="-1-9-12-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-12-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.12">1.9.12</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Fix typo in last build</li>
+</ul>
+<h2 id="-1-9-11-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-11-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.11">1.9.11</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Fix/Add missing css for invalid input error message in global style.css</li>
+</ul>
+<h2 id="-1-9-10-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-10-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.10">1.9.10</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Add missing [hidden] css for SSO buttons in global style.css. This ensures SSO button is hidden on invalid input</li>
+</ul>
+<h2 id="-1-9-9-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-9-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.9">1.9.9</a> - 2017-10-20</h2>
+<h4 id="fixed">Fixed</h4>
+<ul>
+<li><strong>styles</strong> Fix/Add missing css for SSO buttons in global style.css</li>
+</ul>
+<h2 id="-1-9-8-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-8-2017-10-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.8">1.9.8</a> - 2017-10-20</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Fix/Add missing css for SSO in global style.css</li>
+</ul>
+<h2 id="-1-9-7-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-7-2017-10-09"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.7">1.9.7</a> - 2017-10-09</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>styles</strong> Fix syntax error in global style.css</li>
+</ul>
+<h2 id="-1-9-6-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-9-6-2017-10-05"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.6">1.9.6</a> - 2017-10-05</h2>
+<h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>README</strong> Updated QuickStart in readme</li>
 <li><strong>docs</strong> Fixed documentation on was-up</li>
