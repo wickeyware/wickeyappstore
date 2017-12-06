@@ -40,15 +40,19 @@ export class ApiConnectionService {
         errMsg = 'There is no Internet connection.';
       }
     } else {
-      // The backend returned an unsuccessful response code.
-      // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
-      try {
-        const errorObj = error.error;  // JSON.parse(error.error)
-        errMsg = errorObj.error.message;
-      } catch (locerror) {
-        // errMsg = locerror.toString();
-        errMsg = error.message;
-        console.error('API: + LOCAL Error:', error, locerror);
+      if (navigator.onLine) {
+        // The backend returned an unsuccessful response code.
+        // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
+        try {
+          const errorObj = error.error;  // JSON.parse(error.error)
+          errMsg = errorObj.error.message;
+        } catch (locerror) {
+          // errMsg = locerror.toString();
+          errMsg = error.message;
+          console.error('API: + LOCAL Error:', error, locerror);
+        }
+      } else {
+        errMsg = 'There is no Internet connection.';
       }
     }
     return Observable.throw(errMsg);

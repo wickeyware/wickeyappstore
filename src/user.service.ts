@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+// import { AsyncSubject } from 'rxjs/AsyncSubject';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
 
@@ -50,7 +53,11 @@ export interface UserParams {
  */
 @Injectable()
 export class UserService {
-  private _user: BehaviorSubject<User> = new BehaviorSubject({user_id: undefined});
+  // private _user: BehaviorSubject<User> = new BehaviorSubject({user_id: undefined});
+  // private _user: Subject<User> = new Subject();
+  private _user: ReplaySubject<User> = new ReplaySubject(1);
+  // private _user: AsyncSubject<User> = new AsyncSubject();
+  private _userObj: User;
   private _createNewUser = false;
   private standalone: boolean;
   private lut = [];
@@ -77,22 +84,29 @@ export class UserService {
     return this._user.asObservable();
   }
   get userObject() {
-    return this._user.getValue();
+    return this._userObj;
   }
   get coins() {
-    return this._user.getValue().coins;
+    return this._userObj.coins;
   }
   get data() {
-    return this._user.getValue().data;
+    return this._userObj.data;
   }
   // TODO: Possibly create a userService.messages
-
+  private pushSubscribers(_usr: User) {
+    this._userObj = _usr;
+    this._user.next(_usr);
+    this._user.complete();
+  }
+  private saveLocal(_usr: User) {
+    this.localStorageService.set('was-user', _usr);
+  }
   loadUser() {
     this.localStorageService.get('was-user')
       .then((value: any): void => {
         if (typeof value !== 'undefined' && value.user_id !== undefined) {
           const _localUser = value as User;
-          this._user.next(_localUser);
+          this.pushSubscribers(_localUser);
           // normal load
           console.log('UserService loadUser: load user from db', _localUser);
           this.updateUser({});
@@ -105,6 +119,7 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
+
   private handleError(error: any): Promise<any> {
     // .catch(this.handleError);
     console.error('UserService: An error occurred', error);  // for demo purposes
@@ -146,7 +161,7 @@ export class UserService {
       d2 = Math.random() * 0xffffffff | 0;
       d3 = Math.random() * 0xffffffff | 0;
     }
-    return this.lut[d0 & 0xff] + this.lut[d0>> 8 & 0xff] + this.lut[d0 >> 16 & 0xff] + this.lut[d0 >> 24 & 0xff] + '-' +
+    return this.lut[d0 & 0xff] + this.lut[d0 >> 8 & 0xff] + this.lut[d0 >> 16 & 0xff] + this.lut[d0 >> 24 & 0xff] + '-' +
       this.lut[d1 & 0xff] + this.lut[d1 >> 8 & 0xff] + '-' + this.lut[d1 >> 16 & 0x0f | 0x40] + this.lut[d1 >> 24 & 0xff] + '-' +
       this.lut[d2 & 0x3f | 0x80] + this.lut[d2 >> 8 & 0xff] + '-' + this.lut[d2 >> 16 & 0xff] + this.lut[d2 >> 24 & 0xff] +
       this.lut[d3 & 0xff] + this.lut[d3 >> 8 & 0xff] + this.lut[d3 >> 16 & 0xff] + this.lut[d3 >> 24 & 0xff];
@@ -161,11 +176,14 @@ export class UserService {
    * @memberof UserService
    */
   updateUser(userParams: UserParams): Observable<User> {
-    let currentUser = this._user.getValue();
+    let currentUser;
     if (this._createNewUser === true) {
       this._createNewUser = false;
       console.warn('UserService: NO USER, CREATE USER');
+      currentUser = {user_id: this.guid()};
       currentUser.user_id = this.guid();
+    } else {
+      currentUser = this._userObj;
     }
     console.log('UserService: updateUser:', currentUser);
     const apiobject = {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
@@ -200,11 +218,11 @@ export class UserService {
         // On new user/recover
         // TODO: Add more of a verification
         // UPDATE USER //
-        this._user.next(res);
-        this.localStorageService.set('was-user', res);
+        this.pushSubscribers(res)
+        this.saveLocal(res);
       } else {
         console.log('UserService: updateUser: RETURN:', res);
-        currentUser = this._user.getValue();
+        currentUser = this._userObj;
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           currentUser.user_id = res.user_id;
@@ -242,8 +260,8 @@ export class UserService {
         currentUser.created_time = res.created_time;
         currentUser.freebie_used = res.freebie_used;
         currentUser.settings = res.settings;
-        this._user.next(currentUser);
-        this.localStorageService.set('was-user', currentUser);
+        this.pushSubscribers(currentUser);
+        this.saveLocal(currentUser);
       }
       // NOTE: Handle special_message in calling component.
       if (res.special_message) {
@@ -269,15 +287,15 @@ export class UserService {
 
   sendToken(userParams: UserParams): Observable<any> {
     console.log('============UserService sendToken=========');
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     _updatedUsr.token_email = userParams.token_email;
-    this._user.next(_updatedUsr);
+    this.pushSubscribers(_updatedUsr);
     const _obs = this.apiConnectionService.tokenPerson(userParams.token_email, _updatedUsr.user_id);
     _obs.subscribe((res) => {
-      _updatedUsr = this._user.getValue();
+      _updatedUsr = this._userObj;
       _updatedUsr.logging_in = true;
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) => {
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
@@ -286,20 +304,20 @@ export class UserService {
   }
 
   stopToken() {
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     _updatedUsr.logging_in = false;
-    this._user.next(_updatedUsr);
-    this.localStorageService.set('was-user', _updatedUsr);
+    this.pushSubscribers(_updatedUsr);
+    this.saveLocal(_updatedUsr);
   }
 
   verifyToken(userParams: UserParams): Observable<any> {
     console.log('============UserService verifyToken=========');
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     const _obs = this.apiConnectionService.verifyPerson(_updatedUsr.token_email, _updatedUsr.user_id, userParams.token, .1);
     _obs.subscribe((res) => {
       console.log('WASlogin: verifyPerson RETURN:', res);
       // Set logging in process off //
-      _updatedUsr = this._user.getValue();
+      _updatedUsr = this._userObj;
       _updatedUsr.logging_in = false;
       _updatedUsr.user_id = res.user_id;
       _updatedUsr.email = res.email;
@@ -332,14 +350,14 @@ export class UserService {
       _updatedUsr.freebie_used = res.freebie_used;
       _updatedUsr.settings = res.settings;
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) => {
       // Set logging in process off //
-      _updatedUsr = this._user.getValue();
+      _updatedUsr = this._userObj;
       _updatedUsr.logging_in = false;
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
     });
@@ -348,12 +366,12 @@ export class UserService {
 
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
     console.log('============UserService createReview=========');
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     let _review = {'user_id': _updatedUsr.user_id, 'title': _title, 'text': _text, 'rating': _rating}
     const _obs = this.apiConnectionService.setReview(_review);
     _obs.subscribe((res) => {
       console.log('UserService: createReview RETURN:', res);
-      _updatedUsr = this._user.getValue();
+      _updatedUsr = this._userObj;
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         _updatedUsr.user_id = res.user_id;
@@ -383,8 +401,8 @@ export class UserService {
         _updatedUsr.push_id = res.push_id;
       }
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) => {
       console.log(`UserService: createReview: error:[${error}]`);
       // <any>error | this casts error to be any
@@ -396,14 +414,14 @@ export class UserService {
   createPurchase(_purchase_id: string, _receipt: string, _amount: number,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
     console.log('============UserService createPurchase=========');
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     let _purchase = {'user_id': _updatedUsr.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
     'pay_amount': _amount, 'email': _updatedUsr.email, 'first_name': _first_name, 'last_name': _last_name,
     'zip_code': _zip_code, 'apple_wallet_token': _wallet_token}
     const _obs = this.apiConnectionService.setPurchase(_purchase);
     _obs.subscribe((res) => {
       console.log('UserService: createPurchase RETURN:', res);
-      _updatedUsr = this._user.getValue();
+      _updatedUsr = this._userObj;
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         _updatedUsr.user_id = res.user_id;
@@ -445,8 +463,8 @@ export class UserService {
         _updatedUsr.push_id = res.push_id;
       }
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set('was-user', _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) => {
       console.log(`UserService: createPurchase: error:[${error}]`);
       // <any>error | this casts error to be any
@@ -457,7 +475,7 @@ export class UserService {
 
   getStore(_keys: string[]): Observable<{}> {
     console.log('============UserService getStore=========');
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     let _apiobject = {'user_id': _updatedUsr.user_id, 'keys': _keys.join(',')}
     const _obs = this.apiConnectionService.getWASStore(_apiobject);
     // _obs.subscribe((res) => {
@@ -470,7 +488,7 @@ export class UserService {
   setStore(_was_data: {}): Observable<any> {
     console.log('============UserService setStore=========');
     // TODO: Update local list too
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     let _apiobject = {'user_id': _updatedUsr.user_id, 'was_data': _was_data}
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
     // _obs.subscribe((res) => {
@@ -483,7 +501,7 @@ export class UserService {
   deleteStore(_keys: string[]): Observable<any> {
     console.log('============UserService deleteStore=========');
     // TODO: Update local list too
-    let _updatedUsr = this._user.getValue();
+    let _updatedUsr = this._userObj;
     let _apiobject = {'user_id': _updatedUsr.user_id, 'keys': _keys.join(',')}
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
     // _obs.subscribe((res) => {

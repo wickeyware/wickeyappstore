@@ -197,11 +197,16 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   }
 
   isVerifiedUser(): boolean {
-    console.log('verified user', this.userService.userObject.email);
-    if (this.isEmpty(this.userService.userObject.email) === false) {
-      return false;
+    if (this.userService.userObject) {
+      console.log('isVerifiedUser:', this.userService.userObject.email);
+      if (this.isEmpty(this.userService.userObject.email) === false) {
+        return false;
+      } else {
+        return true;
+      }
     } else {
-      return true;
+      console.log('isVerifiedUser: not yet loaded');
+      return false;  // User not yet loaded
     }
   }
   closealert(action: string) {

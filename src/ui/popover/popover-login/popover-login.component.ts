@@ -138,7 +138,10 @@ export class PopoverLoginComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('WASlogin: ngOnInit');
-    this.buildPageForms();
+    this.userService.user.subscribe((usr: User) => {
+      console.log('WASlogin: build forms');
+      this.buildPageForms();
+    });
   }
 
   buildPageForms() {
