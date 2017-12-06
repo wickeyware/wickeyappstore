@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.12.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.1) - 2017-12-06
+
+### Fixed
+
+* **packages** Updated to latest Angular
+
 ## [1.12.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.0) - 2017-12-06
 
 ### Changed
