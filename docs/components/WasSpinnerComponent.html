@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -641,7 +643,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -661,7 +663,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code>DoCheck</code>
+                <code><a href="https://angular.io/api/core/DoCheck" target="_blank" >DoCheck</a></code>
     </p>
 
     <p class="comment">
@@ -732,7 +734,8 @@ this.busy = some_observable.subscribe();</code></pre>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Public</span> <a href="#showSpinner">showSpinner</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#showSpinner">showSpinner</a>
                             </li>
                         </ul>
                     </td>
@@ -746,7 +749,7 @@ this.busy = some_observable.subscribe();</code></pre>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#ngDoCheck">ngDoCheck</a>
+                                <a href="#ngDoCheck">ngDoCheck</a>
                             </li>
                         </ul>
                     </td>
@@ -850,7 +853,12 @@ this.busy = some_observable.subscribe();</code></pre>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngDoCheck"></a>
-                            <span class="name"><b> ngDoCheck</b><a href="#ngDoCheck"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                ngDoCheck
+                                </b>
+                                <a href="#ngDoCheck"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -889,7 +897,13 @@ this.busy = some_observable.subscribe();</code></pre>
                     <tr>
                         <td class="col-md-4">
                             <a name="showSpinner"></a>
-                            <span class="name"><b><span class="modifier">Public</span> showSpinner</b><a href="#showSpinner"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                showSpinner
+                                </b>
+                                <a href="#showSpinner"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -918,7 +932,7 @@ this.busy = some_observable.subscribe();</code></pre>
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, DoCheck, OnInit, Input } from &#x27;@angular/core&#x27;;
 import {trigger, state, style, transition, animate} from &#x27;@angular/animations&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
@@ -988,7 +1002,7 @@ export class WasSpinnerComponent implements DoCheck {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;showSpinner&quot; class&#x3D;&quot;alert-modal&quot; @flyInOut&gt;
   &lt;!-- &lt;div class&#x3D;&quot;d-flex flex-row justify-content-center&quot;&gt;
       &lt;div class&#x3D;&quot;d-inline-flex was-spinner-box&quot;&gt;
@@ -1019,7 +1033,7 @@ export class WasSpinnerComponent implements DoCheck {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1048,6 +1062,7 @@ export class WasSpinnerComponent implements DoCheck {
     var ACTUAL_COMPONENT = {'name': 'WasSpinnerComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

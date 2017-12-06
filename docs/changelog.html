@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -621,6 +623,23 @@
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="-unreleased-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-all-"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all">Unreleased</a></h2>
 <p>This shows all commits since last release (actually, currently all commits).</p>
+<h2 id="-1-12-0-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-12-0-2017-12-06"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.0">1.12.0</a> - 2017-12-06</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>WasAppService</strong> Switch WasAppService to  ReplaySubject, this allows the callee to get the initial real object, not a set default/undefined.</li>
+</ul>
+<h2 id="-1-11-0-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-11-0-2017-12-06"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.11.0">1.11.0</a> - 2017-12-06</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>UserService</strong> Switch UserService to  ReplaySubject, this allows the callee to get the initial real user object, not a set default/undefined.<pre class="line-numbers"><code class="language-none">     EXAMPLE:
+     this.userService.user.subscribe((usr: User) =&gt; {console.log(&#39;USER LOADED: usr.user_id&#39;, usr.user_id);});</code></pre></li>
+<li><strong>docs</strong> Updated documentation</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>PopoverLoginComponent</strong> Fix WASLogin to work with new UserService.</li>
+<li><strong>ApiConnectionService</strong> Handle no internet connection in APIConnection service.</li>
+</ul>
 <h2 id="-1-10-0-https-bitbucket-org-wickeyware-wickeyappstore_npm-commits-tag-1-10-0-2017-11-08"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.10.0">1.10.0</a> - 2017-11-08</h2>
 <h3 id="added">Added</h3>
 <ul>
@@ -698,6 +717,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><strong>docs</strong> Fixed documentation on was-up</li>
 <li><strong>docs</strong> Added documentation on was-spinner</li>
 </ul>
+
 
 
 

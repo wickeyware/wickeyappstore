@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -623,6 +625,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Interfaces</li>
   <li>UserParams</li>
@@ -640,7 +643,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -1001,12 +1004,12 @@
     </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { ApiConnectionService } from &#x27;./api-connection.service&#x27;;
 import { LocalStorageService } from &#x27;./local-storage.service&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
-import { BehaviorSubject } from &#x27;rxjs/BehaviorSubject&#x27;;
+import { ReplaySubject } from &#x27;rxjs/ReplaySubject&#x27;;
 import { User, Review, Inapp } from &#x27;./app.models&#x27;;
 export * from &#x27;./app.models&#x27;;
 
@@ -1054,7 +1057,8 @@ export interface UserParams {
  */
 @Injectable()
 export class UserService {
-  private _user: BehaviorSubject&lt;User&gt; &#x3D; new BehaviorSubject({user_id: undefined});
+  private _user: ReplaySubject&lt;User&gt; &#x3D; new ReplaySubject(1);
+  private _userObj: User;
   private _createNewUser &#x3D; false;
   private standalone: boolean;
   private lut &#x3D; [];
@@ -1081,22 +1085,29 @@ export class UserService {
     return this._user.asObservable();
   }
   get userObject() {
-    return this._user.getValue();
+    return this._userObj;
   }
   get coins() {
-    return this._user.getValue().coins;
+    return this._userObj.coins;
   }
   get data() {
-    return this._user.getValue().data;
+    return this._userObj.data;
   }
   // TODO: Possibly create a userService.messages
-
+  private pushSubscribers(_usr: User) {
+    this._userObj &#x3D; _usr;
+    this._user.next(_usr);
+    this._user.complete();
+  }
+  private saveLocal(_usr: User) {
+    this.localStorageService.set(&#x27;was-user&#x27;, _usr);
+  }
   loadUser() {
     this.localStorageService.get(&#x27;was-user&#x27;)
       .then((value: any): void &#x3D;&gt; {
         if (typeof value !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; value.user_id !&#x3D;&#x3D; undefined) {
           const _localUser &#x3D; value as User;
-          this._user.next(_localUser);
+          this.pushSubscribers(_localUser);
           // normal load
           console.log(&#x27;UserService loadUser: load user from db&#x27;, _localUser);
           this.updateUser({});
@@ -1109,6 +1120,7 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
+
   private handleError(error: any): Promise&lt;any&gt; {
     // .catch(this.handleError);
     console.error(&#x27;UserService: An error occurred&#x27;, error);  // for demo purposes
@@ -1150,7 +1162,7 @@ export class UserService {
       d2 &#x3D; Math.random() * 0xffffffff | 0;
       d3 &#x3D; Math.random() * 0xffffffff | 0;
     }
-    return this.lut[d0 &amp; 0xff] + this.lut[d0&gt;&gt; 8 &amp; 0xff] + this.lut[d0 &gt;&gt; 16 &amp; 0xff] + this.lut[d0 &gt;&gt; 24 &amp; 0xff] + &#x27;-&#x27; +
+    return this.lut[d0 &amp; 0xff] + this.lut[d0 &gt;&gt; 8 &amp; 0xff] + this.lut[d0 &gt;&gt; 16 &amp; 0xff] + this.lut[d0 &gt;&gt; 24 &amp; 0xff] + &#x27;-&#x27; +
       this.lut[d1 &amp; 0xff] + this.lut[d1 &gt;&gt; 8 &amp; 0xff] + &#x27;-&#x27; + this.lut[d1 &gt;&gt; 16 &amp; 0x0f | 0x40] + this.lut[d1 &gt;&gt; 24 &amp; 0xff] + &#x27;-&#x27; +
       this.lut[d2 &amp; 0x3f | 0x80] + this.lut[d2 &gt;&gt; 8 &amp; 0xff] + &#x27;-&#x27; + this.lut[d2 &gt;&gt; 16 &amp; 0xff] + this.lut[d2 &gt;&gt; 24 &amp; 0xff] +
       this.lut[d3 &amp; 0xff] + this.lut[d3 &gt;&gt; 8 &amp; 0xff] + this.lut[d3 &gt;&gt; 16 &amp; 0xff] + this.lut[d3 &gt;&gt; 24 &amp; 0xff];
@@ -1165,11 +1177,14 @@ export class UserService {
    * @memberof UserService
    */
   updateUser(userParams: UserParams): Observable&lt;User&gt; {
-    let currentUser &#x3D; this._user.getValue();
+    let currentUser;
     if (this._createNewUser &#x3D;&#x3D;&#x3D; true) {
       this._createNewUser &#x3D; false;
       console.warn(&#x27;UserService: NO USER, CREATE USER&#x27;);
+      currentUser &#x3D; {user_id: this.guid()};
       currentUser.user_id &#x3D; this.guid();
+    } else {
+      currentUser &#x3D; this._userObj;
     }
     console.log(&#x27;UserService: updateUser:&#x27;, currentUser);
     const apiobject &#x3D; {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
@@ -1204,11 +1219,11 @@ export class UserService {
         // On new user/recover
         // TODO: Add more of a verification
         // UPDATE USER //
-        this._user.next(res);
-        this.localStorageService.set(&#x27;was-user&#x27;, res);
+        this.pushSubscribers(res)
+        this.saveLocal(res);
       } else {
         console.log(&#x27;UserService: updateUser: RETURN:&#x27;, res);
-        currentUser &#x3D; this._user.getValue();
+        currentUser &#x3D; this._userObj;
         // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
         if (res.email &amp;&amp; res.user_id) {
           currentUser.user_id &#x3D; res.user_id;
@@ -1246,8 +1261,8 @@ export class UserService {
         currentUser.created_time &#x3D; res.created_time;
         currentUser.freebie_used &#x3D; res.freebie_used;
         currentUser.settings &#x3D; res.settings;
-        this._user.next(currentUser);
-        this.localStorageService.set(&#x27;was-user&#x27;, currentUser);
+        this.pushSubscribers(currentUser);
+        this.saveLocal(currentUser);
       }
       // NOTE: Handle special_message in calling component.
       if (res.special_message) {
@@ -1273,15 +1288,15 @@ export class UserService {
 
   sendToken(userParams: UserParams): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService sendToken&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     _updatedUsr.token_email &#x3D; userParams.token_email;
-    this._user.next(_updatedUsr);
+    this.pushSubscribers(_updatedUsr);
     const _obs &#x3D; this.apiConnectionService.tokenPerson(userParams.token_email, _updatedUsr.user_id);
     _obs.subscribe((res) &#x3D;&gt; {
-      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr &#x3D; this._userObj;
       _updatedUsr.logging_in &#x3D; true;
-      this._user.next(_updatedUsr);
-      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) &#x3D;&gt; {
       // &lt;any&gt;error | this casts error to be any
       // NOTE: Handle errors in calling component.
@@ -1290,20 +1305,20 @@ export class UserService {
   }
 
   stopToken() {
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     _updatedUsr.logging_in &#x3D; false;
-    this._user.next(_updatedUsr);
-    this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+    this.pushSubscribers(_updatedUsr);
+    this.saveLocal(_updatedUsr);
   }
 
   verifyToken(userParams: UserParams): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService verifyToken&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     const _obs &#x3D; this.apiConnectionService.verifyPerson(_updatedUsr.token_email, _updatedUsr.user_id, userParams.token, .1);
     _obs.subscribe((res) &#x3D;&gt; {
       console.log(&#x27;WASlogin: verifyPerson RETURN:&#x27;, res);
       // Set logging in process off //
-      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr &#x3D; this._userObj;
       _updatedUsr.logging_in &#x3D; false;
       _updatedUsr.user_id &#x3D; res.user_id;
       _updatedUsr.email &#x3D; res.email;
@@ -1336,14 +1351,14 @@ export class UserService {
       _updatedUsr.freebie_used &#x3D; res.freebie_used;
       _updatedUsr.settings &#x3D; res.settings;
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) &#x3D;&gt; {
       // Set logging in process off //
-      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr &#x3D; this._userObj;
       _updatedUsr.logging_in &#x3D; false;
-      this._user.next(_updatedUsr);
-      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
       // &lt;any&gt;error | this casts error to be any
       // NOTE: Handle errors in calling component.
     });
@@ -1352,12 +1367,12 @@ export class UserService {
 
   createReview(_title: string, _text: string, _rating: number): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService createReview&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     let _review &#x3D; {&#x27;user_id&#x27;: _updatedUsr.user_id, &#x27;title&#x27;: _title, &#x27;text&#x27;: _text, &#x27;rating&#x27;: _rating}
     const _obs &#x3D; this.apiConnectionService.setReview(_review);
     _obs.subscribe((res) &#x3D;&gt; {
       console.log(&#x27;UserService: createReview RETURN:&#x27;, res);
-      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr &#x3D; this._userObj;
       // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
       if (res.email &amp;&amp; res.user_id) {
         _updatedUsr.user_id &#x3D; res.user_id;
@@ -1387,8 +1402,8 @@ export class UserService {
         _updatedUsr.push_id &#x3D; res.push_id;
       }
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) &#x3D;&gt; {
       console.log(&#x60;UserService: createReview: error:[${error}]&#x60;);
       // &lt;any&gt;error | this casts error to be any
@@ -1400,14 +1415,14 @@ export class UserService {
   createPurchase(_purchase_id: string, _receipt: string, _amount: number,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService createPurchase&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     let _purchase &#x3D; {&#x27;user_id&#x27;: _updatedUsr.user_id, &#x27;purchase_id&#x27;: _purchase_id, &#x27;receipt&#x27;: _receipt,
     &#x27;pay_amount&#x27;: _amount, &#x27;email&#x27;: _updatedUsr.email, &#x27;first_name&#x27;: _first_name, &#x27;last_name&#x27;: _last_name,
     &#x27;zip_code&#x27;: _zip_code, &#x27;apple_wallet_token&#x27;: _wallet_token}
     const _obs &#x3D; this.apiConnectionService.setPurchase(_purchase);
     _obs.subscribe((res) &#x3D;&gt; {
       console.log(&#x27;UserService: createPurchase RETURN:&#x27;, res);
-      _updatedUsr &#x3D; this._user.getValue();
+      _updatedUsr &#x3D; this._userObj;
       // NOTE: If a user has an email, the account was either verified by token or doesn&#x27;t belong to someone else.
       if (res.email &amp;&amp; res.user_id) {
         _updatedUsr.user_id &#x3D; res.user_id;
@@ -1449,8 +1464,8 @@ export class UserService {
         _updatedUsr.push_id &#x3D; res.push_id;
       }
       // UPDATE USER //
-      this._user.next(_updatedUsr);
-      this.localStorageService.set(&#x27;was-user&#x27;, _updatedUsr);
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
     }, (error) &#x3D;&gt; {
       console.log(&#x60;UserService: createPurchase: error:[${error}]&#x60;);
       // &lt;any&gt;error | this casts error to be any
@@ -1461,7 +1476,7 @@ export class UserService {
 
   getStore(_keys: string[]): Observable&lt;{}&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService getStore&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     let _apiobject &#x3D; {&#x27;user_id&#x27;: _updatedUsr.user_id, &#x27;keys&#x27;: _keys.join(&#x27;,&#x27;)}
     const _obs &#x3D; this.apiConnectionService.getWASStore(_apiobject);
     // _obs.subscribe((res) &#x3D;&gt; {
@@ -1474,7 +1489,7 @@ export class UserService {
   setStore(_was_data: {}): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService setStore&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
     // TODO: Update local list too
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     let _apiobject &#x3D; {&#x27;user_id&#x27;: _updatedUsr.user_id, &#x27;was_data&#x27;: _was_data}
     const _obs &#x3D; this.apiConnectionService.setWASStore(_apiobject);
     // _obs.subscribe((res) &#x3D;&gt; {
@@ -1487,7 +1502,7 @@ export class UserService {
   deleteStore(_keys: string[]): Observable&lt;any&gt; {
     console.log(&#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;UserService deleteStore&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x27;);
     // TODO: Update local list too
-    let _updatedUsr &#x3D; this._user.getValue();
+    let _updatedUsr &#x3D; this._userObj;
     let _apiobject &#x3D; {&#x27;user_id&#x27;: _updatedUsr.user_id, &#x27;keys&#x27;: _keys.join(&#x27;,&#x27;)}
     const _obs &#x3D; this.apiConnectionService.deleteWASStore(_apiobject);
     // _obs.subscribe((res) &#x3D;&gt; {

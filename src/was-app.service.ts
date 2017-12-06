@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { AppGroup, App } from './app.models';
@@ -32,14 +32,13 @@ import { AppGroup, App } from './app.models';
  */
 @Injectable()
 export class WasAppService {
-  private _appGroups: BehaviorSubject<AppGroup[]> = new BehaviorSubject([{
-    id: undefined, title: undefined, created_time: undefined, apps: []}]);
-  private _appIndex: BehaviorSubject<any> = new BehaviorSubject({});
+  private _appGroups: ReplaySubject<AppGroup[]> = new ReplaySubject();
+  private _appIndex: ReplaySubject<any> = new ReplaySubject();
   // NOTE: _app is the currently selected app, update on appFromSlug.
-  private _app: BehaviorSubject<App> = new BehaviorSubject({
-    id: undefined, name: undefined, title: undefined, text: undefined, category: undefined,
-    icon: undefined, app_version: undefined, created_time: undefined, owner: undefined
-  });
+  private _app: ReplaySubject<App> = new ReplaySubject();
+  private _appGroupsObj: AppGroup[];
+  private _appIndexObj: any;
+  private _appObj: App;
 
   constructor(
     public apiConnectionService: ApiConnectionService,
@@ -72,37 +71,52 @@ export class WasAppService {
    * @memberof WasAppService
    */
   get appGroupsObject() {
-    return this._appGroups.getValue();
+    return this._appGroupsObj;
   }
   get app() {
     return this._app.asObservable();
   }
   get appObject() {
-    return this._app.getValue();
+    return this._appObj;
+  }
+  private pushAppGroupsSubscribers(_appgrpsobj: AppGroup[]) {
+    this._appGroupsObj = _appgrpsobj;
+    this._appGroups.next(_appgrpsobj);
+    this._appGroups.complete();
+  }
+  private pushAppIndexSubscribers(_appidxobj: any) {
+    this._appIndexObj = _appidxobj;
+    this._appIndex.next(_appidxobj);
+    this._appIndex.complete();
+  }
+  private pushAppSubscribers(_appobj: App) {
+    this._appObj = _appobj;
+    this._app.next(_appobj);
+    this._app.complete();
   }
 
   appFromSlug(slug: string): Observable<App | [App]> {
     try {
-      const _appIndex = this._appIndex.getValue();
-      const _appGroups = this._appGroups.getValue();
+      const _appIndex = this._appIndexObj;
+      const _appGroups = this._appGroupsObj;
       const _appKey = _appIndex[slug]['key'];
       const keylist = _appKey.split(':');
       const _app = _appGroups[keylist[0]][keylist[1]][keylist[2]];
       if ((Date.now() - _appIndex[slug]['time']) > 600000) {
         _appIndex[slug]['time'] = Date.now();
-        this._appIndex.next(_appIndex);
+        this.pushAppIndexSubscribers(_appIndex);
         console.log('WasAppService: appFromSlug: Old, refresh from server');
         this.getApps(slug).subscribe((res: [App]) => {
           // TODO: Should empty {} or undefined be pushed on app not found
           if (res[0] !== undefined) {
             console.log('WasAppService: appFromSlug PUSH:', res[0]);
-            this._app.next(res[0]);
+            this.pushAppSubscribers(res[0]);
             _appGroups[keylist[0]][keylist[1]][keylist[2]] = res[0];
-            this._appGroups.next(_appGroups);
+            this.pushAppGroupsSubscribers(_appGroups);
           }
         });
       }
-      this._app.next(_app);
+      this.pushAppSubscribers(_app);
       return Observable.of(_app).share();
     } catch (error) {
       console.warn('WasAppService: appFromSlug', error);
@@ -112,7 +126,7 @@ export class WasAppService {
         // TODO: Should empty {} or undefined be pushed on app not found
         if (res[0] !== undefined) {
           console.log('WasAppService: appFromSlug PUSH:', res[0]);
-          this._app.next(res[0]);
+          this.pushAppSubscribers(res[0]);
         }
       });
       return _obs;
@@ -133,7 +147,7 @@ export class WasAppService {
         }
         if (_hasLocalApps === true) {
           const _localApps = value;
-          this._appGroups.next(_localApps);
+          this.pushAppGroupsSubscribers(_localApps);
           this.createAppIndexKey(_localApps);
           // normal load
           console.log('WasAppService loadApps: load apps from db', _localApps);
@@ -167,7 +181,7 @@ export class WasAppService {
       _feat_idx += 1;
     }
     console.log('PUSH appIndex', appIndex);
-    this._appIndex.next(appIndex);
+    this.pushAppIndexSubscribers(appIndex);
     // TODO: See if necessary to store in indexedDB
     // UPDATE DB //
     // this.localStorageService.set('was-apps-index', appIndex);
@@ -177,7 +191,7 @@ export class WasAppService {
     const _obs = this.apiConnectionService.getFeaturedGroups();
     _obs.subscribe((res) => {
         console.log('WasAppService: getAppGroups RETURN:', res);
-        this._appGroups.next(res);
+        this.pushAppGroupsSubscribers(res);
         // UPDATE DB //
         this.localStorageService.set('was-apps', res);
         this.createAppIndexKey(res);

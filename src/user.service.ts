@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs/Observable';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-// import { AsyncSubject } from 'rxjs/AsyncSubject';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
 
@@ -53,10 +50,7 @@ export interface UserParams {
  */
 @Injectable()
 export class UserService {
-  // private _user: BehaviorSubject<User> = new BehaviorSubject({user_id: undefined});
-  // private _user: Subject<User> = new Subject();
   private _user: ReplaySubject<User> = new ReplaySubject(1);
-  // private _user: AsyncSubject<User> = new AsyncSubject();
   private _userObj: User;
   private _createNewUser = false;
   private standalone: boolean;

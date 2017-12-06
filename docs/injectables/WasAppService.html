@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -637,7 +639,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -691,16 +693,32 @@ To use in html:
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_app">_app</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_app">_app</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_appGroups">_appGroups</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_appGroups">_appGroups</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_appIndex">_appIndex</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_appGroupsObj">_appGroupsObj</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Public</span> <a href="#apiConnectionService">apiConnectionService</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_appIndex">_appIndex</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_appIndexObj">_appIndexObj</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Private</span>
+                                        <a href="#_appObj">_appObj</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Public</span>
+                                        <a href="#apiConnectionService">apiConnectionService</a>
                                     </li>
                                 </ul>
                             </td>
@@ -714,22 +732,35 @@ To use in html:
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#appFromSlug">appFromSlug</a>
+                                        <a href="#appFromSlug">appFromSlug</a>
                                     </li>
                                     <li>
-                                         <a href="#createAppIndexKey">createAppIndexKey</a>
+                                        <a href="#createAppIndexKey">createAppIndexKey</a>
                                     </li>
                                     <li>
-                                         <a href="#getAppGroups">getAppGroups</a>
+                                        <a href="#getAppGroups">getAppGroups</a>
                                     </li>
                                     <li>
-                                         <a href="#getApps">getApps</a>
+                                        <a href="#getApps">getApps</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#handleError">handleError</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#handleError">handleError</a>
                                     </li>
                                     <li>
-                                         <a href="#loadApps">loadApps</a>
+                                        <a href="#loadApps">loadApps</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Private</span>
+                                        <a href="#pushAppGroupsSubscribers">pushAppGroupsSubscribers</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Private</span>
+                                        <a href="#pushAppIndexSubscribers">pushAppIndexSubscribers</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Private</span>
+                                        <a href="#pushAppSubscribers">pushAppSubscribers</a>
                                     </li>
                                 </ul>
                             </td>
@@ -743,16 +774,16 @@ To use in html:
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#appGroups">appGroups</a>
+                                        <a href="#appGroups">appGroups</a>
                                     </li>
                                     <li>
-                                         <a href="#appGroupsObject">appGroupsObject</a>
+                                        <a href="#appGroupsObject">appGroupsObject</a>
                                     </li>
                                     <li>
-                                         <a href="#app">app</a>
+                                        <a href="#app">app</a>
                                     </li>
                                     <li>
-                                         <a href="#appObject">appObject</a>
+                                        <a href="#appObject">appObject</a>
                                     </li>
                                 </ul>
                             </td>
@@ -772,7 +803,7 @@ To use in html:
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/was-app.service.ts:42</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/was-app.service.ts:41</a></div>
                                         </td>
                                     </tr>
             
@@ -827,7 +858,12 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="appFromSlug"></a>
-                                    <span class="name"><b> appFromSlug</b><a href="#appFromSlug"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        appFromSlug
+                                        </b>
+                                        <a href="#appFromSlug"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -839,7 +875,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/was-app.service.ts:84</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/was-app.service.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -888,7 +924,12 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createAppIndexKey"></a>
-                                    <span class="name"><b> createAppIndexKey</b><a href="#createAppIndexKey"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        createAppIndexKey
+                                        </b>
+                                        <a href="#createAppIndexKey"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -900,7 +941,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/was-app.service.ts:154</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/was-app.service.ts:168</a></div>
                                         </td>
                                     </tr>
             
@@ -949,7 +990,12 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getAppGroups"></a>
-                                    <span class="name"><b> getAppGroups</b><a href="#getAppGroups"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        getAppGroups
+                                        </b>
+                                        <a href="#getAppGroups"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -961,7 +1007,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/was-app.service.ts:176</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/was-app.service.ts:190</a></div>
                                         </td>
                                     </tr>
             
@@ -981,7 +1027,12 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getApps"></a>
-                                    <span class="name"><b> getApps</b><a href="#getApps"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        getApps
+                                        </b>
+                                        <a href="#getApps"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -993,7 +1044,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/was-app.service.ts:191</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">src/was-app.service.ts:205</a></div>
                                         </td>
                                     </tr>
             
@@ -1043,12 +1094,18 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="handleError"></a>
-                                    <span class="name"><b><span class="modifier">Private</span> handleError</b><a href="#handleError"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        handleError
+                                        </b>
+                                        <a href="#handleError"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-lock"></span>
+                                        <span class="modifier-icon fa fa-reset"></span>
                                     <code>handleError(error: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
@@ -1056,7 +1113,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/was-app.service.ts:148</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/was-app.service.ts:162</a></div>
                                         </td>
                                     </tr>
             
@@ -1105,7 +1162,12 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="loadApps"></a>
-                                    <span class="name"><b> loadApps</b><a href="#loadApps"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        loadApps
+                                        </b>
+                                        <a href="#loadApps"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1117,7 +1179,7 @@ To use in html:
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/was-app.service.ts:122</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/was-app.service.ts:136</a></div>
                                         </td>
                                     </tr>
             
@@ -1128,6 +1190,210 @@ To use in html:
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pushAppGroupsSubscribers"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        pushAppGroupsSubscribers
+                                        </b>
+                                        <a href="#pushAppGroupsSubscribers"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>pushAppGroupsSubscribers(_appgrpsobj: <a href="../interfaces/AppGroup.html">AppGroup[]</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/was-app.service.ts:82</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_appgrpsobj</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/AppGroup.html" target="_self" >AppGroup[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pushAppIndexSubscribers"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        pushAppIndexSubscribers
+                                        </b>
+                                        <a href="#pushAppIndexSubscribers"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>pushAppIndexSubscribers(_appidxobj: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/was-app.service.ts:87</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_appidxobj</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pushAppSubscribers"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        pushAppSubscribers
+                                        </b>
+                                        <a href="#pushAppSubscribers"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>pushAppSubscribers(_appobj: <a href="../interfaces/App.html">App</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/was-app.service.ts:92</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_appobj</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/App.html" target="_self" >App</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1144,18 +1410,104 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_app"></a>
-                                    <span class="name"><b><span class="modifier">Private</span> _app</b><a href="#_app"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _app
+                                        </b>
+                                        <a href="#_app"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_app:     <code><a href="../interfaces/App.html" target="_self" >BehaviorSubject&lt;App&gt;</a></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>_app:     <code><a href="../interfaces/App.html" target="_self" >ReplaySubject&lt;App&gt;</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/App.html" target="_self" >BehaviorSubject&lt;App&gt;</a></code>
+                                        <i>Type : </i>    <code><a href="../interfaces/App.html" target="_self" >ReplaySubject&lt;App&gt;</a></code>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>new ReplaySubject()</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/was-app.service.ts:38</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_appGroups"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _appGroups
+                                        </b>
+                                        <a href="#_appGroups"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-reset"></span><code>_appGroups:     <code>ReplaySubject&lt;[]&gt;</code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code>ReplaySubject&lt;[]&gt;</code>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>new ReplaySubject()</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/was-app.service.ts:35</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_appGroupsObj"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _appGroupsObj
+                                        </b>
+                                        <a href="#_appGroupsObj"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-reset"></span><code>_appGroupsObj:     <code><a href="../interfaces/AppGroup.html" target="_self" >AppGroup[]</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/AppGroup.html" target="_self" >AppGroup[]</a></code>
             
                                     </td>
                                 </tr>
@@ -1172,25 +1524,36 @@ To use in html:
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="_appGroups"></a>
-                                    <span class="name"><b><span class="modifier">Private</span> _appGroups</b><a href="#_appGroups"><span class="fa fa-link"></span></a></span>
+                                    <a name="_appIndex"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _appIndex
+                                        </b>
+                                        <a href="#_appIndex"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_appGroups:     <code>BehaviorSubject&lt;[]&gt;</code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>_appIndex:     <code>ReplaySubject&lt;any&gt;</code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>BehaviorSubject&lt;[]&gt;</code>
+                                        <i>Type : </i>    <code>ReplaySubject&lt;any&gt;</code>
             
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>new ReplaySubject()</code>
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/was-app.service.ts:35</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/was-app.service.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1201,25 +1564,66 @@ To use in html:
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="_appIndex"></a>
-                                    <span class="name"><b><span class="modifier">Private</span> _appIndex</b><a href="#_appIndex"><span class="fa fa-link"></span></a></span>
+                                    <a name="_appIndexObj"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _appIndexObj
+                                        </b>
+                                        <a href="#_appIndexObj"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_appIndex:     <code>BehaviorSubject&lt;any&gt;</code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>_appIndexObj:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>BehaviorSubject&lt;any&gt;</code>
+                                        <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/was-app.service.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/was-app.service.ts:40</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_appObj"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        _appObj
+                                        </b>
+                                        <a href="#_appObj"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-reset"></span><code>_appObj:     <code><a href="../interfaces/App.html" target="_self" >App</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/App.html" target="_self" >App</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/was-app.service.ts:41</a></div>
                                         </td>
                                     </tr>
             
@@ -1231,7 +1635,13 @@ To use in html:
                             <tr>
                                 <td class="col-md-4">
                                     <a name="apiConnectionService"></a>
-                                    <span class="name"><b><span class="modifier">Public</span> apiConnectionService</b><a href="#apiConnectionService"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        apiConnectionService
+                                        </b>
+                                        <a href="#apiConnectionService"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1248,7 +1658,7 @@ To use in html:
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/was-app.service.ts:45</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/was-app.service.ts:44</a></div>
                                         </td>
                                     </tr>
             
@@ -1277,9 +1687,24 @@ To use in html:
                             </tr>
                                         <tr>
                                             <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/was-app.service.ts:62</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/was-app.service.ts:61</a></div>
                                             </td>
                                         </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                            <div class="io-description"><p>Returns appGroups as an observable.</p>
+            </div>
+            
+                                            <div>
+                                                    <b>Example :</b>
+                                                        <div>
+                                                            <pre class="line-numbers"><code class="language-html">Use in angular template with the &lt;code&gt;async&lt;/code&gt; pipe
+            wasAppService.appGroups | async
+            Subscribe in ts: wasAppService.appGroups.subscribe</code></pre>
+                                                        </div>
+                                            </div>
+                                    </td>
+                                </tr>
             
                         </tbody>
                     </table>
@@ -1299,9 +1724,22 @@ To use in html:
                             </tr>
                                         <tr>
                                             <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/was-app.service.ts:74</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/was-app.service.ts:73</a></div>
                                             </td>
                                         </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                            <div class="io-description"><p>Returns the last pushed AppGroup as an object.</p>
+            </div>
+            
+                                            <div>
+                                                    <b>Example :</b>
+                                                        <div>
+                                                            <pre class="line-numbers"><code class="language-html">wasAppService.appGroupsObject().id</code></pre>
+                                                        </div>
+                                            </div>
+                                    </td>
+                                </tr>
             
                         </tbody>
                     </table>
@@ -1321,7 +1759,7 @@ To use in html:
                             </tr>
                                         <tr>
                                             <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/was-app.service.ts:77</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/was-app.service.ts:76</a></div>
                                             </td>
                                         </tr>
             
@@ -1343,7 +1781,7 @@ To use in html:
                             </tr>
                                         <tr>
                                             <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/was-app.service.ts:80</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/was-app.service.ts:79</a></div>
                                             </td>
                                         </tr>
             
@@ -1353,10 +1791,10 @@ To use in html:
     </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
-import { BehaviorSubject } from &#x27;rxjs/BehaviorSubject&#x27;;
+import { ReplaySubject } from &#x27;rxjs/ReplaySubject&#x27;;
 import { ApiConnectionService } from &#x27;./api-connection.service&#x27;;
 import { LocalStorageService } from &#x27;./local-storage.service&#x27;;
 import { AppGroup, App } from &#x27;./app.models&#x27;;
@@ -1388,14 +1826,13 @@ import { AppGroup, App } from &#x27;./app.models&#x27;;
  */
 @Injectable()
 export class WasAppService {
-  private _appGroups: BehaviorSubject&lt;AppGroup[]&gt; &#x3D; new BehaviorSubject([{
-    id: undefined, title: undefined, created_time: undefined, apps: []}]);
-  private _appIndex: BehaviorSubject&lt;any&gt; &#x3D; new BehaviorSubject({});
+  private _appGroups: ReplaySubject&lt;AppGroup[]&gt; &#x3D; new ReplaySubject();
+  private _appIndex: ReplaySubject&lt;any&gt; &#x3D; new ReplaySubject();
   // NOTE: _app is the currently selected app, update on appFromSlug.
-  private _app: BehaviorSubject&lt;App&gt; &#x3D; new BehaviorSubject({
-    id: undefined, name: undefined, title: undefined, text: undefined, category: undefined,
-    icon: undefined, app_version: undefined, created_time: undefined, owner: undefined
-  });
+  private _app: ReplaySubject&lt;App&gt; &#x3D; new ReplaySubject();
+  private _appGroupsObj: AppGroup[];
+  private _appIndexObj: any;
+  private _appObj: App;
 
   constructor(
     public apiConnectionService: ApiConnectionService,
@@ -1428,37 +1865,52 @@ export class WasAppService {
    * @memberof WasAppService
    */
   get appGroupsObject() {
-    return this._appGroups.getValue();
+    return this._appGroupsObj;
   }
   get app() {
     return this._app.asObservable();
   }
   get appObject() {
-    return this._app.getValue();
+    return this._appObj;
+  }
+  private pushAppGroupsSubscribers(_appgrpsobj: AppGroup[]) {
+    this._appGroupsObj &#x3D; _appgrpsobj;
+    this._appGroups.next(_appgrpsobj);
+    this._appGroups.complete();
+  }
+  private pushAppIndexSubscribers(_appidxobj: any) {
+    this._appIndexObj &#x3D; _appidxobj;
+    this._appIndex.next(_appidxobj);
+    this._appIndex.complete();
+  }
+  private pushAppSubscribers(_appobj: App) {
+    this._appObj &#x3D; _appobj;
+    this._app.next(_appobj);
+    this._app.complete();
   }
 
   appFromSlug(slug: string): Observable&lt;App | [App]&gt; {
     try {
-      const _appIndex &#x3D; this._appIndex.getValue();
-      const _appGroups &#x3D; this._appGroups.getValue();
+      const _appIndex &#x3D; this._appIndexObj;
+      const _appGroups &#x3D; this._appGroupsObj;
       const _appKey &#x3D; _appIndex[slug][&#x27;key&#x27;];
       const keylist &#x3D; _appKey.split(&#x27;:&#x27;);
       const _app &#x3D; _appGroups[keylist[0]][keylist[1]][keylist[2]];
       if ((Date.now() - _appIndex[slug][&#x27;time&#x27;]) &gt; 600000) {
         _appIndex[slug][&#x27;time&#x27;] &#x3D; Date.now();
-        this._appIndex.next(_appIndex);
+        this.pushAppIndexSubscribers(_appIndex);
         console.log(&#x27;WasAppService: appFromSlug: Old, refresh from server&#x27;);
         this.getApps(slug).subscribe((res: [App]) &#x3D;&gt; {
           // TODO: Should empty {} or undefined be pushed on app not found
           if (res[0] !&#x3D;&#x3D; undefined) {
             console.log(&#x27;WasAppService: appFromSlug PUSH:&#x27;, res[0]);
-            this._app.next(res[0]);
+            this.pushAppSubscribers(res[0]);
             _appGroups[keylist[0]][keylist[1]][keylist[2]] &#x3D; res[0];
-            this._appGroups.next(_appGroups);
+            this.pushAppGroupsSubscribers(_appGroups);
           }
         });
       }
-      this._app.next(_app);
+      this.pushAppSubscribers(_app);
       return Observable.of(_app).share();
     } catch (error) {
       console.warn(&#x27;WasAppService: appFromSlug&#x27;, error);
@@ -1468,7 +1920,7 @@ export class WasAppService {
         // TODO: Should empty {} or undefined be pushed on app not found
         if (res[0] !&#x3D;&#x3D; undefined) {
           console.log(&#x27;WasAppService: appFromSlug PUSH:&#x27;, res[0]);
-          this._app.next(res[0]);
+          this.pushAppSubscribers(res[0]);
         }
       });
       return _obs;
@@ -1489,7 +1941,7 @@ export class WasAppService {
         }
         if (_hasLocalApps &#x3D;&#x3D;&#x3D; true) {
           const _localApps &#x3D; value;
-          this._appGroups.next(_localApps);
+          this.pushAppGroupsSubscribers(_localApps);
           this.createAppIndexKey(_localApps);
           // normal load
           console.log(&#x27;WasAppService loadApps: load apps from db&#x27;, _localApps);
@@ -1523,7 +1975,7 @@ export class WasAppService {
       _feat_idx +&#x3D; 1;
     }
     console.log(&#x27;PUSH appIndex&#x27;, appIndex);
-    this._appIndex.next(appIndex);
+    this.pushAppIndexSubscribers(appIndex);
     // TODO: See if necessary to store in indexedDB
     // UPDATE DB //
     // this.localStorageService.set(&#x27;was-apps-index&#x27;, appIndex);
@@ -1533,7 +1985,7 @@ export class WasAppService {
     const _obs &#x3D; this.apiConnectionService.getFeaturedGroups();
     _obs.subscribe((res) &#x3D;&gt; {
         console.log(&#x27;WasAppService: getAppGroups RETURN:&#x27;, res);
-        this._appGroups.next(res);
+        this.pushAppGroupsSubscribers(res);
         // UPDATE DB //
         this.localStorageService.set(&#x27;was-apps&#x27;, res);
         this.createAppIndexKey(res);
@@ -1564,6 +2016,7 @@ export class WasAppService {
 </code></pre>
     </div>
 </div>
+
 
 
 

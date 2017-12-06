@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -637,7 +639,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -650,8 +652,8 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code>Validator</code>
-                        <code>OnChanges</code>
+                        <code><a href="https://angular.io/api/forms/Validator" target="_blank" >Validator</a></code>
+                        <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
             </p>
 
 
@@ -690,7 +692,8 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#valFn">valFn</a>
+                                            <span class="modifier">Private</span>
+                                        <a href="#valFn">valFn</a>
                                     </li>
                                 </ul>
                             </td>
@@ -704,10 +707,10 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#ngOnChanges">ngOnChanges</a>
+                                        <a href="#ngOnChanges">ngOnChanges</a>
                                     </li>
                                     <li>
-                                         <a href="#validate">validate</a>
+                                        <a href="#validate">validate</a>
                                     </li>
                                 </ul>
                             </td>
@@ -769,12 +772,17 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="ngOnChanges"></a>
-                                    <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        ngOnChanges
+                                        </b>
+                                        <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>ngOnChanges(changes: SimpleChanges)</code>
+            <code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
                                 </td>
                             </tr>
             
@@ -803,7 +811,7 @@
                                                             <tr>
                                                               <td>changes</td>
                                                               <td>
-                                                                      <code>SimpleChanges</code>
+                                                                      <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -830,12 +838,17 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="validate"></a>
-                                    <span class="name"><b> validate</b><a href="#validate"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        validate
+                                        </b>
+                                        <a href="#validate"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>validate(control: AbstractControl)</code>
+            <code>validate(control: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
                                 </td>
                             </tr>
             
@@ -864,7 +877,7 @@
                                                             <tr>
                                                               <td>control</td>
                                                               <td>
-                                                                      <code>AbstractControl</code>
+                                                                      <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -898,15 +911,26 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="valFn"></a>
-                                    <span class="name"><b><span class="modifier">Private</span> valFn</b><a href="#valFn"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Private</span>
+                                        valFn
+                                        </b>
+                                        <a href="#valFn"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>valFn:     <code></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>valFn:     <code></code>
             </code>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>Validators.nullValidator</code>
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/custom-validator.directive.ts:85</a></div>
@@ -922,7 +946,7 @@
     </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Directive, Input, OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from &#x27;@angular/forms&#x27;;
 
@@ -963,6 +987,7 @@ export class CustomValidatorDirective implements Validator, OnChanges {
     </div>
 
 </div>
+
 
 
 

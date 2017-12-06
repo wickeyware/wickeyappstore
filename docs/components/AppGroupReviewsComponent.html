@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -641,7 +643,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -654,7 +656,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code>OnInit</code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
 
@@ -709,13 +711,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#busy">busy</a>
+                                <a href="#busy">busy</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#reviews">reviews</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#reviews">reviews</a>
                             </li>
                             <li>
-                                 <a href="#wasalert">wasalert</a>
+                                <a href="#wasalert">wasalert</a>
                             </li>
                         </ul>
                     </td>
@@ -729,10 +732,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#closeReviews">closeReviews</a>
+                                <a href="#closeReviews">closeReviews</a>
                             </li>
                             <li>
-                                 <a href="#ngOnInit">ngOnInit</a>
+                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -899,7 +902,7 @@
                             <code>close</code>
                         </td>
                         <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code>EventEmitter</code>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                         </td>
                     </tr>
@@ -924,7 +927,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="closeReviews"></a>
-                            <span class="name"><b> closeReviews</b><a href="#closeReviews"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                closeReviews
+                                </b>
+                                <a href="#closeReviews"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -985,7 +993,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnInit"></a>
-                            <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                ngOnInit
+                                </b>
+                                <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1024,7 +1037,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="busy"></a>
-                            <span class="name"><b> busy</b><a href="#busy"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                busy
+                                </b>
+                                <a href="#busy"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1053,7 +1071,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="reviews"></a>
-                            <span class="name"><b><span class="modifier">Public</span> reviews</b><a href="#reviews"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                reviews
+                                </b>
+                                <a href="#reviews"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1076,7 +1100,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="wasalert"></a>
-                            <span class="name"><b> wasalert</b><a href="#wasalert"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                wasalert
+                                </b>
+                                <a href="#wasalert"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1110,7 +1139,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from &#x27;@angular/core&#x27;;
 import { trigger, style, animate, transition } from &#x27;@angular/animations&#x27;;
 import { AppGroup } from &#x27;../../app.models&#x27;;
@@ -1175,7 +1204,7 @@ export class AppGroupReviewsComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;open&quot; class&#x3D;&quot;was-popup-container&quot; [@pageOpen]&#x3D;&quot;in&quot;&gt;
   &lt;div class&#x3D;&quot;was-popup&quot;&gt;
     &lt;div class&#x3D;&quot;was-page-content-margin&quot;&gt;&amp;nbsp;&lt;/div&gt;
@@ -1197,7 +1226,7 @@ export class AppGroupReviewsComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1226,6 +1255,7 @@ export class AppGroupReviewsComponent implements OnInit {
     var ACTUAL_COMPONENT = {'name': 'AppGroupReviewsComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

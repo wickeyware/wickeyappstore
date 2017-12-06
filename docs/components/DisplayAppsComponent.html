@@ -225,6 +225,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -524,6 +525,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -641,7 +643,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -654,7 +656,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code>OnInit</code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
 
@@ -709,7 +711,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#ngOnInit">ngOnInit</a>
+                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -770,6 +772,9 @@
                             <code>apps</code>
                         </td>
                         <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>[]</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -857,7 +862,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnInit"></a>
-                            <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                ngOnInit
+                                </b>
+                                <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -890,7 +900,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, EventEmitter } from &#x27;@angular/core&#x27;;
 import { AppGroup } from &#x27;./../app.models&#x27;;
 
@@ -916,7 +926,7 @@ export class DisplayAppsComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;featured; else elseBlock&quot; class&#x3D;&quot;featuredapps&quot;&gt;
   &lt;display-app-featured [apps]&#x3D;&quot;apps&quot; (showAppDetail)&#x3D;&quot;showAppEmitter($event)&quot;&gt;&lt;/display-app-featured&gt;
 &lt;/div&gt;
@@ -927,7 +937,7 @@ export class DisplayAppsComponent implements OnInit {
 &lt;/ng-template&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -956,6 +966,7 @@ export class DisplayAppsComponent implements OnInit {
     var ACTUAL_COMPONENT = {'name': 'DisplayAppsComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 
