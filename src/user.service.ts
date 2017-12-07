@@ -166,7 +166,7 @@ export class UserService {
    *
    * @param {number} [app_coins] OPTIONAL coins number, use it wherever/however.
    * @param {string} [app_data] OPTIONAL data string, use it wherever/however (e.g. save JSON or other string encoded objects).
-   * @returns {Observable<any>}
+   * @returns {Observable<User>}
    * @memberof UserService
    */
   updateUser(userParams: UserParams): Observable<User> {
