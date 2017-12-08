@@ -201,20 +201,22 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
         this.isDragging = false;
     }
 
+    // TODO: This blocks up/down scrolling in the app. Probably due to its positioning,
+    // fixed and z-index above all else, or interfering with hammerjs or swiper.
     /**
      * Binding to document panmove
      * */
-    @HostListener('document:panmove', ['$event'])
-    public onMenuMove( event: any ): void {
-        if (this.isDragging) {
-            let y = event.center.y;
-            let x = event.center.x;
-            this.top = y - this.menuConfig.buttonWidth / 2;
-            this.left = x - this.menuConfig.buttonWidth / 2;
-            this.renderer.setStyle(this.elm.nativeElement, 'top', this.top + 'px');
-            this.renderer.setStyle(this.elm.nativeElement, 'left', this.left + 'px');
-        }
-    }
+    // @HostListener('document:panmove', ['$event'])
+    // public onMenuMove( event: any ): void {
+    //     if (this.isDragging) {
+    //         let y = event.center.y;
+    //         let x = event.center.x;
+    //         this.top = y - this.menuConfig.buttonWidth / 2;
+    //         this.left = x - this.menuConfig.buttonWidth / 2;
+    //         this.renderer.setStyle(this.elm.nativeElement, 'top', this.top + 'px');
+    //         this.renderer.setStyle(this.elm.nativeElement, 'left', this.left + 'px');
+    //     }
+    // }
 
     /**
      * Set menuBtn opacity when it has been mouse over
