@@ -128,6 +128,28 @@ export class UserService {
     }
   }
 
+  // COOKIE FUNCTIONS //
+  cookie_read(name: string): any {
+    const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
+    return result ? result[1] : null;
+  }
+  cookie_write(name: string, value: string, days?: number): void {
+    try {
+      if (!days) {
+        days = 365 * 20;
+      }
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = '; expires=' + date.toUTCString();
+      document.cookie = name + '=' + value + expires + ';domain=.wickeyappstore.com;secure;path=/';
+    } catch (cookieError) {
+      console.error('cookie_write', cookieError);
+    }
+  }
+  cookie_remove(name: string): void {
+    this.cookie_write(name, undefined, -1);
+  }
+
   /**
    * Fast UUID generator, RFC4122 version 4 compliant.
    * @author Jeff Ward (jcward.com).
@@ -173,9 +195,15 @@ export class UserService {
     let currentUser;
     if (this._createNewUser === true) {
       this._createNewUser = false;
-      console.warn('UserService: NO USER, CREATE USER');
-      currentUser = {user_id: this.guid()};
-      currentUser.user_id = this.guid();
+      // NOTE: Check if user_id is in a cookie, to share user_id accross all wickeyappstore apps
+      const _cookie_userid = this.cookie_read('was_user_id')
+      if (_cookie_userid !== null && _cookie_userid !== '') {
+        console.warn('UserService: FOUND USER ID IN COOKIE');
+        currentUser = {user_id: _cookie_userid};
+      } else {
+        console.warn('UserService: NO USER, CREATE USER');
+        currentUser = {user_id: this.guid()};
+      }
     } else {
       currentUser = this._userObj;
     }
@@ -212,7 +240,8 @@ export class UserService {
         // On new user/recover
         // TODO: Add more of a verification
         // UPDATE USER //
-        this.pushSubscribers(res)
+        this.cookie_write('was_user_id', res.user_id);
+        this.pushSubscribers(res);
         this.saveLocal(res);
       } else {
         console.log('UserService: updateUser: RETURN:', res);
@@ -220,6 +249,7 @@ export class UserService {
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           currentUser.user_id = res.user_id;
+          this.cookie_write('was_user_id', res.user_id);
         }
         if (res.email) {
           currentUser.email = res.email;
