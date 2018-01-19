@@ -103,8 +103,13 @@ gulp.task('rollup:fesm', function () {
         '@angular/platform-browser/animations',
         '@angular/router',
         '@angular/animations',
+        '@angular/cdk',
+        '@angular/material',
         'rxjs/Observable',
+        'rxjs/Subject',
         'rxjs/Subscription',
+        'rxjs/operators/takeUntil',
+        'rxjs/BehaviorSubject',
         'rxjs/ReplaySubject',
         'rxjs/add/observable/of',
         'rxjs/add/operator/share',
@@ -112,7 +117,7 @@ gulp.task('rollup:fesm', function () {
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
         'rxjs/add/operator/switchMap',
-        'angular2-useful-swiper'
+        'angular2-useful-swiper',
       ],
 
       // Format of generated bundle
@@ -157,8 +162,13 @@ gulp.task('rollup:umd', function () {
         '@angular/platform-browser/animations',
         '@angular/router',
         '@angular/animations',
+        '@angular/cdk',
+        '@angular/material',
         'rxjs/Observable',
+        'rxjs/Subject',
         'rxjs/Subscription',
+        'rxjs/operators/takeUntil',
+        'rxjs/BehaviorSubject',
         'rxjs/ReplaySubject',
         'rxjs/add/observable/of',
         'rxjs/add/operator/share',
@@ -166,7 +176,7 @@ gulp.task('rollup:umd', function () {
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
         'rxjs/add/operator/switchMap',
-        'angular2-useful-swiper'
+        'angular2-useful-swiper',
       ],
 
       // Format of generated bundle
