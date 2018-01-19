@@ -200,6 +200,7 @@ export class UserService {
       if (_cookie_userid !== null && _cookie_userid !== '') {
         console.warn('UserService: FOUND USER ID IN COOKIE');
         currentUser = {user_id: _cookie_userid};
+        this._userObj = currentUser;
       } else {
         console.warn('UserService: NO USER, CREATE USER');
         currentUser = {user_id: this.guid()};

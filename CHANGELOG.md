@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.13.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1) - 2018-19-01
+
+### Fixed
+
+* **UserService** Fix bug on if user_id is found in cookie.
+
 ## [1.13.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0) - 2018-19-01
 
 ### Added
