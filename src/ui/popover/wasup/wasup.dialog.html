@@ -1,0 +1,8 @@
+<div mat-dialog-title class="wasup-title">{{data.title}}</div>
+<div mat-dialog-content>
+  <div class="wasup-body">
+    <i *ngIf="data.icon!='spinner'" class="material-icons" style="font-size: 96px">{{data.icon}}</i>
+    <mat-spinner *ngIf="data.icon==='spinner'" style="margin:0 auto;"></mat-spinner>
+    <br><br> {{data.body}}
+  </div>
+</div>

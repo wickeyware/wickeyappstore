@@ -81,6 +81,9 @@ import { AppGroupReviewsComponent } from './display-apps/app-group-reviews/app-g
 import { GetCategoryPipe } from './pipes/get-category.pipe';
 // WAS FAN MENU IMPORT //
 import { FanMenuModule } from './ui/was_menu/menu.module';
+// WAS MATERIAL POPOVERS //
+import { WasUpDialogComponent } from './ui/popover/wasup/wasup.dialog';
+import { WasAlertDialogComponent } from './ui/popover/wasalert/wasalert.dialog';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
@@ -104,6 +107,8 @@ export * from './ui/popover/popover-login/popover-login.component';
 export * from './ui/popover/popover-review/popover-review.component';
 export * from './ui/popover/popover-up/popover-up.component';
 export * from './ui/popover/popover-alert/popover-alert.component';
+export * from './ui/popover/wasup/wasup.dialog';
+export * from './ui/popover/wasalert/wasalert.dialog';
 export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
@@ -159,6 +164,8 @@ export * from './ui/was_menu/menu.module';
   declarations: [
     WasSpinnerComponent,
     WickeyAppStoreComponent,
+    WasUpDialogComponent,
+    WasAlertDialogComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
@@ -232,6 +239,7 @@ export * from './ui/was_menu/menu.module';
     MatToolbarModule,
     MatTooltipModule,
   ],
+  entryComponents: [WasUpDialogComponent, WasAlertDialogComponent],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],

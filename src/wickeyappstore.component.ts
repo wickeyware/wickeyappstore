@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, ViewChild, Inject } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -9,6 +9,10 @@ import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detai
 import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
+
+import { WasUpDialogComponent } from './ui/popover/wasup/wasup.dialog';
+import { WasAlertDialogComponent } from './ui/popover/wasalert/wasalert.dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 /**
  * Shows a button when clicked will open the WickeyAppStore {@link https://www.npmjs.com/package/wickeyappstore }
@@ -151,7 +155,8 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
 
   constructor(
     private userService: UserService,
-    private wasAppService: WasAppService
+    private wasAppService: WasAppService,
+    public dialog: MatDialog
   ) {
     this.showVerticalList = false;
   }
@@ -163,9 +168,11 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.getFeaturedGroups();
   }
   openwasup(): void {
-    this.wasup.open('Review Sent', 'Thanks for your feedback.', 'fa fa-pencil-square-o fa-5x');
+    this.dialog.open(WasUpDialogComponent, {
+      width: '300px',
+      data: { title: 'Review Sent', icon: 'edit', body: 'Thanks for your feedback.'}
+    });
   }
-
   openReview(): void {
     if (this.isVerifiedUser()) {
       this.wasalert.open(

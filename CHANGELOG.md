@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.13.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2) - 2018-24-01
+
+### Added
+
+* **UserInterface** Add all new wasalert and wasup dialog for quickly showing modal messages to users
+
 ## [1.13.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1) - 2018-19-01
 
 ### Fixed
