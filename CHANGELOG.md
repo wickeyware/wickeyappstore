@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1413.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-26-01
+
+### Changed
+
+* **WasAlert** Changed the name from WasAlertDialogComponent to WasAlert. 
+                Added input and list capability.
+* **WasUp** Changed the name from WasUpDialogComponent to WasUp.
+
 ## [1.13.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2) - 2018-24-01
 
 ### Added

@@ -120,7 +120,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     }
   ];
 
-  public WAS_gutter = { top: 30, left: 10, right: 10, bottom: 30 };
+  public WAS_gutter = { top: 10, left: 10, right: 10, bottom: 30 };
 
   public WAS_startAngles = {
     topLeft: 20,
