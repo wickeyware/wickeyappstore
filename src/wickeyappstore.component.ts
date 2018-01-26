@@ -10,8 +10,8 @@ import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 
-import { WasUpDialogComponent } from './ui/popover/wasup/wasup.dialog';
-import { WasAlertDialogComponent } from './ui/popover/wasalert/wasalert.dialog';
+import { WasUp } from './ui/popover/wasup/wasup.dialog';
+import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 /**
@@ -168,10 +168,11 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     this.getFeaturedGroups();
   }
   openwasup(): void {
-    this.dialog.open(WasUpDialogComponent, {
+    const thiswasup = this.dialog.open(WasUp, {
       width: '300px',
       data: { title: 'Review Sent', icon: 'edit', body: 'Thanks for your feedback.'}
     });
+    thiswasup.disableClose = false;
   }
   openReview(): void {
     if (this.isVerifiedUser()) {

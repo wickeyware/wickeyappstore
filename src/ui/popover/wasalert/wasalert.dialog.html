@@ -3,9 +3,21 @@
   <div class="wasup-body">
     {{data.body}}
   </div>
+  <mat-list *ngIf="data.list">
+    <mat-list-item *ngFor="let item of data.list; let i = index">
+      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>
+    </mat-list-item>
+  </mat-list>
+  <mat-form-field *ngIf="data.input">
+    <input matInput [(ngModel)]="data.input_value">
+  </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>
-  <!-- <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.value" cdkFocusInitial>Ok</button> -->
+<div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value">Okay</button>
 </div>
+<ng-template #normalbuttons>
+  <div mat-dialog-actions>
+    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>
+  </div>
+</ng-template>
