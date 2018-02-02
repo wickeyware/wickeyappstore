@@ -105,11 +105,15 @@ export class ApiConnectionService {
     const body = res.data;
     // Add http status to body //
     body.status = res.status;
-    if (body.hasOwnProperty('special_message')) {
-      console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
-      this.dialog.open(WasAlert, {
-        data: { title: body.special_message.title, body: body.special_message.message}
-      });
+    try {
+      if (body.hasOwnProperty('special_message')) {
+        console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
+        this.dialog.open(WasAlert, {
+          data: { title: body.special_message.title, body: body.special_message.message}
+        });
+      }
+    } catch (extractError) {
+      console.error('extractData', extractError);
     }
     return body;
   }
@@ -119,12 +123,16 @@ export class ApiConnectionService {
     // Add http status to body //
     body.status = res.status;
     console.log('set session id', body.session_id);
-    this.cookie_write('was_session_id', body.session_id);
-    if (body.hasOwnProperty('special_message')) {
-      console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
-      this.dialog.open(WasAlert, {
-        data: { title: body.special_message.title, body: body.special_message.message}
-      });
+    try {
+      this.cookie_write('was_session_id', body.session_id);
+      if (body.hasOwnProperty('special_message')) {
+        console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
+        this.dialog.open(WasAlert, {
+          data: { title: body.special_message.title, body: body.special_message.message}
+        });
+      }
+    } catch (extractError) {
+      console.error('extractVerifyData', extractError);
     }
     return body;
   }
@@ -173,8 +181,9 @@ export class ApiConnectionService {
   createPerson(apiobject: any): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders})
-               .map(this.extractData)
-               .catch(this.handleError).share();
+        .map((res: any) => {
+          return this.extractData(res);
+        }).catch(this.handleError).share();
   }
   // Sends the email a recovery token
   tokenPerson(email: string, user_id: string): Observable<any> {
@@ -188,8 +197,9 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
       {email: email, user_id: user_id, verification_token: verification_token, version: version}, {headers: this.apiHeaders})
-               .map(this.extractVerifyData)
-               .catch(this.handleError).share();
+               .map((res: any) => {
+                return this.extractVerifyData(res);
+              }).catch(this.handleError).share();
   }
 
   /**
