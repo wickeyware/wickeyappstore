@@ -121,10 +121,19 @@ export class UserService {
   }
 
   checkStandalone(): void {
-    if (('standalone' in window.navigator) && !(<any>window.navigator).standalone) {
-      this.standalone = false;
+    // THIS ONLY WORKS ON iOS
+    if ('standalone' in window.navigator) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+      this.standalone = (<any>window.navigator).standalone;
+      console.log('homescreen iOS', this.standalone);
     } else {
-      this.standalone = true;
+      // https://developers.google.com/web/updates/2015/10/display-mode
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        this.standalone = true;
+      } else {
+        this.standalone = false;
+      }
+      console.log('homescreen chrome', this.standalone);
     }
   }
 
@@ -186,8 +195,7 @@ export class UserService {
   /**
    * Update User object, saves locally and to server.
    *
-   * @param {number} [app_coins] OPTIONAL coins number, use it wherever/however.
-   * @param {string} [app_data] OPTIONAL data string, use it wherever/however (e.g. save JSON or other string encoded objects).
+   * @param {UserParams} [userParams] OPTIONAL object of parameters to update user.
    * @returns {Observable<User>}
    * @memberof UserService
    */
@@ -209,8 +217,10 @@ export class UserService {
       currentUser = this._userObj;
     }
     console.log('UserService: updateUser:', currentUser);
+    // NOTE: Set params to current user, then update to sent in userParams, if any exist
     const apiobject = {user_id: currentUser.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
-      email: null, freebie_used: null, rated_app: null, push_id: null};
+      email: null, freebie_used: currentUser.freebie_used, rated_app: currentUser.rated_app, push_id: currentUser.push_id};
+    // TODO: Deprecate sending email here, only send in on email verification.
     if (userParams.email) {
       apiobject.email = userParams.email;
     }

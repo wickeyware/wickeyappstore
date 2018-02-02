@@ -9,7 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [1413.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-26-01
+## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-01-02
+
+### Fixed
+
+* **UserService** Fix standalone on Chrome, was only correct on iOS safari.
+* **UserService** Pass current user push_id, freebie_used, and rated_app values, update with passed params if available.
+
+## [1.14.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-26-01
 
 ### Changed
 
