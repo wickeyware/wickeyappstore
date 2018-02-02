@@ -298,17 +298,6 @@ export class UserService {
         this.pushSubscribers(currentUser);
         this.saveLocal(currentUser);
       }
-      // NOTE: Handle special_message in calling component.
-      if (res.special_message) {
-        console.log(`UserService: updateUser: special_message:[${res.special_message}]`);
-        confirm(`${res.special_message.title}\n${res.special_message.message}`);
-        // this.error_message = {
-        //   title: res.special_message.title, message: res.special_message.message,
-        //   button_type: 'btn-info', header_bg: '#29B6F6', header_color: 'black',
-        //   helpmessage: [],
-        //   randcookie: `${Math.random()}${Math.random()}${Math.random()}`
-        // };
-      }
       // Add user context in sentry
       // Raven.setUserContext({email: this._user.email, id: this._user.user_id});
     }, (error) => {

@@ -1,13 +1,17 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material';
 // import { Headers, RequestOptions, Response, Http } from '@angular/http';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
+import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { Review, Inapp } from './app.models';
 
 @Injectable()
 export class ApiConnectionService {
+  private apiHeaders: HttpHeaders;
+  private version = '.2';
   private person_url = 'https://api.wickeyappstore.com/person/update/';
   private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
@@ -24,8 +28,35 @@ export class ApiConnectionService {
 
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    public dialog: MatDialog
+  ) {
+    this.apiHeaders = new HttpHeaders().set('API-VERSION', this.version);
+    const session_id = this.cookie_read('was_session_id');
+    if (session_id) {
+      this.apiHeaders.set('WAS-SESSION', session_id);
+    }
+  }
+  cookie_read(name: string): any {
+    const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
+    return result ? result[1] : null;
+  }
+  cookie_write(name: string, value: string, days?: number): void {
+    try {
+      if (!days) {
+        days = 365 * 20;
+      }
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = '; expires=' + date.toUTCString();
+      document.cookie = name + '=' + value + expires + ';domain=.wickeyappstore.com;secure;path=/';
+    } catch (cookieError) {
+      console.error('cookie_write', cookieError);
+    }
+  }
+  cookie_remove(name: string): void {
+    this.cookie_write(name, undefined, -1);
+  }
 
   // THE OBSERVABLE WAY //
   private handleError (error: HttpErrorResponse) {
@@ -46,6 +77,18 @@ export class ApiConnectionService {
         try {
           const errorObj = error.error;  // JSON.parse(error.error)
           errMsg = errorObj.error.message;
+          // Catch 419 session expired error that will be returned on invalid session id
+          // FOR NOW, ONLY HANDLE THE SESSION EXPIRED CASE
+          if (errorObj.error.code === 419) {
+            this.dialog.open(WasAlert, {
+              data: { title: 'Attention', body: error, buttons: ['Login', 'Cancel'] }
+            }).afterClosed().subscribe(result => {
+              // result is the index of the button pressed
+              if (result === 0) {
+                console.log('Open SSO');  // After SSO is a dialog, simply open right here
+              }
+            });
+          }
         } catch (locerror) {
           // errMsg = locerror.toString();
           errMsg = error.message;
@@ -62,6 +105,27 @@ export class ApiConnectionService {
     const body = res.data;
     // Add http status to body //
     body.status = res.status;
+    if (body.hasOwnProperty('special_message')) {
+      console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
+      this.dialog.open(WasAlert, {
+        data: { title: body.special_message.title, body: body.special_message.message}
+      });
+    }
+    return body;
+  }
+  private extractVerifyData(res: any) {
+    // console.log('WASAPI: extractData', res);
+    const body = res.data;
+    // Add http status to body //
+    body.status = res.status;
+    console.log('set session id', body.session_id);
+    this.cookie_write('was_session_id', body.session_id);
+    if (body.hasOwnProperty('special_message')) {
+      console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
+      this.dialog.open(WasAlert, {
+        data: { title: body.special_message.title, body: body.special_message.message}
+      });
+    }
     return body;
   }
 
@@ -81,7 +145,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getApps', _query_string);
-    return this.http.get(`${this.app_url}?${_query_string}`)
+    return this.http.get(`${this.app_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res).apps;
           }).catch(this.handleError).share();
@@ -98,7 +162,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getFeaturedGroups', _query_string);
-    return this.http.get(`${this.featured_url}?${_query_string}`)
+    return this.http.get(`${this.featured_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res).groups;
           }).catch(this.handleError).share();
@@ -108,14 +172,14 @@ export class ApiConnectionService {
   // person info also includes inapps and app settings
   createPerson(apiobject: any): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_url, apiobject)
+    return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders})
                .map(this.extractData)
                .catch(this.handleError).share();
   }
   // Sends the email a recovery token
   tokenPerson(email: string, user_id: string): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id})
+    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id}, {headers: this.apiHeaders})
                .map(this.extractData)
                .catch(this.handleError).share();
   }
@@ -123,8 +187,8 @@ export class ApiConnectionService {
   verifyPerson(email: string, user_id: string, verification_token: string, version: number): Observable<any> {
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
-      {email: email, user_id: user_id, verification_token: verification_token, version: version})
-               .map(this.extractData)
+      {email: email, user_id: user_id, verification_token: verification_token, version: version}, {headers: this.apiHeaders})
+               .map(this.extractVerifyData)
                .catch(this.handleError).share();
   }
 
@@ -142,7 +206,7 @@ export class ApiConnectionService {
   getReviews(_params?: any): Observable<[Review]> {
     const _query_string = this.encode_query_string(_params);
     console.log('getReviews', _query_string);
-    return this.http.get(`${this.reviews_url}?${_query_string}`)
+    return this.http.get(`${this.reviews_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res).reviews;
           }).catch(this.handleError).share();
@@ -160,7 +224,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   setReview(_params: any): Observable<any> {
-    return this.http.post(this.reviews_url, _params)
+    return this.http.post(this.reviews_url, _params, {headers: this.apiHeaders})
           .map(this.extractData)
           .catch(this.handleError).share();
   }
@@ -178,7 +242,7 @@ export class ApiConnectionService {
   */
   getInapps(_params?: any): Observable<[Review]> {
     const _query_string = this.encode_query_string(_params);
-    return this.http.get(`${this.purchases_url}?${_query_string}`)
+    return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res).inapps;
           }).catch(this.handleError).share();
@@ -199,7 +263,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   setPurchase(_params: any): Observable<any> {
-    return this.http.post(this.purchases_url, _params)
+    return this.http.post(this.purchases_url, _params, {headers: this.apiHeaders})
           .map(this.extractData)
           .catch(this.handleError).share();
   }
@@ -222,7 +286,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
-    return this.http.get(`${this.wasstore_url}?${_query_string}`)
+    return this.http.get(`${this.wasstore_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res).was_data;
           }).catch(this.handleError).share();
@@ -244,7 +308,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
-    return this.http.post(this.wasstore_url, _params)
+    return this.http.post(this.wasstore_url, _params, {headers: this.apiHeaders})
           .map((res: any) => {
             return this.extractData(res);
           }).catch(this.handleError).share();

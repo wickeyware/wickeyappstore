@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-01-02
+## [1.15.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.2) - 2018-02-02
+
+### Added
+
+* **SESSIONS** Add WAS session support.
+
+## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1) - 2018-01-02
 
 ### Fixed
 
