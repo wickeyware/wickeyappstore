@@ -15,6 +15,7 @@ export class ApiConnectionService {
   private person_url = 'https://api.wickeyappstore.com/person/update/';
   private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
+  private person_auth_url = 'https://api.wickeyappstore.com/person/auth/';
   private app_url = 'https://api.wickeyappstore.com/apps/';
   private featured_url = 'https://api.wickeyappstore.com/apps/featured/';
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
@@ -32,10 +33,6 @@ export class ApiConnectionService {
     public dialog: MatDialog
   ) {
     this.apiHeaders = new HttpHeaders().set('API-VERSION', this.version);
-    const session_id = this.cookie_read('was_session_id');
-    if (session_id) {
-      this.apiHeaders.set('WAS-SESSION', session_id);
-    }
   }
   cookie_read(name: string): any {
     const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
@@ -56,6 +53,20 @@ export class ApiConnectionService {
   }
   cookie_remove(name: string): void {
     this.cookie_write(name, undefined, -1);
+  }
+
+  handleHeaders(password?: string) {
+    // NOTE: This needs to be in each api, so that is updated as soon as logged in
+    const _headers = {'API-VERSION': this.version};
+    // NOTE: This needs to be in each api, so that is updated as soon as logged in
+    const session_id = this.cookie_read('was_session_id');
+    if (session_id) {
+      _headers['WAS-SESSION'] = session_id;
+    }
+    if (password) {
+      _headers['Authorization1'] = `Basic ${this.b64EncodeUnicode(password)}`;
+    }
+    this.apiHeaders = new HttpHeaders(_headers);
   }
 
   // THE OBSERVABLE WAY //
@@ -137,6 +148,17 @@ export class ApiConnectionService {
     return body;
   }
 
+  // https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#The_Unicode_Problem
+  b64EncodeUnicode(str: string): string {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode(Number('0x' + p1));
+    }));
+  }
+
   encode_query_string(_obj): string {
     // http://stackoverflow.com/questions/1714786/query-string-encoding-of-a-javascript-object
     const q_str = [];
@@ -150,6 +172,7 @@ export class ApiConnectionService {
 
   // Returns app store apps {name: string, category: number, ordering: number}
   getApps(_params?: any): Observable<[any]> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getApps', _query_string);
@@ -167,6 +190,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   getFeaturedGroups(_params?: any): Observable<[any]> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getFeaturedGroups', _query_string);
@@ -179,6 +203,7 @@ export class ApiConnectionService {
   // Creates or updates person, returns person info
   // person info also includes inapps and app settings
   createPerson(apiobject: any): Observable<any> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders})
         .map((res: any) => {
@@ -187,6 +212,7 @@ export class ApiConnectionService {
   }
   // Sends the email a recovery token
   tokenPerson(email: string, user_id: string): Observable<any> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id}, {headers: this.apiHeaders})
                .map(this.extractData)
@@ -194,12 +220,34 @@ export class ApiConnectionService {
   }
   // Verify the recovery token
   verifyPerson(email: string, user_id: string, verification_token: string, version: number): Observable<any> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
       {email: email, user_id: user_id, verification_token: verification_token, version: version}, {headers: this.apiHeaders})
                .map((res: any) => {
                 return this.extractVerifyData(res);
               }).catch(this.handleError).share();
+  }
+
+  /**
+   * Set or change a password of a user.
+   *
+   * @param {string} user_id The user id.
+   * @param {string} password The raw password.
+   * @param {string} [new_password] The new password on password changes.
+   * @returns {Observable<any>} Success or failure status code and message.
+   */
+  authPerson( user_id: string, password: string, new_password?: string): Observable<any> {
+    this.handleHeaders(password);
+    const apiobject = {user_id: user_id};
+    if (new_password) {
+      apiobject['new_password'] = this.b64EncodeUnicode(new_password);
+    }
+    // NOTE: Use share to avoid duplicate calls
+    return this.http.post(this.person_auth_url, apiobject, {headers: this.apiHeaders, withCredentials: true})
+        .map((res: any) => {
+          return this.extractData(res);
+        }).catch(this.handleError).share();
   }
 
   /**
@@ -214,6 +262,7 @@ export class ApiConnectionService {
   * @memberof ApiConnectionService
   */
   getReviews(_params?: any): Observable<[Review]> {
+    this.handleHeaders();
     const _query_string = this.encode_query_string(_params);
     console.log('getReviews', _query_string);
     return this.http.get(`${this.reviews_url}?${_query_string}`, {headers: this.apiHeaders})
@@ -234,6 +283,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   setReview(_params: any): Observable<any> {
+    this.handleHeaders();
     return this.http.post(this.reviews_url, _params, {headers: this.apiHeaders})
           .map(this.extractData)
           .catch(this.handleError).share();
@@ -251,6 +301,7 @@ export class ApiConnectionService {
   * @memberof ApiConnectionService
   */
   getInapps(_params?: any): Observable<[Review]> {
+    this.handleHeaders();
     const _query_string = this.encode_query_string(_params);
     return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
           .map((res: any) => {
@@ -273,6 +324,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   setPurchase(_params: any): Observable<any> {
+    this.handleHeaders();
     return this.http.post(this.purchases_url, _params, {headers: this.apiHeaders})
           .map(this.extractData)
           .catch(this.handleError).share();
@@ -293,6 +345,7 @@ export class ApiConnectionService {
    */
   getWASStore(_params: {user_id: string, keys: string}): Observable<{}> {
     console.log('WASAPI: getWASStore _params', _params);
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
@@ -315,6 +368,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   setWASStore(_params: {user_id: string, was_data: {}}): Observable<any> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
@@ -337,6 +391,7 @@ export class ApiConnectionService {
    * @memberof ApiConnectionService
    */
   deleteWASStore(_params: {user_id: string, keys: string}): Observable<any> {
+    this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: deleteWASStore', _query_string);

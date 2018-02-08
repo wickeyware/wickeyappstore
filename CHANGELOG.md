@@ -9,11 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [1.15.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.3) - 2018-08-02
+## [1.16.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0) - 2018-08-02
 
 ### Added
 
-* **UserInterface** Add new WAS SSO. Add basis for all new User Interface
+* **UserInterface** Add new WAS SSO. Add basis for all new User Interface.
+* **API** Add person auth api. This allows a user to set a pin/pass code for extra security or faster logins.
+* **UserService** Add isLoggedIn function to UserService.
+* **UserService** Add logOut function to UserService.
+
+### Deprecated
+
+* **PopoverLoginComponent** Deprecating the old SSO, migrating to new dialog version of SSO (same functionality).
+
+### Fixed
+
+* **SESSIONS** Fix bug where session token header was not sent in.
 
 ## [1.15.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.2) - 2018-02-02
 
