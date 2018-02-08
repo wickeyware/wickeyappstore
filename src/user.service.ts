@@ -53,6 +53,7 @@ export class UserService {
   private _user: ReplaySubject<User> = new ReplaySubject(1);
   private _userObj: User;
   private _createNewUser = false;
+  private _isLoggedIn = false;
   private standalone: boolean;
   private lut = [];
 
@@ -61,6 +62,40 @@ export class UserService {
     private localStorageService: LocalStorageService
   ) {
     this.loadUser();
+  }
+
+  // test if the string is empty or null
+  isEmpty(str: string): boolean {
+    return (!str || 0 === str.length);
+  }
+  get isLoggedInObs() {
+    return this._user.map((usr: User) => {
+      if (this.isEmpty( usr.email ) === false) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+  isLoggedIn(): Promise<boolean> {
+    // NOTE: Directly checking if user object is in storage. If using UserService, the initial user was `undefined`,
+    // thus it looked as if it was not logged in.
+    return this.localStorageService.get('was-user')
+    .then((value: any): boolean => {
+      if (typeof value !== 'undefined' && value.user_id !== undefined) {
+        const _localUser = value as User;
+        if (this.isEmpty( _localUser.email ) === false) {
+          this._isLoggedIn = true;
+        } else {
+          this._isLoggedIn = false;
+        }
+      } else {
+        this._isLoggedIn = false;
+      }
+      return this._isLoggedIn;
+    }).catch(() => {
+      return this._isLoggedIn;
+    });
   }
 
   /**
@@ -534,6 +569,18 @@ export class UserService {
     //   console.log(`UserService: deleteStore: error:[${error}]`);
     // });
     return _obs;
+  }
+
+  logOut() {
+    // Delete user from local storage
+    this.localStorageService.delete('was-user');
+    // Delete was_user_id cookie
+    this.cookie_remove('was_user_id');
+    // Delete was_session_id cookie
+    this.cookie_remove('was_session_id');
+    this._isLoggedIn = false;
+    // Reload as anonymouse user
+    this.loadUser();
   }
   // TODO: Add BlueSnap APIS
 
