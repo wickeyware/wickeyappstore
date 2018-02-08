@@ -6,9 +6,8 @@ import { UserService } from './user.service';
 import { WasAppService } from './was-app.service';
 import { User, AppGroup, App } from './app.models';
 import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
-import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
 import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
-import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
+// import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
@@ -95,8 +94,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   public writeAReview = null;
   public showVerticalList: boolean; // dictate if the full screen vertical list is shown
   @ViewChild(AppDetailPageComponent) appDetailPage: AppDetailPageComponent;
-  @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
-  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
+  // @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @ViewChild(PopoverLoginComponent) waslogin: PopoverLoginComponent;
 
   // Add the main menu button
@@ -170,15 +168,23 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   openwasup(): void {
     const thiswasup = this.dialog.open(WasUp, {
       width: '300px',
-      data: { title: 'Review Sent', icon: 'edit', body: 'Thanks for your feedback.'}
+      data: { title: 'Review Sent', icon: 'edit', body: 'Thanks for your feedback.' }
     });
     thiswasup.disableClose = false;
   }
   openReview(): void {
-    if (this.isVerifiedUser()) {
-      this.wasalert.open(
-        { title: 'Login to leave a Review', text: 'Do you wish to log in?', btn: { title: 'Login', action: 'login' } } // Login error
-      );
+    if (!this.isVerifiedUser()) {
+      const dialogRef = this.dialog.open(WasAlert, {
+        data: { title: 'Only verified users can lewave a review', body: 'Want to log in?', buttons: ['Yes', 'No'] }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          if (result === 0) {
+            // yes selected
+            this.waslogin.buttonClick();
+          }
+        }
+      })
     } else {
       this.writeAReview = 1;
       this.open.emit(); // send back a message that full screen portion of the app store is opening
@@ -267,9 +273,9 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
       this.apps = res;
     }, (error) => {
       console.log('WAS: appGroups ERROR:', error);
-      this.wasalert.open(
-        { title: 'Attention', text: error } // Login error
-      );
+      this.dialog.open(WasAlert, {
+        data: { title: 'Attention', body: error }
+      });
     });
   }
   // loop through the featured apps and get the banner group

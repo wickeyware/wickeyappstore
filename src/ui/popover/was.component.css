@@ -9,3 +9,20 @@
     font-weight: 300;
     margin-bottom: 15px;
 }
+.icon-svg-large {
+    width: 80px;
+    top: 60px;
+    margin: auto;
+}
+.sso-button {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    margin-left: 5px;
+
+}
+.icon-svg {
+    width: 40px;
+    margin: auto;
+    margin-top: -5px;
+}

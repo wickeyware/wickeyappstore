@@ -84,6 +84,9 @@ import { FanMenuModule } from './ui/was_menu/menu.module';
 // WAS MATERIAL POPOVERS //
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
+import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
+import { WasSSO } from './ui/popover/wassso/wassso.dialog';
+import { WasSSOBtn } from './ui/popover/wassso-btn/wassso-btn.component';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
@@ -109,6 +112,9 @@ export * from './ui/popover/popover-up/popover-up.component';
 export * from './ui/popover/popover-alert/popover-alert.component';
 export * from './ui/popover/wasup/wasup.dialog';
 export * from './ui/popover/wasalert/wasalert.dialog';
+export * from './ui/popover/wasreview/wasreview.dialog';
+export * from './ui/popover/wassso/wassso.dialog';
+export * from './ui/popover/wassso-btn/wassso-btn.component';
 export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
@@ -166,6 +172,9 @@ export * from './ui/was_menu/menu.module';
     WickeyAppStoreComponent,
     WasUp,
     WasAlert,
+    WasReview,
+    WasSSO,
+    WasSSOBtn,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
@@ -188,6 +197,11 @@ export * from './ui/was_menu/menu.module';
   exports: [
     WasSpinnerComponent,
     WickeyAppStoreComponent,
+    WasUp,
+    WasAlert,
+    WasReview,
+    WasSSO,
+    WasSSOBtn,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
@@ -239,7 +253,7 @@ export * from './ui/was_menu/menu.module';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  entryComponents: [WasUp, WasAlert],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],

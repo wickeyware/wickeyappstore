@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.15.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.3) - 2018-08-02
+
+### Added
+
+* **UserInterface** Add new WAS SSO. Add basis for all new User Interface
+
 ## [1.15.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.2) - 2018-02-02
 
 ### Added

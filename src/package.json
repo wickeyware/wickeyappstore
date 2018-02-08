@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "1.15.3",
+  "version": "1.15.4",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm"
@@ -50,7 +50,6 @@
     "idb-keyval": "^2.3.0",
     "rxjs": "^5.5.2",
     "web-animations-js": "^2.3.1",
-    "typescript": "~2.5.3",
     "zone.js": "^0.8.18"
   }
 }

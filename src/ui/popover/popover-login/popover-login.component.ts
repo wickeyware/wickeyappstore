@@ -147,7 +147,7 @@ export class PopoverLoginComponent implements OnInit {
   buildPageForms() {
     this.buildEmailForm();
     this.buildTokenForm();
-    this.checkLoggingIn();
+    // this.checkLoggingIn();
   }
   checkLoggingIn() {
     setTimeout(() => {
