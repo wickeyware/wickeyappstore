@@ -4,6 +4,7 @@ var gulp = require('gulp'),
   path = require('path'),
   ngc = require('@angular/compiler-cli/src/main').main,
   rollup = require('gulp-rollup'),
+  commonjs = require('rollup-plugin-commonjs');
   rename = require('gulp-rename'),
   cleancss = require('gulp-clean-css'),
   concatCss = require('gulp-concat-css'),
@@ -85,12 +86,17 @@ gulp.task('rollup:fesm', function () {
       // when subdirectories are used in the `src` directory.
       allowRealFiles: true,
 
-      plugins: [resolve({
+      plugins: [
+        resolve({
         // pass custom options to the resolve plugin
         customResolveOptions: {
           moduleDirectory: 'node_modules'
         }
-      })],
+      }),
+      commonjs ({
+        include: "node_modules/rxjs/**",
+      })
+      ],
       
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
@@ -122,7 +128,10 @@ gulp.task('rollup:fesm', function () {
 
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
-      format: 'es'
+      // format: 'es'
+      output: {
+        format: 'es'
+      }
     }))
     .pipe(gulp.dest(distFolder));
 });
@@ -145,12 +154,17 @@ gulp.task('rollup:umd', function () {
       // This prevents errors like: 'path/file' does not exist in the hypothetical file system
       // when subdirectories are used in the `src` directory.
       allowRealFiles: true,
-      plugins: [resolve({
-        // pass custom options to the resolve plugin
-        customResolveOptions: {
-          moduleDirectory: 'node_modules'
-        }
-      })],
+      plugins: [
+        resolve({
+          // pass custom options to the resolve plugin
+          customResolveOptions: {
+            moduleDirectory: 'node_modules'
+          }
+        }),
+        commonjs ({
+          include: "node_modules/rxjs/**",
+        })
+      ],
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
@@ -181,20 +195,21 @@ gulp.task('rollup:umd', function () {
 
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
-      format: 'umd',
-
-      // Export mode to use
-      // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
-      exports: 'named',
-
+      // format: 'umd',
       // The name to use for the module for UMD/IIFE bundles
       // (required for bundles with exports)
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#modulename
-      name: 'wickeyappstore',
-
+      // Export mode to use
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
-      globals: {
-        typescript: 'ts'
+      name: 'wickeyappstore',
+      output: {
+        name: 'wickeyappstore',
+        format: 'umd',
+        exports: 'named',
+        globals: {
+          typescript: 'ts'
+        }
       }
 
     }))
