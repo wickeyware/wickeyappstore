@@ -44,9 +44,6 @@ export interface UserParams {
  *
  * Update user:
  * this.userService.updateUser(_user_obj);
- *
- * @export
- * @class UserService
  */
 @Injectable()
 export class UserService {
@@ -172,28 +169,6 @@ export class UserService {
     }
   }
 
-  // COOKIE FUNCTIONS //
-  cookie_read(name: string): any {
-    const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
-    return result ? result[1] : null;
-  }
-  cookie_write(name: string, value: string, days?: number): void {
-    try {
-      if (!days) {
-        days = 365 * 20;
-      }
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = '; expires=' + date.toUTCString();
-      document.cookie = name + '=' + value + expires + ';domain=.wickeyappstore.com;secure;path=/';
-    } catch (cookieError) {
-      console.error('cookie_write', cookieError);
-    }
-  }
-  cookie_remove(name: string): void {
-    this.cookie_write(name, undefined, -1);
-  }
-
   /**
    * Fast UUID generator, RFC4122 version 4 compliant.
    * @author Jeff Ward (jcward.com).
@@ -230,16 +205,14 @@ export class UserService {
   /**
    * Update User object, saves locally and to server.
    *
-   * @param {UserParams} [userParams] OPTIONAL object of parameters to update user.
-   * @returns {Observable<User>}
-   * @memberof UserService
+   * @param [userParams] OPTIONAL object of parameters to update user.
    */
   updateUser(userParams: UserParams): Observable<User> {
     let currentUser;
     if (this._createNewUser === true) {
       this._createNewUser = false;
       // NOTE: Check if user_id is in a cookie, to share user_id accross all wickeyappstore apps
-      const _cookie_userid = this.cookie_read('was_user_id')
+      const _cookie_userid = this.localStorageService.cookie_read('was_user_id')
       if (_cookie_userid !== null && _cookie_userid !== '') {
         console.warn('UserService: FOUND USER ID IN COOKIE');
         currentUser = {user_id: _cookie_userid};
@@ -286,7 +259,7 @@ export class UserService {
         // On new user/recover
         // TODO: Add more of a verification
         // UPDATE USER //
-        this.cookie_write('was_user_id', res.user_id);
+        this.localStorageService.cookie_write('was_user_id', res.user_id);
         this.pushSubscribers(res);
         this.saveLocal(res);
       } else {
@@ -295,7 +268,7 @@ export class UserService {
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           currentUser.user_id = res.user_id;
-          this.cookie_write('was_user_id', res.user_id);
+          this.localStorageService.cookie_write('was_user_id', res.user_id);
         }
         if (res.email) {
           currentUser.email = res.email;
@@ -344,6 +317,34 @@ export class UserService {
     return _obs;
   }
 
+  /**
+   * Add/Update a user's pin/pass code used in faster or more secure logins.
+   *
+   * @param password The password, or current password if updating.
+   * @param new_password OPTIONAL: New password.
+   */
+  setPassword(password: string, new_password?: string): Observable<any> {
+    console.log('============UserService setPassword=========');
+    let _updatedUsr = this._userObj;
+    const _obs = this.apiConnectionService.authPerson(_updatedUsr.user_id, password, new_password);
+    _obs.subscribe((res) => {
+      _updatedUsr = this._userObj;
+      _updatedUsr.secured = true;
+      this.pushSubscribers(_updatedUsr);
+      this.saveLocal(_updatedUsr);
+    }, (error) => {
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  /**
+   * Step 1 of email verification.
+   * Sends token to email, to begin email verification process.
+   *
+   * @param userParams {token_email: string}
+   */
   sendToken(userParams: UserParams): Observable<any> {
     console.log('============UserService sendToken=========');
     let _updatedUsr = this._userObj;
@@ -369,10 +370,16 @@ export class UserService {
     this.saveLocal(_updatedUsr);
   }
 
+  /**
+   * Step 2 of email verification.
+   * Send token that was sent via email to complete email verification.
+   *
+   * @param userParams {token_email: string, token: string}
+   */
   verifyToken(userParams: UserParams): Observable<any> {
     console.log('============UserService verifyToken=========');
     let _updatedUsr = this._userObj;
-    const _obs = this.apiConnectionService.verifyPerson(_updatedUsr.token_email, _updatedUsr.user_id, userParams.token, .1);
+    const _obs = this.apiConnectionService.verifyPerson(_updatedUsr.token_email, _updatedUsr.user_id, userParams.token);
     _obs.subscribe((res) => {
       console.log('WASlogin: verifyPerson RETURN:', res);
       // Set logging in process off //
@@ -423,6 +430,13 @@ export class UserService {
     return _obs;
   }
 
+  /**
+   * Add a review to this app (uses the calling hostname to determine app).
+   *
+   * @param _title string: The review title.
+   * @param _text string: The review text/body.
+   * @param _rating number: The review reating 0-5.
+   */
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
     console.log('============UserService createReview=========');
     let _updatedUsr = this._userObj;
@@ -532,6 +546,11 @@ export class UserService {
     return _obs;
   }
 
+  /**
+   * Get value(s) from key val store.
+   *
+   * @param _keys [string]: A list of keys to get from the key val store.
+   */
   getStore(_keys: string[]): Observable<{}> {
     console.log('============UserService getStore=========');
     let _updatedUsr = this._userObj;
@@ -544,6 +563,11 @@ export class UserService {
     // });
     return _obs;
   }
+  /**
+   * Set data in the key val store.
+   *
+   * @param _was_data {key:val, ...}: A key val dict of data to save.
+   */
   setStore(_was_data: {}): Observable<any> {
     console.log('============UserService setStore=========');
     // TODO: Update local list too
@@ -557,6 +581,11 @@ export class UserService {
     // });
     return _obs;
   }
+  /**
+   * Delete value(s) from key val store.
+   *
+   * @param _keys [string]: A list of keys to delete from the key val store.
+   */
   deleteStore(_keys: string[]): Observable<any> {
     console.log('============UserService deleteStore=========');
     // TODO: Update local list too
@@ -571,13 +600,16 @@ export class UserService {
     return _obs;
   }
 
+  /**
+   * Log user out, this deletes all local storage and cookies.
+  */
   logOut() {
     // Delete user from local storage
     this.localStorageService.delete('was-user');
     // Delete was_user_id cookie
-    this.cookie_remove('was_user_id');
+    this.localStorageService.cookie_remove('was_user_id');
     // Delete was_session_id cookie
-    this.cookie_remove('was_session_id');
+    this.localStorageService.cookie_remove('was_session_id');
     this._isLoggedIn = false;
     // Reload as anonymouse user
     this.loadUser();
