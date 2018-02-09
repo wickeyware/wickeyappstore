@@ -102,7 +102,7 @@ export class WasSSO {
         this.dialog.open(WasAlert, {
           data: { title: _alertTitle, body: _alertMessage, buttons: ['Okay'] }
         });
-        this.onNoClick();
+        this.dialogRef.close(res.email);
       }, (error) => {
         // <any>error | this casts error to be any
         this.dialog.open(WasAlert, {

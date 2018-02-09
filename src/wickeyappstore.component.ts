@@ -175,7 +175,7 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   openReview(): void {
     if (!this.isVerifiedUser()) {
       const dialogRef = this.dialog.open(WasAlert, {
-        data: { title: 'Only verified users can lewave a review', body: 'Want to log in?', buttons: ['Yes', 'No'] }
+        data: { title: 'Only verified users can leave a review', body: 'Want to log in?', buttons: ['Yes', 'No'] }
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
