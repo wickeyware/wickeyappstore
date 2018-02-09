@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+// TODO: Use Angular Direct Injected document
+// import {DOCUMENT} from '@angular/common';
+// in constructor @Inject(DOCUMENT) private doc: any
+// this.doc.cookie
 
 // let idbkeyval = require('../../node_modules/idb-keyval/idb-keyval.js'); // 'idb-keyval'
 // let idbkeyval = require('https://unpkg.com/idb-keyval@2.3.0/idb-keyval.js');
@@ -8,9 +12,6 @@ import { Injectable } from '@angular/core';
  * else uses cookies. NOTE: cookies are limited in length.
  * TODO: Allow passing in of idb-keyval.js location, currently uses location:
  * ../../node_modules/idb-keyval/idb-keyval.js
- *
- * @export
- * @class LocalStorageService
  */
 @Injectable()
 export class LocalStorageService {
@@ -31,10 +32,6 @@ export class LocalStorageService {
   }
   /**
    * Gets the value stored at `key` or undefined if it doesn't exist
-   *
-   * @param {string} key
-   * @returns {Promise<any>}
-   * @memberof LocalStorageService
    */
   get(key: string): Promise<any> {
     if (this.use_cookie === false) {
@@ -53,11 +50,6 @@ export class LocalStorageService {
   }
   /**
    * Sets the data in `value` in location `key`
-   *
-   * @param {string} key
-   * @param {*} value
-   * @returns {Promise<any>}
-   * @memberof LocalStorageService
    */
   set(key: string, value: any): Promise<any> {
     if (this.use_cookie === false) {
@@ -105,10 +97,6 @@ export class LocalStorageService {
   }
   /**
    * Deletes data at `key`
-   *
-   * @param {string} key
-   * @returns {Promise<any>}
-   * @memberof LocalStorageService
    */
   delete(key: string): Promise<any> {
     if (this.use_cookie === false) {
@@ -140,11 +128,23 @@ export class LocalStorageService {
     }
   }
   // COOKIE FUNCTIONS //
+  /**
+   *  Gets the value stored at `key` or null from cookie.
+   *
+   * @param name Name of cookie.
+   */
   cookie_read(name: string): any {
     const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
     return result ? result[1] : null;
   }
-  // TODO: Possibly don't store everything if using cookies
+  // TODO: Possibly don't store whole user object if using cookies, only essentials
+  /**
+   * Sets the value at `key` as a cookie.
+   *
+   * @param name Name of cookie.
+   * @param value Value to store.
+   * @param days Number of days to store it, default is 20 years.
+   */
   cookie_write(name: string, value: string, days?: number): void {
     if (!days) {
       days = 365 * 20;
@@ -156,6 +156,11 @@ export class LocalStorageService {
     document.cookie = name + '=' + value + expires + '; path=/';
     // console.log(document.cookie);
   }
+  /**
+   *  Deletes the value stored at `key` from cookie.
+   *
+   * @param name Name of cookie.
+   */
   cookie_remove(name: string): void {
     this.cookie_write(name, undefined, -1);
   }
