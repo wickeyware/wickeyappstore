@@ -18,6 +18,7 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService** Add documentation.
 * **UserService** Use cookie functions from localStorage.
 * **AppService** Update documentation.
+* **SSO** Add emitter on login.
 
 ### Deprecated
 
