@@ -1,19 +1,9 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
-import { FormControl, FormGroupDirective, NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { UserService } from '../../../user.service';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
 
 @Component({
   selector: 'wassso-dialog',
@@ -21,15 +11,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['../was.component.css'],
 })
 export class WasSSO {
+  /**
+ * WickeyAppStore SSO Dialog
+ *
+ * SIMPLE USE CASE
+ * this.dialog.open(WasSSO);
+ *
+ * @example
+ * import { WasUp } from 'wickeyappstore';
+ * import { MatDialog, MatDialogRef } from '@angular/material';
+ * Inject MatDialog in the constructor(public dialog: MatDialog) { }
+ *
+*/
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  matcher = new MyErrorStateMatcher();
   @ViewChild('stepper') stepper: MatStepper;
 
-  /**
-   * THE SSO screen via Dialog Modal
-   *
-  */
+  email = new FormControl('', [Validators.required, Validators.email]);
+  token = new FormControl('', [Validators.required, Validators.minLength(6),
+  Validators.maxLength(6)]);
 
   constructor(
     public dialog: MatDialog,
@@ -39,7 +39,7 @@ export class WasSSO {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
-    if (!this.data) {this.data = {}}; // data may not be defined
+    if (!this.data) { this.data = {} }; // data may not be defined
     console.log('wassso email', this.data.email);
     if (!this.data.email) {
       this.data.email = '';

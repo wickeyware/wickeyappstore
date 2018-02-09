@@ -33,10 +33,13 @@
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Email</ng-template>
         <mat-form-field>
-          <input id="emailInput" #emailInput matInput placeholder="Email Address" formControlName="firstCtrl" type="email" [(ngModel)] = "data.email" [errorStateMatcher]="matcher" required>
+          <input #emailInput matInput placeholder="Enter your email" [formControl]="email" formControlName="firstCtrl" [(ngModel)]="data.email"
+            required>
         </mat-form-field>
         <div>
-          <button mat-raised-button color="primary" matStepperNext (click)="tokenPerson(emailInput.value);">Send Token <mat-icon>vpn_key</mat-icon></button>
+          <button mat-raised-button color="primary" [disabled]="!email.valid" matStepperNext (click)="tokenPerson(emailInput.value);">Send Token
+            <mat-icon>vpn_key</mat-icon>
+          </button>
         </div>
       </form>
     </mat-step>
@@ -44,10 +47,13 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Token</ng-template>
         <mat-form-field>
-          <input id="tokenInput" cdkFocusInitial #tokenInput matInput placeholder="Token" formControlName="secondCtrl" type="number" required>
+          <input #tokenInput cdkFocusInitial matInput placeholder="Enter 6 digit token" [formControl]="token" formControlName="secondCtrl"
+            required>
         </mat-form-field>
         <div>
-          <button mat-raised-button color="primary" matStepperNext (click)="verifyPerson(tokenInput.value);">Login <mat-icon>lock_open</mat-icon></button>
+          <button mat-raised-button color="primary" [disabled]="!token.valid" matStepperNext (click)="verifyPerson(tokenInput.value);">Login
+            <mat-icon>lock_open</mat-icon>
+          </button>
         </div>
       </form>
     </mat-step>

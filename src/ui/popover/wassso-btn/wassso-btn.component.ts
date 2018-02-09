@@ -11,16 +11,19 @@ import { User } from '../../../app.models';
 })
 export class WasSSOBtn implements OnInit {
   /**
-   * THE Standard WAS button for SSO
-   *
-  */
+ * WickeyAppStore SSO Interface
+ *
+ * SIMPLY ADD to HTML where appropriate
+ * <was-sso-btn></was-sso-btn>
+ *
+*/
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
   ) {
   }
   ngOnInit(): void {
-    console.log ('wassobtn ngoninit')
+    console.log('wassobtn ngoninit')
     this.userService.user.subscribe((usr: User) => {
       this.checkLoggingIn();
     });
@@ -32,7 +35,7 @@ export class WasSSOBtn implements OnInit {
         // then show the SSO
         console.log('wassso-btn email', this.userService.userObject.token_email);
         const thissso = this.dialog.open(WasSSO, {
-          data: { email: this.userService.userObject.token_email}
+          data: { email: this.userService.userObject.token_email }
         });
       }
     }, 1000);
