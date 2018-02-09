@@ -14,6 +14,14 @@ This shows all commits since last release (actually, currently all commits).
 ### Fixed
 
 * **UserInterface** Add error validation. Add documentation. WAS SSO
+* **UserService** Finish setPassword implementation.
+* **UserService** Add documentation.
+* **UserService** Use cookie functions from localStorage.
+* **AppService** Update documentation.
+
+### Deprecated
+
+* **API** Deprecated un-used version parameter. This is now sent in as a header.
 
 ## [1.16.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0) - 2018-08-02
 
