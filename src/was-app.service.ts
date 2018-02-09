@@ -26,9 +26,6 @@ import { AppGroup, App } from './app.models';
  *   <p *ngFor="let _app of grpobj">{{_app | json}}}</p>
  * </div>
  * ```
- *
- * @export
- * @class WasAppService
  */
 @Injectable()
 export class WasAppService {
@@ -56,7 +53,6 @@ export class WasAppService {
    * Subscribe in ts: wasAppService.appGroups.subscribe
    *
    * @readonly
-   * @memberof WasAppService
    */
   get appGroups() {
     return this._appGroups.asObservable();
@@ -68,7 +64,6 @@ export class WasAppService {
    * wasAppService.appGroupsObject().id
    *
    * @readonly
-   * @memberof WasAppService
    */
   get appGroupsObject() {
     return this._appGroupsObj;
