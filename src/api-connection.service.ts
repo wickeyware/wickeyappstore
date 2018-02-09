@@ -185,9 +185,8 @@ export class ApiConnectionService {
   /**
    * This returns a list of featured groups of apps.
    *
-   * @param {*} [_params] None needed, just future proofing.
-   * @returns {Observable<[any]>} {"groups": [{"id": number, "title": string, "created_time": number, "apps": [_app, _app, ...]}, {}, ...]}
-   * @memberof ApiConnectionService
+   * @param [_params] None needed, just future proofing.
+   * @returns apps object {"groups": [{"id": number, "title": string, "created_time": number, "apps": [_app, _app, ...]}, {}, ...]}
    */
   getFeaturedGroups(_params?: any): Observable<[any]> {
     this.handleHeaders();
@@ -219,11 +218,12 @@ export class ApiConnectionService {
                .catch(this.handleError).share();
   }
   // Verify the recovery token
-  verifyPerson(email: string, user_id: string, verification_token: string, version: number): Observable<any> {
+  verifyPerson(email: string, user_id: string, verification_token: string, version?: number): Observable<any> {
+    // DEPRECATE version parameter
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
-      {email: email, user_id: user_id, verification_token: verification_token, version: version}, {headers: this.apiHeaders})
+      {email: email, user_id: user_id, verification_token: verification_token}, {headers: this.apiHeaders})
                .map((res: any) => {
                 return this.extractVerifyData(res);
               }).catch(this.handleError).share();
@@ -232,10 +232,10 @@ export class ApiConnectionService {
   /**
    * Set or change a password of a user.
    *
-   * @param {string} user_id The user id.
-   * @param {string} password The raw password.
-   * @param {string} [new_password] The new password on password changes.
-   * @returns {Observable<any>} Success or failure status code and message.
+   * @param user_id string: The user id.
+   * @param password string: The raw password.
+   * @param new_password string: OPTIONAL The new password on password changes.
+   * @returns Success or failure status code and message.
    */
   authPerson( user_id: string, password: string, new_password?: string): Observable<any> {
     this.handleHeaders(password);
@@ -257,9 +257,8 @@ export class ApiConnectionService {
   * this.apiConnectionService.getReviews({'storeapp_id': this.selected_app.id}).subscribe((_reviews: any) => {
   *  console.log(_reviews);
   * });
-  * @param {"storeapp_id": number} [_params] storeapp_id (id of the storeapp)
-  * @returns {Observable<[Review]>} [{"id":number,"title":string,"text":string,"rating":number,"last_modified":number},..]
-  * @memberof ApiConnectionService
+  * @param _params {"storeapp_id": number}: OPTIONAL storeapp_id (id of the storeapp)
+  * @returns List of reviews [{"id":number,"title":string,"text":string,"rating":number,"last_modified":number},..]
   */
   getReviews(_params?: any): Observable<[Review]> {
     this.handleHeaders();
@@ -278,9 +277,7 @@ export class ApiConnectionService {
    * this.apiConnectionService.setReview({'user_id':string,'title':string,'text':string,'rating':number}).subscribe((_data: any) => {
    *  console.log(_data);
    * });
-   * @param {*} _review {'user_id':string,'title':string,'text':string,'rating':number}
-   * @returns {Observable<any>}
-   * @memberof ApiConnectionService
+   * @param _review {'user_id':string,'title':string,'text':string,'rating':number}
    */
   setReview(_params: any): Observable<any> {
     this.handleHeaders();
@@ -296,9 +293,8 @@ export class ApiConnectionService {
   * this.apiConnectionService.getInapps().subscribe((_inapps: any) => {
   *  console.log(_inapps);
   * });
-  * @param @param {*} [_params] None needed, just future proofing.
-  * @returns {Observable<[Inapp]>} List of inapps
-  * @memberof ApiConnectionService
+  * @param [_params] None needed, just future proofing.
+  * @returns List of reviews
   */
   getInapps(_params?: any): Observable<[Review]> {
     this.handleHeaders();
@@ -319,9 +315,8 @@ export class ApiConnectionService {
    * ).subscribe((_data: any) => {
    *  console.log(_data);
    * });
-   * @param {*} _params The parameters listed in the example.
-   * @returns {Observable<any>} Returns a standard user object (same as createPerson)
-   * @memberof ApiConnectionService
+   * @param _params {*}: The parameters listed in the example.
+   * @returns Returns a standard user object (same as createPerson)
    */
   setPurchase(_params: any): Observable<any> {
     this.handleHeaders();
@@ -339,9 +334,8 @@ export class ApiConnectionService {
    * ).subscribe((_data: any) => {
    *  console.log(_data);
    * });
-   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
-   * @returns {Observable<any>} Returns a standard user object with was_data.
-   * @memberof ApiConnectionService
+   * @param _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
+   * @returns Returns a standard user object with was_data.
    */
   getWASStore(_params: {user_id: string, keys: string}): Observable<{}> {
     console.log('WASAPI: getWASStore _params', _params);
@@ -363,9 +357,8 @@ export class ApiConnectionService {
    * ).subscribe((_data: any) => {
    *  console.log(_data);
    * });
-   * @param {*} _params string: user_id, json: was_data where was_data is format {key:value,...}
-   * @returns {Observable<any>} Returns a standard user object with was_data.
-   * @memberof ApiConnectionService
+   * @param _params string: user_id, json: was_data where was_data is format {key:value,...}
+   * @returns Returns a standard user object with was_data.
    */
   setWASStore(_params: {user_id: string, was_data: {}}): Observable<any> {
     this.handleHeaders();
@@ -386,9 +379,8 @@ export class ApiConnectionService {
    * ).subscribe((_data: any) => {
    *  console.log(_data);
    * });
-   * @param {*} _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
-   * @returns {Observable<any>} Returns a standard user object.
-   * @memberof ApiConnectionService
+   * @param _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
+   * @returns Returns a standard user object.
    */
   deleteWASStore(_params: {user_id: string, keys: string}): Observable<any> {
     this.handleHeaders();
