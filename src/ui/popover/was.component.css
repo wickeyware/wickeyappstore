@@ -19,10 +19,51 @@
     width: 60px;
     height: 60px;
     margin-left: 5px;
-
 }
 .icon-svg {
     width: 40px;
     margin: auto;
     margin-top: -5px;
 }
+.icon-large-svg {
+    width: 50px;
+    margin: auto;
+    margin-top: -4px;
+}
+.wasmenu-title {
+    text-align: center;
+    font-size: 1.0em;
+  }
+.was-menu-button {
+    display: block;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 5px;
+    top: 5px;
+    /* z-index: 99999; */
+}
+.center-block {
+    display: block;
+    text-align: center;
+}
+.icon-svg-stars {
+    display: inline-block;
+    width: 26px;
+    margin: auto;
+    /*margin-left: 20px;*/
+}
+.gold-stars {
+    color: gold;
+}
+.gold-star-border {
+    color: darkgoldenrod;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .example-full-width {
+    width: 100%;
+  }

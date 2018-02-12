@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.16.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.2) - 2018-12-02
+
+### Added
+
+* **UserInterface** Add new WasReview dialog.
+
 ## [1.16.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1) - 2018-09-02
 
 ### Fixed
