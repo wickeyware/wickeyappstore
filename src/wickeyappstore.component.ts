@@ -173,22 +173,24 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
     thiswasup.disableClose = false;
   }
   openReview(): void {
-    if (!this.isVerifiedUser()) {
-      const dialogRef = this.dialog.open(WasAlert, {
-        data: { title: 'Only verified users can leave a review', body: 'Want to log in?', buttons: ['Yes', 'No'] }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          if (result === 0) {
-            // yes selected
-            this.waslogin.buttonClick();
+    this.userService.isLoggedIn().then((_isLogged: boolean) => {
+      if (_isLogged === true) {
+        this.writeAReview = 1;
+        this.open.emit(); // send back a message that full screen portion of the app store is opening
+      } else {
+        const dialogRef = this.dialog.open(WasAlert, {
+          data: { title: 'Only verified users can leave a review', body: 'Want to log in?', buttons: ['Yes', 'No'] }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            if (result === 0) {
+              // yes selected
+              this.waslogin.buttonClick();
+            }
           }
-        }
-      })
-    } else {
-      this.writeAReview = 1;
-      this.open.emit(); // send back a message that full screen portion of the app store is opening
-    }
+        })
+      }
+    });
   }
   closeLoginScreen(_data?: any) {
     // this only returns if logged in. But double check by testing if emailed returned
@@ -208,20 +210,6 @@ export class WickeyAppStoreComponent implements OnInit, OnDestroy {
   // test if the string is empty or null
   isEmpty(str: string): boolean {
     return (!str || 0 === str.length);
-  }
-
-  isVerifiedUser(): boolean {
-    if (this.userService.userObject) {
-      console.log('isVerifiedUser:', this.userService.userObject.email);
-      if (this.isEmpty(this.userService.userObject.email) === false) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      console.log('isVerifiedUser: not yet loaded');
-      return false;  // User not yet loaded
-    }
   }
   closealert(action: string) {
     console.log('alert was closed', action);
