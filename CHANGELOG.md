@@ -9,13 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [1.16.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.2) - 2018-13-02
+## [1.17.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0) - 2018-13-02
 
 ### Fixed
 
 * **UserService** Update secured on each standard return.
 * **API** Add Auth if passed in. This allows login via email and passcode (not yet implemented in UI).
 * **API** Add withCredentials to modifying calls.
+
+### Added
+
+* **UserInterface** Add new WasReview dialog.
 
 ## [1.16.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1) - 2018-09-02
 
