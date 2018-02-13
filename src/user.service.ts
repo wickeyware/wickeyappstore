@@ -60,6 +60,7 @@ export class UserService {
   ) {
     this.loadUser();
   }
+  // TODO: Handle SSO open/close here
 
   // test if the string is empty or null
   isEmpty(str: string): boolean {
@@ -387,6 +388,9 @@ export class UserService {
       _updatedUsr.logging_in = false;
       _updatedUsr.user_id = res.user_id;
       _updatedUsr.email = res.email;
+      if (res.secured) {
+        _updatedUsr.secured = res.secured;
+      }
       if (res.pro_user) {
         _updatedUsr.pro_user = res.pro_user;
       }
@@ -449,6 +453,9 @@ export class UserService {
       if (res.email && res.user_id) {
         _updatedUsr.user_id = res.user_id;
       }
+      if (res.secured) {
+        _updatedUsr.secured = res.secured;
+      }
       if (res.pro_user) {
         _updatedUsr.pro_user = res.pro_user;
       }
@@ -498,6 +505,9 @@ export class UserService {
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         _updatedUsr.user_id = res.user_id;
+      }
+      if (res.secured) {
+        _updatedUsr.secured = res.secured;
       }
       if (res.email) {
         _updatedUsr.email = res.email;

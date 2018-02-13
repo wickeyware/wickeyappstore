@@ -86,29 +86,35 @@ export class ApiConnectionService {
         // The backend returned an unsuccessful response code.
         // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
         try {
-          const errorObj = error.error;  // JSON.parse(error.error)
-          errMsg = errorObj.error.message;
-          // Catch 419 session expired error that will be returned on invalid session id
-          // FOR NOW, ONLY HANDLE THE SESSION EXPIRED CASE
-          if (errorObj.error.code === 419) {
-            this.dialog.open(WasAlert, {
-              data: { title: 'Attention', body: error, buttons: ['Login', 'Cancel'] }
-            }).afterClosed().subscribe(result => {
-              // result is the index of the button pressed
-              if (result === 0) {
-                console.log('Open SSO');  // After SSO is a dialog, simply open right here
-              }
-            });
+          if (error.error) {
+            const errorObj = error.error;  // JSON.parse(error.error)
+            errMsg = errorObj.error.message;
+            // Catch 419 session expired error that will be returned on invalid session id
+            // FOR NOW, ONLY HANDLE THE SESSION EXPIRED CASE
+            if (errorObj.error.code === 419) {
+              this.dialog.open(WasAlert, {
+                data: { title: 'Attention', body: error, buttons: ['Login', 'Cancel'] }
+              }).afterClosed().subscribe(result => {
+                // result is the index of the button pressed
+                if (result === 0) {
+                  console.log('Open SSO');  // After SSO is a dialog, simply open right here
+                }
+              });
+            }
+          } else {
+            errMsg = error.statusText;
           }
         } catch (locerror) {
+          // TODO: Log these type of errors to server. TODO: Create server logger.
           // errMsg = locerror.toString();
-          errMsg = error.message;
+          errMsg = error.statusText;
           console.error('API: + LOCAL Error:', error, locerror);
         }
       } else {
         errMsg = 'There is no Internet connection.';
       }
     }
+    // TODO: Observable.throw(new Error(errMsg));
     return Observable.throw(errMsg);
   }
   private extractData(res: any) {
@@ -204,7 +210,7 @@ export class ApiConnectionService {
   createPerson(apiobject: any): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders})
+    return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders, withCredentials: true})
         .map((res: any) => {
           return this.extractData(res);
         }).catch(this.handleError).share();
@@ -213,17 +219,23 @@ export class ApiConnectionService {
   tokenPerson(email: string, user_id: string): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id}, {headers: this.apiHeaders})
+    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id},
+      {headers: this.apiHeaders, withCredentials: true})
                .map(this.extractData)
                .catch(this.handleError).share();
   }
   // Verify the recovery token
-  verifyPerson(email: string, user_id: string, verification_token: string, version?: number): Observable<any> {
+  verifyPerson(email: string, user_id: string, verification_token: string, version?: number, password?: string): Observable<any> {
+    if (password) {
+      this.handleHeaders(password);
+    } else {
+      this.handleHeaders();
+    }
     // DEPRECATE version parameter
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
-      {email: email, user_id: user_id, verification_token: verification_token}, {headers: this.apiHeaders})
+      {email: email, user_id: user_id, verification_token: verification_token}, {headers: this.apiHeaders, withCredentials: true})
                .map((res: any) => {
                 return this.extractVerifyData(res);
               }).catch(this.handleError).share();
@@ -281,7 +293,7 @@ export class ApiConnectionService {
    */
   setReview(_params: any): Observable<any> {
     this.handleHeaders();
-    return this.http.post(this.reviews_url, _params, {headers: this.apiHeaders})
+    return this.http.post(this.reviews_url, _params, {headers: this.apiHeaders, withCredentials: true})
           .map(this.extractData)
           .catch(this.handleError).share();
   }
@@ -320,7 +332,7 @@ export class ApiConnectionService {
    */
   setPurchase(_params: any): Observable<any> {
     this.handleHeaders();
-    return this.http.post(this.purchases_url, _params, {headers: this.apiHeaders})
+    return this.http.post(this.purchases_url, _params, {headers: this.apiHeaders, withCredentials: true})
           .map(this.extractData)
           .catch(this.handleError).share();
   }
@@ -365,7 +377,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
-    return this.http.post(this.wasstore_url, _params, {headers: this.apiHeaders})
+    return this.http.post(this.wasstore_url, _params, {headers: this.apiHeaders, withCredentials: true})
           .map((res: any) => {
             return this.extractData(res);
           }).catch(this.handleError).share();
@@ -387,7 +399,7 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: deleteWASStore', _query_string);
-    return this.http.delete(`${this.wasstore_url}?${_query_string}`)
+    return this.http.delete(`${this.wasstore_url}?${_query_string}`, {headers: this.apiHeaders, withCredentials: true})
           .map((res: any) => {
             return this.extractData(res);
           }).catch(this.handleError).share();
