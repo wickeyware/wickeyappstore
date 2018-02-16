@@ -88,6 +88,7 @@ import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasSSOBtn } from './ui/popover/wassso-btn/wassso-btn.component';
 import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
+import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
@@ -117,6 +118,7 @@ export * from './ui/popover/wasreview/wasreview.dialog';
 export * from './ui/popover/wassso/wassso.dialog';
 export * from './ui/popover/wassso-btn/wassso-btn.component';
 export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
+export * from './ui/popover/wasstore/wasstore.dialog';
 export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
@@ -178,6 +180,7 @@ export * from './ui/was_menu/menu.module';
     WasSSO,
     WasSSOBtn,
     WasMenuBtn,
+    WasStore,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
@@ -206,6 +209,7 @@ export * from './ui/was_menu/menu.module';
     WasSSO,
     WasSSOBtn,
     WasMenuBtn,
+    WasStore,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
@@ -257,7 +261,7 @@ export * from './ui/was_menu/menu.module';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],

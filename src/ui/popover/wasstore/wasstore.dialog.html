@@ -1,20 +1,18 @@
-<was-menu-btn></was-menu-btn>
 <!--Show the WickeyAppStore container-->
-<div *ngIf="showOverlay" class="was-fullscreen" [@overlayAnimationTrigger]='overlayState' (@overlayAnimationTrigger.done)="overlayAnimationDone($event)"
-  (click)="catchClick($event)">
+<div class="was-fullscreen">
   <app-group-vertical [open]="showVerticalList" (close)="closeVerticalListApps($event)" [apps]="selectedAppList" [showAppEmitter]="showAppDetail"></app-group-vertical>
   <was-detail-page #appDetailPage (close)="onAppDetailClose($event)"></was-detail-page>
-  
+
   <div class="was-titlebar">
     <h3 class="was-titletext">Featured Apps</h3>
     <button *ngIf="showCloseBtn" (click)="closeMe()" class="was-navClose" title="back"></button>
     <div class="was-titlebottom"></div>
   </div>
   <div class="results-group">
-    <was-spinner [busy]="busy" [message]='"Refreshing app store.."'></was-spinner>
     <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
     <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
-    <br><br>
+    <br>
+    <br>
   </div>
   <div class="was-footer">
     <div class="left">
@@ -26,12 +24,5 @@
     <div class="right">
       <a href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">Privacy</a>
     </div>
-  </div> 
+  </div>
 </div>
-
-<!--Generic base popover container-->
-<was-popover-review [showReview]="writeAReview" (close)="closeReviewScreen($event)"></was-popover-review>
-<!-- <was-menu-container [options]="WAS_options()" [gutter]="WAS_gutter" [startAngles]="WAS_startAngles" [wings]="WAS_wings" (onMenuBtnClicked)="WASMenuClick($event)" (onWingSelected)="WASWingClick($event)"></was-menu-container> -->
-<was-up #wasup></was-up>
-<was-alert #wasalert (close)="closealert($event)"></was-alert>
-<was-popover-login #loginpopover [hidden]="true" (close)="closeLoginScreen($event)"></was-popover-login>

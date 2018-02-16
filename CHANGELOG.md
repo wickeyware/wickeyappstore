@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.17.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2) - 2018-15-02
+
+### Added
+
+* **UserInterface** Make WasMenu and Store a button and dialog. 
+
+
 ## [1.17.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1) - 2018-13-02
 
 ### Fixed

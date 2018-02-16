@@ -3,6 +3,7 @@ import { WasReview } from '../../../ui/popover/wasreview/wasreview.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
+import { WasStore } from '../../../ui/popover/wasstore/wasstore.dialog';
 
 @Component({
   selector: 'was-menu-btn',
@@ -28,8 +29,8 @@ export class WasMenuBtn implements OnInit {
   leavereview(): void {
     const thissso = this.dialog.open(WasReview);
   }
-  buttonClick() {
-    // const thissso = this.dialog.open(WasSSO);
+  openstore() {
+    const thissso = this.dialog.open(WasStore);
   }
 
 }
