@@ -14,12 +14,6 @@
     top: 60px;
     margin: auto;
 }
-.sso-button {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    margin-left: 5px;
-}
 .icon-svg {
     width: 40px;
     margin: auto;
@@ -34,7 +28,7 @@
     text-align: center;
     font-size: 1.0em;
   }
-.was-menu-button {
+.was-right-button {
     display: block;
     position: fixed;
     width: 60px;
@@ -42,6 +36,14 @@
     right: 5px;
     top: 5px;
     /* z-index: 99999; */
+}
+.was-left-button {
+    display: block;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    top: 5px;
+    left: 5px;
 }
 .center-block {
     display: block;

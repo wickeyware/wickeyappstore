@@ -1,4 +1,4 @@
-<button class="was-menu-button" mat-fab color="" [matMenuTriggerFor]="menu">
+<button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu">
     <div class="icon-large-svg">
         <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
             stroke-miterlimit="1.41">
@@ -37,5 +37,9 @@
     <button mat-menu-item (click)="openstore()">
         <mat-icon>store</mat-icon>
         <span>Open the App Store</span>
+    </button>
+    <button mat-menu-item (click)="opensso()">
+        <mat-icon>person</mat-icon>
+        <span>Login with SSO</span>
     </button>
 </mat-menu>

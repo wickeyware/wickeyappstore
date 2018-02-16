@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
 import { WasStore } from '../../../ui/popover/wasstore/wasstore.dialog';
+import { WasSSO } from '../../../ui/popover/wassso/wassso.dialog';
 
 @Component({
   selector: 'was-menu-btn',
@@ -31,6 +32,9 @@ export class WasMenuBtn implements OnInit {
   }
   openstore() {
     const thissso = this.dialog.open(WasStore);
+  }
+  opensso() {
+    const thissso = this.dialog.open(WasSSO);
   }
 
 }
