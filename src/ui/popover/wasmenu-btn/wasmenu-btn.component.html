@@ -40,6 +40,6 @@
     </button>
     <button mat-menu-item (click)="opensso()">
         <mat-icon>person</mat-icon>
-        <span>Login with SSO</span>
+        <span>{{loginMessage | async}}</span>
     </button>
 </mat-menu>

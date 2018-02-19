@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { WasReview } from '../../../ui/popover/wasreview/wasreview.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
 import { WasStore } from '../../../ui/popover/wasstore/wasstore.dialog';
 import { WasSSO } from '../../../ui/popover/wassso/wassso.dialog';
+import { WasAlert } from '../../../ui/popover/wasalert/wasalert.dialog';
 
 @Component({
   selector: 'was-menu-btn',
@@ -12,6 +14,8 @@ import { WasSSO } from '../../../ui/popover/wassso/wassso.dialog';
   styleUrls: ['../was.component.css'],
 })
 export class WasMenuBtn implements OnInit {
+  public userloggedin = false;
+  // public loginmessage = 'Login with SSO';
   /**
  * WickeyAppStore Interface
  *
@@ -25,6 +29,20 @@ export class WasMenuBtn implements OnInit {
   ) {
   }
   ngOnInit(): void {
+    // this.loginlogoutMessage();
+  }
+  loginMessage(): Promise <string> {
+    return this.userService.isLoggedIn().then((_isLogged: boolean) => {
+      let _displayMsg = '';
+      if (_isLogged === true) {
+        _displayMsg = 'Logout of SSO';
+        this.userloggedin = true;
+      } else {
+        this.userloggedin = false;
+        _displayMsg = 'Login with SSO';
+      }
+      return _displayMsg;
+    });
   }
 
   leavereview(): void {
@@ -34,7 +52,21 @@ export class WasMenuBtn implements OnInit {
     const thissso = this.dialog.open(WasStore);
   }
   opensso() {
-    const thissso = this.dialog.open(WasSSO);
+    if (this.userloggedin) {
+      const dialogRef = this.dialog.open(WasAlert, {
+        data: { title: 'Do you wish to log out?', body: 'Log out of your WickeyAppStore SSO account?', buttons: ['Yes', 'No'] }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 0) {
+          // yes selected
+          // log out.
+          console.log('log out this user');
+          this.userService.logOut();
+        }
+      })
+    } else {
+      this.dialog.open(WasSSO);
+    }
   }
 
 }

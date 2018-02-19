@@ -26,7 +26,7 @@ export class WasAlert {
    * With Buttons
    * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', body: 'Yes or No?', buttons: ['Yes', 'No'] } });
    *     dialogRef.afterClosed().subscribe(result => {
-   *    if (result) {
+   *    if (result !== undefined) {
    *      console.log('This is 0 for yes, and 1 for no', result);
    *    } else {
    *      console.log('Dialog was cancelled');
@@ -36,7 +36,7 @@ export class WasAlert {
    * With Input field
     * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', input: true, input_value: 'text' } });
    *     dialogRef.afterClosed().subscribe(result => {
-   *    if (result) {
+   *    if (result !== undefined) {
    *      console.log('This is the input captured', result);
    *    } else {
    *      console.log('Dialog was cancelled');
@@ -45,7 +45,7 @@ export class WasAlert {
    * With List of choices
    * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', list: ['item1', 'item2'] } });
    *     dialogRef.afterClosed().subscribe(result => {
-   *    if (result) {
+   *    if (result !== undefined) {
    *      console.log('This is the index of the selected list item', result);
    *    } else {
    *      console.log('Dialog was cancelled');
