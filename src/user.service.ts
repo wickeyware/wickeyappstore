@@ -3,6 +3,9 @@ import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
+import { WasSSO } from './ui/popover/wassso/wassso.dialog';
+import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
 
@@ -48,6 +51,7 @@ export interface UserParams {
 @Injectable()
 export class UserService {
   private _user: ReplaySubject<User> = new ReplaySubject(1);
+  private _loginChange: ReplaySubject<boolean> = new ReplaySubject(1);
   private _userObj: User;
   private _createNewUser = false;
   private _isLoggedIn = false;
@@ -56,15 +60,53 @@ export class UserService {
 
   constructor(
     private apiConnectionService: ApiConnectionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    public dialog: MatDialog
   ) {
     this.loadUser();
+    // TODO: Check if logging in
+    this._user.subscribe( (usr: User) => {
+      if (this.isEmpty( usr.email ) === false) {
+        // Check if flag changed
+        if (this._isLoggedIn === false) {
+          console.warn('UserService LOGGED IN');
+          this._isLoggedIn = true;
+          this._loginChange.next(this._isLoggedIn);
+        }
+      } else {
+        if (this._isLoggedIn === true) {
+          console.warn('UserService LOGGED OUT');
+          this._isLoggedIn = false;
+          this._loginChange.next(this._isLoggedIn);
+        }
+      }
+    });
   }
   // TODO: Handle SSO open/close here
 
   // test if the string is empty or null
   isEmpty(str: string): boolean {
     return (!str || 0 === str.length);
+  }
+  /**
+   * Pushes boolean to all subscribers on login status changes.
+   *
+   * @example
+   * Use in angular template with the `async` pipe
+   * userService.loginChange | async
+   * Subscribe in ts: userService.loginChange.subscribe
+   *
+   * @readonly
+   */
+  get loginChange() {
+    return this._loginChange;
+  }
+  /**
+   * Returns true if user is logged in and else false.
+   * NOTE: This should only be used if UserService has already loaded the User, otherwise the result is un-reliable (Check out loginChange).
+   */
+  get isLoggedInVal() {
+    return this._isLoggedIn;
   }
   get isLoggedInObs() {
     return this._user.map((usr: User) => {
@@ -75,29 +117,36 @@ export class UserService {
       }
     });
   }
+  /**
+   * Returns promise of user login status (true if logged in).
+   * NOTE: It also on page load it emits the login status.
+   *
+   * @readonly
+  */
   isLoggedIn(): Promise<boolean> {
     // NOTE: Directly checking if user object is in storage. If using UserService, the initial user was `undefined`,
     // thus it looked as if it was not logged in.
     return this.localStorageService.get('was-user')
     .then((value: any): boolean => {
+      let _islog = this._isLoggedIn;
       if (typeof value !== 'undefined' && value.user_id !== undefined) {
         const _localUser = value as User;
         if (this.isEmpty( _localUser.email ) === false) {
-          this._isLoggedIn = true;
+          _islog = true;
         } else {
-          this._isLoggedIn = false;
+          _islog = false;
         }
       } else {
-        this._isLoggedIn = false;
+        _islog = false;
       }
-      return this._isLoggedIn;
+      return _islog;
     }).catch(() => {
       return this._isLoggedIn;
     });
   }
 
   /**
-   * Returns an user object as an observable.
+   * Pushes User Object to all subscribers on every user update.
    *
    * @example
    * Use in angular template with the `async` pipe
@@ -105,10 +154,9 @@ export class UserService {
    * Subscribe in ts: userService.user.subscribe
    *
    * @readonly
-   * @memberof UserService
    */
   get user() {
-    return this._user.asObservable();
+    return this._user;  // NOTE: This is only neccessary if _user was not an observable .asObservable();
   }
   get userObject() {
     return this._userObj;
@@ -123,7 +171,7 @@ export class UserService {
   private pushSubscribers(_usr: User) {
     this._userObj = _usr;
     this._user.next(_usr);
-    this._user.complete();
+    // NOTE: This is only used with Async to push the last value: this._user.complete();
   }
   private saveLocal(_usr: User) {
     this.localStorageService.set('was-user', _usr);
@@ -134,10 +182,16 @@ export class UserService {
         if (typeof value !== 'undefined' && value.user_id !== undefined) {
           const _localUser = value as User;
           this.pushSubscribers(_localUser);
+          // show the SSO iff logging in
+          if (_localUser.logging_in) {
+            this.dialog.open(WasSSO, {
+              data: { email: _localUser.token_email }
+            });
+          }
           // normal load
           console.log('UserService loadUser: load user from db', _localUser);
-          this.updateUser({});
           this._createNewUser = false;
+          this.updateUser({});
         } else {
           // create new user
           this._createNewUser = true;
@@ -614,6 +668,7 @@ export class UserService {
    * Log user out, this deletes all local storage and cookies.
   */
   logOut() {
+    console.warn('UserService:logOut');
     // Delete user from local storage
     this.localStorageService.delete('was-user');
     // Delete was_user_id cookie
@@ -621,8 +676,24 @@ export class UserService {
     // Delete was_session_id cookie
     this.localStorageService.cookie_remove('was_session_id');
     this._isLoggedIn = false;
+    this._loginChange.next(this._isLoggedIn);
     // Reload as anonymouse user
     this.loadUser();
+  }
+
+  opensso() {
+    if (this._isLoggedIn) {
+      this.dialog.open(WasAlert, {
+        data: { title: 'Do you wish to log out?', body: 'Log out of your WickeyAppStore SSO account?', buttons: ['Yes', 'No'] }
+      }).afterClosed().subscribe(result => {
+        if (result === 0) {
+          console.log('log out this user');
+          this.logOut();
+        }
+      });
+    } else {
+      this.dialog.open(WasSSO);
+    }
   }
   // TODO: Add BlueSnap APIS
 
