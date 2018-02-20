@@ -9,7 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [1.17.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2) - 2018-16-02
+## [1.18.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-20-02
+
+### Added
+
+* **UserService** Add new service loginChange, this pushes an update on login status change (and on page load it emits the login status).
+* **UserService** Handle opensso (this includes showing sso if logging in).
+* **UserService** Handle leavereview (this includes checking if logged in).
+* **UserService** Handle openstore.
+
+### Fixed
+
+* **UserService** Fix user not pushing to subscribers on every update. NOTE: This could lead to infinite loops (planning on checking object and only pushing updates).
+* **WASbtnSSO** Update login/logout message for SSO in was menu button.
+* **Review** Update saving message.
+
+## [1.17.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3) - 2018-16-02
 
 ### Added
 

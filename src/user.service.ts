@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
+import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
+import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
@@ -169,6 +171,17 @@ export class UserService {
   }
   // TODO: Possibly create a userService.messages
   private pushSubscribers(_usr: User) {
+    // TODO: Only push if object values changed. This does not work, need to store a copy of last, else it simply sets a reference,
+    //  thus both are updated.
+    if (this._userObj) {
+      if (JSON.stringify(this._userObj) === JSON.stringify(_usr)) {
+        console.log('pushSubscribers:NO CHANGES');
+      } else {
+        console.log('pushSubscribers:CHANGES');
+      }
+    } else {
+      console.log('pushSubscribers:INIT');
+    }
     this._userObj = _usr;
     this._user.next(_usr);
     // NOTE: This is only used with Async to push the last value: this._user.complete();
@@ -370,6 +383,36 @@ export class UserService {
       // <any>error | this casts error to be any
     });
     return _obs;
+  }
+
+  /**
+   * Update the user's push_id if this id is different than the currenly saved id.
+   *
+   * @param push_id The OneSignal user_id (push_id)
+   */
+  updateUserPushId(push_id: string) {
+    if (this._userObj.push_id !== push_id) {
+      console.log('UserService updateUserPushId: CHANGE:', push_id);
+      this.updateUser({ 'push_id': push_id })
+      .subscribe((usr) => {
+        console.log('UserService updateUserPushId: RETURN:', usr);
+        // NOTE: all user APIS can return a `special_message`
+        if (usr.special_message) {
+          this.dialog.open(WasAlert, {
+            data: { title: usr.special_message.title, body: usr.special_message.message, buttons: ['Ok', 'Cancel'] }
+          });
+        }
+      }, (error) => {
+        // <any>error | this casts error to be any
+        // NOTE: Can handle error return messages
+        console.log('UserService updateUserPushId: RETURN ERROR:', error);
+        this.dialog.open(WasAlert, {
+          data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
+        });
+      });
+    } else {
+      console.log('UserService updateUserPushId: NO CHANGE:', push_id);
+    }
   }
 
   /**
@@ -681,6 +724,9 @@ export class UserService {
     this.loadUser();
   }
 
+  /**
+   * Open SSO if not logged in, else confirm logout.
+  */
   opensso() {
     if (this._isLoggedIn) {
       this.dialog.open(WasAlert, {
@@ -695,15 +741,28 @@ export class UserService {
       this.dialog.open(WasSSO);
     }
   }
+  /**
+   * Open review if logged in, else ask to login/create account.
+  */
+  leavereview() {
+    if (this._isLoggedIn) {
+      this.dialog.open(WasReview);
+    } else {
+      this.dialog.open(WasAlert, {
+        data: { title: 'Only verified users can leave a review', body: 'Want to log in/create account?', buttons: ['Yes', 'No'] }
+      }).afterClosed().subscribe(result => {
+        if (result === 0) {
+          this.opensso();
+        }
+      });
+    }
+  }
+  /**
+   * Open WickeyAppStore.
+  */
+  openstore() {
+    this.dialog.open(WasStore);
+  }
   // TODO: Add BlueSnap APIS
-
-  // addTodo(newTodo:Todo):Observable {
-  //   let obs = this.todoBackendService.saveTodo(newTodo);
-  //   obs.subscribe(
-  //           res => {
-  //               this._todos.next(this._todos.getValue().push(newTodo));
-  //           });
-  //   return obs;
-  // }
 
 }

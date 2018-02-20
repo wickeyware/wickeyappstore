@@ -38,11 +38,14 @@ export class WasReview {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
 
-    this.userService.user.subscribe((usr: User) => {
-      if (usr.user_id && usr.email) {
-        this.loadReview(usr.user_id);
-      }
-    });
+    if (this.userService.userObject.user_id && this.userService.userObject.email) {
+      this.loadReview(this.userService.userObject.user_id);
+    }
+    // this.userService.user.subscribe((usr: User) => {
+    //   if (usr.user_id && usr.email) {
+    //     this.loadReview(usr.user_id);
+    //   }
+    // });
   }
   /**
    * Cancel/close the dialog
@@ -94,7 +97,7 @@ export class WasReview {
 
     const loadingdialogRef = this.dialog.open(WasUp, {
       width: '300px',
-      data: { title: 'Getting review', icon: 'spinner', body: 'Loading...', stayopen: true }
+      data: { title: 'Sending review', icon: 'spinner', body: 'Saving...', stayopen: true }
     });
     this.userService.createReview(_title, _text, _rating)
       .subscribe((usr) => {
