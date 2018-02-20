@@ -31,17 +31,15 @@ export class WasMenuBtn implements OnInit {
   ngOnInit(): void {
     // this.loginlogoutMessage();
   }
-  loginMessage(): Promise <string> {
-    return this.userService.isLoggedIn().then((_isLogged: boolean) => {
-      let _displayMsg = '';
-      if (_isLogged === true) {
-        _displayMsg = 'Logout of SSO';
+  get loginMessage() {
+    return this.userService.isLoggedInObs.map((_isLogged: Boolean) => {
+      if (_isLogged) {
         this.userloggedin = true;
+        return 'Logout of SSO';
       } else {
         this.userloggedin = false;
-        _displayMsg = 'Login with SSO';
+        return 'Login with SSO';
       }
-      return _displayMsg;
     });
   }
 
