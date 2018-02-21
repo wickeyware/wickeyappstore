@@ -57,6 +57,7 @@ export class UserService {
   private _userObj: User;
   private _createNewUser = false;
   private _isLoggedIn = false;
+  private _loaded = false;
   private standalone: boolean;
   private lut = [];
 
@@ -66,19 +67,26 @@ export class UserService {
     public dialog: MatDialog
   ) {
     this.loadUser();
-    // TODO: Check if logging in
+    // Track login status
     this._user.subscribe( (usr: User) => {
-      if (this.isEmpty( usr.email ) === false) {
-        // Check if flag changed
-        if (this._isLoggedIn === false) {
+      if (this.isEmpty( usr.email ) === false) { // Logged in
+        if (this._isLoggedIn === false) { // Check if status changed
           console.warn('UserService LOGGED IN');
           this._isLoggedIn = true;
+          this._loaded = true;
+          this._loginChange.next(this._isLoggedIn);
+        } else if (this._loaded === false) {  // Ensure initial load update
+          this._loaded = true;
           this._loginChange.next(this._isLoggedIn);
         }
-      } else {
-        if (this._isLoggedIn === true) {
+      } else { // Logged out
+        if (this._isLoggedIn === true) { // Check if status changed
           console.warn('UserService LOGGED OUT');
           this._isLoggedIn = false;
+          this._loaded = true;
+          this._loginChange.next(this._isLoggedIn);
+        } else if (this._loaded === false) { // Ensure initial load update
+          this._loaded = true;
           this._loginChange.next(this._isLoggedIn);
         }
       }
@@ -91,7 +99,8 @@ export class UserService {
     return (!str || 0 === str.length);
   }
   /**
-   * Pushes boolean to all subscribers on login status changes.
+   * Pushes boolean to all subscribers on login status changes and also on initial load.
+   * So this can be used to monitor login status changes to route url, or to check login status on user load.
    *
    * @example
    * Use in angular template with the `async` pipe

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [1.18.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-21-02
+
+### Fixed
+
+* **UserService** Ensure initial push of login status (on user load, push status).
+
 ## [1.18.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-20-02
 
 ### Added
