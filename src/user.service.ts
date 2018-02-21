@@ -336,7 +336,7 @@ export class UserService {
         // On new user/recover
         // TODO: Add more of a verification
         // UPDATE USER //
-        this.localStorageService.cookie_write('was_user_id', res.user_id);
+        this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
         this.pushSubscribers(res);
         this.saveLocal(res);
       } else {
@@ -345,7 +345,7 @@ export class UserService {
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           currentUser.user_id = res.user_id;
-          this.localStorageService.cookie_write('was_user_id', res.user_id);
+          this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
         }
         if (res.email) {
           currentUser.email = res.email;
@@ -725,8 +725,10 @@ export class UserService {
     this.localStorageService.delete('was-user');
     // Delete was_user_id cookie
     this.localStorageService.cookie_remove('was_user_id');
+    this.localStorageService.cookie_remove_multi('was_user_id');
     // Delete was_session_id cookie
     this.localStorageService.cookie_remove('was_session_id');
+    this.localStorageService.cookie_remove_multi('was_session_id');
     this._isLoggedIn = false;
     this._loginChange.next(this._isLoggedIn);
     // Reload as anonymouse user

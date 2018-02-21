@@ -153,7 +153,7 @@ export class LocalStorageService {
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = '; expires=' + date.toUTCString();
     // console.log(`set cookie ${name} to ${value}`);
-    document.cookie = name + '=' + value + expires + '; path=/';
+    document.cookie = name + '=' + value + expires + ';secure;path=/';
     // console.log(document.cookie);
   }
   /**
@@ -163,5 +163,21 @@ export class LocalStorageService {
    */
   cookie_remove(name: string): void {
     this.cookie_write(name, undefined, -1);
+  }
+  cookie_write_multi(name: string, value: string, days?: number): void {
+    try {
+      if (!days) {
+        days = 365 * 20;
+      }
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = '; expires=' + date.toUTCString();
+      document.cookie = name + '=' + value + expires + ';domain=.wickeyappstore.com;secure;path=/;SameSite=Lax';
+    } catch (cookieError) {
+      console.error('cookie_write', cookieError);
+    }
+  }
+  cookie_remove_multi(name: string): void {
+    this.cookie_write_multi(name, undefined, -1);
   }
 }
