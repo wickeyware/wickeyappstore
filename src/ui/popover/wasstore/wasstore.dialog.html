@@ -9,8 +9,8 @@
     <div class="was-titlebottom"></div>
   </div>
   <div class="results-group">
-    <display-apps featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
-    <display-apps [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
+    <display-apps *ngIf="showScroller" featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
+    <display-apps *ngIf="showScroller" [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
     <br>
     <br>
   </div>

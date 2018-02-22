@@ -17,6 +17,7 @@ export class WasStore implements OnInit {
   public apps = [];
   public bannerApps = [];
   public selected_app: {};
+  public showScroller;
   @ViewChild(AppDetailPageComponent) appDetailPage: AppDetailPageComponent;
   @Output() close = new EventEmitter<any>();
   /**
@@ -64,6 +65,9 @@ export class WasStore implements OnInit {
     this.wasAppService.appGroups.subscribe((res) => {
       console.log('WAS: appGroups RETURN:', res);
       this.apps = res;
+      setTimeout(() => {
+        this.showScroller = true;
+      }, 500);
     }, (error) => {
       console.log('WAS: appGroups ERROR:', error);
       const dialogRef = this.dialog.open(WasAlert, {
