@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.0.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2) - 2018-22-02
+
+### Major Version
+
+* **WasUI** Removed all the old style popovers (alert, login, popup, review). 
+* **WasMenu** Change the layout of WasMenu
+* **AppStore** Add fix for app store lists not scrolling properly
+
 ## [1.18.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2) - 2018-21-02
 
 ### Fixed
