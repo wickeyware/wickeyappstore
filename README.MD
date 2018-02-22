@@ -4,7 +4,7 @@ Reach the next One Billion users, AppStore for Progressive WebApps.
 ## Tutorial App
 Check out a tutorial app:  
 REPO: https://github.com/wickeyware/was-tutorial/  
-LIVE DEMO: https://wickeyware.github.io/was-tutorial/
+LIVE DEMO: https://airhorn.wickeyappstore.com/
 
 ## App Store
 https://wickeyappstore.com/
