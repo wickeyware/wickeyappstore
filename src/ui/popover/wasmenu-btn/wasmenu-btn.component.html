@@ -27,16 +27,17 @@
     </div>
 </button>
 <mat-menu #menu="matMenu">
-    <mat-toolbar color="">
+    <mat-toolbar color="accent">
         <div class="wasmenu-title">WickeyAppStore™</div>
     </mat-toolbar>
-    <button mat-menu-item (click)="leavereview()">
-        <mat-icon>create</mat-icon>
-        <span>Leave a Review</span>
-    </button>
+    <br>
     <button mat-menu-item (click)="openstore()">
         <mat-icon>store</mat-icon>
         <span>Open the App Store</span>
+    </button>
+    <button mat-menu-item (click)="leavereview()">
+        <mat-icon>create</mat-icon>
+        <span>Leave a Review</span>
     </button>
     <button mat-menu-item (click)="opensso()">
         <mat-icon>person</mat-icon>
