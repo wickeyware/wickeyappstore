@@ -29,7 +29,7 @@ Apps on the WickeyAppStore must meet quality and security requirements:
 
 ## Submit your app
 
-If you have an app you want to submit, email us at [wickeyappstore@gmail.com](mailto:wickeyappstore@gmail.com). 
+If you have an app you want to submit, email us at [tim@wickeyappstore.com](mailto:tim@wickeyappstore.com). 
 
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 
@@ -82,26 +82,15 @@ export class AppModule { }
 Once WickeyAppStoreModule is imported, you can use its components, directives and pipes in your Angular application:
 
 ```html
-<!-- Put Wickey Appstore in the bootstrapped component -->
-<!--******************************************
-**
-  IMPORTANT The lines BELOW are REQUIRED
-**
-***********************************************-->
+<!-- Add the Wickey Appstore to top of the bootstrapped component -->
 <was-menu-btn></was-menu-btn>
-<!--******************************************
-**
-  Your app goes below.
-**
-***********************************************-->
 
+<!--Now your app. Thats it.-->
 <div class="myapp">
-<h1>
-  Welcome to my app!
-</h1>
+  <h1>Welcome to my app!</h1>
 </div>
 ```
 
 ## License
 
-MIT © [WickeyWare, LLC](mailto:wickeyappstore@gmail.com)
+MIT © [WickeyWare, LLC](mailto:tim@wickeyappstore.com)
