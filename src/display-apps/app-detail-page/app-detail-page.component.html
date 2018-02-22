@@ -62,9 +62,6 @@
         <br><br><br>
       </div>
     </div>
-    <!-- Pop up modal on error -->
-    <was-alert #wasalert></was-alert>
-    <was-up #wasup></was-up>
     <app-group-reviews *ngIf="selected_app" [open]="showReviews" (close)="handleReviews($event)" [storeapp_id]="selected_app.id"
       [title]="getReviewTitle()"></app-group-reviews>
   </div>

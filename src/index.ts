@@ -65,14 +65,7 @@ import { AppGroupVerticalComponent } from './display-apps/app-group-vertical/app
 import { DisplayAppMiniComponent } from './display-apps/display-app-mini/display-app-mini.component';
 import { DisplayAppFeaturedComponent } from './display-apps/display-app-featured/display-app-featured.component';
 import { DisplayAppFullwidthComponent } from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
-// POPOVER //
-import { PopoverBaseComponent } from './ui/popover/popover-base/popover-base.component';
-import { PopoverAccountInfoComponent } from './ui/popover/popover-account-info/popover-account-info.component';
-import { PopoverLoginComponent } from './ui/popover/popover-login/popover-login.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
-import { PopoverReviewComponent } from './ui/popover/popover-review/popover-review.component';
-import { PopoverUpComponent } from './ui/popover/popover-up/popover-up.component';
-import { WASAlertComponent } from './ui/popover/popover-alert/popover-alert.component';
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
@@ -106,12 +99,7 @@ export * from './display-apps/app-group-vertical/app-group-vertical.component';
 export * from './display-apps/display-app-mini/display-app-mini.component';
 export * from './display-apps/display-app-featured/display-app-featured.component';
 export * from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
-export * from './ui/popover/popover-base/popover-base.component';
-export * from './ui/popover/popover-account-info/popover-account-info.component';
-export * from './ui/popover/popover-login/popover-login.component';
-export * from './ui/popover/popover-review/popover-review.component';
-export * from './ui/popover/popover-up/popover-up.component';
-export * from './ui/popover/popover-alert/popover-alert.component';
+export * from './ui/reviews/reviews.component';
 export * from './ui/popover/wasup/wasup.dialog';
 export * from './ui/popover/wasalert/wasalert.dialog';
 export * from './ui/popover/wasreview/wasreview.dialog';
@@ -119,7 +107,6 @@ export * from './ui/popover/wassso/wassso.dialog';
 export * from './ui/popover/wassso-btn/wassso-btn.component';
 export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 export * from './ui/popover/wasstore/wasstore.dialog';
-export * from './ui/reviews/reviews.component';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
@@ -181,21 +168,15 @@ export * from './ui/was_menu/menu.module';
     WasSSOBtn,
     WasMenuBtn,
     WasStore,
+    ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
     AppGroupVerticalComponent,
     DisplayAppMiniComponent,
     DisplayAppFeaturedComponent,
-    PopoverBaseComponent,
-    PopoverAccountInfoComponent,
-    PopoverLoginComponent,
-    PopoverReviewComponent,
-    WASAlertComponent,
-    PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
-    ReviewsComponent,
     DisplayAppReviewComponent,
     AppGroupReviewsComponent,
     GetCategoryPipe
@@ -210,21 +191,15 @@ export * from './ui/was_menu/menu.module';
     WasSSOBtn,
     WasMenuBtn,
     WasStore,
+    ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
     AppGroupHorizontalComponent,
     AppGroupVerticalComponent,
     DisplayAppMiniComponent,
     DisplayAppFeaturedComponent,
-    PopoverBaseComponent,
-    PopoverAccountInfoComponent,
-    PopoverLoginComponent,
-    PopoverReviewComponent,
-    WASAlertComponent,
-    PopoverUpComponent,
     CustomValidatorDirective,
     DisplayAppFullwidthComponent,
-    ReviewsComponent,
     DisplayAppReviewComponent,
     AppGroupReviewsComponent,
     GetCategoryPipe,

@@ -3,7 +3,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { AppGroup } from '../../app.models';
 import { ApiConnectionService } from '../../api-connection.service';
 import { Subscription } from 'rxjs/Subscription';
-import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
+import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-group-reviews',
@@ -23,7 +24,6 @@ import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.
   ]
 })
 export class AppGroupReviewsComponent implements OnInit {
-  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
   @Input() public open: number;
   @Input() public title: string;
   @Input() public storeapp_id: string;
@@ -33,6 +33,7 @@ export class AppGroupReviewsComponent implements OnInit {
 
   constructor(
     private apiConnectionService: ApiConnectionService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -43,9 +44,9 @@ export class AppGroupReviewsComponent implements OnInit {
       this.reviews = _reviews;
     }, (error) => {
       console.log('AppGroupReviewsComponent: ERROR:', error);
-      this.wasalert.open(
-        { title: 'Attention', text: error }
-      );
+      this.dialog.open(WasAlert, {
+        data: { title: 'Attention', body: error, buttons: ['Okay'] }
+      });
     });
 
   }

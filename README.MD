@@ -44,13 +44,12 @@ $ npm install wickeyappstore --save
 
 Link external dependencies in the header of your index.html
 ```html
-<!-- WickeyAppStore global css-->
-<link rel="stylesheet" href="https://unpkg.com/wickeyappstore@1.9.15/styles.css">
-<!-- WICKEYAPPSTORE DEPENDENCY Home Screen Slider https://www.npmjs.com/package/angular2-useful-swiper -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- WICKEYAPPSTORE -->
+  <link defer href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
+
+  <!-- PUSH NOTIFICATIONS -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 ```
 
 and then from your Angular `AppModule`:
@@ -89,20 +88,18 @@ Once WickeyAppStoreModule is imported, you can use its components, directives an
   IMPORTANT The lines BELOW are REQUIRED
 **
 ***********************************************-->
-<!-- A button, when clicked will show the SSO overlay screen (create or login to accounts) -->
-<was-popover-login #loginpopover (close)="closeLoginScreen($event)"></was-popover-login>
-<was-spinner [busy]="busy" [message]='"Please wait.."'></was-spinner>
-<was-alert #wasalert (close)="closealert($event)"></was-alert>
-<!-- The WAS button, when clicked will show the store. Close will be called when app store closes -->
-<wickey-appstore initialPosition="bottomLeft" (close)="onWASClose($event)"></wickey-appstore>
+<was-menu-btn></was-menu-btn>
 <!--******************************************
 **
   Your app goes below.
 **
 ***********************************************-->
+
+<div class="myapp">
 <h1>
-  Welcome to my app: {{name}}
+  Welcome to my app!
 </h1>
+</div>
 ```
 
 ## License

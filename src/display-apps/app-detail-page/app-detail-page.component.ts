@@ -5,8 +5,10 @@ import { enterLeaveAnim } from '../../animations';
 import { Subscription } from 'rxjs/Subscription';
 import { WasAppService } from '../../was-app.service';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
-import { WASAlertComponent } from '../../ui/popover/popover-alert/popover-alert.component';
-import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.component';
+import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
+import { WasUp } from '../../ui/popover/wasup/wasup.dialog';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 // animations: [slideInDownAnimation]
 @Component({
   selector: 'was-detail-page',
@@ -15,8 +17,6 @@ import { PopoverUpComponent } from '../../ui/popover/popover-up/popover-up.compo
   animations: [enterLeaveAnim]
 })
 export class AppDetailPageComponent implements OnInit {
-  @ViewChild(WASAlertComponent) wasalert: WASAlertComponent;
-  @ViewChild(PopoverUpComponent) wasup: PopoverUpComponent;
   @Output() close = new EventEmitter<string>();
   public busy: Subscription;
   public selected_app: any;
@@ -38,7 +38,8 @@ public config: Object = {
 
   constructor(
     @Inject( DOCUMENT ) dom: any,
-    private wasAppService: WasAppService
+    private wasAppService: WasAppService,
+    public dialog: MatDialog,
   ) {
     this.dom = dom;
   }
@@ -46,32 +47,6 @@ public config: Object = {
   ngOnInit() {}
 
   open(_app: any): void {
-    // NOTE: Could pass only slug too, simply add `_slug: string` to params.
-    // if ( _slug ) { this.slug = _slug; }
-    // this.busy = this.wasAppService.appFromSlug(_slug).subscribe((_selected_app: any) => {
-    //   console.log('AppDetailPageComponent', _selected_app);
-    //   if (_selected_app[0] !== undefined) {
-    //     _selected_app = _selected_app[0];
-    //   }
-    //   this.selected_app = _selected_app;
-    //   if (this.busy) {
-    //     this.busy.unsubscribe();
-    //   } else {
-    //     setTimeout(() => {
-    //       if (this.busy) {
-    //         this.busy.unsubscribe();
-    //       }
-    //     }, 40);
-    //   }
-    //   if (this.selected_app.screenshot_1) {
-    //     this.hasscreenshots = true;
-    //   }
-    // }, (error) => {
-    //   console.log('AppDetailPageComponent: ERROR:', error);
-    //   this.wasalert.open(
-    //     { title: 'Attention', text: error }
-    //   );
-    // });
     this.selected_app = _app;
     if (this.selected_app.screenshot_1) {
       this.hasscreenshots = true;
@@ -126,7 +101,7 @@ public config: Object = {
     (<any>shareLink).blur();
     // scroll back to top
     window.scrollTo(0, 0);
-    this.wasup.open('Link Copied', 'Copied link to clipboard!', 'fa fa-share fa-3x');
+    this.dialog.open(WasUp, {data: { title: 'Link Copied', icon: 'done', body: 'Copied link to clipboard!'} });
   }
 
   doLinkCopy() {
@@ -134,9 +109,9 @@ public config: Object = {
       this.performCopyLink();
     } catch (shareError) {
       console.error('onShareBtn', shareError);
-      this.wasalert.open(
-        { title: 'Copy Error', text: `Share link is: https://wickeyappstore.com/app/${this.selected_app.slug}` }
-      );
+      this.dialog.open(WasAlert, {
+        data: { title: 'Copy Error', body: 'Share link is: https://wickeyappstore.com/app/${this.selected_app.slug}', buttons: ['Okay'] }
+      });
     }
   }
 
