@@ -308,7 +308,7 @@ export class ApiConnectionService {
   * @param [_params] None needed, just future proofing.
   * @returns List of reviews
   */
-  getInapps(_params?: any): Observable<[Review]> {
+  getInapps(_params?: any): Observable<[Inapp]> {
     this.handleHeaders();
     const _query_string = this.encode_query_string(_params);
     return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
