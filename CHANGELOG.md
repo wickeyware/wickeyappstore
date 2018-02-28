@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-28-02
+
+### Fixed
+
+* **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
+
 ## [2.0.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0) - 2018-22-02
 
 ### Major Version

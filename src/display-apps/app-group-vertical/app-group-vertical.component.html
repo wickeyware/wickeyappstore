@@ -1,11 +1,15 @@
 <div *ngIf="open" class="was-popup-container" [@pageOpen]="in">
   <div class="was-popup">
     <div class="was-page-content-margin">&nbsp;</div>
-    <div class="was-titlebar">
-      <h3 class="was-titletext">{{apps.title}}</h3>
-      <button (click)="goBack($event)" class="was-navClose" title="back"></button>
-      <div class="was-titlebottom"></div>
-    </div>
+    <header>
+      <mat-toolbar role="header" class="was-titlebar" color="primary">
+        <button class="main-header-sidebar" mat-icon-button (click)="goBack($event)" title="back">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="main-header-text">{{apps.title}}</span>
+        <span class="main-header-sidebar"></span>
+      </mat-toolbar>
+    </header>
     <div class="was-popup-content noselect">
       <div class="was-popup-panel">
         <display-app-fullwidth *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-fullwidth>

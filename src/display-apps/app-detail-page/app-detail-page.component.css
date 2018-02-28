@@ -168,6 +168,7 @@
     margin-top: 10px;
     font-weight: 280;
     font-size: 1em;
+    white-space: pre-wrap;
 }
 .light-circle-separator {
     width: 90%;

@@ -54,6 +54,21 @@ button {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+/* Every toolbar row uses a flexbox row layout. */
+.main-header-sidebar { 
+  width: 40px; 
+}
+.main-header-text    { 
+  flex: 2; 
+  text-align: center;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgb(0, 0, 0);
+}
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.  */
+  flex: 1 1 auto;
+}
+
 .was-fullscreen {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -91,95 +106,9 @@ button {
 .was-titlebar {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  display: block;
-  width: 100%;
-  height: 50px;
-  color: white;
-  font-size: medium;
-  background-color: #FF5402;
   z-index: 89;
-  box-shadow: 0 1px 0 0 #d2d2d3;
-  /* no select text */
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome and Opera */
-}
-.was-flex-titlebar {
-  height: 50px;
-  align-items: stretch;
-  -webkit-align-items: stretch;
-  display: flex;
-  display: -webkit-flex;
-  flex: 1;
-}
-.was-titlebar .was-titlebottom {
-	border-top: 1px solid #fff;
-  box-shadow: 0 -1px 0 0 #d2d2d3;
-  width: 100%;
-  background-color: #f5f5f7;
-}
-.was-titlebar .was-titletext {
-  display: inline-block;
-  width: 100%;
-  color: white;
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: 300;
-  text-shadow: 0 1px 0 #A23300;
-  /*vertical-align: middle;*/
-  line-height: 50px;       /* the same as your div height */
-  /* This dictates the margin above and below the h3 tag, default is 1em and 0 for left/right */
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
 }
 
-.was-footer {
-  position: fixed;
-  bottom: 0;
-  height: 40px;
-  width: 100%;
-  background: #FF5402;
-  text-align: center;
-  color: white;
-  text-shadow: 0 1px 0 #A23300;
-  box-shadow: 0 0 1px #A23300;
-  font-size: 1em;
-  font-weight: 300;
-  line-height: 40px;       /* the same as your div height */
-  z-index: 17; 
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  /* no select text */
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                              supported by Chrome and Opera */
-}
-.was-footer .left {
-  display: inline-block;
-  width: -webkit-calc(33% - 2px);
-  width:    -moz-calc(33% - 2px);
-  width:         calc(33% - 2px);
-}
-.was-footer .center {
-  display: inline-block;
-  width: -webkit-calc(33% - 2px);
-  width:    -moz-calc(33% - 2px);
-  width:         calc(33% - 2px);
-}
-.was-footer .right {
-  display: inline-block;
-  width: -webkit-calc(33% - 2px);
-  width:    -moz-calc(33% - 2px);
-  width:         calc(33% - 2px);
-}
 
 
 /* angular2-busy */
@@ -387,7 +316,7 @@ button {
 }
 /* margin is height of header, so content starts below */
 .was-page-content-margin {
-  margin-top: 50px;
+  margin-top: 54px;
   height: 1px;
   background-color: #f5f5f7;
 }

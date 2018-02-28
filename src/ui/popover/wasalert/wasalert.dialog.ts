@@ -31,7 +31,7 @@ export class WasAlert {
    *    } else {
    *      console.log('Dialog was cancelled');
    *    }
-   *  }
+   *  });
    *
    * With Input field
     * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', input: true, input_value: 'text' } });
@@ -41,7 +41,7 @@ export class WasAlert {
    *    } else {
    *      console.log('Dialog was cancelled');
    *    }
-   *  }
+   *  });
    * With List of choices
    * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', list: ['item1', 'item2'] } });
    *     dialogRef.afterClosed().subscribe(result => {
@@ -50,7 +50,7 @@ export class WasAlert {
    *    } else {
    *      console.log('Dialog was cancelled');
    *    }
-   *  }
+   *  });
    *
    * The MatDialog has additional properties.
    * By default, clicking outside the window does not close the dialog. Change by setting to false;

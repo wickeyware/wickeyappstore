@@ -11,7 +11,6 @@ import { WasAlert } from '../../../ui/popover/wasalert/wasalert.dialog';
   styleUrls: ['../was.component.css'],
 })
 export class WasStore implements OnInit {
-  public showCloseBtn = true;
   public showVerticalList: boolean; // dictate if the full screen vertical list is shown
   public selectedAppList: AppGroup;
   public apps = [];
@@ -48,7 +47,6 @@ export class WasStore implements OnInit {
   }
   ngOnInit(): void {
     console.log('WAS: ngOnInit');
-    this.showCloseBtn = true;
     this.getFeaturedGroups();
   }
 

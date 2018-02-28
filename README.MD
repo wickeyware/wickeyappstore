@@ -29,7 +29,7 @@ Apps on the WickeyAppStore must meet quality and security requirements:
 
 ## Submit your app
 
-If you have an app you want to submit, email us at [tim@wickeyappstore.com](mailto:tim@wickeyappstore.com). 
+Get started here: https://wickeyappstore.com/app/developer-portal
 
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 

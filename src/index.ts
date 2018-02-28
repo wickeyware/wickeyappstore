@@ -72,8 +72,6 @@ import { DisplayAppReviewComponent } from './display-apps/display-app-review/dis
 import { AppGroupReviewsComponent } from './display-apps/app-group-reviews/app-group-reviews.component';
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
-// WAS FAN MENU IMPORT //
-import { FanMenuModule } from './ui/was_menu/menu.module';
 // WAS MATERIAL POPOVERS //
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
@@ -111,8 +109,6 @@ export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
-// WAS FAN MENU EXPORT //
-export * from './ui/was_menu/menu.module';
 
 
 @NgModule({
@@ -156,7 +152,6 @@ export * from './ui/was_menu/menu.module';
     MatToolbarModule,
     MatTooltipModule,
     SwiperModule,
-    FanMenuModule
   ],
   declarations: [
     WasSpinnerComponent,

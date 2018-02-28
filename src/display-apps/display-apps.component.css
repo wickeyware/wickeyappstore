@@ -3,14 +3,6 @@
   width: 100%;
   z-index: 0;
 }
-.was-titlebar {
-  background-color: white;
-  width: 100%;
-  height: 20px;
-}
-.was-titlebar .title {
-  color: black;
-}
 .featuredapps {
   width: 100%;
   margin-bottom: 10px;
