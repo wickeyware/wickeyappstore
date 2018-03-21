@@ -143,7 +143,7 @@
                                     <a href="../components/WasSSO.html" >WasSSO</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                    <a href="../components/WasSSOBtn.html"  data-type="entity-link" class="active" >WasSSOBtn</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -172,7 +172,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/CustomValidatorDirective.html"  data-type="entity-link" class="active" >CustomValidatorDirective</a>
+                                    <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
                                 </li>
                         </ul>
                     </li>
@@ -422,7 +422,7 @@
                                            <a href="../components/WasSSO.html" >WasSSO</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                           <a href="../components/WasSSOBtn.html"  data-type="entity-link" class="active" >WasSSOBtn</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -451,7 +451,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/CustomValidatorDirective.html"  data-type="entity-link" class="active" >CustomValidatorDirective</a>
+                                           <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
                                        </li>
                                </ul>
                            </li>
@@ -572,16 +572,15 @@
                    
                    </nav>
                </div>
-               <div class="content directive">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
 <ol class="breadcrumb">
-  <li>Directives</li>
-  <li>CustomValidatorDirective</li>
+  <li>Components</li>
+  <li>WasSSOBtn</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -589,368 +588,493 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/custom-validator.directive.ts</code>
-        </p>
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/ui/popover/wassso-btn/wassso-btn.component.ts</code>
+</p>
 
 
-            <p class="comment">
-                <h3>Implements</h3>
-            </p>
-            <p class="comment">
-                        <code><a href="https://angular.io/api/forms/Validator" target="_blank" >Validator</a></code>
-                        <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-            </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
-        <section>
-            <h3>Metadata</h3>
-            <table class="table table-sm table-hover">
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>was-sso-btn</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>.was.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./wassso-btn.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#buttonClick">buttonClick</a>
+                            </li>
+                            <li>
+                                <a href="#checkLoggingIn">checkLoggingIn</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#close">close</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
-                        <td class="col-md-3">providers</td>
-                        <td class="col-md-9">
-                            <code>
-                                { : , : , : true }
-                            </code>
+                        <td class="col-md-4">
+    <code>constructor(dialog: MatDialog, userService: <a href="../injectables/UserService.html">UserService</a>)</code>
                         </td>
                     </tr>
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:13</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
-                        <td class="col-md-3">selector</td>
-                        <td class="col-md-9"><code>[forbiddenValue]</code></td>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>WickeyAppStore SSO Interface</p>
+    <p>SIMPLY ADD to HTML where appropriate</p>
+    <p><was-sso-btn></was-sso-btn></p>
+    <p>If you need to know if successfully logged in</p>
+    <p>&lt;was-sso-btn (close)=&quot;closesso($event)&gt;</was-sso-btn></p>
+    </div>
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>dialog</td>
+                                                      
+                                                            <td>
+                                                                        <code>MatDialog</code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>userService</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
                     </tr>
-
                 </tbody>
             </table>
-        </section>
+    </section>
 
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
+
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="close"></a>
+                            <code>close</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;literal type&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:13</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="buttonClick"></a>
+                            <span class="name">
+                                <b>
+                                buttonClick
+                                </b>
+                                <a href="#buttonClick"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>buttonClick()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:51</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="checkLoggingIn"></a>
+                            <span class="name">
+                                <b>
+                                checkLoggingIn
+                                </b>
+                                <a href="#checkLoggingIn"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>checkLoggingIn()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:35</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnInit"></a>
+                            <span class="name">
+                                <b>
+                                ngOnInit
+                                </b>
+                                <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:29</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="dialog"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                dialog
+                                </b>
+                                <a href="#dialog"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>dialog:     <code>MatDialog</code>
+    </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
+                                <i>Type : </i>    <code>MatDialog</code>
+    
                             </td>
                         </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Private</span>
-                                        <a href="#valFn">valFn</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <a href="#ngOnChanges">ngOnChanges</a>
-                                    </li>
-                                    <li>
-                                        <a href="#validate">validate</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Inputs</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <a href="#forbiddenValue">forbiddenValue</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-
-            <section>
-                <h3 id="inputs">Inputs</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <a name="forbiddenValue"></a>
-                                    <code>forbiddenValue</code>
-                                </td>
-                                <td class="col-md-10">
-                                      <p>
-                                        <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                      </p>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-2" colspan="2">
-                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/custom-validator.directive.ts:84</a></div>
-                                        </td>
-                                    </tr>
-                        </tbody>
-                    </table>
-            </section>
-
-
-
-
-            <section>
-                
-                    <h3 id="methods">
-                        Methods
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="ngOnChanges"></a>
-                                    <span class="name">
-                                        <b>
-                                        ngOnChanges
-                                        </b>
-                                        <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
-                                    </span>
+                                        <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/ui/popover/wassso-btn/wassso-btn.component.ts:25</a></div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/custom-validator.directive.ts:87</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>changes</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="validate"></a>
-                                    <span class="name">
-                                        <b>
-                                        validate
-                                        </b>
-                                        <a href="#validate"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>validate(control: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/custom-validator.directive.ts:98</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>control</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>literal type</code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+    
+    
+                </tbody>
+            </table>
+    </section>
 
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="valFn"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Private</span>
-                                        valFn
-                                        </b>
-                                        <a href="#valFn"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>valFn:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>Validators.nullValidator</code>
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/custom-validator.directive.ts:85</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-            </section>
-
-
-    </div>
+</div>
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
-import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { WasSSO } from &#x27;../../../ui/popover/wassso/wassso.dialog&#x27;;
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material&#x27;;
+import { UserService } from &#x27;../../../user.service&#x27;;
+import { User } from &#x27;../../../app.models&#x27;;
 
-/** A hero&#x27;s name can&#x27;t match the given regular expression */
-export function customValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} &#x3D;&gt; {
-    const name &#x3D; control.value;
-    const no &#x3D; !nameRe.test(name);
-    // console.log(&#x27;customValidator name:&#x27; + name + &#x27; no:&#x27; + no);
-    return no ? {&#x27;forbiddenValue&#x27;: {name}} : null;
-  };
-}
-
-@Directive({
-  selector: &#x27;[forbiddenValue]&#x27;,
-  providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
+@Component({
+  selector: &#x27;was-sso-btn&#x27;,
+  templateUrl: &#x27;./wassso-btn.component.html&#x27;,
+  styleUrls: [&#x27;../was.component.css&#x27;],
 })
-export class CustomValidatorDirective implements Validator, OnChanges {
-  @Input() forbiddenValue: string;
-  private valFn &#x3D; Validators.nullValidator;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const change &#x3D; changes[&#x27;forbiddenValue&#x27;];
-    if (change) {
-      const val: string | RegExp &#x3D; change.currentValue;
-      const re &#x3D; val instanceof RegExp ? val : new RegExp(val, &#x27;i&#x27;);
-      this.valFn &#x3D; customValidator(re);
-    } else {
-      this.valFn &#x3D; Validators.nullValidator;
-    }
+export class WasSSOBtn implements OnInit {
+  @Output() close: EventEmitter&lt;{}&gt; &#x3D; new EventEmitter();
+  /**
+ * WickeyAppStore SSO Interface
+ *
+ * SIMPLY ADD to HTML where appropriate
+ * &lt;was-sso-btn&gt;&lt;/was-sso-btn&gt;
+ *
+ * If you need to know if successfully logged in
+ * &lt;was-sso-btn (close)&#x3D;&quot;closesso($event)&gt;&lt;/was-sso-btn&gt;
+ * @param {function} close OPTIONAL Emits logged in user email to function on successful login
+*/
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService,
+  ) {
+  }
+  ngOnInit(): void {
+    console.log(&#x27;wassobtn ngoninit&#x27;)
+    this.userService.user.subscribe((usr: User) &#x3D;&gt; {
+      this.checkLoggingIn();
+    });
+  }
+  checkLoggingIn() {
+    console.log(&#x27;wassso-btn checking logging in&#x27;);
+    setTimeout(() &#x3D;&gt; {
+      if (this.userService.userObject.logging_in) {
+        // then show the SSO
+        console.log(&#x27;wassso-btn email&#x27;, this.userService.userObject.token_email);
+        const thissso &#x3D; this.dialog.open(WasSSO, {
+          data: { email: this.userService.userObject.token_email }
+        });
+        thissso.afterClosed().subscribe(result &#x3D;&gt; {
+          this.close.emit(result);
+        });
+      }
+    }, 1000);
   }
 
-  validate(control: AbstractControl): {[key: string]: any} {
-    return this.valFn(control);
+  buttonClick() {
+    const thissso &#x3D; this.dialog.open(WasSSO);
+    thissso.afterClosed().subscribe(result &#x3D;&gt; {
+      this.close.emit(result);
+    });
   }
+
 }
 </code></pre>
     </div>
 
+    <div class="tab-pane fade" id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button class&#x3D;&quot;was-right-button&quot; mat-fab color&#x3D;&quot;&quot; (click)&#x3D;&quot;buttonClick()&quot;&gt;
+    &lt;div class&#x3D;&quot;icon-svg&quot;&gt;
+        &lt;svg viewBox&#x3D;&quot;0 0 30 30&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill-rule&#x3D;&quot;evenodd&quot; clip-rule&#x3D;&quot;evenodd&quot; stroke-linejoin&#x3D;&quot;round&quot;
+            stroke-miterlimit&#x3D;&quot;1.41&quot;&gt;
+            &lt;text x&#x3D;&quot;10.54&quot; y&#x3D;&quot;24.13&quot; font-family&#x3D;&quot;&#x27;HelveticaNeue&#x27;,&#x27;Helvetica Neue&#x27;&quot; font-size&#x3D;&quot;12&quot; transform&#x3D;&quot;matrix(.912 0 0 .912 -5.39 7.38)&quot;&gt;SSO&lt;/text&gt;
+            &lt;path d&#x3D;&quot;M15 8.66a6.1 6.1 0 0 0-6.1 6.1c0 1.13.9 2.04 2.03 2.04h8.14c1.13 0 2.04-.91 2.04-2.03A6.1 6.1 0 0 0 15 8.66z&quot;
+                fill&#x3D;&quot;#ff601f&quot; fill-rule&#x3D;&quot;nonzero&quot; /&gt;
+            &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;6&quot; r&#x3D;&quot;6&quot; fill&#x3D;&quot;#ff601f&quot; transform&#x3D;&quot;translate(8.9 .52) scale(.50894)&quot; /&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button class="was-right-button" mat-fab color="" (click)="buttonClick()">    <div class="icon-svg">        <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"            stroke-miterlimit="1.41">            <text x="10.54" y="24.13" font-family="\'HelveticaNeue\',\'Helvetica Neue\'" font-size="12" transform="matrix(.912 0 0 .912 -5.39 7.38)">SSO</text>            <path d="M15 8.66a6.1 6.1 0 0 0-6.1 6.1c0 1.13.9 2.04 2.03 2.04h8.14c1.13 0 2.04-.91 2.04-2.03A6.1 6.1 0 0 0 15 8.66z"                fill="#ff601f" fill-rule="nonzero" />            <circle cx="12" cy="6" r="6" fill="#ff601f" transform="translate(8.9 .52) scale(.50894)" />        </svg>    </div></button></div>'
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
+    var ACTUAL_COMPONENT = {'name': 'WasSSOBtn'};
+</script>
+<script src="../js/tree.js"></script>
+
 
 
 

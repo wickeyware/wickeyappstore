@@ -23,8 +23,6 @@ const timing = '.3s ease';
  * this.busy = some_observable.subscribe();
  *
  * @export
- * @class WasSpinnerComponent
- * @implements {DoCheck}
  */
 @Component({
   selector: 'was-spinner',

@@ -9,7 +9,6 @@ export interface User {
   coins?: number;
   data?: any;
   email?: string;
-  pro_user?: boolean;
   first_name?: string;
   last_name?: string;
   zip_code?: string;
@@ -68,12 +67,14 @@ export interface Review {
 }
 
 export interface Inapp {
-  storeapp_id: number;
-  purchase_id: string;
+  storeappId: number;
+  purchaseId: string;
+  title: string;
   description: string;
-  pro_mode: boolean;
+  isConsumable: boolean;
+  isOwned?: boolean;
   price: number;
-  coins: number
+  coins: number;
   paypal_checkout?: string;
   bluesnap_checkout?: string;
 }

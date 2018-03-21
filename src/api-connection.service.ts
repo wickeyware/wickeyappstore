@@ -305,17 +305,17 @@ export class ApiConnectionService {
   * this.apiConnectionService.getInapps().subscribe((_inapps: any) => {
   *  console.log(_inapps);
   * });
-  * @param [_params] None needed, just future proofing.
-  * @returns List of reviews
+  * @param [_params] {user_id: <string>}.
+  * @returns List of inapps
   */
-  getInapps(_params?: any): Observable<[Inapp]> {
-    this.handleHeaders();
-    const _query_string = this.encode_query_string(_params);
-    return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
-          .map((res: any) => {
-            return this.extractData(res).inapps;
-          }).catch(this.handleError).share();
-  }
+ getInapps(_params?: any): Observable<[Inapp]> {
+  this.handleHeaders();
+  const _query_string = this.encode_query_string(_params);
+  return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
+        .map((res: any) => {
+          return this.extractData(res).inapps;
+        }).catch(this.handleError).share();
+}
 
   /**
    * Creates a new purchase.

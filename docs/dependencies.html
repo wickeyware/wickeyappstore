@@ -45,7 +45,7 @@
                                     </a>
                                 </li>
                                 <li class="link">
-                                  <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                  <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
                                         <a href="./changelog.html"
@@ -61,7 +61,7 @@
                                 </li>
                                 <li class="link">
                                     <a href="./dependencies.html"
-                                        
+                                         class="active" 
                                         >
                                         <span class="fa fa-fw fa-list"></span>Dependencies
                                     </a>
@@ -324,7 +324,7 @@
                                            </a>
                                        </li>
                                        <li class="link">
-                                         <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                         <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
                                                <a href="./changelog.html"
@@ -340,7 +340,7 @@
                                        </li>
                                        <li class="link">
                                            <a href="./dependencies.html"
-                                               
+                                                class="active" 
                                                >
                                                <span class="fa fa-fw fa-list"></span>Dependencies
                                            </a>
@@ -572,86 +572,31 @@
                    
                    </nav>
                </div>
-               <div class="content getting-started">
+               <div class="content package-dependencies">
                    <div class="content-data">
 
-<h1 id="wickeyappstore">WickeyAppStore</h1>
-<p>Reach the next One Billion users, AppStore for Progressive WebApps.</p>
-<h2 id="tutorial-app">Tutorial App</h2>
-<p>Check out a tutorial app:<br>REPO: <a href="https://github.com/wickeyware/was-tutorial/">https://github.com/wickeyware/was-tutorial/</a><br>LIVE DEMO: <a href="https://airhorn.wickeyappstore.com/">https://airhorn.wickeyappstore.com/</a></p>
-<h2 id="app-store">App Store</h2>
-<p><a href="https://wickeyappstore.com/">https://wickeyappstore.com/</a></p>
-<h2 id="progressive-web-app-store">Progressive Web App Store</h2>
-<p>Reach the next One Billion users. WickeyAppStore is a full featured App Store for <strong>PWA</strong> web-apps. A <strong>PWA</strong> makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.</p>
-<p>Apps on the WickeyAppStore must meet quality and security requirements:</p>
-<ul>
-<li><strong>Safety</strong> - must be served via HTTPS to ensure that the real content has not been tampered.</li>
-<li><strong>Responsive</strong> - can fit all resolutions like desktop, tablet and mobile.</li>
-<li><strong>Progressive</strong>- work in all modern browsers because they use progressive enhancement concepts.</li>
-<li><strong>Connectivity independent</strong> - need to work on any type of connection, including offline.</li>
-<li><strong>Engageable</strong> - using push notifications, &quot;add to home&quot; feature to be more app-like.</li>
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+    <li>Dependencies</li>
+</ol>
+<ul class="dependencies-list">
+    <li>
+        <b>event-stream</b> : ^3.3.4</li>
+    <li>
+        <b>opn</b> : ^5.2.0</li>
+    <li>
+        <b>send</b> : ^0.16.2</li>
 </ul>
-<h2 id="benefits">Benefits</h2>
-<ul>
-<li><strong>Trust</strong> - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.</li>
-<li><strong>Single Sign On</strong> - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.</li>
-<li><strong>Monetization</strong> - we provide monetization tools including in-app purchases and ads.</li>
-<li><strong>Traffic</strong> - we feature unique and cool apps, and all apps benefit from being under one umbrella. </li>
-</ul>
-<h2 id="submit-your-app">Submit your app</h2>
-<p>Get started here: <a href="https://wickeyappstore.com/app/developer-portal">https://wickeyappstore.com/app/developer-portal</a></p>
-<p><strong>NOTE</strong>: Please check back frequently. We will keep this document updated all the time.</p>
-<h2 id="quickstart">QuickStart</h2>
-<p>To install this library, run: (NOTE: Install all dependencies)</p>
-<pre class="line-numbers"><code class="language-bash">$ npm install wickeyappstore --save</code></pre><p>Link external dependencies in the header of your index.html</p>
-<pre class="line-numbers"><code class="language-html">  &lt;!-- WICKEYAPPSTORE --&gt;
-  &lt;link defer href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js&quot;&gt;&lt;/script&gt;
-
-  &lt;!-- PUSH NOTIFICATIONS --&gt;
-  &lt;script src=&quot;https://cdn.onesignal.com/sdks/OneSignalSDK.js&quot; async&gt;&lt;/script&gt;</code></pre><p>and then from your Angular <code>AppModule</code>:</p>
-<pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
-import { NgModule } from &#39;&#64;angular/core&#39;;
-import { FormsModule } from &#39;&#64;angular/forms&#39;;
-import { AppComponent } from &#39;./app.component&#39;;
-// Import Wickey AppStore
-import { WickeyAppStoreModule } from &#39;wickeyappstore&#39;;
-
-&#64;NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    FormsModule,
-    // Specify as an import
-    WickeyAppStoreModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }</code></pre><p>Once WickeyAppStoreModule is imported, you can use its components, directives and pipes in your Angular application:</p>
-<pre class="line-numbers"><code class="language-html">&lt;!-- Add the Wickey Appstore to top of the bootstrapped component --&gt;
-&lt;was-menu-btn&gt;&lt;/was-menu-btn&gt;
-
-&lt;!--Now your app. Thats it.--&gt;
-&lt;div class=&quot;myapp&quot;&gt;
-  &lt;h1&gt;Welcome to my app!&lt;/h1&gt;
-&lt;/div&gt;</code></pre><h2 id="license">License</h2>
-<p>MIT © <a href="mailto:tim@wickeyappstore.com">WickeyWare, LLC</a></p>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -134,7 +134,7 @@
                                     <a href="../components/WasAlert.html" >WasAlert</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
+                                    <a href="../components/WasMenuBtn.html"  data-type="entity-link" class="active" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
@@ -172,7 +172,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/CustomValidatorDirective.html"  data-type="entity-link" class="active" >CustomValidatorDirective</a>
+                                    <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
                                 </li>
                         </ul>
                     </li>
@@ -413,7 +413,7 @@
                                            <a href="../components/WasAlert.html" >WasAlert</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
+                                           <a href="../components/WasMenuBtn.html"  data-type="entity-link" class="active" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
@@ -451,7 +451,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/CustomValidatorDirective.html"  data-type="entity-link" class="active" >CustomValidatorDirective</a>
+                                           <a href="../directives/CustomValidatorDirective.html" >CustomValidatorDirective</a>
                                        </li>
                                </ul>
                            </li>
@@ -572,16 +572,15 @@
                    
                    </nav>
                </div>
-               <div class="content directive">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
 <ol class="breadcrumb">
-  <li>Directives</li>
-  <li>CustomValidatorDirective</li>
+  <li>Components</li>
+  <li>WasMenuBtn</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -589,368 +588,499 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/custom-validator.directive.ts</code>
-        </p>
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts</code>
+</p>
 
 
-            <p class="comment">
-                <h3>Implements</h3>
-            </p>
-            <p class="comment">
-                        <code><a href="https://angular.io/api/forms/Validator" target="_blank" >Validator</a></code>
-                        <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-            </p>
 
 
-        <section>
-            <h3>Metadata</h3>
-            <table class="table table-sm table-hover">
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>was-menu-btn</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>.was.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./wasmenu-btn.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userloggedin">userloggedin</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#leavereview">leavereview</a>
+                            </li>
+                            <li>
+                                <a href="#opensso">opensso</a>
+                            </li>
+                            <li>
+                                <a href="#openstore">openstore</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Accessors</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loginMessage">loginMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
-                        <td class="col-md-3">providers</td>
-                        <td class="col-md-9">
-                            <code>
-                                { : , : , : true }
-                            </code>
+                        <td class="col-md-4">
+    <code>constructor(userService: <a href="../injectables/UserService.html">UserService</a>)</code>
                         </td>
                     </tr>
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:12</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
-                        <td class="col-md-3">selector</td>
-                        <td class="col-md-9"><code>[forbiddenValue]</code></td>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>WickeyAppStore Interface</p>
+    <p>SIMPLY ADD to HTML where appropriate</p>
+    <p><was-menu-btn></was-menu-btn></p>
+    </div>
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>userService</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
                     </tr>
-
                 </tbody>
             </table>
-        </section>
+    </section>
 
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
+
+
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="leavereview"></a>
+                            <span class="name">
+                                <b>
+                                leavereview
+                                </b>
+                                <a href="#leavereview"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>leavereview()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:35</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="opensso"></a>
+                            <span class="name">
+                                <b>
+                                opensso
+                                </b>
+                                <a href="#opensso"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>opensso()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:41</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="openstore"></a>
+                            <span class="name">
+                                <b>
+                                openstore
+                                </b>
+                                <a href="#openstore"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>openstore()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:38</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="userloggedin"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                userloggedin
+                                </b>
+                                <a href="#userloggedin"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>userloggedin:     <code></code>
+    </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
+                                <i>Default value : </i><code>false</code>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Private</span>
-                                        <a href="#valFn">valFn</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <a href="#ngOnChanges">ngOnChanges</a>
-                                    </li>
-                                    <li>
-                                        <a href="#validate">validate</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Inputs</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <a href="#forbiddenValue">forbiddenValue</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-
-            <section>
-                <h3 id="inputs">Inputs</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <a name="forbiddenValue"></a>
-                                    <code>forbiddenValue</code>
-                                </td>
-                                <td class="col-md-10">
-                                      <p>
-                                        <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                      </p>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-2" colspan="2">
-                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/custom-validator.directive.ts:84</a></div>
-                                        </td>
-                                    </tr>
-                        </tbody>
-                    </table>
-            </section>
-
-
-
-
-            <section>
-                
-                    <h3 id="methods">
-                        Methods
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="ngOnChanges"></a>
-                                    <span class="name">
-                                        <b>
-                                        ngOnChanges
-                                        </b>
-                                        <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
-                                    </span>
+                                        <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:12</a></div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/custom-validator.directive.ts:87</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>changes</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="validate"></a>
-                                    <span class="name">
-                                        <b>
-                                        validate
-                                        </b>
-                                        <a href="#validate"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>validate(control: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/custom-validator.directive.ts:98</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>control</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>literal type</code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+    
+    
+                </tbody>
+            </table>
+    </section>
 
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="valFn"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Private</span>
-                                        valFn
-                                        </b>
-                                        <a href="#valFn"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>valFn:     <code></code>
-            </code>
-                                </td>
-                            </tr>
+    <section>
+        <h3 id="accessors">
+            Accessors
+        </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="loginMessage"></a>
+                            <span class="name"><b>loginMessage</b><a href="#loginMessage"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="accessor"><b>get</b><code>loginMessage()</code></span>
+                        </td>
+                    </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>Validators.nullValidator</code>
+                                        <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/ui/popover/wasmenu-btn/wasmenu-btn.component.ts:23</a></div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/custom-validator.directive.ts:85</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-            </section>
-
-
-    </div>
+    
+                </tbody>
+            </table>
+    </section>
+</div>
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
-import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { UserService } from &#x27;../../../user.service&#x27;;
+import { User } from &#x27;../../../app.models&#x27;;
 
-/** A hero&#x27;s name can&#x27;t match the given regular expression */
-export function customValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} &#x3D;&gt; {
-    const name &#x3D; control.value;
-    const no &#x3D; !nameRe.test(name);
-    // console.log(&#x27;customValidator name:&#x27; + name + &#x27; no:&#x27; + no);
-    return no ? {&#x27;forbiddenValue&#x27;: {name}} : null;
-  };
-}
-
-@Directive({
-  selector: &#x27;[forbiddenValue]&#x27;,
-  providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]
+@Component({
+  selector: &#x27;was-menu-btn&#x27;,
+  templateUrl: &#x27;./wasmenu-btn.component.html&#x27;,
+  styleUrls: [&#x27;../was.component.css&#x27;],
 })
-export class CustomValidatorDirective implements Validator, OnChanges {
-  @Input() forbiddenValue: string;
-  private valFn &#x3D; Validators.nullValidator;
+export class WasMenuBtn {
+  public userloggedin &#x3D; false;
+  // public loginmessage &#x3D; &#x27;Login with SSO&#x27;;
+  /**
+ * WickeyAppStore Interface
+ *
+ * SIMPLY ADD to HTML where appropriate
+ * &lt;was-menu-btn&gt;&lt;/was-menu-btn&gt;
+ *
+*/
+  constructor(private userService: UserService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const change &#x3D; changes[&#x27;forbiddenValue&#x27;];
-    if (change) {
-      const val: string | RegExp &#x3D; change.currentValue;
-      const re &#x3D; val instanceof RegExp ? val : new RegExp(val, &#x27;i&#x27;);
-      this.valFn &#x3D; customValidator(re);
-    } else {
-      this.valFn &#x3D; Validators.nullValidator;
-    }
+  get loginMessage() {
+    return this.userService.isLoggedInObs.map((_isLogged: Boolean) &#x3D;&gt; {
+      if (_isLogged) {
+        this.userloggedin &#x3D; true;
+        return &#x27;Logout of SSO&#x27;;
+      } else {
+        this.userloggedin &#x3D; false;
+        return &#x27;Login with SSO&#x27;;
+      }
+    });
   }
 
-  validate(control: AbstractControl): {[key: string]: any} {
-    return this.valFn(control);
+  leavereview(): void {
+    this.userService.leavereview();
   }
+  openstore() {
+    this.userService.openstore();
+  }
+  opensso() {
+    this.userService.opensso();
+  }
+
 }
 </code></pre>
     </div>
 
+    <div class="tab-pane fade" id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button class&#x3D;&quot;was-left-button&quot; mat-fab color&#x3D;&quot;&quot; [matMenuTriggerFor]&#x3D;&quot;menu&quot;&gt;
+    &lt;div class&#x3D;&quot;icon-large-svg&quot;&gt;
+        &lt;svg viewBox&#x3D;&quot;0 0 511 363&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill-rule&#x3D;&quot;evenodd&quot; clip-rule&#x3D;&quot;evenodd&quot; stroke-linejoin&#x3D;&quot;round&quot;
+            stroke-miterlimit&#x3D;&quot;1.41&quot;&gt;
+            &lt;path d&#x3D;&quot;M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z&quot;
+                fill&#x3D;&quot;#FF601F&quot; /&gt;
+            &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z&quot; /&gt;
+            &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z&quot; /&gt;
+            &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M230.48 92.7h49.98v23.55h-49.98z&quot; /&gt;
+            &lt;path d&#x3D;&quot;M100.43 40l79.36.7-45.4 71.03-34-71.73z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M410.5 40l-79.37.7 45.38 71.03 34-71.72z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
+            &lt;path d&#x3D;&quot;M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+&lt;/button&gt;
+&lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+    &lt;mat-toolbar color&#x3D;&quot;accent&quot;&gt;
+        &lt;div class&#x3D;&quot;wasmenu-title&quot;&gt;WickeyAppStore™&lt;/div&gt;
+    &lt;/mat-toolbar&gt;
+    &lt;br&gt;
+    &lt;button mat-menu-item (click)&#x3D;&quot;openstore()&quot;&gt;
+        &lt;mat-icon&gt;store&lt;/mat-icon&gt;
+        &lt;span&gt;Open the App Store&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button mat-menu-item (click)&#x3D;&quot;leavereview()&quot;&gt;
+        &lt;mat-icon&gt;create&lt;/mat-icon&gt;
+        &lt;span&gt;Leave a Review&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button mat-menu-item (click)&#x3D;&quot;opensso()&quot;&gt;
+        &lt;mat-icon&gt;person&lt;/mat-icon&gt;
+        &lt;span&gt;{{loginMessage | async}}&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/mat-menu&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu">    <div class="icon-large-svg">        <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"            stroke-miterlimit="1.41">            <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"                fill="#FF601F" />            <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />            <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />            <path fill="#FF601F" d="M230.48 92.7h49.98v23.55h-49.98z" />            <path d="M100.43 40l79.36.7-45.4 71.03-34-71.73z" fill="#006AEB" />            <path d="M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z" fill="#007BEB" />            <path d="M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z" fill="#007BEB" />            <path d="M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z" fill="#009BEB" />            <path d="M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z" fill="#006AEB" />            <path d="M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z" fill="#007BEB" />            <path d="M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z" fill="#007BEB" />            <path d="M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z" fill="#009BEB" />            <path d="M410.5 40l-79.37.7 45.38 71.03 34-71.72z" fill="#006AEB" />            <path d="M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z" fill="#007BEB" />            <path d="M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z" fill="#007BEB" />            <path d="M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z" fill="#009BEB" />            <path d="M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z" fill="#006AEB" />            <path d="M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z" fill="#007BEB" />            <path d="M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB" />            <path d="M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z" fill="#009BEB" />        </svg>    </div></button><mat-menu #menu="matMenu">    <mat-toolbar color="accent">        <div class="wasmenu-title">WickeyAppStore™</div>    </mat-toolbar>    <br>    <button mat-menu-item (click)="openstore()">        <mat-icon>store</mat-icon>        <span>Open the App Store</span>    </button>    <button mat-menu-item (click)="leavereview()">        <mat-icon>create</mat-icon>        <span>Leave a Review</span>    </button>    <button mat-menu-item (click)="opensso()">        <mat-icon>person</mat-icon>        <span>{{loginMessage | async}}</span>    </button></mat-menu></div>'
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
+    var ACTUAL_COMPONENT = {'name': 'WasMenuBtn'};
+</script>
+<script src="../js/tree.js"></script>
+
 
 
 

@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-21-03
+
+### Added
+
+* **API** Add API to get Inapps.
+* **UserService** Implement services to handle Inapps.
+* **UserService** Add new service (onAccountCreate), that pushes a boolean on initial account create.
+
+### Changed
+
+* **models** Update Inapp model to new field names.
+* **tslint** Update to latest parameters for tslint (show common linting issues).
+* **Docs** Updated the docs.
+
+### Fixed
+
+* **UserService** Fix linting issues.
+
 ## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-28-02
 
 ### Fixed
