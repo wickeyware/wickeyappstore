@@ -13,6 +13,8 @@ This shows all commits since last release (actually, currently all commits).
 
 ### Added
 
+* **WasAppService** Add bannerApps service.
+* **WasAppService** Add featuredGroups service.
 * **API** Add API to get Inapps.
 * **UserService** Implement services to handle Inapps.
 * **UserService** Add new service (onAccountCreate), that pushes a boolean on initial account create.
@@ -25,6 +27,7 @@ This shows all commits since last release (actually, currently all commits).
 
 ### Fixed
 
+* **WasAppService** Remove .complete and .asObservable, these are not needed, also only replay 1.
 * **UserService** Fix linting issues.
 
 ## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-28-02

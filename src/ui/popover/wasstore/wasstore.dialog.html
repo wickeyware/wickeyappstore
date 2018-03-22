@@ -34,8 +34,8 @@
     </mat-toolbar>
   </header>
   <div class="results-group">
-    <display-apps *ngIf="showScroller" featured=true [apps]="getBannerFeaturedApps()" [showAppEmitter]="showAppDetail"></display-apps>
-    <display-apps *ngIf="showScroller" [apps]="getFeaturedApps()" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
+    <display-apps *ngIf="showScroller" featured=true [apps]="wasAppService.bannerApps | async" [showAppEmitter]="showAppDetail"></display-apps>
+    <display-apps *ngIf="showScroller" [apps]="wasAppService.featuredGroups | async" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
     <br>
     <br>
   </div>

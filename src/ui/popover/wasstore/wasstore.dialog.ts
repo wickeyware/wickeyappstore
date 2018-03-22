@@ -73,24 +73,6 @@ export class WasStore implements OnInit {
       });
     });
   }
-  // loop through the featured apps and get the banner group
-  getBannerFeaturedApps() {
-    for (const group of this.apps) {
-      if (group.title === 'Featured') {
-        return group.apps;
-      }
-    }
-  }
-  // loop through the featured apps and remove the banner group
-  getFeaturedApps() {
-    let otherapps = [];
-    for (const group of this.apps) {
-      if (group.title !== 'Featured') {
-        otherapps.push(group);
-      }
-    }
-    return otherapps;
-  }
 
   showAppDetail = (_app: any) => {
     this.selected_app = _app;

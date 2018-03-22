@@ -29,10 +29,12 @@ import { AppGroup, App } from './app.models';
  */
 @Injectable()
 export class WasAppService {
-  private _appGroups: ReplaySubject<AppGroup[]> = new ReplaySubject();
-  private _appIndex: ReplaySubject<any> = new ReplaySubject();
+  private _appGroups: ReplaySubject<AppGroup[]> = new ReplaySubject(1);
+  private _featuredGroups: ReplaySubject<AppGroup[]> = new ReplaySubject(1);
+  private _bannerApps: ReplaySubject<AppGroup> = new ReplaySubject(1);
+  private _appIndex: ReplaySubject<any> = new ReplaySubject(1);
   // NOTE: _app is the currently selected app, update on appFromSlug.
-  private _app: ReplaySubject<App> = new ReplaySubject();
+  private _app: ReplaySubject<App> = new ReplaySubject(1);
   private _appGroupsObj: AppGroup[];
   private _appIndexObj: any;
   private _appObj: App;
@@ -55,7 +57,13 @@ export class WasAppService {
    * @readonly
    */
   get appGroups() {
-    return this._appGroups.asObservable();
+    return this._appGroups;
+  }
+  get bannerApps() {
+    return this._bannerApps;
+  }
+  get featuredGroups() {
+    return this._featuredGroups;
   }
   /**
    * Returns the last pushed AppGroup as an object.
@@ -69,7 +77,7 @@ export class WasAppService {
     return this._appGroupsObj;
   }
   get app() {
-    return this._app.asObservable();
+    return this._app;
   }
   get appObject() {
     return this._appObj;
@@ -77,17 +85,15 @@ export class WasAppService {
   private pushAppGroupsSubscribers(_appgrpsobj: AppGroup[]) {
     this._appGroupsObj = _appgrpsobj;
     this._appGroups.next(_appgrpsobj);
-    this._appGroups.complete();
   }
   private pushAppIndexSubscribers(_appidxobj: any) {
     this._appIndexObj = _appidxobj;
     this._appIndex.next(_appidxobj);
-    this._appIndex.complete();
+    // this._appIndex.complete();
   }
   private pushAppSubscribers(_appobj: App) {
     this._appObj = _appobj;
     this._app.next(_appobj);
-    this._app.complete();
   }
 
   appFromSlug(slug: string): Observable<App | [App]> {
@@ -159,6 +165,24 @@ export class WasAppService {
     console.error('WasAppService: An error occurred', error);  // for demo purposes
     return Promise.reject(error.message || error);
   }
+    // loop through the featured apps and get the banner group
+  private getBannerApps(_appGrps) {
+    for (const group of _appGrps) {
+      if (group.title === 'Featured') {
+        return group.apps;
+      }
+    }
+  }
+  // loop through the featured apps and remove the banner group
+  private getFeaturedGroups(_appGrps) {
+    const otherapps = [];
+    for (const group of _appGrps) {
+      if (group.title !== 'Featured') {
+        otherapps.push(group);
+      }
+    }
+    return otherapps;
+  }
 
   createAppIndexKey(_appGroups: AppGroup[]) {
     // console.log('createAppIndexKey', _appGroups);
@@ -186,6 +210,8 @@ export class WasAppService {
     const _obs = this.apiConnectionService.getFeaturedGroups();
     _obs.subscribe((res) => {
         console.log('WasAppService: getAppGroups RETURN:', res);
+        this._bannerApps.next(this.getBannerApps(res));
+        this._featuredGroups.next(this.getFeaturedGroups(res));
         this.pushAppGroupsSubscribers(res);
         // UPDATE DB //
         this.localStorageService.set('was-apps', res);
