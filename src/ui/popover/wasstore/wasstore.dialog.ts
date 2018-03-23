@@ -33,7 +33,7 @@ export class WasStore implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
-    if (!this.data) { this.data = {} };
+    if (!this.data) { this.data = {}; }
 
     this.showVerticalList = false;
   }
