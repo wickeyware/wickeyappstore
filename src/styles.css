@@ -54,6 +54,12 @@ button {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+/* Put this in to allow a full screen dialog */
+/* Use the resize method within any dialog to set to 100%, 100% */
+.cdk-overlay-pane {
+  max-width: 100%!important;
+}
+
 /* Every toolbar row uses a flexbox row layout. */
 .main-header-sidebar { 
   width: 40px; 

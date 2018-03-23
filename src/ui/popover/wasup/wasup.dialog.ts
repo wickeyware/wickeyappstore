@@ -43,6 +43,7 @@ export class WasUp {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
+    if (!this.data) { this.data = {}; } // data may not be defined
     if (!this.data.title) { this.data.title = ''; }
     if (!this.data.body) { this.data.body = ''; }
     if (!this.data.icon) { this.data.icon = 'warning'; }

@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
+import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
@@ -71,8 +72,8 @@ export class UserService {
   ) {
     this.loadUser();
     // Track login status
-    this._user.subscribe( (usr: User) => {
-      if (this.isEmpty( usr.email ) === false) { // Logged in
+    this._user.subscribe((usr: User) => {
+      if (this.isEmpty(usr.email) === false) { // Logged in
         if (this._isLoggedIn === false) { // Check if status changed
           console.warn('UserService LOGGED IN');
           this._isLoggedIn = true;
@@ -94,7 +95,7 @@ export class UserService {
         }
       }
     });
-    this._loginChange.subscribe( (_loggedIn: boolean) => {
+    this._loginChange.subscribe((_loggedIn: boolean) => {
       console.log('LOAD INAPPS');
       // Load inapps on all login changes (also ensures user object exists)
       this.loadInapps();
@@ -131,7 +132,7 @@ export class UserService {
   }
   get isLoggedInObs() {
     return this._user.map((usr: User) => {
-      if (this.isEmpty( usr.email ) === false) {
+      if (this.isEmpty(usr.email) === false) {
         return true;
       } else {
         return false;
@@ -148,22 +149,22 @@ export class UserService {
     // NOTE: Directly checking if user object is in storage. If using UserService, the initial user was `undefined`,
     // thus it looked as if it was not logged in.
     return this.localStorageService.get('was-user')
-    .then((value: any): boolean => {
-      let _islog = this._isLoggedIn;
-      if (typeof value !== 'undefined' && value.user_id !== undefined) {
-        const _localUser = value as User;
-        if (this.isEmpty( _localUser.email ) === false) {
-          _islog = true;
+      .then((value: any): boolean => {
+        let _islog = this._isLoggedIn;
+        if (typeof value !== 'undefined' && value.user_id !== undefined) {
+          const _localUser = value as User;
+          if (this.isEmpty(_localUser.email) === false) {
+            _islog = true;
+          } else {
+            _islog = false;
+          }
         } else {
           _islog = false;
         }
-      } else {
-        _islog = false;
-      }
-      return _islog;
-    }).catch(() => {
-      return this._isLoggedIn;
-    });
+        return _islog;
+      }).catch(() => {
+        return this._isLoggedIn;
+      });
   }
 
   /**
@@ -328,16 +329,18 @@ export class UserService {
       const _cookie_userid = this.localStorageService.cookie_read('was_user_id');
       if (_cookie_userid !== null && _cookie_userid !== '') {
         console.warn('UserService: FOUND USER ID IN COOKIE');
-        this._userObj = {user_id: _cookie_userid};
+        this._userObj = { user_id: _cookie_userid };
       } else {
         console.warn('UserService: NO USER, CREATE USER');
-        this._userObj = {user_id: this.guid()};
+        this._userObj = { user_id: this.guid() };
       }
     }
     console.log('============UserService updateUser=========', this._userObj);
     // NOTE: Set params to current user, then update to sent in userParams, if any exist
-    const apiobject = {user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
-      email: null, freebie_used: this._userObj.freebie_used, rated_app: this._userObj.rated_app, push_id: this._userObj.push_id};
+    const apiobject = {
+      user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
+      email: null, freebie_used: this._userObj.freebie_used, rated_app: this._userObj.rated_app, push_id: this._userObj.push_id
+    };
     // TODO: Deprecate sending email here, only send in on email verification.
     if (userParams.email) {
       apiobject.email = userParams.email;
@@ -435,22 +438,22 @@ export class UserService {
     if (this._userObj.push_id !== push_id) {
       console.log('UserService updateUserPushId: CHANGE:', push_id);
       this.updateUser({ 'push_id': push_id })
-      .subscribe((usr) => {
-        console.log('UserService updateUserPushId: RETURN:', usr);
-        // NOTE: all user APIS can return a `special_message`
-        if (usr.special_message) {
+        .subscribe((usr) => {
+          console.log('UserService updateUserPushId: RETURN:', usr);
+          // NOTE: all user APIS can return a `special_message`
+          if (usr.special_message) {
+            this.dialog.open(WasAlert, {
+              data: { title: usr.special_message.title, body: usr.special_message.message, buttons: ['Ok', 'Cancel'] }
+            });
+          }
+        }, (error) => {
+          // <any>error | this casts error to be any
+          // NOTE: Can handle error return messages
+          console.log('UserService updateUserPushId: RETURN ERROR:', error);
           this.dialog.open(WasAlert, {
-            data: { title: usr.special_message.title, body: usr.special_message.message, buttons: ['Ok', 'Cancel'] }
+            data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
           });
-        }
-      }, (error) => {
-        // <any>error | this casts error to be any
-        // NOTE: Can handle error return messages
-        console.log('UserService updateUserPushId: RETURN ERROR:', error);
-        this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
         });
-      });
     } else {
       console.log('UserService updateUserPushId: NO CHANGE:', push_id);
     }
@@ -570,7 +573,7 @@ export class UserService {
    */
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
     console.log('============UserService createReview=========');
-    const _review = {'user_id': this._userObj.user_id, 'title': _title, 'text': _text, 'rating': _rating};
+    const _review = { 'user_id': this._userObj.user_id, 'title': _title, 'text': _text, 'rating': _rating };
     const _obs = this.apiConnectionService.setReview(_review);
     _obs.subscribe((res) => {
       console.log('UserService: createReview RETURN:', res);
@@ -616,9 +619,11 @@ export class UserService {
   createPurchase(_purchase_id: string, _receipt: string, _amount: number,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
     console.log('============UserService createPurchase=========');
-    const _purchase = {'user_id': this._userObj.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
-    'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
-    'zip_code': _zip_code, 'apple_wallet_token': _wallet_token};
+    const _purchase = {
+      'user_id': this._userObj.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
+      'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
+      'zip_code': _zip_code, 'apple_wallet_token': _wallet_token
+    };
     const _obs = this.apiConnectionService.setPurchase(_purchase);
     _obs.subscribe((res) => {
       console.log('UserService: createPurchase RETURN:', res);
@@ -677,7 +682,7 @@ export class UserService {
   }
   getInapps(): Observable<any> {
     console.log('============UserService getInapps=========');
-    const _obs = this.apiConnectionService.getInapps({user_id: this._userObj.user_id});
+    const _obs = this.apiConnectionService.getInapps({ user_id: this._userObj.user_id });
     _obs.subscribe((res) => {
       console.log('UserService: getInapps RETURN:', res);
       this._inappsObj = res;
@@ -697,7 +702,7 @@ export class UserService {
    */
   getStore(_keys: string[]): Observable<{}> {
     console.log('============UserService getStore=========');
-    const _apiobject = {'user_id': this._userObj.user_id, 'keys': _keys.join(',')};
+    const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.getWASStore(_apiobject);
     // _obs.subscribe((res) => {
     //   console.log('UserService: getStore RETURN:', res);
@@ -714,7 +719,7 @@ export class UserService {
   setStore(_was_data: {}): Observable<any> {
     console.log('============UserService setStore=========');
     // TODO: Update local list too
-    const _apiobject = {'user_id': this._userObj.user_id, 'was_data': _was_data};
+    const _apiobject = { 'user_id': this._userObj.user_id, 'was_data': _was_data };
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
     // _obs.subscribe((res) => {
     //   console.log('UserService: setStore RETURN:', res);
@@ -731,7 +736,7 @@ export class UserService {
   deleteStore(_keys: string[]): Observable<any> {
     console.log('============UserService deleteStore=========');
     // TODO: Update local list too
-    const _apiobject = {'user_id': this._userObj.user_id, 'keys': _keys.join(',')};
+    const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
     // _obs.subscribe((res) => {
     //   console.log('UserService: deleteStore RETURN:', res);
@@ -800,6 +805,12 @@ export class UserService {
   */
   openstore() {
     this.dialog.open(WasStore);
+  }
+  /**
+   * Open WasShop.
+  */
+  openshop() {
+    this.dialog.open(WasShop);
   }
   // TODO: Add BlueSnap APIS
 

@@ -66,6 +66,8 @@ import { DisplayAppMiniComponent } from './display-apps/display-app-mini/display
 import { DisplayAppFeaturedComponent } from './display-apps/display-app-featured/display-app-featured.component';
 import { DisplayAppFullwidthComponent } from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
+import { DisplayInAppComponent } from './display-apps/display-inapp/display-inapp.component';
+
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
 import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
@@ -80,6 +82,8 @@ import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasSSOBtn } from './ui/popover/wassso-btn/wassso-btn.component';
 import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
+import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
+import { WasPay } from './ui/popover/waspay/waspay.dialog';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
@@ -97,6 +101,7 @@ export * from './display-apps/app-group-vertical/app-group-vertical.component';
 export * from './display-apps/display-app-mini/display-app-mini.component';
 export * from './display-apps/display-app-featured/display-app-featured.component';
 export * from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
+export * from './display-apps/display-inapp/display-inapp.component';
 export * from './ui/reviews/reviews.component';
 export * from './ui/popover/wasup/wasup.dialog';
 export * from './ui/popover/wasalert/wasalert.dialog';
@@ -105,6 +110,8 @@ export * from './ui/popover/wassso/wassso.dialog';
 export * from './ui/popover/wassso-btn/wassso-btn.component';
 export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 export * from './ui/popover/wasstore/wasstore.dialog';
+export * from './ui/popover/wasshop/wasshop.dialog';
+export * from './ui/popover/waspay/waspay.dialog';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
@@ -163,6 +170,8 @@ export * from './pipes/get-category.pipe';
     WasSSOBtn,
     WasMenuBtn,
     WasStore,
+    WasShop,
+    WasPay,
     ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
@@ -186,6 +195,8 @@ export * from './pipes/get-category.pipe';
     WasSSOBtn,
     WasMenuBtn,
     WasStore,
+    WasShop,
+    WasPay,
     ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
@@ -231,7 +242,7 @@ export * from './pipes/get-category.pipe';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore, WasShop, WasPay],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],

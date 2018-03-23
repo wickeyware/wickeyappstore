@@ -41,5 +41,8 @@ export class WasMenuBtn {
   opensso() {
     this.userService.opensso();
   }
+  openShop() {
+    this.userService.openshop();
+  }
 
 }

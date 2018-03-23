@@ -66,34 +66,52 @@
     max-width: 500px;
     width: 100%;
   }
-  .example-full-width {
-    width: 100%;
-  }
   .was-fullscreen {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2147483630; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: hidden;
-    background-color: white;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
   }
 
-.results-group {
-    margin-top: 50px;
-    display: block;
-    /*visibility: hidden;*/
-    position: relative;
-    background-color: rgb(235,240,242);
-    /*left: 0;*/
-    height: 100%; 
+
+  .my-title-bar {
+    font-size: 2em;
     width: 100%;
-    /* Enable scroll if needed */
-    overflow-x: auto;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    height: 80px;
+  }
+  .my-header-sidebar { 
+    width: 40px; 
+  }
+  .my-header-text    { 
+    flex: 2; 
+    text-align: center;
+    font-weight: 500;
+  }
+  .my-subtitle-text {
+    font-weight: lighter;
+    padding-top: 5px;
+  }
+  .my-items-list {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+  }
+
+  .waspay-buttons {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  .waspay-subtitle {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: #5b5b65;
+      text-shadow: 0 1px 0 #fff;
+      margin-bottom: 15px;
+  }
+  #sample-pay-button {
+    border: .5px solid black; 
+    border-radius: 5px;
   }
