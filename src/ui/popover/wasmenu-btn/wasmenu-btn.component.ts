@@ -18,7 +18,7 @@ export class WasMenuBtn {
  * <was-menu-btn></was-menu-btn>
  *
 */
-  constructor(private userService: UserService) {}
+  constructor(public userService: UserService) {}
 
   get loginMessage() {
     return this.userService.isLoggedInObs.map((_isLogged: Boolean) => {

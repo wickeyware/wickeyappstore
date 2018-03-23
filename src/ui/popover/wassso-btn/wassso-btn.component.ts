@@ -19,15 +19,15 @@ export class WasSSOBtn implements OnInit {
  *
  * If you need to know if successfully logged in
  * <was-sso-btn (close)="closesso($event)></was-sso-btn>
- * @param {function} close OPTIONAL Emits logged in user email to function on successful login
+ * @param close OPTIONAL Emits logged in user email to function on successful login
 */
   constructor(
     public dialog: MatDialog,
-    private userService: UserService,
+    public userService: UserService,
   ) {
   }
   ngOnInit(): void {
-    console.log('wassobtn ngoninit')
+    console.log('wassobtn ngoninit');
     this.userService.user.subscribe((usr: User) => {
       this.checkLoggingIn();
     });

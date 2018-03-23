@@ -31,7 +31,7 @@ export class WasReview {
 
   constructor(
     private apiConnectionService: ApiConnectionService,
-    private userService: UserService,
+    public userService: UserService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WasReview>,
     @Inject(MAT_DIALOG_DATA) public data: any) {

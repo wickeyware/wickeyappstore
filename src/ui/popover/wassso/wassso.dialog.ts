@@ -33,7 +33,7 @@ export class WasSSO {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService,
+    public userService: UserService,
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<WasSSO>,
     @Inject(MAT_DIALOG_DATA) public data: any) {

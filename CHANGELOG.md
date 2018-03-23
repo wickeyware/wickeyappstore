@@ -12,6 +12,7 @@ This shows all commits since last release (actually, currently all commits).
 ## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-23-03
 
 ### Added
+
 * **WasPay** Add simple purchase interface.
 * **WasShop** Add InApp Shop interface.
 * **WasAppService** Add bannerApps service.

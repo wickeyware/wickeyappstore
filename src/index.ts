@@ -116,6 +116,7 @@ export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
+export * from './display-apps/display-inapp/display-inapp.component';
 
 
 @NgModule({
@@ -183,6 +184,7 @@ export * from './pipes/get-category.pipe';
     DisplayAppFullwidthComponent,
     DisplayAppReviewComponent,
     AppGroupReviewsComponent,
+    DisplayInAppComponent,
     GetCategoryPipe
   ],
   exports: [
@@ -208,6 +210,7 @@ export * from './pipes/get-category.pipe';
     DisplayAppFullwidthComponent,
     DisplayAppReviewComponent,
     AppGroupReviewsComponent,
+    DisplayInAppComponent,
     GetCategoryPipe,
     CdkTableModule,
     MatAutocompleteModule,
