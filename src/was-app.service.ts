@@ -38,6 +38,8 @@ export class WasAppService {
   private _appGroupsObj: AppGroup[];
   private _appIndexObj: any;
   private _appObj: App;
+  private _featuredGroupsObj: AppGroup[];
+  private _bannerAppsObj: AppGroup;
 
   constructor(
     public apiConnectionService: ApiConnectionService,
@@ -59,12 +61,6 @@ export class WasAppService {
   get appGroups() {
     return this._appGroups;
   }
-  get bannerApps() {
-    return this._bannerApps;
-  }
-  get featuredGroups() {
-    return this._featuredGroups;
-  }
   /**
    * Returns the last pushed AppGroup as an object.
    *
@@ -75,6 +71,24 @@ export class WasAppService {
    */
   get appGroupsObject() {
     return this._appGroupsObj;
+  }
+  get bannerApps() {
+    return this._bannerApps;
+  }
+  get bannerAppsObject() {
+    return this._bannerAppsObj;
+  }
+  get featuredGroups() {
+    return this._featuredGroups;
+  }
+  get featuredGroupsObject() {
+    return this._featuredGroupsObj;
+  }
+  get appIndex() {
+    return this._appIndex;
+  }
+  get appIndexObject() {
+    return this._appObj;
   }
   get app() {
     return this._app;
@@ -89,7 +103,6 @@ export class WasAppService {
   private pushAppIndexSubscribers(_appidxobj: any) {
     this._appIndexObj = _appidxobj;
     this._appIndex.next(_appidxobj);
-    // this._appIndex.complete();
   }
   private pushAppSubscribers(_appobj: App) {
     this._appObj = _appobj;
@@ -165,7 +178,7 @@ export class WasAppService {
     console.error('WasAppService: An error occurred', error);  // for demo purposes
     return Promise.reject(error.message || error);
   }
-    // loop through the featured apps and get the banner group
+  // loop through the featured apps and get the banner group
   private getBannerApps(_appGrps) {
     for (const group of _appGrps) {
       if (group.title === 'Featured') {
@@ -210,8 +223,10 @@ export class WasAppService {
     const _obs = this.apiConnectionService.getFeaturedGroups();
     _obs.subscribe((res) => {
         console.log('WasAppService: getAppGroups RETURN:', res);
-        this._bannerApps.next(this.getBannerApps(res));
-        this._featuredGroups.next(this.getFeaturedGroups(res));
+        this._bannerAppsObj = this.getBannerApps(res);
+        this._bannerApps.next(this._bannerAppsObj);
+        this._featuredGroupsObj = this.getFeaturedGroups(res);
+        this._featuredGroups.next(this._featuredGroupsObj);
         this.pushAppGroupsSubscribers(res);
         // UPDATE DB //
         this.localStorageService.set('was-apps', res);
