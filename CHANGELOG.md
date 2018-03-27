@@ -20,10 +20,13 @@ This shows all commits since last release (actually, currently all commits).
 * **API** Add API to get Inapps.
 * **UserService** Implement services to handle Inapps.
 * **UserService** Add new service (onAccountCreate), that pushes a boolean on initial account create.
+* **UserService** Add accessor to _loaded field. This is a boolean denoting if UserService is loaded or not.
+* **LocalStorageService** Add clear and keys indexedDB wrapper functions, these currently do not work with cookie storage.
 
 ### Changed
 
 * **models** Update Inapp model to new field names.
+* **models** Add has_data and account_verified to User.
 * **tslint** Update to latest parameters for tslint (show common linting issues).
 * **Docs** Updated the docs.
 
@@ -31,6 +34,7 @@ This shows all commits since last release (actually, currently all commits).
 
 * **WasAppService** Remove .complete and .asObservable, these are not needed, also only replay 1.
 * **UserService** Fix linting issues.
+* **UserService** Fix anonymous accounts not logging into logged in cookie was_user_id.
 
 ## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-28-02
 

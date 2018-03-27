@@ -109,16 +109,27 @@ export class LocalStorageService {
       });
     }
   }
-  // clear(): Promise<any> {
-  //   if (this.use_cookie === false) {
-  //     return this.idbkeyval.clear();
-  //   } else {
-  //     return new Promise((resolve, reject) => {
-  //       // TODO: Clear all ccokies this service set
-  //       resolve(1);
-  //     });
-  //   }
-  // }
+  clear(): Promise<any> {
+    if (this.use_cookie === false) {
+      return this.idbkeyval.clear();
+    } else {
+      return new Promise((resolve, reject) => {
+        // TODO: Clear all ccokies this service set
+        resolve(undefined);
+      });
+    }
+  }
+
+  keys(): Promise<any> {
+    if (this.use_cookie === false) {
+      return this.idbkeyval.keys();
+    } else {
+      return new Promise((resolve, reject) => {
+        // TODO: Return all cookie keys
+        resolve([]);
+      });
+    }
+  }
 
   safe_json_parse(str: string): any {
     try {

@@ -25,6 +25,8 @@ export interface User {
   logging_in?: boolean;
   push_id?: string;
   secured?: boolean;
+  has_data?: boolean;
+  account_verified?: boolean;
 }
 
 export interface App {

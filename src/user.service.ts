@@ -3,6 +3,8 @@ import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/mergeMap';
 import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
@@ -195,6 +197,9 @@ export class UserService {
   get inappsObject() {
     return this._inappsObj;
   }
+  get isLoaded() {
+    return this._loaded;
+  }
 
 
   private pushSubscribers(_usr: User) {
@@ -317,6 +322,16 @@ export class UserService {
       this.lut[d3 & 0xff] + this.lut[d3 >> 8 & 0xff] + this.lut[d3 >> 16 & 0xff] + this.lut[d3 >> 24 & 0xff];
   }
 
+  checkIfValue(_obj: any, _key: string): boolean {
+    let hasValue = false;
+    if (_obj.hasOwnProperty(_key)) {
+      if (_obj[_key] !== undefined && _obj[_key] !== null) {
+        hasValue = true;
+      }
+    }
+    return hasValue;
+  }
+
   /**
    * Update User object, saves locally and to server.
    *
@@ -334,6 +349,15 @@ export class UserService {
         console.warn('UserService: NO USER, CREATE USER');
         this._userObj = { user_id: this.guid() };
       }
+    } else {
+      if (this._userObj.account_verified === false && this._userObj.has_data === false && this._userObj.coins === 0) {
+        // user exists, but is still anonymous and does not have any data saved
+        const _cookie_userid = this.localStorageService.cookie_read('was_user_id');
+        if (_cookie_userid !== null && _cookie_userid !== '') {
+          console.warn('UserService2: FOUND USER ID IN COOKIE');
+          this._userObj = {user_id: _cookie_userid, push_id: this._userObj.push_id};
+        }
+      }
     }
     console.log('============UserService updateUser=========', this._userObj);
     // NOTE: Set params to current user, then update to sent in userParams, if any exist
@@ -341,14 +365,10 @@ export class UserService {
       user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
       email: null, freebie_used: this._userObj.freebie_used, rated_app: this._userObj.rated_app, push_id: this._userObj.push_id
     };
-    // TODO: Deprecate sending email here, only send in on email verification.
-    if (userParams.email) {
-      apiobject.email = userParams.email;
-    }
-    if (userParams.freebie_used) {
+    if (this.checkIfValue(userParams, 'freebie_used')) {
       apiobject.freebie_used = userParams.freebie_used;
     }
-    if (userParams.rated_app) {
+    if (this.checkIfValue(userParams, 'rated_app')) {
       apiobject.rated_app = userParams.rated_app;
     }
     if (userParams.coins) {
@@ -382,35 +402,41 @@ export class UserService {
           this._userObj.user_id = res.user_id;
           this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
         }
-        if (res.email !== undefined && res.email !== null) {
+        if (this.checkIfValue(res, 'email')) {
           this._userObj.email = res.email;
         }
-        if (res.secured !== undefined && res.secured !== null) {
+        if (this.checkIfValue(res, 'secured')) {
           this._userObj.secured = res.secured;
         }
-        if (res.bs_id !== undefined && res.bs_id !== null) {
+        if (this.checkIfValue(res, 'bs_id')) {
           this._userObj.bs_id = res.bs_id;
         }
-        if (res.first_name !== undefined && res.first_name !== null) {
+        if (this.checkIfValue(res, 'first_name')) {
           this._userObj.first_name = res.first_name;
         }
-        if (res.last_name !== undefined && res.last_name !== null) {
+        if (this.checkIfValue(res, 'last_name')) {
           this._userObj.last_name = res.last_name;
         }
-        if (res.zip_code !== undefined && res.zip_code !== null) {
+        if (this.checkIfValue(res, 'zip_code')) {
           this._userObj.zip_code = res.zip_code;
         }
-        if (res.coins !== undefined && res.coins !== null) {
+        if (this.checkIfValue(res, 'coins')) {
           this._userObj.coins = res.coins;
         }
-        if (res.data !== undefined && res.data !== null) {
+        if (this.checkIfValue(res, 'data')) {
           this._userObj.data = res.data;
         }
-        if (res.rated_app !== undefined && res.rated_app !== null) {
+        if (this.checkIfValue(res, 'rated_app')) {
           this._userObj.rated_app = res.rated_app;
         }
-        if (res.push_id !== undefined && res.push_id !== null) {
+        if (this.checkIfValue(res, 'push_id')) {
           this._userObj.push_id = res.push_id;
+        }
+        if (this.checkIfValue(res, 'has_data')) {
+          this._userObj.has_data = res.has_data;
+        }
+        if (this.checkIfValue(res, 'account_verified')) {
+          this._userObj.account_verified = res.account_verified;
         }
         this._userObj.created_time = res.created_time;
         this._userObj.freebie_used = res.freebie_used;
@@ -522,30 +548,38 @@ export class UserService {
       this._userObj.logging_in = false;
       this._userObj.user_id = res.user_id;
       this._userObj.email = res.email;
-      if (res.secured !== undefined && res.secured !== null) {
+      if (this.checkIfValue(res, 'secured')) {
         this._userObj.secured = res.secured;
       }
-      if (res.first_name !== undefined && res.first_name !== null) {
+      if (this.checkIfValue(res, 'bs_id')) {
+        this._userObj.bs_id = res.bs_id;
+      }
+      if (this.checkIfValue(res, 'first_name')) {
         this._userObj.first_name = res.first_name;
       }
-      if (res.last_name !== undefined && res.last_name !== null) {
+      if (this.checkIfValue(res, 'last_name')) {
         this._userObj.last_name = res.last_name;
       }
-      if (res.zip_code !== undefined && res.zip_code !== null) {
+      if (this.checkIfValue(res, 'zip_code')) {
         this._userObj.zip_code = res.zip_code;
       }
-      // Add user_data
-      if (res.coins !== undefined && res.coins !== null) {
+      if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
       }
-      if (res.data !== undefined && res.data !== null) {
+      if (this.checkIfValue(res, 'data')) {
         this._userObj.data = res.data;
       }
-      if (res.rated_app !== undefined && res.rated_app !== null) {
+      if (this.checkIfValue(res, 'rated_app')) {
         this._userObj.rated_app = res.rated_app;
       }
-      if (res.push_id !== undefined && res.push_id !== null) {
+      if (this.checkIfValue(res, 'push_id')) {
         this._userObj.push_id = res.push_id;
+      }
+      if (this.checkIfValue(res, 'has_data')) {
+        this._userObj.has_data = res.has_data;
+      }
+      if (this.checkIfValue(res, 'account_verified')) {
+        this._userObj.account_verified = res.account_verified;
       }
       this._userObj.created_time = res.created_time;
       this._userObj.freebie_used = res.freebie_used;
@@ -630,45 +664,49 @@ export class UserService {
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         this._userObj.user_id = res.user_id;
+        this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
       }
-      if (res.email !== undefined && res.email !== null) {
-        this._userObj.email = res.email;
-      }
-      if (res.secured !== undefined && res.secured !== null) {
+      if (this.checkIfValue(res, 'secured')) {
         this._userObj.secured = res.secured;
       }
-      if (res.bs_id !== undefined && res.bs_id !== null) {
+      if (this.checkIfValue(res, 'bs_id')) {
         this._userObj.bs_id = res.bs_id;
       }
-      if (res.first_name !== undefined && res.first_name !== null) {
+      if (this.checkIfValue(res, 'first_name')) {
         this._userObj.first_name = res.first_name;
       }
-      if (res.last_name !== undefined && res.last_name !== null) {
+      if (this.checkIfValue(res, 'last_name')) {
         this._userObj.last_name = res.last_name;
       }
-      if (res.zip_code !== undefined && res.zip_code !== null) {
+      if (this.checkIfValue(res, 'zip_code')) {
         this._userObj.zip_code = res.zip_code;
       }
-      if (res.coins !== undefined && res.coins !== null) {
+      if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
       }
-      if (res.data !== undefined && res.data !== null) {
+      if (this.checkIfValue(res, 'data')) {
         this._userObj.data = res.data;
       }
-      if (res.created_time) {
+      if (this.checkIfValue(res, 'rated_app')) {
+        this._userObj.rated_app = res.rated_app;
+      }
+      if (this.checkIfValue(res, 'push_id')) {
+        this._userObj.push_id = res.push_id;
+      }
+      if (this.checkIfValue(res, 'has_data')) {
+        this._userObj.has_data = res.has_data;
+      }
+      if (this.checkIfValue(res, 'account_verified')) {
+        this._userObj.account_verified = res.account_verified;
+      }
+      if (this.checkIfValue(res, 'created_time')) {
         this._userObj.created_time = res.created_time;
       }
-      if (res.freebie_used !== undefined && res.freebie_used !== null) {
+      if (this.checkIfValue(res, 'freebie_used')) {
         this._userObj.freebie_used = res.freebie_used;
-      }
-      if (res.rated_app !== undefined && res.rated_app !== null) {
-        this._userObj.rated_app = res.rated_app;
       }
       if (res.settings) {
         this._userObj.settings = res.settings;
-      }
-      if (res.push_id !== undefined && res.push_id !== null) {
-        this._userObj.push_id = res.push_id;
       }
       // UPDATE USER //
       this.pushSubscribers(this._userObj);
@@ -695,6 +733,49 @@ export class UserService {
     return _obs;
   }
 
+  // getStoreTest(_keys: string[]): Observable<{}> {
+  //   // TODO: Get locally (if available), then update from server
+  //   // TODO: Check to see if key exists locally, if so return from local, else get from server and update local.
+  //   console.log('============UserService getStore=========');
+  //   let _obs;
+  //   const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
+  //   const localVals = {};
+  //   let localKeys = [];
+
+  //   // mergeMap
+  //   _obs = Observable.fromPromise(this.localStorageService.keys()).subscribe((val: any) => {
+  //     console.log('keys mergeMap', val);
+  //   });
+  //   // TODO: Wrap this in observable and return
+  //   this.localStorageService.keys().then((_lockeys: [any]) => {
+  //     localKeys = _lockeys;
+  //     let getFromLocal = true;
+  //     for (const _key of _keys) {
+  //       if (_key in localKeys === false) {
+  //         getFromLocal = false;
+  //         break;
+  //       }
+  //     }
+  //     if (getFromLocal === true) {
+  //       for (const _key of _keys) {
+  //         this.localStorageService.get(_key).then((value: any) => {
+  //           if (value && typeof value !== 'undefined') {
+  //             localVals[_key] = value;
+  //           }
+  //         });
+  //       }
+  //     } else {
+  //       _obs = this.apiConnectionService.getWASStore(_apiobject);
+  //     }
+  //   }).catch((error: any) => {
+  //     console.error('UserService: An error occurred', error);  // for demo purposes
+  //     _obs = this.apiConnectionService.getWASStore(_apiobject);
+  //   });
+  //   // TODO: Return localVals and attach a subscription to the server.
+  //   // Observable.of(localVals).switchMap
+  //   _obs = this.apiConnectionService.getWASStore(_apiobject);
+  //   return _obs;
+  // }
   /**
    * Get value(s) from key val store.
    *
