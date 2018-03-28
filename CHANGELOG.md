@@ -29,6 +29,7 @@ This shows all commits since last release (actually, currently all commits).
 * **models** Add has_data and account_verified to User.
 * **tslint** Update to latest parameters for tslint (show common linting issues).
 * **Docs** Updated the docs.
+* **LocalStorage** BREAKING: Updated idb-keyval library, must update peer dependency.
 
 ### Fixed
 

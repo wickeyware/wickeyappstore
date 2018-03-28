@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
+import { get as dbGet, set as dbSet, del as dbDel, clear as dbClear, keys as dbKeys } from 'idb-keyval';
 // TODO: Use Angular Direct Injected document
 // import {DOCUMENT} from '@angular/common';
 // in constructor @Inject(DOCUMENT) private doc: any
 // this.doc.cookie
-
-// let idbkeyval = require('../../node_modules/idb-keyval/idb-keyval.js'); // 'idb-keyval'
-// let idbkeyval = require('https://unpkg.com/idb-keyval@2.3.0/idb-keyval.js');
 
 /**
  * Store values and objects locally, uses indexedDB via idb-keyval.js if available,
@@ -16,9 +14,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LocalStorageService {
   public use_cookie = false;
-  // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
   // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
-  public idbkeyval = require('../../node_modules/idb-keyval/idb-keyval.js'); // 'idb-keyval'
+  // public idbkeyval = require('../../node_modules/idb-keyval/idb-keyval.js'); // 'idb-keyval'
 
   constructor() {
     // CHECK IF BROWSER HAS INDEXEDDB //
@@ -35,7 +32,7 @@ export class LocalStorageService {
    */
   get(key: string): Promise<any> {
     if (this.use_cookie === false) {
-      return this.idbkeyval.get(key);
+      return dbGet(key);
     } else {
       return new Promise((resolve, reject) => {
         // Get value from cookie at key
@@ -53,7 +50,7 @@ export class LocalStorageService {
    */
   set(key: string, value: any): Promise<any> {
     if (this.use_cookie === false) {
-      return this.idbkeyval.set(key, value);
+      return dbSet(key, value);
     } else {
       return new Promise((resolve, reject) => {
         let _val: string;
@@ -100,7 +97,7 @@ export class LocalStorageService {
    */
   delete(key: string): Promise<any> {
     if (this.use_cookie === false) {
-      return this.idbkeyval.delete(key);
+      return dbDel(key);
     } else {
       return new Promise((resolve, reject) => {
         // Delete value from cookie at key
@@ -111,7 +108,7 @@ export class LocalStorageService {
   }
   clear(): Promise<any> {
     if (this.use_cookie === false) {
-      return this.idbkeyval.clear();
+      return dbClear();
     } else {
       return new Promise((resolve, reject) => {
         // TODO: Clear all ccokies this service set
@@ -122,7 +119,7 @@ export class LocalStorageService {
 
   keys(): Promise<any> {
     if (this.use_cookie === false) {
-      return this.idbkeyval.keys();
+      return dbKeys();
     } else {
       return new Promise((resolve, reject) => {
         // TODO: Return all cookie keys

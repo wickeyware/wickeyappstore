@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -68,7 +68,7 @@
     "gulp-rollup": "^2.16.2",
     "gulp-sass": "^3.1.0",
     "hammerjs": "^2.0.8",
-    "idb-keyval": "^2.3.0",
+    "idb-keyval": "^3.0.2",
     "node-sass": "^4.7.2",
     "node-sass-tilde-importer": "^1.0.2",
     "node-watch": "^0.5.8",

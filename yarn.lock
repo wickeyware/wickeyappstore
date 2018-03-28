@@ -2034,9 +2034,9 @@ https-proxy-agent@^1.0.0:
     debug "2"
     extend "3"
 
-idb-keyval@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/idb-keyval/-/idb-keyval-2.3.0.tgz#4d444b80c3f86fcbcd51321b4dcbc9247c5948c0"
+idb-keyval@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/idb-keyval/-/idb-keyval-3.0.2.tgz#54d49cb6b7d50d7b60a9cf7e25409c9bbdcf29fa"
 
 ignorefs@^1.0.0, ignorefs@^1.1.1:
   version "1.2.0"
