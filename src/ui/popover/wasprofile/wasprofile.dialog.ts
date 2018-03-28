@@ -44,5 +44,6 @@ export class WasProfile {
   }
   opensso() {
     this.userService.opensso();
+    this.dialogRef.close();
   }
 }
