@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.1.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.1) - 2018-28-03
+
+### Added
+
+* **WasProfile** Add simple account info popover
+* **WasMenu** Add WasProfile to WasMenu
+
 ## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-23-03
 
 ### Added

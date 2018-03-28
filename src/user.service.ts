@@ -11,6 +11,7 @@ import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
+import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
 
@@ -355,7 +356,7 @@ export class UserService {
         const _cookie_userid = this.localStorageService.cookie_read('was_user_id');
         if (_cookie_userid !== null && _cookie_userid !== '') {
           console.warn('UserService2: FOUND USER ID IN COOKIE');
-          this._userObj = {user_id: _cookie_userid, push_id: this._userObj.push_id};
+          this._userObj = { user_id: _cookie_userid, push_id: this._userObj.push_id };
         }
       }
     }
@@ -864,6 +865,12 @@ export class UserService {
     } else {
       this.dialog.open(WasSSO);
     }
+  }
+  /**
+ * Open WasProfile which shows Help or Account Info
+*/
+  openuserinfo() {
+    this.dialog.open(WasProfile);
   }
   /**
    * Open review if logged in, else ask to login/create account.

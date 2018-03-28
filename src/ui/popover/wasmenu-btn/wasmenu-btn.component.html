@@ -39,12 +39,17 @@
         <mat-icon>create</mat-icon>
         <span>Leave a Review</span>
     </button>
-    <button mat-menu-item *ngIf="userService.inapps | async" (click)="openShop()">
-        <mat-icon>shop</mat-icon>
-        <span>Get Coins</span>
-    </button>
-    <button mat-menu-item (click)="opensso()">
-        <mat-icon>person</mat-icon>
-        <span>{{loginMessage | async}}</span>
-    </button>
+    <mat-grid-list cols="4">
+        <mat-grid-tile [colspan]="3">
+            <button mat-menu-item (click)="opensso()">
+                <mat-icon>person</mat-icon>
+                <span>{{loginMessage | async}}</span>
+            </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <button mat-icon-button (click)="openuserinfo()">
+                <mat-icon color="accent" aria-label="info icon button">{{infoIcon | async}}</mat-icon>
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list>
 </mat-menu>

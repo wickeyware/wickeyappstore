@@ -9,8 +9,6 @@ import { User } from '../../../app.models';
   styleUrls: ['../was.component.css'],
 })
 export class WasMenuBtn {
-  public userloggedin = false;
-  // public loginmessage = 'Login with SSO';
   /**
  * WickeyAppStore Interface
  *
@@ -23,11 +21,19 @@ export class WasMenuBtn {
   get loginMessage() {
     return this.userService.isLoggedInObs.map((_isLogged: Boolean) => {
       if (_isLogged) {
-        this.userloggedin = true;
-        return 'Logout of SSO';
+        return 'Logout';
       } else {
-        this.userloggedin = false;
-        return 'Login with SSO';
+        return 'Login';
+      }
+    });
+  }
+
+  get infoIcon() {
+    return this.userService.isLoggedInObs.map((_isLogged: Boolean) => {
+      if (_isLogged) {
+        return 'info';
+      } else {
+        return 'help';
       }
     });
   }
@@ -41,8 +47,8 @@ export class WasMenuBtn {
   opensso() {
     this.userService.opensso();
   }
-  openShop() {
-    this.userService.openshop();
+  openuserinfo() {
+    this.userService.openuserinfo();
   }
 
 }

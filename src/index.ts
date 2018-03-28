@@ -84,6 +84,7 @@ import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
+import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 
 // EXPORT EVERYTHING //
 export * from 'angular2-useful-swiper';
@@ -112,6 +113,7 @@ export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 export * from './ui/popover/wasstore/wasstore.dialog';
 export * from './ui/popover/wasshop/wasshop.dialog';
 export * from './ui/popover/waspay/waspay.dialog';
+export * from './ui/popover/wasprofile/wasprofile.dialog';
 export * from './display-apps/display-app-review/display-app-review.component';
 export * from './display-apps/app-group-reviews/app-group-reviews.component';
 export * from './custom-validator.directive';
@@ -173,6 +175,7 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasStore,
     WasShop,
     WasPay,
+    WasProfile,
     ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
@@ -199,6 +202,7 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasStore,
     WasShop,
     WasPay,
+    WasProfile,
     ReviewsComponent,
     DisplayAppsComponent,
     AppDetailPageComponent,
@@ -245,7 +249,7 @@ export * from './display-apps/display-inapp/display-inapp.component';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore, WasShop, WasPay],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore, WasShop, WasPay, WasProfile],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService
   ],
