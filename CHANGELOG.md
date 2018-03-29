@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-28-03
+## [2.1.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.2) - 2018-03-29
+
+### Fixed
+
+* **SSO** Fix login error where app is refreshed between token and verification.
+
+## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-03-28
 
 ### Added
 
@@ -39,13 +45,13 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService** Fix linting issues.
 * **UserService** Fix anonymous accounts not logging into logged in cookie was_user_id.
 
-## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-28-02
+## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-02-28
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [2.0.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0) - 2018-22-02
+## [2.0.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0) - 2018-02-22
 
 ### Major Version
 
@@ -53,19 +59,19 @@ This shows all commits since last release (actually, currently all commits).
 * **WasMenu** Change the layout of WasMenu
 * **AppStore** Add fix for app store lists not scrolling properly
 
-## [1.18.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2) - 2018-21-02
+## [1.18.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2) - 2018-02-21
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [1.18.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.1) - 2018-21-02
+## [1.18.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.1) - 2018-02-21
 
 ### Fixed
 
 * **UserService** Ensure initial push of login status (on user load, push status).
 
-## [1.18.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-20-02
+## [1.18.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-02-20
 
 ### Added
 
@@ -80,26 +86,26 @@ This shows all commits since last release (actually, currently all commits).
 * **WASbtnSSO** Update login/logout message for SSO in was menu button.
 * **Review** Update saving message.
 
-## [1.17.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3) - 2018-16-02
+## [1.17.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3) - 2018-02-16
 
 ### Added
 
 * **UserInterface** Add SSO to Was Menu
 
-## [1.17.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2) - 2018-15-02
+## [1.17.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2) - 2018-02-15
 
 ### Added
 
 * **UserInterface** Make WasMenu and Store a button and dialog. 
 
 
-## [1.17.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1) - 2018-13-02
+## [1.17.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1) - 2018-02-13
 
 ### Fixed
 
 * **WASReview** Fix check if user is already logged in.
 
-## [1.17.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0) - 2018-13-02
+## [1.17.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0) - 2018-02-13
 
 ### Fixed
 
@@ -111,7 +117,7 @@ This shows all commits since last release (actually, currently all commits).
 
 * **UserInterface** Add new WasReview dialog.
 
-## [1.16.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1) - 2018-09-02
+## [1.16.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1) - 2018-02-09
 
 ### Fixed
 
@@ -126,7 +132,7 @@ This shows all commits since last release (actually, currently all commits).
 
 * **API** Deprecated un-used version parameter. This is now sent in as a header.
 
-## [1.16.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0) - 2018-08-02
+## [1.16.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0) - 2018-02-08
 
 ### Added
 
@@ -149,14 +155,14 @@ This shows all commits since last release (actually, currently all commits).
 
 * **SESSIONS** Add WAS session support.
 
-## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1) - 2018-01-02
+## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1) - 2018-02-01
 
 ### Fixed
 
 * **UserService** Fix standalone on Chrome, was only correct on iOS safari.
 * **UserService** Pass current user push_id, freebie_used, and rated_app values, update with passed params if available.
 
-## [1.14.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-26-01
+## [1.14.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-01-26
 
 ### Changed
 
@@ -164,19 +170,19 @@ This shows all commits since last release (actually, currently all commits).
                 Added input and list capability.
 * **WasUp** Changed the name from WasUpDialogComponent to WasUp.
 
-## [1.13.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2) - 2018-24-01
+## [1.13.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2) - 2018-01-24
 
 ### Added
 
 * **UserInterface** Add all new wasalert and wasup dialog for quickly showing modal messages to users
 
-## [1.13.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1) - 2018-19-01
+## [1.13.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1) - 2018-01-19
 
 ### Fixed
 
 * **UserService** Fix bug on if user_id is found in cookie.
 
-## [1.13.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0) - 2018-19-01
+## [1.13.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0) - 2018-01-19
 
 ### Added
 

@@ -516,6 +516,7 @@ export class UserService {
     console.log('============UserService sendToken=========');
     this._userObj.token_email = userParams.token_email;
     this.pushSubscribers(this._userObj);
+    this.saveLocal('was-user', this._userObj);
     const _obs = this.apiConnectionService.tokenPerson(userParams.token_email, this._userObj.user_id);
     _obs.subscribe((res) => {
       this._userObj.logging_in = true;
