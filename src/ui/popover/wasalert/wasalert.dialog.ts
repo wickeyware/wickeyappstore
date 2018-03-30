@@ -34,7 +34,7 @@ export class WasAlert {
    *  });
    *
    * With Input field
-    * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', input: true, input_value: 'text' } });
+    * const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Password', input: true, input_value: 'text', password: true } });
    *     dialogRef.afterClosed().subscribe(result => {
    *    if (result !== undefined) {
    *      console.log('This is the input captured', result);
@@ -69,6 +69,7 @@ export class WasAlert {
     if (!this.data.body) { this.data.body = ''; }
     if (!this.data.buttons) { this.data.buttons = ['Cancel']; }
     if (!this.data.input) { this.data.input = false; }
+    if (!this.data.password) { this.data.password = false; }
   }
 
   /**

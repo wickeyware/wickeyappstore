@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.2.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.0) - 2018-03-30
+
+### Added
+
+* **WasAlert** Add password option.
+
 ## [2.1.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.2) - 2018-03-29
 
 ### Fixed

@@ -9,7 +9,10 @@
     </mat-list-item>
   </mat-list>
   <mat-form-field *ngIf="data.input">
-    <input matInput [(ngModel)]="data.input_value">
+    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">
+    <ng-template #normalinput>
+      <input matInput [(ngModel)]="data.input_value">
+    </ng-template>
   </mat-form-field>
 </div>
 <div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">
