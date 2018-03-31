@@ -356,7 +356,8 @@ export class UserService {
         const _cookie_userid = this.localStorageService.cookie_read('was_user_id');
         if (_cookie_userid !== null && _cookie_userid !== '') {
           console.warn('UserService2: FOUND USER ID IN COOKIE');
-          this._userObj = { user_id: _cookie_userid, push_id: this._userObj.push_id };
+          this._userObj.user_id = _cookie_userid;
+          // this._userObj = { user_id: _cookie_userid, push_id: this._userObj.push_id,  };
         }
       }
     }
