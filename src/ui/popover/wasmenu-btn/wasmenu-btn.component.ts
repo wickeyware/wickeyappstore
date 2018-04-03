@@ -50,5 +50,8 @@ export class WasMenuBtn {
   openuserinfo() {
     this.userService.openuserinfo();
   }
+  openshop() {
+    this.userService.openshop();
+  }
 
 }

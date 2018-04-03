@@ -62,7 +62,7 @@
       <!-- The ad goes in here -->
       <div id="wasadcontainer"></div>
     </mat-expansion-panel>
-    <ul class="items">
+    <ul style="-webkit-padding-start: 0px;">
       <was-display-inapp *ngFor="let _inapp of userService.inapps | async" [inapp]="_inapp"></was-display-inapp>
     </ul>
   </div>
