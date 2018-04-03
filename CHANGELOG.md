@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.2.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.2) - 2018-04-03
+
+### Fixed
+
+* **WasMenuBtn** Only show shop button if app has inapps.
+
 ## [2.2.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.1) - 2018-03-30
 
 ### Fixed

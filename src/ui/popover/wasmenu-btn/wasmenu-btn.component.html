@@ -39,7 +39,7 @@
         <mat-icon>create</mat-icon>
         <span>Leave a Review</span>
     </button>
-    <button mat-menu-item (click)="openshop()">
+    <button *ngIf="hasInapps" mat-menu-item (click)="openshop()">
         <mat-icon>monetization_on</mat-icon>
         <span>Open the Shop</span>
     </button>
