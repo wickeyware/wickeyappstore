@@ -2,12 +2,6 @@
 <div class="was-fullscreen">
   <app-group-vertical [open]="showVerticalList" (close)="closeVerticalListApps($event)" [apps]="selectedAppList" [showAppEmitter]="showAppDetail"></app-group-vertical>
   <was-detail-page #appDetailPage (close)="onAppDetailClose($event)"></was-detail-page>
-
-  <!-- <div class="was-titlebar">
-    <h3 class="was-titletext">Featured Apps</h3>
-    <button (click)="closeMe()" class="was-navClose" title="back"></button>
-    <div class="was-titlebottom"></div>
-  </div> -->
   <header>
     <mat-toolbar role="header" class="was-titlebar" color="primary">
       <button class="main-header-sidebar" mat-icon-button (click)="closeMe()" title="back">
@@ -39,3 +33,4 @@
     <br>
     <br>
   </div>
+</div>

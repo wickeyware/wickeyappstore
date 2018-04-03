@@ -36,6 +36,7 @@ export class WasStore implements OnInit {
     if (!this.data) { this.data = {}; }
 
     this.showVerticalList = false;
+    dialogRef.updateSize('100%', '100%');
   }
   /**
    * Cancel/close the dialog
