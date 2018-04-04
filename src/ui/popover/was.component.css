@@ -115,3 +115,8 @@
     border: .5px solid black; 
     border-radius: 5px;
   }
+
+  /* Pass a panel class to dialog to edit css directly */
+  .was-dialog-nopadding .mat-dialog-container {
+        padding: 0!important;
+  }

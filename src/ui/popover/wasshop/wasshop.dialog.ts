@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef, ViewEncapsulation} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../../user.service';
@@ -9,6 +9,7 @@ import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
   selector: 'was-shop-dialog',
   templateUrl: './wasshop.dialog.html',
   styleUrls: ['../was.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WasShop {
   /**

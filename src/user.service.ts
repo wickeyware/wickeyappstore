@@ -894,7 +894,7 @@ export class UserService {
    * Open WickeyAppStore.
   */
   openstore() {
-    this.dialog.open(WasStore);
+    this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding'});
   }
   /**
    * Open WasShop.

@@ -1,36 +1,35 @@
 <!--Show the WickeyAppStore container-->
-<div class="was-fullscreen">
-  <app-group-vertical [open]="showVerticalList" (close)="closeVerticalListApps($event)" [apps]="selectedAppList" [showAppEmitter]="showAppDetail"></app-group-vertical>
-  <was-detail-page #appDetailPage (close)="onAppDetailClose($event)"></was-detail-page>
-  <header>
-    <mat-toolbar role="header" class="was-titlebar" color="primary">
-      <button class="main-header-sidebar" mat-icon-button (click)="closeMe()" title="back">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span class="main-header-text">WickeyAppStore™</span>
-      <button class="main-header-sidebar" mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">
-          <mat-icon>map</mat-icon>
-          <span>Terms</span>
-        </a>
-        <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">
-          <mat-icon>credit_card</mat-icon>
-          <span>Refunds</span>
-        </a>
-        <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">
-          <mat-icon>mood</mat-icon>
-          <span>Privacy</span>
-        </a>
-      </mat-menu>
-    </mat-toolbar>
-  </header>
-  <div class="results-group">
-    <display-apps *ngIf="showScroller" featured=true [apps]="wasAppService.bannerApps | async" [showAppEmitter]="showAppDetail"></display-apps>
-    <display-apps *ngIf="showScroller" [apps]="wasAppService.featuredGroups | async" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
-    <br>
-    <br>
-  </div>
+<app-group-vertical [open]="showVerticalList" (close)="closeVerticalListApps($event)" [apps]="selectedAppList" [showAppEmitter]="showAppDetail"></app-group-vertical>
+<was-detail-page #appDetailPage (close)="onAppDetailClose($event)"></was-detail-page>
+<header>
+  <mat-toolbar role="header" class="was-titlebar" color="primary">
+    <button class="main-header-sidebar" mat-icon-button (click)="closeMe()" title="back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="main-header-text">WickeyAppStore™</span>
+    <button class="main-header-sidebar" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/tos.html" target="WAS_Policies">
+        <mat-icon>map</mat-icon>
+        <span>Terms</span>
+      </a>
+      <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/refunds.html" target="WAS_Policies">
+        <mat-icon>credit_card</mat-icon>
+        <span>Refunds</span>
+      </a>
+      <a style="color:black;" mat-menu-item href="https://wickeyappstore.com/assets/privacy.html" target="WAS_Policies">
+        <mat-icon>mood</mat-icon>
+        <span>Privacy</span>
+      </a>
+    </mat-menu>
+  </mat-toolbar>
+</header>
+<div class="results-group">
+  <div class="was-page-content-margin">&nbsp;</div>
+  <display-apps *ngIf="showScroller" featured=true [apps]="wasAppService.bannerApps | async" [showAppEmitter]="showAppDetail"></display-apps>
+  <display-apps *ngIf="showScroller" [apps]="wasAppService.featuredGroups | async" [showAppEmitter]="showAppDetail" [showAppListEmitter]="showAppList"></display-apps>
+  <br>
+  <br>
 </div>

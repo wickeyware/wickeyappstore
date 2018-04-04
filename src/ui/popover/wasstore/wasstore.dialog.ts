@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { WasAppService } from '../../../was-app.service';
 import { User, AppGroup, App } from '../../../app.models';
@@ -9,6 +9,7 @@ import { WasAlert } from '../../../ui/popover/wasalert/wasalert.dialog';
   selector: 'wasstore-dialog',
   templateUrl: './wasstore.dialog.html',
   styleUrls: ['../was.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WasStore implements OnInit {
   public showVerticalList: boolean; // dictate if the full screen vertical list is shown
