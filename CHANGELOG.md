@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.4.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0) - 2018-04-06
+
+### Fixed
+
+* **WasShop** Only show free coins panel when ads or offerwall is set.
+* **WasPay** On non consumable, first check locally if already bought.
+
+### Added
+
+* **WasMenuBtn** Show login status on WAS menu button .
+
 ## [2.3.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.3.0) - 2018-04-06
 
 ### Added

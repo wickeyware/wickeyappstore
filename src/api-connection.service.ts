@@ -308,12 +308,12 @@ export class ApiConnectionService {
   * @param [_params] {user_id: <string>}.
   * @returns List of inapps
   */
-  getInapps(_params?: any): Observable<[Inapp]> {
+  getInapps(_params?: any): Observable<any> {
     this.handleHeaders();
     const _query_string = this.encode_query_string(_params);
     return this.http.get(`${this.purchases_url}?${_query_string}`, { headers: this.apiHeaders })
       .map((res: any) => {
-        return this.extractData(res).inapps;
+        return this.extractData(res);
       }).catch(this.handleError).share();
   }
 

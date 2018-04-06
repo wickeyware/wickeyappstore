@@ -29,9 +29,9 @@ export class WasShop {
   private vastplayer;
   public adnotready = true;
   private loggedin = false;
-
+  public hasAds = false;
+  public hasOfferwall = false;
   private vastAdTag = 'https://ima3vpaid.appspot.com/?adTagUrl=https%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fclient%3Dca-video-pub-5512390705137507%26slotname%3D3326280305%2F2027455546%26ad_type%3Dvideo_text_image%26description_url%3Dhttp%253A%252F%252Fwickeyappstore.com%26max_ad_duration%3D60000%26videoad_start_delay%3D0&type=js';
-
   private vastAdID: string;
 
   constructor(
@@ -69,6 +69,17 @@ export class WasShop {
   }
 
   // ad stuff
+  get isFreeCoinPanel() {
+    return this.userService.freebieSettings.map((_freesetting) => {
+      this.hasAds = _freesetting.hasAds;
+      this.hasOfferwall = _freesetting.hasOfferwall;
+      if (_freesetting.hasAds === true || _freesetting.hasOfferwall === true) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
 
   openedFreeCoins() {
     console.log('openedFreeCoins');

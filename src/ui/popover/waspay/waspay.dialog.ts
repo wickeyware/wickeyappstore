@@ -40,30 +40,36 @@ export class WasPay {
 
   showWebPay() {
     if (this.userService.isLoggedInVal) {
-      this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
-        if (_goodPurchase) {
-          this.dialog.open(WasAlert, {
-            data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
-          }).afterClosed().subscribe(result => {
-            this.onNoClick();
-          });
-        } else {
-          this.dialog.open(WasAlert, {
-            data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
-          }).afterClosed().subscribe(result => {
-            this.onNoClick();
-          });
-        }
-      }).catch((_failReason) => {
-        console.error('showWebPay:error return:', _failReason);
-        if (_failReason !== 'canceled') {
-          this.dialog.open(WasAlert, {
-            data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }
-          }).afterClosed().subscribe(result => {
-            this.onNoClick();
-          });
-        }
-      });
+      if (this.data.isOwned === true) {
+        this.dialog.open(WasAlert, {
+          data: { title: 'Already Owned', body: 'You already own: ' + this.data.title, buttons: ['Cool'] }
+        });
+      } else {
+        this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
+          if (_goodPurchase) {
+            this.dialog.open(WasAlert, {
+              data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
+            }).afterClosed().subscribe(result => {
+              this.onNoClick();
+            });
+          } else {
+            this.dialog.open(WasAlert, {
+              data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
+            }).afterClosed().subscribe(result => {
+              this.onNoClick();
+            });
+          }
+        }).catch((_failReason) => {
+          console.error('showWebPay:error return:', _failReason);
+          if (_failReason !== 'canceled') {
+            this.dialog.open(WasAlert, {
+              data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }
+            }).afterClosed().subscribe(result => {
+              this.onNoClick();
+            });
+          }
+        });
+      }
     } else {
       this.userService.opensso();
     }

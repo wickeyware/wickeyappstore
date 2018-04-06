@@ -39,7 +39,7 @@
     <mat-divider></mat-divider>
   </header>
   <div mat-dialog-content style="max-height: 100%!important;">
-    <mat-expansion-panel (opened)="openedFreeCoins()" (closed)="closedFreeCoins()">
+    <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoins()" (closed)="closedFreeCoins()">
       <mat-expansion-panel-header>
         <mat-panel-title>
           FREE!
@@ -49,9 +49,9 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div *ngIf="loginValue | async; else notLoggedIn">
-        <a style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}'
+        <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}'
           target='_blank'>Open the Offerwall</a>
-        <button [disabled]="adnotready" style="width:100%;" mat-raised-button color="accent" (click)="watchAd()">{{addBtnText}}</button>
+        <button *ngIf="hasAds" [disabled]="adnotready" style="width:100%;" mat-raised-button color="accent" (click)="watchAd()">{{addBtnText}}</button>
       </div>
       <ng-template #notLoggedIn>
         <button mat-raised-button (click)="opensso()">

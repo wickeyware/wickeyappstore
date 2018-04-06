@@ -61,6 +61,8 @@ export class UserService {
   private _loginChange: ReplaySubject<boolean> = new ReplaySubject(1);
   private _onAccountCreate: ReplaySubject<boolean> = new ReplaySubject(1);
   private _inapps: ReplaySubject<[Inapp]> = new ReplaySubject(1);
+  private _freebieSettings: ReplaySubject<any> = new ReplaySubject(1);
+  private _freebieSettingsObj: any;
   private _inappsObj: [Inapp];
   private _userObj: User;
   private _createNewUser = false;
@@ -103,6 +105,7 @@ export class UserService {
       console.log('LOAD INAPPS');
       // Load inapps on all login changes (also ensures user object exists)
       this.loadInapps();
+      this.loadFreebieSettings();
     });
   }
 
@@ -202,6 +205,9 @@ export class UserService {
   get isLoaded() {
     return this._loaded;
   }
+  get freebieSettings() {
+    return this._freebieSettings;
+  }
 
 
   private pushSubscribers(_usr: User) {
@@ -266,6 +272,17 @@ export class UserService {
         }
       }
       ).catch(this.handleError);
+  }
+  loadFreebieSettings() {
+    this.localStorageService.get('was-freesettings')
+      .then((value: any): void => {
+        if (value && typeof value !== 'undefined') {
+          this._freebieSettingsObj = value;
+          this._freebieSettings.next(this._freebieSettingsObj);
+          // normal load
+          console.log('UserService loadFreebieSettings: load freebie settings from db', this._freebieSettingsObj);
+        }
+      }).catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
@@ -749,9 +766,13 @@ export class UserService {
     const _obs = this.apiConnectionService.getInapps({ user_id: this._userObj.user_id });
     _obs.subscribe((res) => {
       console.log('UserService: getInapps RETURN:', res);
-      this._inappsObj = res;
+      this._inappsObj = res.inapps;
       this.pushInappSubscribers(this._inappsObj);
       this.saveLocal('was-inapps', this._inappsObj);
+      // Push freebie settings object
+      this._freebieSettingsObj = { 'hasAds': res.has_ads, 'hasOfferwall': res.has_offerwall };
+      this._freebieSettings.next(this._freebieSettingsObj);
+      this.saveLocal('was-freesettings', this._freebieSettingsObj);
     }, (error) => {
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
