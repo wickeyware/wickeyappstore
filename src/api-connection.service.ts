@@ -21,11 +21,11 @@ export class ApiConnectionService {
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
   private reviews_url = 'https://api.wickeyappstore.com/reviews/';
   private wasstore_url = 'https://api.wickeyappstore.com/wasstore/';
-  // TODO: Add BlueSnap APIS
-  // bluesnap
-  // bluesnap/wallet/
-  // bluesnap/token/
-  // bluesnap/shopper/
+  private bluesnapTokenUrl = 'https://api.wickeyappstore.com/bluesnap/token/';
+  private bluesnapShopperUrl = 'https://api.wickeyappstore.com/bluesnap/shopper/';
+  private bluesnapWalletUrl = 'https://api.wickeyappstore.com/bluesnap/wallet/';
+  private adVideoStartUrl = 'https://api.wickeyappstore.com/video/start/';
+  private adVideoEndUrl = 'https://api.wickeyappstore.com/video/end/';
 
 
   constructor(
@@ -57,7 +57,7 @@ export class ApiConnectionService {
 
   handleHeaders(password?: string) {
     // NOTE: This needs to be in each api, so that is updated as soon as logged in
-    const _headers = {'API-VERSION': this.version};
+    const _headers = { 'API-VERSION': this.version };
     // NOTE: This needs to be in each api, so that is updated as soon as logged in
     const session_id = this.cookie_read('was_session_id');
     if (session_id) {
@@ -70,7 +70,7 @@ export class ApiConnectionService {
   }
 
   // THE OBSERVABLE WAY //
-  private handleError (error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse) {
     let errMsg: string;
     console.log('WASAPI: handleError', error);
     if (error.error instanceof Error) {
@@ -91,16 +91,16 @@ export class ApiConnectionService {
             errMsg = errorObj.error.message;
             // Catch 419 session expired error that will be returned on invalid session id
             // FOR NOW, ONLY HANDLE THE SESSION EXPIRED CASE
-            if (errorObj.error.code === 419) {
-              this.dialog.open(WasAlert, {
-                data: { title: 'Attention', body: error, buttons: ['Login', 'Cancel'] }
-              }).afterClosed().subscribe(result => {
-                // result is the index of the button pressed
-                if (result === 0) {
-                  console.log('Open SSO');  // After SSO is a dialog, simply open right here
-                }
-              });
-            }
+            // if (errorObj.error.code === 419) {
+            //   this.dialog.open(WasAlert, {
+            //     data: { title: 'Attention', body: error, buttons: ['Login', 'Cancel'] }
+            //   }).afterClosed().subscribe(result => {
+            //     // result is the index of the button pressed
+            //     if (result === 0) {
+            //       console.log('Open SSO');  // After SSO is a dialog, simply open right here
+            //     }
+            //   });
+            // }
           } else {
             errMsg = error.statusText;
           }
@@ -126,7 +126,7 @@ export class ApiConnectionService {
       if (body.hasOwnProperty('special_message')) {
         console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
         this.dialog.open(WasAlert, {
-          data: { title: body.special_message.title, body: body.special_message.message}
+          data: { title: body.special_message.title, body: body.special_message.message }
         });
       }
     } catch (extractError) {
@@ -145,7 +145,7 @@ export class ApiConnectionService {
       if (body.hasOwnProperty('special_message')) {
         console.log(`ApiConnectionService: extractData: special_message:[${body.special_message}]`);
         this.dialog.open(WasAlert, {
-          data: { title: body.special_message.title, body: body.special_message.message}
+          data: { title: body.special_message.title, body: body.special_message.message }
         });
       }
     } catch (extractError) {
@@ -160,9 +160,9 @@ export class ApiConnectionService {
     // then we convert the percent encodings into raw bytes which
     // can be fed into btoa.
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-        function toSolidBytes(match, p1) {
-            return String.fromCharCode(Number('0x' + p1));
-    }));
+      function toSolidBytes(match, p1) {
+        return String.fromCharCode(Number('0x' + p1));
+      }));
   }
 
   encode_query_string(_obj): string {
@@ -182,10 +182,10 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getApps', _query_string);
-    return this.http.get(`${this.app_url}?${_query_string}`, {headers: this.apiHeaders})
-          .map((res: any) => {
-            return this.extractData(res).apps;
-          }).catch(this.handleError).share();
+    return this.http.get(`${this.app_url}?${_query_string}`, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res).apps;
+      }).catch(this.handleError).share();
   }
 
   /**
@@ -199,10 +199,10 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getFeaturedGroups', _query_string);
-    return this.http.get(`${this.featured_url}?${_query_string}`, {headers: this.apiHeaders})
-          .map((res: any) => {
-            return this.extractData(res).groups;
-          }).catch(this.handleError).share();
+    return this.http.get(`${this.featured_url}?${_query_string}`, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res).groups;
+      }).catch(this.handleError).share();
   }
 
   // Creates or updates person, returns person info
@@ -210,19 +210,19 @@ export class ApiConnectionService {
   createPerson(apiobject: any): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_url, apiobject, {headers: this.apiHeaders, withCredentials: true})
-        .map((res: any) => {
-          return this.extractData(res);
-        }).catch(this.handleError).share();
+    return this.http.post(this.person_url, apiobject, { headers: this.apiHeaders, withCredentials: true })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
   }
   // Sends the email a recovery token
   tokenPerson(email: string, user_id: string): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_recover_token_url, {email: email, user_id: user_id},
-      {headers: this.apiHeaders, withCredentials: true})
-               .map(this.extractData)
-               .catch(this.handleError).share();
+    return this.http.post(this.person_recover_token_url, { email: email, user_id: user_id },
+      { headers: this.apiHeaders, withCredentials: true })
+      .map(this.extractData)
+      .catch(this.handleError).share();
   }
   // Verify the recovery token
   verifyPerson(email: string, user_id: string, verification_token: string, version?: number, password?: string): Observable<any> {
@@ -235,10 +235,10 @@ export class ApiConnectionService {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_recover_verify_url,
-      {email: email, user_id: user_id, verification_token: verification_token}, {headers: this.apiHeaders, withCredentials: true})
-               .map((res: any) => {
-                return this.extractVerifyData(res);
-              }).catch(this.handleError).share();
+      { email: email, user_id: user_id, verification_token: verification_token }, { headers: this.apiHeaders, withCredentials: true })
+      .map((res: any) => {
+        return this.extractVerifyData(res);
+      }).catch(this.handleError).share();
   }
 
   /**
@@ -249,17 +249,17 @@ export class ApiConnectionService {
    * @param new_password string: OPTIONAL The new password on password changes.
    * @returns Success or failure status code and message.
    */
-  authPerson( user_id: string, password: string, new_password?: string): Observable<any> {
+  authPerson(user_id: string, password: string, new_password?: string): Observable<any> {
     this.handleHeaders(password);
-    const apiobject = {user_id: user_id};
+    const apiobject = { user_id: user_id };
     if (new_password) {
       apiobject['new_password'] = this.b64EncodeUnicode(new_password);
     }
     // NOTE: Use share to avoid duplicate calls
-    return this.http.post(this.person_auth_url, apiobject, {headers: this.apiHeaders, withCredentials: true})
-        .map((res: any) => {
-          return this.extractData(res);
-        }).catch(this.handleError).share();
+    return this.http.post(this.person_auth_url, apiobject, { headers: this.apiHeaders, withCredentials: true })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
   }
 
   /**
@@ -276,10 +276,10 @@ export class ApiConnectionService {
     this.handleHeaders();
     const _query_string = this.encode_query_string(_params);
     console.log('getReviews', _query_string);
-    return this.http.get(`${this.reviews_url}?${_query_string}`, {headers: this.apiHeaders})
-          .map((res: any) => {
-            return this.extractData(res).reviews;
-          }).catch(this.handleError).share();
+    return this.http.get(`${this.reviews_url}?${_query_string}`, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res).reviews;
+      }).catch(this.handleError).share();
   }
 
   /**
@@ -293,9 +293,9 @@ export class ApiConnectionService {
    */
   setReview(_params: any): Observable<any> {
     this.handleHeaders();
-    return this.http.post(this.reviews_url, _params, {headers: this.apiHeaders, withCredentials: true})
-          .map(this.extractData)
-          .catch(this.handleError).share();
+    return this.http.post(this.reviews_url, _params, { headers: this.apiHeaders, withCredentials: true })
+      .map(this.extractData)
+      .catch(this.handleError).share();
   }
 
   /**
@@ -308,14 +308,14 @@ export class ApiConnectionService {
   * @param [_params] {user_id: <string>}.
   * @returns List of inapps
   */
- getInapps(_params?: any): Observable<[Inapp]> {
-  this.handleHeaders();
-  const _query_string = this.encode_query_string(_params);
-  return this.http.get(`${this.purchases_url}?${_query_string}`, {headers: this.apiHeaders})
-        .map((res: any) => {
-          return this.extractData(res).inapps;
-        }).catch(this.handleError).share();
-}
+  getInapps(_params?: any): Observable<[Inapp]> {
+    this.handleHeaders();
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.purchases_url}?${_query_string}`, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res).inapps;
+      }).catch(this.handleError).share();
+  }
 
   /**
    * Creates a new purchase.
@@ -332,11 +332,65 @@ export class ApiConnectionService {
    */
   setPurchase(_params: any): Observable<any> {
     this.handleHeaders();
-    return this.http.post(this.purchases_url, _params, {headers: this.apiHeaders, withCredentials: true})
-          .map(this.extractData)
-          .catch(this.handleError).share();
+    return this.http.post(this.purchases_url, _params, { headers: this.apiHeaders, withCredentials: true })
+      .map(this.extractData)
+      .catch(this.handleError).share();
   }
 
+  /**
+  * Returns a BlueSnap hosted field token
+  */
+  getBluesnapToken(): Observable<{ token: string }> {
+    return this.http.post(this.bluesnapTokenUrl, {})
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
+  }
+  /**
+   * Returns an encrypted shopper token in `token`, post to to BlueSnap via `enc=this_returned_token`
+   */
+  getBluesnapShopper(_shopper_id: number): Observable<{ token: string }> {
+    return this.http.post(this.bluesnapShopperUrl, { shopper_id: _shopper_id })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
+  }
+
+  /**
+   * Returns a BlueSnap Wallet token. (Used with ApplePay)
+   * https://developers.bluesnap.com/v8976-Basics/docs/apple-pay#section-step-4-verify-your-domain
+   *
+   * @param _validation_url The `event.validationURL` from the BlueSnap onvalidatemerchant callback
+   * @returns the auth token, an object.
+   */
+  getBluesnapWallet(_validation_url: string): Observable<{ token: string }> {
+    console.log('api: getBluesnapWallet', _validation_url);
+    return this.http.post(this.bluesnapWalletUrl, { validation_url: _validation_url })
+      .map((res: any) => {
+        return res;
+      }).catch(this.handleError).share();
+  }
+  /**
+  * Notifies the server that a video ad has started by this user and video id.
+  */
+  adVideoStart(user_id: string, video_id: string): Observable<any> {
+    this.handleHeaders();
+    return this.http.post(this.adVideoStartUrl, { user_id: user_id, video_id: video_id },
+      { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
+  }
+  /**
+  * Notifies the server that a video ad has ended by this user and video id.
+  */
+  adVideoEnd(user_id: string, video_id: string): Observable<any> {
+    this.handleHeaders();
+    return this.http.post(this.adVideoEndUrl, { user_id: user_id, video_id: video_id }, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
+  }
   /**
    * Gets a value(s) for requested key(s).
    *
@@ -349,16 +403,16 @@ export class ApiConnectionService {
    * @param _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
    * @returns Returns a standard user object with was_data.
    */
-  getWASStore(_params: {user_id: string, keys: string}): Observable<{}> {
+  getWASStore(_params: { user_id: string, keys: string }): Observable<{}> {
     console.log('WASAPI: getWASStore _params', _params);
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
-    return this.http.get(`${this.wasstore_url}?${_query_string}`, {headers: this.apiHeaders})
-          .map((res: any) => {
-            return this.extractData(res).was_data;
-          }).catch(this.handleError).share();
+    return this.http.get(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders })
+      .map((res: any) => {
+        return this.extractData(res).was_data;
+      }).catch(this.handleError).share();
   }
   /**
    * Stores/Updates all values to respective key in passed in json was_data.
@@ -372,15 +426,15 @@ export class ApiConnectionService {
    * @param _params string: user_id, json: was_data where was_data is format {key:value,...}
    * @returns Returns a standard user object with was_data.
    */
-  setWASStore(_params: {user_id: string, was_data: {}}): Observable<any> {
+  setWASStore(_params: { user_id: string, was_data: {} }): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: getWASStore', _query_string);
-    return this.http.post(this.wasstore_url, _params, {headers: this.apiHeaders, withCredentials: true})
-          .map((res: any) => {
-            return this.extractData(res);
-          }).catch(this.handleError).share();
+    return this.http.post(this.wasstore_url, _params, { headers: this.apiHeaders, withCredentials: true })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
   }
   /**
    * Deletes a value(s) for the requested key(s).
@@ -394,15 +448,15 @@ export class ApiConnectionService {
    * @param _params string: user_id, string: keys where keys is a single key or a comma separated string of keys (keys='key1,')
    * @returns Returns a standard user object.
    */
-  deleteWASStore(_params: {user_id: string, keys: string}): Observable<any> {
+  deleteWASStore(_params: { user_id: string, keys: string }): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     console.log('WASAPI: deleteWASStore', _query_string);
-    return this.http.delete(`${this.wasstore_url}?${_query_string}`, {headers: this.apiHeaders, withCredentials: true})
-          .map((res: any) => {
-            return this.extractData(res);
-          }).catch(this.handleError).share();
+    return this.http.delete(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders, withCredentials: true })
+      .map((res: any) => {
+        return this.extractData(res);
+      }).catch(this.handleError).share();
   }
 
 }

@@ -109,11 +109,31 @@
       font-weight: 500;
       color: #5b5b65;
       text-shadow: 0 1px 0 #fff;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
   }
   #sample-pay-button {
     border: .5px solid black; 
     border-radius: 5px;
+  }
+  #apple-pay-button {
+    display: inline-block;
+    /* align-self: flex-end; */
+    background-color: white;
+    background-image: -webkit-named-image(apple-pay-logo-black);
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 5px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: .5px solid black;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+  }
+  #apple-pay-button:focus,
+  #apple-pay-button:hover {
+  background-color:#E7ECF1 !important;
   }
 
   /* Pass a panel class to dialog to edit css directly */

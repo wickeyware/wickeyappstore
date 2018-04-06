@@ -16,7 +16,7 @@ export class WasPay {
       data: {'price': 1.99, 'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100}
     });
   */
-  @Input() showApplePay = false; // default
+  public isApplePayAvail = false; // dictates if the apple pay button is shown.
 
   constructor(
     public dialog: MatDialog,
@@ -27,7 +27,7 @@ export class WasPay {
     if (!this.data) {
       this.data = {'price': 1.99, 'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100, 'isConsumable': false, 'isOwned': false};
     }
-
+    this.isApplePayAvail = this.userService.isApplePayAvailable();
   }
   /**
    * Cancel/close the dialog
@@ -38,38 +38,34 @@ export class WasPay {
     this.dialogRef.close();
   }
 
-  paypal() {
-
-  }
-
-  applepay() {
-
-  }
-
-  isAppleDevice() {
-
-    const iDevices = [
-      'Mac',
-      'iPad',
-      'iPhone',
-      'iPod'
-    ];
-    if (!!navigator.platform) {
-      while (iDevices.length) {
-        while (iDevices.length) {
-          const test = iDevices.pop();
-          if (navigator.platform.indexOf(test) !== -1) { return true; }
+  showWebPay() {
+    if (this.userService.isLoggedInVal) {
+      this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
+        if (_goodPurchase) {
+          this.dialog.open(WasAlert, {
+            data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
+          }).afterClosed().subscribe(result => {
+            this.onNoClick();
+          });
+        } else {
+          this.dialog.open(WasAlert, {
+            data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
+          }).afterClosed().subscribe(result => {
+            this.onNoClick();
+          });
         }
-      }
-    }
-    // console.log('this is not ios');
-    return false;
-  }
-  showTestApplePay() {
-    if (this.isAppleDevice() === true && this.showApplePay === false) {
-      return true;
+      }).catch((_failReason) => {
+        console.error('showWebPay:error return:', _failReason);
+        if (_failReason !== 'canceled') {
+          this.dialog.open(WasAlert, {
+            data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }
+          }).afterClosed().subscribe(result => {
+            this.onNoClick();
+          });
+        }
+      });
     } else {
-      return false;
+      this.userService.opensso();
     }
   }
 

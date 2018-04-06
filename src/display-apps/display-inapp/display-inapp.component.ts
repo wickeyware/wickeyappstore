@@ -31,10 +31,7 @@ export class DisplayInAppComponent implements OnInit {
       });
     } else {
       this.dialog.open(WasPay, {
-        data: {
-          'price': this.inapp.price, 'title': this.inapp.title, 'description': this.inapp.description,
-          'coins': this.inapp.coins, 'isConsumable': this.inapp.isConsumable
-        }
+        data: this.inapp
       });
     }
   }

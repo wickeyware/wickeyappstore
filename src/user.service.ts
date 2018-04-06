@@ -56,6 +56,7 @@ export interface UserParams {
  */
 @Injectable()
 export class UserService {
+  private readonly merchantID = '1105404'; // your BlueSnap Merchant ID;
   private _user: ReplaySubject<User> = new ReplaySubject(1);
   private _loginChange: ReplaySubject<boolean> = new ReplaySubject(1);
   private _onAccountCreate: ReplaySubject<boolean> = new ReplaySubject(1);
@@ -652,8 +653,26 @@ export class UserService {
     });
     return _obs;
   }
-  // TODO: TEST create purchase
-  createPurchase(_purchase_id: string, _receipt: string, _amount: number,
+
+  /**
+   * Creates a purchase on the server. It processed the payment for the following services:
+   * - ApplePay
+   *
+   * Coming soon:
+   * - GooglePay
+   * - Credit Card
+   *
+   * @param _purchase_id The id of the inapp.
+   * @param _receipt The purchase receipt, if purchase handled locally (not used right now, can use empty string).
+   * @param _amount The inapp coins purchased.
+   * @param [_email] The email of the purchaser person.
+   * @param [_first_name] The billing first name of the purchaser person.
+   * @param [_last_name] The billing last name of the purchaser person.
+   * @param [_zip_code] The billing zip code of the purchaser person.
+   * @param [_wallet_token] The applepay wallet token, this is used to process the payment.
+   * @returns The same as updateUser.
+   */
+  createPurchase(_purchase_id: string, _receipt: string, _amount: number, _email?: string,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
     console.log('============UserService createPurchase=========');
     const _purchase = {
@@ -661,6 +680,9 @@ export class UserService {
       'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
       'zip_code': _zip_code, 'apple_wallet_token': _wallet_token
     };
+    if (_email) {
+      _purchase['email'] = _email;
+    }
     const _obs = this.apiConnectionService.setPurchase(_purchase);
     _obs.subscribe((res) => {
       console.log('UserService: createPurchase RETURN:', res);
@@ -721,6 +743,7 @@ export class UserService {
     });
     return _obs;
   }
+
   getInapps(): Observable<any> {
     console.log('============UserService getInapps=========');
     const _obs = this.apiConnectionService.getInapps({ user_id: this._userObj.user_id });
@@ -732,6 +755,88 @@ export class UserService {
     }, (error) => {
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  /**
+   * Performs the merchant validation in ApplePay.
+   * https://developers.bluesnap.com/v8976-Basics/docs/apple-pay#section-step-4-set-up-the-onvalidatemerchant-callback
+   *
+   * @param validationURL The `event.validationURL` from the BlueSnap onvalidatemerchant callback
+   * @returns The token object.
+   */
+  getBluesnapWallet(validationURL: string): Observable<any> {
+    console.log('============UserService getBluesnapWallet=========');
+    const currentUser = this._userObj;
+    const _obs = this.apiConnectionService.getBluesnapWallet(validationURL);
+    return _obs;
+  }
+
+  getBluesnapShopper(): Observable<any> {
+    console.log('============UserService getBluesnapShopper=========');
+    let _obs;
+    if (this._userObj.bs_id) {
+      _obs = this.apiConnectionService.getBluesnapShopper(this._userObj.bs_id);
+      _obs.subscribe((res) => {
+        console.log('UserService: getBluesnapShopper: RETURN:', res);
+        this._userObj.bs_id = res.token;
+        // UPDATE USER //
+        this.pushSubscribers(this._userObj);
+        this.saveLocal('was-user', this._userObj);
+      }, (error) => {
+        console.log(`UserService: getBluesnapShopper: error:[${error}]`);
+        this.dialog.open(WasAlert, {
+          data: { title: 'Attention!', body: error }
+        });
+      });
+    } else {
+      // check if this works, maybe throw error instead
+      _obs = Observable.of({ token: undefined });
+    }
+    return _obs;
+  }
+
+  /**
+  * Notifies the server that a video ad has started by this user and video id.
+  */
+  adVideoStart(_video_id: string): Observable<any> {
+    console.log('============UserService adVideoStart=========');
+    const _obs = this.apiConnectionService.adVideoStart(this._userObj.user_id, _video_id);
+    _obs.subscribe((res) => {
+      console.log('UserService: adVideoStart RETURN:', res);
+    }, (error) => {
+      this.dialog.open(WasAlert, {
+        data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
+      });
+    });
+    return _obs;
+  }
+  /**
+  * Notifies the server that a video ad has ended by this user and video id.
+  */
+  adVideoEnd(_video_id: string): Observable<any> {
+    console.log('============UserService adVideoEnd=========');
+    const _obs = this.apiConnectionService.adVideoEnd(this._userObj.user_id, _video_id);
+    _obs.subscribe((res) => {
+      console.log('UserService: adVideoEnd RETURN:', res);
+      // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
+      if (res.email && res.user_id) {
+        this._userObj.user_id = res.user_id;
+        this._userObj.email = res.email;
+      }
+      if (res.coins) {
+        this._userObj.coins = res.coins;
+      }
+      // UPDATE USER //
+      this.pushSubscribers(this._userObj);
+      this.saveLocal('was-user', this._userObj);
+      // this.dialog.open(WasUp,
+      //   {data: {title: 'Thank you!', icon: 'attach_money', body: 'You have received two coins for watching a video.'}});
+    }, (error) => {
+      this.dialog.open(WasAlert, {
+        data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
+      });
     });
     return _obs;
   }
@@ -894,7 +999,7 @@ export class UserService {
    * Open WickeyAppStore.
   */
   openstore() {
-    this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding'});
+    this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding' });
   }
   /**
    * Open WasShop.
@@ -902,6 +1007,213 @@ export class UserService {
   openshop() {
     this.dialog.open(WasShop);
   }
-  // TODO: Add BlueSnap APIS
+
+  /**
+  * Returns true if this is an apple device, else false.
+  */
+  isAppleDevice() {
+    const iDevices = [
+      'Mac',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ];
+    if (!!navigator.platform) {
+      while (iDevices.length) {
+        while (iDevices.length) {
+          const test = iDevices.pop();
+          if (navigator.platform.indexOf(test) !== -1) { return true; }
+        }
+      }
+    }
+    // console.log('this is not ios');
+    return false;
+  }
+
+  /**
+  * Returns true if this ApplePay is available, else false.
+  */
+  isApplePayAvailable(): boolean {
+    let _isAvail;
+    try {
+      if ((<any>window).ApplePaySession) {
+        console.log('has ApplePaySession');
+        _isAvail = true;
+        if ((<any>window).ApplePaySession && (<any>window).ApplePaySession.canMakePayments()) {
+          _isAvail = true;
+          console.log('apple pay is available');
+        } else {
+          console.log('apple pay is NOT available');
+          _isAvail = false;
+        }
+      }
+    } catch (error) {
+      console.warn('isApplePayAvailable', error);
+      _isAvail = false;
+    }
+    return _isAvail;
+  }
+
+  /**
+  * Makes a purchase via ApplePay.
+  */
+  makeApplePurchase(_inapp: Inapp) {
+    return new Promise<boolean>((resolve, reject) => {
+      const productDescription = _inapp.title;
+      let walletToken = null;
+      const request = {
+        countryCode: 'US',
+        currencyCode: 'USD',
+        total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
+        supportedNetworks: ['amex', 'discover', 'jcb', 'masterCard', 'visa'],
+        merchantCapabilities: ['supports3DS'],
+        requiredBillingContactFields: ['postalAddress'],
+        requiredShippingContactFields: ['email', 'name']
+      };
+      const session = new (<any>window).ApplePaySession(2, request);
+      session.oncancel = (event) => {
+        console.log('Apple Pay cancelled');
+        reject('canceled');
+      };
+      session.onvalidatemerchant = (event) => {
+        const validationURL = event.validationURL;
+        this.getBluesnapWallet(validationURL)
+          .subscribe((res) => {
+            walletToken = res;
+            session.completeMerchantValidation(walletToken);
+          }, (error) => {
+            console.warn('getBluesnapWallet NO walletToken: ABORT', error);
+            session.abort();
+            reject('payment auth failed');
+          });
+      };
+      session.onpaymentauthorized = (event) => {
+        const paymentToken = event.payment;
+        this.createPurchase(_inapp.purchaseId, walletToken, _inapp.price, event.payment.shippingContact.emailAddress,
+          event.payment.billingContact.givenName, event.payment.billingContact.familyName,
+          event.payment.billingContact.postalCode, (<any>window).btoa(JSON.stringify(paymentToken)))
+          .subscribe((res) => {
+            session.completePayment((<any>window).ApplePaySession.STATUS_SUCCESS);
+            resolve(true);
+          }, (error) => {
+            session.completePayment((<any>window).ApplePaySession.STATUS_FAILURE);
+            reject('payment failed');
+          });
+      };
+      session.begin();
+    });
+  }
+
+  /**
+  * Makes a purchase via PaymentRequest (not implemented).
+  */
+  makePaymentRequestPurchase(_inapp: Inapp) {
+    return new Promise<boolean>((resolve, reject) => {
+      if ((<any>window).PaymentRequest) {
+        const googlePayPaymentMethod = {
+          supportedMethods: ['https://google.com/pay'],
+          data: {
+            'environment': 'TEST',
+            'apiVersion': 1,
+            'allowedPaymentMethods': ['CARD', 'TOKENIZED_CARD'],
+            'paymentMethodTokenizationParameters': {
+              'tokenizationType': 'PAYMENT_GATEWAY',
+              // Check with your payment gateway on the parameters to pass.
+              'parameters': {}
+            },
+            'cardRequirements': {
+              'allowedCardNetworks': ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA'],
+              'billingAddressRequired': true,
+              'billingAddressFormat': 'MIN'
+            },
+            'emailRequired': true
+          },
+        };
+        const creditCardPaymentMethod = {
+          supportedMethods: ['basic-card'],
+        };
+        const applePayPaymentMethod = {
+          supportedMethods: ['https://apple.com/apple-pay'],
+          data: {
+            supportedNetworks: [
+              'amex', 'discover', 'masterCard', 'visa'
+            ],
+            total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
+            merchantCapabilities: ['supports3DS'],
+            countryCode: 'US',
+            currencyCode: 'USD',
+            version: 3,
+            validationEndpoint: 'https://api.wickeyappstore.com/bluesnap/wallet/',
+            merchantIdentifier: this.merchantID
+          }
+        };
+        const supportedPaymentMethods = <PaymentMethodData[]>[
+          creditCardPaymentMethod,
+          googlePayPaymentMethod,
+          applePayPaymentMethod
+        ];
+        const _paymentDetails = {
+          displayItems: [{ label: _inapp.title, amount: { currency: 'USD', value: _inapp.price.toString() } }],
+          total: { label: 'Total', amount: { currency: 'USD', value: _inapp.price.toString() } }
+        };
+        // Options isn't required.
+        const options = { requestPayerEmail: true, requestPayerName: true };
+        // Use Payment Request API
+        const request = new PaymentRequest(
+          supportedPaymentMethods,
+          _paymentDetails,
+          options
+        );
+
+        // Call when you wish to show the UI to the user.
+        let response;
+        request.show()
+          .then(result => {
+            response = result;
+            console.log('PaymentRequest RETURN:', response);
+            if (response.methodName === 'https://apple.com/apple-pay') {
+              console.log('PaymentRequest APPLEPAY');
+              // Apple Pay JS case
+              console.log('PaymentRequest applePayRaw:', response.applePayRaw);
+            } else {
+              console.log('PaymentRequest OTHER');
+            }
+            response.complete('success');
+            // return response.complete();
+            resolve(true);
+          }).catch(e => {
+            if (e) {
+              alert(`Could not make payment: ${e}`);
+              this.dialog.open(WasAlert, {
+                data: { title: 'Attention!', body: `${e}` }
+              });
+            }
+            if (response) {
+              response.complete('fail');
+            }
+            reject('payment failed');
+          });
+      } else {
+        // Fallback to traditional checkout
+        this.dialog.open(WasAlert, {
+          data: { title: 'Attention', body: 'No Web Pay, currently only ApplePay is available.' }
+        });
+        reject('no payment option available');
+      }
+    });
+  }
+
+  /**
+  * Shows either ApplePay or PaymentRequest pending on the device.
+  */
+  showWebPay(_inapp: Inapp) {
+    if (this.isApplePayAvailable()) {
+      console.log('Show ApplePay');
+      return this.makeApplePurchase(_inapp);
+    } else {
+      console.log('Show PaymentRequest');
+      return this.makePaymentRequestPurchase(_inapp);
+    }
+  }
 
 }

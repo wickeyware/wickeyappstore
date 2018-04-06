@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.3.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.3.0) - 2018-04-06
+
+### Added
+
+* **ads** Rewarded video ads available in WasShop.
+* **inapps** Inapp purchases are now available, currently only ApplePay is available.
+
 ## [2.2.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.3) - 2018-04-04
 
 ### Fixed
