@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all)
 
 This shows all commits since last release (actually, currently all commits).
+## [2.5.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0) - 2018-04-09
+
+## ADDED
+CHANGES VERSION 2.5.0
+* **WasAlert** Added standard confirm styles WasAlertStyleConfirm / WasAlertStyleWarning
+* **UI** Updated to use the new WasAlert
 
 ## [2.4.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0) - 2018-04-06
 

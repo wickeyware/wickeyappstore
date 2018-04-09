@@ -489,7 +489,7 @@ export class UserService {
           // NOTE: all user APIS can return a `special_message`
           if (usr.special_message) {
             this.dialog.open(WasAlert, {
-              data: { title: usr.special_message.title, body: usr.special_message.message, buttons: ['Ok', 'Cancel'] }
+              data: { title: usr.special_message.title, body: usr.special_message.message }
             });
           }
         }, (error) => {
@@ -497,7 +497,7 @@ export class UserService {
           // NOTE: Can handle error return messages
           console.log('UserService updateUserPushId: RETURN ERROR:', error);
           this.dialog.open(WasAlert, {
-            data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
+            data: { title: 'Attention', body: error }
           });
         });
     } else {
@@ -983,9 +983,9 @@ export class UserService {
   opensso() {
     if (this._isLoggedIn) {
       this.dialog.open(WasAlert, {
-        data: { title: 'Do you wish to log out?', body: 'Log out of your WickeyAppStore SSO account?', buttons: ['Yes', 'No'] }
+        data: { title: 'Do you wish to log out?', body: 'Log out of your WickeyAppStore SSO account?', buttons: 'WasAlertStyleWarning' }
       }).afterClosed().subscribe(result => {
-        if (result === 0) {
+        if (result === 1) {
           console.log('log out this user');
           this.logOut();
         }
@@ -1008,9 +1008,9 @@ export class UserService {
       this.dialog.open(WasReview);
     } else {
       this.dialog.open(WasAlert, {
-        data: { title: 'Only verified users can leave a review', body: 'Want to log in/create account?', buttons: ['Yes', 'No'] }
+        data: { title: 'Only verified users can leave a review', body: 'Want to log in/create account?', buttons: 'WasAlertStyleConfirm' }
       }).afterClosed().subscribe(result => {
-        if (result === 0) {
+        if (result === 1) {
           this.opensso();
         }
       });

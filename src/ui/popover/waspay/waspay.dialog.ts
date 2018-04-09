@@ -77,7 +77,7 @@ export class WasPay {
 
   goToSafari() {
     this.dialog.open(WasAlert, {
-      data: { title: 'Apple Pay', body: 'Open app in Safari to enable in-app purchases with Apple Pay.', buttons: ['Okay'] }
+      data: { title: 'Apple Pay', body: 'Open app in Safari to enable in-app purchases with Apple Pay.' }
     });
   }
   makeTitle(): string {

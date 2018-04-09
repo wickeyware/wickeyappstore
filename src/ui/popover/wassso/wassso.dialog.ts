@@ -79,12 +79,12 @@ export class WasSSO {
           _alertMessage = 'The verification token was sent. Enter it in token field to finish creating account.';
         }
         this.dialog.open(WasAlert, {
-          data: { title: 'Check email (' + email + ')', body: _alertMessage, buttons: ['Okay'] }
+          data: { title: 'Check email (' + email + ')', body: _alertMessage }
         });
       }, (error) => {
         // <any>error | this casts error to be any
         this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error, buttons: ['Okay'] }
+          data: { title: 'Attention', body: error}
         });
       });
   }
@@ -100,13 +100,13 @@ export class WasSSO {
           _alertMessage = 'Created an account with ' + res.email;
         }
         this.dialog.open(WasAlert, {
-          data: { title: _alertTitle, body: _alertMessage, buttons: ['Okay'] }
+          data: { title: _alertTitle, body: _alertMessage }
         });
         this.dialogRef.close(res.email);
       }, (error) => {
         // <any>error | this casts error to be any
         this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error, buttons: ['Okay'] }
+          data: { title: 'Attention', body: error }
         });
       });
   }

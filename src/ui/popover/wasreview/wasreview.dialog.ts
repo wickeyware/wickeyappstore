@@ -80,7 +80,7 @@ export class WasReview {
   testValidReview(): void {
     if (this.stars === 0) {
       this.dialog.open(WasAlert, {
-        data: { title: 'Select Rating', body: 'Choose Star Rating', buttons: ['Okay'] }
+        data: { title: 'Select Rating', body: 'Choose Star Rating' }
       });
     } else {
       this.sendReview();
@@ -110,7 +110,7 @@ export class WasReview {
         // NOTE: Can handle error return messages
         console.log('WAS leaveReview: RETURN ERROR:', error);
         this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error, buttons: ['Okay'] }
+          data: { title: 'Attention', body: error }
         });
       });
   }
