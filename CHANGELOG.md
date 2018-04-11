@@ -16,10 +16,12 @@ This shows all commits since last release (actually, currently all commits).
 * **serviceworker** Add new service to check for available updates (adds new @angular/service-worker dependency).
 * **UserService.checkIfPurchased** Add a function that returns an observable that returns true if non-consumable is purchased.
 * **UserService.getInapp** Add a function that retrieves the inapp object, given the purchaseId.
+* **WasPay** Return boolean|null on WasPay close (true is a good purchase).
 
 ## Fixed
 
 * **UserService.inapps** Reload inapps from server after purchase api returns.
+* **PaymentRequest** [under development] Handle user cancel.
 
 ## [2.5.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.5.0) - 2018-04-09
 
