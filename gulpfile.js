@@ -202,7 +202,7 @@ gulp.task('rollup:umd', function () {
       // Export mode to use
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
-      name: 'wickeyappstore',
+      // name: 'wickeyappstore',
       output: {
         name: 'wickeyappstore',
         format: 'umd',

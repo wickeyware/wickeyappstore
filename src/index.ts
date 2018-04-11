@@ -52,6 +52,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
 // SERVICES //
 import { UserService } from './user.service';
+import { PromptUpdateService } from './prompt-update.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { WasAppService } from './was-app.service';
@@ -90,6 +91,7 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 export * from 'angular2-useful-swiper';
 export * from './animations';
 export * from './user.service';
+export * from './prompt-update.service';
 export * from './was-app.service';
 export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
@@ -251,14 +253,14 @@ export * from './display-apps/display-inapp/display-inapp.component';
   ],
   entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore, WasShop, WasPay, WasProfile],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService, WasAppService
+    ApiConnectionService, LocalStorageService, UserService, WasAppService, PromptUpdateService
   ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService]
+      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService, PromptUpdateService]
     };
   }
 }

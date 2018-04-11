@@ -689,7 +689,7 @@ export class UserService {
    * @param [_wallet_token] The applepay wallet token, this is used to process the payment.
    * @returns The same as updateUser.
    */
-  createPurchase(_purchase_id: string, _receipt: string, _amount: number, _email?: string,
+  createPurchase(_purchase_id: number, _receipt: string, _amount: number, _email?: string,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
     console.log('============UserService createPurchase=========');
     const _purchase = {
@@ -753,12 +753,57 @@ export class UserService {
       // UPDATE USER //
       this.pushSubscribers(this._userObj);
       this.saveLocal('was-user', this._userObj);
+
+      // Update local inapps
+      for (const _inapp of this._inappsObj) {
+        if (_inapp.purchaseId === _purchase_id) {
+          _inapp.isOwned = true;
+          break;
+        }
+      }
+      this.pushInappSubscribers(this._inappsObj);
+      this.saveLocal('was-inapps', this._inappsObj);
+      // Re-get inapps from server
+      this.getInapps();
     }, (error) => {
       console.log(`UserService: createPurchase: error:[${error}]`);
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
     });
     return _obs;
+  }
+
+  /**
+  * Returns the inapp object, given the purchaseId.
+  * @param _purchaseId The id of the inapp, found in developer.wickeyappstore.com
+  * @returns Returns the inapp object, if found, else it returns null.
+  */
+  getInapp(_purchaseId: number): Inapp | null {
+    let retobj = null;
+    for (const _inapp of this._inappsObj) {
+      if (_inapp.purchaseId === _purchaseId) {
+        retobj = _inapp;
+        break;
+      }
+    }
+    return retobj;
+  }
+  /**
+  * This returns true if the inapp was purchased. NOTE: This only works with non-consumables.
+  * @param _purchaseId The id of the inapp, found in developer.wickeyappstore.com
+  * @returns A boolean, true if purchased, and false if not.
+  */
+  checkIfPurchased(_purchaseId: number) {
+    return this._inapps.map(_inapps => {
+      let _hasPurchased = false;
+      for (const _inapp of _inapps) {
+        if (_inapp.purchaseId === _purchaseId && _inapp.isOwned === true) {
+          _hasPurchased = true;
+          break;
+        }
+      }
+      return _hasPurchased;
+    });
   }
 
   getInapps(): Observable<any> {
@@ -1067,6 +1112,8 @@ export class UserService {
           console.log('apple pay is NOT available');
           _isAvail = false;
         }
+      } else {
+        _isAvail = false;
       }
     } catch (error) {
       console.warn('isApplePayAvailable', error);
@@ -1094,7 +1141,7 @@ export class UserService {
       const session = new (<any>window).ApplePaySession(2, request);
       session.oncancel = (event) => {
         console.log('Apple Pay cancelled');
-        reject('canceled');
+        reject('cancelled');
       };
       session.onvalidatemerchant = (event) => {
         const validationURL = event.validationURL;
@@ -1203,16 +1250,16 @@ export class UserService {
             // return response.complete();
             resolve(true);
           }).catch(e => {
-            if (e) {
-              alert(`Could not make payment: ${e}`);
-              this.dialog.open(WasAlert, {
-                data: { title: 'Attention!', body: `${e}` }
-              });
-            }
+            console.warn('PaymentRequest error', e);
             if (response) {
               response.complete('fail');
             }
-            reject('payment failed');
+            if (e && e.toString().includes('cancel')) {
+              console.log('PaymentRequest cancelled');
+              reject('cancelled');
+            } else {
+              reject('payment failed');
+            }
           });
       } else {
         // Fallback to traditional checkout

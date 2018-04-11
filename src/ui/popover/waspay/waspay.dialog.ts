@@ -50,22 +50,22 @@ export class WasPay {
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
-              this.onNoClick();
+              this.dialogRef.close(true);
             });
           } else {
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
-              this.onNoClick();
+              this.dialogRef.close(false);
             });
           }
         }).catch((_failReason) => {
           console.error('showWebPay:error return:', _failReason);
-          if (_failReason !== 'canceled') {
+          if (_failReason !== 'cancelled') {
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
-              this.onNoClick();
+              this.dialogRef.close(false);
             });
           }
         });

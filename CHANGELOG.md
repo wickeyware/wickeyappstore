@@ -8,10 +8,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all)
 
 This shows all commits since last release (actually, currently all commits).
-## [2.5.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0) - 2018-04-09
 
-## ADDED
-CHANGES VERSION 2.5.0
+## [2.6.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.0) - 2018-04-11
+
+# Added
+
+* **serviceworker** Add new service to check for available updates (adds new @angular/service-worker dependency).
+* **UserService.checkIfPurchased** Add a function that returns an observable that returns true if non-consumable is purchased.
+* **UserService.getInapp** Add a function that retrieves the inapp object, given the purchaseId.
+
+## Fixed
+
+* **UserService.inapps** Reload inapps from server after purchase api returns.
+
+## [2.5.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.5.0) - 2018-04-09
+
+## Added
+
 * **WasAlert** Added standard confirm styles WasAlertStyleConfirm / WasAlertStyleWarning
 * **UI** Updated to use the new WasAlert
 

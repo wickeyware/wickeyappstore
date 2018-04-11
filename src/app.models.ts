@@ -70,7 +70,7 @@ export interface Review {
 
 export interface Inapp {
   storeappId: number;
-  purchaseId: string;
+  purchaseId: number;
   title: string;
   description: string;
   isConsumable: boolean;
