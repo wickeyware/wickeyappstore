@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.6.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.1) - 2018-04-13
+
+# Fixed
+
+* **WasAlert** Allow Custom buttons, button_colors, button_icons for input alerts.
+* **Documentation** Update documentation.
+
 ## [2.6.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.0) - 2018-04-11
 
 # Added
@@ -17,7 +24,6 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService.checkIfPurchased** Add a function that returns an observable that returns true if non-consumable is purchased.
 * **UserService.getInapp** Add a function that retrieves the inapp object, given the purchaseId.
 * **WasPay** Return boolean|null on WasPay close (true is a good purchase).
-* **WasAlert** Allow Custom buttons, button_colors, button_icons for input alerts.
 
 ## Fixed
 

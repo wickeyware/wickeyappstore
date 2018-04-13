@@ -128,6 +128,9 @@
                                     <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="./components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="./components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="./components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="./injectables/UserService.html" >UserService</a>
@@ -581,45 +611,123 @@
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all">Unreleased</a></h2>
 <p>This shows all commits since last release (actually, currently all commits).</p>
-<h2 id="2-1-0-2018-21-03"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0">2.1.0</a> - 2018-21-03</h2>
+<h2 id="2-6-1-2018-04-13"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.1">2.6.1</a> - 2018-04-13</h2>
+<h1 id="fixed">Fixed</h1>
+<ul>
+<li><strong>WasAlert</strong> Allow Custom buttons, button_colors, button_icons for input alerts.</li>
+</ul>
+<h2 id="2-6-0-2018-04-11"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.0">2.6.0</a> - 2018-04-11</h2>
+<h1 id="added">Added</h1>
+<ul>
+<li><strong>serviceworker</strong> Add new service to check for available updates (adds new @angular/service-worker dependency).</li>
+<li><strong>UserService.checkIfPurchased</strong> Add a function that returns an observable that returns true if non-consumable is purchased.</li>
+<li><strong>UserService.getInapp</strong> Add a function that retrieves the inapp object, given the purchaseId.</li>
+<li><strong>WasPay</strong> Return boolean|null on WasPay close (true is a good purchase).</li>
+</ul>
+<h2 id="fixed">Fixed</h2>
+<ul>
+<li><strong>UserService.inapps</strong> Reload inapps from server after purchase api returns.</li>
+<li><strong>PaymentRequest</strong> [under development] Handle user cancel.</li>
+</ul>
+<h2 id="2-5-0-2018-04-09"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.5.0">2.5.0</a> - 2018-04-09</h2>
+<h2 id="added">Added</h2>
+<ul>
+<li><strong>WasAlert</strong> Added standard confirm styles WasAlertStyleConfirm / WasAlertStyleWarning</li>
+<li><strong>UI</strong> Updated to use the new WasAlert</li>
+</ul>
+<h2 id="2-4-0-2018-04-06"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0">2.4.0</a> - 2018-04-06</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>WasShop</strong> Only show free coins panel when ads or offerwall is set.</li>
+<li><strong>WasPay</strong> On non consumable, first check locally if already bought.</li>
+</ul>
 <h3 id="added">Added</h3>
 <ul>
+<li><strong>WasMenuBtn</strong> Show login status on WAS menu button .</li>
+</ul>
+<h2 id="2-3-0-2018-04-06"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.3.0">2.3.0</a> - 2018-04-06</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong>ads</strong> Rewarded video ads available in WasShop.</li>
+<li><strong>inapps</strong> Inapp purchases are now available, currently only ApplePay is available.</li>
+</ul>
+<h2 id="2-2-3-2018-04-04"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.3">2.2.3</a> - 2018-04-04</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>WickeyAppStore</strong> Fix scroll issue.</li>
+</ul>
+<h2 id="2-2-2-2018-04-03"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.2">2.2.2</a> - 2018-04-03</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>WasMenuBtn</strong> Only show shop button if app has inapps.</li>
+</ul>
+<h2 id="2-2-1-2018-03-30"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.1">2.2.1</a> - 2018-03-30</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>SSO</strong> Fix login on iOS.</li>
+</ul>
+<h2 id="2-2-0-2018-03-30"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.0">2.2.0</a> - 2018-03-30</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong>WasAlert</strong> Add password option.</li>
+</ul>
+<h2 id="2-1-2-2018-03-29"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.2">2.1.2</a> - 2018-03-29</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>SSO</strong> Fix login error where app is refreshed between token and verification.</li>
+</ul>
+<h2 id="2-1-0-2018-03-28"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0">2.1.0</a> - 2018-03-28</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong>WasPay</strong> Add simple purchase interface.</li>
+<li><strong>WasShop</strong> Add InApp Shop interface.</li>
+<li><strong>WasAppService</strong> Add bannerApps service.</li>
+<li><strong>WasAppService</strong> Add featuredGroups service.</li>
 <li><strong>API</strong> Add API to get Inapps.</li>
 <li><strong>UserService</strong> Implement services to handle Inapps.</li>
 <li><strong>UserService</strong> Add new service (onAccountCreate), that pushes a boolean on initial account create.</li>
+<li><strong>UserService</strong> Add accessor to _loaded field. This is a boolean denoting if UserService is loaded or not.</li>
+<li><strong>LocalStorageService</strong> Add clear and keys indexedDB wrapper functions, these currently do not work with cookie storage.</li>
+<li><strong>WasProfile</strong> Add simple account info popover</li>
+<li><strong>WasMenu</strong> Add WasProfile to WasMenu</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
 <li><strong>models</strong> Update Inapp model to new field names.</li>
+<li><strong>models</strong> Add has_data and account_verified to User.</li>
 <li><strong>tslint</strong> Update to latest parameters for tslint (show common linting issues).</li>
+<li><strong>Docs</strong> Updated the docs.</li>
+<li><strong>LocalStorage</strong> BREAKING: Updated idb-keyval library, must update peer dependency.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
+<li><strong>WasAppService</strong> Remove .complete and .asObservable, these are not needed, also only replay 1.</li>
 <li><strong>UserService</strong> Fix linting issues.</li>
+<li><strong>UserService</strong> Fix anonymous accounts not logging into logged in cookie was_user_id.</li>
 </ul>
-<h2 id="2-0-1-2018-28-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1">2.0.1</a> - 2018-28-02</h2>
+<h2 id="2-0-1-2018-02-28"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1">2.0.1</a> - 2018-02-28</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>LocalStorage</strong> Save user_id and session_id in *.wickeyappstore.com as secure cookie.</li>
 </ul>
-<h2 id="2-0-0-2018-22-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0">2.0.0</a> - 2018-22-02</h2>
+<h2 id="2-0-0-2018-02-22"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0">2.0.0</a> - 2018-02-22</h2>
 <h3 id="major-version">Major Version</h3>
 <ul>
 <li><strong>WasUI</strong> Removed all the old style popovers (alert, login, popup, review). </li>
 <li><strong>WasMenu</strong> Change the layout of WasMenu</li>
 <li><strong>AppStore</strong> Add fix for app store lists not scrolling properly</li>
 </ul>
-<h2 id="1-18-2-2018-21-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2">1.18.2</a> - 2018-21-02</h2>
+<h2 id="1-18-2-2018-02-21"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2">1.18.2</a> - 2018-02-21</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>LocalStorage</strong> Save user_id and session_id in *.wickeyappstore.com as secure cookie.</li>
 </ul>
-<h2 id="1-18-1-2018-21-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.1">1.18.1</a> - 2018-21-02</h2>
+<h2 id="1-18-1-2018-02-21"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.1">1.18.1</a> - 2018-02-21</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>UserService</strong> Ensure initial push of login status (on user load, push status).</li>
 </ul>
-<h2 id="1-18-0-2018-20-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0">1.18.0</a> - 2018-20-02</h2>
+<h2 id="1-18-0-2018-02-20"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0">1.18.0</a> - 2018-02-20</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserService</strong> Add new service loginChange, this pushes an update on login status change (and on page load it emits the login status).</li>
@@ -633,22 +741,22 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><strong>WASbtnSSO</strong> Update login/logout message for SSO in was menu button.</li>
 <li><strong>Review</strong> Update saving message.</li>
 </ul>
-<h2 id="1-17-3-2018-16-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3">1.17.3</a> - 2018-16-02</h2>
+<h2 id="1-17-3-2018-02-16"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3">1.17.3</a> - 2018-02-16</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserInterface</strong> Add SSO to Was Menu</li>
 </ul>
-<h2 id="1-17-2-2018-15-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2">1.17.2</a> - 2018-15-02</h2>
+<h2 id="1-17-2-2018-02-15"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2">1.17.2</a> - 2018-02-15</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserInterface</strong> Make WasMenu and Store a button and dialog. </li>
 </ul>
-<h2 id="1-17-1-2018-13-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1">1.17.1</a> - 2018-13-02</h2>
+<h2 id="1-17-1-2018-02-13"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1">1.17.1</a> - 2018-02-13</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>WASReview</strong> Fix check if user is already logged in.</li>
 </ul>
-<h2 id="1-17-0-2018-13-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0">1.17.0</a> - 2018-13-02</h2>
+<h2 id="1-17-0-2018-02-13"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0">1.17.0</a> - 2018-02-13</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>UserService</strong> Update secured on each standard return.</li>
@@ -659,7 +767,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li><strong>UserInterface</strong> Add new WasReview dialog.</li>
 </ul>
-<h2 id="1-16-1-2018-09-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1">1.16.1</a> - 2018-09-02</h2>
+<h2 id="1-16-1-2018-02-09"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1">1.16.1</a> - 2018-02-09</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>UserInterface</strong> Add error validation. Add documentation. WAS SSO</li>
@@ -673,7 +781,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li><strong>API</strong> Deprecated un-used version parameter. This is now sent in as a header.</li>
 </ul>
-<h2 id="1-16-0-2018-08-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0">1.16.0</a> - 2018-08-02</h2>
+<h2 id="1-16-0-2018-02-08"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0">1.16.0</a> - 2018-02-08</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserInterface</strong> Add new WAS SSO. Add basis for all new User Interface.</li>
@@ -694,29 +802,29 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li><strong>SESSIONS</strong> Add WAS session support.</li>
 </ul>
-<h2 id="1-14-1-2018-01-02"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1">1.14.1</a> - 2018-01-02</h2>
+<h2 id="1-14-1-2018-02-01"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1">1.14.1</a> - 2018-02-01</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>UserService</strong> Fix standalone on Chrome, was only correct on iOS safari.</li>
 <li><strong>UserService</strong> Pass current user push_id, freebie_used, and rated_app values, update with passed params if available.</li>
 </ul>
-<h2 id="1-14-0-2018-26-01"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0">1.14.0</a> - 2018-26-01</h2>
+<h2 id="1-14-0-2018-01-26"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0">1.14.0</a> - 2018-01-26</h2>
 <h3 id="changed">Changed</h3>
 <ul>
 <li><strong>WasAlert</strong> Changed the name from WasAlertDialogComponent to WasAlert. <pre class="line-numbers"><code class="language-none">          Added input and list capability.</code></pre></li>
 <li><strong>WasUp</strong> Changed the name from WasUpDialogComponent to WasUp.</li>
 </ul>
-<h2 id="1-13-2-2018-24-01"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2">1.13.2</a> - 2018-24-01</h2>
+<h2 id="1-13-2-2018-01-24"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2">1.13.2</a> - 2018-01-24</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserInterface</strong> Add all new wasalert and wasup dialog for quickly showing modal messages to users</li>
 </ul>
-<h2 id="1-13-1-2018-19-01"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1">1.13.1</a> - 2018-19-01</h2>
+<h2 id="1-13-1-2018-01-19"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1">1.13.1</a> - 2018-01-19</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>UserService</strong> Fix bug on if user_id is found in cookie.</li>
 </ul>
-<h2 id="1-13-0-2018-19-01"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0">1.13.0</a> - 2018-19-01</h2>
+<h2 id="1-13-0-2018-01-19"><a href="https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0">1.13.0</a> - 2018-01-19</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>UserService</strong> Set was_user_id on new/verified user, use this cookie on indexeddb acount not found.</li>

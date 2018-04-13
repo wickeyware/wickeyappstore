@@ -128,7 +128,7 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                    <a href="../components/DisplayInAppComponent.html"  data-type="entity-link" class="active" >DisplayInAppComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
@@ -287,7 +287,7 @@
                                 id="xs-miscellaneous-links"
                             >
                                 <li class="link">
-                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link"  class="active" >Enums</a>
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
                                 </li>
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
@@ -422,7 +422,7 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                           <a href="../components/DisplayInAppComponent.html"  data-type="entity-link" class="active" >DisplayInAppComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
@@ -581,7 +581,7 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
-                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link"  class="active" >Enums</a>
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
                                        </li>
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
@@ -602,111 +602,594 @@
                    
                    </nav>
                </div>
-               <div class="content miscellaneous-enumerations">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
-
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Enumerations</li>
+  <li>Components</li>
+  <li>DisplayInAppComponent</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/display-apps/display-inapp/display-inapp.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
 <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
         <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
             <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#Categories">Categories</a>
-                        </li>
-                    </ul>
-                </td>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>was-display-inapp</code></td>
             </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>display-inapp.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./display-inapp.component.html</code></td>
+            </tr>
+
+
         </tbody>
     </table>
 </section>
 
-    <h3>src/pipes/get-category.pipe.ts</h3>
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickPay">clickPay</a>
+                            </li>
+                            <li>
+                                <a href="#makeTitle">makeTitle</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#priceColor">priceColor</a>
+                            </li>
+                            <li>
+                                <a href="#priceTag">priceTag</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#inapp">inapp</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="Categories"></a>
-                            <span class="name"><b>Categories</b><a href="#Categories"><span class="fa fa-link"></span></a></span>
+    <code>constructor(dialog: MatDialog)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    &nbsp;business
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:12</a></div>
                                 </td>
                             </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>dialog</td>
+                                                      
+                                                            <td>
+                                                                        <code>MatDialog</code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="inapp"></a>
+                            <code>inapp</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
                             <tr>
-                                <td class="col-md-4">
-                                    <i>Value: </i><code>0</code>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;demo
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;event
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;game
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;news
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;reference
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;shopping
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;social
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;tool
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    &nbsp;other
+                                <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:12</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
+
+
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="clickPay"></a>
+                            <span class="name">
+                                <b>
+                                clickPay
+                                </b>
+                                <a href="#clickPay"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>clickPay()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:27</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="makeTitle"></a>
+                            <span class="name">
+                                <b>
+                                makeTitle
+                                </b>
+                                <a href="#makeTitle"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>makeTitle()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:56</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnInit"></a>
+                            <span class="name">
+                                <b>
+                                ngOnInit
+                                </b>
+                                <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:18</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="priceColor"></a>
+                            <span class="name">
+                                <b>
+                                priceColor
+                                </b>
+                                <a href="#priceColor"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>priceColor()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:39</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="priceTag"></a>
+                            <span class="name">
+                                <b>
+                                priceTag
+                                </b>
+                                <a href="#priceTag"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>priceTag()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:48</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="dialog"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                dialog
+                                </b>
+                                <a href="#dialog"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>dialog:     <code>MatDialog</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>MatDialog</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/display-apps/display-inapp/display-inapp.component.ts:15</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
+
+</div>
+
+
+    <div class="tab-pane fade tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { WasPay } from &#x27;../../ui/popover/waspay/waspay.dialog&#x27;;
+import { WasAlert } from &#x27;../../ui/popover/wasalert/wasalert.dialog&#x27;;
+import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
+
+@Component({
+  selector: &#x27;was-display-inapp&#x27;,
+  templateUrl: &#x27;./display-inapp.component.html&#x27;,
+  styleUrls: [&#x27;./display-inapp.component.css&#x27;]
+})
+export class DisplayInAppComponent implements OnInit {
+  @Input() public inapp: any;
+
+  constructor(
+    public dialog: MatDialog,
+  ) { }
+
+  ngOnInit() {
+    if (this.inapp &#x3D;&#x3D;&#x3D; undefined) {
+      this.inapp &#x3D; {
+        title: &#x27;Pack One&#x27;, description: &#x27;Get an amazing pack of stuff within this exciting first pack!&#x27;,
+        price: &#x27;$1.99&#x27;, coins: 100, isConsumable: false
+      };
+    }
+  }
+
+  clickPay() {
+    if (this.inapp.isOwned &#x3D;&#x3D;&#x3D; true) {
+      this.dialog.open(WasAlert, {
+        data: { title: &#x27;Already Owned&#x27;, body: &#x27;You already own: &#x27; + this.inapp.title, buttons: [&#x27;Cool&#x27;] }
+      });
+    } else {
+      this.dialog.open(WasPay, {
+        data: this.inapp
+      });
+    }
+  }
+
+  priceColor(): string {
+    if (this.inapp.isOwned &#x3D;&#x3D;&#x3D; true) {
+      return &#x27;primary&#x27;;
+    } else {
+      return &#x27;accent&#x27;;
+    }
+  }
+
+  // this gets the price. If owned, say so
+  priceTag(): string {
+    if (this.inapp.isOwned &#x3D;&#x3D;&#x3D; true) {
+      return &#x27;OWNED&#x27;;
+    } else {
+      return &#x27;Pay &#x27; + this.inapp.price;
+    }
+  }
+
+  makeTitle(): string {
+    if (this.inapp.isConsumable &#x3D;&#x3D;&#x3D; true) {
+      return this.inapp.title + &#x27; / &#x27; + this.inapp.coins + &#x27; coins&#x27;;
+    } else {
+      return this.inapp.title;
+    }
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-card class&#x3D;&quot;my-profile-card&quot;&gt;
+  &lt;mat-card-header&gt;
+    &lt;div mat-card-avatar&gt;
+      &lt;div *ngIf&#x3D;&quot;inapp.icon;else defaulticon&quot; mat-card-avatar style&#x3D;&quot;background-image: url(&#x27;https://s3.amazonaws.com/originalapps/icons/logo_coin.png&#x27;);background-size: cover;&quot;&gt;&lt;/div&gt;
+      &lt;ng-template #defaulticon&gt;
+        &lt;mat-icon color&#x3D;&quot;primary&quot; style&#x3D;&quot;font-size:36px;&quot;&gt;card_giftcard&lt;/mat-icon&gt;
+      &lt;/ng-template&gt;
+    &lt;/div&gt;
+    &lt;mat-card-title&gt;{{makeTitle()}}&lt;/mat-card-title&gt;
+    &lt;span class&#x3D;&quot;example-fill-remaining-space&quot;&gt;&lt;/span&gt;
+    &lt;mat-chip-list class&#x3D;&quot;price-sticker&quot;&gt;
+      &lt;mat-chip color&#x3D;{{priceColor()}} (click)&#x3D;&quot;clickPay()&quot; selected&#x3D;&quot;true&quot;&gt;{{priceTag()}}&lt;/mat-chip&gt;
+    &lt;/mat-chip-list&gt;
+  &lt;/mat-card-header&gt;
+  &lt;mat-card-content&gt;
+    &lt;p&gt;{{inapp.description}}&lt;/p&gt;
+  &lt;/mat-card-content&gt;
+&lt;/mat-card&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-card class="my-profile-card">  <mat-card-header>    <div mat-card-avatar>      <div *ngIf="inapp.icon;else defaulticon" mat-card-avatar style="background-image: url(\'https://s3.amazonaws.com/originalapps/icons/logo_coin.png\');background-size: cover;"></div>      <ng-template #defaulticon>        <mat-icon color="primary" style="font-size:36px;">card_giftcard</mat-icon>      </ng-template>    </div>    <mat-card-title>{{makeTitle()}}</mat-card-title>    <span class="example-fill-remaining-space"></span>    <mat-chip-list class="price-sticker">      <mat-chip color={{priceColor()}} (click)="clickPay()" selected="true">{{priceTag()}}</mat-chip>    </mat-chip-list>  </mat-card-header>  <mat-card-content>    <p>{{inapp.description}}</p>  </mat-card-content></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'DisplayInAppComponent', 'selector': 'was-display-inapp'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
+    var ACTUAL_COMPONENT = {'name': 'DisplayInAppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
 
 
                    </div><div class="search-results">

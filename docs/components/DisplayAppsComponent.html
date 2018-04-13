@@ -128,6 +128,9 @@
                                     <a href="../components/DisplayAppsComponent.html"  data-type="entity-link" class="active" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="../components/DisplayAppsComponent.html"  data-type="entity-link" class="active" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -919,7 +949,7 @@ export class DisplayAppsComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="featured; else elseBlock" class="featuredapps">  <display-app-featured [apps]="apps" (showAppDetail)="showAppEmitter($event)"></display-app-featured></div><ng-template #elseBlock>  <div class="app-list-background">    <app-group-horizontal  *ngFor="let _app of apps" [apps]="_app" [title]="_app.title" [showAppEmitter]="showAppEmitter" (showAppList)="showAppListEmitter($event)"></app-group-horizontal>  </div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'DisplayInAppComponent', 'selector': 'was-display-inapp'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'DisplayAppsComponent'};
 </script>

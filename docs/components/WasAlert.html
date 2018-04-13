@@ -128,6 +128,9 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -794,7 +824,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:76</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:127</a></div>
                                 </td>
                             </tr>
     
@@ -851,7 +881,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:61</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:84</a></div>
                                 </td>
                             </tr>
     
@@ -886,7 +916,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:60</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:83</a></div>
                                 </td>
                             </tr>
     
@@ -913,60 +943,111 @@ export class WasAlert {
    * Create simple modal popups with btns or input field to get user input.
    *
    * SIMPLE USE CASE
-   * this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;This is a WasAlert&#x27; } });
+    this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;This is a WasAlert&#x27; } });
    *
    * Where data &#x3D; {title?: string, body?: string, buttons?: Array&lt;string&gt;, input?: boolean, input_value?: string}
    *
    * @example
-   * import { WasAlert } from &#x27;wickeyappstore&#x27;;
-   * import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
-   * Inject MatDialog in the constructor(public dialog: MatDialog) { }
+    import { WasAlert } from &#x27;wickeyappstore&#x27;;
+    import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
+    Inject MatDialog in the constructor(public dialog: MatDialog) { }
    *
    * MORE USE CASES BELOW
    *
+   * Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)
+    const dialogRef &#x3D; this.dialog.open(WasAlert, { data: { title: &#x27;Please confirm.&#x27;,
+        body: &#x27;This is the default WasAlertStyleConfirm alert.&#x27;, buttons: &#x27;WasAlertStyleConfirm&#x27; } });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (result !&#x3D;&#x3D; undefined) {
+        console.log(&#x27;This is 0 for cancel, and 1 for Confirm&#x27;, result);
+      } else {
+        console.log(&#x27;Dialog was cancelled&#x27;);
+      }
+    });
+
    * With Buttons
-   * const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;Yes or No?&#x27;, buttons: [&#x27;Yes&#x27;, &#x27;No&#x27;] } });
-   *     dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-   *    if (result !&#x3D;&#x3D; undefined) {
-   *      console.log(&#x27;This is 0 for yes, and 1 for no&#x27;, result);
-   *    } else {
-   *      console.log(&#x27;Dialog was cancelled&#x27;);
-   *    }
-   *  });
+    const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;Confirm?&#x27;, buttons: [&#x27;Cancel&#x27;, &#x27;Option A&#x27;, Option B] } });
+        dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+       if (result !&#x3D;&#x3D; undefined) {
+         console.log(&#x27;This is 0 for cancel, and 1 for A, 2 for B&#x27;, result);
+       } else {
+         console.log(&#x27;Dialog was cancelled&#x27;);
+       }
+     });
    *
    * With Input field
-    * const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, input: true, input_value: &#x27;text&#x27; } });
-   *     dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-   *    if (result !&#x3D;&#x3D; undefined) {
-   *      console.log(&#x27;This is the input captured&#x27;, result);
-   *    } else {
-   *      console.log(&#x27;Dialog was cancelled&#x27;);
-   *    }
-   *  });
+     const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Password&#x27;, input: true, input_value: &#x27;text&#x27;, password: true } });
+        dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+       if (result !&#x3D;&#x3D; undefined) {
+         console.log(&#x27;This is the input captured&#x27;, result);
+       } else {
+         console.log(&#x27;Dialog was cancelled&#x27;);
+       }
+     });
    * With List of choices
-   * const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, list: [&#x27;item1&#x27;, &#x27;item2&#x27;] } });
-   *     dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-   *    if (result !&#x3D;&#x3D; undefined) {
-   *      console.log(&#x27;This is the index of the selected list item&#x27;, result);
-   *    } else {
-   *      console.log(&#x27;Dialog was cancelled&#x27;);
-   *    }
-   *  });
+    const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, list: [&#x27;item1&#x27;, &#x27;item2&#x27;] } });
+        dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+       if (result !&#x3D;&#x3D; undefined) {
+         console.log(&#x27;This is the index of the selected list item&#x27;, result);
+       } else {
+         console.log(&#x27;Dialog was cancelled&#x27;);
+       }
+     });
    *
    * The MatDialog has additional properties.
    * By default, clicking outside the window does not close the dialog. Change by setting to false;
-   *    this.dialogRef.disableClose &#x3D; false;
+       this.dialogRef.disableClose &#x3D; false;
+   *
+   * ADVANCED Options
+   * Can Pass TWO buttons, TWO button_icons, and TWO button_colors
+    const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;Set Alarm?&#x27;,
+      buttons: [&#x27;Cancel&#x27;, &#x27;Alarm&#x27;], button_icons: [&#x27;cancel&#x27;, &#x27;alarm&#x27;], button_colors: [&#x27;&#x27;, &#x27;accent&#x27;] } });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (result !&#x3D;&#x3D; undefined) {
+        console.log(&#x27;This is 0 for cancel, and 1 for A, 2 for B&#x27;, result);
+      } else {
+        console.log(&#x27;Dialog was cancelled&#x27;);
+      }
+    });
    */
   constructor(
     public dialogRef: MatDialogRef&lt;WasAlert&gt;,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
+    // console.log(&#x27;print wasalert &#x27;, dialogRef);
+
     // SET DEFAULT VALUES
     dialogRef.disableClose &#x3D; true; // do not close by clicking off by default
+    if (!this.data) { this.data &#x3D; {}; } // data may not be defined
     if (!this.data.title) { this.data.title &#x3D; &#x27;&#x27;; }
     if (!this.data.body) { this.data.body &#x3D; &#x27;&#x27;; }
-    if (!this.data.buttons) { this.data.buttons &#x3D; [&#x27;Cancel&#x27;]; }
-    if (!this.data.input) { this.data.input &#x3D; false; }
+    if (!this.data.buttons) { this.data.buttons &#x3D; [&#x27;OK&#x27;]; }
+    if (this.data.buttons &#x3D;&#x3D;&#x3D; &#x27;WasAlertStyleConfirm&#x27;) {
+      this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;OK&#x27;];
+      this.data.button_icons &#x3D; [&#x27;cancel&#x27;, &#x27;done&#x27;];
+      this.data.button_colors &#x3D; [&#x27;warn&#x27;, &#x27;primary&#x27;];
+    } else if (this.data.buttons &#x3D;&#x3D;&#x3D; &#x27;WasAlertStyleWarning&#x27;) {
+      // example of a DELETE Confirmation
+      this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;CONFIRM&#x27;];
+      this.data.button_icons &#x3D; [&#x27;&#x27;, &#x27;warning&#x27;];
+      this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;warn&#x27;];
+    }
+    if (!this.data.input) {
+      this.data.input &#x3D; false;
+      // there will be two buttons always.
+      // Cancel and Choose
+      if (this.data.buttons.length &#x3D;&#x3D;&#x3D; 2) {
+        // then we&#x27;ll just trust they used a Cancel, and Submit choice
+      } else {
+        this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;OK&#x27;];
+      }
+      // Can optionally style style those, or have the default choices
+      if (!this.data.button_icons) { this.data.button_icons &#x3D; [&#x27;cancel&#x27;, &#x27;done&#x27;]; }
+      if (!this.data.button_colors) { this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;primary&#x27;]; }
+    }
+    if (!this.data.password) { this.data.password &#x3D; false; }
+    if (!this.data.button_icons) { this.data.button_icons &#x3D; [&#x27;&#x27;, &#x27;&#x27;]; }
+    if (!this.data.button_colors) { this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;&#x27;]; }
   }
 
   /**
@@ -993,17 +1074,32 @@ export class WasAlert {
     &lt;/mat-list-item&gt;
   &lt;/mat-list&gt;
   &lt;mat-form-field *ngIf&#x3D;&quot;data.input&quot;&gt;
-    &lt;input matInput [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
+    &lt;input *ngIf&#x3D;&quot;data.password; else normalinput&quot; matInput type&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
+    &lt;ng-template #normalinput&gt;
+      &lt;input matInput [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
+    &lt;/ng-template&gt;
   &lt;/mat-form-field&gt;
 &lt;/div&gt;
 &lt;div mat-dialog-actions *ngIf&#x3D;&quot;data.input || data.list; else normalbuttons&quot;&gt;
-  &lt;button mat-raised-button (click)&#x3D;&quot;onNoClick()&quot;&gt;Cancel&lt;/button&gt;
-  &lt;button *ngIf&#x3D;&quot;data.input&quot; mat-raised-button [mat-dialog-close]&#x3D;&quot;data.input_value&quot;&gt;Okay&lt;/button&gt;
+  &lt;button mat-raised-button (click)&#x3D;&quot;onNoClick()&quot; [color]&#x3D;&quot;data.button_colors[0]&quot;&gt;{{data.buttons[0]}}
+    &lt;mat-icon *ngIf&#x3D;&quot;data.button_icons[0]&quot; style&#x3D;&quot;margin-left: 10px;&quot;&gt;{{data.button_icons[0]}}&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &lt;button *ngIf&#x3D;&quot;data.input&quot; mat-raised-button [mat-dialog-close]&#x3D;&quot;data.input_value&quot; [color]&#x3D;&quot;data.button_colors[1]&quot; cdkFocusInitial&gt;{{data.buttons[1]}}
+    &lt;mat-icon style&#x3D;&quot;margin-left: 10px&quot;&gt;{{data.button_icons[1]}}&lt;/mat-icon&gt;
+  &lt;/button&gt;
 &lt;/div&gt;
 &lt;ng-template #normalbuttons&gt;
-  &lt;div mat-dialog-actions&gt;
-    &lt;button mat-raised-button *ngFor&#x3D;&quot;let btn of data.buttons; let indx &#x3D; index&quot; [mat-dialog-close]&#x3D;&quot;indx&quot;&gt;{{btn}}&lt;/button&gt;
+  &lt;div mat-dialog-actions *ngIf&#x3D;&quot;data.buttons.length &#x3D;&#x3D;&#x3D; 2; else buttonlist&quot;&gt;
+    &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;0&quot; [color]&#x3D;&quot;data.button_colors[0]&quot;&gt;{{data.buttons[0]}}
+      &lt;mat-icon *ngIf&#x3D;&quot;data.button_icons[0]&quot; style&#x3D;&quot;margin-left: 10px;&quot;&gt;{{data.button_icons[0]}}&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;1&quot; [color]&#x3D;&quot;data.button_colors[1]&quot; cdkFocusInitial&gt;{{data.buttons[1]}}
+      &lt;mat-icon style&#x3D;&quot;margin-left: 10px&quot;&gt;{{data.button_icons[1]}}&lt;/mat-icon&gt;
+    &lt;/button&gt;
   &lt;/div&gt;
+  &lt;ng-template #buttonlist&gt;
+    &lt;button mat-raised-button *ngFor&#x3D;&quot;let btn of data.buttons; let indx &#x3D; index&quot; [mat-dialog-close]&#x3D;&quot;indx&quot;&gt;{{btn}}&lt;/button&gt;
+  &lt;/ng-template&gt;
 &lt;/ng-template&gt;</code></pre>
     </div>
 
@@ -1030,8 +1126,8 @@ export class WasAlert {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input">    <input matInput [(ngModel)]="data.input_value">  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()">Cancel</button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value">Okay</button></div><ng-template #normalbuttons>  <div mat-dialog-actions>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input">    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">    <ng-template #normalinput>      <input matInput [(ngModel)]="data.input_value">    </ng-template>  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>  </button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>  </button></div><ng-template #normalbuttons>  <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>    </button>    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>    </button>  </div>  <ng-template #buttonlist>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </ng-template></ng-template></div>'
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'DisplayInAppComponent', 'selector': 'was-display-inapp'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'WasAlert'};
 </script>

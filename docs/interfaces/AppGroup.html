@@ -128,6 +128,9 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -674,7 +704,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app.models.ts:58</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app.models.ts:60</a></div>
                                         </td>
                                     </tr>
 
@@ -708,7 +738,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app.models.ts:57</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app.models.ts:59</a></div>
                                         </td>
                                     </tr>
 
@@ -742,7 +772,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app.models.ts:55</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app.models.ts:57</a></div>
                                         </td>
                                     </tr>
 
@@ -776,7 +806,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app.models.ts:56</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app.models.ts:58</a></div>
                                         </td>
                                     </tr>
 
@@ -813,6 +843,8 @@ export interface User {
   logging_in?: boolean;
   push_id?: string;
   secured?: boolean;
+  has_data?: boolean;
+  account_verified?: boolean;
 }
 
 export interface App {
@@ -856,7 +888,7 @@ export interface Review {
 
 export interface Inapp {
   storeappId: number;
-  purchaseId: string;
+  purchaseId: number;
   title: string;
   description: string;
   isConsumable: boolean;

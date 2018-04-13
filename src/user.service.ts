@@ -793,7 +793,7 @@ export class UserService {
   * @param _purchaseId The id of the inapp, found in developer.wickeyappstore.com
   * @returns A boolean, true if purchased, and false if not.
   */
-  checkIfPurchased(_purchaseId: number) {
+  checkIfPurchased(_purchaseId: number): Observable<boolean> {
     return this._inapps.map(_inapps => {
       let _hasPurchased = false;
       for (const _inapp of _inapps) {

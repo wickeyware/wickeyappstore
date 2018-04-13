@@ -128,6 +128,9 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -1030,7 +1060,7 @@ export class AppGroupVerticalComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="open" class="was-popup-container" [@pageOpen]="in">  <div class="was-popup">    <div class="was-page-content-margin">&nbsp;</div>    <header>      <mat-toolbar role="header" class="was-titlebar" color="primary">        <button class="main-header-sidebar" mat-icon-button (click)="goBack($event)" title="back">          <mat-icon>arrow_back</mat-icon>        </button>        <span class="main-header-text">{{apps.title}}</span>        <span class="main-header-sidebar"></span>      </mat-toolbar>    </header>    <div class="was-popup-content noselect">      <div class="was-popup-panel">        <display-app-fullwidth *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-fullwidth>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'AppDetailPageComponent', 'selector': 'was-detail-page'},{'name': 'AppGroupHorizontalComponent', 'selector': 'app-group-horizontal'},{'name': 'AppGroupReviewsComponent', 'selector': 'app-group-reviews'},{'name': 'AppGroupVerticalComponent', 'selector': 'app-group-vertical'},{'name': 'DisplayAppFeaturedComponent', 'selector': 'display-app-featured'},{'name': 'DisplayAppFullwidthComponent', 'selector': 'display-app-fullwidth'},{'name': 'DisplayAppMiniComponent', 'selector': 'display-app-mini'},{'name': 'DisplayAppReviewComponent', 'selector': 'display-app-review'},{'name': 'DisplayAppsComponent', 'selector': 'display-apps'},{'name': 'DisplayInAppComponent', 'selector': 'was-display-inapp'},{'name': 'ReviewsComponent', 'selector': 'was-reviews'},{'name': 'WasAlert', 'selector': 'wasalert-dialog'},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [{'name': 'CustomValidatorDirective', 'selector': '[forbiddenValue]'}];
     var ACTUAL_COMPONENT = {'name': 'AppGroupVerticalComponent'};
 </script>

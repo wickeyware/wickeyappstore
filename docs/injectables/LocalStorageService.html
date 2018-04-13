@@ -128,6 +128,9 @@
                                     <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                 </li>
                                 <li class="link">
@@ -137,6 +140,12 @@
                                     <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/WasPay.html" >WasPay</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasProfile.html" >WasProfile</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/WasReview.html" >WasReview</a>
                                 </li>
                                 <li class="link">
@@ -144,6 +153,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WasShop.html" >WasShop</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -194,6 +206,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocalStorageService.html"  data-type="entity-link" class="active" >LocalStorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -407,6 +422,9 @@
                                            <a href="../components/DisplayAppsComponent.html" >DisplayAppsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DisplayInAppComponent.html" >DisplayInAppComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ReviewsComponent.html" >ReviewsComponent</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,12 @@
                                            <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/WasPay.html" >WasPay</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasProfile.html" >WasProfile</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/WasReview.html" >WasReview</a>
                                        </li>
                                        <li class="link">
@@ -423,6 +447,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WasShop.html" >WasShop</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
@@ -473,6 +500,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocalStorageService.html"  data-type="entity-link" class="active" >LocalStorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PromptUpdateService.html" >PromptUpdateService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -631,10 +661,6 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                                 <ul class="index-list">
                                     <li>
                                             <span class="modifier">Public</span>
-                                        <a href="#idbkeyval">idbkeyval</a>
-                                    </li>
-                                    <li>
-                                            <span class="modifier">Public</span>
                                         <a href="#use_cookie">use_cookie</a>
                                     </li>
                                 </ul>
@@ -648,6 +674,9 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                         <tr>
                             <td class="col-md-4">
                                 <ul class="index-list">
+                                    <li>
+                                        <a href="#clear">clear</a>
+                                    </li>
                                     <li>
                                         <a href="#cookie_read">cookie_read</a>
                                     </li>
@@ -668,6 +697,9 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                                     </li>
                                     <li>
                                         <a href="#get">get</a>
+                                    </li>
+                                    <li>
+                                        <a href="#keys">keys</a>
                                     </li>
                                     <li>
                                         <a href="#safe_json_parse">safe_json_parse</a>
@@ -693,7 +725,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/local-storage.service.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/local-storage.service.ts:16</a></div>
                                         </td>
                                     </tr>
             
@@ -706,6 +738,43 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                     <h3 id="methods">
                         Methods
                     </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="clear"></a>
+                                    <span class="name">
+                                        <b>
+                                        clear
+                                        </b>
+                                        <a href="#clear"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>clear()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/local-storage.service.ts:109</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -728,7 +797,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/local-storage.service.ts:136</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/local-storage.service.ts:144</a></div>
                                         </td>
                                     </tr>
             
@@ -804,7 +873,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/local-storage.service.ts:164</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/local-storage.service.ts:172</a></div>
                                         </td>
                                     </tr>
             
@@ -880,7 +949,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/local-storage.service.ts:180</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/local-storage.service.ts:188</a></div>
                                         </td>
                                     </tr>
             
@@ -949,7 +1018,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/local-storage.service.ts:148</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/local-storage.service.ts:156</a></div>
                                         </td>
                                     </tr>
             
@@ -1059,7 +1128,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/local-storage.service.ts:167</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/local-storage.service.ts:175</a></div>
                                         </td>
                                     </tr>
             
@@ -1154,7 +1223,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/local-storage.service.ts:101</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/local-storage.service.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -1225,7 +1294,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/local-storage.service.ts:36</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/local-storage.service.ts:33</a></div>
                                         </td>
                                     </tr>
             
@@ -1278,6 +1347,43 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="keys"></a>
+                                    <span class="name">
+                                        <b>
+                                        keys
+                                        </b>
+                                        <a href="#keys"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>keys()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/local-storage.service.ts:120</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="safe_json_parse"></a>
                                     <span class="name">
                                         <b>
@@ -1296,7 +1402,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/local-storage.service.ts:123</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/local-storage.service.ts:131</a></div>
                                         </td>
                                     </tr>
             
@@ -1365,7 +1471,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/local-storage.service.ts:54</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/local-storage.service.ts:51</a></div>
                                         </td>
                                     </tr>
             
@@ -1438,40 +1544,6 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="idbkeyval"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Public</span>
-                                        idbkeyval
-                                        </b>
-                                        <a href="#idbkeyval"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>idbkeyval:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;)</code>
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/local-storage.service.ts:21</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="use_cookie"></a>
                                     <span class="name">
                                         <b>
@@ -1495,7 +1567,7 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/local-storage.service.ts:18</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/local-storage.service.ts:16</a></div>
                                         </td>
                                     </tr>
             
@@ -1509,13 +1581,11 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
 
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { get as dbGet, set as dbSet, del as dbDel, clear as dbClear, keys as dbKeys } from &#x27;idb-keyval&#x27;;
 // TODO: Use Angular Direct Injected document
 // import {DOCUMENT} from &#x27;@angular/common&#x27;;
 // in constructor @Inject(DOCUMENT) private doc: any
 // this.doc.cookie
-
-// let idbkeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;); // &#x27;idb-keyval&#x27;
-// let idbkeyval &#x3D; require(&#x27;https://unpkg.com/idb-keyval@2.3.0/idb-keyval.js&#x27;);
 
 /**
  * Store values and objects locally, uses indexedDB via idb-keyval.js if available,
@@ -1526,9 +1596,8 @@ TODO: Allow passing in of idb-keyval.js location, currently uses location:
 @Injectable()
 export class LocalStorageService {
   public use_cookie &#x3D; false;
-  // TODO: Can also do idb-keyval/dist/idb-keyval-min.js
   // http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
-  public idbkeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;); // &#x27;idb-keyval&#x27;
+  // public idbkeyval &#x3D; require(&#x27;../../node_modules/idb-keyval/idb-keyval.js&#x27;); // &#x27;idb-keyval&#x27;
 
   constructor() {
     // CHECK IF BROWSER HAS INDEXEDDB //
@@ -1545,7 +1614,7 @@ export class LocalStorageService {
    */
   get(key: string): Promise&lt;any&gt; {
     if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
-      return this.idbkeyval.get(key);
+      return dbGet(key);
     } else {
       return new Promise((resolve, reject) &#x3D;&gt; {
         // Get value from cookie at key
@@ -1563,7 +1632,7 @@ export class LocalStorageService {
    */
   set(key: string, value: any): Promise&lt;any&gt; {
     if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
-      return this.idbkeyval.set(key, value);
+      return dbSet(key, value);
     } else {
       return new Promise((resolve, reject) &#x3D;&gt; {
         let _val: string;
@@ -1610,7 +1679,7 @@ export class LocalStorageService {
    */
   delete(key: string): Promise&lt;any&gt; {
     if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
-      return this.idbkeyval.delete(key);
+      return dbDel(key);
     } else {
       return new Promise((resolve, reject) &#x3D;&gt; {
         // Delete value from cookie at key
@@ -1619,16 +1688,27 @@ export class LocalStorageService {
       });
     }
   }
-  // clear(): Promise&lt;any&gt; {
-  //   if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
-  //     return this.idbkeyval.clear();
-  //   } else {
-  //     return new Promise((resolve, reject) &#x3D;&gt; {
-  //       // TODO: Clear all ccokies this service set
-  //       resolve(1);
-  //     });
-  //   }
-  // }
+  clear(): Promise&lt;any&gt; {
+    if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
+      return dbClear();
+    } else {
+      return new Promise((resolve, reject) &#x3D;&gt; {
+        // TODO: Clear all ccokies this service set
+        resolve(undefined);
+      });
+    }
+  }
+
+  keys(): Promise&lt;any&gt; {
+    if (this.use_cookie &#x3D;&#x3D;&#x3D; false) {
+      return dbKeys();
+    } else {
+      return new Promise((resolve, reject) &#x3D;&gt; {
+        // TODO: Return all cookie keys
+        resolve([]);
+      });
+    }
+  }
 
   safe_json_parse(str: string): any {
     try {
