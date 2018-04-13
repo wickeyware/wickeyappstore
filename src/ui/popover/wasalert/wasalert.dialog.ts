@@ -108,7 +108,7 @@ export class WasAlert {
       if (this.data.buttons.length === 2) {
         // then we'll just trust they used a Cancel, and Submit choice
       } else {
-        this.data.buttons = ['Cancel', 'Choose'];
+        this.data.buttons = ['Cancel', 'OK'];
       }
       // Can optionally style style those, or have the default choices
       if (!this.data.button_icons) { this.data.button_icons = ['cancel', 'done']; }

@@ -17,6 +17,7 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService.checkIfPurchased** Add a function that returns an observable that returns true if non-consumable is purchased.
 * **UserService.getInapp** Add a function that retrieves the inapp object, given the purchaseId.
 * **WasPay** Return boolean|null on WasPay close (true is a good purchase).
+* **WasAlert** Allow Custom buttons, button_colors, button_icons for input alerts.
 
 ## Fixed
 
