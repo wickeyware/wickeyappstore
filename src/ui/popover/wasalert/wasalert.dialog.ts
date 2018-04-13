@@ -101,7 +101,19 @@ export class WasAlert {
       this.data.button_icons = ['', 'warning'];
       this.data.button_colors = ['', 'warn'];
     }
-    if (!this.data.input) { this.data.input = false; }
+    if (!this.data.input) {
+      this.data.input = false;
+      // there will be two buttons always.
+      // Cancel and Choose
+      if (this.data.buttons.length === 2) {
+        // then we'll just trust they used a Cancel, and Submit choice
+      } else {
+        this.data.buttons = ['Cancel', 'Choose'];
+      }
+      // Can optionally style style those, or have the default choices
+      if (!this.data.button_icons) { this.data.button_icons = ['cancel', 'done']; }
+      if (!this.data.button_colors) { this.data.button_colors = ['', 'primary']; }
+    }
     if (!this.data.password) { this.data.password = false; }
     if (!this.data.button_icons) { this.data.button_icons = ['', '']; }
     if (!this.data.button_colors) { this.data.button_colors = ['', '']; }

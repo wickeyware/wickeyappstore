@@ -16,13 +16,21 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">
-  <button mat-raised-button (click)="onNoClick()">Cancel</button>
-  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value">Okay</button>
+  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}
+    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>
+  </button>
+  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}
+    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>
+  </button>
 </div>
 <ng-template #normalbuttons>
   <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">
-    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}<mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon></button>
-    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}<mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon></button>
+    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}
+      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>
+    </button>
+    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}
+      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>
+    </button>
   </div>
   <ng-template #buttonlist>
     <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>
