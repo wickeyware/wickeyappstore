@@ -65,8 +65,11 @@
 
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from '@angular/forms';
-
 /** A hero's name can't match the given regular expression */
+/**
+ * @method
+ * @ignore
+ */
 export function customValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     const name = control.value;
@@ -75,7 +78,10 @@ export function customValidator(nameRe: RegExp): ValidatorFn {
     return no ? {'forbiddenValue': {name}} : null;
   };
 }
-
+/**
+ * @class
+ * @ignore
+ */
 @Directive({
   selector: '[forbiddenValue]',
   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]

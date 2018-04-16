@@ -5,7 +5,10 @@ import { ApiConnectionService } from '../../api-connection.service';
 import { Subscription } from 'rxjs/Subscription';
 import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef } from '@angular/material';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'app-group-reviews',
   templateUrl: './app-group-reviews.component.html',

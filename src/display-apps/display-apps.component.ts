@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { AppGroup } from './../app.models';
 
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'display-apps',
   templateUrl: './display-apps.component.html',

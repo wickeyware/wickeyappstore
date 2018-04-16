@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { MatDialog } from '@angular/material';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
-
+/**
+ * @module
+ * @ignore
+ */
 /**
  * Checks service worker if there is an available update.
  * If update available, try to use ngsw-config.json appData for shown dialog title, description, version, and askToUpdate.

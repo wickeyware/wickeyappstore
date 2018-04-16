@@ -56,6 +56,10 @@ export interface UserParams {
  */
 @Injectable()
 export class UserService {
+  /**
+ * @property
+ * @ignore
+ */
   private readonly merchantID = '1105404'; // your BlueSnap Merchant ID;
   private _user: ReplaySubject<User> = new ReplaySubject(1);
   private _loginChange: ReplaySubject<boolean> = new ReplaySubject(1);

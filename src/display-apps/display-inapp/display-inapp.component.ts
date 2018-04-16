@@ -2,7 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WasPay } from '../../ui/popover/waspay/waspay.dialog';
 import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef } from '@angular/material';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'was-display-inapp',
   templateUrl: './display-inapp.component.html',

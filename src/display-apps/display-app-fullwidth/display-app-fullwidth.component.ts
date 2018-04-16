@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GetCategoryPipe } from '../../pipes/get-category.pipe';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'display-app-fullwidth',
   templateUrl: './display-app-fullwidth.component.html',

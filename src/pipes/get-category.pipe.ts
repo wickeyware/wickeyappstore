@@ -8,6 +8,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *   {{ 1 |  getCategory}}
  *   formats to: demo
 */
+/**
+ * @enum
+ * @ignore
+ */
 enum Categories {
     business = 0,
     demo,
@@ -20,7 +24,10 @@ enum Categories {
     tool,
     other
 }
-
+/**
+ * @class
+ * @ignore
+ */
 @Pipe({
   name: 'getCategory'
 })

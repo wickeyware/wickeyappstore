@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AppGroup } from '../../app.models';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'app-group-vertical',
   templateUrl: './app-group-vertical.component.html',

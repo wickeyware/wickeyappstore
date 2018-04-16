@@ -7,7 +7,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable } from 'rxjs/Observable';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { Review, Inapp } from './app.models';
-
+/**
+ * @module
+ * @ignore
+ */
 @Injectable()
 export class ApiConnectionService {
   private apiHeaders: HttpHeaders;

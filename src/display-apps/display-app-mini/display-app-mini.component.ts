@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'display-app-mini',
   templateUrl: './display-app-mini.component.html',

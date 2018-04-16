@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppGroup } from '../../app.models';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'app-group-horizontal',
   templateUrl: './app-group-horizontal.component.html',

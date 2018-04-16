@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.6.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.2) - 2018-04-16
+
+# Fixed IN PROGRESS
+
+* **Documentation** Formalizing documentation.
+
 ## [2.6.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.1) - 2018-04-13
 
 # Fixed

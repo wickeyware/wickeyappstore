@@ -4,7 +4,10 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { AppGroup, App } from './app.models';
-
+/**
+ * @module
+ * @ignore
+ */
 /**
  * The service to get apps from WAS.
  *

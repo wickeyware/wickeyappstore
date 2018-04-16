@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'display-app-featured',
   templateUrl: './display-app-featured.component.html',

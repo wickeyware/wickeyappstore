@@ -9,7 +9,10 @@ import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
 import { WasUp } from '../../ui/popover/wasup/wasup.dialog';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
-// animations: [slideInDownAnimation]
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'was-detail-page',
   templateUrl: './app-detail-page.component.html',

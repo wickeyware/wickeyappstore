@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'was-reviews',
   templateUrl: './reviews.component.html',

@@ -6,10 +6,8 @@ import { get as dbGet, set as dbSet, del as dbDel, clear as dbClear, keys as dbK
 // this.doc.cookie
 
 /**
- * Store values and objects locally, uses indexedDB via idb-keyval.js if available,
- * else uses cookies. NOTE: cookies are limited in length.
- * TODO: Allow passing in of idb-keyval.js location, currently uses location:
- * ../../node_modules/idb-keyval/idb-keyval.js
+ * @module
+ * @ignore
  */
 @Injectable()
 export class LocalStorageService {

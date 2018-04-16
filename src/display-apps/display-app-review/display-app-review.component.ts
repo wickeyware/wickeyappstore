@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Review } from '../../app.models';
-
+/**
+ * @module
+ * @ignore
+ */
 @Component({
   selector: 'display-app-review',
   templateUrl: './display-app-review.component.html',
