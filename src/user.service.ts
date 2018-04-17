@@ -14,7 +14,7 @@ import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 import { User, Review, Inapp } from './app.models';
 export * from './app.models';
-
+/**@ignore*/
 export interface UserParams {
   coins?: number;
   data?: any;
@@ -74,7 +74,7 @@ export class UserService {
   private _loaded = false;
   private standalone: boolean;
   private lut = [];
-
+  /**@ignore*/
   constructor(
     private apiConnectionService: ApiConnectionService,
     private localStorageService: LocalStorageService,
@@ -113,7 +113,11 @@ export class UserService {
     });
   }
 
-  // test if the string is empty or null
+
+  /**
+  *  // test if the string is empty or null
+  * @ignore
+  */
   isEmpty(str: string): boolean {
     return (!str || 0 === str.length);
   }
@@ -237,6 +241,9 @@ export class UserService {
   private saveLocal(_key: string, _obj: any) {
     this.localStorageService.set(_key, _obj);
   }
+  /**
+   * @ignore
+   */
   loadUser() {
     this.localStorageService.get('was-user')
       .then((value: any): void => {
@@ -262,6 +269,9 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
+  /**
+ * @ignore
+ */
   loadInapps() {
     this.localStorageService.get('was-inapps')
       .then((value: any): void => {
@@ -277,6 +287,9 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
+  /**
+ * @ignore
+ */
   loadFreebieSettings() {
     this.localStorageService.get('was-freesettings')
       .then((value: any): void => {
@@ -294,7 +307,9 @@ export class UserService {
     console.error('UserService: An error occurred', error);  // for demo purposes
     return Promise.reject(error.message || error);
   }
-
+  /**
+   * @ignore
+   */
   checkStandalone(): void {
     // THIS ONLY WORKS ON iOS
     if ('standalone' in window.navigator) {
@@ -317,6 +332,7 @@ export class UserService {
    * @author Jeff Ward (jcward.com).
    * @license MIT license
    * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
+   * @ignore
    **/
   guid(): string {
     /* tslint:disable: no-bitwise */
@@ -344,7 +360,9 @@ export class UserService {
       this.lut[d2 & 0x3f | 0x80] + this.lut[d2 >> 8 & 0xff] + '-' + this.lut[d2 >> 16 & 0xff] + this.lut[d2 >> 24 & 0xff] +
       this.lut[d3 & 0xff] + this.lut[d3 >> 8 & 0xff] + this.lut[d3 >> 16 & 0xff] + this.lut[d3 >> 24 & 0xff];
   }
-
+  /**
+   * @ignore
+   */
   checkIfValue(_obj: any, _key: string): boolean {
     let hasValue = false;
     if (_obj.hasOwnProperty(_key)) {
@@ -359,6 +377,7 @@ export class UserService {
    * Update User object, saves locally and to server.
    *
    * @param [userParams] OPTIONAL object of parameters to update user.
+   * @ignore
    */
   updateUser(userParams: UserParams): Observable<User> {
     if (this._createNewUser === true) {
@@ -483,6 +502,7 @@ export class UserService {
    * Update the user's push_id if this id is different than the currenly saved id.
    *
    * @param push_id The OneSignal user_id (push_id)
+   * @ignore
    */
   updateUserPushId(push_id: string) {
     if (this._userObj.push_id !== push_id) {
@@ -514,6 +534,7 @@ export class UserService {
    *
    * @param password The password, or current password if updating.
    * @param new_password OPTIONAL: New password.
+   * @ignore
    */
   setPassword(password: string, new_password?: string): Observable<any> {
     console.log('============UserService setPassword=========');
@@ -534,6 +555,7 @@ export class UserService {
    * Sends token to email, to begin email verification process.
    *
    * @param userParams {token_email: string}
+   * @ignore
    */
   sendToken(userParams: UserParams): Observable<any> {
     console.log('============UserService sendToken=========');
@@ -551,7 +573,9 @@ export class UserService {
     });
     return _obs;
   }
-
+  /**
+   * @ignore
+   */
   stopToken() {
     this._userObj.logging_in = false;
     this.pushSubscribers(this._userObj);
@@ -563,6 +587,7 @@ export class UserService {
    * Send token that was sent via email to complete email verification.
    *
    * @param userParams {token_email: string, token: string}
+   * @ignore
    */
   verifyToken(userParams: UserParams): Observable<any> {
     console.log('============UserService verifyToken=========');
@@ -629,6 +654,7 @@ export class UserService {
    * @param _title string: The review title.
    * @param _text string: The review text/body.
    * @param _rating number: The review reating 0-5.
+   * @ignore
    */
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
     console.log('============UserService createReview=========');
@@ -682,7 +708,7 @@ export class UserService {
    * Coming soon:
    * - GooglePay
    * - Credit Card
-   *
+   * @ignore
    * @param _purchase_id The id of the inapp.
    * @param _receipt The purchase receipt, if purchase handled locally (not used right now, can use empty string).
    * @param _amount The inapp coins purchased.
@@ -809,7 +835,9 @@ export class UserService {
       return _hasPurchased;
     });
   }
-
+  /**
+  * @ignore
+  */
   getInapps(): Observable<any> {
     console.log('============UserService getInapps=========');
     const _obs = this.apiConnectionService.getInapps({ user_id: this._userObj.user_id });
@@ -833,6 +861,7 @@ export class UserService {
    * Performs the merchant validation in ApplePay.
    * https://developers.bluesnap.com/v8976-Basics/docs/apple-pay#section-step-4-set-up-the-onvalidatemerchant-callback
    *
+   * @ignore
    * @param validationURL The `event.validationURL` from the BlueSnap onvalidatemerchant callback
    * @returns The token object.
    */
@@ -842,7 +871,9 @@ export class UserService {
     const _obs = this.apiConnectionService.getBluesnapWallet(validationURL);
     return _obs;
   }
-
+  /**
+  * @ignore
+  */
   getBluesnapShopper(): Observable<any> {
     console.log('============UserService getBluesnapShopper=========');
     let _obs;
@@ -869,6 +900,7 @@ export class UserService {
 
   /**
   * Notifies the server that a video ad has started by this user and video id.
+  * @ignore
   */
   adVideoStart(_video_id: string): Observable<any> {
     console.log('============UserService adVideoStart=========');
@@ -884,6 +916,7 @@ export class UserService {
   }
   /**
   * Notifies the server that a video ad has ended by this user and video id.
+  * @ignore
   */
   adVideoEnd(_video_id: string): Observable<any> {
     console.log('============UserService adVideoEnd=========');
@@ -1007,6 +1040,7 @@ export class UserService {
 
   /**
    * Log user out, this deletes all local storage and cookies.
+   * @ignore
   */
   logOut() {
     console.warn('UserService:logOut');
@@ -1028,6 +1062,7 @@ export class UserService {
 
   /**
    * Open SSO if not logged in, else confirm logout.
+   * @ignore
   */
   opensso() {
     if (this._isLoggedIn) {
@@ -1045,12 +1080,14 @@ export class UserService {
   }
   /**
  * Open WasProfile which shows Help or Account Info
+ * @ignore
 */
   openuserinfo() {
     this.dialog.open(WasProfile);
   }
   /**
    * Open review if logged in, else ask to login/create account.
+   * @ignore
   */
   leavereview() {
     if (this._isLoggedIn) {
@@ -1067,12 +1104,14 @@ export class UserService {
   }
   /**
    * Open WickeyAppStore.
+   * @ignore
   */
   openstore() {
     this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding' });
   }
   /**
    * Open WasShop.
+   * @ignore
   */
   openshop() {
     this.dialog.open(WasShop);
@@ -1080,6 +1119,7 @@ export class UserService {
 
   /**
   * Returns true if this is an apple device, else false.
+  * @ignore
   */
   isAppleDevice() {
     const iDevices = [
@@ -1102,6 +1142,7 @@ export class UserService {
 
   /**
   * Returns true if this ApplePay is available, else false.
+  * @ignore
   */
   isApplePayAvailable(): boolean {
     let _isAvail;
@@ -1128,6 +1169,7 @@ export class UserService {
 
   /**
   * Makes a purchase via ApplePay.
+  * @ignore
   */
   makeApplePurchase(_inapp: Inapp) {
     return new Promise<boolean>((resolve, reject) => {
@@ -1178,6 +1220,7 @@ export class UserService {
 
   /**
   * Makes a purchase via PaymentRequest (not implemented).
+  * @ignore
   */
   makePaymentRequestPurchase(_inapp: Inapp) {
     return new Promise<boolean>((resolve, reject) => {
@@ -1277,6 +1320,7 @@ export class UserService {
 
   /**
   * Shows either ApplePay or PaymentRequest pending on the device.
+  * @ignore
   */
   showWebPay(_inapp: Inapp) {
     if (this.isApplePayAvailable()) {

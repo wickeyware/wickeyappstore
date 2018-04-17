@@ -171,28 +171,13 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/App.html" >App</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Settings.html" >Settings</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/User.html" >User</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -385,28 +370,13 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/App.html" >App</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Settings.html" >Settings</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/User.html" >User</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -458,9 +428,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
         <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
@@ -612,11 +579,6 @@ this.busy = some_observable.subscribe();</code></pre>
     <code>constructor()</code>
                         </td>
                     </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/was-spinner/was-spinner.component.ts:46</a></div>
-                                </td>
-                            </tr>
     
                 </tbody>
             </table>
@@ -638,11 +600,6 @@ this.busy = some_observable.subscribe();</code></pre>
                               </p>
                         </td>
                     </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/was-spinner/was-spinner.component.ts:44</a></div>
-                                </td>
-                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -659,11 +616,6 @@ this.busy = some_observable.subscribe();</code></pre>
                               </p>
                         </td>
                     </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/was-spinner/was-spinner.component.ts:45</a></div>
-                                </td>
-                            </tr>
                 </tbody>
             </table>
     </section>
@@ -696,11 +648,6 @@ this.busy = some_observable.subscribe();</code></pre>
                     </tr>
     
     
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/was-spinner/was-spinner.component.ts:54</a></div>
-                                </td>
-                            </tr>
     
                     <tr>
                         <td class="col-md-4">
@@ -746,11 +693,6 @@ this.busy = some_observable.subscribe();</code></pre>
     
                             </td>
                         </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/was-spinner/was-spinner.component.ts:46</a></div>
-                                </td>
-                            </tr>
     
     
                 </tbody>
@@ -760,73 +702,6 @@ this.busy = some_observable.subscribe();</code></pre>
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, DoCheck, OnInit, Input } from &#x27;@angular/core&#x27;;
-import {trigger, state, style, transition, animate} from &#x27;@angular/animations&#x27;;
-import { Subscription } from &#x27;rxjs/Subscription&#x27;;
-
-const inactiveStyle &#x3D; style({
-  opacity: 0,
-  transform: &#x27;translateY(-40px)&#x27;
-});
-const timing &#x3D; &#x27;.3s ease&#x27;;
-
-/**
- * A spinner where busy is an Observable, it will show a spinner as long as the subscription is live
- *
- * @example
- * Add to component html
- * &lt;was-spinner [busy]&#x3D;&quot;busy&quot; [message]&#x3D;&#x27;&quot;Please wait..&quot;&#x27;&gt;&lt;/was-spinner&gt;
- *
- * In the component ts add:
- * import { Subscription } from &#x27;rxjs/Subscription&#x27;;
- * ...
- * public busy: Subscription;
- * ...
- * this.busy &#x3D; some_observable.subscribe();
- *
- * @export
- */
-@Component({
-  selector: &#x27;was-spinner&#x27;,
-  templateUrl: &#x27;./was-spinner.component.html&#x27;,
-  styleUrls: [&#x27;./was-spinner.component.css&#x27;],
-  animations: [
-    trigger(&#x27;flyInOut&#x27;, [
-        transition(&#x27;void &#x3D;&gt; *&#x27;, [
-            inactiveStyle,
-            animate(timing)
-        ]),
-        transition(&#x27;* &#x3D;&gt; void&#x27;, [
-            animate(timing, inactiveStyle)
-        ])
-    ])
-  ]
-})
-export class WasSpinnerComponent implements DoCheck {
-  @Input() public busy: Subscription;
-  @Input() public message: string;
-  public showSpinner: boolean;
-  constructor() {
-    this.showSpinner &#x3D; false;
-    if (!this.message) {
-      this.message &#x3D; &#x27;Please wait...&#x27;;
-    }
-  }
-
-  ngDoCheck() {
-    if (this.busy &amp;&amp; this.busy.closed &#x3D;&#x3D;&#x3D; true &amp;&amp; this.showSpinner !&#x3D;&#x3D; false) {
-      // console.log(&#x27;CLOSE SPINNER&#x27;);
-      this.showSpinner &#x3D; false;
-    } else if (this.busy &amp;&amp; this.busy.closed &#x3D;&#x3D;&#x3D; false &amp;&amp; this.showSpinner !&#x3D;&#x3D; true) {
-      this.showSpinner &#x3D; true;
-      // console.log(&#x27;SHOW SPINNER&#x27;);
-    }
-  }
-
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;showSpinner&quot; class&#x3D;&quot;alert-modal&quot; @flyInOut&gt;

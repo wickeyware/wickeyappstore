@@ -6,29 +6,32 @@ import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
 import { Subscription } from 'rxjs/Subscription';
 import { ApiConnectionService } from '../../../api-connection.service';
-
+/**
+ * Leave an app review with WasReview
+ *
+ * ```js
+ * import { WasReview } from 'wickeyappstore';
+ * import { MatDialog, MatDialogRef } from '@angular/material';
+ * ...
+ * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+ * ...
+ * this.dialog.open(WasReview);
+ * ```
+*/
 @Component({
-  selector: 'wasreview-dialog',
   templateUrl: './wasreview.dialog.html',
   styleUrls: ['../was.component.css'],
 })
 export class WasReview {
+  /**@ignore*/
   public busySubmit: Subscription;
+  /**@ignore*/
   public stars = 0;
+  /**@ignore*/
   public reviewText = '';
+  /**@ignore*/
   public titleText = '';
-  /**
-   * Create the review app screen for WAS
-   * This is opened from within the WAS menu.
-   *
-   * Opening manually is as simple as below
-   * @example
-   * import { WasReview } from 'wickeyappstore';
-   * import { MatDialog, MatDialogRef } from '@angular/material';
-   * Inject MatDialog in the constructor(public dialog: MatDialog) { }
-   * this.dialog.open(WasReview);
-  */
-
+  /**@ignore*/
   constructor(
     private apiConnectionService: ApiConnectionService,
     public userService: UserService,
@@ -41,24 +44,16 @@ export class WasReview {
     if (this.userService.userObject.user_id && this.userService.userObject.email) {
       this.loadReview(this.userService.userObject.user_id);
     }
-    // this.userService.user.subscribe((usr: User) => {
-    //   if (usr.user_id && usr.email) {
-    //     this.loadReview(usr.user_id);
-    //   }
-    // });
   }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasReview
-   */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }
+  /**@ignore*/
   clickStar(star: number): void {
     this.stars = star;
   }
-
+  /**@ignore*/
   loadReview(_user_id) {
     const loadingdialogRef = this.dialog.open(WasUp, {
       width: '300px',
@@ -76,7 +71,7 @@ export class WasReview {
       } catch (error) { }
     });
   }
-
+  /**@ignore*/
   testValidReview(): void {
     if (this.stars === 0) {
       this.dialog.open(WasAlert, {
@@ -86,7 +81,7 @@ export class WasReview {
       this.sendReview();
     }
   }
-
+  /**@ignore*/
   sendReview(): void {
     console.log('send the review');
 

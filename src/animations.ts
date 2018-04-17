@@ -3,6 +3,7 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
 // Component transition animations
 /**
  * Slides in from left to right. Closes by sliding down.
+ * @ignore
  */
 export const slideInDownAnimation: AnimationTriggerMetadata =
   trigger('routeAnimation', [
@@ -29,6 +30,7 @@ export const slideInDownAnimation: AnimationTriggerMetadata =
 
 /**
  * Used on Modals. Scales/Fades open and closed.
+ * @ignore
  */
 export const enterLeaveAnim: AnimationTriggerMetadata =
 trigger('enterLeaveAnim', [

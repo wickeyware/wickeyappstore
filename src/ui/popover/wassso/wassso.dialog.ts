@@ -4,33 +4,36 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { UserService } from '../../../user.service';
-
+/**
+* WasSSO
+*
+* Open the single sign on dialog.
+* ```js
+* import { WasSSO } from 'wickeyappstore';
+* import { MatDialog, MatDialogRef } from '@angular/material';
+* ...
+* constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+* ...
+* this.dialog.open(WasSSO);
+* ```
+*/
 @Component({
-  selector: 'wassso-dialog',
   templateUrl: './wassso.dialog.html',
   styleUrls: ['../was.component.css'],
 })
 export class WasSSO {
-  /**
- * WickeyAppStore SSO Dialog
- *
- * SIMPLE USE CASE
- * this.dialog.open(WasSSO);
- *
- * @example
- * import { WasUp } from 'wickeyappstore';
- * import { MatDialog, MatDialogRef } from '@angular/material';
- * Inject MatDialog in the constructor(public dialog: MatDialog) { }
- *
-*/
+/**@ignore*/
   firstFormGroup: FormGroup;
+  /**@ignore*/
   secondFormGroup: FormGroup;
+  /**@ignore*/
   @ViewChild('stepper') stepper: MatStepper;
-
+/**@ignore*/
   email = new FormControl('', [Validators.required, Validators.email]);
+  /**@ignore*/
   token = new FormControl('', [Validators.required, Validators.minLength(6),
   Validators.maxLength(6)]);
-
+  /**@ignore*/
   constructor(
     public dialog: MatDialog,
     public userService: UserService,
@@ -39,7 +42,7 @@ export class WasSSO {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
-    if (!this.data) { this.data = {} }; // data may not be defined
+    if (!this.data) { this.data = {}; } // data may not be defined
     console.log('wassso email', this.data.email);
     if (!this.data.email) {
       this.data.email = '';
@@ -58,17 +61,13 @@ export class WasSSO {
       secondCtrl: ['', Validators.required]
     });
   }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasSSO
-   */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
-
+  /**@ignore*/
   tokenPerson(email: string): void {
     // NOTE: If email doesn't exist add to their account, send token, set account to verified after token entered
     this.userService
@@ -84,11 +83,11 @@ export class WasSSO {
       }, (error) => {
         // <any>error | this casts error to be any
         this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error}
+          data: { title: 'Attention', body: error }
         });
       });
   }
-
+  /**@ignore*/
   verifyPerson(verification_token: string): void {
     this.userService
       .verifyToken({ 'token': verification_token })

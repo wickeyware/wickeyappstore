@@ -12,6 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
  * ...
  * this.dialog.open(WasAlert, {data: { title: 'Hi', body: 'This is a WasAlert' } });
  * ```
+ *
  * MORE USE CASES BELOW
  *
  * <b>Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)</b>
@@ -29,8 +30,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     }
   });
  * ```
-
- * With Buttons
+ *
+ * <b>With Buttons</b>
+ * ```js
   const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', body: 'Confirm?', buttons: ['Cancel', 'Option A', Option B] } });
       dialogRef.afterClosed().subscribe(result => {
      if (result !== undefined) {
@@ -39,8 +41,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
        console.log('Dialog was cancelled');
      }
    });
+ * ```
  *
- * With Input field
+ * <b>With Input field</b>
+ * ```js
    const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Password', input: true, input_value: 'text', password: true } });
       dialogRef.afterClosed().subscribe(result => {
      if (result !== undefined) {
@@ -49,7 +53,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
        console.log('Dialog was cancelled');
      }
    });
- * With List of choices
+   ```
+ *
+ * <b>With List of choices<b> ---<i>Deprecated</i>
+ * ```js
   const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', list: ['item1', 'item2'] } });
       dialogRef.afterClosed().subscribe(result => {
      if (result !== undefined) {
@@ -58,13 +65,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
        console.log('Dialog was cancelled');
      }
    });
+ *```
  *
- * The MatDialog has additional properties.
- * By default, clicking outside the window does not close the dialog. Change by setting to false;
-     this.dialogRef.disableClose = false;
+ * <b>ADVANCED Options</b>
  *
- * ADVANCED Options
  * Can Pass TWO buttons, TWO button_icons, and TWO button_colors
+ *
+ * <i>button_icons</i> can be any material icon -> https://material.io/icons/
+ *
+ * <i>button_colors</i> can be any material theme color. primary, accent, warn, or empty string
+ * ```js
   const dialogRef = this.dialog.open(WasAlert, {data: { title: 'Hi', body: 'Set Alarm?',
     buttons: ['Cancel', 'Alarm'], button_icons: ['cancel', 'alarm'], button_colors: ['', 'accent'] } });
   dialogRef.afterClosed().subscribe(result => {
@@ -74,19 +84,28 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
       console.log('Dialog was cancelled');
     }
   });
+  ```
+ *
+ * The MatDialog has additional properties.
+ * By default, clicking outside the window does not close the dialog. Change by setting to false;
+ * ```js
+ this.dialogRef.disableClose = false;
+     ```
  */
 @Component({
   templateUrl: './wasalert.dialog.html',
   styleUrls: ['../was.component.css'],
 })
 export class WasAlert {
-
+  /**
+ * WasAlert Constructor
+ * @param dialogRef Reference to a WasAlert dialog opened via the MatDialog service.
+ * @param data The data for WasAlert always contains: {title: 'title', body: 'main message'}. See the examples for a full list.
+ * @ignore
+ */
   constructor(
     public dialogRef: MatDialogRef<WasAlert>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-
-    // console.log('print wasalert ', dialogRef);
-
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
     if (!this.data) { this.data = {}; } // data may not be defined
@@ -121,11 +140,7 @@ export class WasAlert {
     if (!this.data.button_colors) { this.data.button_colors = ['', '']; }
   }
 
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasAlert
-   */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }

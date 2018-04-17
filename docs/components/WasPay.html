@@ -104,9 +104,6 @@
                                     <a href="../components/WasAlert.html" >WasAlert</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasPay.html"  data-type="entity-link" class="active" >WasPay</a>
                                 </li>
                                 <li class="link">
@@ -119,13 +116,7 @@
                                     <a href="../components/WasSSO.html" >WasSSO</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasShop.html" >WasShop</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasStore.html" >WasStore</a>
@@ -171,28 +162,10 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/App.html" >App</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Settings.html" >Settings</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/User.html" >User</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -211,9 +184,6 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -318,9 +288,6 @@
                                            <a href="../components/WasAlert.html" >WasAlert</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasPay.html"  data-type="entity-link" class="active" >WasPay</a>
                                        </li>
                                        <li class="link">
@@ -333,13 +300,7 @@
                                            <a href="../components/WasSSO.html" >WasSSO</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasShop.html" >WasShop</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasStore.html" >WasStore</a>
@@ -385,28 +346,10 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/App.html" >App</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Settings.html" >Settings</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/User.html" >User</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -425,9 +368,6 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -458,9 +398,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
         <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
@@ -478,6 +415,26 @@
     <code>src/ui/popover/waspay/waspay.dialog.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Directly open a purchase page with WasPay</p>
+<p>Alternatively use WasShop to show all available in-apps.</p>
+<p>Get your inapp purchaseid from your app in developer.wickeyappstore.com</p>
+<pre class="line-numbers"><code class="language-js">import { WasPay } from &#39;wickeyappstore&#39;;
+import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+import { UserService } from &#39;./user.service&#39;;
+...
+constructor(public dialog: MatDialog, private userService: UserService) { } // and Inject MatDialog &amp; UserService in the constructor
+...
+const _myInapp = this.userService.getInapp(this.myInappPurchaseId);
+this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&gt; {
+  if (_isSuccess === true) {
+     // the inapp was purchased
+     }
+   });</code></pre>
+    </p>
 
 
 
@@ -498,10 +455,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>was-pay-dialog</code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -520,606 +473,17 @@
     </table>
 </section>
 
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#data">data</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialog">dialog</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialogRef">dialogRef</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#isApplePayAvail">isApplePayAvail</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#userService">userService</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#goToSafari">goToSafari</a>
-                            </li>
-                            <li>
-                                <a href="#makeTitle">makeTitle</a>
-                            </li>
-                            <li>
-                                <a href="#onNoClick">onNoClick</a>
-                            </li>
-                            <li>
-                                <a href="#showWebPay">showWebPay</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-    <code>constructor(dialog: MatDialog, dialogRef: <a href="../components/WasPay.html">MatDialogRef<WasPay></a>, userService: <a href="../injectables/UserService.html">UserService</a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:19</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div>
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>dialog</td>
-                                                      
-                                                            <td>
-                                                                        <code>MatDialog</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>dialogRef</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../components/WasPay.html" target="_self" >MatDialogRef&lt;WasPay&gt;</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>userService</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>data</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
 
 
-    <section>
-        
-            <h3 id="methods">
-                Methods
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="goToSafari"></a>
-                            <span class="name">
-                                <b>
-                                goToSafari
-                                </b>
-                                <a href="#goToSafari"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>goToSafari()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:78</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="makeTitle"></a>
-                            <span class="name">
-                                <b>
-                                makeTitle
-                                </b>
-                                <a href="#makeTitle"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>makeTitle()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:83</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="onNoClick"></a>
-                            <span class="name">
-                                <b>
-                                onNoClick
-                                </b>
-                                <a href="#onNoClick"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>onNoClick()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:37</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Cancel/close the dialog</p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="showWebPay"></a>
-                            <span class="name">
-                                <b>
-                                showWebPay
-                                </b>
-                                <a href="#showWebPay"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>showWebPay()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:41</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        
-            <h3 id="inputs">
-                Properties
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="data"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                data
-                                </b>
-                                <a href="#data"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>data:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>Inject</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:25</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialog"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialog
-                                </b>
-                                <a href="#dialog"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialog:     <code>MatDialog</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>MatDialog</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:22</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialogRef"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialogRef
-                                </b>
-                                <a href="#dialogRef"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialogRef:     <code><a href="../components/WasPay.html" target="_self" >MatDialogRef&lt;WasPay&gt;</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../components/WasPay.html" target="_self" >MatDialogRef&lt;WasPay&gt;</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:23</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="isApplePayAvail"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                isApplePayAvail
-                                </b>
-                                <a href="#isApplePayAvail"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>isApplePayAvail:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>false</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:19</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>Choose payment type. Internal Use
-    Must pass price, title, description, coins, isConsumable, isOwned
-         this.dialog.open(WasPay, {
-      data: {&#39;price&#39;: 1.99, &#39;title&#39;: &#39;Pack One&#39;, &#39;description&#39;: &#39;Intro Pack&#39;, &#39;coins&#39;: 100}
-    });</p>
-    </div>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="userService"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                userService
-                                </b>
-                                <a href="#userService"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>userService:     <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/ui/popover/waspay/waspay.dialog.ts:24</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-    </section>
+
 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, Input } from &#x27;@angular/core&#x27;;
-import { WasAlert } from &#x27;../wasalert/wasalert.dialog&#x27;;
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material&#x27;;
-import { UserService } from &#x27;../../../user.service&#x27;;
-
-@Component({
-  selector: &#x27;was-pay-dialog&#x27;,
-  templateUrl: &#x27;./waspay.dialog.html&#x27;,
-  styleUrls: [&#x27;../was.component.css&#x27;],
-})
-export class WasPay {
-  /**
-   * Choose payment type. Internal Use
-   * Must pass price, title, description, coins, isConsumable, isOwned
-   *     this.dialog.open(WasPay, {
-      data: {&#x27;price&#x27;: 1.99, &#x27;title&#x27;: &#x27;Pack One&#x27;, &#x27;description&#x27;: &#x27;Intro Pack&#x27;, &#x27;coins&#x27;: 100}
-    });
-  */
-  public isApplePayAvail &#x3D; false; // dictates if the apple pay button is shown.
-
-  constructor(
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef&lt;WasPay&gt;,
-    public userService: UserService,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    // set defaults (just for testing)
-    if (!this.data) {
-      this.data &#x3D; {&#x27;price&#x27;: 1.99, &#x27;title&#x27;: &#x27;Pack One&#x27;, &#x27;description&#x27;: &#x27;Intro Pack&#x27;, &#x27;coins&#x27;: 100, &#x27;isConsumable&#x27;: false, &#x27;isOwned&#x27;: false};
-    }
-    this.isApplePayAvail &#x3D; this.userService.isApplePayAvailable();
-  }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasPay
-   */
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  showWebPay() {
-    if (this.userService.isLoggedInVal) {
-      if (this.data.isOwned &#x3D;&#x3D;&#x3D; true) {
-        this.dialog.open(WasAlert, {
-          data: { title: &#x27;Already Owned&#x27;, body: &#x27;You already own: &#x27; + this.data.title, buttons: [&#x27;Cool&#x27;] }
-        });
-      } else {
-        this.userService.showWebPay(this.data).then((_goodPurchase: boolean) &#x3D;&gt; {
-          if (_goodPurchase) {
-            this.dialog.open(WasAlert, {
-              data: { title: &#x27;Purchase Successful!&#x27;, body: &#x27;Your purchase was successful.&#x27;, buttons: [&#x27;Okay&#x27;] }
-            }).afterClosed().subscribe(result &#x3D;&gt; {
-              this.dialogRef.close(true);
-            });
-          } else {
-            this.dialog.open(WasAlert, {
-              data: { title: &#x27;Purchase Failed&#x27;, body: &#x27;Your purchase failed.&#x27;, buttons: [&#x27;Okay&#x27;] }
-            }).afterClosed().subscribe(result &#x3D;&gt; {
-              this.dialogRef.close(false);
-            });
-          }
-        }).catch((_failReason) &#x3D;&gt; {
-          console.error(&#x27;showWebPay:error return:&#x27;, _failReason);
-          if (_failReason !&#x3D;&#x3D; &#x27;cancelled&#x27;) {
-            this.dialog.open(WasAlert, {
-              data: { title: &#x27;Purchase Failed&#x27;, body: &#x27;Your purchase failed, contact us for help.&#x27;, buttons: [&#x27;Okay&#x27;] }
-            }).afterClosed().subscribe(result &#x3D;&gt; {
-              this.dialogRef.close(false);
-            });
-          }
-        });
-      }
-    } else {
-      this.userService.opensso();
-    }
-  }
-
-  goToSafari() {
-    this.dialog.open(WasAlert, {
-      data: { title: &#x27;Apple Pay&#x27;, body: &#x27;Open app in Safari to enable in-app purchases with Apple Pay.&#x27; }
-    });
-  }
-  makeTitle(): string {
-    if (this.data.isConsumable &#x3D;&#x3D;&#x3D; true) {
-      return this.data.title + &#x27; / &#x27; + this.data.coins + &#x27; coins&#x27;;
-    } else {
-      return this.data.title;
-    }
-  }
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot;&gt;Pay ${{data.price}}&lt;/div&gt;
@@ -1160,7 +524,7 @@ export class WasPay {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay ${{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Buy</button>    </ng-template>  </div></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasStore', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasPay'};
 </script>

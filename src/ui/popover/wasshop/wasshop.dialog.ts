@@ -1,39 +1,42 @@
-import { Component, Inject, ChangeDetectorRef, ViewEncapsulation} from '@angular/core';
+import { Component, Inject, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
 import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
-
+/**
+ * Open your personal store with WasShop.
+ *
+ * Users can buy in-app purchases as well as get free coins via ads from the WasStore.
+ *
+ * ```js
+ * import { WasShop } from 'wickeyappstore';
+ * import { MatDialog, MatDialogRef } from '@angular/material';
+ * ...
+ * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+ * ...
+ * this.dialog.open(WasShop);
+ * ```
+*/
 @Component({
-  selector: 'was-shop-dialog',
   templateUrl: './wasshop.dialog.html',
   styleUrls: ['../was.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class WasShop {
-  /**
-   * Show your own personal store
-   *
-   * SIMPLE USE CASE
-   * this.dialog.open(WasShop);
-   *
-   *
-   * @example
-   * import { WasShop } from 'wickeyappstore';
-   * import { MatDialog, MatDialogRef } from '@angular/material';
-   * Inject MatDialog in the constructor(public dialog: MatDialog) { }
-   *
-  */
+  /**@ignore*/
   public addBtnText = 'Video Ads';
   private vastplayer;
+  /**@ignore*/
   public adnotready = true;
   private loggedin = false;
+  /**@ignore*/
   public hasAds = false;
+  /**@ignore*/
   public hasOfferwall = false;
   private vastAdTag = 'https://ima3vpaid.appspot.com/?adTagUrl=https%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fclient%3Dca-video-pub-5512390705137507%26slotname%3D3326280305%2F2027455546%26ad_type%3Dvideo_text_image%26description_url%3Dhttp%253A%252F%252Fwickeyappstore.com%26max_ad_duration%3D60000%26videoad_start_delay%3D0&type=js';
   private vastAdID: string;
-
+  /**@ignore*/
   constructor(
     public dialog: MatDialog,
     private ref: ChangeDetectorRef,
@@ -44,13 +47,11 @@ export class WasShop {
     // dialogRef.disableClose = true; // do not close by clicking off by default
     dialogRef.updateSize('100%', '100%');
   }
-  /**
-   * Cancel/close the dialog
-   */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  /**@ignore*/
   get loginValue() {
     return this.userService.isLoggedInObs.map((_isLogged: Boolean) => {
       if (_isLogged) {
@@ -68,7 +69,7 @@ export class WasShop {
     });
   }
 
-  // ad stuff
+  /**@ignore*/
   get isFreeCoinPanel() {
     return this.userService.freebieSettings.map((_freesetting) => {
       this.hasAds = _freesetting.hasAds;
@@ -80,7 +81,7 @@ export class WasShop {
       }
     });
   }
-
+  /**@ignore*/
   openedFreeCoins() {
     console.log('openedFreeCoins');
     if (this.loggedin === true) {
@@ -89,6 +90,7 @@ export class WasShop {
       }
     }
   }
+  /**@ignore*/
   closedFreeCoins() {
     console.log('closedFreeCoins');
     if (this.vastAdTag) {
@@ -96,6 +98,7 @@ export class WasShop {
       this.vastplayer.stopAd();
     }
   }
+  /**@ignore*/
   createVastplayer_1() {
     if (this.vastplayer === undefined) {
       console.log('create vast player');
@@ -120,6 +123,7 @@ export class WasShop {
       });
     }
   }
+  /**@ignore*/
   loadAd() {
     this.createVastplayer_1();
 
@@ -158,7 +162,7 @@ export class WasShop {
     });
   }
 
-
+  /**@ignore*/
   watchAd() {
     console.log('showVideoAd');
     this.addBtnText = 'Ad Playing...';
@@ -172,6 +176,7 @@ export class WasShop {
       }, 2500);
     });
   }
+  /**@ignore*/
   opensso() {
     this.userService.opensso();
   }

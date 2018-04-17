@@ -65,9 +65,8 @@
 
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from '@angular/forms';
-/** A hero's name can't match the given regular expression */
+/** Check value against the given regular expression */
 /**
- * @method
  * @ignore
  */
 export function customValidator(nameRe: RegExp): ValidatorFn {

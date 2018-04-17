@@ -104,9 +104,6 @@
                                     <a href="../components/WasAlert.html"  data-type="entity-link" class="active" >WasAlert</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasPay.html" >WasPay</a>
                                 </li>
                                 <li class="link">
@@ -119,13 +116,7 @@
                                     <a href="../components/WasSSO.html" >WasSSO</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasShop.html" >WasShop</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasStore.html" >WasStore</a>
@@ -171,28 +162,10 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/App.html" >App</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Settings.html" >Settings</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/User.html" >User</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -211,9 +184,6 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -318,9 +288,6 @@
                                            <a href="../components/WasAlert.html"  data-type="entity-link" class="active" >WasAlert</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasPay.html" >WasPay</a>
                                        </li>
                                        <li class="link">
@@ -333,13 +300,7 @@
                                            <a href="../components/WasSSO.html" >WasSSO</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasShop.html" >WasShop</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasStore.html" >WasStore</a>
@@ -385,28 +346,10 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/App.html" >App</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Settings.html" >Settings</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/User.html" >User</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -425,9 +368,6 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -458,9 +398,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
         <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
@@ -502,39 +439,35 @@ this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;This is a Wa
   } else {
     console.log(&#39;Dialog was cancelled&#39;);
   }
-});</code></pre><p>With Buttons
-const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Confirm?&#39;, buttons: [&#39;Cancel&#39;, &#39;Option A&#39;, Option B] } });
+});</code></pre><p><b>With Buttons</b></p>
+<pre class="line-numbers"><code class="language-js">const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Confirm?&#39;, buttons: [&#39;Cancel&#39;, &#39;Option A&#39;, Option B] } });
     dialogRef.afterClosed().subscribe(result =&gt; {
    if (result !== undefined) {
      console.log(&#39;This is 0 for cancel, and 1 for A, 2 for B&#39;, result);
    } else {
      console.log(&#39;Dialog was cancelled&#39;);
    }
-});</p>
-<p>With Input field
-const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Password&#39;, input: true, input_value: &#39;text&#39;, password: true } });
+});</code></pre><p><b>With Input field</b></p>
+<pre class="line-numbers"><code class="language-js">const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Password&#39;, input: true, input_value: &#39;text&#39;, password: true } });
     dialogRef.afterClosed().subscribe(result =&gt; {
    if (result !== undefined) {
      console.log(&#39;This is the input captured&#39;, result);
    } else {
      console.log(&#39;Dialog was cancelled&#39;);
    }
-});
-With List of choices
-const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, list: [&#39;item1&#39;, &#39;item2&#39;] } });
+});</code></pre><p><b>With List of choices<b> ---<i>Deprecated</i></p>
+<pre class="line-numbers"><code class="language-js">const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, list: [&#39;item1&#39;, &#39;item2&#39;] } });
     dialogRef.afterClosed().subscribe(result =&gt; {
    if (result !== undefined) {
      console.log(&#39;This is the index of the selected list item&#39;, result);
    } else {
      console.log(&#39;Dialog was cancelled&#39;);
    }
-});</p>
-<p>The MatDialog has additional properties.
-By default, clicking outside the window does not close the dialog. Change by setting to false;
-   this.dialogRef.disableClose = false;</p>
-<p>ADVANCED Options
-Can Pass TWO buttons, TWO button_icons, and TWO button_colors
-const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Set Alarm?&#39;,
+});</code></pre><p><b>ADVANCED Options</b></p>
+<p>Can Pass TWO buttons, TWO button_icons, and TWO button_colors</p>
+<p><i>button_icons</i> can be any material icon -&gt; <a href="https://material.io/icons/">https://material.io/icons/</a></p>
+<p><i>button_colors</i> can be any material theme color. primary, accent, warn, or empty string</p>
+<pre class="line-numbers"><code class="language-js">const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Set Alarm?&#39;,
   buttons: [&#39;Cancel&#39;, &#39;Alarm&#39;], button_icons: [&#39;cancel&#39;, &#39;alarm&#39;], button_colors: [&#39;&#39;, &#39;accent&#39;] } });
 dialogRef.afterClosed().subscribe(result =&gt; {
   if (result !== undefined) {
@@ -542,8 +475,9 @@ dialogRef.afterClosed().subscribe(result =&gt; {
   } else {
     console.log(&#39;Dialog was cancelled&#39;);
   }
-});</p>
-
+});</code></pre><p>The MatDialog has additional properties.
+By default, clicking outside the window does not close the dialog. Change by setting to false;</p>
+<pre class="line-numbers"><code class="language-js">this.dialogRef.disableClose = false;</code></pre>
     </p>
 
 
@@ -583,378 +517,17 @@ dialogRef.afterClosed().subscribe(result =&gt; {
     </table>
 </section>
 
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#data">data</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialogRef">dialogRef</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#onNoClick">onNoClick</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-    <code>constructor(dialogRef: <a href="../components/WasAlert.html">MatDialogRef<WasAlert></a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:82</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div>
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>dialogRef</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../components/WasAlert.html" target="_self" >MatDialogRef&lt;WasAlert&gt;</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>data</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
 
 
-    <section>
-        
-            <h3 id="methods">
-                Methods
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="onNoClick"></a>
-                            <span class="name">
-                                <b>
-                                onNoClick
-                                </b>
-                                <a href="#onNoClick"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>onNoClick()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:129</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Cancel/close the dialog</p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        
-            <h3 id="inputs">
-                Properties
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="data"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                data
-                                </b>
-                                <a href="#data"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>data:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>Inject</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:86</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialogRef"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialogRef
-                                </b>
-                                <a href="#dialogRef"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialogRef:     <code><a href="../components/WasAlert.html" target="_self" >MatDialogRef&lt;WasAlert&gt;</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../components/WasAlert.html" target="_self" >MatDialogRef&lt;WasAlert&gt;</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/ui/popover/wasalert/wasalert.dialog.ts:85</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-    </section>
+
 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material&#x27;;
-/**
- * Create simple modal popups with btns or input field to get user input.
- *
- * &lt;b&gt;SIMPLEST USE CASE&lt;/b&gt;
- * &#x60;&#x60;&#x60;js
- * import { WasAlert } from &#x27;wickeyappstore&#x27;;
- * import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
- * ...
- * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
- * ...
- * this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;This is a WasAlert&#x27; } });
- * &#x60;&#x60;&#x60;
- * MORE USE CASES BELOW
- *
- * &lt;b&gt;Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)&lt;/b&gt;
- * &#x60;&#x60;&#x60;js
-  this.dialog.open(WasAlert, {
-    data: {
-      title: &#x27;Please confirm.&#x27;,
-      body: &#x27;This is the default WasAlertStyleConfirm alert.&#x27;, buttons: &#x27;WasAlertStyleConfirm&#x27;
-    }
-  }).afterClosed().subscribe(result &#x3D;&gt; {
-    if (result !&#x3D;&#x3D; undefined) {
-      console.log(&#x27;This is 0 for cancel, and 1 for Confirm&#x27;, result);
-    } else {
-      console.log(&#x27;Dialog was cancelled&#x27;);
-    }
-  });
- * &#x60;&#x60;&#x60;
-
- * With Buttons
-  const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;Confirm?&#x27;, buttons: [&#x27;Cancel&#x27;, &#x27;Option A&#x27;, Option B] } });
-      dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-     if (result !&#x3D;&#x3D; undefined) {
-       console.log(&#x27;This is 0 for cancel, and 1 for A, 2 for B&#x27;, result);
-     } else {
-       console.log(&#x27;Dialog was cancelled&#x27;);
-     }
-   });
- *
- * With Input field
-   const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Password&#x27;, input: true, input_value: &#x27;text&#x27;, password: true } });
-      dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-     if (result !&#x3D;&#x3D; undefined) {
-       console.log(&#x27;This is the input captured&#x27;, result);
-     } else {
-       console.log(&#x27;Dialog was cancelled&#x27;);
-     }
-   });
- * With List of choices
-  const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, list: [&#x27;item1&#x27;, &#x27;item2&#x27;] } });
-      dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-     if (result !&#x3D;&#x3D; undefined) {
-       console.log(&#x27;This is the index of the selected list item&#x27;, result);
-     } else {
-       console.log(&#x27;Dialog was cancelled&#x27;);
-     }
-   });
- *
- * The MatDialog has additional properties.
- * By default, clicking outside the window does not close the dialog. Change by setting to false;
-     this.dialogRef.disableClose &#x3D; false;
- *
- * ADVANCED Options
- * Can Pass TWO buttons, TWO button_icons, and TWO button_colors
-  const dialogRef &#x3D; this.dialog.open(WasAlert, {data: { title: &#x27;Hi&#x27;, body: &#x27;Set Alarm?&#x27;,
-    buttons: [&#x27;Cancel&#x27;, &#x27;Alarm&#x27;], button_icons: [&#x27;cancel&#x27;, &#x27;alarm&#x27;], button_colors: [&#x27;&#x27;, &#x27;accent&#x27;] } });
-  dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
-    if (result !&#x3D;&#x3D; undefined) {
-      console.log(&#x27;This is 0 for cancel, and 1 for A, 2 for B&#x27;, result);
-    } else {
-      console.log(&#x27;Dialog was cancelled&#x27;);
-    }
-  });
- */
-@Component({
-  templateUrl: &#x27;./wasalert.dialog.html&#x27;,
-  styleUrls: [&#x27;../was.component.css&#x27;],
-})
-export class WasAlert {
-
-  constructor(
-    public dialogRef: MatDialogRef&lt;WasAlert&gt;,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-
-    // console.log(&#x27;print wasalert &#x27;, dialogRef);
-
-    // SET DEFAULT VALUES
-    dialogRef.disableClose &#x3D; true; // do not close by clicking off by default
-    if (!this.data) { this.data &#x3D; {}; } // data may not be defined
-    if (!this.data.title) { this.data.title &#x3D; &#x27;&#x27;; }
-    if (!this.data.body) { this.data.body &#x3D; &#x27;&#x27;; }
-    if (!this.data.buttons) { this.data.buttons &#x3D; [&#x27;OK&#x27;]; }
-    if (this.data.buttons &#x3D;&#x3D;&#x3D; &#x27;WasAlertStyleConfirm&#x27;) {
-      this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;OK&#x27;];
-      this.data.button_icons &#x3D; [&#x27;cancel&#x27;, &#x27;done&#x27;];
-      this.data.button_colors &#x3D; [&#x27;warn&#x27;, &#x27;primary&#x27;];
-    } else if (this.data.buttons &#x3D;&#x3D;&#x3D; &#x27;WasAlertStyleWarning&#x27;) {
-      // example of a DELETE Confirmation
-      this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;CONFIRM&#x27;];
-      this.data.button_icons &#x3D; [&#x27;&#x27;, &#x27;warning&#x27;];
-      this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;warn&#x27;];
-    }
-    if (!this.data.input) {
-      this.data.input &#x3D; false;
-      // there will be two buttons always.
-      // Cancel and Choose
-      if (this.data.buttons.length &#x3D;&#x3D;&#x3D; 2) {
-        // then we&#x27;ll just trust they used a Cancel, and Submit choice
-      } else {
-        this.data.buttons &#x3D; [&#x27;Cancel&#x27;, &#x27;OK&#x27;];
-      }
-      // Can optionally style style those, or have the default choices
-      if (!this.data.button_icons) { this.data.button_icons &#x3D; [&#x27;cancel&#x27;, &#x27;done&#x27;]; }
-      if (!this.data.button_colors) { this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;primary&#x27;]; }
-    }
-    if (!this.data.password) { this.data.password &#x3D; false; }
-    if (!this.data.button_icons) { this.data.button_icons &#x3D; [&#x27;&#x27;, &#x27;&#x27;]; }
-    if (!this.data.button_colors) { this.data.button_colors &#x3D; [&#x27;&#x27;, &#x27;&#x27;]; }
-  }
-
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasAlert
-   */
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;h1 mat-dialog-title&gt;{{data.title}}&lt;/h1&gt;
@@ -1021,7 +594,7 @@ export class WasAlert {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input">    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">    <ng-template #normalinput>      <input matInput [(ngModel)]="data.input_value">    </ng-template>  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>  </button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>  </button></div><ng-template #normalbuttons>  <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>    </button>    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>    </button>  </div>  <ng-template #buttonlist>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </ng-template></ng-template></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasStore', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasAlert'};
 </script>

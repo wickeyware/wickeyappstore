@@ -104,9 +104,6 @@
                                     <a href="../components/WasAlert.html" >WasAlert</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasPay.html" >WasPay</a>
                                 </li>
                                 <li class="link">
@@ -119,13 +116,7 @@
                                     <a href="../components/WasSSO.html"  data-type="entity-link" class="active" >WasSSO</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasShop.html" >WasShop</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasStore.html" >WasStore</a>
@@ -171,28 +162,10 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/App.html" >App</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Settings.html" >Settings</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/User.html" >User</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -211,9 +184,6 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -318,9 +288,6 @@
                                            <a href="../components/WasAlert.html" >WasAlert</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasPay.html" >WasPay</a>
                                        </li>
                                        <li class="link">
@@ -333,13 +300,7 @@
                                            <a href="../components/WasSSO.html"  data-type="entity-link" class="active" >WasSSO</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasShop.html" >WasShop</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasStore.html" >WasStore</a>
@@ -385,28 +346,10 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/App.html" >App</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Settings.html" >Settings</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/User.html" >User</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -425,9 +368,6 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -458,9 +398,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
         <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
@@ -478,6 +415,19 @@
     <code>src/ui/popover/wassso/wassso.dialog.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>WasSSO</p>
+<p>Open the single sign on dialog.</p>
+<pre class="line-numbers"><code class="language-js">import { WasSSO } from &#39;wickeyappstore&#39;;
+import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+...
+constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+...
+this.dialog.open(WasSSO);</code></pre>
+    </p>
 
 
 
@@ -498,10 +448,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>wassso-dialog</code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -520,814 +466,17 @@
     </table>
 </section>
 
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#data">data</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialog">dialog</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialogRef">dialogRef</a>
-                            </li>
-                            <li>
-                                <a href="#email">email</a>
-                            </li>
-                            <li>
-                                <a href="#firstFormGroup">firstFormGroup</a>
-                            </li>
-                            <li>
-                                <a href="#secondFormGroup">secondFormGroup</a>
-                            </li>
-                            <li>
-                                <a href="#stepper">stepper</a>
-                            </li>
-                            <li>
-                                <a href="#token">token</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#userService">userService</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#onNoClick">onNoClick</a>
-                            </li>
-                            <li>
-                                <a href="#tokenPerson">tokenPerson</a>
-                            </li>
-                            <li>
-                                <a href="#verifyPerson">verifyPerson</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-    <code>constructor(dialog: MatDialog, userService: <a href="../injectables/UserService.html">UserService</a>, _formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, dialogRef: <a href="../components/WasSSO.html">MatDialogRef<WasSSO></a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:32</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div>
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>dialog</td>
-                                                      
-                                                            <td>
-                                                                        <code>MatDialog</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>userService</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>_formBuilder</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>dialogRef</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../components/WasSSO.html" target="_self" >MatDialogRef&lt;WasSSO&gt;</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>data</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
 
 
-    <section>
-        
-            <h3 id="methods">
-                Methods
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="onNoClick"></a>
-                            <span class="name">
-                                <b>
-                                onNoClick
-                                </b>
-                                <a href="#onNoClick"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>onNoClick()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:66</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Cancel/close the dialog</p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="tokenPerson"></a>
-                            <span class="name">
-                                <b>
-                                tokenPerson
-                                </b>
-                                <a href="#tokenPerson"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>tokenPerson(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:72</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>email</td>
-                                                        
-                                                            <td>
-                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                            </td>
-                                                        
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-    
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                                    <div class="io-description">
-                                        
-                                    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="verifyPerson"></a>
-                            <span class="name">
-                                <b>
-                                verifyPerson
-                                </b>
-                                <a href="#verifyPerson"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>verifyPerson(verification_token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:92</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>verification_token</td>
-                                                        
-                                                            <td>
-                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                            </td>
-                                                        
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-    
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                                    <div class="io-description">
-                                        
-                                    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        
-            <h3 id="inputs">
-                Properties
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="data"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                data
-                                </b>
-                                <a href="#data"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>data:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>Inject</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:39</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialog"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialog
-                                </b>
-                                <a href="#dialog"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialog:     <code>MatDialog</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>MatDialog</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:35</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialogRef"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialogRef
-                                </b>
-                                <a href="#dialogRef"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialogRef:     <code><a href="../components/WasSSO.html" target="_self" >MatDialogRef&lt;WasSSO&gt;</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../components/WasSSO.html" target="_self" >MatDialogRef&lt;WasSSO&gt;</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:38</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="email"></a>
-                            <span class="name">
-                                <b>
-                                email
-                                </b>
-                                <a href="#email"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>email:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>new FormControl(&#x27;&#x27;, [Validators.required, Validators.email])</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:30</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="firstFormGroup"></a>
-                            <span class="name">
-                                <b>
-                                firstFormGroup
-                                </b>
-                                <a href="#firstFormGroup"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>firstFormGroup:     <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:26</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>WickeyAppStore SSO Dialog</p>
-    <p>SIMPLE USE CASE
-    this.dialog.open(WasSSO);</p>
-    </div>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="secondFormGroup"></a>
-                            <span class="name">
-                                <b>
-                                secondFormGroup
-                                </b>
-                                <a href="#secondFormGroup"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>secondFormGroup:     <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:27</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="stepper"></a>
-                            <span class="name">
-                                <b>
-                                stepper
-                                </b>
-                                <a href="#stepper"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>stepper:     <code>MatStepper</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>MatStepper</code>
-    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>ViewChild</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:28</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="token"></a>
-                            <span class="name">
-                                <b>
-                                token
-                                </b>
-                                <a href="#token"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>token:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>new FormControl(&#x27;&#x27;, [Validators.required, Validators.minLength(6),
-      Validators.maxLength(6)])</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:31</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="userService"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                userService
-                                </b>
-                                <a href="#userService"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>userService:     <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/ui/popover/wassso/wassso.dialog.ts:36</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-    </section>
+
 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, ViewChild } from &#x27;@angular/core&#x27;;
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from &#x27;@angular/material&#x27;;
-import { FormControl, FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-
-import { WasAlert } from &#x27;../wasalert/wasalert.dialog&#x27;;
-import { UserService } from &#x27;../../../user.service&#x27;;
-
-@Component({
-  selector: &#x27;wassso-dialog&#x27;,
-  templateUrl: &#x27;./wassso.dialog.html&#x27;,
-  styleUrls: [&#x27;../was.component.css&#x27;],
-})
-export class WasSSO {
-  /**
- * WickeyAppStore SSO Dialog
- *
- * SIMPLE USE CASE
- * this.dialog.open(WasSSO);
- *
- * @example
- * import { WasUp } from &#x27;wickeyappstore&#x27;;
- * import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
- * Inject MatDialog in the constructor(public dialog: MatDialog) { }
- *
-*/
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  @ViewChild(&#x27;stepper&#x27;) stepper: MatStepper;
-
-  email &#x3D; new FormControl(&#x27;&#x27;, [Validators.required, Validators.email]);
-  token &#x3D; new FormControl(&#x27;&#x27;, [Validators.required, Validators.minLength(6),
-  Validators.maxLength(6)]);
-
-  constructor(
-    public dialog: MatDialog,
-    public userService: UserService,
-    private _formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef&lt;WasSSO&gt;,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    // SET DEFAULT VALUES
-    dialogRef.disableClose &#x3D; true; // do not close by clicking off by default
-    if (!this.data) { this.data &#x3D; {} }; // data may not be defined
-    console.log(&#x27;wassso email&#x27;, this.data.email);
-    if (!this.data.email) {
-      this.data.email &#x3D; &#x27;&#x27;;
-    } else {
-      // To avoid &quot;ExpressionChangedAfterItHasBeenCheckedError&quot; error set the index in setTimeout
-      setTimeout(() &#x3D;&gt; {
-        this.stepper.selectedIndex &#x3D; 1;
-      }, 650);
-    }
-
-    // init the validators
-    this.firstFormGroup &#x3D; this._formBuilder.group({
-      firstCtrl: [&#x27;&#x27;, Validators.required]
-    });
-    this.secondFormGroup &#x3D; this._formBuilder.group({
-      secondCtrl: [&#x27;&#x27;, Validators.required]
-    });
-  }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasSSO
-   */
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-
-
-  tokenPerson(email: string): void {
-    // NOTE: If email doesn&#x27;t exist add to their account, send token, set account to verified after token entered
-    this.userService
-      .sendToken({ &#x27;token_email&#x27;: email })
-      .subscribe((res) &#x3D;&gt; {
-        let _alertMessage &#x3D; &#x27;The login token was sent. Enter it in token field to finish the login.&#x27;;
-        if (res.new_account) {
-          _alertMessage &#x3D; &#x27;The verification token was sent. Enter it in token field to finish creating account.&#x27;;
-        }
-        this.dialog.open(WasAlert, {
-          data: { title: &#x27;Check email (&#x27; + email + &#x27;)&#x27;, body: _alertMessage }
-        });
-      }, (error) &#x3D;&gt; {
-        // &lt;any&gt;error | this casts error to be any
-        this.dialog.open(WasAlert, {
-          data: { title: &#x27;Attention&#x27;, body: error}
-        });
-      });
-  }
-
-  verifyPerson(verification_token: string): void {
-    this.userService
-      .verifyToken({ &#x27;token&#x27;: verification_token })
-      .subscribe((res) &#x3D;&gt; {
-        let _alertTitle &#x3D; &#x27;Successful login&#x27;;
-        let _alertMessage &#x3D; &#x27;Log into &#x27; + res.email + &#x27; success!&#x27;;
-        if (res.account_created) {
-          _alertTitle &#x3D; &#x27;Successfully created account&#x27;;
-          _alertMessage &#x3D; &#x27;Created an account with &#x27; + res.email;
-        }
-        this.dialog.open(WasAlert, {
-          data: { title: _alertTitle, body: _alertMessage }
-        });
-        this.dialogRef.close(res.email);
-      }, (error) &#x3D;&gt; {
-        // &lt;any&gt;error | this casts error to be any
-        this.dialog.open(WasAlert, {
-          data: { title: &#x27;Attention&#x27;, body: error }
-        });
-      });
-  }
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot;&gt;
@@ -1420,7 +569,7 @@ export class WasSSO {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">  <div class="icon-svg-large">    <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.41">      <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"        fill="#FF601F" />      <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />      <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />      <path fill="#FF601F" d="M230.48 92.7h49.98v23.55h-49.98z" />      <path d="M100.43 40l79.36.7-45.4 71.03-34-71.73z" fill="#006AEB" />      <path d="M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z" fill="#007BEB" />      <path d="M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z" fill="#007BEB" />      <path d="M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z" fill="#009BEB" />      <path d="M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z" fill="#006AEB" />      <path d="M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z" fill="#007BEB" />      <path d="M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z" fill="#007BEB" />      <path d="M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z" fill="#009BEB" />      <path d="M410.5 40l-79.37.7 45.38 71.03 34-71.72z" fill="#006AEB" />      <path d="M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z" fill="#007BEB" />      <path d="M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z" fill="#007BEB" />      <path d="M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z" fill="#009BEB" />      <path d="M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z" fill="#006AEB" />      <path d="M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z" fill="#007BEB" />      <path d="M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB" />      <path d="M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z" fill="#009BEB" />    </svg>  </div>  Single Sign On</div><div mat-dialog-content>  <mat-vertical-stepper [linear]="true" #stepper>    <mat-step [stepControl]="firstFormGroup">      <form [formGroup]="firstFormGroup">        <ng-template matStepLabel>Email</ng-template>        <mat-form-field>          <input #emailInput matInput placeholder="Enter your email" [formControl]="email" formControlName="firstCtrl" [(ngModel)]="data.email"            required>        </mat-form-field>        <div>          <button mat-raised-button color="primary" [disabled]="!email.valid" matStepperNext (click)="tokenPerson(emailInput.value);">Send Token            <mat-icon>vpn_key</mat-icon>          </button>        </div>      </form>    </mat-step>    <mat-step [stepControl]="secondFormGroup">      <form [formGroup]="secondFormGroup">        <ng-template matStepLabel>Token</ng-template>        <mat-form-field>          <input #tokenInput cdkFocusInitial matInput placeholder="Enter 6 digit token" [formControl]="token" formControlName="secondCtrl"            required>        </mat-form-field>        <div>          <button mat-raised-button color="primary" [disabled]="!token.valid" matStepperNext (click)="verifyPerson(tokenInput.value);">Login            <mat-icon>lock_open</mat-icon>          </button>        </div>      </form>    </mat-step>  </mat-vertical-stepper></div><div mat-dialog-actions>  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasStore', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasSSO'};
 </script>

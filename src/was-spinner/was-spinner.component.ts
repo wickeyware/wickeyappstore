@@ -1,12 +1,13 @@
 import { Component, DoCheck, OnInit, Input } from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-
+/**
+ * @ignore
+ */
 const inactiveStyle = style({
   opacity: 0,
   transform: 'translateY(-40px)'
 });
-const timing = '.3s ease';
 
 /**
  * A spinner where busy is an Observable, it will show a spinner as long as the subscription is live
@@ -22,7 +23,8 @@ const timing = '.3s ease';
  * ...
  * this.busy = some_observable.subscribe();
  *
- * @export
+ * @module
+ * @ignore
  */
 @Component({
   selector: 'was-spinner',
@@ -32,10 +34,10 @@ const timing = '.3s ease';
     trigger('flyInOut', [
         transition('void => *', [
             inactiveStyle,
-            animate(timing)
+            animate('.3s ease')
         ]),
         transition('* => void', [
-            animate(timing, inactiveStyle)
+            animate('.3s ease', inactiveStyle)
         ])
     ])
   ]

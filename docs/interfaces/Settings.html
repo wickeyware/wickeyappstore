@@ -174,13 +174,7 @@
                                     <a href="../interfaces/App.html" >App</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Settings.html"  data-type="entity-link" class="active" >Settings</a>
@@ -190,9 +184,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -218,9 +209,6 @@
                         </ul>
                     </li>
             
-                        <li class="chapter">
-                            <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
-                        </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -391,13 +379,7 @@
                                            <a href="../interfaces/App.html" >App</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Settings.html"  data-type="entity-link" class="active" >Settings</a>
@@ -407,9 +389,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -435,9 +414,6 @@
                                </ul>
                            </li>
                    
-                               <li class="chapter">
-                                   <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
-                               </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -471,9 +447,6 @@
     </li>
 
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 </ul>
 
 <div class="tab-content">
@@ -485,6 +458,13 @@
             <code>src/app.models.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The Settings Interface</p>
+
+            </p>
 
 
         <section>
@@ -542,12 +522,13 @@
 
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/app.models.ts:3</a></div>
-                                        </td>
-                                    </tr>
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>This is the version number of the app</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -576,111 +557,19 @@
 
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app.models.ts:4</a></div>
-                                        </td>
-                                    </tr>
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>This is the amount of free coins we give for sharing</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
     </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Settings {
-  app_version: number;
-  freebie_amount: number;
-}
-
-export interface User {
-  user_id: string;
-  coins?: number;
-  data?: any;
-  email?: string;
-  first_name?: string;
-  last_name?: string;
-  zip_code?: string;
-  bs_id?: number;
-  token_email?: string;
-  created_time?: number;
-  freebie_used?: boolean;
-  rated_app?: boolean;
-  settings?: Settings;
-  special_message?: {
-    title: string;
-    message: string;
-  };
-  logging_in?: boolean;
-  push_id?: string;
-  secured?: boolean;
-  has_data?: boolean;
-  account_verified?: boolean;
-}
-
-export interface App {
-  id: number; // app id
-  name: string; // app name
-  title: string; // long name
-  text: string; // full app text
-  slug?: string;
-  category: number;
-  icon: string;
-  featured_image?: string;
-  app_version: string;
-  created_time: number;
-  owner: string;
-  review_average?: number;
-  review_count?: number;
-  screenshot_1?: string;
-  screenshot_2?: string;
-  screenshot_3?: string;
-  screenshot_4?: string;
-  app_video?: string;
-  has_inapps?: boolean;
-  has_offerwall?: boolean;
-}
-
-//
-export interface AppGroup {
-  id: number;
-  title: string;
-  created_time: number;
-  apps: Array&lt;App&gt;;
-}
-
-export interface Review {
-  id: number;
-  title: string;
-  text: string;
-  rating: number;
-  last_modified?: number;
-}
-
-export interface Inapp {
-  storeappId: number;
-  purchaseId: number;
-  title: string;
-  description: string;
-  isConsumable: boolean;
-  isOwned?: boolean;
-  price: number;
-  coins: number;
-  paypal_checkout?: string;
-  bluesnap_checkout?: string;
-}
-
-export interface WasAlertTable {
-  title: string;
-  text: string;
-  btn?: {
-    title: string;
-    action: string;
-  };
-}
-</code></pre>
-    </div>
 </div>
 
 

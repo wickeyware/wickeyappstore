@@ -2,9 +2,30 @@ import { Component, Inject, Input } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
-
+/**
+ * Directly open a purchase page with WasPay
+ *
+ * Alternatively use WasShop to show all available in-apps.
+ *
+ * Get your inapp purchaseid from your app in developer.wickeyappstore.com
+ * 
+ * ```js
+ * import { WasPay } from 'wickeyappstore';
+ * import { MatDialog, MatDialogRef } from '@angular/material';
+ * import { UserService } from './user.service';
+ * ...
+ * constructor(public dialog: MatDialog, private userService: UserService) { } // and Inject MatDialog & UserService in the constructor
+ * ...
+ * const _myInapp = this.userService.getInapp(this.myInappPurchaseId);
+ * this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess => {
+ *  if (_isSuccess === true) {
+ *     // the inapp was purchased
+ *     }
+ *   });
+ * ```
+ *
+*/
 @Component({
-  selector: 'was-pay-dialog',
   templateUrl: './waspay.dialog.html',
   styleUrls: ['../was.component.css'],
 })
@@ -16,8 +37,9 @@ export class WasPay {
       data: {'price': 1.99, 'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100}
     });
   */
+  /**@ignore*/
   public isApplePayAvail = false; // dictates if the apple pay button is shown.
-
+  /**@ignore*/
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WasPay>,
@@ -25,19 +47,18 @@ export class WasPay {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // set defaults (just for testing)
     if (!this.data) {
-      this.data = {'price': 1.99, 'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100, 'isConsumable': false, 'isOwned': false};
+      this.data = {
+        'price': 1.99,
+        'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100, 'isConsumable': false, 'isOwned': false
+      };
     }
     this.isApplePayAvail = this.userService.isApplePayAvailable();
   }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasPay
-   */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  /**@ignore*/
   showWebPay() {
     if (this.userService.isLoggedInVal) {
       if (this.data.isOwned === true) {
@@ -74,12 +95,13 @@ export class WasPay {
       this.userService.opensso();
     }
   }
-
+  /**@ignore*/
   goToSafari() {
     this.dialog.open(WasAlert, {
       data: { title: 'Apple Pay', body: 'Open app in Safari to enable in-app purchases with Apple Pay.' }
     });
   }
+  /**@ignore*/
   makeTitle(): string {
     if (this.data.isConsumable === true) {
       return this.data.title + ' / ' + this.data.coins + ' coins';

@@ -104,9 +104,6 @@
                                     <a href="../components/WasAlert.html" >WasAlert</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasPay.html" >WasPay</a>
                                 </li>
                                 <li class="link">
@@ -119,13 +116,7 @@
                                     <a href="../components/WasSSO.html" >WasSSO</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/WasShop.html" >WasShop</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/WasStore.html" >WasStore</a>
@@ -171,28 +162,10 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/App.html" >App</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/Inapp.html" >Inapp</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/Review.html" >Review</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Settings.html" >Settings</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/User.html" >User</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/UserParams.html" >UserParams</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                 </li>
                         </ul>
                     </li>
@@ -211,9 +184,6 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -318,9 +288,6 @@
                                            <a href="../components/WasAlert.html" >WasAlert</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasMenuBtn.html" >WasMenuBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasPay.html" >WasPay</a>
                                        </li>
                                        <li class="link">
@@ -333,13 +300,7 @@
                                            <a href="../components/WasSSO.html" >WasSSO</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/WasSSOBtn.html" >WasSSOBtn</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/WasShop.html" >WasShop</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/WasSpinnerComponent.html" >WasSpinnerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/WasStore.html" >WasStore</a>
@@ -385,28 +346,10 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/App.html" >App</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/AppGroup.html" >AppGroup</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/Inapp.html" >Inapp</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/Review.html" >Review</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Settings.html" >Settings</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/User.html" >User</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/UserParams.html" >UserParams</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/WasAlertTable.html" >WasAlertTable</a>
                                        </li>
                                </ul>
                            </li>
@@ -425,9 +368,6 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -458,9 +398,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
         <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
@@ -478,6 +415,32 @@
     <code>src/ui/popover/wasup/wasup.dialog.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Create simple auto closing messages with icons</p>
+<p><b>SIMPLEST USE CASE</b></p>
+<pre class="line-numbers"><code class="language-js">import { WasUp } from &#39;wickeyappstore&#39;;
+import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+...
+constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+...
+this.dialog.open(WasUp, {data: { title: &#39;Review Sent&#39;, icon: &#39;edit&#39;, body: &#39;Thanks for your feedback.&#39;} });</code></pre><p><i>icon</i> can be any material icon -&gt; <a href="https://material.io/icons/">https://material.io/icons/</a></p>
+<p>MORE USE CASES BELOW</p>
+<p>Add <b>WIDTH</b>, <b>SPINNER</b>, and <b>STAYOPEN</b> until closed</p>
+<pre class="line-numbers"><code class="language-js">private loadingdialogRef: MatDialogRef&lt;WasUp, Array&lt;string&gt;&gt;;
+this.loadingdialogRef = this.dialog.open(WasUp, {
+    width: &#39;300px&#39;,
+    data: { title: &#39;Intializing game&#39;, icon: &#39;spinner&#39;, body: &#39;Loading...&#39;, stayopen: true}
+    });
+// IF you use stayopen then you have to close yourself. The user CANNOT close.
+...
+// CLOSE where you want - like when loading complete
+this.loadingdialogRef.close();</code></pre><p>The MatDialog has additional properties.
+By default, clicking outside the window does not close the dialog. Change by setting to false;</p>
+<pre class="line-numbers"><code class="language-js">this.loadingdialogRef.disableClose = false;</code></pre>
+    </p>
 
 
 
@@ -498,10 +461,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>wasup-dialog</code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -520,323 +479,17 @@
     </table>
 </section>
 
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#data">data</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialogRef">dialogRef</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#onNoClick">onNoClick</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-    <code>constructor(dialogRef: <a href="../components/WasUp.html">MatDialogRef<WasUp></a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/ui/popover/wasup/wasup.dialog.ts:9</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Create simple auto closing messages with icons</p>
-    <p>SIMPLE USE CASE
-    this.dialog.open(WasUp, {data: { title: &#39;Review Sent&#39;, icon: &#39;edit&#39;, body: &#39;Thanks for your feedback.&#39;} });</p>
-    <p>Where data = {title?: string, body?: string, icon?: string, stayopen?: boolean}</p>
-    </div>
-                                <div>
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <td>dialogRef</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../components/WasUp.html" target="_self" >MatDialogRef&lt;WasUp&gt;</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>data</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                        <b>Example :</b>
-                                            <div>
-                                                <p>import { WasUp } from &#39;wickeyappstore&#39;;
-    import { MatDialog, MatDialogRef } from &#39;</p>
-    
-                                            </div>
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
 
 
-    <section>
-        
-            <h3 id="methods">
-                Methods
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="onNoClick"></a>
-                            <span class="name">
-                                <b>
-                                onNoClick
-                                </b>
-                                <a href="#onNoClick"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>onNoClick()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/ui/popover/wasup/wasup.dialog.ts:63</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Cancel/close the dialog</p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        
-            <h3 id="inputs">
-                Properties
-            </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="data"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                data
-                                </b>
-                                <a href="#data"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>data:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>Inject</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/ui/popover/wasup/wasup.dialog.ts:43</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="dialogRef"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                dialogRef
-                                </b>
-                                <a href="#dialogRef"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>dialogRef:     <code><a href="../components/WasUp.html" target="_self" >MatDialogRef&lt;WasUp&gt;</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../components/WasUp.html" target="_self" >MatDialogRef&lt;WasUp&gt;</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/ui/popover/wasup/wasup.dialog.ts:42</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-    </section>
+
 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material&#x27;;
-
-@Component({
-  selector: &#x27;wasup-dialog&#x27;,
-  templateUrl: &#x27;./wasup.dialog.html&#x27;,
-  styleUrls: [&#x27;../was.component.css&#x27;],
-})
-export class WasUp {
-  /**
-   * Create simple auto closing messages with icons
-   *
-   * SIMPLE USE CASE
-   * this.dialog.open(WasUp, {data: { title: &#x27;Review Sent&#x27;, icon: &#x27;edit&#x27;, body: &#x27;Thanks for your feedback.&#x27;} });
-   *
-   * Where data &#x3D; {title?: string, body?: string, icon?: string, stayopen?: boolean}
-   *
-   * @example
-   * import { WasUp } from &#x27;wickeyappstore&#x27;;
-   * import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
-   * Inject MatDialog in the constructor(public dialog: MatDialog) { }
-   *
-   * MORE USE CASES BELOW
-   *
-   * Add a WIDTH, SPINNER, and STAYOPEN until closed
-   *
-   * private loadingdialogRef: MatDialogRef&lt;WasUp, Array&lt;string&gt;&gt;;
-   * this.loadingdialogRef &#x3D; this.dialog.open(WasUp, {
-   *    width: &#x27;300px&#x27;,
-   *    data: { title: &#x27;Intializing game&#x27;, icon: &#x27;spinner&#x27;, body: &#x27;Loading...&#x27;, stayopen: true}
-   *    });
-   *
-   * Then CLOSE whenever you want - like when loading complete
-   * this.loadingdialogRef.close();
-   *
-   * The MatDialog has additional properties.
-   * By default, clicking outside the window does not close the dialog. Change by setting to false;
-   *    this.loadingdialogRef.disableClose &#x3D; false;
-  */
-
-  constructor(
-    public dialogRef: MatDialogRef&lt;WasUp&gt;,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    // SET DEFAULT VALUES
-    dialogRef.disableClose &#x3D; true; // do not close by clicking off by default
-    if (!this.data) { this.data &#x3D; {}; } // data may not be defined
-    if (!this.data.title) { this.data.title &#x3D; &#x27;&#x27;; }
-    if (!this.data.body) { this.data.body &#x3D; &#x27;&#x27;; }
-    if (!this.data.icon) { this.data.icon &#x3D; &#x27;warning&#x27;; }
-    if (!this.data.stayopen) {
-      // stay open
-      // will evaluate to here if stayopen is: null, undefined, 0, false, &quot;&quot;, and NaN
-      setTimeout(() &#x3D;&gt; {
-        this.dialogRef.close();
-      }, 1750);
-    }
-  }
-  /**
-   * Cancel/close the dialog
-   *
-   * @memberof WasUp
-   */
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot;&gt;{{data.title}}&lt;/div&gt;
@@ -873,7 +526,7 @@ export class WasUp {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">{{data.title}}</div><div mat-dialog-content>  <div class="wasup-body">    <i *ngIf="data.icon!=\'spinner\'" class="material-icons" style="font-size: 96px">{{data.icon}}</i>    <mat-spinner *ngIf="data.icon===\'spinner\'" style="margin:0 auto;"></mat-spinner>    <br><br> {{data.body}}  </div></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasMenuBtn', 'selector': 'was-menu-btn'},{'name': 'WasPay', 'selector': 'was-pay-dialog'},{'name': 'WasProfile', 'selector': 'wasprofile-dialog'},{'name': 'WasReview', 'selector': 'wasreview-dialog'},{'name': 'WasSSO', 'selector': 'wassso-dialog'},{'name': 'WasSSOBtn', 'selector': 'was-sso-btn'},{'name': 'WasShop', 'selector': 'was-shop-dialog'},{'name': 'WasSpinnerComponent', 'selector': 'was-spinner'},{'name': 'WasStore', 'selector': 'wasstore-dialog'},{'name': 'WasUp', 'selector': 'wasup-dialog'},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasStore', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasUp'};
 </script>

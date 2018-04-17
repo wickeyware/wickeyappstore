@@ -1,26 +1,28 @@
 import { Component, Inject } from '@angular/core';
 import { UserService } from '../../../user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+/**
+ * WasProfile
+ *
+ * Show a user info panel if logged in. A help panel if not logged in.
+ *
+ * ```js
+ * import { WasProfile } from 'wickeyappstore';
+ * import { MatDialog, MatDialogRef } from '@angular/material';
+ * ...
+ * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+ * ...
+ * this.dialog.open(WasProfile);
+ * ```
+*/
 @Component({
-  selector: 'wasprofile-dialog',
   templateUrl: './wasprofile.dialog.html',
   styleUrls: ['../was.component.css'],
 })
 export class WasProfile {
-  /**
-   * Show a user info panel if logged in. Help if not.
-   *
-   * SIMPLE USE CASE
-   * this.dialog.open(WasProfile);
-   *
-   * @example
-   * import { WasProfile } from 'wickeyappstore';
-   * import { MatDialog, MatDialogRef } from '@angular/material';
-   * Inject MatDialog in the constructor(public dialog: MatDialog) { }
-  */
-
+  /**@ignore*/
   public loggedin = false;
+  /**@ignore*/
   constructor(
     public userService: UserService,
     public dialogRef: MatDialogRef<WasProfile>,
@@ -34,14 +36,11 @@ export class WasProfile {
     });
 
   }
-  /**
- * Cancel/close the dialog
- *
- * @memberof WasProfile
- */
+  /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
   }
+  /**@ignore*/
   opensso() {
     this.userService.opensso();
     this.dialogRef.close();

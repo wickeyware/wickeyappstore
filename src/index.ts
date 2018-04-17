@@ -80,7 +80,6 @@ import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
-import { WasSSOBtn } from './ui/popover/wassso-btn/wassso-btn.component';
 import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
@@ -110,7 +109,6 @@ export * from './ui/popover/wasup/wasup.dialog';
 export * from './ui/popover/wasalert/wasalert.dialog';
 export * from './ui/popover/wasreview/wasreview.dialog';
 export * from './ui/popover/wassso/wassso.dialog';
-export * from './ui/popover/wassso-btn/wassso-btn.component';
 export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 export * from './ui/popover/wasstore/wasstore.dialog';
 export * from './ui/popover/wasshop/wasshop.dialog';
@@ -172,7 +170,6 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasAlert,
     WasReview,
     WasSSO,
-    WasSSOBtn,
     WasMenuBtn,
     WasStore,
     WasShop,
@@ -199,7 +196,6 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasAlert,
     WasReview,
     WasSSO,
-    WasSSOBtn,
     WasMenuBtn,
     WasStore,
     WasShop,
