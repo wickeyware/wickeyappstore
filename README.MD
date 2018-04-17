@@ -33,8 +33,53 @@ Get started here: https://wickeyappstore.com/app/developer-portal
 
 **NOTE**: Please check back frequently. We will keep this document updated all the time.
 
-
 ## QuickStart
+
+Clone our starter project Airhorn.
+
+Where `mywasapp` is the name of your app, replace with whatever is desired.
+```bash
+git clone https://github.com/wickeyware/was-tutorial.git mywasapp
+```
+
+Change to that directory
+```bash
+cd mywasapp/
+```
+
+Install project dependencies and run.
+
+with [npm](https://nodejs.org).
+
+NOTE: npm will already be installed if node is already installed (node is a .
+
+```bash
+npm install
+npm run start
+```
+
+with [yarn](https://yarnpkg.com)
+
+```bash
+yarn
+yarn run start
+```
+
+Now visit [localhost:4204](http://localhost:4204)
+
+To build your app in preparation for deployment to the WickeyAppStore.
+
+```bash
+npm run build
+```
+
+```bash
+yarn run build
+```
+
+The output `dist/` directory is what will be selected to deploy on: [developer.wickeyappstore.com](https://developer.wickeyappstore.com/)
+
+## QuickStart (Manual Integration)
 
 To install this library, run: (NOTE: Install all dependencies)
 
