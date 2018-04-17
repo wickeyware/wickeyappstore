@@ -1,16 +1,16 @@
 # WickeyAppStore
-Reach the next One Billion users, AppStore for Progressive WebApps.
+The first AppStore for Progressive WebApps.
 
-## Tutorial App
-Check out a tutorial app:  
-REPO: https://github.com/wickeyware/was-tutorial/  
-LIVE DEMO: https://airhorn.wickeyappstore.com/
+## Docs, Demo, & Developer Portal
+DOCS: https://developer.wickeyappstore.com/assets/docs/index.html
+DEMO APP: https://wickeyappstore.com/app/airhorn and corresponding repo: https://github.com/wickeyware/was-tutorial/ 
+DEV PORTAL: https://wickeyappstore.com/app/developer-portal
 
 ## App Store
 https://wickeyappstore.com/
 
 ## Progressive Web App Store 
-Reach the next One Billion users. WickeyAppStore is a full featured App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web.
+WickeyAppStore is the first App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web. Reach the next One Billion users with lightweight, platform independant, full featured, web-apps.
 
 Apps on the WickeyAppStore must meet quality and security requirements:
 
@@ -28,10 +28,9 @@ Apps on the WickeyAppStore must meet quality and security requirements:
 * **Traffic** - we feature unique and cool apps, and all apps benefit from being under one umbrella. 
 
 ## Submit your app
+Create your app in the dev portal and use it to add meta data, in-app purchases, and so on.
+Here's a link to get started: https://wickeyappstore.com/app/developer-portal
 
-Get started here: https://wickeyappstore.com/app/developer-portal
-
-**NOTE**: Please check back frequently. We will keep this document updated all the time.
 
 ## QuickStart
 
@@ -51,7 +50,7 @@ Install project dependencies and run.
 
 with [npm](https://nodejs.org).
 
-NOTE: npm will already be installed if node is already installed (node is a .
+NOTE: npm will already be installed if node is already installed.
 
 ```bash
 npm install
@@ -128,7 +127,7 @@ Once WickeyAppStoreModule is imported, you can use its components, directives an
 
 ```html
 <!-- Add the Wickey Appstore to top of the bootstrapped component -->
-<was-menu-btn></was-menu-btn>
+<wickey-appstore></wickey-appstore>
 
 <!--Now your app. Thats it.-->
 <div class="myapp">

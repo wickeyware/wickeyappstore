@@ -39,6 +39,8 @@ export class WasPay {
   */
   /**@ignore*/
   public isApplePayAvail = false; // dictates if the apple pay button is shown.
+  /**@ignore */
+  public purchaseSuccess;
   /**@ignore*/
   constructor(
     public dialog: MatDialog,
@@ -68,6 +70,7 @@ export class WasPay {
       } else {
         this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
           if (_goodPurchase) {
+            this.purchaseSuccess = true;
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
