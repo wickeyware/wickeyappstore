@@ -86,14 +86,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        data-target="#xs-components-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        id="xs-components-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
                                     >
                                         <li class="link">
                                             <a href="components/WickeyAppStoreComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WickeyAppStoreComponent</a>
@@ -126,14 +126,14 @@
                             </li>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-injectables-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        data-target="#xs-injectables-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
                                     >
                                     <span class="fa fa-fw fa-long-arrow-down"></span>
                                     <span>Injectables</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-injectables-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        id="xs-injectables-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
                                     >
                                         <li class="link">
                                             <a href="injectables/UserService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>UserService</a>
@@ -285,14 +285,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        data-target="#components-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        id="components-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
 >
                                         <li class="link">
                                             <a href="components/WickeyAppStoreComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WickeyAppStoreComponent</a>
@@ -325,14 +325,14 @@
                             </li>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#injectables-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        data-target="#injectables-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
 >
                                     <span class="fa fa-fw fa-long-arrow-down"></span>
                                     <span>Injectables</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="injectables-links-module-WickeyAppStoreModule-4e7139ce-166b-4232-bc68-56767e79329f"
+                                        id="injectables-links-module-WickeyAppStoreModule-24ceb2e5-0b3e-4cb5-955f-b6ccad8ff348"
 >
                                         <li class="link">
                                             <a href="injectables/UserService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>UserService</a>
@@ -518,6 +518,9 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot;&gt;Pay ${{data.price}}&lt;/div&gt;
 &lt;p class&#x3D;&quot;waspay-subtitle&quot;&gt;{{makeTitle()}}&lt;/p&gt;
+&lt;mat-chip-list *ngIf&#x3D;&quot;purchaseSuccess&quot;&gt;
+  &lt;mat-chip color&#x3D;&quot;primary&quot; class&#x3D;&quot;waspay-buttons&quot; selected&#x3D;&quot;true&quot;&gt;Purchase Successful!&lt;/mat-chip&gt;
+&lt;/mat-chip-list&gt;
 &lt;p style&#x3D;&quot;padding: 10px 0 20px 0;&quot;&gt;{{data.description}}&lt;/p&gt;
 &lt;div style&#x3D;&quot;margin-top:20px; min-width: 240px;&quot;&gt;
   &lt;div class&#x3D;&quot;wasup-body&quot;&gt;
@@ -526,8 +529,7 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
       &lt;button class&#x3D;&quot;waspay-buttons&quot; mat-raised-button color&#x3D;&quot;none&quot; (click)&#x3D;&quot;showWebPay()&quot;&gt;Buy&lt;/button&gt;
     &lt;/ng-template&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="c-tree">
@@ -553,7 +555,7 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay ${{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Buy</button>    </ng-template>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay ${{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Buy</button>    </ng-template>  </div></div></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasStore', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasPay'};
