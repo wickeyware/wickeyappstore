@@ -124,7 +124,6 @@ export class WasAppService {
         this.pushAppIndexSubscribers(_appIndex);
         console.log('WasAppService: appFromSlug: Old, refresh from server');
         this.getApps(slug).subscribe((res: [App]) => {
-          // TODO: Should empty {} or undefined be pushed on app not found
           if (res[0] !== undefined) {
             console.log('WasAppService: appFromSlug PUSH:', res[0]);
             this.pushAppSubscribers(res[0]);
@@ -140,7 +139,6 @@ export class WasAppService {
       // ON ERROR GET FROM SERVER
       const _obs = this.getApps(slug);
       _obs.subscribe((res: [App]) => {
-        // TODO: Should empty {} or undefined be pushed on app not found
         if (res[0] !== undefined) {
           console.log('WasAppService: appFromSlug PUSH:', res[0]);
           this.pushAppSubscribers(res[0]);

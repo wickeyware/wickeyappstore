@@ -1,9 +1,9 @@
 {
   "name": "wickeyappstore",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm"
+    "url": "https://github.com/wickeyware/wickeyappstore"
   },
   "license": "Apache-2.0",
   "author": {
@@ -31,7 +31,7 @@
     "webapp"
   ],
   "bugs": {
-    "url": "https://bitbucket.org/wickeyware/wickeyappstore_npm/issues"
+    "url": "https://github.com/wickeyware/wickeyappstore/issues"
   },
   "typings": "wickeyappstore.d.ts",
   "peerDependencies": {

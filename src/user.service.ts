@@ -26,7 +26,6 @@ export interface UserParams {
   logging_in?: boolean;
   push_id?: string;
 }
-// TODO: ADD PURCHASES
 
 /**
  * The service to get/set a user.
@@ -433,7 +432,6 @@ export class UserService {
       if (res.status === 201) {
         console.log('UserService: updateUser: NEW RETURN:', res);
         // On new user/recover
-        // TODO: Add more of a verification
         // UPDATE USER //
         this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
         this.pushSubscribers(res);
@@ -944,9 +942,9 @@ export class UserService {
     return _obs;
   }
 
+  // TODO: WAS Store key/val: Get locally (if available), then update from server
+  // TODO: WAS Store key/val: Check to see if key exists locally, if so return from local, else get from server and update local.
   // getStoreTest(_keys: string[]): Observable<{}> {
-  //   // TODO: Get locally (if available), then update from server
-  //   // TODO: Check to see if key exists locally, if so return from local, else get from server and update local.
   //   console.log('============UserService getStore=========');
   //   let _obs;
   //   const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
@@ -1010,7 +1008,6 @@ export class UserService {
    */
   setStore(_was_data: {}): Observable<any> {
     console.log('============UserService setStore=========');
-    // TODO: Update local list too
     const _apiobject = { 'user_id': this._userObj.user_id, 'was_data': _was_data };
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
     // _obs.subscribe((res) => {
@@ -1027,7 +1024,6 @@ export class UserService {
    */
   deleteStore(_keys: string[]): Observable<any> {
     console.log('============UserService deleteStore=========');
-    // TODO: Update local list too
     const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
     // _obs.subscribe((res) => {

@@ -24,10 +24,7 @@ enum Categories {
     tool,
     other
 }
-/**
- * @class
- * @ignore
- */
+/** @ignore */
 @Pipe({
   name: 'getCategory'
 })

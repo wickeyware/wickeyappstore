@@ -1,4 +1,14 @@
 language: node_js
 sudo: false
+dist: trusty
 node_js:
-- '4.2.1'
+  - '8.9.1'
+
+cache:
+  yarn: true
+  directories:
+     - ./node_modules
+
+before_script:
+  - npm install -g gulp-cli
+script: gulp build

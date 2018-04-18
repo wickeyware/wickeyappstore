@@ -5,63 +5,71 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/all)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.7.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.7.0) - 2018-04-17
+## [2.7.1](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...2.7.0) - 2018-04-18
 
-# Fixed
+### Fixed
+
+* **Documentation** Update to new repository url (github).
+* **packages** Update angular to latest patch versions.
+* **README** Update readme, add travis-ci.org, badge.fury.io, and david-dm.org badges.
+
+## [2.7.0](https://github.com/wickeyware/wickeyappstore/compare/1.7.0...e772ad27a0a4670b1f9a3f38c6039608eeeb693d) - 2018-04-17
+
+### Fixed
 
 * **Documentation** Update README.
 
-# Added
+### Added
 
 * **WasPay** Show purchase indicator in WasPay after successful purchase.
 
-## [2.6.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.3) - 2018-04-17
+## [2.6.3](https://github.com/wickeyware/wickeyappstore/commit/e772ad27a0a4670b1f9a3f38c6039608eeeb693d) - 2018-04-17
 
-# Fixed
+### Fixed
 
 * **Documentation** Update README.
 * **WasReview** Fix the fields in WasReview. Made full width.
 
-## [2.6.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.2) - 2018-04-17
+## [2.6.2](https://github.com/wickeyware/wickeyappstore/commit/6b96b5fd6b0873f39f14cb6c3810cef1994f1c48) - 2018-04-17
 
-# Fixed
+### Fixed
 
 * **Documentation** Documentation for WickeyAppStore added.
 * **WickeyAppStore** Add WickeyAppStore to apps via <wickey-appstore></wickey-appstore>
 
-## [2.6.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.1) - 2018-04-13
+## [2.6.1](https://github.com/wickeyware/wickeyappstore/commit/6099f59c1bfce2efa233ece063181d0bdd73c0f1) - 2018-04-13
 
-# Fixed
+### Fixed
 
 * **WasAlert** Allow Custom buttons, button_colors, button_icons for input alerts.
 * **Documentation** Update documentation.
 
-## [2.6.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.6.0) - 2018-04-11
+## [2.6.0](https://github.com/wickeyware/wickeyappstore/commit/f766704acd5841c5cf1167d9eb38c9b7fe46f7f3) - 2018-04-11
 
-# Added
+### Added
 
 * **serviceworker** Add new service to check for available updates (adds new @angular/service-worker dependency).
 * **UserService.checkIfPurchased** Add a function that returns an observable that returns true if non-consumable is purchased.
 * **UserService.getInapp** Add a function that retrieves the inapp object, given the purchaseId.
 * **WasPay** Return boolean|null on WasPay close (true is a good purchase).
 
-## Fixed
+### Fixed
 
 * **UserService.inapps** Reload inapps from server after purchase api returns.
 * **PaymentRequest** [under development] Handle user cancel.
 
-## [2.5.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.5.0) - 2018-04-09
+## [2.5.0](https://github.com/wickeyware/wickeyappstore/commit/29f0f84f43123ee74344c1124a323086c50a2077) - 2018-04-09
 
-## Added
+### Added
 
 * **WasAlert** Added standard confirm styles WasAlertStyleConfirm / WasAlertStyleWarning
 * **UI** Updated to use the new WasAlert
 
-## [2.4.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.4.0) - 2018-04-06
+## [2.4.0](https://github.com/wickeyware/wickeyappstore/commit/73452f7461088bb53492e242bb601d9884741b0e) - 2018-04-06
 
 ### Fixed
 
@@ -72,44 +80,44 @@ This shows all commits since last release (actually, currently all commits).
 
 * **WasMenuBtn** Show login status on WAS menu button .
 
-## [2.3.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.3.0) - 2018-04-06
+## [2.3.0](https://github.com/wickeyware/wickeyappstore/commit/e345a157f04929dd7256abb772677a5d226ef9fe) - 2018-04-06
 
 ### Added
 
 * **ads** Rewarded video ads available in WasShop.
 * **inapps** Inapp purchases are now available, currently only ApplePay is available.
 
-## [2.2.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.3) - 2018-04-04
+## [2.2.3](https://github.com/wickeyware/wickeyappstore/commit/1675ebc9c4af19501b854592c7983935ba1aeaa4) - 2018-04-04
 
 ### Fixed
 
 * **WickeyAppStore** Fix scroll issue.
 
-## [2.2.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.2) - 2018-04-03
+## [2.2.2](https://github.com/wickeyware/wickeyappstore/commit/a793de0e331593657d3ea70f39a26d91a385d4c2) - 2018-04-03
 
 ### Fixed
 
 * **WasMenuBtn** Only show shop button if app has inapps.
 
-## [2.2.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.1) - 2018-03-30
+## [2.2.1](https://github.com/wickeyware/wickeyappstore/commit/4a08917d25084aeaa5cb5a1376f7b29de502c60f) - 2018-03-30
 
 ### Fixed
 
 * **SSO** Fix login on iOS.
 
-## [2.2.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.2.0) - 2018-03-30
+## [2.2.0](https://github.com/wickeyware/wickeyappstore/commit/7bee6488234526f3fe4a74e1dd6c0b08bda19cdb) - 2018-03-30
 
 ### Added
 
 * **WasAlert** Add password option.
 
-## [2.1.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.2) - 2018-03-29
+## [2.1.2](https://github.com/wickeyware/wickeyappstore/commit/98ed1483a774f545482b3956af239fcd5e33af43) - 2018-03-29
 
 ### Fixed
 
 * **SSO** Fix login error where app is refreshed between token and verification.
 
-## [2.1.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.1.0) - 2018-03-28
+## [2.1.0](https://github.com/wickeyware/wickeyappstore/commit/d55e52457823b23a7a32bbd0a655b105e439a798) - 2018-03-28
 
 ### Added
 
@@ -139,33 +147,33 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService** Fix linting issues.
 * **UserService** Fix anonymous accounts not logging into logged in cookie was_user_id.
 
-## [2.0.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.1) - 2018-02-28
+## [2.0.1](https://github.com/wickeyware/wickeyappstore/commit/f321945b3090762d72a63d4eaa3b45cf0dd6b1de) - 2018-02-28
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [2.0.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/2.0.0) - 2018-02-22
+## [2.0.0](https://github.com/wickeyware/wickeyappstore/commit/58511acba35edc447b9779cbf6a6d535b5761338) - 2018-02-22
 
 ### Major Version
 
-* **WasUI** Removed all the old style popovers (alert, login, popup, review). 
+* **WasUI** Removed all the old style popovers (alert, login, popup, review).
 * **WasMenu** Change the layout of WasMenu
 * **AppStore** Add fix for app store lists not scrolling properly
 
-## [1.18.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.2) - 2018-02-21
+## [1.18.2](https://github.com/wickeyware/wickeyappstore/commit/333082affee07226fbe1f2f7af2a7bfabd0112d8) - 2018-02-21
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [1.18.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.1) - 2018-02-21
+## [1.18.1](https://github.com/wickeyware/wickeyappstore/commit/38e2ca15baa02b2d1a4e0ac52f819c7afa4946e1) - 2018-02-21
 
 ### Fixed
 
 * **UserService** Ensure initial push of login status (on user load, push status).
 
-## [1.18.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.18.0) - 2018-02-20
+## [1.18.0](https://github.com/wickeyware/wickeyappstore/commit/6bd2b5ea708c77d4725b51488e799123f270423c) - 2018-02-20
 
 ### Added
 
@@ -180,26 +188,25 @@ This shows all commits since last release (actually, currently all commits).
 * **WASbtnSSO** Update login/logout message for SSO in was menu button.
 * **Review** Update saving message.
 
-## [1.17.3](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.3) - 2018-02-16
+## [1.17.3](https://github.com/wickeyware/wickeyappstore/commit/8904fd4f47e99f3e5202b223501e319dba628649) - 2018-02-16
 
 ### Added
 
 * **UserInterface** Add SSO to Was Menu
 
-## [1.17.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.2) - 2018-02-15
+## [1.17.2](https://github.com/wickeyware/wickeyappstore/commit/cc0e6b5ab49db6a8f4897bdbfbc4a97d32085d85) - 2018-02-15
 
 ### Added
 
 * **UserInterface** Make WasMenu and Store a button and dialog. 
 
-
-## [1.17.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.1) - 2018-02-13
+## [1.17.1](https://github.com/wickeyware/wickeyappstore/commit/a0ed7d3afa2c8edc0ac247e7e9d23220b1c9bde4) - 2018-02-13
 
 ### Fixed
 
 * **WASReview** Fix check if user is already logged in.
 
-## [1.17.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.17.0) - 2018-02-13
+## [1.17.0](https://github.com/wickeyware/wickeyappstore/commit/2834072fe0c75a910440387f4564a30b1c1a4f6d) - 2018-02-13
 
 ### Fixed
 
@@ -211,7 +218,7 @@ This shows all commits since last release (actually, currently all commits).
 
 * **UserInterface** Add new WasReview dialog.
 
-## [1.16.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.1) - 2018-02-09
+## [1.16.1](https://github.com/wickeyware/wickeyappstore/commit/92e02db8f0a9e8755772e36973518722ffa5e808) - 2018-02-09
 
 ### Fixed
 
@@ -226,7 +233,7 @@ This shows all commits since last release (actually, currently all commits).
 
 * **API** Deprecated un-used version parameter. This is now sent in as a header.
 
-## [1.16.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.16.0) - 2018-02-08
+## [1.16.0](https://github.com/wickeyware/wickeyappstore/commit/f1efc6c6840137db8667a8321db99be6b700e7fd) - 2018-02-08
 
 ### Added
 
@@ -243,20 +250,20 @@ This shows all commits since last release (actually, currently all commits).
 
 * **SESSIONS** Fix bug where session token header was not sent in.
 
-## [1.15.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.15.2) - 2018-02-02
+## [1.15.2](https://github.com/wickeyware/wickeyappstore/commit/a1f4daf47af89abc395d0a4eaf501d3affac3227) - 2018-02-02
 
 ### Added
 
 * **SESSIONS** Add WAS session support.
 
-## [1.14.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.1) - 2018-02-01
+## [1.14.1](https://github.com/wickeyware/wickeyappstore/commit/a1f4daf47af89abc395d0a4eaf501d3affac3227) - 2018-02-01
 
 ### Fixed
 
 * **UserService** Fix standalone on Chrome, was only correct on iOS safari.
 * **UserService** Pass current user push_id, freebie_used, and rated_app values, update with passed params if available.
 
-## [1.14.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.14.0) - 2018-01-26
+## [1.14.0](https://github.com/wickeyware/wickeyappstore/commit/f89a7079129db0116cfc9d5fa94dca94d5d0171e) - 2018-01-26
 
 ### Changed
 
@@ -264,45 +271,45 @@ This shows all commits since last release (actually, currently all commits).
                 Added input and list capability.
 * **WasUp** Changed the name from WasUpDialogComponent to WasUp.
 
-## [1.13.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.2) - 2018-01-24
+## [1.13.2](https://github.com/wickeyware/wickeyappstore/commit/889504f33b3cbcf405ba8ce81015081faf3ca0eb) - 2018-01-24
 
 ### Added
 
 * **UserInterface** Add all new wasalert and wasup dialog for quickly showing modal messages to users
 
-## [1.13.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.1) - 2018-01-19
+## [1.13.1](https://github.com/wickeyware/wickeyappstore/commit/8c26b7654598676620467ab86cfe3d7621acb5cf) - 2018-01-19
 
 ### Fixed
 
 * **UserService** Fix bug on if user_id is found in cookie.
 
-## [1.13.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.13.0) - 2018-01-19
+## [1.13.0](https://github.com/wickeyware/wickeyappstore/releases/tag/1.13.0) - 2018-01-19
 
 ### Added
 
 * **UserService** Set was_user_id on new/verified user, use this cookie on indexeddb acount not found.
 * **packages** Add Material dependency.
 
-## [1.12.2](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.2) - 2017-12-08
+## [1.12.2](https://github.com/wickeyware/wickeyappstore/releases/tag/1.12.2) - 2017-12-08
 
 ### Fixed
 
 * **FanMenuButton** Remove draggable part, this is a fix for the non scroll issue.
 
-## [1.12.1](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.1) - 2017-12-06
+## [1.12.1](https://github.com/wickeyware/wickeyappstore/releases/tag/1.12.1) - 2017-12-06
 
 ### Fixed
 
 * **packages** Updated to latest Angular
 
-## [1.12.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.12.0) - 2017-12-06
+## [1.12.0](https://github.com/wickeyware/wickeyappstore/releases/tag/1.12.0) - 2017-12-06
 
 ### Changed
 
 * **WasAppService** Switch WasAppService to  ReplaySubject, this allows the callee to get the initial real object, not a set default/undefined.
 * **docs** Updated documentation.
 
-## [1.11.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.11.0) - 2017-12-06
+## [1.11.0](https://github.com/wickeyware/wickeyappstore/releases/tag/1.11.0) - 2017-12-06
 
 ### Changed
 
@@ -315,7 +322,7 @@ This shows all commits since last release (actually, currently all commits).
 * **PopoverLoginComponent** Fix WASLogin to work with new UserService.
 * **ApiConnectionService** Handle no internet connection in APIConnection service.
 
-## [1.10.0](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.10.0) - 2017-11-08
+## [1.10.0](https://github.com/wickeyware/wickeyappstore/releases/tag/1.10.0) - 2017-11-08
 
 ### Added
 
@@ -327,20 +334,20 @@ This shows all commits since last release (actually, currently all commits).
 
 * **UserService** Deprecate UserService.data, use the new UserService.store to get/add/update/delete date from the WASStore (persistant cloud storage).
 
-## [1.9.17](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.17) - 2017-11-06
+## [1.9.17](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.17) - 2017-11-06
 
 ### Fixed
 
 * **packages** Begin upgrade process to angular 5, angular cli 1.5, rxjs 5.5.2, and typescript 2.4.3
 
-## [1.9.16](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.16) - 2017-10-27
+## [1.9.16](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.16) - 2017-10-27
 
 ### Fixed
 
 * **styles** Fix the janky scrolling issues and the multiple scroll bars.
 * **AppDetailsPage** Add web share, if web share exists on device (else copy link).
 
-## [1.9.15](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.15) - 2017-10-24
+## [1.9.15](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.15) - 2017-10-24
 
 ### Fixed
 
@@ -348,7 +355,7 @@ This shows all commits since last release (actually, currently all commits).
 * **SSO** Update to new format to negate the cursor bug on iOS (Thanks @tim).
 * **API** Fix error when api returned error from server, correctly display error message.
 
-## [1.9.14](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.14) - 2017-10-20
+## [1.9.14](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.14) - 2017-10-20
 
 ### Fixed
 
@@ -356,49 +363,49 @@ This shows all commits since last release (actually, currently all commits).
 * **SSO** Remove auto focus on email and token fields, iOS has issues (did not allow immediate selection).
 * **REVIEW** Fix typo in textarea
 
-## [1.9.13](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.13) - 2017-10-20
+## [1.9.13](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.13) - 2017-10-20
 
 ### Fixed
 
 * **styles** Add font size to alert danger css in global styles.css
 
-## [1.9.12](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.12) - 2017-10-20
+## [1.9.12](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.12) - 2017-10-20
 
 ### Fixed
 
 * **styles** Fix typo in last build
 
-## [1.9.11](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.11) - 2017-10-20
+## [1.9.11](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.11) - 2017-10-20
 
 ### Fixed
 
 * **styles** Fix/Add missing css for invalid input error message in global style.css
 
-## [1.9.10](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.10) - 2017-10-20
+## [1.9.10](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.10) - 2017-10-20
 
 ### Fixed
 
 * **styles** Add missing [hidden] css for SSO buttons in global style.css. This ensures SSO button is hidden on invalid input
 
-## [1.9.9](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.9) - 2017-10-20
+## [1.9.9](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.9) - 2017-10-20
 
 #### Fixed
 
 * **styles** Fix/Add missing css for SSO buttons in global style.css
 
-## [1.9.8](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.8) - 2017-10-20
+## [1.9.8](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.8) - 2017-10-20
 
 ### Fixed
 
 * **styles** Fix/Add missing css for SSO in global style.css
 
-## [1.9.7](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.7) - 2017-10-09
+## [1.9.7](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.7) - 2017-10-09
 
 ### Fixed
 
 * **styles** Fix syntax error in global style.css
 
-## [1.9.6](https://bitbucket.org/wickeyware/wickeyappstore_npm/commits/tag/1.9.6) - 2017-10-05
+## [1.9.6](https://github.com/wickeyware/wickeyappstore/releases/tag/1.9.6) - 2017-10-05
 
 ### Fixed
 

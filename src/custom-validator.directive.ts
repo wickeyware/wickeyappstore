@@ -77,10 +77,7 @@ export function customValidator(nameRe: RegExp): ValidatorFn {
     return no ? {'forbiddenValue': {name}} : null;
   };
 }
-/**
- * @class
- * @ignore
- */
+/** @ignore */
 @Directive({
   selector: '[forbiddenValue]',
   providers: [{provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true}]

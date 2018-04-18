@@ -57,19 +57,7 @@ export class LocalStorageService {
             // REMOVE ALL NON-VITAL INFO
             const new_value = JSON.parse(JSON.stringify(value));
             new_value.inapps = [];
-            new_value.user_posts = [];
-            new_value.price_upper_options = undefined;
-            new_value.price_lower_options = undefined;
             new_value.settings = undefined;
-            if (new_value.hasOwnProperty('user_events')) {
-              new_value.user_events = [];
-            }
-            if (new_value.hasOwnProperty('promotions')) {
-              new_value.promotions = [];
-            }
-            if (new_value.hasOwnProperty('history')) {
-              new_value.history = [];
-            }
             if (new_value.hasOwnProperty('special_message')) {
               new_value.special_message = {};
             }
@@ -143,7 +131,6 @@ export class LocalStorageService {
     const result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie);
     return result ? result[1] : null;
   }
-  // TODO: Possibly don't store whole user object if using cookies, only essentials
   /**
    * Sets the value at `key` as a cookie.
    *
