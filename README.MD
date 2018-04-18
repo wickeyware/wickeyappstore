@@ -40,6 +40,8 @@ Here's a link to get started: https://wickeyappstore.com/app/developer-portal
 
 ## QuickStart
 
+Prerequisite: [nodejs](https://nodejs.org) needs to be installed on your pc.
+
 Clone our starter project Airhorn.
 
 Where `mywasapp` is the name of your app, replace with whatever is desired.

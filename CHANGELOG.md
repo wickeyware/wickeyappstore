@@ -5,11 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.7.2...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.7.1](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...2.7.0) - 2018-04-18
+## [2.7.2](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...2.7.2) - 2018-04-18
+
+### Fixed
+
+* **README** Move badge below project name in readme.
+* **README** Update docs link in readme.
+* **README** Add prerequisites to quickstart, this is a link to nodejs.
+* **CHANGELOG** Fix incorrect comparisons on versions.
+
+## [2.7.1](https://github.com/wickeyware/wickeyappstore/compare/2.7.0...2.7.1) - 2018-04-18
 
 ### Fixed
 
@@ -27,28 +36,28 @@ This shows all commits since last release (actually, currently all commits).
 
 * **WasPay** Show purchase indicator in WasPay after successful purchase.
 
-## [2.6.3](https://github.com/wickeyware/wickeyappstore/commit/e772ad27a0a4670b1f9a3f38c6039608eeeb693d) - 2018-04-17
+## [2.6.3](https://github.com/wickeyware/wickeyappstore/compare/6b96b5fd6b0873f39f14cb6c3810cef1994f1c48...e772ad27a0a4670b1f9a3f38c6039608eeeb693d) - 2018-04-17
 
 ### Fixed
 
 * **Documentation** Update README.
 * **WasReview** Fix the fields in WasReview. Made full width.
 
-## [2.6.2](https://github.com/wickeyware/wickeyappstore/commit/6b96b5fd6b0873f39f14cb6c3810cef1994f1c48) - 2018-04-17
+## [2.6.2](https://github.com/wickeyware/wickeyappstore/compare/6099f59c1bfce2efa233ece063181d0bdd73c0f1...6b96b5fd6b0873f39f14cb6c3810cef1994f1c48) - 2018-04-17
 
 ### Fixed
 
 * **Documentation** Documentation for WickeyAppStore added.
 * **WickeyAppStore** Add WickeyAppStore to apps via <wickey-appstore></wickey-appstore>
 
-## [2.6.1](https://github.com/wickeyware/wickeyappstore/commit/6099f59c1bfce2efa233ece063181d0bdd73c0f1) - 2018-04-13
+## [2.6.1](https://github.com/wickeyware/wickeyappstore/compare/f766704acd5841c5cf1167d9eb38c9b7fe46f7f3...6099f59c1bfce2efa233ece063181d0bdd73c0f1) - 2018-04-13
 
 ### Fixed
 
 * **WasAlert** Allow Custom buttons, button_colors, button_icons for input alerts.
 * **Documentation** Update documentation.
 
-## [2.6.0](https://github.com/wickeyware/wickeyappstore/commit/f766704acd5841c5cf1167d9eb38c9b7fe46f7f3) - 2018-04-11
+## [2.6.0](https://github.com/wickeyware/wickeyappstore/compare/29f0f84f43123ee74344c1124a323086c50a2077...f766704acd5841c5cf1167d9eb38c9b7fe46f7f3) - 2018-04-11
 
 ### Added
 
@@ -62,14 +71,14 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService.inapps** Reload inapps from server after purchase api returns.
 * **PaymentRequest** [under development] Handle user cancel.
 
-## [2.5.0](https://github.com/wickeyware/wickeyappstore/commit/29f0f84f43123ee74344c1124a323086c50a2077) - 2018-04-09
+## [2.5.0](https://github.com/wickeyware/wickeyappstore/compare/73452f7461088bb53492e242bb601d9884741b0e...29f0f84f43123ee74344c1124a323086c50a2077) - 2018-04-09
 
 ### Added
 
 * **WasAlert** Added standard confirm styles WasAlertStyleConfirm / WasAlertStyleWarning
 * **UI** Updated to use the new WasAlert
 
-## [2.4.0](https://github.com/wickeyware/wickeyappstore/commit/73452f7461088bb53492e242bb601d9884741b0e) - 2018-04-06
+## [2.4.0](https://github.com/wickeyware/wickeyappstore/compare/e345a157f04929dd7256abb772677a5d226ef9fe...73452f7461088bb53492e242bb601d9884741b0e) - 2018-04-06
 
 ### Fixed
 
@@ -80,44 +89,44 @@ This shows all commits since last release (actually, currently all commits).
 
 * **WasMenuBtn** Show login status on WAS menu button .
 
-## [2.3.0](https://github.com/wickeyware/wickeyappstore/commit/e345a157f04929dd7256abb772677a5d226ef9fe) - 2018-04-06
+## [2.3.0](https://github.com/wickeyware/wickeyappstore/compare/1675ebc9c4af19501b854592c7983935ba1aeaa4...e345a157f04929dd7256abb772677a5d226ef9fe) - 2018-04-06
 
 ### Added
 
 * **ads** Rewarded video ads available in WasShop.
 * **inapps** Inapp purchases are now available, currently only ApplePay is available.
 
-## [2.2.3](https://github.com/wickeyware/wickeyappstore/commit/1675ebc9c4af19501b854592c7983935ba1aeaa4) - 2018-04-04
+## [2.2.3](https://github.com/wickeyware/wickeyappstore/compare/a793de0e331593657d3ea70f39a26d91a385d4c2...1675ebc9c4af19501b854592c7983935ba1aeaa4) - 2018-04-04
 
 ### Fixed
 
 * **WickeyAppStore** Fix scroll issue.
 
-## [2.2.2](https://github.com/wickeyware/wickeyappstore/commit/a793de0e331593657d3ea70f39a26d91a385d4c2) - 2018-04-03
+## [2.2.2](https://github.com/wickeyware/wickeyappstore/compare/4a08917d25084aeaa5cb5a1376f7b29de502c60f...a793de0e331593657d3ea70f39a26d91a385d4c2) - 2018-04-03
 
 ### Fixed
 
 * **WasMenuBtn** Only show shop button if app has inapps.
 
-## [2.2.1](https://github.com/wickeyware/wickeyappstore/commit/4a08917d25084aeaa5cb5a1376f7b29de502c60f) - 2018-03-30
+## [2.2.1](https://github.com/wickeyware/wickeyappstore/compare/7bee6488234526f3fe4a74e1dd6c0b08bda19cdb...4a08917d25084aeaa5cb5a1376f7b29de502c60f) - 2018-03-30
 
 ### Fixed
 
 * **SSO** Fix login on iOS.
 
-## [2.2.0](https://github.com/wickeyware/wickeyappstore/commit/7bee6488234526f3fe4a74e1dd6c0b08bda19cdb) - 2018-03-30
+## [2.2.0](https://github.com/wickeyware/wickeyappstore/compare/98ed1483a774f545482b3956af239fcd5e33af43...7bee6488234526f3fe4a74e1dd6c0b08bda19cdb) - 2018-03-30
 
 ### Added
 
 * **WasAlert** Add password option.
 
-## [2.1.2](https://github.com/wickeyware/wickeyappstore/commit/98ed1483a774f545482b3956af239fcd5e33af43) - 2018-03-29
+## [2.1.2](https://github.com/wickeyware/wickeyappstore/compare/d55e52457823b23a7a32bbd0a655b105e439a798...98ed1483a774f545482b3956af239fcd5e33af43) - 2018-03-29
 
 ### Fixed
 
 * **SSO** Fix login error where app is refreshed between token and verification.
 
-## [2.1.0](https://github.com/wickeyware/wickeyappstore/commit/d55e52457823b23a7a32bbd0a655b105e439a798) - 2018-03-28
+## [2.1.0](https://github.com/wickeyware/wickeyappstore/compare/f321945b3090762d72a63d4eaa3b45cf0dd6b1de...d55e52457823b23a7a32bbd0a655b105e439a798) - 2018-03-28
 
 ### Added
 
@@ -147,13 +156,13 @@ This shows all commits since last release (actually, currently all commits).
 * **UserService** Fix linting issues.
 * **UserService** Fix anonymous accounts not logging into logged in cookie was_user_id.
 
-## [2.0.1](https://github.com/wickeyware/wickeyappstore/commit/f321945b3090762d72a63d4eaa3b45cf0dd6b1de) - 2018-02-28
+## [2.0.1](https://github.com/wickeyware/wickeyappstore/compare/58511acba35edc447b9779cbf6a6d535b5761338...f321945b3090762d72a63d4eaa3b45cf0dd6b1de) - 2018-02-28
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [2.0.0](https://github.com/wickeyware/wickeyappstore/commit/58511acba35edc447b9779cbf6a6d535b5761338) - 2018-02-22
+## [2.0.0](https://github.com/wickeyware/wickeyappstore/compare/333082affee07226fbe1f2f7af2a7bfabd0112d8...58511acba35edc447b9779cbf6a6d535b5761338) - 2018-02-22
 
 ### Major Version
 
@@ -161,19 +170,19 @@ This shows all commits since last release (actually, currently all commits).
 * **WasMenu** Change the layout of WasMenu
 * **AppStore** Add fix for app store lists not scrolling properly
 
-## [1.18.2](https://github.com/wickeyware/wickeyappstore/commit/333082affee07226fbe1f2f7af2a7bfabd0112d8) - 2018-02-21
+## [1.18.2](https://github.com/wickeyware/wickeyappstore/compare/38e2ca15baa02b2d1a4e0ac52f819c7afa4946e1...333082affee07226fbe1f2f7af2a7bfabd0112d8) - 2018-02-21
 
 ### Fixed
 
 * **LocalStorage** Save user_id and session_id in *.wickeyappstore.com as secure cookie.
 
-## [1.18.1](https://github.com/wickeyware/wickeyappstore/commit/38e2ca15baa02b2d1a4e0ac52f819c7afa4946e1) - 2018-02-21
+## [1.18.1](https://github.com/wickeyware/wickeyappstore/compare/6bd2b5ea708c77d4725b51488e799123f270423c...38e2ca15baa02b2d1a4e0ac52f819c7afa4946e1) - 2018-02-21
 
 ### Fixed
 
 * **UserService** Ensure initial push of login status (on user load, push status).
 
-## [1.18.0](https://github.com/wickeyware/wickeyappstore/commit/6bd2b5ea708c77d4725b51488e799123f270423c) - 2018-02-20
+## [1.18.0](https://github.com/wickeyware/wickeyappstore/compare/8904fd4f47e99f3e5202b223501e319dba628649...6bd2b5ea708c77d4725b51488e799123f270423c) - 2018-02-20
 
 ### Added
 
