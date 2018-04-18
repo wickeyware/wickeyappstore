@@ -6,7 +6,7 @@
 The first AppStore for Progressive WebApps.
 
 ## Docs, Demo, & Developer Portal
-DOCS: https://developer.wickeyappstore.com/assets/docs/index.html
+DOCS: https://wickeyware.github.io/wickeyappstore/
 
 DEMO APP: https://wickeyappstore.com/app/airhorn and corresponding repo: https://github.com/wickeyware/was-tutorial/
 
