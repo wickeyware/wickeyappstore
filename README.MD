@@ -1,9 +1,9 @@
+# WickeyAppStore
+The first AppStore for Progressive WebApps.
+
 [![Build Status](https://travis-ci.org/wickeyware/wickeyappstore.svg?branch=master)](https://travis-ci.org/wickeyware/wickeyappstore)
 [![npm version](https://badge.fury.io/js/wickeyappstore.svg)](https://badge.fury.io/js/wickeyappstore)
 [![Dependency Status](https://david-dm.org/wickeyware/wickeyappstore.svg)](https://david-dm.org/wickeyware/wickeyappstore)
-
-# WickeyAppStore
-The first AppStore for Progressive WebApps.
 
 ## Docs, Demo, & Developer Portal
 DOCS: https://wickeyware.github.io/wickeyappstore/
