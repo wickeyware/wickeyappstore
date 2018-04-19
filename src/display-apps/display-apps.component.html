@@ -1,8 +1,0 @@
-<div *ngIf="featured; else elseBlock" class="featuredapps">
-  <display-app-featured [apps]="apps" (showAppDetail)="showAppEmitter($event)"></display-app-featured>
-</div>
-<ng-template #elseBlock>
-  <div class="app-list-background">
-    <app-group-horizontal  *ngFor="let _app of apps" [apps]="_app" [title]="_app.title" [showAppEmitter]="showAppEmitter" (showAppList)="showAppListEmitter($event)"></app-group-horizontal>
-  </div>
-</ng-template>

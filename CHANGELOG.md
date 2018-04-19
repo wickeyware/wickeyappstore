@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.8.0](https://github.com/wickeyware/wickeyappstore/compare/2.7.2...2.8.0) - 2018-04-19
+
+### Fixed
+
+* **README** Update dependancies to remove swiper, add VAST player.
+* **WickeyAppStore** Link to store & Remove internal WickeyAppStore display.
+
 ## [2.7.2](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...2.7.2) - 2018-04-18
 
 ### Fixed

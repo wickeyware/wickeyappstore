@@ -1,9 +1,0 @@
-<span class="group-title-text">{{title}}</span>
-<span (click)="showVerticalListApps()" class="seeall">See All ></span>
-<!-- Swiper -->
- <swiper [config]="config">
-  <div class="swiper-wrapper">
-    <display-app-mini class="swiper-slide" *ngFor="let _app of apps.apps" [store_app]="_app" (showAppDetail)="showAppEmitter($event)"></display-app-mini>
-  </div>
-</swiper> 
-<div class="solid-separator-bar"></div>

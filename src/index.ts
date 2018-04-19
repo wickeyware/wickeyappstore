@@ -48,8 +48,6 @@ import {
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
-// SWIPER //
-import { SwiperModule } from 'angular2-useful-swiper';  // or for angular-cli the path will be ../../node_modules/angular2-useful-swiper
 // SERVICES //
 import { UserService } from './user.service';
 import { PromptUpdateService } from './prompt-update.service';
@@ -59,20 +57,11 @@ import { WasAppService } from './was-app.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
-import { DisplayAppsComponent } from './display-apps/display-apps.component';
-import { AppDetailPageComponent } from './display-apps/app-detail-page/app-detail-page.component';
-import { AppGroupHorizontalComponent } from './display-apps/app-group-horizontal/app-group-horizontal.component';
-import { AppGroupVerticalComponent } from './display-apps/app-group-vertical/app-group-vertical.component';
-import { DisplayAppMiniComponent } from './display-apps/display-app-mini/display-app-mini.component';
-import { DisplayAppFeaturedComponent } from './display-apps/display-app-featured/display-app-featured.component';
-import { DisplayAppFullwidthComponent } from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
-import { CustomValidatorDirective } from './custom-validator.directive';
 import { DisplayInAppComponent } from './display-apps/display-inapp/display-inapp.component';
 
 // REVIEWS //
 import { ReviewsComponent } from './ui/reviews/reviews.component';
-import { DisplayAppReviewComponent } from './display-apps/display-app-review/display-app-review.component';
-import { AppGroupReviewsComponent } from './display-apps/app-group-reviews/app-group-reviews.component';
+
 // PIPES //
 import { GetCategoryPipe } from './pipes/get-category.pipe';
 // WAS MATERIAL POPOVERS //
@@ -81,13 +70,11 @@ import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
-import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 
 // EXPORT EVERYTHING //
-export * from 'angular2-useful-swiper';
 export * from './animations';
 export * from './user.service';
 export * from './prompt-update.service';
@@ -96,13 +83,6 @@ export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
 export * from './local-storage.service';
-export * from './display-apps/display-apps.component';
-export * from './display-apps/app-detail-page/app-detail-page.component';
-export * from './display-apps/app-group-horizontal/app-group-horizontal.component';
-export * from './display-apps/app-group-vertical/app-group-vertical.component';
-export * from './display-apps/display-app-mini/display-app-mini.component';
-export * from './display-apps/display-app-featured/display-app-featured.component';
-export * from './display-apps/display-app-fullwidth/display-app-fullwidth.component';
 export * from './display-apps/display-inapp/display-inapp.component';
 export * from './ui/reviews/reviews.component';
 export * from './ui/popover/wasup/wasup.dialog';
@@ -110,13 +90,9 @@ export * from './ui/popover/wasalert/wasalert.dialog';
 export * from './ui/popover/wasreview/wasreview.dialog';
 export * from './ui/popover/wassso/wassso.dialog';
 export * from './ui/popover/wasmenu-btn/wasmenu-btn.component';
-export * from './ui/popover/wasstore/wasstore.dialog';
 export * from './ui/popover/wasshop/wasshop.dialog';
 export * from './ui/popover/waspay/waspay.dialog';
 export * from './ui/popover/wasprofile/wasprofile.dialog';
-export * from './display-apps/display-app-review/display-app-review.component';
-export * from './display-apps/app-group-reviews/app-group-reviews.component';
-export * from './custom-validator.directive';
 export * from './pipes/get-category.pipe';
 export * from './display-apps/display-inapp/display-inapp.component';
 
@@ -161,7 +137,6 @@ export * from './display-apps/display-inapp/display-inapp.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    SwiperModule,
   ],
   declarations: [
     WasSpinnerComponent,
@@ -171,21 +146,10 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasReview,
     WasSSO,
     WasMenuBtn,
-    WasStore,
     WasShop,
     WasPay,
     WasProfile,
     ReviewsComponent,
-    DisplayAppsComponent,
-    AppDetailPageComponent,
-    AppGroupHorizontalComponent,
-    AppGroupVerticalComponent,
-    DisplayAppMiniComponent,
-    DisplayAppFeaturedComponent,
-    CustomValidatorDirective,
-    DisplayAppFullwidthComponent,
-    DisplayAppReviewComponent,
-    AppGroupReviewsComponent,
     DisplayInAppComponent,
     GetCategoryPipe
   ],
@@ -197,21 +161,10 @@ export * from './display-apps/display-inapp/display-inapp.component';
     WasReview,
     WasSSO,
     WasMenuBtn,
-    WasStore,
     WasShop,
     WasPay,
     WasProfile,
     ReviewsComponent,
-    DisplayAppsComponent,
-    AppDetailPageComponent,
-    AppGroupHorizontalComponent,
-    AppGroupVerticalComponent,
-    DisplayAppMiniComponent,
-    DisplayAppFeaturedComponent,
-    CustomValidatorDirective,
-    DisplayAppFullwidthComponent,
-    DisplayAppReviewComponent,
-    AppGroupReviewsComponent,
     DisplayInAppComponent,
     GetCategoryPipe,
     CdkTableModule,
@@ -247,7 +200,7 @@ export * from './display-apps/display-inapp/display-inapp.component';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasStore, WasShop, WasPay, WasProfile],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasPay, WasProfile],
   providers: [
     ApiConnectionService, LocalStorageService, UserService, WasAppService, PromptUpdateService
   ],

@@ -97,11 +97,11 @@ $ npm install wickeyappstore --save
 Link external dependencies in the header of your index.html
 ```html
   <!-- WICKEYAPPSTORE -->
-  <link defer href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.js"></script>
 
   <!-- PUSH NOTIFICATIONS -->
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <!-- Vast Player -->
+  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
 ```
 
 and then from your Angular `AppModule`:

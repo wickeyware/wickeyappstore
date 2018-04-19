@@ -7,7 +7,7 @@ import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
 /**
  * Open your personal store with WasShop.
  *
- * Users can buy in-app purchases as well as get free coins via ads from the WasStore.
+ * Users can buy in-app purchases as well as get free coins via ads.
  *
  * ```js
  * import { WasShop } from 'wickeyappstore';

@@ -56,10 +56,6 @@ export class WasMenuBtn {
     this.userService.leavereview();
   }
   /**@ignore*/
-  openstore() {
-    this.userService.openstore();
-  }
-  /**@ignore*/
   opensso() {
     this.userService.opensso();
   }

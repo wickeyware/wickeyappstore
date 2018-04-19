@@ -8,7 +8,6 @@ import 'rxjs/add/operator/mergeMap';
 import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
-import { WasStore } from './ui/popover/wasstore/wasstore.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
@@ -1103,7 +1102,7 @@ export class UserService {
    * @ignore
   */
   openstore() {
-    this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding' });
+    // this.dialog.open(WasStore, { panelClass: 'was-dialog-nopadding' });
   }
   /**
    * Open WasShop.
