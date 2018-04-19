@@ -53,7 +53,6 @@ import { UserService } from './user.service';
 import { PromptUpdateService } from './prompt-update.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
-import { WasAppService } from './was-app.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
@@ -78,7 +77,6 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 export * from './animations';
 export * from './user.service';
 export * from './prompt-update.service';
-export * from './was-app.service';
 export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
 export * from './api-connection.service';
@@ -202,14 +200,14 @@ export * from './display-apps/display-inapp/display-inapp.component';
   ],
   entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasPay, WasProfile],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService, WasAppService, PromptUpdateService
+    ApiConnectionService, LocalStorageService, UserService, PromptUpdateService
   ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService, UserService, WasAppService, PromptUpdateService]
+      providers: [ApiConnectionService, LocalStorageService, UserService, PromptUpdateService]
     };
   }
 }

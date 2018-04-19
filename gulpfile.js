@@ -122,8 +122,7 @@ gulp.task('rollup:fesm', function () {
         'rxjs/add/operator/catch',
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
-        'rxjs/add/operator/switchMap',
-        'angular2-useful-swiper',
+        'rxjs/add/operator/switchMap'
       ],
 
       // Format of generated bundle
@@ -189,8 +188,7 @@ gulp.task('rollup:umd', function () {
         'rxjs/add/operator/catch',
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
-        'rxjs/add/operator/switchMap',
-        'angular2-useful-swiper',
+        'rxjs/add/operator/switchMap'
       ],
 
       // Format of generated bundle

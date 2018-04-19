@@ -14,7 +14,21 @@ This shows all commits since last release (actually, currently all commits).
 ### Fixed
 
 * **README** Update dependancies to remove swiper, add VAST player.
-* **WickeyAppStore** Link to store & Remove internal WickeyAppStore display.
+* **Docs** Update Docs.
+
+### Added
+
+* **models** Add username to User model.
+* **UserService** Add updateUsername function.
+
+### Changed
+
+* **WickeyAppStore** Link to wickeyappstore.com instead of showing internal store.
+
+### Removed
+
+* **WickeyAppStore** Remove internal WickeyAppStore display and associated pieces.
+* **dependencies** Remove swiper dependency.
 
 ## [2.7.2](https://github.com/wickeyware/wickeyappstore/compare/2.7.1...2.7.2) - 2018-04-18
 

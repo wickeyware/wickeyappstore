@@ -24,33 +24,27 @@ export interface UserParams {
   rated_app?: boolean;
   logging_in?: boolean;
   push_id?: string;
+  username?: string;
 }
 
+// Following the example given here:
+// http://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/
+// Full code: https://github.com/jhades/angular2-rxjs-observable-data-services
+// Thanks @jhades
+
 /**
- * The service to get/set a user.
- * Following the example given here:
- * http://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/
- * Full code: https://github.com/jhades/angular2-rxjs-observable-data-services
- * Thanks @jhades
+ * The UserService.
  *
- * @example
- * Import the service in the base `app.module.ts
- * import { UserService, UserParams } from './user.service';
+ * ```typescript
+ * // Import in any component this is to be used:
+ * import { UserService } from 'WickeyAppStore';
  *
- * Add to the providers:
- * providers: [UserService, ...],
+ * // Inject it in the constructor
+ * constructor(userService: UserService) { }
  *
- * Import in any component this is to be used:
- * import { UserService } from './user.service';
- *
- * Inject it in the constructor
- * constructor(private userService: UserService) { }
- *
- * Get user:
- * this.userService.user();
- *
- * Update user:
- * this.userService.updateUser(_user_obj);
+ * // Get user:
+ * this.userService.user().subscribe();
+ * ```
  */
 @Injectable()
 export class UserService {
@@ -403,9 +397,12 @@ export class UserService {
     console.log('============UserService updateUser=========', this._userObj);
     // NOTE: Set params to current user, then update to sent in userParams, if any exist
     const apiobject = {
-      user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null,
+      user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null, username: null,
       email: null, freebie_used: this._userObj.freebie_used, rated_app: this._userObj.rated_app, push_id: this._userObj.push_id
     };
+    if (this.checkIfValue(userParams, 'username')) {
+      apiobject.username = userParams.username;
+    }
     if (this.checkIfValue(userParams, 'freebie_used')) {
       apiobject.freebie_used = userParams.freebie_used;
     }
@@ -444,6 +441,9 @@ export class UserService {
         }
         if (this.checkIfValue(res, 'email')) {
           this._userObj.email = res.email;
+        }
+        if (this.checkIfValue(res, 'username')) {
+          this._userObj.username = res.username;
         }
         if (this.checkIfValue(res, 'secured')) {
           this._userObj.secured = res.secured;
@@ -496,7 +496,7 @@ export class UserService {
   }
 
   /**
-   * Update the user's push_id if this id is different than the currenly saved id.
+   * Update the user's push_id only if this id is different than the currenly saved id.
    *
    * @param push_id The OneSignal user_id (push_id)
    * @ignore
@@ -507,23 +507,40 @@ export class UserService {
       this.updateUser({ 'push_id': push_id })
         .subscribe((usr) => {
           console.log('UserService updateUserPushId: RETURN:', usr);
-          // NOTE: all user APIS can return a `special_message`
-          if (usr.special_message) {
-            this.dialog.open(WasAlert, {
-              data: { title: usr.special_message.title, body: usr.special_message.message }
-            });
-          }
         }, (error) => {
-          // <any>error | this casts error to be any
-          // NOTE: Can handle error return messages
           console.log('UserService updateUserPushId: RETURN ERROR:', error);
-          this.dialog.open(WasAlert, {
-            data: { title: 'Attention', body: error }
-          });
         });
     } else {
       console.log('UserService updateUserPushId: NO CHANGE:', push_id);
     }
+  }
+  /**
+   * Updates the user's username only if this username is different than the currenly saved username and is acceptable.
+   * Returns an error if username is not acceptable (e.g. not unique).
+   *
+   * @param username The globally unique username.
+   * @ignore
+   */
+  updateUsername(username: string): Observable<User | null> {
+    let _obs;
+    if (this._userObj.username !== username) {
+      console.log('UserService updateUsername: CHANGE:', username);
+      _obs = this.updateUser({ 'username': username });
+      _obs.subscribe((usr) => {
+          console.log('UserService updateUsername: RETURN:', usr);
+          if (this.checkIfValue(usr, 'username')) {
+            this._userObj.username = usr.username;
+            this.pushSubscribers(this._userObj);
+            this.saveLocal('was-user', this._userObj);
+          }
+        }, (error) => {
+          console.log('UserService updateUsername: RETURN ERROR:', error);
+        });
+    } else {
+      console.log('UserService updateUsername: NO CHANGE:', username);
+      _obs = Observable.of(null);
+    }
+    return _obs;
   }
 
   /**
@@ -595,6 +612,9 @@ export class UserService {
       this._userObj.logging_in = false;
       this._userObj.user_id = res.user_id;
       this._userObj.email = res.email;
+      if (this.checkIfValue(res, 'username')) {
+        this._userObj.username = res.username;
+      }
       if (this.checkIfValue(res, 'secured')) {
         this._userObj.secured = res.secured;
       }

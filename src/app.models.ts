@@ -11,6 +11,8 @@ export interface User {
   /**How many coins this user has */
   coins?: number;
   /**@ignore */
+  username?: string;
+  /**@ignore */
   data?: any;
   /**@ignore */
   email?: string;
