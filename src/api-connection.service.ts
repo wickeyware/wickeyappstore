@@ -376,11 +376,9 @@ export class ApiConnectionService {
    * @returns Returns a standard user object with was_data.
    */
   getWASStore(_params: { user_id: string, keys: string }): Observable<{}> {
-    console.log('WASAPI: getWASStore _params', _params);
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
-    console.log('WASAPI: getWASStore', _query_string);
     return this.http.get(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders })
       .map((res: any) => {
         return this.extractData(res).was_data;
@@ -402,7 +400,6 @@ export class ApiConnectionService {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
-    console.log('WASAPI: getWASStore', _query_string);
     return this.http.post(this.wasstore_url, _params, { headers: this.apiHeaders, withCredentials: true })
       .map((res: any) => {
         return this.extractData(res);

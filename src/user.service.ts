@@ -1013,11 +1013,11 @@ export class UserService {
     console.log('============UserService getStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.getWASStore(_apiobject);
-    // _obs.subscribe((res) => {
-    //   console.log('UserService: getStore RETURN:', res);
-    // }, (error) => {
-    //   console.log(`UserService: getStore: error:[${error}]`);
-    // });
+    _obs.subscribe((res) => {
+      // console.log('UserService: getStore RETURN:', res);
+    }, (error) => {
+      // console.log(`UserService: getStore: error:[${error}]`);
+    });
     return _obs;
   }
   /**
@@ -1029,11 +1029,11 @@ export class UserService {
     console.log('============UserService setStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'was_data': _was_data };
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
-    // _obs.subscribe((res) => {
-    //   console.log('UserService: setStore RETURN:', res);
-    // }, (error) => {
-    //   console.log(`UserService: setStore: error:[${error}]`);
-    // });
+    _obs.subscribe((res) => {
+      // console.log('UserService: setStore RETURN:', res);
+    }, (error) => {
+      // console.log(`UserService: setStore: error:[${error}]`);
+    });
     return _obs;
   }
   /**
@@ -1045,11 +1045,11 @@ export class UserService {
     console.log('============UserService deleteStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
-    // _obs.subscribe((res) => {
-    //   console.log('UserService: deleteStore RETURN:', res);
-    // }, (error) => {
-    //   console.log(`UserService: deleteStore: error:[${error}]`);
-    // });
+    _obs.subscribe((res) => {
+      // console.log('UserService: deleteStore RETURN:', res);
+    }, (error) => {
+      // console.log(`UserService: deleteStore: error:[${error}]`);
+    });
     return _obs;
   }
 
