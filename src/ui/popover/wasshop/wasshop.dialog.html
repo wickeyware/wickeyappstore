@@ -38,34 +38,35 @@
     <br>
     <mat-divider></mat-divider>
   </header>
-  <div mat-dialog-content style="max-height: 100%!important;">
-    <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoins()" (closed)="closedFreeCoins()">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          FREE!
-        </mat-panel-title>
-        <mat-panel-description>
-          Free coins here
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div *ngIf="loginValue | async; else notLoggedIn">
-        <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}'
-          target='_blank'>Open the Offerwall</a>
-        <button *ngIf="hasAds" [disabled]="adnotready" style="width:100%;" mat-raised-button color="accent" (click)="watchAd()">{{addBtnText}}</button>
-      </div>
-      <ng-template #notLoggedIn>
-        <button mat-raised-button (click)="opensso()">
-          <mat-icon>person</mat-icon>
-          <span>You need to login for free coins.</span>
-        </button>
-      </ng-template>
-      <!-- The ad goes in here -->
-      <div id="wasadcontainer"></div>
-    </mat-expansion-panel>
-    <ul style="-webkit-padding-start: 0px;">
-      <was-display-inapp *ngFor="let _inapp of userService.inapps | async" [inapp]="_inapp"></was-display-inapp>
-    </ul>
-  </div>
-  <div mat-dialog-actions>
-    <!-- <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button> -->
-  </div>
+</div>
+<div mat-dialog-content style="max-height: 100%!important;padding-top: 5px;">
+  <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoins()" (closed)="closedFreeCoins()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        FREE!
+      </mat-panel-title>
+      <mat-panel-description>
+        Free coins here
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div *ngIf="loginValue | async; else notLoggedIn">
+      <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}'
+        target='_blank'>Open the Offerwall</a>
+      <button *ngIf="hasAds" [disabled]="adnotready" style="width:100%;" mat-raised-button color="accent" (click)="watchAd()">{{addBtnText}}</button>
+    </div>
+    <ng-template #notLoggedIn>
+      <button mat-raised-button (click)="opensso()">
+        <mat-icon>person</mat-icon>
+        <span>You need to login for free coins.</span>
+      </button>
+    </ng-template>
+    <!-- The ad goes in here -->
+    <div id="wasadcontainer"></div>
+  </mat-expansion-panel>
+  <ul style="-webkit-padding-start: 0px;">
+    <was-display-inapp *ngFor="let _inapp of userService.inapps | async" [inapp]="_inapp"></was-display-inapp>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <!-- <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button> -->
+</div>

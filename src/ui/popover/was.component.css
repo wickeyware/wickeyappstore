@@ -35,7 +35,7 @@
     height: 60px;
     right: 5px;
     top: 5px;
-    /* z-index: 99999; */
+    z-index: 2147483647; 
 }
 .was-left-button {
     display: block;
@@ -44,6 +44,7 @@
     height: 60px;
     top: 5px;
     left: 5px;
+    z-index: 2147483647; 
 }
 .center-block {
     display: block;
