@@ -9,12 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.9.0](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.9.0) - 2018-05-02
+[Under Development]
+
+### Changed
+
+* **WASKeyVal** Update Key/Val store to save locally and persist to server (cloud sync).
+
+### Fixed
+
+* **WASMenu** Make sure WAS menu button is below WAS menu option menu slideout.
+* **LibBuild** Update build process, use fs-extra instead of del to remove old dist and other small changes.
+
 ## [2.8.2](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.8.2) - 2018-04-30
 
 ### Fixed
 
 * **WickeyAppStore** Set z-index to max index for WickeyAppStore button
-
 
 ## [2.8.1](https://github.com/wickeyware/wickeyappstore/compare/2.8.0...2.8.1) - 2018-04-23
 
