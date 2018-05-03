@@ -15,6 +15,7 @@ This shows all commits since last release (actually, currently all commits).
 ### Changed
 
 * **WASKeyVal** Update Key/Val store to save locally and persist to server (cloud sync).
+* **WASMenu** Fix z-index on WasMenu-Btn.
 
 ### Fixed
 
