@@ -612,6 +612,7 @@ export class UserService {
       this._userObj.logging_in = false;
       this._userObj.user_id = res.user_id;
       this._userObj.email = res.email;
+      this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
       if (this.checkIfValue(res, 'username')) {
         this._userObj.username = res.username;
       }
@@ -961,51 +962,9 @@ export class UserService {
     return _obs;
   }
 
-  // TODO: WAS Store key/val: Get locally (if available), then update from server
-  // TODO: WAS Store key/val: Check to see if key exists locally, if so return from local, else get from server and update local.
-  // getStoreTest(_keys: string[]): Observable<{}> {
-  //   console.log('============UserService getStore=========');
-  //   let _obs;
-  //   const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
-  //   const localVals = {};
-  //   let localKeys = [];
-
-  //   // mergeMap
-  //   _obs = Observable.fromPromise(this.localStorageService.keys()).subscribe((val: any) => {
-  //     console.log('keys mergeMap', val);
-  //   });
-  //   // TODO: Wrap this in observable and return
-  //   this.localStorageService.keys().then((_lockeys: [any]) => {
-  //     localKeys = _lockeys;
-  //     let getFromLocal = true;
-  //     for (const _key of _keys) {
-  //       if (_key in localKeys === false) {
-  //         getFromLocal = false;
-  //         break;
-  //       }
-  //     }
-  //     if (getFromLocal === true) {
-  //       for (const _key of _keys) {
-  //         this.localStorageService.get(_key).then((value: any) => {
-  //           if (value && typeof value !== 'undefined') {
-  //             localVals[_key] = value;
-  //           }
-  //         });
-  //       }
-  //     } else {
-  //       _obs = this.apiConnectionService.getWASStore(_apiobject);
-  //     }
-  //   }).catch((error: any) => {
-  //     console.error('UserService: An error occurred', error);  // for demo purposes
-  //     _obs = this.apiConnectionService.getWASStore(_apiobject);
-  //   });
-  //   // TODO: Return localVals and attach a subscription to the server.
-  //   // Observable.of(localVals).switchMap
-  //   _obs = this.apiConnectionService.getWASStore(_apiobject);
-  //   return _obs;
-  // }
   /**
    * Get value(s) from key val store.
+   * NOTE: Deprecated, use WasDataService
    *
    * @param _keys [string]: A list of keys to get from the key val store.
    */
@@ -1022,6 +981,7 @@ export class UserService {
   }
   /**
    * Set data in the key val store.
+   * NOTE: Deprecated, use WasDataService
    *
    * @param _was_data {key:val, ...}: A key val dict of data to save.
    */
@@ -1038,6 +998,7 @@ export class UserService {
   }
   /**
    * Delete value(s) from key val store.
+   * NOTE: Deprecated, use WasDataService
    *
    * @param _keys [string]: A list of keys to delete from the key val store.
    */
