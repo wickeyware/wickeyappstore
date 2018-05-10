@@ -50,6 +50,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 // SERVICES //
 import { UserService } from './user.service';
+import { WasDataService } from './was-data.service';
 import { PromptUpdateService } from './prompt-update.service';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
@@ -76,6 +77,7 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 // EXPORT EVERYTHING //
 export * from './animations';
 export * from './user.service';
+export * from './was-data.service';
 export * from './prompt-update.service';
 export * from './was-spinner/was-spinner.component';
 export * from './wickeyappstore.component';
@@ -200,14 +202,14 @@ export * from './display-apps/display-inapp/display-inapp.component';
   ],
   entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasPay, WasProfile],
   providers: [
-    ApiConnectionService, LocalStorageService, UserService, PromptUpdateService
+    ApiConnectionService, LocalStorageService, UserService, WasDataService, PromptUpdateService
   ],
 })
 export class WickeyAppStoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: WickeyAppStoreModule,
-      providers: [ApiConnectionService, LocalStorageService, UserService, PromptUpdateService]
+      providers: [ApiConnectionService, LocalStorageService, UserService, WasDataService, PromptUpdateService]
     };
   }
 }
