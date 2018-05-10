@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, OnInit, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { UserService } from '../../../user.service';
 * WasSSO
 *
 * Open the single sign on dialog.
-* ```js
+* ```typescript
 * import { WasSSO } from 'wickeyappstore';
 * import { MatDialog, MatDialogRef } from '@angular/material';
 * ...
@@ -21,18 +21,16 @@ import { UserService } from '../../../user.service';
   templateUrl: './wassso.dialog.html',
   styleUrls: ['../was.component.css'],
 })
-export class WasSSO {
+export class WasSSO implements OnInit, OnChanges {
+  /**@ignore*/
+  private stepperIndex = 0;
 /**@ignore*/
   firstFormGroup: FormGroup;
   /**@ignore*/
   secondFormGroup: FormGroup;
   /**@ignore*/
   @ViewChild('stepper') stepper: MatStepper;
-/**@ignore*/
-  email = new FormControl('', [Validators.required, Validators.email]);
-  /**@ignore*/
-  token = new FormControl('', [Validators.required, Validators.minLength(6),
-  Validators.maxLength(6)]);
+
   /**@ignore*/
   constructor(
     public dialog: MatDialog,
@@ -43,24 +41,32 @@ export class WasSSO {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
     if (!this.data) { this.data = {}; } // data may not be defined
-    console.log('wassso email', this.data.email);
     if (!this.data.email) {
       this.data.email = '';
     } else {
-      // To avoid "ExpressionChangedAfterItHasBeenCheckedError" error set the index in setTimeout
-      setTimeout(() => {
-        this.stepper.selectedIndex = 1;
-      }, 650);
+      this.stepperIndex = 1;
     }
 
-    // init the validators
+    this.rebuildForms();
+  }
+  /** @ignore */
+  rebuildForms() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      email: [this.data.email, [Validators.required, Validators.email]]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      token: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     });
   }
+
+  ngOnInit() {
+    this.stepper.selectedIndex = this.stepperIndex;
+  }
+
+  ngOnChanges() {
+    this.rebuildForms();
+  }
+
   /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
@@ -68,17 +74,19 @@ export class WasSSO {
 
 
   /**@ignore*/
-  tokenPerson(email: string): void {
+  tokenPerson(): void {
+    const formModel = this.firstFormGroup.value;
+    const _tokenEmail = formModel.email as string;
     // NOTE: If email doesn't exist add to their account, send token, set account to verified after token entered
     this.userService
-      .sendToken({ 'token_email': email })
+      .sendToken({ 'token_email': _tokenEmail })
       .subscribe((res) => {
         let _alertMessage = 'The login token was sent. Enter it in token field to finish the login.';
         if (res.new_account) {
           _alertMessage = 'The verification token was sent. Enter it in token field to finish creating account.';
         }
         this.dialog.open(WasAlert, {
-          data: { title: 'Check email (' + email + ')', body: _alertMessage }
+          data: { title: 'Check email (' + _tokenEmail + ')', body: _alertMessage }
         });
       }, (error) => {
         // <any>error | this casts error to be any
@@ -88,9 +96,11 @@ export class WasSSO {
       });
   }
   /**@ignore*/
-  verifyPerson(verification_token: string): void {
+  verifyPerson(): void {
+    const formModel = this.secondFormGroup.value;
+    const _verificationToken = formModel.token as string;
     this.userService
-      .verifyToken({ 'token': verification_token })
+      .verifyToken({ 'token': _verificationToken })
       .subscribe((res) => {
         let _alertTitle = 'Successful login';
         let _alertMessage = 'Log into ' + res.email + ' success!';
