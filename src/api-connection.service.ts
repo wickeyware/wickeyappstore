@@ -87,7 +87,9 @@ export class ApiConnectionService {
         // The backend returned an unsuccessful response code.
         // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
         try {
-          if (error.error) {
+          if (error.message) {
+            errMsg = error.message;
+          } else if (error.error) {
             const errorObj = error.error;  // JSON.parse(error.error)
             errMsg = errorObj.error.message;
             // Catch 419 session expired error that will be returned on invalid session id
