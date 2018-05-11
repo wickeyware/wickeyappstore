@@ -24,7 +24,7 @@ import { UserService } from '../../../user.service';
 export class WasSSO implements OnInit, OnChanges {
   /**@ignore*/
   private stepperIndex = 0;
-/**@ignore*/
+  /**@ignore*/
   firstFormGroup: FormGroup;
   /**@ignore*/
   secondFormGroup: FormGroup;
@@ -59,10 +59,11 @@ export class WasSSO implements OnInit, OnChanges {
     });
   }
 
+  /** @ignore */
   ngOnInit() {
     this.stepper.selectedIndex = this.stepperIndex;
   }
-
+  /** @ignore */
   ngOnChanges() {
     this.rebuildForms();
   }

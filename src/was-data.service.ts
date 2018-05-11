@@ -16,7 +16,7 @@ import { ApiConnectionService } from './api-connection.service';
  * constructor(wasDataService: WasDataService) { }
  *
  * // Restore from cloud/local.
- * this.wasDataService.restore().subscribe()
+ * this.wasDataService.restore().subscribe(mydata => {})
  *
  * // Persist to cloud.
  * this.wasDataService.persist();
@@ -28,7 +28,7 @@ import { ApiConnectionService } from './api-connection.service';
  * this.wasDataService.load('key).subscribe(myval => {});
  *
  * // listen for data observable.
- * this.wasDataService.data.subscribe();
+ * this.wasDataService.data.subscribe(mydata => {});
  * ```
  */
 @Injectable()
@@ -36,6 +36,7 @@ export class WasDataService {
   private _data: ReplaySubject<any> = new ReplaySubject(1);
   private _dataObj: any;
 
+  /** @ignore */
   constructor(
     private apiConnectionService: ApiConnectionService,
     private userService: UserService,
