@@ -3,8 +3,6 @@ import { UserService } from './user.service';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import 'rxjs/add/observable/fromPromise';
-import { share, map, mergeMap } from 'rxjs/operators';
 import { ApiConnectionService } from './api-connection.service';
 
 /**
@@ -72,15 +70,14 @@ export class WasDataService {
           if (value && typeof value !== 'undefined') {
             this._dataObj = value;
             // normal load
-            console.log('%c WasDataService loadLocalStore 46 LOCAL', 'background: #222; color: #bada55', this._dataObj);
+            console.log('%c WasDataService loadLocalStore LOCAL', 'background: #222; color: #bada55', this._dataObj);
           } else {
-            console.log('%c WasDataService loadLocalStore 49 EMPTY', 'background: #222; color: #bada55');
+            console.log('%c WasDataService loadLocalStore EMPTY', 'background: #222; color: #bada55');
             this._dataObj = {};
           }
           resolve(this._dataObj);
         }).catch(error => {
           console.error('WasDataService handleError', error);
-          console.log('%c WasDataService loadLocalStore 55', 'background: #222; color: #bada55');
           reject(error.message || error);
         });
     });
@@ -89,11 +86,11 @@ export class WasDataService {
    * @ignore
   */
   private initLoad() {
-    return Observable.fromPromise(this.loadLocalStore()).pipe(map(retVal => retVal), mergeMap(val => {
-      console.log('%c WasDataService restore 65', 'background: #222; color: #bada55', val);
+    return Observable.fromPromise(this.loadLocalStore()).map(retVal => retVal).mergeMap(val => {
+      console.log('%c WasDataService initLoad', 'background: #222; color: #bada55', val);
       // Here load
       return this.getCloudStore();
-    }), share());
+    }).share();
   }
 
   /**
@@ -104,18 +101,17 @@ export class WasDataService {
     let _myObs: Observable<any>;
     if (this.userService.isLoaded) {
       if (this._dataObj) {
-        console.log('%c WasDataService restore 79', 'background: #222; color: #bada55', this._dataObj);
+        console.log('%c WasDataService restore 106', 'background: #222; color: #bada55', this._dataObj);
         _myObs = this.getCloudStore();
       } else {
-        console.log('%c WasDataService restore 83', 'background: #222; color: #bada55');
+        console.log('%c WasDataService restore 109', 'background: #222; color: #bada55');
         _myObs = this.initLoad();
       }
     } else {
-      console.log('%c WasDataService restore 86', 'background: #222; color: #bada55');
-      _myObs = this.userService.loginChange.pipe(map(retVal => retVal), mergeMap(_loggedIn => {
-        console.log('%c WasDataService restore 88', 'background: #222; color: #bada55', _loggedIn, this.userService.userObject);
+      _myObs = this.userService.loginChange.map(retVal => retVal).mergeMap(_loggedIn => {
+        console.log('%c WasDataService restore (user loginChange)', 'background: #222; color: #bada55', _loggedIn);
         return this.initLoad();
-      }), share());
+      }).share();
     }
     _myObs.subscribe(_datastore => {
       console.log('%c WasDataService restore 91', 'background: #222; color: #bada55', _datastore);
@@ -183,9 +179,8 @@ export class WasDataService {
    * @ignore
    */
   private getCloudStore(): Observable<{}> {
-    console.log('============WasDataService getCloudStore=========');
     const _apiobject = { 'user_id': this.userService.userObject.user_id, 'keys': 'was-cloud' };
-    return this.apiConnectionService.getWASStore(_apiobject).pipe(map(res => {
+    return this.apiConnectionService.getWASStore(_apiobject).map(res => {
       console.log('%c WasDataService getCloudStore 139', 'background: #222; color: #bada55', res);
       // console.log('WasDataService: getCloudStore RETURN:', res);
       if (this.userService.checkIfValue(res, 'was-cloud')) {
@@ -204,7 +199,7 @@ export class WasDataService {
         console.log('WasDataService: getCloudStore Do not update:', this._dataObj);
       }
       return this._dataObj;
-    }), share());
+    }).share();
   }
   /**
    * Set data in the key val store.
@@ -213,7 +208,6 @@ export class WasDataService {
    * @ignore
    */
   private setCloudStore(): Observable<any> {
-    console.log('============WasDataService setCloudStore=========');
     const _newdata = { 'was-cloud': JSON.stringify(this._dataObj) };
     const _apiobject = { 'user_id': this.userService.userObject.user_id, 'was_data': _newdata };
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
@@ -231,7 +225,6 @@ export class WasDataService {
    * @ignore
    */
   private deleteCloudStore(): Observable<any> {
-    console.log('============WasDataService deleteCloudStore=========');
     const _apiobject = { 'user_id': this.userService.userObject.user_id, 'keys': 'was-cloud' };
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
     _obs.subscribe((res) => {

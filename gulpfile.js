@@ -115,6 +115,8 @@ gulp.task('rollup:fesm', function () {
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
         'rxjs/add/operator/switchMap',
+        'rxjs/add/operator/mergeMap',
+        'rxjs/add/observable/fromPromise',
         'hammerjs', 'core-js', 'idb-keyval','web-animations-js', 'zone.js'
       ],
 
@@ -180,6 +182,8 @@ gulp.task('rollup:umd', function () {
         'rxjs/add/observable/throw',
         'rxjs/add/operator/map',
         'rxjs/add/operator/switchMap',
+        'rxjs/add/operator/mergeMap',
+        'rxjs/add/observable/fromPromise',
         'hammerjs', 'core-js', 'idb-keyval','web-animations-js', 'zone.js'
       ],
 

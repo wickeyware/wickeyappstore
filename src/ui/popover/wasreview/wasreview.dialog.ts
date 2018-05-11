@@ -4,7 +4,6 @@ import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
 import { UserService } from '../../../user.service';
 import { User } from '../../../app.models';
-import { Subscription } from 'rxjs/Subscription';
 import { ApiConnectionService } from '../../../api-connection.service';
 /**
  * Leave an app review with WasReview
@@ -23,8 +22,6 @@ import { ApiConnectionService } from '../../../api-connection.service';
   styleUrls: ['../was.component.css'],
 })
 export class WasReview {
-  /**@ignore*/
-  public busySubmit: Subscription;
   /**@ignore*/
   public stars = 0;
   /**@ignore*/
