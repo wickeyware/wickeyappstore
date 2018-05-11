@@ -9,18 +9,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.9.0](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.9.0) - 2018-05-02
-[Under Development]
+## [2.9.0](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.9.0) - 2018-05-10
+
+### Added
+
+* **WasDataService** Add a simple local and cloud persistable data store.
 
 ### Changed
 
-* **WASKeyVal** Update Key/Val store to save locally and persist to server (cloud sync).
 * **WASMenu** Fix z-index on WasMenu-Btn.
 
 ### Fixed
 
 * **WASMenu** Make sure WAS menu button is below WAS menu option menu slideout.
 * **LibBuild** Update build process, use fs-extra instead of del to remove old dist and other small changes.
+* **WasSSO** Update form to use only reactive forms (Angular 6 deprecated use of ngModel with reactive forms).
+* **UserService** Set WickeyAppStore user cookie after token verification.
+* **ApiConnectionService** Handle error in error if message is on root error object.
+* **Subscription** Remove un-used Subscriptions imports and the un-used associated busys for was-spinner.
+* **Docs** Recompile the documentation.
+
+### Deprecated
+
+* **WASKeyVal** UserService.getStore/setStore/deleteStore, use new WasDataService.
 
 ## [2.8.2](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.8.2) - 2018-04-30
 
