@@ -1,6 +1,38 @@
 {
   "name": "wickeyappstore",
-  "version": "2.10.0",
+  "version": "2.10.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wickeyware/wickeyappstore"
+  },
+  "author": {
+    "name": "Michael Wickey",
+    "email": "wickeym@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Tim Wickey",
+      "email": "tntwickey@gmail.com"
+    },
+    {
+      "name": "Michael Wickey",
+      "email": "wickeym@gmail.com"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "wickeyappstore",
+    "wickey app store",
+    "appstore",
+    "app store",
+    "pwa",
+    "progressive",
+    "webapp"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wickeyware/wickeyappstore/issues"
+  },
   "peerDependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/cdk": "6.0.0",
