@@ -5,9 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.7.2...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.10.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.10.0](https://github.com/wickeyware/wickeyappstore/compare/2.9.0...2.10.0) - 2018-05-15
+
+### Changed
+
+* **packages** [BREAKING] Update to Angular 6 and rxjs 6, these are breaking changes. [how to update](https://update.angular.io/)
+* **build** Change to angular/cli lib builder.
+
+### Added
+
+* **demoapp** Add demo app to test lib. First run `yarn run build:lib` then `yarn run start` or `yarn run build` and `yarn run serve:cli`.
 
 ## [2.9.0](https://github.com/wickeyware/wickeyappstore/compare/2.8.1...2.9.0) - 2018-05-10
 

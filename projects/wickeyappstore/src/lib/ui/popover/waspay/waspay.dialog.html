@@ -1,0 +1,14 @@
+<div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div>
+<p class="waspay-subtitle">{{makeTitle()}}</p>
+<mat-chip-list *ngIf="purchaseSuccess">
+  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip>
+</mat-chip-list>
+<p style="padding: 10px 0 20px 0;">{{data.description}}</p>
+<div style="margin-top:20px; min-width: 240px;">
+  <div class="wasup-body">
+    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>
+    <ng-template #notApplePayBlock>
+      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Buy</button>
+    </ng-template>
+  </div>
+</div>
