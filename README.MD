@@ -16,7 +16,7 @@ DEV PORTAL: https://wickeyappstore.com/app/developer-portal
 ## App Store
 https://wickeyappstore.com/
 
-## Progressive Web App Store 
+## Progressive Web App Store
 WickeyAppStore is the first App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web. Reach the next One Billion users with lightweight, platform independant, full featured, web-apps.
 
 Apps on the WickeyAppStore must meet quality and security requirements:
@@ -96,6 +96,7 @@ $ npm install wickeyappstore --save
 ```
 
 Link external dependencies in the header of your index.html
+
 ```html
   <!-- WICKEYAPPSTORE -->
 
@@ -103,6 +104,14 @@ Link external dependencies in the header of your index.html
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
   <!-- Vast Player -->
   <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
+  <!-- Material Icons -->
+  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+Import Material theme in global styles.css
+
+```css
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 ```
 
 and then from your Angular `AppModule`:

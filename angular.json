@@ -32,11 +32,7 @@
               },
               "src/styles.css"
             ],
-            "scripts": [
-              {
-                "input": "node_modules/hammerjs/hammer.min.js"
-              }
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -89,11 +85,7 @@
               },
               "styles.css"
             ],
-            "scripts": [
-              {
-                "input": "node_modules/hammerjs/hammer.min.js"
-              }
-            ],
+            "scripts": [],
             "assets": [
               "src/favicon.ico",
               "src/assets",

@@ -5,9 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.10.1...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.10.3...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.10.3](https://github.com/wickeyware/wickeyappstore/compare/2.10.2...2.10.3) - 2018-05-22
+
+### Fixed
+
+* **package** Remove un-used dependencies hammerjs.
+* **package** Install latest versions of Angular.
+* **css** Remove un-used css.
+* **app.module** Remove un-used Angular Material modules.
 
 ## [2.10.2](https://github.com/wickeyware/wickeyappstore/compare/2.10.1...2.10.2) - 2018-05-15
 
