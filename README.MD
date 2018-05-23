@@ -39,7 +39,7 @@ Create your app in the dev portal and use it to add meta data, in-app purchases,
 Here's a link to get started: https://wickeyappstore.com/app/developer-portal
 
 
-## QuickStart
+## QuickStart (Angular)
 
 Prerequisite: [nodejs](https://nodejs.org) needs to be installed on your pc.
 
@@ -87,7 +87,7 @@ yarn run build
 
 The output `dist/` directory is what will be selected to deploy on: [developer.wickeyappstore.com](https://developer.wickeyappstore.com/)
 
-## QuickStart (Manual Integration)
+## QuickStart (Manual Angular Integration)
 
 To install this library, run: (NOTE: Install all dependencies)
 
@@ -151,6 +151,47 @@ Once WickeyAppStoreModule is imported, you can use its components, directives an
 <div class="myapp">
   <h1>Welcome to my app!</h1>
 </div>
+```
+
+## QuickStart Other (JS)
+
+Example index.html:
+NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-appstore> and the wickeyappstore.js script in the body.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom WAS Test Page</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="src/favicon.ico">
+  <!-- PUSH NOTIFICATIONS -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <!-- Vast Player -->
+  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
+  <!-- Material Icons -->
+  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- WickeyAppStore css -->
+  <link rel="stylesheet" href="elements/styles.css">
+</head>
+<body>
+  <wickey-appstore></wickey-appstore>
+  <script type="text/javascript" src="elements/wickeyappstore.js"></script>
+  <script>
+    const wickeyappstore = document.querySelector('wickey-appstore');
+    var userService = null;
+    wickeyappstore.addEventListener('userServiceOut', (event) => {
+      console.log(`"userServiceOut" emitted:`, event.detail);
+      userService = event.detail;
+      userService.user.subscribe(usr => {
+        console.log('userServiceOut user.subscribe', usr);
+      });
+    });
+  </script>
+</body>
+</html>
 ```
 
 ## License

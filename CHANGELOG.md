@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.10.3...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.11.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.11.0](https://github.com/wickeyware/wickeyappstore/compare/2.10.3...2.11.0) - 2018-05-22
+
+## Added
+
+* **WickeyAppStoreJS** Add WickeyAppStore as single, dependency free, js file with single styles.css file (in elements folder).
 
 ## [2.10.3](https://github.com/wickeyware/wickeyappstore/compare/2.10.2...2.10.3) - 2018-05-22
 

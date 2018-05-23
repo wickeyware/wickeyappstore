@@ -168,6 +168,112 @@
           }
         }
       }
+    },
+    "wickeyappstorejs": {
+      "root": "projects/wickeyappstorejs/",
+      "sourceRoot": "projects/wickeyappstorejs/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/wickeyappstorejs",
+            "index": "projects/wickeyappstorejs/src/index.html",
+            "main": "projects/wickeyappstorejs/src/main.ts",
+            "polyfills": "projects/wickeyappstorejs/src/polyfills.ts",
+            "tsConfig": "projects/wickeyappstorejs/tsconfig.app.json",
+            "assets": [
+              "projects/wickeyappstorejs/src/favicon.ico",
+              "projects/wickeyappstorejs/src/assets"
+            ],
+            "styles": [
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "projects/wickeyappstorejs/src/styles.css"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/wickeyappstorejs/src/environments/environment.ts",
+                  "with": "projects/wickeyappstorejs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "wickeyappstorejs:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "wickeyappstorejs:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "wickeyappstorejs:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/wickeyappstorejs/src/test.ts",
+            "polyfills": "projects/wickeyappstorejs/src/polyfills.ts",
+            "tsConfig": "projects/wickeyappstorejs/tsconfig.spec.json",
+            "karmaConfig": "projects/wickeyappstorejs/karma.conf.js",
+            "styles": [
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "projects/wickeyappstorejs/src/styles.css"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ],
+            "assets": [
+              "projects/wickeyappstorejs/src/favicon.ico",
+              "projects/wickeyappstorejs/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/wickeyappstorejs/tsconfig.app.json",
+              "projects/wickeyappstorejs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "demo"

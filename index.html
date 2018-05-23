@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom WAS Test Page</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="src/favicon.ico">
+  <!-- PUSH NOTIFICATIONS -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <!-- Vast Player -->
+  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
+  <!-- Material Icons -->
+  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- WickeyAppStore CSS -->
+  <link rel="stylesheet" href="elements/styles.css">
+</head>
+
+<body>
+  <wickey-appstore label="First Value"></wickey-appstore>
+  <script type="text/javascript" src="elements/wickeyappstore.js"></script>
+
+  <button id="myBtn" style="position: absolute; right: 20px; top: 20px;">test button</button>
+
+  <script>
+    const wickeyappstore = document.querySelector('wickey-appstore');
+
+    wickeyappstore.addEventListener('action', (event) => {
+      console.log(`"action" emitted: ${event.detail}`);
+    });
+    setTimeout(() => wickeyappstore.label = 'Second Value', 3000);
+
+    var userService = null;
+    wickeyappstore.addEventListener('userServiceOut', (event) => {
+      console.log(`"userServiceOut" emitted:`, event.detail);
+      userService = event.detail;
+      userService.user.subscribe(usr => {
+        console.log('userServiceOut user.subscribe', usr);
+      });
+    });
+
+    document.getElementById('myBtn').addEventListener('click', function(){
+      userService.checkIfPurchased(10).subscribe(isPurch =>{
+        console.log('checkIfPurchased', isPurch);
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"; */
+/*html {
+  touch-action: manipulation;
+}*/
+body, input, textarea {
+  /* -webkit-font-smoothing: antialiased; */
+  color: #777;
+}
+h1 {
+  color: #369;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-weight: lighter;
+  font-size: 150%;
+  /*font-weight: 500;*/
+}
+p {
+  font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */
+  line-height: 1em;  /* This keeps the line height proportional to the font size */
+}
+/* Don't allow text selection in buttons:
+http://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css?page=1&tab=votes#tab-top
+https://www.w3schools.com/cssref/css3_pr_user-select.asp
+Added iOS Safari http://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
+button {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+/*<p>
+  Selectable text.
+</p>
+<p class="noselect">
+  Unselectable text.
+</p>*/
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+/*...*/
+/* everything else */
+* {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* Put this in to allow a full screen dialog */
+/* Use the resize method within any dialog to set to 100%, 100% */
+.cdk-overlay-pane {
+  max-width: 100%!important;
+}
+
+/* Every toolbar row uses a flexbox row layout. */
+.main-header-sidebar {
+  width: 40px;
+}
+.main-header-text    {
+  flex: 2;
+  text-align: center;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgb(0, 0, 0);
+}
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.  */
+  flex: 1 1 auto;
+}
+
+[hidden] {
+  display: none!important;
+}

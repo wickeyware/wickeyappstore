@@ -86,14 +86,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-WickeyAppStoreModule-856e3b3b-c2d3-4651-b402-073b54c8f43f"
+                                        data-target="#xs-components-links-module-WickeyAppStoreModule-10d072d0-1016-4c0b-a10b-b2e92bf54439"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-WickeyAppStoreModule-856e3b3b-c2d3-4651-b402-073b54c8f43f"
+                                        id="xs-components-links-module-WickeyAppStoreModule-10d072d0-1016-4c0b-a10b-b2e92bf54439"
                                     >
                                         <li class="link">
                                             <a href="components/WickeyAppStoreComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WickeyAppStoreComponent</a>
@@ -253,14 +253,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-WickeyAppStoreModule-856e3b3b-c2d3-4651-b402-073b54c8f43f"
+                                        data-target="#components-links-module-WickeyAppStoreModule-10d072d0-1016-4c0b-a10b-b2e92bf54439"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-WickeyAppStoreModule-856e3b3b-c2d3-4651-b402-073b54c8f43f"
+                                        id="components-links-module-WickeyAppStoreModule-10d072d0-1016-4c0b-a10b-b2e92bf54439"
 >
                                         <li class="link">
                                             <a href="components/WickeyAppStoreComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WickeyAppStoreComponent</a>
@@ -384,7 +384,7 @@
 <h2 id="submit-your-app">Submit your app</h2>
 <p>Create your app in the dev portal and use it to add meta data, in-app purchases, and so on.
 Here&#39;s a link to get started: <a href="https://wickeyappstore.com/app/developer-portal">https://wickeyappstore.com/app/developer-portal</a></p>
-<h2 id="quickstart">QuickStart</h2>
+<h2 id="quickstart-angular-">QuickStart (Angular)</h2>
 <p>Prerequisite: <a href="https://nodejs.org">nodejs</a> needs to be installed on your pc.</p>
 <p>Clone our starter project Airhorn.</p>
 <p>Where <code>mywasapp</code> is the name of your app, replace with whatever is desired.</p>
@@ -398,7 +398,7 @@ npm run start</code></pre><p>with <a href="https://yarnpkg.com">yarn</a></p>
 yarn run start</code></pre><p>Now visit <a href="http://localhost:4204">localhost:4204</a></p>
 <p>To build your app in preparation for deployment to the WickeyAppStore.</p>
 <pre class="line-numbers"><code class="language-bash">npm run build</code></pre><pre class="line-numbers"><code class="language-bash">yarn run build</code></pre><p>The output <code>dist/</code> directory is what will be selected to deploy on: <a href="https://developer.wickeyappstore.com/">developer.wickeyappstore.com</a></p>
-<h2 id="quickstart-manual-integration-">QuickStart (Manual Integration)</h2>
+<h2 id="quickstart-manual-angular-integration-">QuickStart (Manual Angular Integration)</h2>
 <p>To install this library, run: (NOTE: Install all dependencies)</p>
 <pre class="line-numbers"><code class="language-bash">$ npm install wickeyappstore --save</code></pre><p>Link external dependencies in the header of your index.html</p>
 <pre class="line-numbers"><code class="language-html">  &lt;!-- WICKEYAPPSTORE --&gt;
@@ -438,7 +438,42 @@ export class AppModule { }</code></pre><p>Once WickeyAppStoreModule is imported,
 &lt;!--Now your app. Thats it.--&gt;
 &lt;div class=&quot;myapp&quot;&gt;
   &lt;h1&gt;Welcome to my app!&lt;/h1&gt;
-&lt;/div&gt;</code></pre><h2 id="license">License</h2>
+&lt;/div&gt;</code></pre><h2 id="quickstart-other-js-">QuickStart Other (JS)</h2>
+<p>Example index.html:
+NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-appstore> and the wickeyappstore.js script in the body.</p>
+<pre class="line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Custom WAS Test Page&lt;/title&gt;
+  &lt;base href=&quot;/&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;src/favicon.ico&quot;&gt;
+  &lt;!-- PUSH NOTIFICATIONS --&gt;
+  &lt;script src=&quot;https://cdn.onesignal.com/sdks/OneSignalSDK.js&quot; async&gt;&lt;/script&gt;
+  &lt;!-- Vast Player --&gt;
+  &lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/vast-player&#64;0.2/dist/vast-player.min.js&quot;&gt;&lt;/script&gt;
+  &lt;!-- Material Icons --&gt;
+  &lt;link async href=&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;!-- WickeyAppStore css --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;elements/styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;wickey-appstore&gt;&lt;/wickey-appstore&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;elements/wickeyappstore.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const wickeyappstore = document.querySelector(&#39;wickey-appstore&#39;);
+    var userService = null;
+    wickeyappstore.addEventListener(&#39;userServiceOut&#39;, (event) =&gt; {
+      console.log(`&quot;userServiceOut&quot; emitted:`, event.detail);
+      userService = event.detail;
+      userService.user.subscribe(usr =&gt; {
+        console.log(&#39;userServiceOut user.subscribe&#39;, usr);
+      });
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="license">License</h2>
 <p>MIT © <a href="mailto:tim@wickeyappstore.com">WickeyWare, LLC</a></p>
 
 
