@@ -18,31 +18,33 @@
 </head>
 
 <body>
-  <wickey-appstore label="First Value"></wickey-appstore>
+  <wickey-appstore></wickey-appstore>
   <script type="text/javascript" src="elements/wickeyappstore.js"></script>
-
-  <button id="myBtn" style="position: absolute; right: 20px; top: 20px;">test button</button>
 
   <script>
     const wickeyappstore = document.querySelector('wickey-appstore');
 
-    wickeyappstore.addEventListener('action', (event) => {
-      console.log(`"action" emitted: ${event.detail}`);
-    });
-    setTimeout(() => wickeyappstore.label = 'Second Value', 3000);
-
     var userService = null;
+    var wasDataService = null;
     wickeyappstore.addEventListener('userServiceOut', (event) => {
-      console.log(`"userServiceOut" emitted:`, event.detail);
       userService = event.detail;
       userService.user.subscribe(usr => {
         console.log('userServiceOut user.subscribe', usr);
       });
-    });
-
-    document.getElementById('myBtn').addEventListener('click', function(){
-      userService.checkIfPurchased(10).subscribe(isPurch =>{
+      // Check if purchased (where 10 is your purchase item id).
+      userService.checkIfPurchased(10).subscribe(isPurch => {
         console.log('checkIfPurchased', isPurch);
+      });
+    });
+    wickeyappstore.addEventListener('wasDataServiceOut', (event) => {
+      wasDataService = event.detail;
+      wasDataService.restore().subscribe(mydata => {
+        console.log('wasDataService.restore', mydata);
+        // WasDataService is now loaded and restored (ready for use).
+        // wasDataService.load('highScore').subscribe(_score => {});
+        // wasDataService.save('highScore', 3000);
+        // Then after the session (or game level), persist to cloud
+        // wasDataService.persist();
       });
     });
   </script>

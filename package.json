@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --port 4200",
@@ -14,6 +14,7 @@
     "docs:build": "compodoc -p projects/wickeyappstore/tsconfig.lib.json -n wickeyappstore -d docs --disableGraph --hideGenerator --disableSourceCode --disablePrivate --customFavicon projects/wickeyappstore/favicon.ico --disableRoutesGraph",
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
+    "publish": "npm publish dist/wickeyappstore",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -179,14 +179,30 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
 <body>
   <wickey-appstore></wickey-appstore>
   <script type="text/javascript" src="elements/wickeyappstore.js"></script>
-  <script>
+    <script>
     const wickeyappstore = document.querySelector('wickey-appstore');
+
     var userService = null;
+    var wasDataService = null;
     wickeyappstore.addEventListener('userServiceOut', (event) => {
-      console.log(`"userServiceOut" emitted:`, event.detail);
       userService = event.detail;
       userService.user.subscribe(usr => {
         console.log('userServiceOut user.subscribe', usr);
+      });
+      // Check if purchased (where 10 is your purchase item id).
+      userService.checkIfPurchased(10).subscribe(isPurch => {
+        console.log('checkIfPurchased', isPurch);
+      });
+    });
+    wickeyappstore.addEventListener('wasDataServiceOut', (event) => {
+      wasDataService = event.detail;
+      wasDataService.restore().subscribe(mydata => {
+        console.log('wasDataService.restore', mydata);
+        // WasDataService is now loaded and restored (ready for use).
+        // wasDataService.load('highScore').subscribe(_score => {});
+        // wasDataService.save('highScore', 3000);
+        // Then after the session (or game level), persist to cloud
+        // wasDataService.persist();
       });
     });
   </script>

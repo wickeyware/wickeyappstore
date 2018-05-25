@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.11.1](https://github.com/wickeyware/wickeyappstore/compare/2.11.0...2.11.1) - 2018-05-25
+
+### Fixed
+
+* **README** Show example of WasDataService with WAS js.
+
 ## [2.11.0](https://github.com/wickeyware/wickeyappstore/compare/2.10.3...2.11.0) - 2018-05-22
 
-## Added
+### Added
 
 * **WickeyAppStoreJS** Add WickeyAppStore as single, dependency free, js file with single styles.css file (in elements folder).
 
