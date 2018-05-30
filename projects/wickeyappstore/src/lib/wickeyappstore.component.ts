@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 /**
 * WickeyAppStore Interface
 *
@@ -10,6 +10,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 * ```js
 * <wickey-appstore></wickey-appstore>
 * ```
+* With event listeners
+* ```js
+* <wickey-appstore (open)="pauseGame()"></wickey-appstore>
+* ```
 */
 @Component({
   selector: 'wickey-appstore',
@@ -19,9 +23,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
   animations: []
 })
 export class WickeyAppStoreComponent {
-  // Add the main menu button
-  /**
-   * @ignore
-   */
-  constructor() {}
+  /** Event emitted when the associated menu is opened.*/
+  @Output() open = new EventEmitter<void>();
+
+  /**@ignore*/
+  constructor() { }
+
+  /**@ignore*/
+  openEvent() {
+    this.open.emit();
+  }
 }

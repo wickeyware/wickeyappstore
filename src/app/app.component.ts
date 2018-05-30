@@ -26,4 +26,7 @@ export class AppComponent {
       this.dialog.open(WasAlert, {data: { title: 'Attention', body: `Is user logged in ${_isLogged}` }});
     });
   }
+  pause() {
+    console.log('wasmenu opened, pause game');
+  }
 }

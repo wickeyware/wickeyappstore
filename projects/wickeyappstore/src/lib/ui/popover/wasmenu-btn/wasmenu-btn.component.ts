@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from '../../../user.service';
@@ -20,6 +20,9 @@ import { User, Inapp } from '../../../app.models';
   styleUrls: ['../was.component.css'],
 })
 export class WasMenuBtn {
+  /** Event emitted when the associated menu is opened.*/
+  @Output() open = new EventEmitter<void>();
+
   /**@ignore*/
   public hasInapps = false;
   /**@ignore*/
@@ -67,6 +70,10 @@ export class WasMenuBtn {
   /**@ignore*/
   openshop() {
     this.userService.openshop();
+  }
+  /**@ignore*/
+  openEvent() {
+    this.open.emit();
   }
 
 }

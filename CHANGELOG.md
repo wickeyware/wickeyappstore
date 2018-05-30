@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.12.0](https://github.com/wickeyware/wickeyappstore/compare/2.11.1...2.12.0) - 2018-05-30
+
+### Added 
+
+* **WASMenu** Add hook to indicate when WAS is opened. <wickey-appstore (open)="pause()"></wickey-appstore>.
+
 ## [2.11.1](https://github.com/wickeyware/wickeyappstore/compare/2.11.0...2.11.1) - 2018-05-25
 
 ### Fixed
