@@ -169,6 +169,20 @@ export class WasDataService {
     }
     return _obs;
   }
+  /**
+   * Get a value from db.
+   *
+   * @param _key The key.
+   */
+  get(_key: string): any | null {
+    let _val;
+    if (this._dataObj) {
+      _val = this._dataObj[_key];
+    } else {
+      _val = null;
+    }
+    return _val;
+  }
 
   /**
    * Get cloud data packet.

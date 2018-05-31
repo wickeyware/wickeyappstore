@@ -1,7 +1,6 @@
 import {
   Input,
   Component,
-  ViewEncapsulation,
   EventEmitter,
   Output
 } from '@angular/core';
@@ -15,8 +14,7 @@ import { WasDataService } from '../../../wickeyappstore/src/lib/was-data.service
 @Component({
   selector: 'wickey-appstore',
   template: `<was-menu-btn></was-menu-btn>`,
-  styleUrls: ['./was.component.css'],
-  encapsulation: ViewEncapsulation.Native
+  styleUrls: ['./was.component.css']
 })
 export class WickeyAppStoreComponent {
   @Input() label = 'default label';
@@ -35,13 +33,6 @@ export class WickeyAppStoreComponent {
     this.userService.loginChange.subscribe((_isLogged: boolean) => {
       this.userServiceOut.emit(this.userService);
       this.wasDataServiceOut.emit(this.wasDataService);
-      console.log('USER LOADED:', this.userService.userObject.user_id);
-      if (_isLogged) {
-        console.warn('LOGGED IN');
-      } else {
-        console.warn('LOGGED OUT');
-        // reset progress
-      }
     });
   }
 

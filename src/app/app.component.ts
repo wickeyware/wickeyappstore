@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService, User, WasAlert } from '../../dist/wickeyappstore';
+import { UserService, User, WasAlert } from 'wickeyappstore';
 import { MatDialog } from '@angular/material';
 
 @Component({

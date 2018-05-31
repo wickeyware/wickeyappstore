@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { WickeyAppStoreModule } from '../../dist/wickeyappstore';
+import { WickeyAppStoreModule } from 'wickeyappstore';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
