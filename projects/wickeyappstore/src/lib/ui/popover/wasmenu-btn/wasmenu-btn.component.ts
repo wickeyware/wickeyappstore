@@ -34,6 +34,34 @@ export class WasMenuBtn {
         this.hasInapps = false;
       }
     });
+    loadScriptWithCallback('https://cdn.onesignal.com/sdks/OneSignalSDK.js', () => {
+      console.log('OneSignal script loaded');
+    });
+    loadScriptWithCallback('https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js', () => {
+      console.log('VastPlayer script loaded');
+    });
+    loadScriptWithCallback('https://ws.bluesnap.com/source/web-sdk/bluesnap.js', () => {
+      console.log('OneSignal script loaded');
+    });
+    function isLoadedScript(_url) {
+      return document.querySelectorAll('[src="' + _url + '"]').length > 0;
+    }
+    function loadScriptWithCallback(_url, callback) {
+      try {
+        if (isLoadedScript(_url)) {
+          console.log(`script alread loaded: ${_url}`);
+        } else {
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = _url;
+          (<any>script).onreadystatechange = callback;
+          script.onload = callback;
+          document.head.appendChild(script);
+        }
+      } catch (error) {
+        console.error(`Failed to load script: ${_url}`, error);
+      }
+    }
   }
   /**@ignore*/
   get loginMessage() {

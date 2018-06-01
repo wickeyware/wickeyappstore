@@ -8,7 +8,7 @@
   <div class="wasup-body">
     <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>
     <ng-template #notApplePayBlock>
-      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Buy</button>
+      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>
     </ng-template>
   </div>
 </div>

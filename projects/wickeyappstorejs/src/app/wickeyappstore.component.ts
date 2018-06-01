@@ -13,15 +13,13 @@ import { WasDataService } from '../../../wickeyappstore/src/lib/was-data.service
 
 @Component({
   selector: 'wickey-appstore',
-  template: `<was-menu-btn></was-menu-btn>`,
+  template: `<was-menu-btn (open)="openEvent()"></was-menu-btn>`,
   styleUrls: ['./was.component.css']
 })
 export class WickeyAppStoreComponent {
-  @Input() label = 'default label';
-  @Output() action = new EventEmitter<number>();
+  @Output() open = new EventEmitter<void>();
   @Output() userServiceOut = new EventEmitter<UserService>();
   @Output() wasDataServiceOut = new EventEmitter<WasDataService>();
-  private clicksCt = 0;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -36,18 +34,8 @@ export class WickeyAppStoreComponent {
     });
   }
 
-  handleClick() {
-    this.clicksCt++;
-    this.action.emit(this.clicksCt);
-    this.localStorageService.set('clicks_count', this.clicksCt);
-  }
-  button2Action() {
-    console.log('WickeyAppStoreComponent button2Action');
-    this.localStorageService.get('clicks_count').then((_cnt) => {
-      this.dialog.open(WasAlert, {data: { title: 'Attention', body: `Clicks count ${_cnt}` }});
-    });
-  }
-  button3Action() {
-    console.log('WickeyAppStoreComponent button3Action save to local');
+  /**@ignore*/
+  openEvent() {
+    this.open.emit();
   }
 }

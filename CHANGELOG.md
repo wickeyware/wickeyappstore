@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.12.2](https://github.com/wickeyware/wickeyappstore/compare/2.12.1...2.12.2) - 2018-06-01
+
+### Fixed
+
+* **WASjs** Add missing input `open` on menu open hook.
+* **WASjs** Clean up, remove un-used code.
+* **dependencies** Add dependencies to head in WasMenuBtn constructor, iff they are not there.
+* **PaymentRequest** Fix PaymentRequest for browsers supporting it.
+* **docs** Recompile the documentation.
+
 ## [2.12.1](https://github.com/wickeyware/wickeyappstore/compare/2.12.0...2.12.1) - 2018-05-31
 
 ### Fixed

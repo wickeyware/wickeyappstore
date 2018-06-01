@@ -527,15 +527,15 @@ export class UserService {
       console.log('UserService updateUsername: CHANGE:', username);
       _obs = this.updateUser({ 'username': username });
       _obs.subscribe((usr) => {
-          console.log('UserService updateUsername: RETURN:', usr);
-          if (this.checkIfValue(usr, 'username')) {
-            this._userObj.username = usr.username;
-            this.pushSubscribers(this._userObj);
-            this.saveLocal('was-user', this._userObj);
-          }
-        }, (error) => {
-          console.log('UserService updateUsername: RETURN ERROR:', error);
-        });
+        console.log('UserService updateUsername: RETURN:', usr);
+        if (this.checkIfValue(usr, 'username')) {
+          this._userObj.username = usr.username;
+          this.pushSubscribers(this._userObj);
+          this.saveLocal('was-user', this._userObj);
+        }
+      }, (error) => {
+        console.log('UserService updateUsername: RETURN ERROR:', error);
+      });
     } else {
       console.log('UserService updateUsername: NO CHANGE:', username);
       _obs = observableOf(null);
@@ -735,15 +735,21 @@ export class UserService {
    * @param [_last_name] The billing last name of the purchaser person.
    * @param [_zip_code] The billing zip code of the purchaser person.
    * @param [_wallet_token] The applepay wallet token, this is used to process the payment.
+   * @param [_address] The billing address.
+   * @param [_city] The billing city.
+   * @param [_state] The billing state.
+   * @param [_country] The billing country.
    * @returns The same as updateUser.
    */
   createPurchase(_purchase_id: number, _receipt: string, _amount: number, _email?: string,
-    _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string): Observable<any> {
+    _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string,
+    _address?: any, _city?: string, _state?: string, _country?: string): Observable<any> {
     console.log('============UserService createPurchase=========');
     const _purchase = {
       'user_id': this._userObj.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
       'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
-      'zip_code': _zip_code, 'apple_wallet_token': _wallet_token
+      'zip_code': _zip_code, 'apple_wallet_token': _wallet_token,
+      'address': _address, 'city': _city, 'state': _state, 'country': _country
     };
     if (_email) {
       _purchase['email'] = _email;
@@ -1200,90 +1206,133 @@ export class UserService {
   */
   makePaymentRequestPurchase(_inapp: Inapp) {
     return new Promise<boolean>((resolve, reject) => {
-      if ((<any>window).PaymentRequest) {
-        const googlePayPaymentMethod = {
-          supportedMethods: ['https://google.com/pay'],
-          data: {
-            'environment': 'TEST',
-            'apiVersion': 1,
-            'allowedPaymentMethods': ['CARD', 'TOKENIZED_CARD'],
-            'paymentMethodTokenizationParameters': {
-              'tokenizationType': 'PAYMENT_GATEWAY',
-              // Check with your payment gateway on the parameters to pass.
-              'parameters': {}
-            },
-            'cardRequirements': {
-              'allowedCardNetworks': ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA'],
-              'billingAddressRequired': true,
-              'billingAddressFormat': 'MIN'
-            },
-            'emailRequired': true
-          },
-        };
-        const creditCardPaymentMethod = {
-          supportedMethods: ['basic-card'],
-        };
-        const applePayPaymentMethod = {
-          supportedMethods: ['https://apple.com/apple-pay'],
-          data: {
-            supportedNetworks: [
-              'amex', 'discover', 'masterCard', 'visa'
-            ],
-            total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
-            merchantCapabilities: ['supports3DS'],
-            countryCode: 'US',
-            currencyCode: 'USD',
-            version: 3,
-            validationEndpoint: 'https://api.wickeyappstore.com/bluesnap/wallet/',
-            merchantIdentifier: this.merchantID
-          }
-        };
-        const supportedPaymentMethods = <PaymentMethodData[]>[
-          creditCardPaymentMethod,
-          googlePayPaymentMethod,
-          applePayPaymentMethod
-        ];
-        const _paymentDetails = {
-          displayItems: [{ label: _inapp.title, amount: { currency: 'USD', value: _inapp.price.toString() } }],
-          total: { label: 'Total', amount: { currency: 'USD', value: _inapp.price.toString() } }
-        };
-        // Options isn't required.
-        const options = { requestPayerEmail: true, requestPayerName: true };
-        // Use Payment Request API
-        const request = new PaymentRequest(
-          supportedPaymentMethods,
-          _paymentDetails,
-          options
-        );
-
-        // Call when you wish to show the UI to the user.
-        let response;
-        request.show()
-          .then(result => {
-            response = result;
-            console.log('PaymentRequest RETURN:', response);
-            if (response.methodName === 'https://apple.com/apple-pay') {
-              console.log('PaymentRequest APPLEPAY');
-              // Apple Pay JS case
-              console.log('PaymentRequest applePayRaw:', response.applePayRaw);
-            } else {
-              console.log('PaymentRequest OTHER');
-            }
-            response.complete('success');
-            // return response.complete();
-            resolve(true);
-          }).catch(e => {
-            console.warn('PaymentRequest error', e);
-            if (response) {
-              response.complete('fail');
-            }
-            if (e && e.toString().includes('cancel')) {
-              console.log('PaymentRequest cancelled');
-              reject('cancelled');
-            } else {
-              reject('payment failed');
-            }
+      const bluesnap = (<any>window).bluesnap;
+      // (<any>window).PaymentRequest
+      if (bluesnap.isSupported('PaymentRequest')) {
+        this.apiConnectionService.getBluesnapToken().subscribe(res => {
+          let paymentRequest;
+          bluesnap.paymentRequest(res.token, instance => {
+            console.log('paymentRequest', instance);
+            paymentRequest = instance;
+            // const googlePayPaymentMethod = {
+            //   supportedMethods: ['https://google.com/pay'],
+            //   data: {
+            //     'environment': 'TEST',
+            //     'apiVersion': 1,
+            //     'allowedPaymentMethods': ['CARD', 'TOKENIZED_CARD'],
+            //     'paymentMethodTokenizationParameters': {
+            //       'tokenizationType': 'PAYMENT_GATEWAY',
+            //       // Check with your payment gateway on the parameters to pass.
+            //       'parameters': {}
+            //     },
+            //     'cardRequirements': {
+            //       'allowedCardNetworks': ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
+            //       'billingAddressRequired': true,
+            //       'billingAddressFormat': 'MIN'
+            //     },
+            //     'emailRequired': true
+            //   },
+            // };
+            const creditCardPaymentMethod = {
+              supportedMethods: ['basic-card'],
+              data: {
+                supportedNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
+                supportedTypes: ['debit', 'credit'],
+                emailRequired: true
+              }
+            };
+            // const applePayPaymentMethod = {
+            //   supportedMethods: ['https://apple.com/apple-pay'],
+            //   data: {
+            //     supportedNetworks: [
+            //       'amex', 'discover', 'masterCard', 'visa'
+            //     ],
+            //     total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
+            //     merchantCapabilities: ['supports3DS'],
+            //     countryCode: 'US',
+            //     currencyCode: 'USD',
+            //     version: 3,
+            //     validationEndpoint: 'https://api.wickeyappstore.com/bluesnap/wallet/',
+            //     merchantIdentifier: this.merchantID
+            //   }
+            // };
+            const _supportedPaymentMethods = <PaymentMethodData[]>[
+              creditCardPaymentMethod,
+              // googlePayPaymentMethod,
+              // applePayPaymentMethod
+            ];
+            const _paymentDetails = {
+              displayItems: [{
+                label: _inapp.title,
+                amount: { currency: 'USD', value: _inapp.price.toString() }
+              }],
+              total: { label: 'Total', amount: { currency: 'USD', value: _inapp.price.toString() } }
+            };
+            // Options isn't required.
+            const _options = { requestPayerEmail: true, requestPayerName: true };
+            const _detailsObj = {
+              'details': _paymentDetails,
+              'options': _options,
+              'methodData': _supportedPaymentMethods
+            };
+            // Use Payment Request API
+            paymentRequest.init(_detailsObj, 'PaymentRequest').then(() => {
+              console.log('paymentRequest init');
+              paymentRequest.on('shippingaddresschange', function (ev) {
+                console.log('shippingaddresschange', ev);
+              });
+              // Initialization was successful
+              paymentRequest.canMakePayment().then(result => {
+                if (result) {
+                  // The shopper has a supported card, show the Payment Request button
+                  paymentRequest.show()
+                    .then(ev => {
+                      console.log('paymentRequest.showButton confirmed', ev);
+                      // The shopper confirmed the purchase
+                      // Send ev.token to your server and process the transaction...
+                      if (!this._userObj.first_name) {
+                        const _idx = ev.billingAddress.recipient.lastIndexOf(' ');
+                        this._userObj.first_name = ev.billingAddress.recipient.substring(0, _idx);
+                        this._userObj.last_name = ev.billingAddress.recipient.substring(_idx);
+                      }
+                      // TODO: Get email from ev
+                      // this._userObj.email = ev.contactInfo.email
+                      this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, this._userObj.email,
+                      this._userObj.first_name, this._userObj.last_name, ev.billingAddress.postalCode, undefined,
+                      ev.billingAddress.addressLine, ev.billingAddress.city, ev.billingAddress.region,
+                      ev.billingAddress.country)
+                        .subscribe(purchres => {
+                          ev.complete('success');
+                          resolve(true);
+                        }, (error) => {
+                          ev.complete('fail');
+                          reject('payment failed');
+                        });
+                    }).catch(err => {
+                      // The shopper closed the payment UI
+                      console.log('paymentRequest.showButton cancel', err);
+                      reject('canceled');
+                    });
+                } else {
+                  console.log('no payment credit card available', result);
+                  // The shopper doesn't have a supported card. Set up traditional checkout flow
+                  reject('no payment credit card available');
+                }
+              }).catch(err => {
+                console.log(err);
+                // Either call showButton() or fallback to traditional checkout flow
+                reject('payment method not available');
+              });
+            }).catch((err) => {
+              // Initialization failed
+              console.log(err);
+              reject('payment initialization failed');
+            });
           });
+        }, (error) => {
+          console.log(`UserService: getBluesnapToken: error:`, error);
+          reject('payment auth failed');
+        });
       } else {
         // Fallback to traditional checkout
         this.dialog.open(WasAlert, {
