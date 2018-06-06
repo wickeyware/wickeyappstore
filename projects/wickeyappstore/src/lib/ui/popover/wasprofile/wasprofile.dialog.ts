@@ -22,6 +22,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class WasProfile {
   /**@ignore*/
   public loggedin = false;
+  /** @ignore */
+  public version = '2.12.3';
   /**@ignore*/
   constructor(
     public userService: UserService,
@@ -31,7 +33,6 @@ export class WasProfile {
     dialogRef.disableClose = false; // close by clicking off by default
 
     this.userService.loginChange.subscribe((_isLogged: boolean) => {
-      console.log('USER LOADED:', this.userService.userObject.user_id);
       this.loggedin = _isLogged;
     });
 

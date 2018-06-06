@@ -458,6 +458,8 @@ this.dialog.open(WasProfile);</code></pre></div>
         &lt;br&gt;
         &lt;p&gt;You are logged in.&lt;/p&gt;
         &lt;p&gt;Your save data is securely saving to the cloud.&lt;/p&gt;
+        &lt;br&gt;
+        &lt;p&gt;&lt;i&gt;v{{version}}&lt;/i&gt;&lt;/p&gt;
       &lt;/mat-card-content&gt;
     &lt;/mat-card&gt;
   &lt;/div&gt;
@@ -478,12 +480,15 @@ this.dialog.open(WasProfile);</code></pre></div>
     &lt;p&gt;*This only works on the same physical device&lt;/p&gt;
     &lt;p&gt;**Deleting cookies will log you out&lt;/p&gt;
     &lt;br&gt;
+    &lt;p&gt;&lt;i&gt;v{{version}}&lt;/i&gt;&lt;/p&gt;
+    &lt;br&gt;
   &lt;/div&gt;
   &lt;div mat-dialog-actions&gt;
     &lt;button mat-raised-button (click)&#x3D;&quot;onNoClick()&quot;&gt;Okay&lt;/button&gt;
     &lt;button mat-raised-button color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;opensso()&quot;&gt;Login&lt;/button&gt;
   &lt;/div&gt;
-&lt;/ng-template&gt;</code></pre>
+&lt;/ng-template&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -511,7 +516,7 @@ this.dialog.open(WasProfile);</code></pre></div>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">WickeyAppStore SSO</div><div *ngIf="loggedin;else notloggedin">  <div mat-dialog-content>    <mat-card style="margin:2px 0 2px 0;">      <mat-card-header>        <div mat-card-avatar>          <mat-icon color="primary" style="font-size:40px;">person_pin</mat-icon>        </div>        <mat-card-title>Your account email is:</mat-card-title>        <mat-card-subtitle *ngIf="(userService.user | async) as _usr">{{_usr.email}}</mat-card-subtitle>      </mat-card-header>      <mat-card-content>        <br>        <p>You are logged in.</p>        <p>Your save data is securely saving to the cloud.</p>      </mat-card-content>    </mat-card>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="warn" (click)="opensso()">Logout</button>  </div></div><ng-template #notloggedin>  <div mat-dialog-content>    <h3>WAS SSO login?</h3>    <br>    <p>WickeyAppStore apps use SSO (single sign on) for security and ease of use.</p>    <p>When you login it will email you a 6 digit token, which you then verify in the app.</p>    <br>    <p>Then, all other WickeyAppStore apps will *auto-magically be logged in.</p>    <br>    <p>*This only works on the same physical device</p>    <p>**Deleting cookies will log you out</p>    <br>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="primary" (click)="opensso()">Login</button>  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">WickeyAppStore SSO</div><div *ngIf="loggedin;else notloggedin">  <div mat-dialog-content>    <mat-card style="margin:2px 0 2px 0;">      <mat-card-header>        <div mat-card-avatar>          <mat-icon color="primary" style="font-size:40px;">person_pin</mat-icon>        </div>        <mat-card-title>Your account email is:</mat-card-title>        <mat-card-subtitle *ngIf="(userService.user | async) as _usr">{{_usr.email}}</mat-card-subtitle>      </mat-card-header>      <mat-card-content>        <br>        <p>You are logged in.</p>        <p>Your save data is securely saving to the cloud.</p>        <br>        <p><i>v{{version}}</i></p>      </mat-card-content>    </mat-card>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="warn" (click)="opensso()">Logout</button>  </div></div><ng-template #notloggedin>  <div mat-dialog-content>    <h3>WAS SSO login?</h3>    <br>    <p>WickeyAppStore apps use SSO (single sign on) for security and ease of use.</p>    <p>When you login it will email you a 6 digit token, which you then verify in the app.</p>    <br>    <p>Then, all other WickeyAppStore apps will *auto-magically be logged in.</p>    <br>    <p>*This only works on the same physical device</p>    <p>**Deleting cookies will log you out</p>    <br>    <p><i>v{{version}}</i></p>    <br>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="primary" (click)="opensso()">Login</button>  </div></ng-template></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasProfile'};

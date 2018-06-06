@@ -59,7 +59,6 @@ export class WasReview {
     this.apiConnectionService.getReviews(
       { 'user_id': _user_id }
     ).subscribe((_reviews: any) => {
-      console.log('WAS loadReview', _reviews);
       loadingdialogRef.close();
       try {
         this.titleText = _reviews[0].title;
@@ -80,8 +79,6 @@ export class WasReview {
   }
   /**@ignore*/
   sendReview(): void {
-    console.log('send the review');
-
     // Need to get the stars, title, and text
     const _title = this.titleText;
     const _text = this.reviewText;
@@ -93,14 +90,12 @@ export class WasReview {
     });
     this.userService.createReview(_title, _text, _rating)
       .subscribe((usr) => {
-        console.log('WAS leaveReview: RETURN:', usr);
         loadingdialogRef.close();
         this.dialogRef.close(); // close the window
       }, (error) => {
         loadingdialogRef.close();
         // <any>error | this casts error to be any
         // NOTE: Can handle error return messages
-        console.log('WAS leaveReview: RETURN ERROR:', error);
         this.dialog.open(WasAlert, {
           data: { title: 'Attention', body: error }
         });

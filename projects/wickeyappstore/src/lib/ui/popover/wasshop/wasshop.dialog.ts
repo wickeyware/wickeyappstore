@@ -59,7 +59,6 @@ export class WasShop {
         if (this.loggedin === false) {
           //  First time marked logged in
           // Try to load an ad.
-          console.log('person is logged in');
         }
         this.loggedin = true;
         return true;
@@ -84,7 +83,6 @@ export class WasShop {
   }
   /**@ignore*/
   openedFreeCoins() {
-    console.log('openedFreeCoins');
     if (this.loggedin === true) {
       if (this.vastAdTag) {
         this.loadAd();
@@ -93,16 +91,17 @@ export class WasShop {
   }
   /**@ignore*/
   closedFreeCoins() {
-    console.log('closedFreeCoins');
     if (this.vastAdTag) {
       this.adnotready = true;
-      this.vastplayer.stopAd();
+      if (this.vastplayer) {
+        this.vastplayer.stopAd();
+      }
     }
   }
   /**@ignore*/
   createVastplayer_1() {
     if (this.vastplayer === undefined) {
-      console.log('create vast player');
+      // console.log('create vast player');
       this.vastplayer = new (<any>window).VASTPlayer(document.getElementById('wasadcontainer'));
       this.vastplayer.once('AdStarted', () => {
         // console.log('Ad started', this.vastAdID);
@@ -113,7 +112,7 @@ export class WasShop {
         this.userService.adVideoEnd(this.vastAdID);
       });
     } else {
-      console.log('reuse vast player'); // BUT have to reset these listeners else they will not happen
+      // console.log('reuse vast player'); // BUT have to reset these listeners else they will not happen
       this.vastplayer.once('AdStarted', () => {
         // console.log('Ad STARTED', this.vastAdID);
         this.userService.adVideoStart(this.vastAdID);
@@ -135,11 +134,8 @@ export class WasShop {
       this.adnotready = false;
       this.addBtnText = 'Watch Ad';
       this.ref.detectChanges();
-      console.log('an ad is ready');
       // TODO: Get currently playing video ID, I don't know if this is correct or just the first ad ID.
       this.vastAdID = _vastobj.vast.ads[0].id;
-      console.log('print out the ad');
-      console.log(_vastobj.vast.ads);
     }).catch((reason) => {
       console.log('watchAd error: ', reason);
       const noAdsError = /AdError 1009/gi; // g=global, i=case insensitive
@@ -148,15 +144,12 @@ export class WasShop {
 
       const errorstring = String(reason);
       if (errorstring.search(noAdsError) > -1 || errorstring.search(noAds2Error) > -1) {
-        console.log('No Ad available');
         this.addBtnText = 'No Ads. Check back later!';
         this.ref.detectChanges();
       } else if (errorstring.search(genericError) > -1) {
-        console.log('Request has been terminated');
         this.addBtnText = 'Request terminated. Check later';
         this.ref.detectChanges();
       } else {
-        console.log('Unknown Error');
         this.addBtnText = 'Unknown error. Please try later';
         this.ref.detectChanges();
       }
@@ -165,11 +158,9 @@ export class WasShop {
 
   /**@ignore*/
   watchAd() {
-    console.log('showVideoAd');
     this.addBtnText = 'Ad Playing...';
     this.vastplayer.startAd();
     this.vastplayer.once('AdStopped', () => {
-      console.log('Ad finished playback!');
       this.addBtnText = 'YOU GOT A COIN!';
       this.ref.detectChanges();
       setTimeout(() => {

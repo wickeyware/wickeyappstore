@@ -249,7 +249,7 @@ export class UserService {
             });
           }
           // normal load
-          console.log('UserService loadUser: load user from db', _localUser);
+          // console.log('UserService loadUser: load user from db', _localUser);
           this._createNewUser = false;
           this.updateUser({});
         } else {
@@ -271,7 +271,7 @@ export class UserService {
           this._inappsObj = value as [Inapp];
           this.pushInappSubscribers(this._inappsObj);
           // normal load
-          console.log('UserService loadInapps: load inapps from db', this._inappsObj);
+          // console.log('UserService loadInapps: load inapps from db', this._inappsObj);
           this.getInapps();
         } else {
           this.getInapps();
@@ -289,7 +289,7 @@ export class UserService {
           this._freebieSettingsObj = value;
           this._freebieSettings.next(this._freebieSettingsObj);
           // normal load
-          console.log('UserService loadFreebieSettings: load freebie settings from db', this._freebieSettingsObj);
+          // console.log('UserService loadFreebieSettings: load freebie settings from db', this._freebieSettingsObj);
         }
       }).catch(this.handleError);
   }
@@ -394,7 +394,7 @@ export class UserService {
         }
       }
     }
-    console.log('============UserService updateUser=========', this._userObj);
+    // console.log('============UserService updateUser=========', this._userObj);
     // NOTE: Set params to current user, then update to sent in userParams, if any exist
     const apiobject = {
       user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null, username: null,
@@ -426,14 +426,12 @@ export class UserService {
     const _obs = this.apiConnectionService.createPerson(apiobject);
     _obs.subscribe((res) => {
       if (res.status === 201) {
-        console.log('UserService: updateUser: NEW RETURN:', res);
         // On new user/recover
         // UPDATE USER //
         this.localStorageService.cookie_write_multi('was_user_id', res.user_id);
         this.pushSubscribers(res);
         this.saveLocal('was-user', res);
       } else {
-        console.log('UserService: updateUser: RETURN:', res);
         // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
         if (res.email && res.user_id) {
           this._userObj.user_id = res.user_id;
@@ -506,12 +504,12 @@ export class UserService {
       console.log('UserService updateUserPushId: CHANGE:', push_id);
       this.updateUser({ 'push_id': push_id })
         .subscribe((usr) => {
-          console.log('UserService updateUserPushId: RETURN:', usr);
+          // console.log('UserService updateUserPushId: RETURN:', usr);
         }, (error) => {
-          console.log('UserService updateUserPushId: RETURN ERROR:', error);
+          // console.log('UserService updateUserPushId: RETURN ERROR:', error);
         });
     } else {
-      console.log('UserService updateUserPushId: NO CHANGE:', push_id);
+      // console.log('UserService updateUserPushId: NO CHANGE:', push_id);
     }
   }
   /**
@@ -527,17 +525,17 @@ export class UserService {
       console.log('UserService updateUsername: CHANGE:', username);
       _obs = this.updateUser({ 'username': username });
       _obs.subscribe((usr) => {
-        console.log('UserService updateUsername: RETURN:', usr);
+        // console.log('UserService updateUsername: RETURN:', usr);
         if (this.checkIfValue(usr, 'username')) {
           this._userObj.username = usr.username;
           this.pushSubscribers(this._userObj);
           this.saveLocal('was-user', this._userObj);
         }
       }, (error) => {
-        console.log('UserService updateUsername: RETURN ERROR:', error);
+        // console.log('UserService updateUsername: RETURN ERROR:', error);
       });
     } else {
-      console.log('UserService updateUsername: NO CHANGE:', username);
+      // console.log('UserService updateUsername: NO CHANGE:', username);
       _obs = observableOf(null);
     }
     return _obs;
@@ -551,7 +549,6 @@ export class UserService {
    * @ignore
    */
   setPassword(password: string, new_password?: string): Observable<any> {
-    console.log('============UserService setPassword=========');
     const _obs = this.apiConnectionService.authPerson(this._userObj.user_id, password, new_password);
     _obs.subscribe((res) => {
       this._userObj.secured = true;
@@ -572,7 +569,6 @@ export class UserService {
    * @ignore
    */
   sendToken(userParams: UserParams): Observable<any> {
-    console.log('============UserService sendToken=========');
     this._userObj.token_email = userParams.token_email;
     this.pushSubscribers(this._userObj);
     this.saveLocal('was-user', this._userObj);
@@ -604,10 +600,8 @@ export class UserService {
    * @ignore
    */
   verifyToken(userParams: UserParams): Observable<any> {
-    console.log('============UserService verifyToken=========');
     const _obs = this.apiConnectionService.verifyPerson(this._userObj.token_email, this._userObj.user_id, userParams.token);
     _obs.subscribe((res) => {
-      console.log('WASlogin: verifyPerson RETURN:', res);
       // Set logging in process off //
       this._userObj.logging_in = false;
       this._userObj.user_id = res.user_id;
@@ -675,11 +669,9 @@ export class UserService {
    * @ignore
    */
   createReview(_title: string, _text: string, _rating: number): Observable<any> {
-    console.log('============UserService createReview=========');
     const _review = { 'user_id': this._userObj.user_id, 'title': _title, 'text': _text, 'rating': _rating };
     const _obs = this.apiConnectionService.setReview(_review);
     _obs.subscribe((res) => {
-      console.log('UserService: createReview RETURN:', res);
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         this._userObj.user_id = res.user_id;
@@ -744,7 +736,6 @@ export class UserService {
   createPurchase(_purchase_id: number, _receipt: string, _amount: number, _email?: string,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string,
     _address?: any, _city?: string, _state?: string, _country?: string): Observable<any> {
-    console.log('============UserService createPurchase=========');
     const _purchase = {
       'user_id': this._userObj.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
       'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
@@ -756,7 +747,6 @@ export class UserService {
     }
     const _obs = this.apiConnectionService.setPurchase(_purchase);
     _obs.subscribe((res) => {
-      console.log('UserService: createPurchase RETURN:', res);
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         this._userObj.user_id = res.user_id;
@@ -863,10 +853,8 @@ export class UserService {
   * @ignore
   */
   getInapps(): Observable<any> {
-    console.log('============UserService getInapps=========');
     const _obs = this.apiConnectionService.getInapps({ user_id: this._userObj.user_id });
     _obs.subscribe((res) => {
-      console.log('UserService: getInapps RETURN:', res);
       this._inappsObj = res.inapps;
       this.pushInappSubscribers(this._inappsObj);
       this.saveLocal('was-inapps', this._inappsObj);
@@ -890,7 +878,6 @@ export class UserService {
    * @returns The token object.
    */
   getBluesnapWallet(validationURL: string): Observable<any> {
-    console.log('============UserService getBluesnapWallet=========');
     const currentUser = this._userObj;
     const _obs = this.apiConnectionService.getBluesnapWallet(validationURL);
     return _obs;
@@ -899,12 +886,10 @@ export class UserService {
   * @ignore
   */
   getBluesnapShopper(): Observable<any> {
-    console.log('============UserService getBluesnapShopper=========');
     let _obs;
     if (this._userObj.bs_id) {
       _obs = this.apiConnectionService.getBluesnapShopper(this._userObj.bs_id);
       _obs.subscribe((res) => {
-        console.log('UserService: getBluesnapShopper: RETURN:', res);
         this._userObj.bs_id = res.token;
         // UPDATE USER //
         this.pushSubscribers(this._userObj);
@@ -927,10 +912,9 @@ export class UserService {
   * @ignore
   */
   adVideoStart(_video_id: string): Observable<any> {
-    console.log('============UserService adVideoStart=========');
     const _obs = this.apiConnectionService.adVideoStart(this._userObj.user_id, _video_id);
     _obs.subscribe((res) => {
-      console.log('UserService: adVideoStart RETURN:', res);
+      // console.log('UserService: adVideoStart RETURN:', res);
     }, (error) => {
       this.dialog.open(WasAlert, {
         data: { title: 'Attention', body: error, buttons: ['Ok', 'Cancel'] }
@@ -943,10 +927,9 @@ export class UserService {
   * @ignore
   */
   adVideoEnd(_video_id: string): Observable<any> {
-    console.log('============UserService adVideoEnd=========');
     const _obs = this.apiConnectionService.adVideoEnd(this._userObj.user_id, _video_id);
     _obs.subscribe((res) => {
-      console.log('UserService: adVideoEnd RETURN:', res);
+      // console.log('UserService: adVideoEnd RETURN:', res);
       // NOTE: If a user has an email, the account was either verified by token or doesn't belong to someone else.
       if (res.email && res.user_id) {
         this._userObj.user_id = res.user_id;
@@ -975,7 +958,6 @@ export class UserService {
    * @param _keys [string]: A list of keys to get from the key val store.
    */
   getStore(_keys: string[]): Observable<{}> {
-    console.log('============UserService getStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.getWASStore(_apiobject);
     _obs.subscribe((res) => {
@@ -992,7 +974,6 @@ export class UserService {
    * @param _was_data {key:val, ...}: A key val dict of data to save.
    */
   setStore(_was_data: {}): Observable<any> {
-    console.log('============UserService setStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'was_data': _was_data };
     const _obs = this.apiConnectionService.setWASStore(_apiobject);
     _obs.subscribe((res) => {
@@ -1009,7 +990,6 @@ export class UserService {
    * @param _keys [string]: A list of keys to delete from the key val store.
    */
   deleteStore(_keys: string[]): Observable<any> {
-    console.log('============UserService deleteStore=========');
     const _apiobject = { 'user_id': this._userObj.user_id, 'keys': _keys.join(',') };
     const _obs = this.apiConnectionService.deleteWASStore(_apiobject);
     _obs.subscribe((res) => {
@@ -1290,17 +1270,19 @@ export class UserService {
                       console.log('paymentRequest.showButton confirmed', ev);
                       // The shopper confirmed the purchase
                       // Send ev.token to your server and process the transaction...
-                      if (!this._userObj.first_name) {
-                        const _idx = ev.billingAddress.recipient.lastIndexOf(' ');
-                        this._userObj.first_name = ev.billingAddress.recipient.substring(0, _idx);
-                        this._userObj.last_name = ev.billingAddress.recipient.substring(_idx);
+                      const _idx = ev.billingAddress.recipient.lastIndexOf(' ');
+                      let _fname;
+                      let _lname;
+                      if (_idx === -1) {
+                        _fname =  ev.billingAddress.recipient;
+                        _lname =  '';
+                      } else {
+                        _fname =  ev.billingAddress.recipient.substring(0, _idx);
+                        _lname =  ev.billingAddress.recipient.substring(_idx + 1);
                       }
-                      // TODO: Get email from ev
-                      // this._userObj.email = ev.contactInfo.email
-                      this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, this._userObj.email,
-                      this._userObj.first_name, this._userObj.last_name, ev.billingAddress.postalCode, undefined,
-                      ev.billingAddress.addressLine, ev.billingAddress.city, ev.billingAddress.region,
-                      ev.billingAddress.country)
+                      this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, ev.payerEmail,
+                        _fname, _lname, ev.billingAddress.postalCode, undefined, ev.billingAddress.addressLine,
+                        ev.billingAddress.city, ev.billingAddress.region, ev.billingAddress.country)
                         .subscribe(purchres => {
                           ev.complete('success');
                           resolve(true);

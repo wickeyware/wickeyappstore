@@ -78,7 +78,6 @@ export class ReviewsComponent implements OnInit {
   }
   // this animates the buttonClick Over
   buttonClickAnimationDone(event: AnimationEvent) {
-    console.log('buttonClickAnimationDone', this.clickState , this.overlayState);
     if (this.clickState === 'active') {
       this.clickState = 'inactive'; // make the button animate back
       this.changeReviewState.emit('open');

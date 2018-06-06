@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.1...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.3...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.12.3](https://github.com/wickeyware/wickeyappstore/compare/2.12.2...2.12.3) - 2018-06-05
+
+### Fixed
+
+* **PaymentRequest** Get payer email and first and last name from Payment Request object.
+* **PaymentRequest** Show spinner on payment until all processing has completed.
+* **Ads** Fix error if ad player did not initialize.
+* **DEBUG** Remove un-needed console.log statements.
+* **WasProfile** Show version in profile popup.
+* **WASjs** Return UserService and WasDataService even on no internet.
+* **docs** Recompile the documentation.
 
 ## [2.12.2](https://github.com/wickeyware/wickeyappstore/compare/2.12.1...2.12.2) - 2018-06-01
 

@@ -31,6 +31,10 @@ export class WickeyAppStoreComponent {
     this.userService.loginChange.subscribe((_isLogged: boolean) => {
       this.userServiceOut.emit(this.userService);
       this.wasDataServiceOut.emit(this.wasDataService);
+    }, (error) => {
+      console.warn('WASjs UserService and WasDataService locally loaded, so they might not work work correctly');
+      this.userServiceOut.emit(this.userService);
+      this.wasDataServiceOut.emit(this.wasDataService);
     });
   }
 

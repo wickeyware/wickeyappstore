@@ -2,6 +2,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
+import { WasUp } from '../wasup/wasup.dialog';
 /**
  * Directly open a purchase page with WasPay
  *
@@ -68,8 +69,11 @@ export class WasPay {
           data: { title: 'Already Owned', body: 'You already own: ' + this.data.title, buttons: ['Cool'] }
         });
       } else {
+        const loadingdialogRef = this.dialog.open(WasUp, {
+          width: '300px', data: { title: 'Preparing Payment', icon: 'spinner', body: 'Preparing...', stayopen: true}});
         this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
           if (_goodPurchase) {
+            loadingdialogRef.close();
             this.purchaseSuccess = true;
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
@@ -77,6 +81,7 @@ export class WasPay {
               this.dialogRef.close(true);
             });
           } else {
+            loadingdialogRef.close();
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
@@ -85,6 +90,7 @@ export class WasPay {
           }
         }).catch((_failReason) => {
           console.error('showWebPay:error return:', _failReason);
+          loadingdialogRef.close();
           if (_failReason !== 'cancelled') {
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }

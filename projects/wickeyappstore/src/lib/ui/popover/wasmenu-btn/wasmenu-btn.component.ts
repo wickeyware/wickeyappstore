@@ -41,7 +41,7 @@ export class WasMenuBtn {
       console.log('VastPlayer script loaded');
     });
     loadScriptWithCallback('https://ws.bluesnap.com/source/web-sdk/bluesnap.js', () => {
-      console.log('OneSignal script loaded');
+      console.log('BlueSnap script loaded');
     });
     function isLoadedScript(_url) {
       return document.querySelectorAll('[src="' + _url + '"]').length > 0;
