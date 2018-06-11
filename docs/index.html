@@ -463,29 +463,23 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
   &lt;script type=&quot;text/javascript&quot; src=&quot;elements/wickeyappstore.js&quot;&gt;&lt;/script&gt;
     &lt;script&gt;
     const wickeyappstore = document.querySelector(&#39;wickey-appstore&#39;);
-
-    var userService = null;
-    var wasDataService = null;
-    wickeyappstore.addEventListener(&#39;userServiceOut&#39;, (event) =&gt; {
-      userService = event.detail;
-      userService.user.subscribe(usr =&gt; {
-        console.log(&#39;userServiceOut user.subscribe&#39;, usr);
-      });
-      // Check if purchased (where 10 is your purchase item id).
-      userService.checkIfPurchased(10).subscribe(isPurch =&gt; {
-        console.log(&#39;checkIfPurchased&#39;, isPurch);
-      });
+    wickeyappstore.addEventListener(&#39;open&#39;, (event) =&gt; {
+      console.log(&#39;WAS button opened&#39;);  // can pause game here.
     });
-    wickeyappstore.addEventListener(&#39;wasDataServiceOut&#39;, (event) =&gt; {
-      wasDataService = event.detail;
-      wasDataService.restore().subscribe(mydata =&gt; {
-        console.log(&#39;wasDataService.restore&#39;, mydata);
-        // WasDataService is now loaded and restored (ready for use).
-        // wasDataService.load(&#39;highScore&#39;).subscribe(_score =&gt; {});
-        // wasDataService.save(&#39;highScore&#39;, 3000);
-        // Then after the session (or game level), persist to cloud
-        // wasDataService.persist();
-      });
+    window.WAS.userService.user.subscribe(usr =&gt; {
+      console.log(&#39;userServiceOut user.subscribe&#39;, usr);
+    });
+    // Check if purchased (where 10 is your purchase item id).
+    window.WAS.userService.checkIfPurchased(10).subscribe(isPurch =&gt; {
+      console.log(&#39;checkIfPurchased&#39;, isPurch);
+    });
+    window.WAS.dataService.restore().subscribe(mydata =&gt; {
+      console.log(&#39;wasDataService.restore&#39;, mydata);
+      // WasDataService is now loaded and restored (ready for use).
+      // window.WAS.dataService.get(&#39;highScore&#39;);
+      // window.WAS.dataService.save(&#39;highScore&#39;, 3000);
+      // Then after the session (or game level), persist to cloud
+      // window.WAS.dataService.persist();
     });
   &lt;/script&gt;
 &lt;/body&gt;

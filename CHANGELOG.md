@@ -5,9 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.3...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.4...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.12.4](https://github.com/wickeyware/wickeyappstore/compare/2.12.3...2.12.4) - 2018-06-11
+
+### Fixed
+
+* **WASjs** Set dataService and userService in WAS object on window (e.g. `window.WAS.dataService`).
+* **WASjs** Remove event emitter userServiceOut.
+* **WASjs** Remove event emitter wasDataServiceOut.
+* **WASjs** Update to latest patch of Angular.
+* **docs** Recompile the documentation.
 
 ## [2.12.3](https://github.com/wickeyware/wickeyappstore/compare/2.12.2...2.12.3) - 2018-06-05
 

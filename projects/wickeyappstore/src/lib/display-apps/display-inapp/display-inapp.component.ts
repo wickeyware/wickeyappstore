@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WasPay } from '../../ui/popover/waspay/waspay.dialog';
 import { WasAlert } from '../../ui/popover/wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef } from '@angular/material';
