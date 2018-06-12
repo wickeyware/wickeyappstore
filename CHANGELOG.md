@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.4...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.5...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.12.5](https://github.com/wickeyware/wickeyappstore/compare/2.12.4...2.12.5) - 2018-06-12
+
+### Fixed
+
+* **WASjs** Fix error on Chrome 67 - [Angular issue 24390](https://github.com/angular/angular/issues/24390).
 
 ## [2.12.4](https://github.com/wickeyware/wickeyappstore/compare/2.12.3...2.12.4) - 2018-06-11
 
