@@ -43,6 +43,29 @@ export class WasMenuBtn {
     loadScriptWithCallback('https://ws.bluesnap.com/source/web-sdk/bluesnap.js', () => {
       console.log('BlueSnap script loaded');
     });
+    loadLinkWithCallback('https://fonts.googleapis.com/icon?family=Material+Icons', () => {
+      console.log('Material Icons link loaded');
+    });
+    function isLoadedLink(_url) {
+      return document.querySelectorAll('[href="' + _url + '"]').length > 0;
+    }
+    function loadLinkWithCallback(_url, callback) {
+      console.log('Load Material icons');
+      try {
+        if (isLoadedLink(_url)) {
+          console.log(`link alread loaded: ${_url}`);
+        } else {
+          const _link = document.createElement('link');
+          _link.rel = 'stylesheet';
+          _link.href = _url;
+          (<any>_link).onreadystatechange = callback;
+          _link.onload = callback;
+          document.head.appendChild(_link);
+        }
+      } catch (error) {
+        console.error(`Failed to load link: ${_url}`, error);
+      }
+    }
     function isLoadedScript(_url) {
       return document.querySelectorAll('[src="' + _url + '"]').length > 0;
     }
