@@ -7,12 +7,7 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="src/favicon.ico">
-  <!-- PUSH NOTIFICATIONS -->
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-  <!-- Vast Player -->
-  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
-  <!-- Material Icons -->
-  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- WickeyAppStore CSS -->
   <link rel="stylesheet" href="elements/styles.css">
 </head>
@@ -23,32 +18,23 @@
 
   <script>
     const wickeyappstore = document.querySelector('wickey-appstore');
-
-    var userService = null;
-    var wasDataService = null;
-    wickeyappstore.addEventListener('userServiceOut', (event) => {
-      userService = event.detail;
-      userService.user.subscribe(usr => {
-        console.log('userServiceOut user.subscribe', usr);
-      });
-      // Check if purchased (where 10 is your purchase item id).
-      userService.checkIfPurchased(10).subscribe(isPurch => {
-        console.log('checkIfPurchased', isPurch);
-      });
+    wickeyappstore.addEventListener('open', (event) => {
+      console.log('WAS button opened');  // can pause game here.
     });
-    wickeyappstore.addEventListener('wasDataServiceOut', (event) => {
-      wasDataService = event.detail;
-      wasDataService.restore().subscribe(mydata => {
-        console.log('wasDataService.restore', mydata);
-        // WasDataService is now loaded and restored (ready for use).
-        // wasDataService.load('highScore').subscribe(_score => {});
-        // wasDataService.save('highScore', 3000);
-        // Then after the session (or game level), persist to cloud
-        // wasDataService.persist();
-      });
+    window.WAS.userService.user.subscribe(usr => {
+      console.log('userServiceOut user.subscribe', usr);
     });
-    wickeyappstore.addEventListener('open', () => {
-      console.log('WickeyAppStore menu opened');
+    // Check if purchased (where 10 is your purchase item id).
+    window.WAS.userService.checkIfPurchased(10).subscribe(isPurch => {
+      console.log('checkIfPurchased', isPurch);
+    });
+    window.WAS.dataService.restore().subscribe(mydata => {
+      console.log('wasDataService.restore', mydata);
+      // WasDataService is now loaded and restored (ready for use).
+      // window.WAS.dataService.get('highScore');
+      // window.WAS.dataService.save('highScore', 3000);
+      // Then after the session (or game level), persist to cloud
+      // window.WAS.dataService.persist();
     });
   </script>
 </body>
