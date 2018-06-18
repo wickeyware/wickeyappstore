@@ -95,20 +95,7 @@ To install this library, run: (NOTE: Install all dependencies)
 $ npm install wickeyappstore --save
 ```
 
-Link external dependencies in the header of your index.html
-
-```html
-  <!-- WICKEYAPPSTORE -->
-
-  <!-- PUSH NOTIFICATIONS -->
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-  <!-- Vast Player -->
-  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
-  <!-- Material Icons -->
-  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-```
-
-Import Material theme in global styles.css
+Import [Material theme](https://material.angular.io/guide/theming) in global styles.css
 
 ```css
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
@@ -167,19 +154,14 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="src/favicon.ico">
-  <!-- PUSH NOTIFICATIONS -->
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-  <!-- Vast Player -->
-  <script defer src="https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js"></script>
-  <!-- Material Icons -->
-  <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- WickeyAppStore css -->
   <link rel="stylesheet" href="elements/styles.css">
 </head>
 <body>
   <wickey-appstore></wickey-appstore>
   <script type="text/javascript" src="elements/wickeyappstore.js"></script>
-    <script>
+  <script>
     const wickeyappstore = document.querySelector('wickey-appstore');
     wickeyappstore.addEventListener('open', (event) => {
       console.log('WAS button opened');  // can pause game here.
