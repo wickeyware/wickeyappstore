@@ -389,6 +389,8 @@ import { WasDataService } from &#39;WickeyAppStore&#39;;
 constructor(wasDataService: WasDataService) { }
 
 // Restore from cloud/local.
+// NOTE: Can pass in a save conflict mapping function that returns the desired save to keep.
+// onSaveConflict(localSave: any, cloudSave: any) =&gt; any
 this.wasDataService.restore().subscribe(mydata =&gt; {})
 
 // Persist to cloud.
@@ -644,7 +646,7 @@ NOTE: please use sparingly, it can be subject to rate limits.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>restore()</code>
+<code>restore(resolveSaveConflict?: (localSave?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>,cloudSave?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>) => void)</code>
                     </td>
                 </tr>
 
@@ -653,14 +655,51 @@ NOTE: please use sparingly, it can be subject to rate limits.</p>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Restores/Returns the data from the cloud or local db whichever has a newer timestamp.
-NOTE: The data will be in key/val format where val is can be anything json stringifiable</p>
+                            <div class="io-description"><p>Restores/Returns the data from the cloud or local db whichever has a newer timestamp.</p>
+<p>  NOTE: The data will be in key/val format where val is can be anything json stringifiable</p>
 </div>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>resolveSaveConflict</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Map/Filter function.
+If local save and cloud save both exist, choose which one to keep. NOTE: Default: newer copy is chosen.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>

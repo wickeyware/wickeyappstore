@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService, User, WasAlert } from 'wickeyappstore';
+import { UserService, User, WasAlert, WasDataService } from 'wickeyappstore';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -9,9 +9,11 @@ import { MatDialog } from '@angular/material';
 })
 export class AppComponent {
   title = 'WickeyAppStore Demo';
+  public highScore: any;
 
   constructor(
     public userService: UserService,
+    public wasDataService: WasDataService,
     public dialog: MatDialog
   ) {
     // Pushes update on all login status changes (also pushes status on initial load)
@@ -23,10 +25,45 @@ export class AppComponent {
         console.warn('LOGGED OUT');
         // reset progress
       }
-      this.dialog.open(WasAlert, {data: { title: 'Attention', body: `Is user logged in ${_isLogged}` }});
+      // this.dialog.open(WasAlert, {data: { title: 'Attention', body: `Is user logged in ${_isLogged}` }});
     });
+    this.wasDataService.restore(this.onSaveConflict).subscribe(mydata => {
+      console.log('wasDataService.restore', mydata);
+      this.highScore = this.wasDataService.get('highScore');
+      // WasDataService is now loaded and restored (ready for use).
+      // this.wasDataService.get('highScore');
+      // this.wasDataService.save('highScore', 3000);
+      // Then after the session (or game level), persist to cloud
+      // wasDataService.persist();
+    });
+    this.highScore = this.wasDataService.get('highScore');
+    console.log('get highScore', this.highScore);
+    this.wasDataService.save('highScore', 20);
+  }
+  onSaveConflict(localSave: any, cloudSave: any) {
+    let keepSave = localSave;
+    console.log('onSaveConflict: localSave, cloudSave', localSave, cloudSave);
+    if (localSave && cloudSave) {
+      if (cloudSave.highScore > localSave.highScore) {
+        console.log('onSaveConflict: keep cloud');
+        keepSave = cloudSave;
+      }
+    }
+    return keepSave;
   }
   pause() {
     console.log('wasmenu opened, pause game');
+  }
+  getScore() {
+    this.highScore = this.wasDataService.get('highScore');
+    console.log('get highScore', this.highScore);
+  }
+  setScore() {
+    if (this.highScore >= 0) {
+      this.highScore += 1;
+    } else {
+      this.highScore = 0;
+    }
+    this.wasDataService.save('highScore', this.highScore);
   }
 }

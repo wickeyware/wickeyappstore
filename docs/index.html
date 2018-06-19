@@ -363,7 +363,7 @@
 <p>DEMO APP: <a href="https://wickeyappstore.com/app/airhorn">https://wickeyappstore.com/app/airhorn</a> and corresponding repo: <a href="https://github.com/wickeyware/was-tutorial/">https://github.com/wickeyware/was-tutorial/</a></p>
 <p>DEV PORTAL: <a href="https://wickeyappstore.com/app/developer-portal">https://wickeyappstore.com/app/developer-portal</a></p>
 <h2 id="app-store">App Store</h2>
-<p><a href="https://wickeyappstore.com/">https://wickeyappstore.com/</a></p>
+<p><a href="https://wickeyappstore.com/">WickeyAppStore</a></p>
 <h2 id="progressive-web-app-store">Progressive Web App Store</h2>
 <p>WickeyAppStore is the first App Store for <strong>PWA</strong> web-apps. A <strong>PWA</strong> makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web. Reach the next One Billion users with lightweight, platform independant, full featured, web-apps.</p>
 <p>Apps on the WickeyAppStore must meet quality and security requirements:</p>
@@ -379,11 +379,11 @@
 <li><strong>Trust</strong> - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.</li>
 <li><strong>Single Sign On</strong> - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.</li>
 <li><strong>Monetization</strong> - we provide monetization tools including in-app purchases and ads.</li>
-<li><strong>Traffic</strong> - we feature unique and cool apps, and all apps benefit from being under one umbrella. </li>
+<li><strong>Traffic</strong> - we feature unique and cool apps, and all apps benefit from being under one umbrella.</li>
 </ul>
 <h2 id="submit-your-app">Submit your app</h2>
 <p>Create your app in the dev portal and use it to add meta data, in-app purchases, and so on.
-Here&#39;s a link to get started: <a href="https://wickeyappstore.com/app/developer-portal">https://wickeyappstore.com/app/developer-portal</a></p>
+Here&#39;s a link to get started: <a href="https://wickeyappstore.com/app/developer-portal">Developer Portal</a></p>
 <h2 id="quickstart-angular-">QuickStart (Angular)</h2>
 <p>Prerequisite: <a href="https://nodejs.org">nodejs</a> needs to be installed on your pc.</p>
 <p>Clone our starter project Airhorn.</p>
@@ -400,15 +400,7 @@ yarn run start</code></pre></div><p>Now visit <a href="http://localhost:4204">lo
 <div><pre class="line-numbers"><code class="language-bash">npm run build</code></pre></div><div><pre class="line-numbers"><code class="language-bash">yarn run build</code></pre></div><p>The output <code>dist/</code> directory is what will be selected to deploy on: <a href="https://developer.wickeyappstore.com/">developer.wickeyappstore.com</a></p>
 <h2 id="quickstart-manual-angular-integration-">QuickStart (Manual Angular Integration)</h2>
 <p>To install this library, run: (NOTE: Install all dependencies)</p>
-<div><pre class="line-numbers"><code class="language-bash">$ npm install wickeyappstore --save</code></pre></div><p>Link external dependencies in the header of your index.html</p>
-<div><pre class="line-numbers"><code class="language-html">  &lt;!-- WICKEYAPPSTORE --&gt;
-
-  &lt;!-- PUSH NOTIFICATIONS --&gt;
-  &lt;script src=&quot;https://cdn.onesignal.com/sdks/OneSignalSDK.js&quot; async&gt;&lt;/script&gt;
-  &lt;!-- Vast Player --&gt;
-  &lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/vast-player&#64;0.2/dist/vast-player.min.js&quot;&gt;&lt;/script&gt;
-  &lt;!-- Material Icons --&gt;
-  &lt;link async href=&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot; rel=&quot;stylesheet&quot;&gt;</code></pre></div><p>Import Material theme in global styles.css</p>
+<div><pre class="line-numbers"><code class="language-bash">npm install wickeyappstore --save</code></pre></div><p>Import <a href="https://material.angular.io/guide/theming">Material theme</a> in global styles.css</p>
 <div><pre class="line-numbers"><code class="language-css">&#64;import &quot;~&#64;angular/material/prebuilt-themes/indigo-pink.css&quot;;</code></pre></div><p>and then from your Angular <code>AppModule</code>:</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
 import { NgModule } from &#39;&#64;angular/core&#39;;
@@ -449,19 +441,14 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
   &lt;base href=&quot;/&quot;&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
   &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;src/favicon.ico&quot;&gt;
-  &lt;!-- PUSH NOTIFICATIONS --&gt;
-  &lt;script src=&quot;https://cdn.onesignal.com/sdks/OneSignalSDK.js&quot; async&gt;&lt;/script&gt;
-  &lt;!-- Vast Player --&gt;
-  &lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/vast-player&#64;0.2/dist/vast-player.min.js&quot;&gt;&lt;/script&gt;
-  &lt;!-- Material Icons --&gt;
-  &lt;link async href=&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot; rel=&quot;stylesheet&quot;&gt;
+
   &lt;!-- WickeyAppStore css --&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;elements/styles.css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;wickey-appstore&gt;&lt;/wickey-appstore&gt;
   &lt;script type=&quot;text/javascript&quot; src=&quot;elements/wickeyappstore.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
+  &lt;script&gt;
     const wickeyappstore = document.querySelector(&#39;wickey-appstore&#39;);
     wickeyappstore.addEventListener(&#39;open&#39;, (event) =&gt; {
       console.log(&#39;WAS button opened&#39;);  // can pause game here.
@@ -473,7 +460,18 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
     window.WAS.userService.checkIfPurchased(10).subscribe(isPurch =&gt; {
       console.log(&#39;checkIfPurchased&#39;, isPurch);
     });
-    window.WAS.dataService.restore().subscribe(mydata =&gt; {
+    // Example of how to pass in own save conflict mapping function.
+    // Default mapping will choose the newest save.
+    function onSaveConflict(localSave, cloudSave) {
+      let keepSave = localSave;
+      if (localSave &amp;&amp; cloudSave) {
+        if (cloudSave.highScore &gt; localSave.highScore) {
+          keepSave = cloudSave;
+        }
+      }
+      return keepSave;
+    }
+    window.WAS.dataService.restore(onSaveConflict).subscribe(mydata =&gt; {
       console.log(&#39;wasDataService.restore&#39;, mydata);
       // WasDataService is now loaded and restored (ready for use).
       // window.WAS.dataService.get(&#39;highScore&#39;);

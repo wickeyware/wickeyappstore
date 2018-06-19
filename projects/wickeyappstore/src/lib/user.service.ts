@@ -98,7 +98,6 @@ export class UserService {
       }
     });
     this._loginChange.subscribe((_loggedIn: boolean) => {
-      console.log('LOAD INAPPS');
       // Load inapps on all login changes (also ensures user object exists)
       this.loadInapps();
       this.loadFreebieSettings();

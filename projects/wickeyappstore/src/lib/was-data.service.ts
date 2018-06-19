@@ -17,6 +17,8 @@ import { ApiConnectionService } from './api-connection.service';
  * constructor(wasDataService: WasDataService) { }
  *
  * // Restore from cloud/local.
+ * // NOTE: Can pass in a save conflict mapping function that returns the desired save to keep.
+ * // onSaveConflict(localSave: any, cloudSave: any) => any
  * this.wasDataService.restore().subscribe(mydata => {})
  *
  * // Persist to cloud.
@@ -38,6 +40,7 @@ import { ApiConnectionService } from './api-connection.service';
 export class WasDataService {
   private _data: ReplaySubject<any> = new ReplaySubject(1);
   private _dataObj: any;
+  // private resolveSaveFunc: any;
 
   /** @ignore */
   constructor(
@@ -47,6 +50,7 @@ export class WasDataService {
   ) {
     // console.log('%c WasDataService constructor 18', 'background: #222; color: #bada55');
     // this.restore();
+    // this.resolveSaveFunc = this.resolveSaveConflict;
   }
 
   /**
@@ -96,10 +100,38 @@ export class WasDataService {
   }
 
   /**
-   * Restores/Returns the data from the cloud or local db whichever has a newer timestamp.
-   * NOTE: The data will be in key/val format where val is can be anything json stringifiable
+   * Map/Filter function. If local save and cloud save both exist, choose which one to keep.
+   *
+   * @param localSave Local save.
+   * @param cloudSave Cloud save.
    */
-  restore() {
+  private _resolveSaveConflict(localSave: any, cloudSave: any) {
+    let _keepSave = localSave;
+    if (this.userService.checkIfValue(localSave, 'timestamp') && this.userService.checkIfValue(cloudSave, 'timestamp')) {
+      if (localSave.timestamp < cloudSave.timestamp) {
+        _keepSave = cloudSave;
+        // this._data.next(this._dataObj);
+      }
+    } else {
+      console.warn('No timestamp, use server cloud store (current), (cloud)', localSave, cloudSave);
+      _keepSave = cloudSave;
+      // this._data.next(this._dataObj);
+    }
+    return _keepSave;
+  }
+
+  /**
+   * Restores/Returns the data from the cloud or local db whichever has a newer timestamp.
+   *
+   *  NOTE: The data will be in key/val format where val is can be anything json stringifiable
+   *
+   * @param [resolveSaveConflict] Map/Filter function.
+   * If local save and cloud save both exist, choose which one to keep. NOTE: Default: newer copy is chosen.
+   */
+  restore(resolveSaveConflict?: (localSave: any, cloudSave: any) => any) {
+    if (resolveSaveConflict) {
+      this._resolveSaveConflict = resolveSaveConflict;
+    }
     let _myObs: Observable<any>;
     if (this.userService.isLoaded) {
       if (this._dataObj) {
@@ -109,6 +141,7 @@ export class WasDataService {
       }
     } else {
       _myObs = this.userService.loginChange.pipe(map(retVal => retVal), mergeMap(_loggedIn => {
+        console.warn('DataService:restore: User not loaded: pipe loginChange');
         return this.initLoad();
       }), share());
     }
@@ -150,7 +183,7 @@ export class WasDataService {
       this.localStorageService.set('was-cloud', this._dataObj);
       this._data.next(this._dataObj);
     } else {
-      console.warn('WasData not yet initialized', _val);
+      console.warn('WasData not yet initialized:save');
       // TODO: Make this promise/observable based and wait till cloudstore initialized.
     }
   }
@@ -165,6 +198,7 @@ export class WasDataService {
     if (this._dataObj) {
       _obs = observableOf(this._dataObj[_key]);
     } else {
+      console.warn('WasData not yet initialized:load');
       _obs = observableOf(null);
     }
     return _obs;
@@ -179,6 +213,7 @@ export class WasDataService {
     if (this._dataObj) {
       _val = this._dataObj[_key];
     } else {
+      console.warn('WasData not yet initialized:get');
       _val = null;
     }
     return _val;
@@ -195,16 +230,7 @@ export class WasDataService {
     return this.apiConnectionService.getWASStore(_apiobject).pipe(map(res => {
       if (this.userService.checkIfValue(res, 'was-cloud')) {
         const _cloudStore = JSON.parse(res['was-cloud']);
-        if (this.userService.checkIfValue(this._dataObj, 'timestamp') && this.userService.checkIfValue(_cloudStore, 'timestamp')) {
-          if (this._dataObj.timestamp < _cloudStore.timestamp) {
-            this._dataObj = _cloudStore;
-            // this._data.next(this._dataObj);
-          }
-        } else {
-          console.warn('No timestamp, use server cloud store (current)', this._dataObj);
-          this._dataObj = _cloudStore;
-          // this._data.next(this._dataObj);
-        }
+        this._dataObj = this._resolveSaveConflict(this._dataObj, _cloudStore);
       } else {
         console.log('WasDataService: getCloudStore Do not update:', this._dataObj);
       }

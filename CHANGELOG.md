@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.5...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.6...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.12.6](https://github.com/wickeyware/wickeyappstore/compare/2.12.5...2.12.6) - 2018-06-18
+
+### Fixed
+
+* **dependencies** Add missing Material Icons css dependency to head in WasMenuBtn constructor, iff they are not there.
+* **index.html** Fix example of how to use WASjs.
+* **package** Update to latest patch of Angular.
+* **README** Update readme, remove dependencies, link and script, from index.html head.
+* **WasDataService** Add optional map/filter function (passed in restore()) when local and cloud saves conflict. Default saves newer copy.
+* **demo** Add demo of how to use the save conflict in WasDataService.
+* **docs** Recompile the documentation.
 
 ## [2.12.5](https://github.com/wickeyware/wickeyappstore/compare/2.12.4...2.12.5) - 2018-06-12
 

@@ -28,7 +28,18 @@
     window.WAS.userService.checkIfPurchased(10).subscribe(isPurch => {
       console.log('checkIfPurchased', isPurch);
     });
-    window.WAS.dataService.restore().subscribe(mydata => {
+    // Example of how to pass in own save conflict mapping function.
+    // Default mapping will choose the newest save.
+    function onSaveConflict(localSave, cloudSave) {
+      let keepSave = localSave;
+      if (localSave && cloudSave) {
+        if (cloudSave.highScore > localSave.highScore) {
+          keepSave = cloudSave;
+        }
+      }
+      return keepSave;
+    }
+    window.WAS.dataService.restore(onSaveConflict).subscribe(mydata => {
       console.log('wasDataService.restore', mydata);
       // WasDataService is now loaded and restored (ready for use).
       // window.WAS.dataService.get('highScore');

@@ -14,9 +14,11 @@ DEMO APP: https://wickeyappstore.com/app/airhorn and corresponding repo: https:/
 DEV PORTAL: https://wickeyappstore.com/app/developer-portal
 
 ## App Store
-https://wickeyappstore.com/
+
+[WickeyAppStore](https://wickeyappstore.com/)
 
 ## Progressive Web App Store
+
 WickeyAppStore is the first App Store for **PWA** web-apps. A **PWA** makes use of new Web and JavaScript API to deliver an experience similar to a native app on the web. Reach the next One Billion users with lightweight, platform independant, full featured, web-apps.
 
 Apps on the WickeyAppStore must meet quality and security requirements:
@@ -32,12 +34,12 @@ Apps on the WickeyAppStore must meet quality and security requirements:
 * **Trust** - each app is vetted and approved manually.  Only high quality apps are featured on the WickeyAppStore.
 * **Single Sign On** - you do not need to sign into apps you do not know or trust. Your WickeyAppStore SSO is all you need.
 * **Monetization** - we provide monetization tools including in-app purchases and ads.
-* **Traffic** - we feature unique and cool apps, and all apps benefit from being under one umbrella. 
+* **Traffic** - we feature unique and cool apps, and all apps benefit from being under one umbrella.
 
 ## Submit your app
-Create your app in the dev portal and use it to add meta data, in-app purchases, and so on.
-Here's a link to get started: https://wickeyappstore.com/app/developer-portal
 
+Create your app in the dev portal and use it to add meta data, in-app purchases, and so on.
+Here's a link to get started: [Developer Portal](https://wickeyappstore.com/app/developer-portal)
 
 ## QuickStart (Angular)
 
@@ -51,6 +53,7 @@ git clone https://github.com/wickeyware/was-tutorial.git mywasapp
 ```
 
 Change to that directory
+
 ```bash
 cd mywasapp/
 ```
@@ -92,7 +95,7 @@ The output `dist/` directory is what will be selected to deploy on: [developer.w
 To install this library, run: (NOTE: Install all dependencies)
 
 ```bash
-$ npm install wickeyappstore --save
+npm install wickeyappstore --save
 ```
 
 Import [Material theme](https://material.angular.io/guide/theming) in global styles.css
@@ -173,7 +176,18 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
     window.WAS.userService.checkIfPurchased(10).subscribe(isPurch => {
       console.log('checkIfPurchased', isPurch);
     });
-    window.WAS.dataService.restore().subscribe(mydata => {
+    // Example of how to pass in own save conflict mapping function.
+    // Default mapping will choose the newest save.
+    function onSaveConflict(localSave, cloudSave) {
+      let keepSave = localSave;
+      if (localSave && cloudSave) {
+        if (cloudSave.highScore > localSave.highScore) {
+          keepSave = cloudSave;
+        }
+      }
+      return keepSave;
+    }
+    window.WAS.dataService.restore(onSaveConflict).subscribe(mydata => {
       console.log('wasDataService.restore', mydata);
       // WasDataService is now loaded and restored (ready for use).
       // window.WAS.dataService.get('highScore');
