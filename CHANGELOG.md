@@ -9,7 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.12.6](https://github.com/wickeyware/wickeyappstore/compare/2.12.5...2.12.6) - 2018-06-18
+## [2.12.7](https://github.com/wickeyware/wickeyappstore/compare/2.12.6...2.12.7) - 2018-06-20
+
+### Fixed
+
+* **WasDataService** Reload WasData on login change, iff WasData is used.
+* **WasDataService** Save resolved save conflict to local storage.
+* **WASMenuButton** Add aria-label to button.
+* **docs** Recompile the documentation.
+
+## [2.12.6](https://github.com/wickeyware/wickeyappstore/compare/2.12.5...2.12.6) - 2018-06-19
 
 ### Fixed
 

@@ -40,7 +40,8 @@ import { ApiConnectionService } from './api-connection.service';
 export class WasDataService {
   private _data: ReplaySubject<any> = new ReplaySubject(1);
   private _dataObj: any;
-  // private resolveSaveFunc: any;
+  /** Set to true if WasDataService is being/has been used in app. */
+  public isUsed = false;
 
   /** @ignore */
   constructor(
@@ -49,8 +50,23 @@ export class WasDataService {
     private localStorageService: LocalStorageService,
   ) {
     // console.log('%c WasDataService constructor 18', 'background: #222; color: #bada55');
-    // this.restore();
-    // this.resolveSaveFunc = this.resolveSaveConflict;
+    // this.userService.loginChange.subscribe((_isLogged: boolean) => {
+    //   if (this.isUsed === true) {
+    //     // NOTE: This is reloading as it should without this, not sure why, maybe just this subscription being here?
+    //     // console.log('WasDataService:loginChange:getCloudStore');
+    //     // this.getCloudStore().subscribe(_datastore => {
+    //     //   this._updateDataStore(_datastore);
+    //     //   console.log('WasDataService:loginChange:getCloudStore:Return', this._dataObj);
+    //     // });
+    //   }
+    // });
+  }
+  private _updateDataStore(_datastore: any) {
+    this.isUsed = true;
+    this._dataObj = _datastore;
+    this._dataObj['timestamp'] = Date.now();
+    this.localStorageService.set('was-cloud', this._dataObj);
+    this._data.next(this._dataObj);
   }
 
   /**
@@ -146,10 +162,10 @@ export class WasDataService {
       }), share());
     }
     _myObs.subscribe(_datastore => {
-      this._dataObj = _datastore;
-      this._data.next(this._dataObj);
+      this._updateDataStore(_datastore);
     }, (error) => {
       console.warn('WasDataService restore error, use local', this._dataObj);
+      this.isUsed = true;
       this._data.next(this._dataObj);
     });
     return _myObs;
@@ -166,6 +182,7 @@ export class WasDataService {
   /** @ignore */
   @HostListener('window:beforeunload', ['$event'])
   private beforeunloadHandler(event) {
+    console.warn('beforeunloadHandler:persist');
     this.persist();
   }
 
@@ -221,8 +238,6 @@ export class WasDataService {
 
   /**
    * Get cloud data packet.
-   *
-   * @param _keys [string]: A list of keys to get from the key val store.
    * @ignore
    */
   private getCloudStore(): Observable<{}> {
@@ -239,8 +254,6 @@ export class WasDataService {
   }
   /**
    * Set data in the key val store.
-   *
-   * @param _was_data {key:val, ...}: A key val dict of data to save.
    * @ignore
    */
   private setCloudStore(): Observable<any> {
@@ -256,8 +269,6 @@ export class WasDataService {
   }
   /**
    * Delete value(s) from key val store.
-   *
-   * @param _keys [string]: A list of keys to delete from the key val store.
    * @ignore
    */
   private deleteCloudStore(): Observable<any> {

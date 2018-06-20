@@ -1,4 +1,4 @@
-<button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu" (menuOpened)="openEvent()">
+<button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu" (menuOpened)="openEvent()" aria-label="wickey app store menu">
   <div class="icon-large-svg">
     <svg *ngIf="userService.loginChange | async;else notloggedin" viewBox="0 0 50 34" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
       clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">

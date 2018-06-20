@@ -28,7 +28,7 @@ export class AppComponent {
       // this.dialog.open(WasAlert, {data: { title: 'Attention', body: `Is user logged in ${_isLogged}` }});
     });
     this.wasDataService.restore(this.onSaveConflict).subscribe(mydata => {
-      console.log('wasDataService.restore', mydata);
+      console.log('demo:wasDataService.restore', mydata);
       this.highScore = this.wasDataService.get('highScore');
       // WasDataService is now loaded and restored (ready for use).
       // this.wasDataService.get('highScore');
@@ -44,7 +44,19 @@ export class AppComponent {
     let keepSave = localSave;
     console.log('onSaveConflict: localSave, cloudSave', localSave, cloudSave);
     if (localSave && cloudSave) {
-      if (cloudSave.highScore > localSave.highScore) {
+      let _cHscore;
+      let _lHscore;
+      if (cloudSave.hasOwnProperty('highScore') && cloudSave['highScore'] !== undefined && cloudSave['highScore'] !== null) {
+        _cHscore = cloudSave.highScore;
+      } else {
+        _cHscore = 0;
+      }
+      if (localSave.hasOwnProperty('highScore') && localSave['highScore'] !== undefined && localSave['highScore'] !== null) {
+        _lHscore = localSave.highScore;
+      } else {
+        _lHscore = 0;
+      }
+      if (_cHscore > _lHscore) {
         console.log('onSaveConflict: keep cloud');
         keepSave = cloudSave;
       }
