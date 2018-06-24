@@ -951,6 +951,40 @@ export class UserService {
   }
 
   /**
+   * Get the leaderboard for app. Optional pass in username to return rank of user.
+   *
+   * @param [username] OPTIONAL: Returns rank of username.
+   */
+  getLeaderboard(username?: string): Observable<any> {
+    const _obs = this.apiConnectionService.getLeaderboard({username: username});
+    _obs.subscribe((res) => {
+      console.log('getLeaderboard: return', res);
+    }, (error) => {
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  /**
+   * Stores/Updates the highscore of user.
+   *
+   * @param setHighscore The user's high score.
+   */
+  setHighscore(highscore: number): Observable<any> {
+    const _obs = this.apiConnectionService.setHighscore({user_id: this._userObj.user_id, highscore: highscore});
+    _obs.subscribe((res) => {
+      console.log('setHighscore: return', res);
+      // this.pushSubscribers(this._userObj);
+      // this.saveLocal('was-user', this._userObj);
+    }, (error) => {
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  /**
    * Get value(s) from key val store.
    * NOTE: Deprecated, use WasDataService
    *

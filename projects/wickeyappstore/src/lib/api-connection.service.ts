@@ -29,7 +29,8 @@ export class ApiConnectionService {
   private bluesnapWalletUrl = 'https://api.wickeyappstore.com/bluesnap/wallet/';
   private adVideoStartUrl = 'https://api.wickeyappstore.com/video/start/';
   private adVideoEndUrl = 'https://api.wickeyappstore.com/video/end/';
-
+  private highscoreUrl = 'https://api.wickeyappstore.com/highscore/';
+  private leaderboardUrl = 'https://api.wickeyappstore.com/leaderboard/';
 
   constructor(
     private http: HttpClient,
@@ -388,7 +389,6 @@ export class ApiConnectionService {
   setWASStore(_params: { user_id: string, was_data: {} }): Observable<any> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
-    const _query_string = this.encode_query_string(_params);
     return this.http.post(this.wasstore_url, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
@@ -409,6 +409,42 @@ export class ApiConnectionService {
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     return this.http.delete(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share(), );
+  }
+
+  /**
+   * Get the leaderboard for app. Optional pass in username to return rank of user.
+   *
+   * @example
+   * this.apiConnectionService.getLeaderboard().subscribe((_data: any) => { });
+   * @param _params string: username,
+   * @returns Returns a leaderboard list (optional: and rank of passed in username).
+   */
+  getLeaderboard(_params: { username?: string }): Observable<{}> {
+    this.handleHeaders();
+    // NOTE: Use share to avoid duplicate calls
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.leaderboardUrl}?${_query_string}`, { headers: this.apiHeaders }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share(), );
+  }
+  /**
+   * Stores/Updates the highscore of user.
+   *
+   * @example
+   * this.apiConnectionService.setHighscore(
+   * {'user_id':string,'highscore':number}
+   * ).subscribe((_data: any) => { });
+   * @param _params string: user_id, json: was_data where was_data is format {key:value,...}
+   * @returns Returns rank of user.
+   */
+  setHighscore(_params: { user_id: string, highscore: number }): Observable<any> {
+    this.handleHeaders();
+    // NOTE: Use share to avoid duplicate calls
+    return this.http.post(this.highscoreUrl, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
       }), catchError(this.handleError), share(), );
