@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.12.6...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.13.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.13.0](https://github.com/wickeyware/wickeyappstore/compare/2.12.7...2.13.0) - 2018-06-25
+
+### Added
+
+* **ApiConnectionService** Add getLeaderboard and setHighscore apis.
+* **UserService** Implement Leaderboards!
+
+### Fixed
+
+* **package** Update to latest Angular patch.
+* **docs** Recompile the documentation.
 
 ## [2.12.7](https://github.com/wickeyware/wickeyappstore/compare/2.12.6...2.12.7) - 2018-06-20
 

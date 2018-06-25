@@ -422,7 +422,7 @@ export class ApiConnectionService {
    * @param _params string: username,
    * @returns Returns a leaderboard list (optional: and rank of passed in username).
    */
-  getLeaderboard(_params: { username?: string }): Observable<{}> {
+  getLeaderboard(_params: { username?: string }): Observable<{leaderboard: [any], rank?: number}> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
@@ -441,7 +441,7 @@ export class ApiConnectionService {
    * @param _params string: user_id, json: was_data where was_data is format {key:value,...}
    * @returns Returns rank of user.
    */
-  setHighscore(_params: { user_id: string, highscore: number }): Observable<any> {
+  setHighscore(_params: { user_id: string, highscore: number }): Observable<{rank?: number}> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.highscoreUrl, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(

@@ -955,7 +955,7 @@ export class UserService {
    *
    * @param [username] OPTIONAL: Returns rank of username.
    */
-  getLeaderboard(username?: string): Observable<any> {
+  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number}> {
     const _obs = this.apiConnectionService.getLeaderboard({username: username});
     _obs.subscribe((res) => {
       console.log('getLeaderboard: return', res);
@@ -971,7 +971,7 @@ export class UserService {
    *
    * @param setHighscore The user's high score.
    */
-  setHighscore(highscore: number): Observable<any> {
+  setHighscore(highscore: number): Observable<{rank?: number}> {
     const _obs = this.apiConnectionService.setHighscore({user_id: this._userObj.user_id, highscore: highscore});
     _obs.subscribe((res) => {
       console.log('setHighscore: return', res);
