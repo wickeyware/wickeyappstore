@@ -90,11 +90,15 @@ export class ApiConnectionService {
         // The backend returned an unsuccessful response code.
         // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
         try {
-          if (error.message) {
-            errMsg = error.message;
-          } else if (error.error) {
-            const errorObj = error.error;  // JSON.parse(error.error)
-            errMsg = errorObj.error.message;
+          const _checkIfValue = function(_obj: any, _key: string) {
+            if (_obj.hasOwnProperty(_key) && (_obj[_key] !== undefined && _obj[_key] !== null)) {
+              return true;
+            } else {
+              return false;
+            }
+          };
+          if (_checkIfValue(error, 'error') && _checkIfValue(error.error, 'error') && _checkIfValue(error.error.error, 'message')) {
+            errMsg = error.error.error.message;  // JSON.parse(error.error)
             // Catch 419 session expired error that will be returned on invalid session id
             // FOR NOW, ONLY HANDLE THE SESSION EXPIRED CASE
             // if (errorObj.error.code === 419) {
@@ -107,6 +111,8 @@ export class ApiConnectionService {
             //     }
             //   });
             // }
+          } else if (_checkIfValue(error, 'message')) {
+            errMsg = error.message;
           } else {
             errMsg = error.statusText;
           }

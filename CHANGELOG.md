@@ -19,6 +19,7 @@ This shows all commits since last release (actually, currently all commits).
 ### Fixed
 
 * **package** Update to latest Angular patch.
+* **ApiConnection** Return error message from server if available as default.
 * **docs** Recompile the documentation.
 
 ## [2.12.7](https://github.com/wickeyware/wickeyappstore/compare/2.12.6...2.12.7) - 2018-06-20
