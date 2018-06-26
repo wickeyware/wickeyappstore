@@ -416,10 +416,16 @@ this.userService.user().subscribe();</code></pre></div>
                                 <a href="#getInapp">getInapp</a>
                             </li>
                             <li>
+                                <a href="#getLeaderboard">getLeaderboard</a>
+                            </li>
+                            <li>
                                 <a href="#getStore">getStore</a>
                             </li>
                             <li>
                                 <a href="#isLoggedIn">isLoggedIn</a>
+                            </li>
+                            <li>
+                                <a href="#setHighscore">setHighscore</a>
                             </li>
                             <li>
                                 <a href="#setStore">setStore</a>
@@ -662,6 +668,78 @@ NOTE: Deprecated, use WasDataService</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getLeaderboard"></a>
+                        <span class="name">
+                            <b>
+                            getLeaderboard
+                            </b>
+                            <a href="#getLeaderboard"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getLeaderboard(username?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get the leaderboard for app. Optional pass in username to return rank of user.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>username</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>OPTIONAL: Returns rank of username.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>returns {leaderboard: [{score: number, username: string}, ...], rank?: number}</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getStore"></a>
                         <span class="name">
                             <b>
@@ -762,6 +840,73 @@ NOTE: It also on page load it emits the login status.</p>
                                 <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
 
                             </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setHighscore"></a>
+                        <span class="name">
+                            <b>
+                            setHighscore
+                            </b>
+                            <a href="#setHighscore"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setHighscore(highscore: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Stores/Updates the highscore of user.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>highscore</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>returns {rank?: number}</p>
+
+                                </div>
                     </td>
                 </tr>
             </tbody>

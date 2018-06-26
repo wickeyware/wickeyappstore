@@ -453,11 +453,13 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
     wickeyappstore.addEventListener(&#39;open&#39;, (event) =&gt; {
       console.log(&#39;WAS button opened&#39;);  // can pause game here.
     });
-    window.WAS.userService.user.subscribe(usr =&gt; {
+    const userService = window.WAS.userService;
+    const dataService = window.WAS.dataService;
+    userService.user.subscribe(usr =&gt; {
       console.log(&#39;userServiceOut user.subscribe&#39;, usr);
     });
     // Check if purchased (where 10 is your purchase item id).
-    window.WAS.userService.checkIfPurchased(10).subscribe(isPurch =&gt; {
+    userService.checkIfPurchased(10).subscribe(isPurch =&gt; {
       console.log(&#39;checkIfPurchased&#39;, isPurch);
     });
     // Example of how to pass in own save conflict mapping function.
@@ -471,14 +473,47 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
       }
       return keepSave;
     }
-    window.WAS.dataService.restore(onSaveConflict).subscribe(mydata =&gt; {
+    dataService.restore(onSaveConflict).subscribe(mydata =&gt; {
       console.log(&#39;wasDataService.restore&#39;, mydata);
       // WasDataService is now loaded and restored (ready for use).
-      // window.WAS.dataService.get(&#39;highScore&#39;);
-      // window.WAS.dataService.save(&#39;highScore&#39;, 3000);
+      // dataService.get(&#39;highScore&#39;);
+      // dataService.save(&#39;highScore&#39;, 3000);
       // Then after the session (or game level), persist to cloud
-      // window.WAS.dataService.persist();
+      // dataService.persist();
+
+      // Get leaderboard: Can pass in username to get rank.
+      userService.getLeaderboard(userService.userObject.username).subscribe(res =&gt; {
+        console.log(&#39;leaderboard&#39;, res.leaderboard);  // [{score: number, username: string}, ...] The top entries will be returned.
+        console.log(&#39;rank&#39;, res.rank);  // If a username was passed in, this is the rank:number of that username (0 is first).
+      });
     });
+    // Example of adding to Leaderboard
+    function addToLeaderboard(_alreadyTaken) {
+      let _showMsg = null;
+      if (_alreadyTaken === true) {
+        _showMsg = &#39;Username already taken! Enter username for leaderboard&#39;;
+      } else {
+        _showMsg = &#39;Enter username for leaderboard&#39;;
+      }
+      // Ask for username for leaderboard
+      let _username;
+      // NOTE: prompt is used here for simplicity, any input may be used to get the username.
+      if (userService.userObject.username === userService.userObject.user_id) {
+        _username = prompt(_showMsg);
+      } else {
+        _username = prompt(_showMsg, userService.userObject.username);
+      }
+      if (_username !== null &amp;&amp; _username !== &#39;&#39;) {
+        userService.updateUsername(_username).subscribe(usr =&gt; {
+          // Updated username
+          userService.setHighscore(this.highScore);
+        }, (error) =&gt; {
+          if (error === &#39;Username already taken&#39;) {
+            this.addToLeaderboard(true);
+          }
+        });
+      }
+    }
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre></div><h2 id="license">License</h2>

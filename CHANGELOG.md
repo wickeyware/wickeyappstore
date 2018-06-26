@@ -15,6 +15,8 @@ This shows all commits since last release (actually, currently all commits).
 
 * **ApiConnectionService** Add getLeaderboard and setHighscore apis.
 * **UserService** Implement Leaderboards!
+* **demo** Add example of leaderboard.
+* **README** Add example of leaderboard.
 
 ### Fixed
 

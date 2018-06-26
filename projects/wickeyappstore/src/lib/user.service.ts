@@ -954,11 +954,12 @@ export class UserService {
    * Get the leaderboard for app. Optional pass in username to return rank of user.
    *
    * @param [username] OPTIONAL: Returns rank of username.
+   * @returns returns {leaderboard: [{score: number, username: string}, ...], rank?: number}
    */
   getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number}> {
     const _obs = this.apiConnectionService.getLeaderboard({username: username});
     _obs.subscribe((res) => {
-      console.log('getLeaderboard: return', res);
+      // console.log('getLeaderboard: return', res);
     }, (error) => {
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
@@ -970,11 +971,12 @@ export class UserService {
    * Stores/Updates the highscore of user.
    *
    * @param setHighscore The user's high score.
+   * @returns returns {rank?: number}
    */
   setHighscore(highscore: number): Observable<{rank?: number}> {
     const _obs = this.apiConnectionService.setHighscore({user_id: this._userObj.user_id, highscore: highscore});
     _obs.subscribe((res) => {
-      console.log('setHighscore: return', res);
+      // console.log('setHighscore: return', res);
       // this.pushSubscribers(this._userObj);
       // this.saveLocal('was-user', this._userObj);
     }, (error) => {
