@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.13.1](https://github.com/wickeyware/wickeyappstore/compare/2.13.0...2.13.1) - 2018-06-27
+
+### Fixed
+
+* **README** Add readme back to WickeyAppStore npm package.
+
 ## [2.13.0](https://github.com/wickeyware/wickeyappstore/compare/2.12.7...2.13.0) - 2018-06-25
 
 ### Added
