@@ -34,17 +34,19 @@ export class WasMenuBtn {
         this.hasInapps = false;
       }
     });
-    loadScriptWithCallback('https://cdn.onesignal.com/sdks/OneSignalSDK.js', () => {
-      console.log('OneSignal script loaded');
-    });
-    loadScriptWithCallback('https://cdn.jsdelivr.net/npm/vast-player@0.2/dist/vast-player.min.js', () => {
-      console.log('VastPlayer script loaded');
+    // loadScriptWithCallback('https://cdn.onesignal.com/sdks/OneSignalSDK.js', () => {
+    //   console.log('N// script loaded');
+    // });
+    loadScriptWithSignAppIDCallback('https://vijs.rayjump.com/bin/vijs.js', 'f3592dcb4a3dc65d02f95a17bbe7a7d0', '102955', (_thisscript) => {
+      console.log('A// script loaded');
+      // we need the context of the script to pass into init
+      (<any>window).Vijs.init(_thisscript);
     });
     loadScriptWithCallback('https://ws.bluesnap.com/source/web-sdk/bluesnap.js', () => {
-      console.log('BlueSnap script loaded');
+      console.log('P// script loaded');
     });
     loadLinkWithCallback('https://fonts.googleapis.com/icon?family=Material+Icons', () => {
-      console.log('Material Icons link loaded');
+      console.log('M// Icons link loaded');
     });
     function isLoadedLink(_url) {
       return document.querySelectorAll('[href="' + _url + '"]').length > 0;
@@ -58,7 +60,6 @@ export class WasMenuBtn {
           const _link = document.createElement('link');
           _link.rel = 'stylesheet';
           _link.href = _url;
-          (<any>_link).onreadystatechange = callback;
           _link.onload = callback;
           document.head.appendChild(_link);
         }
@@ -77,8 +78,24 @@ export class WasMenuBtn {
           const script = document.createElement('script');
           script.type = 'text/javascript';
           script.src = _url;
-          (<any>script).onreadystatechange = callback;
           script.onload = callback;
+          document.head.appendChild(script);
+        }
+      } catch (error) {
+        console.error(`Failed to load script: ${_url}`, error);
+      }
+    }
+    function loadScriptWithSignAppIDCallback(_url, _sign, _appid, callback) {
+      try {
+        if (isLoadedScript(_url)) {
+          console.log(`script alread loaded: ${_url}`);
+        } else {
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = _url;
+          script.setAttribute('sign', _sign);
+          script.setAttribute('appid', _appid);
+          script.onload = function () { callback(script); };
           document.head.appendChild(script);
         }
       } catch (error) {

@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.14.0](https://github.com/wickeyware/wickeyappstore/compare/2.13.1...2.14.0) - 2018-06-28
+
+### Added
+
+* **WasStore** Add rewarded video ads
+* **package** Remove OneSignal load
+
 ## [2.13.1](https://github.com/wickeyware/wickeyappstore/compare/2.13.0...2.13.1) - 2018-06-27
 
 ### Fixed

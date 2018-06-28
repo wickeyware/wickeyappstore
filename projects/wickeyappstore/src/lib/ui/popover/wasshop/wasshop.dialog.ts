@@ -30,12 +30,14 @@ export class WasShop {
   private vastplayer;
   /**@ignore*/
   public adnotready = true;
+  /**@ignore*/
+  public rewardedVideoNOTReady = true;
   private loggedin = false;
   /**@ignore*/
   public hasAds = false;
   /**@ignore*/
   public hasOfferwall = false;
-  private vastAdTag = 'https://ima3vpaid.appspot.com/?adTagUrl=https%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fclient%3Dca-video-pub-5512390705137507%26slotname%3D3326280305%2F2027455546%26ad_type%3Dvideo_text_image%26description_url%3Dhttp%253A%252F%252Fwickeyappstore.com%26max_ad_duration%3D60000%26videoad_start_delay%3D0&type=js';
+  private vastAdTag;
   private vastAdID: string;
   /**@ignore*/
   constructor(
@@ -73,6 +75,9 @@ export class WasShop {
   get isFreeCoinPanel() {
     return this.userService.freebieSettings.pipe(map((_freesetting: any) => {
       this.hasAds = _freesetting.hasAds;
+      if (this.hasAds === true) {
+        this.initRewardedVideo();
+      }
       this.hasOfferwall = _freesetting.hasOfferwall;
       if (_freesetting.hasAds === true || _freesetting.hasOfferwall === true) {
         return true;
@@ -82,21 +87,22 @@ export class WasShop {
     }));
   }
   /**@ignore*/
-  openedFreeCoins() {
-    if (this.loggedin === true) {
-      if (this.vastAdTag) {
-        this.loadAd();
-      }
-    }
+  openedFreeCoinsPanel() {
+    // if (this.loggedin === true) {
+    //   if (this.vastAdTag) {
+    //     this.loadVASTAd();
+    //   }
+    // }
+    this.configRewardedVideo();
   }
   /**@ignore*/
-  closedFreeCoins() {
-    if (this.vastAdTag) {
-      this.adnotready = true;
-      if (this.vastplayer) {
-        this.vastplayer.stopAd();
-      }
-    }
+  closedFreeCoinsPanel() {
+    // if (this.vastAdTag) {
+    //   this.adnotready = true;
+    //   if (this.vastplayer) {
+    //     this.vastplayer.stopAd();
+    //   }
+    // }
   }
   /**@ignore*/
   createVastplayer_1() {
@@ -124,7 +130,7 @@ export class WasShop {
     }
   }
   /**@ignore*/
-  loadAd() {
+  loadVASTAd() {
     this.createVastplayer_1();
 
     this.addBtnText = 'Checking for Ad';
@@ -157,16 +163,67 @@ export class WasShop {
   }
 
   /**@ignore*/
-  watchAd() {
+  watchVASTAd() {
     this.addBtnText = 'Ad Playing...';
     this.vastplayer.startAd();
     this.vastplayer.once('AdStopped', () => {
       this.addBtnText = 'YOU GOT A COIN!';
       this.ref.detectChanges();
       setTimeout(() => {
-        this.loadAd(); // load another ad
+        this.loadVASTAd(); // load another ad
       }, 2500);
     });
+  }
+
+  configRewardedVideo() {
+    // console.log('configRewardedVideo');
+    (<any>window).myAd44653 = (<any>window).Vijs.setAD({
+      unitid: 44653,
+      loadedCallback: () => {
+        console.log('load success');
+        this.rewardedVideoNOTReady = false;
+        this.addBtnText = 'Watch Ad';
+        this.ref.detectChanges();
+      },
+      errorCallback: (msg) => {
+        console.log('errorCallback');
+        console.log('msg', msg);
+        this.rewardedVideoNOTReady = true;
+        this.addBtnText = 'No Ads. Check back later!';
+        this.ref.detectChanges();
+      },
+      rewardedCallback: (reward_name, reward_amount) => {
+        console.log('rewardedCallback', reward_name, reward_amount);
+        this.userService.adVideoEnd('mintegral ads');
+
+        this.addBtnText = 'YOU GOT A COIN!';
+        this.ref.detectChanges();
+        setTimeout(() => {
+          this.addBtnText = 'Watch Ad'; // load another ad
+          this.ref.detectChanges();
+        }, 2500);
+      }
+    });
+  }
+
+  /**@ignore*/
+  initRewardedVideo() {
+    if ((<any>window).Vijs && !(<any>window).myAd44653) {
+      // console.log('initRewardedVideo', (<any>window).Vijs);
+      this.configRewardedVideo();
+    }
+  }
+  /**@ignore*/
+  watchRewardedVideo() {
+    // console.log('myAd44653', (<any>window).myAd44653, (<any>window).Vijs);
+    // console.log((<any>window).Vijs.Offer.adUnitArray);
+    // console.log((<any>window).Vijs.Offer.adUnitArray[0].videoPlayer.videoUrl);
+    if ((<any>window).myAd44653) {
+      if ((<any>window).myAd44653.show) {
+        (<any>window).myAd44653.show();
+        this.userService.adVideoStart('mintegral ads');
+      }
+    }
   }
   /**@ignore*/
   opensso() {
