@@ -95,6 +95,7 @@ export class WasMenuBtn {
           script.src = _url;
           script.setAttribute('sign', _sign);
           script.setAttribute('appid', _appid);
+          // script.setAttribute('usehttps', 'true'); // test this
           script.onload = function () { callback(script); };
           document.head.appendChild(script);
         }
