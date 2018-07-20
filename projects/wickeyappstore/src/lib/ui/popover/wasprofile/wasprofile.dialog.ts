@@ -23,7 +23,7 @@ export class WasProfile {
   /**@ignore*/
   public loggedin = false;
   /** @ignore */
-  public version = '2.14.1';
+  public version = '2.15.0';
   /**@ignore*/
   constructor(
     public userService: UserService,

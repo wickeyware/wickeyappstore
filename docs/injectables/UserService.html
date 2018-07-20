@@ -86,14 +86,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-WickeyAppStoreModule-883de32127e69ec6725b16628920da0f"
+                                        data-target="#xs-components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-WickeyAppStoreModule-883de32127e69ec6725b16628920da0f"
+                                        id="xs-components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
                                     >
                                         <li class="link">
                                             <a href="components/WasAlert.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
@@ -253,14 +253,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-WickeyAppStoreModule-883de32127e69ec6725b16628920da0f"
+                                        data-target="#components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-WickeyAppStoreModule-883de32127e69ec6725b16628920da0f"
+                                        id="components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
 >
                                         <li class="link">
                                             <a href="components/WasAlert.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
@@ -410,6 +410,9 @@ this.userService.user().subscribe();</code></pre></div>
                                 <a href="#checkIfPurchased">checkIfPurchased</a>
                             </li>
                             <li>
+                                <a href="#consumeCoins">consumeCoins</a>
+                            </li>
+                            <li>
                                 <a href="#deleteStore">deleteStore</a>
                             </li>
                             <li>
@@ -514,6 +517,94 @@ this.userService.user().subscribe();</code></pre></div>
                             </div>
                                 <div class="io-description">
                                     <p>A boolean, true if purchased, and false if not.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="consumeCoins"></a>
+                        <span class="name">
+                            <b>
+                            consumeCoins
+                            </b>
+                            <a href="#consumeCoins"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>consumeCoins(coins: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, reason?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Consumes coins recieved from purchases or videos.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>coins</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The number of coins charged for this item.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>reason</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>An identifier for this item (e.g. LEVEL_ONE, BONUS_CHEST, etc.).</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>The same as updateUser.</p>
 
                                 </div>
                     </td>

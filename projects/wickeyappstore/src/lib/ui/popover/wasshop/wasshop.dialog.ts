@@ -175,6 +175,7 @@ export class WasShop {
     });
   }
 
+  /**@ignore*/
   configRewardedVideo() {
     // console.log('configRewardedVideo');
     (<any>window).myAd44653 = (<any>window).Vijs.setAD({

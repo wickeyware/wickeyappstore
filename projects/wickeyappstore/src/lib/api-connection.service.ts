@@ -22,6 +22,7 @@ export class ApiConnectionService {
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
   private person_auth_url = 'https://api.wickeyappstore.com/person/auth/';
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
+  private consumeUrl = 'https://api.wickeyappstore.com/consume/';
   private reviews_url = 'https://api.wickeyappstore.com/reviews/';
   private wasstore_url = 'https://api.wickeyappstore.com/wasstore/';
   private bluesnapTokenUrl = 'https://api.wickeyappstore.com/bluesnap/token/';
@@ -306,6 +307,21 @@ export class ApiConnectionService {
   setPurchase(_params: any): Observable<any> {
     this.handleHeaders();
     return this.http.post(this.purchases_url, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map(this.extractData),
+      catchError(this.handleError), share(), );
+  }
+
+  /**
+   * Consumes coins recieved from purchases or videos.
+   *
+   * @example
+   * this.apiConnectionService.consumeCoins({'user_id':string,'coins':number,'reason'?:string}).subscribe((_data: any) => { });
+   * @param _params {user_id: string, coins: number, reason?: string}
+   * @returns Returns a standard user object (same as createPerson)
+   */
+  consumeCoins(_params: { user_id: string, coins: number, reason?: string }): Observable<any> {
+    this.handleHeaders();
+    return this.http.post(this.consumeUrl, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map(this.extractData),
       catchError(this.handleError), share(), );
   }

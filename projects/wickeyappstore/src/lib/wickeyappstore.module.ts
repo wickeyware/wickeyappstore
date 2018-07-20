@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+// import * as Raven from 'raven-js';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -31,12 +32,6 @@ import {
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
-// SERVICES //
-import { UserService } from './user.service';
-import { WasDataService } from './was-data.service';
-import { PromptUpdateService } from './prompt-update.service';
-import { ApiConnectionService } from './api-connection.service';
-import { LocalStorageService } from './local-storage.service';
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
@@ -56,6 +51,17 @@ import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
+
+// Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.0'}).install();
+
+// /** @ignore */
+// export class RavenErrorHandler implements ErrorHandler {
+//   handleError(err: any): void {
+//     Raven.captureException(err);
+//     // Raven.showReportDialog({});
+//   }
+// }
+// providers: [ { provide: ErrorHandler, useClass: RavenErrorHandler } ]
 
 @NgModule({
   imports: [

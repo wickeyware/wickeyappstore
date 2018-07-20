@@ -1,5 +1,6 @@
+// import * as Raven from 'raven-js';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, ErrorHandler } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -49,6 +50,17 @@ import { WasMenuBtn } from '../../../wickeyappstore/src/lib/ui/popover/wasmenu-b
 import { WasShop } from '../../../wickeyappstore/src/lib/ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from '../../../wickeyappstore/src/lib/ui/popover/waspay/waspay.dialog';
 import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofile/wasprofile.dialog';
+
+// Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509').install();
+
+// /** @ignore */
+// export class RavenErrorHandler implements ErrorHandler {
+//   handleError(err: any): void {
+//     Raven.captureException(err);
+//     // Raven.showReportDialog({});
+//   }
+// }
+// providers: [ { provide: ErrorHandler, useClass: RavenErrorHandler } ]
 
 @NgModule({
   declarations: [

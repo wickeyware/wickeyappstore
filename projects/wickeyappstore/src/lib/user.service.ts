@@ -1,3 +1,4 @@
+// import * as Raven from 'raven-js';
 import { Injectable } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
@@ -482,7 +483,7 @@ export class UserService {
         this.saveLocal('was-user', this._userObj);
       }
       // Add user context in sentry
-      // Raven.setUserContext({email: this._user.email, id: this._user.user_id});
+      // Raven.setUserContext({id: res.user_id});
     }, (error) => {
       console.log(`UserService: updateUser: error:[${error}]`);
       // NOTE: Handle errors in calling component.
@@ -648,6 +649,8 @@ export class UserService {
       // UPDATE USER //
       this.pushSubscribers(this._userObj);
       this.saveLocal('was-user', this._userObj);
+      // Add user context in sentry
+      // Raven.setUserContext({ email: this._userObj.email, id: this._userObj.user_id });
     }, (error) => {
       // Set logging in process off //
       this._userObj.logging_in = false;
@@ -810,6 +813,32 @@ export class UserService {
       this.getInapps();
     }, (error) => {
       console.log(`UserService: createPurchase: error:[${error}]`);
+      // <any>error | this casts error to be any
+      // NOTE: Handle errors in calling component.
+    });
+    return _obs;
+  }
+
+  /**
+   * Consumes coins recieved from purchases or videos.
+   *
+   * @param coins The number of coins charged for this item.
+   * @param [reason] An identifier for this item (e.g. LEVEL_ONE, BONUS_CHEST, etc.).
+   * @returns The same as updateUser.
+   */
+  consumeCoins(coins: number, reason?: string): Observable<any> {
+    const _params = {'user_id': this._userObj.user_id, 'coins': coins, 'reason': null};
+    if (reason) {
+      _params['reason'] = reason;
+    }
+    const _obs = this.apiConnectionService.consumeCoins(_params);
+    _obs.subscribe((res) => {
+      if (this.checkIfValue(res, 'coins')) {
+        this._userObj.coins = res.coins;
+      }
+      this.pushSubscribers(this._userObj);
+      this.saveLocal('was-user', this._userObj);
+    }, (error) => {
       // <any>error | this casts error to be any
       // NOTE: Handle errors in calling component.
     });
