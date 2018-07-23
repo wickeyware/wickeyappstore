@@ -86,14 +86,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
+                                        data-target="#xs-components-links-module-WickeyAppStoreModule-36c11bcdbd7cb24891ddb4b38f8766f7"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
+                                        id="xs-components-links-module-WickeyAppStoreModule-36c11bcdbd7cb24891ddb4b38f8766f7"
                                     >
                                         <li class="link">
                                             <a href="components/WasAlert.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
@@ -253,14 +253,14 @@
                         <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
+                                        data-target="#components-links-module-WickeyAppStoreModule-36c11bcdbd7cb24891ddb4b38f8766f7"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-WickeyAppStoreModule-7bf60bd6a480c940bf10d44de33b423d"
+                                        id="components-links-module-WickeyAppStoreModule-36c11bcdbd7cb24891ddb4b38f8766f7"
 >
                                         <li class="link">
                                             <a href="components/WasAlert.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
@@ -461,6 +461,7 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
     &lt;button mat-raised-button class&#x3D;&quot;waspay-buttons&quot; *ngIf&#x3D;&quot;isApplePayAvail; else notApplePayBlock&quot; (click)&#x3D;&quot;showWebPay()&quot; id&#x3D;&quot;apple-pay-button&quot;&gt;&lt;/button&gt;
     &lt;ng-template #notApplePayBlock&gt;
       &lt;button class&#x3D;&quot;waspay-buttons&quot; mat-raised-button color&#x3D;&quot;none&quot; (click)&#x3D;&quot;showWebPay()&quot;&gt;Pay Now&lt;/button&gt;
+      &lt;div data-bluesnap&#x3D;&quot;PaymentRequest&quot;&gt;&lt;/div&gt;
     &lt;/ng-template&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -492,7 +493,7 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>    </ng-template>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>      <div data-bluesnap="PaymentRequest"></div>    </ng-template>  </div></div></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasPay'};
