@@ -52,7 +52,7 @@ import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 
-// Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.0'}).install();
+// Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.1'}).install();
 
 // /** @ignore */
 // export class RavenErrorHandler implements ErrorHandler {
