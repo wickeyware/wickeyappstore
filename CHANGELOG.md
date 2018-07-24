@@ -5,9 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.15.1...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.15.2...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.15.2](https://github.com/wickeyware/wickeyappstore/compare/2.15.1...2.15.2) - 2018-07-24
+
+### Fixed
+
+* **UserService** Send in correct store_id to Purchase API.
+* **package** Update Angular to latest patch.
 
 ## [2.15.1](https://github.com/wickeyware/wickeyappstore/compare/2.15.0...2.15.1) - 2018-07-23
 

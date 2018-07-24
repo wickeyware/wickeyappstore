@@ -449,15 +449,6 @@ export class UserService {
         if (this.checkIfValue(res, 'bs_id')) {
           this._userObj.bs_id = res.bs_id;
         }
-        if (this.checkIfValue(res, 'first_name')) {
-          this._userObj.first_name = res.first_name;
-        }
-        if (this.checkIfValue(res, 'last_name')) {
-          this._userObj.last_name = res.last_name;
-        }
-        if (this.checkIfValue(res, 'zip_code')) {
-          this._userObj.zip_code = res.zip_code;
-        }
         if (this.checkIfValue(res, 'coins')) {
           this._userObj.coins = res.coins;
         }
@@ -616,15 +607,6 @@ export class UserService {
       if (this.checkIfValue(res, 'bs_id')) {
         this._userObj.bs_id = res.bs_id;
       }
-      if (this.checkIfValue(res, 'first_name')) {
-        this._userObj.first_name = res.first_name;
-      }
-      if (this.checkIfValue(res, 'last_name')) {
-        this._userObj.last_name = res.last_name;
-      }
-      if (this.checkIfValue(res, 'zip_code')) {
-        this._userObj.zip_code = res.zip_code;
-      }
       if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
       }
@@ -737,12 +719,12 @@ export class UserService {
    */
   createPurchase(_purchase_id: number, _receipt: string, _amount: number, _email?: string,
     _first_name?: string, _last_name?: string, _zip_code?: string, _wallet_token?: string,
-    _address?: any, _city?: string, _state?: string, _country?: string): Observable<any> {
+    _address?: any, _city?: string, _state?: string, _country?: string, _store_id?: string): Observable<any> {
     const _purchase = {
       'user_id': this._userObj.user_id, 'purchase_id': _purchase_id, 'receipt': _receipt,
       'pay_amount': _amount, 'email': this._userObj.email, 'first_name': _first_name, 'last_name': _last_name,
       'zip_code': _zip_code, 'apple_wallet_token': _wallet_token,
-      'address': _address, 'city': _city, 'state': _state, 'country': _country
+      'address': _address, 'city': _city, 'state': _state, 'country': _country, 'store_id': _store_id
     };
     if (_email) {
       _purchase['email'] = _email;
@@ -759,15 +741,6 @@ export class UserService {
       }
       if (this.checkIfValue(res, 'bs_id')) {
         this._userObj.bs_id = res.bs_id;
-      }
-      if (this.checkIfValue(res, 'first_name')) {
-        this._userObj.first_name = res.first_name;
-      }
-      if (this.checkIfValue(res, 'last_name')) {
-        this._userObj.last_name = res.last_name;
-      }
-      if (this.checkIfValue(res, 'zip_code')) {
-        this._userObj.zip_code = res.zip_code;
       }
       if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
@@ -1231,7 +1204,8 @@ export class UserService {
         const paymentToken = event.payment;
         this.createPurchase(_inapp.purchaseId, walletToken, _inapp.price, event.payment.shippingContact.emailAddress,
           event.payment.billingContact.givenName, event.payment.billingContact.familyName,
-          event.payment.billingContact.postalCode, (<any>window).btoa(JSON.stringify(paymentToken)))
+          event.payment.billingContact.postalCode, (<any>window).btoa(JSON.stringify(paymentToken)), undefined, undefined, undefined,
+          undefined, 'applepay')
           .subscribe((res) => {
             session.completePayment((<any>window).ApplePaySession.STATUS_SUCCESS);
             resolve(true);
@@ -1344,9 +1318,10 @@ export class UserService {
                         _fname =  ev.billingAddress.recipient.substring(0, _idx);
                         _lname =  ev.billingAddress.recipient.substring(_idx + 1);
                       }
+                      // NOTE: Change store_id (bluesnap) if other payment types are added, like googlepay.
                       this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, ev.payerEmail,
                         _fname, _lname, ev.billingAddress.postalCode, undefined, ev.billingAddress.addressLine,
-                        ev.billingAddress.city, ev.billingAddress.region, ev.billingAddress.country)
+                        ev.billingAddress.city, ev.billingAddress.region, ev.billingAddress.country, 'bluesnap')
                         .subscribe(purchres => {
                           ev.complete('success');
                           resolve(true);
