@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.15.2...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.15.3...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.15.3](https://github.com/wickeyware/wickeyappstore/compare/2.15.2...2.15.3) - 2018-07-28
+
+### Fixed
+
+* **package** Update Angular to latest patch.
+* **was:package** Update angular/pwa dependency.
+* **docs** Re-compile docs.
 
 ## [2.15.2](https://github.com/wickeyware/wickeyappstore/compare/2.15.1...2.15.2) - 2018-07-24
 
