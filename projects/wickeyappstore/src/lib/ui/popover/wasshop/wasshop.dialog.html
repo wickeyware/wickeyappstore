@@ -52,7 +52,12 @@
     <div *ngIf="loginValue | async; else notLoggedIn">
       <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}'
         target='_blank'>Open the Offerwall</a>
-      <button *ngIf="hasAds" [disabled]="rewardedVideoNOTReady" style="width:100%;" mat-raised-button color="accent" (click)="watchRewardedVideo()">{{addBtnText}}</button>
+      <button *ngIf="hasAds" [disabled]="rewardedVideoNOTReady" style="width:100%;" mat-raised-button color="accent" (click)="watchRewardedVideo()">
+        <mat-grid-list cols="4" rowHeight="36px">
+            <mat-grid-tile colspan=3>{{addBtnText}}</mat-grid-tile>
+            <mat-grid-tile colspan=1><mat-spinner *ngIf="rewardedVideoNOTReady" style="margin:auto;" [diameter]="20"></mat-spinner></mat-grid-tile>
+          </mat-grid-list>
+    </button>
     </div>
     <ng-template #notLoggedIn>
       <button mat-raised-button (click)="opensso()">

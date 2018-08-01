@@ -150,7 +150,7 @@ export class WasShop {
 
       const errorstring = String(reason);
       if (errorstring.search(noAdsError) > -1 || errorstring.search(noAds2Error) > -1) {
-        this.addBtnText = 'No Ads. Check back later!';
+        this.addBtnText = 'Loading Ad';
         this.ref.detectChanges();
       } else if (errorstring.search(genericError) > -1) {
         this.addBtnText = 'Request terminated. Check later';
@@ -190,7 +190,7 @@ export class WasShop {
         console.log('errorCallback');
         console.log('msg', msg);
         this.rewardedVideoNOTReady = true;
-        this.addBtnText = 'No Ads. Check back later!';
+        this.addBtnText = 'Loading Ad';
         this.ref.detectChanges();
       },
       rewardedCallback: (reward_name, reward_amount) => {
