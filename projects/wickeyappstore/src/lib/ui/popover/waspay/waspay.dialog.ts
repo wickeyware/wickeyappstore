@@ -122,12 +122,16 @@ export class WasPay implements AfterViewChecked {
   }
   /**@ignore */
   ngAfterViewChecked(): void {
-    if (!this.addScript) {
-      this.addPaypalScript().then(() => {
-        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
-        this.paypalLoad = false;
-      });
-    }
+    this.userService.isLoggedInObs.subscribe((_isLogged: Boolean) => {
+      if (_isLogged) {
+        if (!this.addScript) {
+          this.addPaypalScript().then(() => {
+            paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
+            this.paypalLoad = false;
+          });
+        }
+      }
+    });
   }
   /**@ignore */
   isLoadedScript(_url) {
