@@ -1113,7 +1113,7 @@ export class UserService {
    * @ignore
   */
   openshop() {
-    this.dialog.open(WasShop);
+    this.dialog.open(WasShop, {width: '100%', height: '100%'});
   }
 
   /**

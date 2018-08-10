@@ -11,5 +11,7 @@
       <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>
       <div data-bluesnap="PaymentRequest"></div>
     </ng-template>
+    <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
+    <div id="paypal-checkout-btn"></div>
   </div>
 </div>

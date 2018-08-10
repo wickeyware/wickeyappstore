@@ -1,8 +1,10 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, AfterViewChecked } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
 import { WasUp } from '../wasup/wasup.dialog';
+/**@ignore*/
+declare let paypal: any;
 /**
  * Directly open a purchase page with WasPay
  *
@@ -30,7 +32,7 @@ import { WasUp } from '../wasup/wasup.dialog';
   templateUrl: './waspay.dialog.html',
   styleUrls: ['../was.component.css'],
 })
-export class WasPay {
+export class WasPay implements AfterViewChecked {
   /**
    * Choose payment type. Internal Use
    * Must pass price, title, description, coins, isConsumable, isOwned
@@ -42,6 +44,67 @@ export class WasPay {
   public isApplePayAvail = false; // dictates if the apple pay button is shown.
   /**@ignore */
   public purchaseSuccess;
+  /**@ignore */
+  private addScript = false;
+  /**@ignore */
+  public paypalLoad = true;
+  /**@ignore */
+  public paypalConfig = {
+    env: 'production',  // sandbox | production
+    client: {
+      sandbox: 'AdapT6SJWcZOdQD0kEwe_TfczeWIxmp961l6r2_A7_scbMgPQveYw9OW2dh3qvgoVAG1TzahCYyz0T5A',
+      production: 'AbEK_PChjGvAvbzeWrdNsHQ7nZXLpayv2VcN_aITKe1nlu1uSHwlOAZd_eKL4fsQfv1-WI_1dnShmCu5'
+    },
+    style: {
+      // https://developer.paypal.com/demo/checkout/#/pattern/generic
+      label: 'paypal',
+      size: 'responsive',    // small | medium | large | responsive
+      shape: 'rect',     // pill | rect
+      color: 'blue',      // gold | blue | silver | black
+      tagline: false
+    },
+    commit: true,
+    payment: (data, actions) => {
+      // https://developer.paypal.com/docs/api/payments/v1/#definition-payment_options
+      return actions.payment.create({
+        payment: {
+          transactions: [{
+            amount: { total: this.data.price, currency: 'USD' },
+            description: this.makeTitle(),
+            payment_options: {
+              allowed_payment_method: 'IMMEDIATE_PAY'
+            }
+          }]
+        }
+      });
+    },
+    onAuthorize: (data, actions) => {
+      return new Promise<boolean>((resolve, reject) => {
+        this.userService.createPurchase(this.data.purchaseId, data, this.data.price, undefined,
+          undefined, undefined, undefined, undefined, undefined,
+          undefined, undefined, undefined, 'paypal')
+          .subscribe(purchres => {
+            // console.log('onAuthorize:createPurchase:OK', purchres);
+            this.purchaseSuccess = true;
+            this.dialog.open(WasAlert, {
+              data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
+            }).afterClosed().subscribe(result => {
+              this.dialogRef.close(true);
+            });
+            resolve(true);
+          }, (error) => {
+            console.error('onAuthorize:createPurchase:error', error);
+            this.dialog.open(WasAlert, {
+              data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }
+            }).afterClosed().subscribe(result => {
+              this.dialogRef.close(false);
+            });
+            reject('payment failed');
+          });
+      });
+    }
+  };
+
   /**@ignore*/
   constructor(
     public dialog: MatDialog,
@@ -57,6 +120,35 @@ export class WasPay {
     }
     this.isApplePayAvail = this.userService.isApplePayAvailable();
   }
+  /**@ignore */
+  ngAfterViewChecked(): void {
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
+        this.paypalLoad = false;
+      });
+    }
+  }
+  /**@ignore */
+  isLoadedScript(_url) {
+    return document.querySelectorAll('[src="' + _url + '"]').length > 0;
+  }
+  /**@ignore */
+  addPaypalScript() {
+    this.addScript = true;
+    return new Promise((resolve, reject) => {
+      if (this.isLoadedScript('https://www.paypalobjects.com/api/checkout.js')) {
+        console.log(`PP// script alread loaded`);
+        resolve(true);
+      } else {
+        const scripttagElement = document.createElement('script');
+        scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+        scripttagElement.onload = resolve;
+        document.body.appendChild(scripttagElement);
+      }
+    });
+  }
+
   /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
@@ -70,7 +162,8 @@ export class WasPay {
         });
       } else {
         const loadingdialogRef = this.dialog.open(WasUp, {
-          width: '300px', data: { title: 'Preparing Payment', icon: 'spinner', body: 'Preparing...', stayopen: true}});
+          width: '300px', data: { title: 'Preparing Payment', icon: 'spinner', body: 'Preparing...', stayopen: true }
+        });
         this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
           if (_goodPurchase) {
             loadingdialogRef.close();

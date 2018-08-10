@@ -402,6 +402,12 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/AfterViewChecked" target="_blank" >AfterViewChecked</a></code>
+    </p>
 
 
 <section>
@@ -463,6 +469,8 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
       &lt;button class&#x3D;&quot;waspay-buttons&quot; mat-raised-button color&#x3D;&quot;none&quot; (click)&#x3D;&quot;showWebPay()&quot;&gt;Pay Now&lt;/button&gt;
       &lt;div data-bluesnap&#x3D;&quot;PaymentRequest&quot;&gt;&lt;/div&gt;
     &lt;/ng-template&gt;
+    &lt;h2 *ngIf&#x3D;&quot;paypalLoad&quot;&gt;Paypal button is loading&lt;/h2&gt;
+    &lt;div id&#x3D;&quot;paypal-checkout-btn&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -493,7 +501,7 @@ this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>      <div data-bluesnap="PaymentRequest"></div>    </ng-template>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>    <ng-template #notApplePayBlock>      <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>      <div data-bluesnap="PaymentRequest"></div>    </ng-template>    <h2 *ngIf="paypalLoad">Paypal button is loading</h2>    <div id="paypal-checkout-btn"></div>  </div></div></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasPay'};

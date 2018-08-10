@@ -5,9 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.15.3...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.16.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.16.0](https://github.com/wickeyware/wickeyappstore/compare/2.15.4...2.16.0) - 2018-08-09
+
+### Added
+
+* **WasPay** Add PayPal payment option.
+
+### Fixed
+
+* **WasShop** Make WasShop fullscreen.
+
 ## [2.15.4](https://github.com/wickeyware/wickeyappstore/compare/2.15.3...2.15.4) - 2018-08-03
 
 ### Fixed
