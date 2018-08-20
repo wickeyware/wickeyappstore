@@ -66,6 +66,7 @@ NOTE: npm will already be installed if node is already installed.
 
 ```bash
 npm install
+npm run build:lib
 npm run start
 ```
 
@@ -73,6 +74,7 @@ with [yarn](https://yarnpkg.com)
 
 ```bash
 yarn
+yarn run build:lib
 yarn run start
 ```
 
