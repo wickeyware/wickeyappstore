@@ -32,6 +32,8 @@ export class WasShop {
   public adnotready = true;
   /**@ignore*/
   public rewardedVideoNOTReady = true;
+  /**@ignore*/
+  public appName: string;
   private loggedin = false;
   /**@ignore*/
   public hasAds = false;
@@ -49,6 +51,25 @@ export class WasShop {
     // SET DEFAULT VALUES
     // dialogRef.disableClose = true; // do not close by clicking off by default
     dialogRef.updateSize('100%', '100%');
+    try {
+      const getSubdomain = function(hostname) {
+        if (hostname === 'localhost') {
+          return 'localhostwickeyappstore';
+        } else if (hostname === 'test.wickeyappstore.com') {
+          return 'testwickeyappstore';
+        } else if (hostname === 'wickeyappstore.com') {
+          return 'wickeyappstore';
+        } else {
+          const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
+          const urlParts = regexParse.exec(hostname);
+          return hostname.replace(urlParts[0], '').slice(0, -1);
+        }
+      };
+      this.appName = getSubdomain(window.location.hostname);
+    } catch (getdomainerror) {
+      console.error('Ads:getdomainerror', getdomainerror);
+      this.appName = '';
+    }
   }
   /**@ignore*/
   onNoClick(): void {

@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/m
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WasAlert } from '../wasalert/wasalert.dialog';
+import { WasUp } from '../wasup/wasup.dialog';
 import { UserService } from '../../../user.service';
 /**
 * WasSSO
@@ -79,9 +80,13 @@ export class WasSSO implements OnInit, OnChanges {
     const formModel = this.firstFormGroup.value;
     const _tokenEmail = formModel.email as string;
     // NOTE: If email doesn't exist add to their account, send token, set account to verified after token entered
+    const loadingdialogRef = this.dialog.open(WasUp, {
+      width: '300px', data: { title: 'Sending Token', icon: 'spinner', body: 'Sending...', stayopen: true }
+    });
     this.userService
       .sendToken({ 'token_email': _tokenEmail })
       .subscribe((res) => {
+        loadingdialogRef.close();
         let _alertMessage = 'The login token was sent. Enter it in token field to finish the login.';
         if (res.new_account) {
           _alertMessage = 'The verification token was sent. Enter it in token field to finish creating account.';
@@ -91,6 +96,7 @@ export class WasSSO implements OnInit, OnChanges {
         });
       }, (error) => {
         // <any>error | this casts error to be any
+        loadingdialogRef.close();
         this.dialog.open(WasAlert, {
           data: { title: 'Attention', body: error }
         });
@@ -100,9 +106,13 @@ export class WasSSO implements OnInit, OnChanges {
   verifyPerson(): void {
     const formModel = this.secondFormGroup.value;
     const _verificationToken = formModel.token as string;
+    const loadingdialogRef = this.dialog.open(WasUp, {
+      width: '300px', data: { title: 'Verifying Token', icon: 'spinner', body: 'Verifying...', stayopen: true }
+    });
     this.userService
       .verifyToken({ 'token': _verificationToken })
       .subscribe((res) => {
+        loadingdialogRef.close();
         let _alertTitle = 'Successful login';
         let _alertMessage = 'Log into ' + res.email + ' success!';
         if (res.account_created) {
@@ -115,6 +125,7 @@ export class WasSSO implements OnInit, OnChanges {
         this.dialogRef.close(res.email);
       }, (error) => {
         // <any>error | this casts error to be any
+        loadingdialogRef.close();
         this.dialog.open(WasAlert, {
           data: { title: 'Attention', body: error }
         });
