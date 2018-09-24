@@ -59,8 +59,9 @@ button {
 /* Use the resize method within any dialog to set to 100%, 100% */
 .cdk-overlay-pane {
   max-width: 100%!important;
-  overflow-y: scroll!important; 
-  -webkit-overflow-scrolling: touch!important;
+  /* Pulled this out as it caused janky modal animations in ios 12 */
+  /* overflow-y: scroll!important; 
+  -webkit-overflow-scrolling: touch!important; */
 }
 
 /* Every toolbar row uses a flexbox row layout. */
