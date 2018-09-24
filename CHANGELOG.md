@@ -13,7 +13,7 @@ This shows all commits since last release (actually, currently all commits).
 
 ### Fixed
 
-* **Styles** Removed ios smooth scrolling for full screen modals. Caused Issues on ios 12
+yarn run
 
 ## [2.16.2](https://github.com/wickeyware/wickeyappstore/compare/2.16.1...2.16.2) - 2018-09-23
 
