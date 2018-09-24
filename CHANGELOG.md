@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.16.3](https://github.com/wickeyware/wickeyappstore/compare/2.16.2...2.16.3) - 2018-09-24
+## [2.16.4](https://github.com/wickeyware/wickeyappstore/compare/2.16.2...2.16.4) - 2018-09-24
 
 ### Fixed
 
-yarn run
+* **Styles** Remove ios smooth scrolling for full screen modals. Causes issues with iOS 12
 
 ## [2.16.2](https://github.com/wickeyware/wickeyappstore/compare/2.16.1...2.16.2) - 2018-09-23
 
