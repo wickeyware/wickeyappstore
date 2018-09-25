@@ -21,6 +21,8 @@ export class ApiConnectionService {
   private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
   private person_auth_url = 'https://api.wickeyappstore.com/person/auth/';
+  private favorites_url = 'https://api.wickeyappstore.com/person/favorites/';
+  private fav_del_url = 'https://api.wickeyappstore.com/person/favorites/remove/';
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
   private consumeUrl = 'https://api.wickeyappstore.com/consume/';
   private reviews_url = 'https://api.wickeyappstore.com/reviews/';
@@ -91,7 +93,7 @@ export class ApiConnectionService {
         // The backend returned an unsuccessful response code.
         // {"error": {"message": string, code: number}} // where code is a http status code as-well as an internal error code.
         try {
-          const _checkIfValue = function(_obj: any, _key: string) {
+          const _checkIfValue = function (_obj: any, _key: string) {
             if (_obj.hasOwnProperty(_key) && (_obj[_key] !== undefined && _obj[_key] !== null)) {
               return true;
             } else {
@@ -195,8 +197,64 @@ export class ApiConnectionService {
     return this.http.post(this.person_url, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
+
+  /**
+  * Return a list of favorite apps.
+  *
+  * @param [_params] {"user_id": string}
+  * @returns Success or failure status code and message. {favorites:[{app},...]}
+  */
+  getFavorites(_params?: any): Observable<any> {
+    this.handleHeaders();
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.favorites_url}?${_query_string}`, { headers: this.apiHeaders }).pipe(
+      map((res: any) => {
+        return this.extractData(res).favorites;
+      }), catchError(this.handleError), share());
+  }
+
+  /**
+   * Add an app to list of favorite apps.
+   *
+   * @param user_id The user id.
+   * @param [storeapp_id] This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).
+   * @returns Success or failure status code and message. {favorites:[{app},...]}
+   */
+  setFavorite(user_id: string, storeapp_id?: number): Observable<any> {
+    this.handleHeaders();
+    const apiobject = { user_id: user_id };
+    if (storeapp_id) {
+      apiobject['storeapp_id'] = storeapp_id;
+    }
+    // NOTE: Use share to avoid duplicate calls
+    return this.http.post(this.favorites_url, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res).favorites;
+      }), catchError(this.handleError), share());
+  }
+
+  /**
+   * Remove an app from the list of favorite apps.
+   *
+   * @param user_id The user id.
+   * @param [storeapp_id] This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).
+   * @returns Success or failure status code and message. {favorites:[{app},...]}
+   */
+  deleteFavorite(user_id: string, storeapp_id?: number): Observable<any> {
+    this.handleHeaders();
+    const apiobject = { user_id: user_id };
+    if (storeapp_id) {
+      apiobject['storeapp_id'] = storeapp_id;
+    }
+    // NOTE: Use share to avoid duplicate calls
+    return this.http.post(this.fav_del_url, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res).favorites;
+      }), catchError(this.handleError), share());
+  }
+
   // Sends the email a recovery token
   tokenPerson(email: string, user_id: string): Observable<any> {
     this.handleHeaders();
@@ -204,7 +262,7 @@ export class ApiConnectionService {
     return this.http.post(this.person_recover_token_url, { email: email, user_id: user_id },
       { headers: this.apiHeaders, withCredentials: true }).pipe(
         map(this.extractData),
-        catchError(this.handleError), share(), );
+        catchError(this.handleError), share());
   }
   // Verify the recovery token
   verifyPerson(email: string, user_id: string, verification_token: string, version?: number, password?: string): Observable<any> {
@@ -220,7 +278,7 @@ export class ApiConnectionService {
       { email: email, user_id: user_id, verification_token: verification_token }, { headers: this.apiHeaders, withCredentials: true }).pipe(
         map((res: any) => {
           return this.extractVerifyData(res);
-        }), catchError(this.handleError), share(), );
+        }), catchError(this.handleError), share());
   }
 
   /**
@@ -241,7 +299,7 @@ export class ApiConnectionService {
     return this.http.post(this.person_auth_url, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -258,7 +316,7 @@ export class ApiConnectionService {
     return this.http.get(`${this.reviews_url}?${_query_string}`, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res).reviews;
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -273,7 +331,7 @@ export class ApiConnectionService {
     return this.http.post(this.reviews_url, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -290,7 +348,7 @@ export class ApiConnectionService {
     return this.http.get(`${this.purchases_url}?${_query_string}`, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -308,7 +366,7 @@ export class ApiConnectionService {
     this.handleHeaders();
     return this.http.post(this.purchases_url, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map(this.extractData),
-      catchError(this.handleError), share(), );
+      catchError(this.handleError), share());
   }
 
   /**
@@ -323,7 +381,7 @@ export class ApiConnectionService {
     this.handleHeaders();
     return this.http.post(this.consumeUrl, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map(this.extractData),
-      catchError(this.handleError), share(), );
+      catchError(this.handleError), share());
   }
 
   /**
@@ -333,7 +391,7 @@ export class ApiConnectionService {
     return this.http.post(this.bluesnapTokenUrl, {}).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
    * Returns an encrypted shopper token in `token`, post to to BlueSnap via `enc=this_returned_token`
@@ -342,7 +400,7 @@ export class ApiConnectionService {
     return this.http.post(this.bluesnapShopperUrl, { shopper_id: _shopper_id }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -356,7 +414,7 @@ export class ApiConnectionService {
     return this.http.post(this.bluesnapWalletUrl, { validation_url: _validation_url }).pipe(
       map((res: any) => {
         return res;
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
   * Notifies the server that a video ad has started by this user and video id.
@@ -367,7 +425,7 @@ export class ApiConnectionService {
       { headers: this.apiHeaders }).pipe(
         map((res: any) => {
           return this.extractData(res);
-        }), catchError(this.handleError), share(), );
+        }), catchError(this.handleError), share());
   }
   /**
   * Notifies the server that a video ad has ended by this user and video id.
@@ -377,7 +435,7 @@ export class ApiConnectionService {
     return this.http.post(this.adVideoEndUrl, { user_id: user_id, video_id: video_id }, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
    * Gets a value(s) for requested key(s).
@@ -396,7 +454,7 @@ export class ApiConnectionService {
     return this.http.get(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res).was_data;
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
    * Stores/Updates all values to respective key in passed in json was_data.
@@ -414,7 +472,7 @@ export class ApiConnectionService {
     return this.http.post(this.wasstore_url, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
    * Deletes a value(s) for the requested key(s).
@@ -433,7 +491,7 @@ export class ApiConnectionService {
     return this.http.delete(`${this.wasstore_url}?${_query_string}`, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
   /**
@@ -444,14 +502,14 @@ export class ApiConnectionService {
    * @param _params string: username,
    * @returns Returns a leaderboard list (optional: and rank of passed in username).
    */
-  getLeaderboard(_params: { username?: string }): Observable<{leaderboard: [any], rank?: number}> {
+  getLeaderboard(_params: { username?: string }): Observable<{ leaderboard: [any], rank?: number }> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);
     return this.http.get(`${this.leaderboardUrl}?${_query_string}`, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
   /**
    * Stores/Updates the highscore of user.
@@ -463,13 +521,13 @@ export class ApiConnectionService {
    * @param _params string: user_id, json: was_data where was_data is format {key:value,...}
    * @returns Returns rank of user.
    */
-  setHighscore(_params: { user_id: string, highscore: number }): Observable<{rank?: number}> {
+  setHighscore(_params: { user_id: string, highscore: number }): Observable<{ rank?: number }> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.highscoreUrl, _params, { headers: this.apiHeaders, withCredentials: true }).pipe(
       map((res: any) => {
         return this.extractData(res);
-      }), catchError(this.handleError), share(), );
+      }), catchError(this.handleError), share());
   }
 
 }
