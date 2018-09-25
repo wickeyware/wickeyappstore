@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.16.5](https://github.com/wickeyware/wickeyappstore/compare/2.16.4...2.16.5) - 2018-09-25
+
+### Fixed
+
+* **WasShop** Scrolling fix on long lists of iapps (iOS)
+* **API** add api for upcoming favorites list
+
 ## [2.16.4](https://github.com/wickeyware/wickeyappstore/compare/2.16.2...2.16.4) - 2018-09-24
 
 ### Fixed

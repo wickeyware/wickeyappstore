@@ -413,7 +413,13 @@ this.userService.user().subscribe();</code></pre></div>
                                 <a href="#consumeCoins">consumeCoins</a>
                             </li>
                             <li>
+                                <a href="#deleteFavorite">deleteFavorite</a>
+                            </li>
+                            <li>
                                 <a href="#deleteStore">deleteStore</a>
+                            </li>
+                            <li>
+                                <a href="#getFavorites">getFavorites</a>
                             </li>
                             <li>
                                 <a href="#getInapp">getInapp</a>
@@ -426,6 +432,9 @@ this.userService.user().subscribe();</code></pre></div>
                             </li>
                             <li>
                                 <a href="#isLoggedIn">isLoggedIn</a>
+                            </li>
+                            <li>
+                                <a href="#setFavorite">setFavorite</a>
                             </li>
                             <li>
                                 <a href="#setHighscore">setHighscore</a>
@@ -615,6 +624,78 @@ this.userService.user().subscribe();</code></pre></div>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="deleteFavorite"></a>
+                        <span class="name">
+                            <b>
+                            deleteFavorite
+                            </b>
+                            <a href="#deleteFavorite"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>deleteFavorite(storeapp_id?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Remove an app from the list of favorite apps.
+Returns {favorites:[{app},...]}</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>storeapp_id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="deleteStore"></a>
                         <span class="name">
                             <b>
@@ -679,6 +760,41 @@ NOTE: Deprecated, use WasDataService</p>
                                 <div class="io-description">
                                     
                                 </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getFavorites"></a>
+                        <span class="name">
+                            <b>
+                            getFavorites
+                            </b>
+                            <a href="#getFavorites"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getFavorites()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Return a list of favorite apps {favorites:[{app},...]}</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -931,6 +1047,78 @@ NOTE: It also on page load it emits the login status.</p>
                                 <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
 
                             </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setFavorite"></a>
+                        <span class="name">
+                            <b>
+                            setFavorite
+                            </b>
+                            <a href="#setFavorite"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setFavorite(storeapp_id?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Add an app to the favorites list.
+Returns {favorites:[{app},...]}</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>storeapp_id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
