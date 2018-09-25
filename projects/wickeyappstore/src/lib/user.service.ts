@@ -10,7 +10,7 @@ import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
-import { User, Review, Inapp } from './app.models';
+import { User, Review, Inapp, App } from './app.models';
 export * from './app.models';
 /**@ignore*/
 export interface UserParams {
@@ -529,6 +529,45 @@ export class UserService {
       // console.log('UserService updateUsername: NO CHANGE:', username);
       _obs = observableOf(null);
     }
+    return _obs;
+  }
+
+  /**
+   * Return a list of favorite apps {favorites:[{app},...]}
+   */
+  getFavorites(): Observable<{ apps: [App] }> {
+    const _obs = this.apiConnectionService.getFavorites(this._userObj.user_id);
+    _obs.subscribe((res) => {
+    }, (error) => {
+    });
+    return _obs;
+  }
+
+  /**
+   * Add an app to the favorites list.
+   * Returns {favorites:[{app},...]}
+   *
+   * @param [storeapp_id] This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).
+   */
+  setFavorite(storeapp_id?: number): Observable<{ apps: [App] }> {
+    const _obs = this.apiConnectionService.setFavorite(this._userObj.user_id, storeapp_id);
+    _obs.subscribe((res) => {
+    }, (error) => {
+    });
+    return _obs;
+  }
+
+  /**
+   * Remove an app from the list of favorite apps.
+   * Returns {favorites:[{app},...]}
+   *
+   * @param [storeapp_id] This is only sent in from WickeyAppStore (on actual app sites it uses the hostname).
+   */
+  deleteFavorite(storeapp_id?: number): Observable<{ apps: [App] }> {
+    const _obs = this.apiConnectionService.deleteFavorite(this._userObj.user_id, storeapp_id);
+    _obs.subscribe((res) => {
+    }, (error) => {
+    });
     return _obs;
   }
 
