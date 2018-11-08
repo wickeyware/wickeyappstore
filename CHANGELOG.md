@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.16.2...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.17.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.17.0](https://github.com/wickeyware/wickeyappstore/compare/2.16.5...2.17.0) - 2018-11-08
+
+### Fixed
+
+* **package** Update to Angular 7 and latest rxjs.
+* **WASMenuBtn** Explicitly set menu to overlap WAS menu button.
+* **docs** Re-compile docs.
 
 ## [2.16.5](https://github.com/wickeyware/wickeyappstore/compare/2.16.4...2.16.5) - 2018-09-25
 
