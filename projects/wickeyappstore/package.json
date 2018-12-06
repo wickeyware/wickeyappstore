@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "2.17.0",
+  "version": "2.17.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/wickeyware/wickeyappstore"
@@ -42,7 +42,7 @@
     "@angular/material": "^7.0.0",
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
-    "@angular/pwa": "~0.10.0",
+    "@angular/pwa": "^0.10.0",
     "@angular/service-worker": "^7.0.0",
     "idb-keyval": "^3.0.3",
     "rxjs": "^6.3.0",

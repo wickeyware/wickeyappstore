@@ -99,6 +99,9 @@
                                 <a href="#deleteStore">deleteStore</a>
                             </li>
                             <li>
+                                <a href="#getFavoriteCheck">getFavoriteCheck</a>
+                            </li>
+                            <li>
                                 <a href="#getFavorites">getFavorites</a>
                             </li>
                             <li>
@@ -112,6 +115,9 @@
                             </li>
                             <li>
                                 <a href="#isLoggedIn">isLoggedIn</a>
+                            </li>
+                            <li>
+                                <a href="#saveFavorite">saveFavorite</a>
                             </li>
                             <li>
                                 <a href="#setFavorite">setFavorite</a>
@@ -170,6 +176,18 @@
                                 </li>
                                 <li>
                                     <a href="#isLoaded">isLoaded</a>
+                                </li>
+                                <li>
+                                    <a href="#favorites">favorites</a>
+                                </li>
+                                <li>
+                                    <a href="#favoritesObject">favoritesObject</a>
+                                </li>
+                                <li>
+                                    <a href="#isFavorite">isFavorite</a>
+                                </li>
+                                <li>
+                                    <a href="#isFavoriteObject">isFavoriteObject</a>
                                 </li>
                                 <li>
                                     <a href="#freebieSettings">freebieSettings</a>
@@ -495,6 +513,41 @@ NOTE: Deprecated, use WasDataService</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getFavoriteCheck"></a>
+                        <span class="name">
+                            <b>
+                            getFavoriteCheck
+                            </b>
+                            <a href="#getFavoriteCheck"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getFavoriteCheck()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Return if the current app is a favorite is_favorite</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getFavorites"></a>
                         <span class="name">
                             <b>
@@ -772,6 +825,41 @@ NOTE: It also on page load it emits the login status.</p>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="saveFavorite"></a>
+                        <span class="name">
+                            <b>
+                            saveFavorite
+                            </b>
+                            <a href="#saveFavorite"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>saveFavorite()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Save favorite if logged in, else asks to login/create account, then saves to favorite.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
                     </td>
@@ -1217,6 +1305,74 @@ Subscribe in ts: userService.user.subscribe</code></pre>
                 <tr>
                     <td class="col-md-4">
                         <span class="accessor"><b>get</b><code>isLoaded()</code></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="favorites"></a>
+                        <span class="name"><b>favorites</b><a href="#favorites"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>favorites()</code></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="favoritesObject"></a>
+                        <span class="name"><b>favoritesObject</b><a href="#favoritesObject"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>favoritesObject()</code></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isFavorite"></a>
+                        <span class="name"><b>isFavorite</b><a href="#isFavorite"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isFavorite()</code></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isFavoriteObject"></a>
+                        <span class="name"><b>isFavoriteObject</b><a href="#isFavoriteObject"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isFavoriteObject()</code></span>
                     </td>
                 </tr>
 

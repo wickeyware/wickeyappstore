@@ -57,6 +57,18 @@
     <mat-icon>monetization_on</mat-icon>
     <span>Open the Shop</span>
   </button>
+  <div *ngIf="userService.loginChange | async">
+    <button *ngIf="userService.isFavorite | async; else notFavBlock" mat-menu-item (click)="userService.saveFavorite()">
+      <mat-icon>favorite</mat-icon>
+      <span>Remove from Favorites</span>
+    </button>
+    <ng-template #notFavBlock>
+      <button mat-menu-item (click)="userService.saveFavorite()">
+        <mat-icon>favorite_border</mat-icon>
+        <span>Add to Favorites</span>
+      </button>
+    </ng-template>
+  </div>
   <mat-grid-list cols="4">
     <mat-grid-tile [colspan]="3">
       <button mat-menu-item (click)="opensso()">

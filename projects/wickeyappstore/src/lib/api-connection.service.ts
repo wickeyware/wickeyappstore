@@ -23,6 +23,7 @@ export class ApiConnectionService {
   private person_auth_url = 'https://api.wickeyappstore.com/person/auth/';
   private favorites_url = 'https://api.wickeyappstore.com/person/favorites/';
   private fav_del_url = 'https://api.wickeyappstore.com/person/favorites/remove/';
+  private check_favorite_url = 'https://api.wickeyappstore.com/person/favorites/check/';
   private purchases_url = 'https://api.wickeyappstore.com/purchases/';
   private consumeUrl = 'https://api.wickeyappstore.com/consume/';
   private reviews_url = 'https://api.wickeyappstore.com/reviews/';
@@ -195,6 +196,20 @@ export class ApiConnectionService {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     return this.http.post(this.person_url, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share());
+  }
+  /**
+  * Return a list of favorite apps.
+  *
+  * @param [_params] {"user_id": string}
+  * @returns Success or failure status code and message. {favorites:[{app},...]}
+  */
+  checkFavorite(_params?: any): Observable<any> {
+    this.handleHeaders();
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.check_favorite_url}?${_query_string}`, { headers: this.apiHeaders }).pipe(
       map((res: any) => {
         return this.extractData(res);
       }), catchError(this.handleError), share());

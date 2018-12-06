@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap, share } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
+import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
-import { User, Review, Inapp, App } from './app.models';
+import { User, Review, Inapp, App, AppGroup } from './app.models';
 export * from './app.models';
 /**@ignore*/
 export interface UserParams {
@@ -58,6 +59,10 @@ export class UserService {
   private _loginChange: ReplaySubject<boolean> = new ReplaySubject(1);
   private _onAccountCreate: ReplaySubject<boolean> = new ReplaySubject(1);
   private _inapps: ReplaySubject<[Inapp]> = new ReplaySubject(1);
+  private _favorites: ReplaySubject<AppGroup> = new ReplaySubject(1);
+  private _favoritesObj: AppGroup;
+  private _is_favorite: ReplaySubject<Boolean> = new ReplaySubject(1);
+  private _is_favoriteObj: Boolean;
   private _freebieSettings: ReplaySubject<any> = new ReplaySubject(1);
   private _freebieSettingsObj: any;
   private _inappsObj: [Inapp];
@@ -102,6 +107,7 @@ export class UserService {
       // Load inapps on all login changes (also ensures user object exists)
       this.loadInapps();
       this.loadFreebieSettings();
+      this.loadIfFavorite();
     });
   }
 
@@ -205,6 +211,18 @@ export class UserService {
   get isLoaded() {
     return this._loaded;
   }
+  get favorites() {
+    return this._favorites;
+  }
+  get favoritesObject() {
+    return this._favoritesObj;
+  }
+  get isFavorite() {
+    return this._is_favorite;
+  }
+  get isFavoriteObject() {
+    return this._is_favoriteObj;
+  }
   get freebieSettings() {
     return this._freebieSettings;
   }
@@ -292,6 +310,22 @@ export class UserService {
           // console.log('UserService loadFreebieSettings: load freebie settings from db', this._freebieSettingsObj);
         }
       }).catch(this.handleError);
+  }
+  /** @ignore */
+  loadIfFavorite() {
+    this.localStorageService.get('was-isfavorite')
+      .then((value: any): void => {
+        if (value && typeof value !== 'undefined') {
+          this._is_favoriteObj = value as Boolean;
+          this._is_favorite.next(this._is_favoriteObj);
+          // normal load
+          console.log('UserService loadFavorites: load favorites from db', this._is_favoriteObj);
+          this.getFavoriteCheck();
+        } else {
+          this.getFavoriteCheck();
+        }
+      }
+      ).catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
@@ -533,13 +567,45 @@ export class UserService {
   }
 
   /**
+   * Return if the current app is a favorite is_favorite
+   */
+  getFavoriteCheck(): Observable<{ is_favorite: boolean }> {
+    let _obs;
+    if (this._isLoggedIn) {
+      _obs = this.apiConnectionService.checkFavorite({'user_id': this._userObj.user_id});
+      _obs.subscribe((res) => {
+        this._is_favoriteObj = res.is_favorite;
+        this._is_favorite.next(this._is_favoriteObj);
+        this.saveLocal('was-isfavorite', this._is_favoriteObj);
+      }, (error) => {
+      });
+    } else {
+      this._is_favoriteObj = false;
+      this._is_favorite.next(this._is_favoriteObj);
+      _obs = observableOf(this._is_favoriteObj);
+    }
+    return _obs;
+  }
+
+  /**
    * Return a list of favorite apps {favorites:[{app},...]}
    */
   getFavorites(): Observable<{ apps: [App] }> {
-    const _obs = this.apiConnectionService.getFavorites(this._userObj.user_id);
-    _obs.subscribe((res) => {
-    }, (error) => {
-    });
+    let _obs;
+    if (this._isLoggedIn) {
+      _obs = this.apiConnectionService.getFavorites({'user_id': this._userObj.user_id});
+      _obs.subscribe((res) => {
+        this._favoritesObj = res;
+        this._favorites.next(this._favoritesObj);
+        this.saveLocal('was-favorites', this._favoritesObj);
+      }, (error) => {
+      });
+    } else {
+      this._favoritesObj = (<any>{ apps: {apps: []} });
+      this._favorites.next(this._favoritesObj);
+      this.saveLocal('was-favorites', this._favoritesObj);
+      _obs = observableOf(this._favoritesObj);
+    }
     return _obs;
   }
 
@@ -552,6 +618,14 @@ export class UserService {
   setFavorite(storeapp_id?: number): Observable<{ apps: [App] }> {
     const _obs = this.apiConnectionService.setFavorite(this._userObj.user_id, storeapp_id);
     _obs.subscribe((res) => {
+      // SET IS FAVORITE (on successful return)
+      this._is_favoriteObj = true;
+      this._is_favorite.next(this._is_favoriteObj);
+      this.saveLocal('was-isfavorite', this._is_favoriteObj);
+      // UPDATE FAVORITE STREAM
+      this._favoritesObj = res;
+      this._favorites.next(this._favoritesObj);
+      this.saveLocal('was-favorites', this._favoritesObj);
     }, (error) => {
     });
     return _obs;
@@ -566,9 +640,90 @@ export class UserService {
   deleteFavorite(storeapp_id?: number): Observable<{ apps: [App] }> {
     const _obs = this.apiConnectionService.deleteFavorite(this._userObj.user_id, storeapp_id);
     _obs.subscribe((res) => {
+      // DELETE IS FAVORITE (on successful return)
+      this._is_favoriteObj = false;
+      this._is_favorite.next(this._is_favoriteObj);
+      this.saveLocal('was-isfavorite', this._is_favoriteObj);
+      // UPDATE FAVORITE STREAM
+      this._favoritesObj = res;
+      this._favorites.next(this._favoritesObj);
+      this.saveLocal('was-favorites', this._favoritesObj);
     }, (error) => {
     });
     return _obs;
+  }
+
+  /**
+   * Pipe save favorite through login alert.
+   * @ignore
+  */
+  savefavoriteLogin(storeapp_id?: number): Observable<any | null> {
+    const _obs = this.dialog.open(WasAlert, {
+      data: { title: 'Only verified users can leave save favorites',
+      body: 'Want to log in/create account?', buttons: 'WasAlertStyleConfirm' }
+    }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
+      if (result === 1) {
+        return this.dialog.open(WasSSO).afterClosed().pipe(map(_retVal => _retVal), mergeMap(_result => {
+          if (this._isLoggedIn) {
+            return this.setFavorite(storeapp_id);
+          } else {
+            return observableOf(null);
+          }
+        }));
+      } else {
+        return observableOf(null);
+      }
+    }), share());
+    return _obs;
+  }
+  /**
+   * Update favorite and show alert.
+   * @ignore
+  */
+  updateFavorite() {
+    let _msgtitle = 'Favorite Added';
+    let _msgbody = 'App added to favorites!';
+    let _apiCall;
+    if (this._is_favoriteObj) {
+      // this.selected_app.favorite = false;
+      _msgtitle = 'Favorite Removed';
+      _msgbody = 'App removed from favorites!';
+      _apiCall = this.deleteFavorite();
+    } else {
+      // this.selected_app.favorite = true;
+      _apiCall = this.setFavorite();
+    }
+    const loadingdialogRef = this.dialog.open(WasUp, {
+      width: '300px', data: { title: 'Updating Favorites', icon: 'spinner', body: 'Updating...', stayopen: true }
+    });
+    _apiCall.subscribe((res) => {
+        loadingdialogRef.close();
+        this.dialog.open(WasUp, {data: { title: _msgtitle, icon: 'done', body: _msgbody} });
+      }, (error) => {
+        // <any>error | this casts error to be any
+        loadingdialogRef.close();
+        this.dialog.open(WasAlert, {
+          data: { title: 'Attention', body: error }
+        });
+      });
+  }
+  /**
+   * Save favorite if logged in, else asks to login/create account, then saves to favorite.
+  */
+  saveFavorite() {
+    if (this._isLoggedIn === true) {
+      this.updateFavorite();
+    } else {
+      this.savefavoriteLogin().subscribe(val => {
+        if (val) {
+          console.log('updateFav', val);
+          this.dialog.open(WasUp, {data: { title: 'Favorite Added', icon: 'done', body: 'App added to favorites!'} });
+        } else {
+          console.log('updateFav canceled', val);
+          // this.dialog.open(WasUp, {data: { title: 'Canceled?', icon: 'done', body: 'Oh no, it no work'} });
+        }
+      });
+    }
   }
 
   /**
