@@ -1,4 +1,4 @@
-<mat-card class="my-profile-card">
+<mat-card class="my-profile-card" matRipple (click)="clickPay()">
   <mat-card-header>
     <div mat-card-avatar>
       <div *ngIf="inapp.icon;else defaulticon" mat-card-avatar style="background-image: url('https://s3.amazonaws.com/originalapps/icons/logo_coin.png');background-size: cover;"></div>
@@ -9,7 +9,7 @@
     <mat-card-title>{{makeTitle()}}</mat-card-title>
     <span class="example-fill-remaining-space"></span>
     <mat-chip-list class="price-sticker">
-      <mat-chip color={{priceColor()}} (click)="clickPay()" selected="true">{{priceTag()}}</mat-chip>
+      <mat-chip color={{priceColor()}} (click)="clickPay()" selected="true">{{inapp.price}}</mat-chip>
     </mat-chip-list>
   </mat-card-header>
   <mat-card-content>

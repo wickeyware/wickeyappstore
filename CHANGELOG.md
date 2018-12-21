@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.17.4](https://github.com/wickeyware/wickeyappstore/compare/2.17.3...2.17.4) - 2018-12-21
+
+### Fixed
+
+* **WasShop** Fix font overflowing on pay buttons, causing two lines.
+* **WasShop** Make pay card clickable.
+
 ## [2.17.3](https://github.com/wickeyware/wickeyappstore/compare/2.17.2...2.17.3) - 2018-12-06
 
 ### Fixed
