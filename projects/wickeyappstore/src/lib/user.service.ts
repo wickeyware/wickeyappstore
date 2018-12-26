@@ -11,6 +11,7 @@ import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
+import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { User, Review, Inapp, App, AppGroup } from './app.models';
 export * from './app.models';
 /**@ignore*/
@@ -1280,7 +1281,6 @@ export class UserService {
   }
   /**
    * Open review if logged in, else ask to login/create account.
-   * @ignore
   */
   leavereview() {
     if (this._isLoggedIn) {
@@ -1308,6 +1308,15 @@ export class UserService {
   */
   openshop() {
     this.dialog.open(WasShop, {width: '100%', height: '100%'});
+  }
+
+  /**
+   * Open WasPay to the selected inapp, and returns true if successful.
+   */
+  openpay(_inapp: Inapp): Observable<boolean> {
+    const _obs = this.dialog.open(WasPay, { data: _inapp }).afterClosed();
+    _obs.subscribe(_isSuccess => {});
+    return _obs;
   }
 
   /**

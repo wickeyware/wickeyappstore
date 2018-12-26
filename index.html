@@ -22,15 +22,31 @@
     wickeyappstore.addEventListener('open', (event) => {
       console.log('WAS button opened');  // can pause game here.
     });
+    // https://wickeyware.github.io/wickeyappstore/injectables/UserService.html
     const userService = window.WAS.userService;
+    // https://wickeyware.github.io/wickeyappstore/injectables/WasDataService.html
     const dataService = window.WAS.dataService;
     userService.user.subscribe(usr => {
       console.log('userServiceOut user.subscribe', usr);
     });
+    userService.loginChange.subscribe((_isLogged) => {
+      console.log('loginChange: loggedin: ', _isLogged);
+      // This is a good place to call dataService.restore again, to get the logged in user's data.
+    });
     // Check if purchased (where 10 is your purchase item id).
     userService.checkIfPurchased(10).subscribe(isPurch => {
       console.log('checkIfPurchased', isPurch);
+      if (!isPurch) {
+        // Check if purchased (where 10 is your purchase item id).
+        userService.openpay(10).subscribe(isSuccessful => {
+          console.log('was purchase successful?', isSuccessful);
+        });
+      }
     });
+
+    // Opens review popup, if logged in, else first logs in.
+    // userService.leavereview();
+
     // Example of how to pass in own save conflict mapping function.
     // Default mapping will choose the newest save.
     function onSaveConflict(localSave, cloudSave) {

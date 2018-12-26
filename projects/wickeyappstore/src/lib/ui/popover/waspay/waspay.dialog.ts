@@ -1,4 +1,4 @@
-import { Component, Inject, Input, AfterViewChecked } from '@angular/core';
+import { Component, Inject, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
@@ -107,6 +107,7 @@ export class WasPay implements AfterViewChecked {
 
   /**@ignore*/
   constructor(
+    private ref: ChangeDetectorRef,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WasPay>,
     public userService: UserService,
@@ -119,6 +120,11 @@ export class WasPay implements AfterViewChecked {
       };
     }
     this.isApplePayAvail = this.userService.isApplePayAvailable();
+    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
+    // ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    }, 200);
   }
   /**@ignore */
   ngAfterViewChecked(): void {

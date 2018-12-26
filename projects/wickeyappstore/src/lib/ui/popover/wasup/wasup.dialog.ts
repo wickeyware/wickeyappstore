@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 /**
  * Create simple auto closing messages with icons
@@ -47,6 +47,7 @@ export class WasUp {
    * @ignore
    */
   constructor(
+    private ref: ChangeDetectorRef,
     public dialogRef: MatDialogRef<WasUp>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
@@ -62,6 +63,11 @@ export class WasUp {
         this.dialogRef.close();
       }, 1750);
     }
+    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
+    // ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    }, 200);
   }
   /**@ignore*/
   onNoClick(): void {

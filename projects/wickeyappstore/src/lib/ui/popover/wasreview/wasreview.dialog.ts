@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
@@ -30,6 +30,7 @@ export class WasReview {
   public titleText = '';
   /**@ignore*/
   constructor(
+    private ref: ChangeDetectorRef,
     private apiConnectionService: ApiConnectionService,
     public userService: UserService,
     public dialog: MatDialog,
@@ -41,6 +42,11 @@ export class WasReview {
     if (this.userService.userObject.user_id && this.userService.userObject.email) {
       this.loadReview(this.userService.userObject.user_id);
     }
+    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
+    // ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    }, 200);
   }
   /**@ignore*/
   onNoClick(): void {

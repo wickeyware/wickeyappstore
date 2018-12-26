@@ -117,6 +117,12 @@
                                 <a href="#isLoggedIn">isLoggedIn</a>
                             </li>
                             <li>
+                                <a href="#leavereview">leavereview</a>
+                            </li>
+                            <li>
+                                <a href="#openpay">openpay</a>
+                            </li>
+                            <li>
                                 <a href="#saveFavorite">saveFavorite</a>
                             </li>
                             <li>
@@ -827,6 +833,107 @@ NOTE: It also on page load it emits the login status.</p>
                                 <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
 
                             </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="leavereview"></a>
+                        <span class="name">
+                            <b>
+                            leavereview
+                            </b>
+                            <a href="#leavereview"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>leavereview()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open review if logged in, else ask to login/create account.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openpay"></a>
+                        <span class="name">
+                            <b>
+                            openpay
+                            </b>
+                            <a href="#openpay"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openpay(_inapp: <a href="../interfaces/Inapp.html">Inapp</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open WasPay to the selected inapp, and returns true if successful.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_inapp</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Inapp.html" target="_self" >Inapp</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>

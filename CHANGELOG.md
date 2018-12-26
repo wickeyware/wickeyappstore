@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.17.5](https://github.com/wickeyware/wickeyappstore/compare/2.17.4...2.17.5) - 2018-12-26
+
+### Fixed
+
+* **WasPay** Add temporary zone refresh every 200ms for WASjs.
+* **WasUp** Add temporary zone refresh every 200ms for WASjs.
+* **WasReview** Add temporary zone refresh every 200ms for WASjs.
+* **UserService** Add method to open WasPay (observable).
+
 ## [2.17.4](https://github.com/wickeyware/wickeyappstore/compare/2.17.3...2.17.4) - 2018-12-21
 
 ### Fixed
