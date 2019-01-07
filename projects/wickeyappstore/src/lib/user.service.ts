@@ -1184,6 +1184,44 @@ export class UserService {
   }
 
   /**
+   * Get/Update username, then add score to the leaderboard.
+   */
+  addToLeaderboard(highscore: number, _alreadyTaken?: boolean): Observable<boolean> {
+    let _showMsg = null;
+    if (_alreadyTaken) {
+        _showMsg = 'Username already taken!';
+    } else {
+        _showMsg = 'Username for Leaderboard';
+    }
+    let _inputUsername = '';
+    if (this._userObj.username !== this._userObj.user_id) {
+      _inputUsername = this._userObj.username;
+    }
+    const _obs = this.dialog.open(WasAlert,
+      {data: {
+        title: _showMsg, input: true, input_value: _inputUsername,
+        buttons: 'WasAlertStyleConfirm'}
+      }).afterClosed();
+    _obs.subscribe(result => {
+      if (result !== undefined) {
+        console.log('This is the input captured', result);
+        this.updateUsername(result).subscribe(usr => {
+          // Updated username
+          this.setHighscore(highscore);
+        }, (error) => {
+            console.warn('filler app:username', error);
+            if (error === 'Username already taken') {
+                this.addToLeaderboard(highscore, true);
+            }
+        });
+      } else {
+        console.log('Dialog was cancelled');
+      }
+    });
+    return _obs;
+  }
+
+  /**
    * Get value(s) from key val store.
    * NOTE: Deprecated, use WasDataService
    *

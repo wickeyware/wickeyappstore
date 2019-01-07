@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -24,7 +24,8 @@ import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
   styleUrls: ['../was.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class WasShop {
+export class WasShop implements OnDestroy {
+  private zTimer: any;
   /**@ignore*/
   public addBtnText = 'Video Ads';
   private vastplayer;
@@ -70,7 +71,18 @@ export class WasShop {
       console.error('Ads:getdomainerror', getdomainerror);
       this.appName = '';
     }
+    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
+    // ref.detach();
+    this.zTimer = setInterval(() => {
+      this.ref.detectChanges();
+    }, 200);
   }
+
+  /** @ignore */
+  ngOnDestroy() {
+    clearInterval(this.zTimer);
+  }
+
   /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();

@@ -71,38 +71,10 @@ export class AppComponent {
     console.log('get highScore', this.highScore);
     this.userService.getLeaderboard(this.userService.userObject.username);
   }
-  addToLeaderboard(_alreadyTaken: boolean) {
-    let _showMsg = null;
-    if (_alreadyTaken === true) {
-      _showMsg = 'Username already taken! Enter username for leaderboard';
-    } else {
-      _showMsg = 'Enter username for leaderboard';
-    }
-    // Ask for username for leaderboard
-    let _usernamePrompt;
-    if (this.userService.userObject.username === this.userService.userObject.user_id) {
-      _usernamePrompt = this.promptDialog(_showMsg);
-    } else {
-      _usernamePrompt = this.promptDialog(_showMsg, this.userService.userObject.username);
-    }
-    _usernamePrompt.subscribe((_username: string) => {
-      if (_username !== null && _username !== '') {
-        this.userService.updateUsername(_username).subscribe(usr => {
-          // Updated username
-          this.userService.setHighscore(this.highScore);
-        }, (error) => {
-          console.warn('username', error);
-          if (error === 'Username already taken') {
-            this.addToLeaderboard(true);
-          }
-        });
-      }
-    });
-  }
   setScore() {
     if (this.highScore >= 0) {
       this.highScore += 1;
-      this.addToLeaderboard(false);
+      this.userService.addToLeaderboard(this.highScore);
     } else {
       this.highScore = 0;
     }
