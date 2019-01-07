@@ -124,7 +124,9 @@ export class WasPay implements AfterViewChecked, OnDestroy {
     // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
     // ref.detach();
     this.zTimer = setInterval(() => {
-      this.ref.detectChanges();
+      try {
+        this.ref.detectChanges();
+      } catch (detecterror) {}
     }, 200);
   }
 

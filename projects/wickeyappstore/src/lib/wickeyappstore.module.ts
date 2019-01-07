@@ -26,6 +26,7 @@ import {
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatStepperModule
@@ -51,6 +52,7 @@ import { WasMenuBtn } from './ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
+import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialog';
 
 // Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.3'}).install();
 
@@ -90,6 +92,7 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
     MatRadioModule,
     MatRippleModule,
     MatSelectModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule
   ],
@@ -102,6 +105,7 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
     WasSSO,
     WasMenuBtn,
     WasShop,
+    WasLeaderboard,
     WasPay,
     WasProfile,
     ReviewsComponent,
@@ -117,6 +121,7 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
     WasSSO,
     WasMenuBtn,
     WasShop,
+    WasLeaderboard,
     WasPay,
     WasProfile,
     ReviewsComponent,
@@ -140,10 +145,11 @@ import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
     MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
+    MatTableModule,
     MatSelectModule,
     MatTabsModule,
     MatToolbarModule
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasPay, WasProfile],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasProfile],
 })
 export class WickeyAppStoreModule { }

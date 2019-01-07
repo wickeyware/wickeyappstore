@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
+import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialog';
 import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
@@ -1153,7 +1154,7 @@ export class UserService {
    * @param [username] OPTIONAL: Returns rank of username.
    * @returns returns {leaderboard: [{score: number, username: string}, ...], rank?: number}
    */
-  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number}> {
+  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number, name?: string, icon?: string}> {
     const _obs = this.apiConnectionService.getLeaderboard({username: username});
     _obs.subscribe((res) => {
       // console.log('getLeaderboard: return', res);
@@ -1332,6 +1333,13 @@ export class UserService {
         }
       });
     }
+  }
+  /**
+   * Open your app's leaderboard.
+  */
+  showLeaderboard() {
+    // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
+    this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'});
   }
   /**
    * Open WickeyAppStore.

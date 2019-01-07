@@ -80,6 +80,9 @@ export class AppComponent {
     }
     this.wasDataService.save('highScore', this.highScore);
   }
+  showLeaderboard() {
+    this.userService.showLeaderboard();
+  }
 
   promptDialog(message: string, defaultVal?: string) {
     if (!defaultVal) {

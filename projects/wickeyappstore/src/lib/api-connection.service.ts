@@ -517,7 +517,7 @@ export class ApiConnectionService {
    * @param _params string: username,
    * @returns Returns a leaderboard list (optional: and rank of passed in username).
    */
-  getLeaderboard(_params: { username?: string }): Observable<{ leaderboard: [any], rank?: number }> {
+  getLeaderboard(_params: { username?: string }): Observable<{ leaderboard: [any], rank?: number, name?: string, icon?: string}> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);

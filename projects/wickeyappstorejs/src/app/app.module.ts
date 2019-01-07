@@ -27,6 +27,7 @@ import {
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatStepperModule
@@ -48,6 +49,7 @@ import { WasReview } from '../../../wickeyappstore/src/lib/ui/popover/wasreview/
 import { WasSSO } from '../../../wickeyappstore/src/lib/ui/popover/wassso/wassso.dialog';
 import { WasMenuBtn } from '../../../wickeyappstore/src/lib/ui/popover/wasmenu-btn/wasmenu-btn.component';
 import { WasShop } from '../../../wickeyappstore/src/lib/ui/popover/wasshop/wasshop.dialog';
+import { WasLeaderboard } from '../../../wickeyappstore/src/lib/ui/popover/wasleaderboard/wasleaderboard.dialog';
 import { WasPay } from '../../../wickeyappstore/src/lib/ui/popover/waspay/waspay.dialog';
 import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofile/wasprofile.dialog';
 
@@ -72,6 +74,7 @@ import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofil
     WasSSO,
     WasMenuBtn,
     WasShop,
+    WasLeaderboard,
     WasPay,
     WasProfile,
     ReviewsComponent,
@@ -104,12 +107,13 @@ import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofil
     MatRadioModule,
     MatRippleModule,
     MatSelectModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule
   ],
   entryComponents: [
     WickeyAppStoreComponent,
-    WasUp, WasAlert, WasReview, WasSSO, WasShop, WasPay, WasProfile
+    WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasProfile
   ]
 })
 export class AppModule {

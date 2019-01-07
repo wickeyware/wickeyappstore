@@ -133,3 +133,7 @@ background-color:#E7ECF1 !important;
 .was-dialog-nopadding .mat-dialog-container {
       padding: 0!important;
 }
+
+.was-leaderboard-table > table {
+  width: 100%;
+}
