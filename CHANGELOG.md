@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.0](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.0) - 2018-01-04
+
+### Added
+
+* **addToLeaderboard** Add to leaderboard handles username popup.
+* **showLeaderboard** Add to leaderboard handles username popup.
+
 ## [2.17.5](https://github.com/wickeyware/wickeyappstore/compare/2.17.4...2.17.5) - 2018-12-26
 
 ### Fixed

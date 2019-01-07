@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>WasAlert</li>
+  <li>WasLeaderboard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,76 +58,21 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/wickeyappstore/src/lib/ui/popover/wasalert/wasalert.dialog.ts</code>
+    <code>projects/wickeyappstore/src/lib/ui/popover/wasleaderboard/wasleaderboard.dialog.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Create simple modal popups with btns or input field to get user input.</p>
-<p><b>SIMPLEST USE CASE</b></p>
-<div><pre class="line-numbers"><code class="language-js"> * import { WasAlert } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+        <p>Open your app&#39;s leaderboard.</p>
+<div><pre class="line-numbers"><code class="language-js"> * import { WasLeaderboard } from &#39;wickeyappstore&#39;;
+ * import { MatDialog } from &#39;&#64;angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
- * this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;This is a WasAlert&#39; } });
- *</code></pre></div><p>MORE USE CASES BELOW</p>
-<p><b>Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)</b></p>
-<div><pre class="line-numbers"><code class="language-js">  this.dialog.open(WasAlert, {
-    data: {
-      title: &#39;Please confirm.&#39;,
-      body: &#39;This is the default WasAlertStyleConfirm alert.&#39;, buttons: &#39;WasAlertStyleConfirm&#39;
-    }
-  }).afterClosed().subscribe(result =&gt; {
-    if (result !== undefined) {
-      console.log(&#39;This is 0 for cancel, and 1 for Confirm&#39;, result);
-    } else {
-      console.log(&#39;Dialog was cancelled&#39;);
-    }
-  });
- *</code></pre></div><p><b>With Buttons</b></p>
-<div><pre class="line-numbers"><code class="language-js">  const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Confirm?&#39;, buttons: [&#39;Cancel&#39;, &#39;Option A&#39;, Option B] } });
-      dialogRef.afterClosed().subscribe(result =&gt; {
-     if (result !== undefined) {
-       console.log(&#39;This is 0 for cancel, and 1 for A, 2 for B&#39;, result);
-     } else {
-       console.log(&#39;Dialog was cancelled&#39;);
-     }
-   });
- *</code></pre></div><p><b>With Input field</b></p>
-<div><pre class="line-numbers"><code class="language-js">   const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Password&#39;, input: true, input_value: &#39;text&#39;, password: true } });
-      dialogRef.afterClosed().subscribe(result =&gt; {
-     if (result !== undefined) {
-       console.log(&#39;This is the input captured&#39;, result);
-     } else {
-       console.log(&#39;Dialog was cancelled&#39;);
-     }
-   });</code></pre></div><p><b>With List of choices<b> ---<i>Deprecated</i></p>
-<div><pre class="line-numbers"><code class="language-js">  const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, list: [&#39;item1&#39;, &#39;item2&#39;] } });
-      dialogRef.afterClosed().subscribe(result =&gt; {
-     if (result !== undefined) {
-       console.log(&#39;This is the index of the selected list item&#39;, result);
-     } else {
-       console.log(&#39;Dialog was cancelled&#39;);
-     }
-   });
- *</code></pre></div><p><b>ADVANCED Options</b></p>
-<p>Can Pass TWO buttons, TWO button_icons, and TWO button_colors</p>
-<p><i>button_icons</i> can be any material icon -&gt; <a href="https://material.io/icons/">https://material.io/icons/</a></p>
-<p><i>button_colors</i> can be any material theme color. primary, accent, warn, or empty string</p>
-<div><pre class="line-numbers"><code class="language-js">  const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Set Alarm?&#39;,
-    buttons: [&#39;Cancel&#39;, &#39;Alarm&#39;], button_icons: [&#39;cancel&#39;, &#39;alarm&#39;], button_colors: [&#39;&#39;, &#39;accent&#39;] } });
-  dialogRef.afterClosed().subscribe(result =&gt; {
-    if (result !== undefined) {
-      console.log(&#39;This is 0 for cancel, and 1 for A, 2 for B&#39;, result);
-    } else {
-      console.log(&#39;Dialog was cancelled&#39;);
-    }
-  });</code></pre></div><p>The MatDialog has additional properties.
-By default, clicking outside the window does not close the dialog. Change by setting to false;</p>
-<div><pre class="line-numbers"><code class="language-js"> this.dialogRef.disableClose = false;</code></pre></div>
+ * this.dialog.open(WasLeaderboard);
+ *</code></pre></div>
     </p>
 
 
@@ -145,6 +90,10 @@ By default, clicking outside the window does not close the dialog. Change by set
         <tbody>
 
 
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
 
 
 
@@ -164,7 +113,7 @@ By default, clicking outside the window does not close the dialog. Change by set
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./wasalert.dialog.html</code></td>
+                <td class="col-md-9"><code>./wasleaderboard.dialog.html</code></td>
             </tr>
 
 
@@ -191,44 +140,49 @@ By default, clicking outside the window does not close the dialog. Change by set
 
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;h1 mat-dialog-title&gt;{{data.title}}&lt;/h1&gt;
-&lt;div mat-dialog-content&gt;
-  &lt;div class&#x3D;&quot;wasup-body&quot;&gt;
-    {{data.body}}
+        <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot; style&#x3D;&quot;padding: 0px !important&quot;&gt;
+  &lt;header&gt;
+    &lt;mat-toolbar role&#x3D;&quot;header&quot; class&#x3D;&quot;my-title-bar&quot; color&#x3D;&quot;none&quot; style&#x3D;&quot;background-color:white;&quot;&gt;
+      &lt;span class&#x3D;&quot;my-header-sidebar&quot;&gt;&lt;/span&gt;
+      &lt;span class&#x3D;&quot;my-header-text&quot;&gt;
+        &lt;img style&#x3D;&quot;width:80px;&quot; class&#x3D;&quot;ib-main-img&quot; mat-card-image *ngIf&#x3D;&quot;appIcon&quot; src&#x3D;&quot;{{appIcon}}&quot; alt&#x3D;&quot;App icon&quot;&gt;
+      &lt;/span&gt;
+      &lt;button class&#x3D;&quot;my-header-sidebar&quot; mat-icon-button (click)&#x3D;&quot;onNoClick()&quot;&gt;
+        &lt;mat-icon aria-label&#x3D;&quot;close&quot;&gt;close&lt;/mat-icon&gt;
+      &lt;/button&gt;
+    &lt;/mat-toolbar&gt;
+    &lt;span&gt;{{appName}} Leaderboard&lt;/span&gt;
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+  &lt;/header&gt;
+
+  &lt;div class&#x3D;&quot;was-leaderboard-table mat-elevation-z8&quot;&gt;
+    &lt;table mat-table [dataSource]&#x3D;&quot;leaderboard&quot;&gt;
+
+      &lt;!-- Rank Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;rank&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Rank &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element; let i &#x3D; index&quot;&gt; {{i+1}} &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Username Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;username&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef style&#x3D;&quot;text-align:center&quot;&gt; Username &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.username | slice:0:25}} &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Score Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;score&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Score &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.score}} &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;leaderboardColumns; sticky: true&quot;&gt;&lt;/tr&gt;
+      &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: leaderboardColumns;&quot;&gt;&lt;/tr&gt;
+    &lt;/table&gt;
   &lt;/div&gt;
-  &lt;mat-list *ngIf&#x3D;&quot;data.list&quot;&gt;
-    &lt;mat-list-item *ngFor&#x3D;&quot;let item of data.list; let i &#x3D; index&quot;&gt;
-      &lt;button mat-button color&#x3D;&quot;primary&quot; [mat-dialog-close]&#x3D;&quot;i&quot;&gt;{{ item }}&lt;/button&gt;
-    &lt;/mat-list-item&gt;
-  &lt;/mat-list&gt;
-  &lt;mat-form-field *ngIf&#x3D;&quot;data.input&quot;&gt;
-    &lt;input *ngIf&#x3D;&quot;data.password; else normalinput&quot; matInput type&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
-    &lt;ng-template #normalinput&gt;
-      &lt;input matInput [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
-    &lt;/ng-template&gt;
-  &lt;/mat-form-field&gt;
+
 &lt;/div&gt;
-&lt;div mat-dialog-actions *ngIf&#x3D;&quot;data.input || data.list; else normalbuttons&quot;&gt;
-  &lt;button mat-raised-button (click)&#x3D;&quot;onNoClick()&quot; [color]&#x3D;&quot;data.button_colors[0]&quot;&gt;{{data.buttons[0]}}
-    &lt;mat-icon *ngIf&#x3D;&quot;data.button_icons[0]&quot; style&#x3D;&quot;margin-left: 10px;&quot;&gt;{{data.button_icons[0]}}&lt;/mat-icon&gt;
-  &lt;/button&gt;
-  &lt;button *ngIf&#x3D;&quot;data.input&quot; mat-raised-button [mat-dialog-close]&#x3D;&quot;data.input_value&quot; [color]&#x3D;&quot;data.button_colors[1]&quot; cdkFocusInitial&gt;{{data.buttons[1]}}
-    &lt;mat-icon style&#x3D;&quot;margin-left: 10px&quot;&gt;{{data.button_icons[1]}}&lt;/mat-icon&gt;
-  &lt;/button&gt;
-&lt;/div&gt;
-&lt;ng-template #normalbuttons&gt;
-  &lt;div mat-dialog-actions *ngIf&#x3D;&quot;data.buttons.length &#x3D;&#x3D;&#x3D; 2; else buttonlist&quot;&gt;
-    &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;0&quot; [color]&#x3D;&quot;data.button_colors[0]&quot;&gt;{{data.buttons[0]}}
-      &lt;mat-icon *ngIf&#x3D;&quot;data.button_icons[0]&quot; style&#x3D;&quot;margin-left: 10px;&quot;&gt;{{data.button_icons[0]}}&lt;/mat-icon&gt;
-    &lt;/button&gt;
-    &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;1&quot; [color]&#x3D;&quot;data.button_colors[1]&quot; cdkFocusInitial&gt;{{data.buttons[1]}}
-      &lt;mat-icon style&#x3D;&quot;margin-left: 10px&quot;&gt;{{data.button_icons[1]}}&lt;/mat-icon&gt;
-    &lt;/button&gt;
-  &lt;/div&gt;
-  &lt;ng-template #buttonlist&gt;
-    &lt;button mat-raised-button *ngFor&#x3D;&quot;let btn of data.buttons; let indx &#x3D; index&quot; [mat-dialog-close]&#x3D;&quot;indx&quot;&gt;{{btn}}&lt;/button&gt;
-  &lt;/ng-template&gt;
-&lt;/ng-template&gt;</code></pre>
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -402,10 +356,10 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input">    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">    <ng-template #normalinput>      <input matInput [(ngModel)]="data.input_value">    </ng-template>  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>  </button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>  </button></div><ng-template #normalbuttons>  <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>    </button>    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>    </button>  </div>  <ng-template #buttonlist>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </ng-template></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title" style="padding: 0px !important">  <header>    <mat-toolbar role="header" class="my-title-bar" color="none" style="background-color:white;">      <span class="my-header-sidebar"></span>      <span class="my-header-text">        <img style="width:80px;" class="ib-main-img" mat-card-image *ngIf="appIcon" src="{{appIcon}}" alt="App icon">      </span>      <button class="my-header-sidebar" mat-icon-button (click)="onNoClick()">        <mat-icon aria-label="close">close</mat-icon>      </button>    </mat-toolbar>    <span>{{appName}} Leaderboard</span>    <mat-divider></mat-divider>  </header>  <div class="was-leaderboard-table mat-elevation-z8">    <table mat-table [dataSource]="leaderboard">      <!-- Rank Column -->      <ng-container matColumnDef="rank">        <th mat-header-cell *matHeaderCellDef> Rank </th>        <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>      </ng-container>      <!-- Username Column -->      <ng-container matColumnDef="username">        <th mat-header-cell *matHeaderCellDef style="text-align:center"> Username </th>        <td mat-cell *matCellDef="let element"> {{element.username | slice:0:25}} </td>      </ng-container>      <!-- Score Column -->      <ng-container matColumnDef="score">        <th mat-header-cell *matHeaderCellDef> Score </th>        <td mat-cell *matCellDef="let element"> {{element.score}} </td>      </ng-container>      <tr mat-header-row *matHeaderRowDef="leaderboardColumns; sticky: true"></tr>      <tr mat-row *matRowDef="let row; columns: leaderboardColumns;"></tr>    </table>  </div></div></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'WasAlert'};
+    var ACTUAL_COMPONENT = {'name': 'WasLeaderboard'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -439,7 +393,7 @@ background-color:#E7ECF1 !important;
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'WasAlert.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'WasLeaderboard.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

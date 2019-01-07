@@ -89,6 +89,7 @@
     </p>
     <p class="comment">
                 <code><a href="https://angular.io/api/core/AfterViewChecked" target="_blank" >AfterViewChecked</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -311,6 +312,10 @@ background-color:#E7ECF1 !important;
 .was-dialog-nopadding .mat-dialog-container {
       padding: 0!important;
 }
+
+.was-leaderboard-table &gt; table {
+  width: 100%;
+}
 </code></pre>
     </div>
 
@@ -340,7 +345,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">Pay $ {{data.price}}</div><p class="waspay-subtitle">{{makeTitle()}}</p><mat-chip-list *ngIf="purchaseSuccess">  <mat-chip color="primary" class="waspay-buttons" selected="true">Purchase Successful!</mat-chip></mat-chip-list><p style="padding: 10px 0 20px 0;">{{data.description}}</p><div style="margin-top:20px; min-width: 240px;">  <div class="wasup-body">    <div *ngIf="userService.isLoggedInObs | async; else notLoggedIn">      <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()" id="apple-pay-button"></button>      <ng-template #notApplePayBlock>        <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>        <div data-bluesnap="PaymentRequest"></div>      </ng-template>      <h2 *ngIf="paypalLoad">Paypal button is loading</h2>      <div id="paypal-checkout-btn"></div>    </div>    <ng-template #notLoggedIn>      <button mat-raised-button (click)="userService.opensso()">        <mat-icon>person</mat-icon>        <span>You need to login to make a purchase.</span>      </button>    </ng-template>  </div></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasPay'};
 </script>

@@ -92,6 +92,12 @@ By default, clicking outside the window does not close the dialog. Change by set
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
 
 
 <section>
@@ -295,6 +301,10 @@ background-color:#E7ECF1 !important;
 .was-dialog-nopadding .mat-dialog-container {
       padding: 0!important;
 }
+
+.was-leaderboard-table &gt; table {
+  width: 100%;
+}
 </code></pre>
     </div>
 
@@ -324,7 +334,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">{{data.title}}</div><div mat-dialog-content>  <div class="wasup-body">    <i *ngIf="data.icon!=\'spinner\'" class="material-icons" style="font-size: 96px">{{data.icon}}</i>    <mat-spinner *ngIf="data.icon===\'spinner\'" style="margin:0 auto;"></mat-spinner>    <br><br> {{data.body}}  </div></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasUp'};
 </script>

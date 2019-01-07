@@ -226,7 +226,7 @@ button {
 .cdk-overlay-pane {
   max-width: 100%!important;
   /* Pulled this out as it caused janky modal animations in ios 12 */
-  /* overflow-y: scroll!important; 
+  /* overflow-y: scroll!important;
   -webkit-overflow-scrolling: touch!important; */
 }
 
@@ -247,6 +247,10 @@ button {
 
 [hidden] {
   display: none!important;
+}
+
+.was-leaderboard-modal &gt;  mat-dialog-container {
+  padding: 0px !important;
 }
 </code></pre>
     </div>
@@ -277,7 +281,7 @@ button {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><was-menu-btn (open)="openEvent()"></was-menu-btn></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WickeyAppStoreComponent'};
 </script>
