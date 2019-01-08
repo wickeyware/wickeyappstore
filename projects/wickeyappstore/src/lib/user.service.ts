@@ -1339,7 +1339,9 @@ export class UserService {
   */
   showLeaderboard() {
     // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
-    this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'});
+    const _obs = this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'}).afterClosed();
+    _obs.subscribe(_ret => {});
+    return _obs;
   }
   /**
    * Open WickeyAppStore.
