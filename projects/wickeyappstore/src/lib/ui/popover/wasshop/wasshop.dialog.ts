@@ -25,7 +25,6 @@ import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
   encapsulation: ViewEncapsulation.None
 })
 export class WasShop implements OnDestroy {
-  private zTimer: any;
   /**@ignore*/
   public addBtnText = 'Video Ads';
   private vastplayer;
@@ -71,19 +70,10 @@ export class WasShop implements OnDestroy {
       console.error('Ads:getdomainerror', getdomainerror);
       this.appName = '';
     }
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /**@ignore*/
   onNoClick(): void {

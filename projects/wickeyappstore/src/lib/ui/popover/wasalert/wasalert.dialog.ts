@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 /**
  * Create simple modal popups with btns or input field to get user input.
@@ -97,7 +97,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['../was.component.css'],
 })
 export class WasAlert implements OnDestroy {
-  private zTimer: any;
   /**
  * WasAlert Constructor
  * @param dialogRef Reference to a WasAlert dialog opened via the MatDialog service.
@@ -105,7 +104,6 @@ export class WasAlert implements OnDestroy {
  * @ignore
  */
   constructor(
-    private ref: ChangeDetectorRef,
     public dialogRef: MatDialogRef<WasAlert>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
@@ -140,19 +138,10 @@ export class WasAlert implements OnDestroy {
     if (!this.data.password) { this.data.password = false; }
     if (!this.data.button_icons) { this.data.button_icons = ['', '']; }
     if (!this.data.button_colors) { this.data.button_colors = ['', '']; }
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /**@ignore*/
   onNoClick(): void {

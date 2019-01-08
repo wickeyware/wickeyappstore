@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild, OnInit, OnChanges, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, ViewChild, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -23,7 +23,6 @@ import { UserService } from '../../../user.service';
   styleUrls: ['../was.component.css'],
 })
 export class WasSSO implements OnInit, OnChanges, OnDestroy {
-  private zTimer: any;
   /**@ignore*/
   private stepperIndex = 0;
   /**@ignore*/
@@ -35,7 +34,6 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
 
   /**@ignore*/
   constructor(
-    private ref: ChangeDetectorRef,
     public dialog: MatDialog,
     public userService: UserService,
     private _formBuilder: FormBuilder,
@@ -51,19 +49,10 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
     }
 
     this.rebuildForms();
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /** @ignore */
   rebuildForms() {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
@@ -22,7 +22,6 @@ import { ApiConnectionService } from '../../../api-connection.service';
   styleUrls: ['../was.component.css'],
 })
 export class WasReview implements OnDestroy {
-  private zTimer: any;
   /**@ignore*/
   public stars = 0;
   /**@ignore*/
@@ -31,7 +30,6 @@ export class WasReview implements OnDestroy {
   public titleText = '';
   /**@ignore*/
   constructor(
-    private ref: ChangeDetectorRef,
     private apiConnectionService: ApiConnectionService,
     public userService: UserService,
     public dialog: MatDialog,
@@ -43,19 +41,10 @@ export class WasReview implements OnDestroy {
     if (this.userService.userObject.user_id && this.userService.userObject.email) {
       this.loadReview(this.userService.userObject.user_id);
     }
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /**@ignore*/
   onNoClick(): void {

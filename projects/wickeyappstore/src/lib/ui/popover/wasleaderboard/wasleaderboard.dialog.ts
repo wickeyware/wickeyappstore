@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectorRef, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
 // import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
@@ -22,7 +22,6 @@ import { UserService } from '../../../user.service';
 export class WasLeaderboard implements OnDestroy {
   /**@ignore*/
   public leaderboardColumns: string[] = ['rank', 'username', 'score'];
-  private zTimer: any;
   /**@ignore*/
   public appName: string;
   /**@ignore*/
@@ -34,7 +33,6 @@ export class WasLeaderboard implements OnDestroy {
   /**@ignore*/
   constructor(
     public dialog: MatDialog,
-    private ref: ChangeDetectorRef,
     public userService: UserService,
     public dialogRef: MatDialogRef<WasLeaderboard>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -67,19 +65,10 @@ export class WasLeaderboard implements OnDestroy {
       this.appIcon = res.icon;
 
     });
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() { }
 
   /**@ignore*/
   onNoClick(): void {

@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.1](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.1) - 2018-01-08
+
+### Fixed
+
+* **showLeaderboard** Return onClosed observable so caller knows when window closes (not available for WASjs).
+* **WASjsZoneRefresh** Fix refresh on `Safari`. Added new methods `addToLeaderboardjs`, `showLeaderboardjs`, and `leavereviewjs`.
+
 ## [2.18.0](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.0) - 2018-01-04
 
 ### Added

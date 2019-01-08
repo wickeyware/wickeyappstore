@@ -1,4 +1,4 @@
-import { Component, Inject, Input, AfterViewChecked, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, AfterViewChecked, OnDestroy } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserService } from '../../../user.service';
@@ -40,7 +40,6 @@ export class WasPay implements AfterViewChecked, OnDestroy {
       data: {'price': 1.99, 'title': 'Pack One', 'description': 'Intro Pack', 'coins': 100}
     });
   */
-  private zTimer: any;
   /**@ignore*/
   public isApplePayAvail = false; // dictates if the apple pay button is shown.
   /**@ignore */
@@ -108,7 +107,6 @@ export class WasPay implements AfterViewChecked, OnDestroy {
 
   /**@ignore*/
   constructor(
-    private ref: ChangeDetectorRef,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WasPay>,
     public userService: UserService,
@@ -121,19 +119,10 @@ export class WasPay implements AfterViewChecked, OnDestroy {
       };
     }
     this.isApplePayAvail = this.userService.isApplePayAvailable();
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /**@ignore */
   ngAfterViewChecked(): void {

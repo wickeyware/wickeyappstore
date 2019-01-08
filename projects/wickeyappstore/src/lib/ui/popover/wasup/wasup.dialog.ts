@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 /**
  * Create simple auto closing messages with icons
@@ -39,7 +39,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['../was.component.css'],
 })
 export class WasUp implements OnDestroy {
-  private zTimer: any;
   /**
    * WasUp Constructor
    * @param dialogRef Reference to a WasUp dialog opened via the MatDialog service.
@@ -48,7 +47,6 @@ export class WasUp implements OnDestroy {
    * @ignore
    */
   constructor(
-    private ref: ChangeDetectorRef,
     public dialogRef: MatDialogRef<WasUp>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
@@ -64,19 +62,10 @@ export class WasUp implements OnDestroy {
         this.dialogRef.close();
       }, 1750);
     }
-    // TODO: Temporary only! This fixes change detection not working on custom elements WASjs
-    // ref.detach();
-    this.zTimer = setInterval(() => {
-      try {
-        this.ref.detectChanges();
-      } catch (detecterror) {}
-    }, 200);
   }
 
   /** @ignore */
-  ngOnDestroy() {
-    clearInterval(this.zTimer);
-  }
+  ngOnDestroy() {}
 
   /**@ignore*/
   onNoClick(): void {

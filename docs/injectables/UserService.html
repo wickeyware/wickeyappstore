@@ -90,6 +90,9 @@
                                 <a href="#addToLeaderboard">addToLeaderboard</a>
                             </li>
                             <li>
+                                <a href="#addToLeaderboardjs">addToLeaderboardjs</a>
+                            </li>
+                            <li>
                                 <a href="#checkIfPurchased">checkIfPurchased</a>
                             </li>
                             <li>
@@ -123,6 +126,9 @@
                                 <a href="#leavereview">leavereview</a>
                             </li>
                             <li>
+                                <a href="#leavereviewjs">leavereviewjs</a>
+                            </li>
+                            <li>
                                 <a href="#openpay">openpay</a>
                             </li>
                             <li>
@@ -139,6 +145,9 @@
                             </li>
                             <li>
                                 <a href="#showLeaderboard">showLeaderboard</a>
+                            </li>
+                            <li>
+                                <a href="#showLeaderboardjs">showLeaderboardjs</a>
                             </li>
                         </ul>
                     </td>
@@ -232,7 +241,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>addToLeaderboard(highscore: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, _alreadyTaken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+<code>addToLeaderboard(highscore: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                     </td>
                 </tr>
 
@@ -267,14 +276,69 @@
                                                     
 
                                                 </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addToLeaderboardjs"></a>
+                        <span class="name">
+                            <b>
+                            addToLeaderboardjs
+                            </b>
+                            <a href="#addToLeaderboardjs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addToLeaderboardjs(highscore: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get/Update username, then add score to the leaderboard.
+NOTE: If using WASjs.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                                 <tr>
-                                                        <td>_alreadyTaken</td>
+                                                        <td>highscore</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                                         </td>
                                                     
                                                     <td>
-                                                            Yes
+                                                            No
                                                     </td>
                                                     
 
@@ -285,7 +349,7 @@
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -960,6 +1024,42 @@ NOTE: It also on page load it emits the login status.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="leavereviewjs"></a>
+                        <span class="name">
+                            <b>
+                            leavereviewjs
+                            </b>
+                            <a href="#leavereviewjs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>leavereviewjs()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open review if logged in, else ask to login/create account.
+NOTE: If using WASjs.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="openpay"></a>
                         <span class="name">
                             <b>
@@ -1297,6 +1397,42 @@ NOTE: Deprecated, use WasDataService</p>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showLeaderboardjs"></a>
+                        <span class="name">
+                            <b>
+                            showLeaderboardjs
+                            </b>
+                            <a href="#showLeaderboardjs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>showLeaderboardjs()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open your app&#39;s leaderboard.
+NOTE: If using WASjs.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
                     </td>

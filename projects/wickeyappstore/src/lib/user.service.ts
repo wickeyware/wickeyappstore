@@ -1,5 +1,5 @@
 // import * as Raven from 'raven-js';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
@@ -78,6 +78,7 @@ export class UserService {
   constructor(
     private apiConnectionService: ApiConnectionService,
     private localStorageService: LocalStorageService,
+    private _ngZone: NgZone,
     public dialog: MatDialog
   ) {
     this.loadUser();
@@ -1184,10 +1185,8 @@ export class UserService {
     return _obs;
   }
 
-  /**
-   * Get/Update username, then add score to the leaderboard.
-   */
-  addToLeaderboard(highscore: number, _alreadyTaken?: boolean): Observable<boolean> {
+  /** @ignore */
+  _addToLeaderboard(highscore: number, _alreadyTaken?: boolean): Observable<boolean> {
     let _showMsg = null;
     if (_alreadyTaken) {
         _showMsg = 'Username already taken!';
@@ -1212,7 +1211,7 @@ export class UserService {
         }, (error) => {
             console.warn('filler app:username', error);
             if (error === 'Username already taken') {
-                this.addToLeaderboard(highscore, true);
+                this._addToLeaderboard(highscore, true);
             }
         });
       } else {
@@ -1220,6 +1219,21 @@ export class UserService {
       }
     });
     return _obs;
+  }
+  /**
+   * Get/Update username, then add score to the leaderboard.
+   */
+  addToLeaderboard(highscore: number) {
+      return this._addToLeaderboard(highscore);
+  }
+  /**
+   * Get/Update username, then add score to the leaderboard.
+   * NOTE: If using WASjs.
+   */
+  addToLeaderboardjs(highscore: number) {
+    this._ngZone.runTask(() => {
+      this._addToLeaderboard(highscore);
+    });
   }
 
   /**
@@ -1318,10 +1332,9 @@ export class UserService {
   openuserinfo() {
     this.dialog.open(WasProfile);
   }
-  /**
-   * Open review if logged in, else ask to login/create account.
-  */
-  leavereview() {
+
+  /** @ignore */
+  _leavereview() {
     if (this._isLoggedIn) {
       this.dialog.open(WasReview);
     } else {
@@ -1335,13 +1348,41 @@ export class UserService {
     }
   }
   /**
-   * Open your app's leaderboard.
+   * Open review if logged in, else ask to login/create account.
+   * NOTE: If using WASjs.
+   */
+  leavereviewjs() {
+    this._ngZone.runTask(() => {
+      this._leavereview();
+    });
+  }
+  /**
+   * Open review if logged in, else ask to login/create account.
   */
-  showLeaderboard() {
+  leavereview() {
+    this._leavereview();
+  }
+  /** @ignore */
+  _showLeaderboard() {
     // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
     const _obs = this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'}).afterClosed();
     _obs.subscribe(_ret => {});
     return _obs;
+  }
+  /**
+   * Open your app's leaderboard.
+   * NOTE: If using WASjs.
+   */
+  showLeaderboardjs() {
+    this._ngZone.runTask(() => {
+      this._showLeaderboard();
+    });
+  }
+  /**
+   * Open your app's leaderboard.
+  */
+  showLeaderboard() {
+    return this._showLeaderboard();
   }
   /**
    * Open WickeyAppStore.
