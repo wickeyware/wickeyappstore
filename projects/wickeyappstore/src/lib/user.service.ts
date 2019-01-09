@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
-import { map, mergeMap, share } from 'rxjs/operators';
+import { map, mergeMap, catchError, share } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
@@ -1172,7 +1172,7 @@ export class UserService {
    * @param setHighscore The user's high score.
    * @returns returns {rank?: number}
    */
-  setHighscore(highscore: number): Observable<{rank?: number}> {
+  setHighscore(highscore: number): Observable<{status: number, rank?: number}> {
     const _obs = this.apiConnectionService.setHighscore({user_id: this._userObj.user_id, highscore: highscore});
     _obs.subscribe((res) => {
       // console.log('setHighscore: return', res);
@@ -1184,6 +1184,19 @@ export class UserService {
     });
     return _obs;
   }
+  private _handleleaderboardnotification(_res: {status: number, rank?: number}) {
+    if (_res.status === 201) {
+      if (this.checkIfValue(_res, 'rank') && _res.rank === 0) {
+        this.dialog.open(WasUp, {
+          width: '300px', data: { title: 'Added to Leaderboard!', icon: 'edit', body: 'You are number 1!' }
+        });
+      } else if (this.checkIfValue(_res, 'rank')) {
+        this.dialog.open(WasUp, {
+          width: '300px', data: { title: 'Added to Leaderboard!', icon: 'edit', body: `Added high score, rank: ${_res.rank}.` }
+        });
+      }
+    }
+  }
 
   /** @ignore */
   _addToLeaderboard(highscore: number, _alreadyTaken?: boolean): Observable<boolean> {
@@ -1193,46 +1206,57 @@ export class UserService {
     } else {
         _showMsg = 'Username for Leaderboard';
     }
-    let _inputUsername = '';
-    if (this._userObj.username !== this._userObj.user_id) {
-      _inputUsername = this._userObj.username;
+    let _obs;
+    if (this._userObj.username === this._userObj.user_id) {
+      const _inputUsername = this._userObj.username;
+
+      _obs = this.dialog.open(WasAlert, {
+        data: { title: _showMsg, input: true, input_value: _inputUsername,
+        buttons: 'WasAlertStyleConfirm' }
+      }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
+        if (result !== undefined) {
+          return this.updateUsername(result).pipe(map(_retVal => _retVal), mergeMap(usr => {
+            // Updated username
+            return this.setHighscore(highscore).pipe(map(_res => {
+              this._handleleaderboardnotification(_res);
+            }));
+          }), catchError(error => {
+              console.warn('app:username', error);
+              if (error === 'Username already taken') {
+                  return this._addToLeaderboard(highscore, true);
+              } else {
+                return observableOf(null);
+              }
+          }), share());
+        } else {
+          return observableOf(null);
+        }
+      }), share());
+    } else {
+      // Updated username
+      _obs = this.setHighscore(highscore).pipe(map(_res => {
+        this._handleleaderboardnotification(_res);
+      }));
     }
-    const _obs = this.dialog.open(WasAlert,
-      {data: {
-        title: _showMsg, input: true, input_value: _inputUsername,
-        buttons: 'WasAlertStyleConfirm'}
-      }).afterClosed();
-    _obs.subscribe(result => {
-      if (result !== undefined) {
-        console.log('This is the input captured', result);
-        this.updateUsername(result).subscribe(usr => {
-          // Updated username
-          this.setHighscore(highscore);
-        }, (error) => {
-            console.warn('filler app:username', error);
-            if (error === 'Username already taken') {
-                this._addToLeaderboard(highscore, true);
-            }
-        });
-      } else {
-        console.log('Dialog was cancelled');
-      }
-    });
     return _obs;
   }
   /**
    * Get/Update username, then add score to the leaderboard.
    */
   addToLeaderboard(highscore: number) {
-      return this._addToLeaderboard(highscore);
+    const _obs = this._addToLeaderboard(highscore);
+    _obs.subscribe(res => {});
+    return _obs;
   }
   /**
    * Get/Update username, then add score to the leaderboard.
    * NOTE: If using WASjs.
    */
   addToLeaderboardjs(highscore: number) {
-    this._ngZone.runTask(() => {
-      this._addToLeaderboard(highscore);
+    return this._ngZone.runTask(() => {
+      const _obs = this._addToLeaderboard(highscore);
+      _obs.subscribe(res => {});
+      return _obs;
     });
   }
 
@@ -1406,6 +1430,17 @@ export class UserService {
     const _obs = this.dialog.open(WasPay, { data: _inapp }).afterClosed();
     _obs.subscribe(_isSuccess => {});
     return _obs;
+  }
+  /**
+   * Open WasPay to the selected inapp, and returns true if successful.
+   * NOTE: If using WASjs.
+   */
+  openpayjs(_inapp: Inapp): Observable<boolean> {
+    return this._ngZone.runTask(() => {
+      const _obs = this.dialog.open(WasPay, { data: _inapp }).afterClosed();
+      _obs.subscribe(_isSuccess => {});
+      return _obs;
+    });
   }
 
   /**

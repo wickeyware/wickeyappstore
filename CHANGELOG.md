@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.2](https://github.com/wickeyware/wickeyappstore/compare/2.18.1...2.18.2) - 2018-01-09
+
+### Fixed
+
+* **openpayjs** Added `openpayjs` as the WASjs alternative to `openpay`.
+* **addToLeaderboard** Only ask for username, if one has not yet been set.
+* **addToLeaderboard** Show WasUp with current rank after adding to leaderboard.
+* **addToLeaderboard** Show WasUp with first place message, if rank is 1.
+* **addToLeaderboardjs** Return observable.
+* **showLeaderboard** Reverted to default padding on top and bottom of dialog.
+
 ## [2.18.1](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.1) - 2018-01-08
 
 ### Fixed

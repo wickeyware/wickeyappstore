@@ -38,14 +38,14 @@
       console.log('checkIfPurchased', isPurch);
       if (!isPurch) {
         // Check if purchased (where 10 is your purchase item id).
-        userService.openpay(10).subscribe(isSuccessful => {
+        userService.openpayjs(10).subscribe(isSuccessful => {
           console.log('was purchase successful?', isSuccessful);
         });
       }
     });
 
     // Opens review popup, if logged in, else first logs in.
-    // userService.leavereview();
+    // userService.leavereviewjs();
 
     // Example of how to pass in own save conflict mapping function.
     // Default mapping will choose the newest save.
@@ -60,45 +60,18 @@
     }
     dataService.restore(onSaveConflict).subscribe(mydata => {
       console.log('wasDataService.restore', mydata);
-      // WasDataService is now loaded and restored (ready for use).
+      // // WasDataService is now loaded and restored (ready for use).
       // dataService.get('highScore');
       // dataService.save('highScore', 3000);
-      // Then after the session (or game level), persist to cloud
+      // // Then after the session (or game level), persist to cloud
       // dataService.persist();
 
-      // Get leaderboard: Can pass in username to get rank.
-      userService.getLeaderboard(userService.userObject.username).subscribe(res => {
-        console.log('leaderboard', res.leaderboard);  // [{score: number, username: string}, ...] The top entries will be returned.
-        console.log('rank', res.rank);  // If a username was passed in, this is the rank:number of that username (0 is first).
-      });
+      // // Show leaderboard
+      // userService.showLeaderboardjs();
+
+      // // Add score to leaderboard
+      // userService.addToLeaderboardjs(this.highScore);
     });
-    // Example of adding to Leaderboard
-    function addToLeaderboard(_alreadyTaken) {
-      let _showMsg = null;
-      if (_alreadyTaken === true) {
-        _showMsg = 'Username already taken! Enter username for leaderboard';
-      } else {
-        _showMsg = 'Enter username for leaderboard';
-      }
-      // Ask for username for leaderboard
-      let _username;
-      // NOTE: prompt is used here for simplicity, any input may be used to get the username.
-      if (userService.userObject.username === userService.userObject.user_id) {
-        _username = prompt(_showMsg);
-      } else {
-        _username = prompt(_showMsg, userService.userObject.username);
-      }
-      if (_username !== null && _username !== '') {
-        userService.updateUsername(_username).subscribe(usr => {
-          // Updated username
-          userService.setHighscore(this.highScore);
-        }, (error) => {
-          if (error === 'Username already taken') {
-            this.addToLeaderboard(true);
-          }
-        });
-      }
-    }
   </script>
 </body>
 

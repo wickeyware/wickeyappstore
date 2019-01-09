@@ -84,5 +84,9 @@ button {
 }
 
 .was-leaderboard-modal >  mat-dialog-container {
-  padding: 0px !important;
+    /* padding: 0!important; */
+    /* padding-top: 24px; */
+    padding-right: 0px !important;
+    /* padding-bottom: 24px; */
+    padding-left: 0px !important;
 }
