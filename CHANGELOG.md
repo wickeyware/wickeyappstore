@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.3](https://github.com/wickeyware/wickeyappstore/compare/2.18.2...2.18.3) - 2018-01-10
+
+### Fixed
+
+* **showLeaderboard** Returns observable.
+* **leavereview** Returns observable.
+* **leavereview** Directly open review modal after login, if invoked and user was not yet logged in.
+
 ## [2.18.2](https://github.com/wickeyware/wickeyappstore/compare/2.18.1...2.18.2) - 2018-01-09
 
 ### Fixed

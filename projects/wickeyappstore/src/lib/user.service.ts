@@ -1192,7 +1192,7 @@ export class UserService {
         });
       } else if (this.checkIfValue(_res, 'rank')) {
         this.dialog.open(WasUp, {
-          width: '300px', data: { title: 'Added to Leaderboard!', icon: 'edit', body: `Added high score, rank: ${_res.rank}.` }
+          width: '300px', data: { title: 'Added to Leaderboard!', icon: 'edit', body: `Added high score, rank: ${_res.rank + 1}.` }
         });
       }
     }
@@ -1243,7 +1243,7 @@ export class UserService {
   /**
    * Get/Update username, then add score to the leaderboard.
    */
-  addToLeaderboard(highscore: number) {
+  addToLeaderboard(highscore: number): Observable<boolean> {
     const _obs = this._addToLeaderboard(highscore);
     _obs.subscribe(res => {});
     return _obs;
@@ -1252,7 +1252,7 @@ export class UserService {
    * Get/Update username, then add score to the leaderboard.
    * NOTE: If using WASjs.
    */
-  addToLeaderboardjs(highscore: number) {
+  addToLeaderboardjs(highscore: number): Observable<boolean> {
     return this._ngZone.runTask(() => {
       const _obs = this._addToLeaderboard(highscore);
       _obs.subscribe(res => {});
@@ -1358,36 +1358,50 @@ export class UserService {
   }
 
   /** @ignore */
-  _leavereview() {
+  _leavereview(): Observable<any> {
+    let _obs;
     if (this._isLoggedIn) {
-      this.dialog.open(WasReview);
+      _obs = this.dialog.open(WasReview).afterClosed();
     } else {
-      this.dialog.open(WasAlert, {
+      _obs = this.dialog.open(WasAlert, {
         data: { title: 'Only verified users can leave a review', body: 'Want to log in/create account?', buttons: 'WasAlertStyleConfirm' }
-      }).afterClosed().subscribe(result => {
+      }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
         if (result === 1) {
-          this.opensso();
+          return this.dialog.open(WasSSO).afterClosed().pipe(map(_retVal => _retVal), mergeMap(_result => {
+            if (this._isLoggedIn) {
+              return this.dialog.open(WasReview).afterClosed();
+            } else {
+              return observableOf(null);
+            }
+          }), share());
+        } else {
+          return observableOf(null);
         }
-      });
+      }), share());
     }
+    return _obs;
   }
   /**
    * Open review if logged in, else ask to login/create account.
    * NOTE: If using WASjs.
    */
-  leavereviewjs() {
-    this._ngZone.runTask(() => {
-      this._leavereview();
+  leavereviewjs(): Observable<any> {
+    return this._ngZone.runTask(() => {
+      const _obs = this._leavereview();
+      _obs.subscribe(_ret => {});
+      return _obs;
     });
   }
   /**
    * Open review if logged in, else ask to login/create account.
   */
-  leavereview() {
-    this._leavereview();
+  leavereview(): Observable<any> {
+    const _obs = this._leavereview();
+    _obs.subscribe(_ret => {});
+    return _obs;
   }
   /** @ignore */
-  _showLeaderboard() {
+  _showLeaderboard(): Observable<any> {
     // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
     const _obs = this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'}).afterClosed();
     _obs.subscribe(_ret => {});
@@ -1397,16 +1411,20 @@ export class UserService {
    * Open your app's leaderboard.
    * NOTE: If using WASjs.
    */
-  showLeaderboardjs() {
-    this._ngZone.runTask(() => {
-      this._showLeaderboard();
+  showLeaderboardjs(): Observable<any> {
+    return this._ngZone.runTask(() => {
+      const _obs = this._showLeaderboard();
+      _obs.subscribe(_ret => {});
+      return _obs;
     });
   }
   /**
    * Open your app's leaderboard.
   */
-  showLeaderboard() {
-    return this._showLeaderboard();
+  showLeaderboard(): Observable<any> {
+    const _obs = this._showLeaderboard();
+    _obs.subscribe(_ret => {});
+    return _obs;
   }
   /**
    * Open WickeyAppStore.

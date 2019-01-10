@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "2.18.2",
+  "version": "2.18.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --port 4200",
