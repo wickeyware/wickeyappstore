@@ -187,8 +187,15 @@ NOTE: Make sure to add the dependencies to the header, then add the tag <wickey-
       console.log('checkIfPurchased', isPurch);
       if (!isPurch) {
         // Check if purchased (where 10 is your purchase item id).
-        userService.openpayjs(10).subscribe(isSuccessful => {
-          console.log('was purchase successful?', isSuccessful);
+        const _inapp = userService.getInapp(10);
+        userService.openpayjs(_inapp).subscribe(isSuccessful => {
+          if (isSuccessful === true) {
+            console.log('purchase was successful');
+          } else if (isSuccessful === false) {
+            console.log('purchase was NOT successful');
+          } else {
+            console.log('purchase was canceled');
+          }
         });
       }
     });
