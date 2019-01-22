@@ -33,6 +33,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import {LayoutModule} from '@angular/cdk/layout';
 
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 // WAS CORE //
@@ -89,6 +90,7 @@ import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofil
     HttpClientModule,
     BrowserAnimationsModule,
     CdkTableModule,
+    LayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

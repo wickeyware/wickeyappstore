@@ -1,9 +1,13 @@
 .wasup-title {
-    text-align: center;
-    font-size: 1.4em;
-    color: #5b5b65;
-    /* text-shadow: 0 1px 0 #fff; */
-  }
+  text-align: center;
+  font-size: 1.4em;
+  color: #5b5b65;
+  /* text-shadow: 0 1px 0 #fff; */
+}
+.wasup-title-sso {
+  margin-top: -20px;
+  margin-bottom: 0px;
+}
 .wasup-body {
     text-align: center;
     font-weight: 300;

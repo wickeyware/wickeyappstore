@@ -1,5 +1,6 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
 import { UserService } from '../../../user.service';
@@ -21,7 +22,7 @@ import { ApiConnectionService } from '../../../api-connection.service';
   templateUrl: './wasreview.dialog.html',
   styleUrls: ['../was.component.css'],
 })
-export class WasReview implements OnDestroy {
+export class WasReview implements OnInit, OnDestroy {
   /**@ignore*/
   public stars = 0;
   /**@ignore*/
@@ -34,6 +35,7 @@ export class WasReview implements OnDestroy {
     public userService: UserService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WasReview>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
@@ -41,6 +43,20 @@ export class WasReview implements OnDestroy {
     if (this.userService.userObject.user_id && this.userService.userObject.email) {
       this.loadReview(this.userService.userObject.user_id);
     }
+  }
+
+  /** @ignore */
+  ngOnInit() {
+    // https://material.angular.io/cdk/layout/overview
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet
+    ]).subscribe(result => {
+      if (result.matches) {
+        // NOTE: IFF mobile, set size to full screen
+        this.dialogRef.updateSize('100%', '100%');
+      }
+    });
   }
 
   /** @ignore */

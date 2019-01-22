@@ -176,11 +176,13 @@ export class WasPay implements AfterViewChecked, OnDestroy {
           if (_goodPurchase) {
             loadingdialogRef.close();
             this.purchaseSuccess = true;
-            this.dialog.open(WasAlert, {
-              data: { title: 'Purchase Successful!', body: 'Your purchase was successful.', buttons: ['Okay'] }
-            }).afterClosed().subscribe(result => {
+            const _tmpwasup = this.dialog.open(WasUp, {
+              width: '300px', data: { title: 'Purchase Successful!', icon: 'done', body: 'Click anywhere to close', stayopen: true }
+            });
+            _tmpwasup.afterClosed().subscribe(result => {
               this.dialogRef.close(true);
             });
+            _tmpwasup.disableClose = false;
           } else {
             loadingdialogRef.close();
             this.dialog.open(WasAlert, {

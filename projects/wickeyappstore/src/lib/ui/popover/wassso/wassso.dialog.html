@@ -1,5 +1,5 @@
-<div mat-dialog-title class="wasup-title">
-  <div class="icon-svg-large">
+<div mat-dialog-title class="wasup-title wasup-title-sso">
+  <div class="icon-svg">
     <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
       stroke-miterlimit="1.41">
       <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"
@@ -28,7 +28,7 @@
   Single Sign On
 </div>
 <div mat-dialog-content>
-  <mat-vertical-stepper [linear]="true" #stepper>
+  <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Email</ng-template>
@@ -57,7 +57,7 @@
         </div>
       </form>
     </mat-step>
-  </mat-vertical-stepper>
+  </mat-horizontal-stepper>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>

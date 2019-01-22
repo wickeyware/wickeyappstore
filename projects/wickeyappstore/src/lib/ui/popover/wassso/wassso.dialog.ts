@@ -1,6 +1,7 @@
 import { Component, Inject, ViewChild, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
@@ -38,6 +39,7 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
     public userService: UserService,
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<WasSSO>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
@@ -66,6 +68,16 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
 
   /** @ignore */
   ngOnInit() {
+    // https://material.angular.io/cdk/layout/overview
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet
+    ]).subscribe(result => {
+      if (result.matches) {
+        // NOTE: IFF mobile, set size to full screen
+        this.dialogRef.updateSize('100%', '100%');
+      }
+    });
     this.stepper.selectedIndex = this.stepperIndex;
   }
   /** @ignore */
