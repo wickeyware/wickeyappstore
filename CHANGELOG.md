@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.4](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.4) - 2018-01-21
+
+### Fixed
+
+* **SSO** Make SSO dialog fullscreen on mobile, also move input to top of screen.
+* **Review** Make review dialog fullscreen on mobile, also move input to top of screen.
+* **Review** Show WasUp (`Thanks for your feedback!`) on review submitted.
+* **WasPay** On successful purchase show WasUp instead of WasAlert.
+
 ## [2.18.3](https://github.com/wickeyware/wickeyappstore/compare/2.18.2...2.18.3) - 2018-01-10
 
 ### Fixed

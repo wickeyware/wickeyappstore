@@ -112,6 +112,7 @@ export class WasReview implements OnInit, OnDestroy {
       .subscribe((usr) => {
         loadingdialogRef.close();
         this.dialogRef.close(); // close the window
+        this.dialog.open(WasUp, {data: { title: 'Submitted', icon: 'edit', body: 'Thanks for your feedback!'} });
       }, (error) => {
         loadingdialogRef.close();
         // <any>error | this casts error to be any
