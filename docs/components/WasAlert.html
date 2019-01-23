@@ -135,6 +135,7 @@ By default, clicking outside the window does not close the dialog. Change by set
         <h3>Implements</h3>
     </p>
     <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
                 <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
@@ -201,7 +202,7 @@ By default, clicking outside the window does not close the dialog. Change by set
       &lt;button mat-button color&#x3D;&quot;primary&quot; [mat-dialog-close]&#x3D;&quot;i&quot;&gt;{{ item }}&lt;/button&gt;
     &lt;/mat-list-item&gt;
   &lt;/mat-list&gt;
-  &lt;mat-form-field *ngIf&#x3D;&quot;data.input&quot;&gt;
+  &lt;mat-form-field *ngIf&#x3D;&quot;data.input&quot; style&#x3D;&quot;width:100%&quot;&gt;
     &lt;input *ngIf&#x3D;&quot;data.password; else normalinput&quot; matInput type&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
     &lt;ng-template #normalinput&gt;
       &lt;input matInput [(ngModel)]&#x3D;&quot;data.input_value&quot;&gt;
@@ -228,7 +229,8 @@ By default, clicking outside the window does not close the dialog. Change by set
   &lt;ng-template #buttonlist&gt;
     &lt;button mat-raised-button *ngFor&#x3D;&quot;let btn of data.buttons; let indx &#x3D; index&quot; [mat-dialog-close]&#x3D;&quot;indx&quot;&gt;{{btn}}&lt;/button&gt;
   &lt;/ng-template&gt;
-&lt;/ng-template&gt;</code></pre>
+&lt;/ng-template&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -406,7 +408,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input">    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">    <ng-template #normalinput>      <input matInput [(ngModel)]="data.input_value">    </ng-template>  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>  </button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>  </button></div><ng-template #normalbuttons>  <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>    </button>    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>    </button>  </div>  <ng-template #buttonlist>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </ng-template></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.title}}</h1><div mat-dialog-content>  <div class="wasup-body">    {{data.body}}  </div>  <mat-list *ngIf="data.list">    <mat-list-item *ngFor="let item of data.list; let i = index">      <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>    </mat-list-item>  </mat-list>  <mat-form-field *ngIf="data.input" style="width:100%">    <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">    <ng-template #normalinput>      <input matInput [(ngModel)]="data.input_value">    </ng-template>  </mat-form-field></div><div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">  <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}    <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>  </button>  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}    <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>  </button></div><ng-template #normalbuttons>  <div mat-dialog-actions *ngIf="data.buttons.length === 2; else buttonlist">    <button mat-raised-button [mat-dialog-close]="0" [color]="data.button_colors[0]">{{data.buttons[0]}}      <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>    </button>    <button mat-raised-button [mat-dialog-close]="1" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}      <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>    </button>  </div>  <ng-template #buttonlist>    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>  </ng-template></ng-template></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasAlert'};

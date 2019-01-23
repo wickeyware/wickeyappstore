@@ -1,5 +1,6 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 /**
  * Create simple modal popups with btns or input field to get user input.
  *
@@ -96,7 +97,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './wasalert.dialog.html',
   styleUrls: ['../was.component.css'],
 })
-export class WasAlert implements OnDestroy {
+export class WasAlert implements OnInit, OnDestroy {
   /**
  * WasAlert Constructor
  * @param dialogRef Reference to a WasAlert dialog opened via the MatDialog service.
@@ -105,6 +106,7 @@ export class WasAlert implements OnDestroy {
  */
   constructor(
     public dialogRef: MatDialogRef<WasAlert>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = true; // do not close by clicking off by default
@@ -138,6 +140,22 @@ export class WasAlert implements OnDestroy {
     if (!this.data.password) { this.data.password = false; }
     if (!this.data.button_icons) { this.data.button_icons = ['', '']; }
     if (!this.data.button_colors) { this.data.button_colors = ['', '']; }
+  }
+
+  /** @ignore */
+  ngOnInit() {
+    if (this.data.input === true) {
+      // https://material.angular.io/cdk/layout/overview
+      this.breakpointObserver.observe([
+        Breakpoints.Handset,
+        Breakpoints.Tablet
+      ]).subscribe(result => {
+        if (result.matches) {
+          // NOTE: IFF mobile, set size to full screen
+          this.dialogRef.updateSize('100%', '100%');
+        }
+      });
+    }
   }
 
   /** @ignore */

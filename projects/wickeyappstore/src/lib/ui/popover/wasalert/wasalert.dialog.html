@@ -8,7 +8,7 @@
       <button mat-button color="primary" [mat-dialog-close]="i">{{ item }}</button>
     </mat-list-item>
   </mat-list>
-  <mat-form-field *ngIf="data.input">
+  <mat-form-field *ngIf="data.input" style="width:100%">
     <input *ngIf="data.password; else normalinput" matInput type="password" [(ngModel)]="data.input_value">
     <ng-template #normalinput>
       <input matInput [(ngModel)]="data.input_value">

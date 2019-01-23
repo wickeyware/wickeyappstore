@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.5](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.5) - 2018-01-23
+
+### Fixed
+
+* **WasAlert** Make WasAlert dialog fullscreen on mobile, IFF it has an input, also move input to top of screen.
+
 ## [2.18.4](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.4) - 2018-01-21
 
 ### Fixed
