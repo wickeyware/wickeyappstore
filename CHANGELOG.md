@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.6](https://github.com/wickeyware/wickeyappstore/compare/2.18.5...2.18.6) - 2018-01-28
+
+### Fixed
+
+* **WasAlert** Add clear to end of input.
+* **WasReview** Add clear to end of input.
+* **WasLeaderboard** Add smooth scrolling on iOS.
+* **WasShop** Add smooth scrolling on iOS.
+* **WasShop** Make shop dialog fullscreen on mobile.
+* **WasProfile** Make profile dialog fullscreen on mobile.
+* **getLeaderboard** Return user's leaderboard `score` (along with `rank`) if username was passed in.
+* **wickeyappstore.mudule** Add LayoutModule to exports.
+
 ## [2.18.5](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.5) - 2018-01-23
 
 ### Fixed

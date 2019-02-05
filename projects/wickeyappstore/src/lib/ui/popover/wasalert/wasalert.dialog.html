@@ -13,6 +13,9 @@
     <ng-template #normalinput>
       <input matInput [(ngModel)]="data.input_value">
     </ng-template>
+    <button mat-button *ngIf="data.input_value" matSuffix mat-icon-button aria-label="Clear" (click)="data.input_value=''">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 </div>
 <div mat-dialog-actions *ngIf="data.input || data.list; else normalbuttons">

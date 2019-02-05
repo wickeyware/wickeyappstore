@@ -1,5 +1,6 @@
-import { Component, Inject, ChangeDetectorRef, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from '../../../user.service';
@@ -24,7 +25,9 @@ import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
   styleUrls: ['../was.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class WasShop implements OnDestroy {
+export class WasShop implements OnInit, OnDestroy {
+  /**@ignore*/
+  public add_class = '';  // was-shop-content
   /**@ignore*/
   public addBtnText = 'Video Ads';
   private vastplayer;
@@ -47,10 +50,10 @@ export class WasShop implements OnDestroy {
     private ref: ChangeDetectorRef,
     public userService: UserService,
     public dialogRef: MatDialogRef<WasShop>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     // dialogRef.disableClose = true; // do not close by clicking off by default
-    dialogRef.updateSize('100%', '100%');
     try {
       const getSubdomain = function(hostname) {
         if (hostname === 'localhost') {
@@ -70,6 +73,22 @@ export class WasShop implements OnDestroy {
       console.error('Ads:getdomainerror', getdomainerror);
       this.appName = '';
     }
+  }
+
+  /** @ignore */
+  ngOnInit() {
+    // https://material.angular.io/cdk/layout/overview
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet
+    ]).subscribe(result => {
+      if (result.matches) {
+        // NOTE: IFF mobile, set size to full screen
+        this.dialogRef.updateSize('100%', '100%');
+        this.dialogRef.addPanelClass('was-shop-modal-m');
+        this.add_class = 'was-shop-content-m';
+      }
+    });
   }
 
   /** @ignore */

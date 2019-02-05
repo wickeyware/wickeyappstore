@@ -130,6 +130,7 @@ import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialo
     DisplayInAppComponent,
     GetCategoryPipe,
     CdkTableModule,
+    LayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

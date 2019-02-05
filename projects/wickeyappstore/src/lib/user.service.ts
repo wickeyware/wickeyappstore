@@ -1152,10 +1152,9 @@ export class UserService {
   /**
    * Get the leaderboard for app. Optional pass in username to return rank of user.
    *
-   * @param [username] OPTIONAL: Returns rank of username.
-   * @returns returns {leaderboard: [{score: number, username: string}, ...], rank?: number}
+   * @param [username] OPTIONAL: Returns rank and score of username.
    */
-  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number, name?: string, icon?: string}> {
+  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number, score?: number, name?: string, icon?: string}> {
     const _obs = this.apiConnectionService.getLeaderboard({username: username});
     _obs.subscribe((res) => {
       // console.log('getLeaderboard: return', res);
@@ -1403,7 +1402,7 @@ export class UserService {
   /** @ignore */
   _showLeaderboard(): Observable<any> {
     // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
-    const _obs = this.dialog.open(WasLeaderboard, {width: '100%', height: '100%', panelClass: 'was-leaderboard-modal'}).afterClosed();
+    const _obs = this.dialog.open(WasLeaderboard, {panelClass: 'was-leaderboard-modal'}).afterClosed();
     _obs.subscribe(_ret => {});
     return _obs;
   }
@@ -1438,7 +1437,7 @@ export class UserService {
    * @ignore
   */
   openshop() {
-    this.dialog.open(WasShop, {width: '100%', height: '100%'});
+    this.dialog.open(WasShop, { panelClass: 'was-shop-modal' });
   }
 
   /**

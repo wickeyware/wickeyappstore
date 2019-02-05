@@ -1,5 +1,6 @@
-import { Component, Inject, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { UserService } from '../../../user.service';
 // import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
 /**
@@ -19,7 +20,9 @@ import { UserService } from '../../../user.service';
   styleUrls: ['../was.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class WasLeaderboard implements OnDestroy {
+export class WasLeaderboard implements OnInit, OnDestroy {
+  /**@ignore*/
+  public add_class = 'was-leaderboard-content';
   /**@ignore*/
   public leaderboardColumns: string[] = ['rank', 'username', 'score'];
   /**@ignore*/
@@ -35,10 +38,10 @@ export class WasLeaderboard implements OnDestroy {
     public dialog: MatDialog,
     public userService: UserService,
     public dialogRef: MatDialogRef<WasLeaderboard>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     // dialogRef.disableClose = true; // do not close by clicking off by default
-    dialogRef.updateSize('100%', '100%');
     try {
       const getSubdomain = function(hostname) {
         if (hostname === 'localhost') {
@@ -64,6 +67,23 @@ export class WasLeaderboard implements OnDestroy {
       this.appName = res.name;
       this.appIcon = res.icon;
 
+    });
+  }
+
+  /** @ignore */
+  ngOnInit() {
+    // https://material.angular.io/cdk/layout/overview
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet
+    ]).subscribe(result => {
+      if (result.matches) {
+        // NOTE: IFF mobile, set size to full screen
+        this.dialogRef.updateSize('100%', '100%');
+        // this.dialogRef.removePanelClass('was-leaderboard-modal');
+        this.dialogRef.addPanelClass('was-leaderboard-modal-m');
+        this.add_class = 'was-leaderboard-content-m';
+      }
     });
   }
 

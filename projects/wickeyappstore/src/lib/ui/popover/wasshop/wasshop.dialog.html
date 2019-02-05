@@ -1,6 +1,6 @@
-<div mat-dialog-title class="wasup-title">
-  <header>
-    <mat-toolbar role="header" class="my-title-bar" color="none" style="background-color:white;">
+<mat-dialog-content [ngClass]="add_class">
+  <div class="wasup-title">
+      <div class="was-leaderboard-titlebar" role="header">
       <span class="my-header-sidebar"></span>
       <span class="my-header-text">
         <svg style="width:80px;" viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
@@ -31,13 +31,14 @@
       <button class="my-header-sidebar" mat-icon-button (click)="onNoClick()">
         <mat-icon aria-label="close">close</mat-icon>
       </button>
-    </mat-toolbar>
+    </div>
     <span>Shop</span>
     <br>
     <span class="my-subtitle-text">You have {{(userService.user | async)?.coins}} coins</span>
     <br>
     <mat-divider></mat-divider>
-  </header>
+  </div>
+
   <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoinsPanel()" (closed)="closedFreeCoinsPanel()">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -48,10 +49,10 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div *ngIf="loginValue | async; else notLoggedIn">
-      <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary"
-      href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}__{{this.appName}}'
-      target='_blank'>Open the Offerwall</a>
-      <button *ngIf="hasAds" [disabled]="rewardedVideoNOTReady" style="width:100%;" mat-raised-button color="accent" (click)="watchRewardedVideo()">
+      <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}__{{this.appName}}'
+        target='_blank'>Open the Offerwall</a>
+      <button *ngIf="hasAds" [disabled]="rewardedVideoNOTReady" style="width:100%;" mat-raised-button color="accent"
+        (click)="watchRewardedVideo()">
         <mat-grid-list cols="4" rowHeight="36px">
           <mat-grid-tile colspan=3>{{addBtnText}}</mat-grid-tile>
           <mat-grid-tile colspan=1>
@@ -72,7 +73,8 @@
     <!-- The ad goes in here -->
     <div id="wasadcontainer"></div>
   </mat-expansion-panel>
-  <ul style="-webkit-padding-start: 0px;">
-    <was-display-inapp *ngFor="let _inapp of userService.inapps | async" [inapp]="_inapp"></was-display-inapp>
-  </ul>
-</div>
+  <!-- TODO: Is UL needed here-->
+  <!-- <ul style="-webkit-padding-start: 0px;"> -->
+  <was-display-inapp *ngFor="let _inapp of userService.inapps | async" [inapp]="_inapp"></was-display-inapp>
+  <!-- </ul> -->
+</mat-dialog-content>

@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from '../../../user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 /**
  * WasProfile
  *
@@ -19,15 +20,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './wasprofile.dialog.html',
   styleUrls: ['../was.component.css'],
 })
-export class WasProfile {
+export class WasProfile implements OnInit {
   /**@ignore*/
   public loggedin = false;
   /** @ignore */
-  public version = '2.18.5';
+  public version = '2.18.6';
   /**@ignore*/
   constructor(
     public userService: UserService,
     public dialogRef: MatDialogRef<WasProfile>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     dialogRef.disableClose = false; // close by clicking off by default
@@ -36,6 +38,19 @@ export class WasProfile {
       this.loggedin = _isLogged;
     });
 
+  }
+  /** @ignore */
+  ngOnInit() {
+    // https://material.angular.io/cdk/layout/overview
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet
+    ]).subscribe(result => {
+      if (result.matches) {
+        // NOTE: IFF mobile, set size to full screen
+        this.dialogRef.updateSize('100%', '100%');
+      }
+    });
   }
   /**@ignore*/
   onNoClick(): void {
