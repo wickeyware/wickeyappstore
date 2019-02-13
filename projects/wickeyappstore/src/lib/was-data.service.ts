@@ -27,8 +27,11 @@ import { ApiConnectionService } from './api-connection.service';
  * // Save a value (where value is json stringifiable).
  * this.wasDataService.save('key', 'value');
  *
- * // Load a value from db.
- * this.wasDataService.load('key).subscribe(myval => {});
+ * // Get a value from db.
+ * this.wasDataService.get('key');
+ *
+ * // Delete a value from db.
+ * this.wasDataService.del('key');
  *
  * // listen for data observable.
  * this.wasDataService.data.subscribe(mydata => {});
@@ -232,6 +235,24 @@ export class WasDataService {
     } else {
       console.warn('WasData not yet initialized:get');
       _val = null;
+    }
+    return _val;
+  }
+
+
+  /**
+   * Delete a key/value from db.
+   *
+   * @param _key The key.
+   */
+  del(_key: string): boolean {
+    let _val: boolean;
+    if (this._dataObj) {
+      delete this._dataObj[_key];
+      _val = true;
+    } else {
+      console.warn('WasData not yet initialized:get');
+      _val = false;
     }
     return _val;
   }

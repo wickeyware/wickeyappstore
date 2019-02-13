@@ -18,7 +18,6 @@ export * from './app.models';
 /**@ignore*/
 export interface UserParams {
   coins?: number;
-  data?: any;
   email?: string;
   token_email?: string;
   token?: string;
@@ -201,9 +200,6 @@ export class UserService {
   }
   get coins() {
     return this._userObj.coins;
-  }
-  get data() {
-    return this._userObj.data;
   }
   get inapps() {
     return this._inapps;
@@ -434,7 +430,7 @@ export class UserService {
     // console.log('============UserService updateUser=========', this._userObj);
     // NOTE: Set params to current user, then update to sent in userParams, if any exist
     const apiobject = {
-      user_id: this._userObj.user_id, version: .1, standalone: false, app_coins: null, app_data: null, username: null,
+      user_id: this._userObj.user_id, version: .1, standalone: false, username: null,
       email: null, freebie_used: this._userObj.freebie_used, rated_app: this._userObj.rated_app, push_id: this._userObj.push_id
     };
     if (this.checkIfValue(userParams, 'username')) {
@@ -445,12 +441,6 @@ export class UserService {
     }
     if (this.checkIfValue(userParams, 'rated_app')) {
       apiobject.rated_app = userParams.rated_app;
-    }
-    if (userParams.coins) {
-      apiobject.app_coins = userParams.coins;
-    }
-    if (userParams.data) {
-      apiobject.app_data = userParams.data;
     }
     if (userParams.push_id) {
       apiobject.push_id = userParams.push_id;
@@ -488,9 +478,6 @@ export class UserService {
         }
         if (this.checkIfValue(res, 'coins')) {
           this._userObj.coins = res.coins;
-        }
-        if (this.checkIfValue(res, 'data')) {
-          this._userObj.data = res.data;
         }
         if (this.checkIfValue(res, 'rated_app')) {
           this._userObj.rated_app = res.rated_app;
@@ -807,9 +794,6 @@ export class UserService {
       if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
       }
-      if (this.checkIfValue(res, 'data')) {
-        this._userObj.data = res.data;
-      }
       if (this.checkIfValue(res, 'rated_app')) {
         this._userObj.rated_app = res.rated_app;
       }
@@ -862,9 +846,6 @@ export class UserService {
       }
       if (res.coins !== undefined && res.coins !== null) {
         this._userObj.coins = res.coins;
-      }
-      if (res.data !== undefined && res.data !== null) {
-        this._userObj.data = res.data;
       }
       if (res.created_time) {
         this._userObj.created_time = res.created_time;
@@ -941,9 +922,6 @@ export class UserService {
       }
       if (this.checkIfValue(res, 'coins')) {
         this._userObj.coins = res.coins;
-      }
-      if (this.checkIfValue(res, 'data')) {
-        this._userObj.data = res.data;
       }
       if (this.checkIfValue(res, 'rated_app')) {
         this._userObj.rated_app = res.rated_app;

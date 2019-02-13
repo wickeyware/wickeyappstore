@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.7](https://github.com/wickeyware/wickeyappstore/compare/2.18.6...2.18.7) - 2018-02-13
+
+### Fixed
+
+* **WasDataService** Added missing delete `del` function.
+* **app_data** Remove deprecated userService.data.
+* **app_coins** Remove coins from UserService.updateUser, api does not allow updating coins this way (coins are purchased and consumed).
+
 ## [2.18.6](https://github.com/wickeyware/wickeyappstore/compare/2.18.5...2.18.6) - 2018-01-28
 
 ### Fixed

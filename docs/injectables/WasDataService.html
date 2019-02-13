@@ -78,8 +78,11 @@
  * // Save a value (where value is json stringifiable).
  * this.wasDataService.save(&#39;key&#39;, &#39;value&#39;);
  *
- * // Load a value from db.
- * this.wasDataService.load(&#39;key).subscribe(myval =&gt; {});
+ * // Get a value from db.
+ * this.wasDataService.get(&#39;key&#39;);
+ *
+ * // Delete a value from db.
+ * this.wasDataService.del(&#39;key&#39;);
  *
  * // listen for data observable.
  * this.wasDataService.data.subscribe(mydata =&gt; {});
@@ -115,6 +118,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#del">del</a>
+                            </li>
                             <li>
                                 <a href="#get">get</a>
                             </li>
@@ -166,6 +172,77 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="del"></a>
+                        <span class="name">
+                            <b>
+                            del
+                            </b>
+                            <a href="#del"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>del(_key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Delete a key/value from db.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_key</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <p>The key.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="get"></a>
                         <span class="name">
                             <b>
@@ -213,8 +290,8 @@
                                                     
 
                                                         <td>
-                                                                <code><p>The key.</p>
-</code>
+                                                                <p>The key.</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -284,8 +361,8 @@
                                                     
 
                                                         <td>
-                                                                <code><p>The key.</p>
-</code>
+                                                                <p>The key.</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -392,9 +469,9 @@ NOTE: please use sparingly, it can be subject to rate limits.</p>
                                                     
 
                                                         <td>
-                                                                <code><p>Map/Filter function.
+                                                                <p>Map/Filter function.
 If local save and cloud save both exist, choose which one to keep. NOTE: Default: newer copy is chosen.</p>
-</code>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -465,8 +542,8 @@ NOTE: Where value is json stringifiable.</p>
                                                     
 
                                                         <td>
-                                                                <code><p>The key.</p>
-</code>
+                                                                <p>The key.</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -481,8 +558,8 @@ NOTE: Where value is json stringifiable.</p>
                                                     
 
                                                         <td>
-                                                                <code><p>The Value (where value is json stringifiable).</p>
-</code>
+                                                                <p>The Value (where value is json stringifiable).</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -516,16 +593,9 @@ NOTE: Where value is json stringifiable.</p>
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
-                            isUsed
-                            </b>
+                            isUsed</b>
                             <a href="#isUsed"><span class="icon ion-ios-link"></span></a>
                         </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>isUsed:     <code></code>
-</code>
                     </td>
                 </tr>
                     <tr>
