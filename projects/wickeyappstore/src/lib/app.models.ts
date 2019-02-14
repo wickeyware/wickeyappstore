@@ -3,6 +3,9 @@
 export interface Settings {
   app_version: number;
   freebie_amount: number;
+  signup_bonus?: number;
+  review_bonus?: number;
+  contact?: string;
 }
 /**The User data structure */
 export interface User {

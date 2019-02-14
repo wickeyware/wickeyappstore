@@ -562,7 +562,7 @@ export class UserService {
   getFavoriteCheck(): Observable<{ is_favorite: boolean }> {
     let _obs;
     if (this._isLoggedIn) {
-      _obs = this.apiConnectionService.checkFavorite({'user_id': this._userObj.user_id});
+      _obs = this.apiConnectionService.checkFavorite({ 'user_id': this._userObj.user_id });
       _obs.subscribe((res) => {
         this._is_favoriteObj = res.is_favorite;
         this._is_favorite.next(this._is_favoriteObj);
@@ -583,7 +583,7 @@ export class UserService {
   getFavorites(): Observable<{ apps: [App] }> {
     let _obs;
     if (this._isLoggedIn) {
-      _obs = this.apiConnectionService.getFavorites({'user_id': this._userObj.user_id});
+      _obs = this.apiConnectionService.getFavorites({ 'user_id': this._userObj.user_id });
       _obs.subscribe((res) => {
         this._favoritesObj = res;
         this._favorites.next(this._favoritesObj);
@@ -591,7 +591,7 @@ export class UserService {
       }, (error) => {
       });
     } else {
-      this._favoritesObj = (<any>{ apps: {apps: []} });
+      this._favoritesObj = (<any>{ apps: { apps: [] } });
       this._favorites.next(this._favoritesObj);
       this.saveLocal('was-favorites', this._favoritesObj);
       _obs = observableOf(this._favoritesObj);
@@ -649,8 +649,10 @@ export class UserService {
   */
   savefavoriteLogin(storeapp_id?: number): Observable<any | null> {
     const _obs = this.dialog.open(WasAlert, {
-      data: { title: 'Only verified users can leave save favorites',
-      body: 'Want to log in/create account?', buttons: 'WasAlertStyleConfirm' }
+      data: {
+        title: 'Only verified users can leave save favorites',
+        body: 'Want to log in/create account?', buttons: 'WasAlertStyleConfirm'
+      }
     }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
       if (result === 1) {
         return this.dialog.open(WasSSO).afterClosed().pipe(map(_retVal => _retVal), mergeMap(_result => {
@@ -687,15 +689,15 @@ export class UserService {
       width: '300px', data: { title: 'Updating Favorites', icon: 'spinner', body: 'Updating...', stayopen: true }
     });
     _apiCall.subscribe((res) => {
-        loadingdialogRef.close();
-        this.dialog.open(WasUp, {data: { title: _msgtitle, icon: 'done', body: _msgbody} });
-      }, (error) => {
-        // <any>error | this casts error to be any
-        loadingdialogRef.close();
-        this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: error }
-        });
+      loadingdialogRef.close();
+      this.dialog.open(WasUp, { data: { title: _msgtitle, icon: 'done', body: _msgbody } });
+    }, (error) => {
+      // <any>error | this casts error to be any
+      loadingdialogRef.close();
+      this.dialog.open(WasAlert, {
+        data: { title: 'Attention', body: error }
       });
+    });
   }
   /**
    * Save favorite if logged in, else asks to login/create account, then saves to favorite.
@@ -707,7 +709,7 @@ export class UserService {
       this.savefavoriteLogin().subscribe(val => {
         if (val) {
           console.log('updateFav', val);
-          this.dialog.open(WasUp, {data: { title: 'Favorite Added', icon: 'done', body: 'App added to favorites!'} });
+          this.dialog.open(WasUp, { data: { title: 'Favorite Added', icon: 'done', body: 'App added to favorites!' } });
         } else {
           console.log('updateFav canceled', val);
           // this.dialog.open(WasUp, {data: { title: 'Canceled?', icon: 'done', body: 'Oh no, it no work'} });
@@ -847,7 +849,7 @@ export class UserService {
       if (res.coins !== undefined && res.coins !== null) {
         this._userObj.coins = res.coins;
       }
-      if (res.created_time) {
+      if (this.checkIfValue(res, 'created_time')) {
         this._userObj.created_time = res.created_time;
       }
       if (res.freebie_used !== undefined && res.freebie_used !== null) {
@@ -856,11 +858,20 @@ export class UserService {
       if (res.rated_app !== undefined && res.rated_app !== null) {
         this._userObj.rated_app = res.rated_app;
       }
-      if (res.settings) {
+      if (this.checkIfValue(res, 'settings')) {
         this._userObj.settings = res.settings;
       }
       if (res.push_id !== undefined && res.push_id !== null) {
         this._userObj.push_id = res.push_id;
+      }
+      if (this.checkIfValue(res, 'added_bonus') && res.added_bonus === true) {
+        let rvwmsg = 'You received free coins for leaving a review!';
+        if (this.checkIfValue(this._userObj.settings, 'review_bonus')) {
+          rvwmsg = `You received ${this._userObj.settings.review_bonus} free coins for leaving a review!`;
+        }
+        this.dialog.open(WasUp, {
+          width: '300px', data: { title: 'Review Bonus', icon: 'star', body: rvwmsg }
+        });
       }
       // UPDATE USER //
       this.pushSubscribers(this._userObj);
@@ -975,7 +986,7 @@ export class UserService {
    * @returns The same as updateUser.
    */
   consumeCoins(coins: number, reason?: string): Observable<any> {
-    const _params = {'user_id': this._userObj.user_id, 'coins': coins, 'reason': null};
+    const _params = { 'user_id': this._userObj.user_id, 'coins': coins, 'reason': null };
     if (reason) {
       _params['reason'] = reason;
     }
@@ -1132,8 +1143,8 @@ export class UserService {
    *
    * @param [username] OPTIONAL: Returns rank and score of username.
    */
-  getLeaderboard(username?: string): Observable<{leaderboard: [any], rank?: number, score?: number, name?: string, icon?: string}> {
-    const _obs = this.apiConnectionService.getLeaderboard({username: username});
+  getLeaderboard(username?: string): Observable<{ leaderboard: [any], rank?: number, score?: number, name?: string, icon?: string }> {
+    const _obs = this.apiConnectionService.getLeaderboard({ username: username });
     _obs.subscribe((res) => {
       // console.log('getLeaderboard: return', res);
     }, (error) => {
@@ -1149,8 +1160,8 @@ export class UserService {
    * @param setHighscore The user's high score.
    * @returns returns {rank?: number}
    */
-  setHighscore(highscore: number): Observable<{status: number, rank?: number}> {
-    const _obs = this.apiConnectionService.setHighscore({user_id: this._userObj.user_id, highscore: highscore});
+  setHighscore(highscore: number): Observable<{ status: number, rank?: number }> {
+    const _obs = this.apiConnectionService.setHighscore({ user_id: this._userObj.user_id, highscore: highscore });
     _obs.subscribe((res) => {
       // console.log('setHighscore: return', res);
       // this.pushSubscribers(this._userObj);
@@ -1161,7 +1172,7 @@ export class UserService {
     });
     return _obs;
   }
-  private _handleleaderboardnotification(_res: {status: number, rank?: number}) {
+  private _handleleaderboardnotification(_res: { status: number, rank?: number }) {
     if (_res.status === 201) {
       if (this.checkIfValue(_res, 'rank') && _res.rank === 0) {
         this.dialog.open(WasUp, {
@@ -1179,17 +1190,19 @@ export class UserService {
   _addToLeaderboard(highscore: number, _alreadyTaken?: boolean): Observable<boolean> {
     let _showMsg = null;
     if (_alreadyTaken) {
-        _showMsg = 'Username already taken!';
+      _showMsg = 'Username already taken!';
     } else {
-        _showMsg = 'Username for Leaderboard';
+      _showMsg = 'Username for Leaderboard';
     }
     let _obs;
     if (this._userObj.username === this._userObj.user_id) {
       const _inputUsername = this._userObj.username;
 
       _obs = this.dialog.open(WasAlert, {
-        data: { title: _showMsg, input: true, input_value: _inputUsername,
-        buttons: 'WasAlertStyleConfirm' }
+        data: {
+          title: _showMsg, input: true, input_value: _inputUsername,
+          buttons: 'WasAlertStyleConfirm'
+        }
       }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
         if (result !== undefined) {
           return this.updateUsername(result).pipe(map(_retVal => _retVal), mergeMap(usr => {
@@ -1198,12 +1211,12 @@ export class UserService {
               this._handleleaderboardnotification(_res);
             }));
           }), catchError(error => {
-              console.warn('app:username', error);
-              if (error === 'Username already taken') {
-                  return this._addToLeaderboard(highscore, true);
-              } else {
-                return observableOf(null);
-              }
+            console.warn('app:username', error);
+            if (error === 'Username already taken') {
+              return this._addToLeaderboard(highscore, true);
+            } else {
+              return observableOf(null);
+            }
           }), share());
         } else {
           return observableOf(null);
@@ -1222,7 +1235,7 @@ export class UserService {
    */
   addToLeaderboard(highscore: number): Observable<boolean> {
     const _obs = this._addToLeaderboard(highscore);
-    _obs.subscribe(res => {});
+    _obs.subscribe(res => { });
     return _obs;
   }
   /**
@@ -1232,7 +1245,7 @@ export class UserService {
   addToLeaderboardjs(highscore: number): Observable<boolean> {
     return this._ngZone.runTask(() => {
       const _obs = this._addToLeaderboard(highscore);
-      _obs.subscribe(res => {});
+      _obs.subscribe(res => { });
       return _obs;
     });
   }
@@ -1365,7 +1378,7 @@ export class UserService {
   leavereviewjs(): Observable<any> {
     return this._ngZone.runTask(() => {
       const _obs = this._leavereview();
-      _obs.subscribe(_ret => {});
+      _obs.subscribe(_ret => { });
       return _obs;
     });
   }
@@ -1374,14 +1387,14 @@ export class UserService {
   */
   leavereview(): Observable<any> {
     const _obs = this._leavereview();
-    _obs.subscribe(_ret => {});
+    _obs.subscribe(_ret => { });
     return _obs;
   }
   /** @ignore */
   _showLeaderboard(): Observable<any> {
     // https://stackoverflow.com/questions/48688614/angular-custom-style-to-mat-dialog
-    const _obs = this.dialog.open(WasLeaderboard, {panelClass: 'was-leaderboard-modal'}).afterClosed();
-    _obs.subscribe(_ret => {});
+    const _obs = this.dialog.open(WasLeaderboard, { panelClass: 'was-leaderboard-modal' }).afterClosed();
+    _obs.subscribe(_ret => { });
     return _obs;
   }
   /**
@@ -1391,7 +1404,7 @@ export class UserService {
   showLeaderboardjs(): Observable<any> {
     return this._ngZone.runTask(() => {
       const _obs = this._showLeaderboard();
-      _obs.subscribe(_ret => {});
+      _obs.subscribe(_ret => { });
       return _obs;
     });
   }
@@ -1400,7 +1413,7 @@ export class UserService {
   */
   showLeaderboard(): Observable<any> {
     const _obs = this._showLeaderboard();
-    _obs.subscribe(_ret => {});
+    _obs.subscribe(_ret => { });
     return _obs;
   }
   /**
@@ -1423,7 +1436,7 @@ export class UserService {
    */
   openpay(_inapp: Inapp): Observable<boolean> {
     const _obs = this.dialog.open(WasPay, { data: _inapp }).afterClosed();
-    _obs.subscribe(_isSuccess => {});
+    _obs.subscribe(_isSuccess => { });
     return _obs;
   }
   /**
@@ -1433,7 +1446,7 @@ export class UserService {
   openpayjs(_inapp: Inapp): Observable<boolean> {
     return this._ngZone.runTask(() => {
       const _obs = this.dialog.open(WasPay, { data: _inapp }).afterClosed();
-      _obs.subscribe(_isSuccess => {});
+      _obs.subscribe(_isSuccess => { });
       return _obs;
     });
   }
@@ -1634,11 +1647,11 @@ export class UserService {
                       let _fname;
                       let _lname;
                       if (_idx === -1) {
-                        _fname =  ev.billingAddress.recipient;
-                        _lname =  '';
+                        _fname = ev.billingAddress.recipient;
+                        _lname = '';
                       } else {
-                        _fname =  ev.billingAddress.recipient.substring(0, _idx);
-                        _lname =  ev.billingAddress.recipient.substring(_idx + 1);
+                        _fname = ev.billingAddress.recipient.substring(0, _idx);
+                        _lname = ev.billingAddress.recipient.substring(_idx + 1);
                       }
                       // NOTE: Change store_id (bluesnap) if other payment types are added, like googlepay.
                       this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, ev.payerEmail,
