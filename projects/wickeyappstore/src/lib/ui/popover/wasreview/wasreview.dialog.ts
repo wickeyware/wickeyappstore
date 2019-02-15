@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
 import { UserService } from '../../../user.service';
@@ -55,12 +55,13 @@ export class WasReview implements OnInit, OnDestroy {
       if (result.matches) {
         // NOTE: IFF mobile, set size to full screen
         this.dialogRef.updateSize('100%', '100%');
+        this.dialogRef.addPanelClass('was-modal-m');
       }
     });
   }
 
   /** @ignore */
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   /**@ignore*/
   onNoClick(): void {
@@ -112,7 +113,17 @@ export class WasReview implements OnInit, OnDestroy {
       .subscribe((usr) => {
         loadingdialogRef.close();
         this.dialogRef.close(); // close the window
-        this.dialog.open(WasUp, {data: { title: 'Submitted', icon: 'edit', body: 'Thanks for your feedback!'} });
+        if (this.userService.checkIfValue(usr, 'added_bonus') && usr.added_bonus === true) {
+          let rvwmsg = 'This app thanks you for your feedback with some free coins!';
+          if (this.userService.checkIfValue(this.userService.userObject.settings, 'review_bonus')) {
+            rvwmsg = `This app thanks you for your feedback with ${this.userService.userObject.settings.review_bonus} free coins!`;
+          }
+          this.dialog.open(WasUp, {
+            width: '300px', data: { title: 'Submitted', icon: 'sentiment_satisfied_alt', body: rvwmsg }
+          });
+        } else {
+          this.dialog.open(WasUp, { data: { title: 'Submitted', icon: 'edit', body: 'Thanks for your feedback!' } });
+        }
       }, (error) => {
         loadingdialogRef.close();
         // <any>error | this casts error to be any

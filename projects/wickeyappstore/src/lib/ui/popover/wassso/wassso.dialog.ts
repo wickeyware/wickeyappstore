@@ -1,7 +1,7 @@
 import { Component, Inject, ViewChild, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { WasAlert } from '../wasalert/wasalert.dialog';
 import { WasUp } from '../wasup/wasup.dialog';
@@ -24,6 +24,8 @@ import { UserService } from '../../../user.service';
   styleUrls: ['../was.component.css'],
 })
 export class WasSSO implements OnInit, OnChanges, OnDestroy {
+  /**@ignore*/
+  public add_class = 'wasup-title-sso';
   /**@ignore*/
   private stepperIndex = 0;
   /**@ignore*/
@@ -54,7 +56,7 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
   }
 
   /** @ignore */
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   /** @ignore */
   rebuildForms() {
@@ -76,6 +78,8 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
       if (result.matches) {
         // NOTE: IFF mobile, set size to full screen
         this.dialogRef.updateSize('100%', '100%');
+        this.dialogRef.addPanelClass('was-modal-m');
+        this.add_class = 'wasup-title-sso-m';
       }
     });
     this.stepper.selectedIndex = this.stepperIndex;

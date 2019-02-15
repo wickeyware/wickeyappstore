@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 /**
  * Create simple modal popups with btns or input field to get user input.
  *
@@ -144,6 +144,7 @@ export class WasAlert implements OnInit, OnDestroy {
 
   /** @ignore */
   ngOnInit() {
+    // TODO: On password, it should be in a form https://www.chromium.org/developers/design-documents/create-amazing-password-forms
     if (this.data.input === true) {
       // https://material.angular.io/cdk/layout/overview
       this.breakpointObserver.observe([
@@ -153,13 +154,14 @@ export class WasAlert implements OnInit, OnDestroy {
         if (result.matches) {
           // NOTE: IFF mobile, set size to full screen
           this.dialogRef.updateSize('100%', '100%');
+          this.dialogRef.addPanelClass('was-modal-m');
         }
       });
     }
   }
 
   /** @ignore */
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   /**@ignore*/
   onNoClick(): void {

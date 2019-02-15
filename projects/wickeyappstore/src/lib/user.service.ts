@@ -864,15 +864,6 @@ export class UserService {
       if (res.push_id !== undefined && res.push_id !== null) {
         this._userObj.push_id = res.push_id;
       }
-      if (this.checkIfValue(res, 'added_bonus') && res.added_bonus === true) {
-        let rvwmsg = 'You received free coins for leaving a review!';
-        if (this.checkIfValue(this._userObj.settings, 'review_bonus')) {
-          rvwmsg = `You received ${this._userObj.settings.review_bonus} free coins for leaving a review!`;
-        }
-        this.dialog.open(WasUp, {
-          width: '300px', data: { title: 'Review Bonus', icon: 'star', body: rvwmsg }
-        });
-      }
       // UPDATE USER //
       this.pushSubscribers(this._userObj);
       this.saveLocal('was-user', this._userObj);

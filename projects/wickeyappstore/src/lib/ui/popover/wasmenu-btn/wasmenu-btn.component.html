@@ -1,21 +1,25 @@
-<button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu" (menuOpened)="openEvent()" aria-label="wickey app store menu">
+<button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu" (menuOpened)="openEvent()"
+  aria-label="wickey app store menu">
   <div class="icon-large-svg">
-    <svg *ngIf="userService.loginChange | async;else notloggedin" viewBox="0 0 50 34" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-      clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
-      <path d="M5.69.99L3.53.96 1.1 4.8l2.37 3.9h2.16L3.25 4.82 5.7 1zm4.12 0l2.16-.03L14.4 4.8l-2.37 3.9H9.87l2.38-3.87L9.8 1z"
+    <svg *ngIf="userService.loginChange | async;else notloggedin" viewBox="0 0 50 34" xmlns="http://www.w3.org/2000/svg"
+      fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
+      <path
+        d="M5.69.99L3.53.96 1.1 4.8l2.37 3.9h2.16L3.25 4.82 5.7 1zm4.12 0l2.16-.03L14.4 4.8l-2.37 3.9H9.87l2.38-3.87L9.8 1z"
         fill="#006aeb" />
-      <path d="M7.07 2.4L4.54 6.92l1.1 1.78 2.1-3.77.81 1.43h-1.6l-.37.66h2.34l.95 1.68 1.1-1.78-2.54-4.5H7.07z" fill="#ff601f"
-      />
-      <path d="M23.4 18.93a11.12 11.12 0 0 0-11.12 11.12 3.7 3.7 0 0 0 3.7 3.7h16.44l-10.07-9.93 4.26-4.26s-2.02-.63-3.21-.63z"
+      <path d="M7.07 2.4L4.54 6.92l1.1 1.78 2.1-3.77.81 1.43h-1.6l-.37.66h2.34l.95 1.68 1.1-1.78-2.54-4.5H7.07z"
+        fill="#ff601f" />
+      <path
+        d="M23.4 18.93a11.12 11.12 0 0 0-11.12 11.12 3.7 3.7 0 0 0 3.7 3.7h16.44l-10.07-9.93 4.26-4.26s-2.02-.63-3.21-.63z"
         fill="#ff601f" fill-rule="nonzero" />
       <circle cx="12" cy="6" r="6" fill="#ff601f" transform="translate(12.28 4.11) scale(.92617)" />
-      <path d="M34.89 32.15l-8.76-8.76 4.17-4.17 4.59 4.58 10.53-10.54 4.18 4.18-14.71 14.71z" fill="#00d215" fill-rule="nonzero"
-      />
+      <path d="M34.89 32.15l-8.76-8.76 4.17-4.17 4.59 4.58 10.53-10.54 4.18 4.18-14.71 14.71z" fill="#00d215"
+        fill-rule="nonzero" />
     </svg>
     <ng-template #notloggedin>
-      <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"
-        stroke-miterlimit="1.41">
-        <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"
+      <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
+        stroke-linejoin="round" stroke-miterlimit="1.41">
+        <path
+          d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"
           fill="#FF601F" />
         <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />
         <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />
@@ -45,6 +49,7 @@
     <div class="wasmenu-title">WickeyAppStore™</div>
   </mat-toolbar>
   <br>
+  <!-- TODO: If store is opened in iOS safari and from there open an app, then open menu and select Open the App Store, it reloads current page -->
   <a mat-menu-item href="https://wickeyappstore.com/" target="wickeyappstore">
     <mat-icon>store</mat-icon>
     <span>Open the App Store</span>

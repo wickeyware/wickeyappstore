@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.18.9](https://github.com/wickeyware/wickeyappstore/compare/2.18.8...2.18.9) - 2018-02-15
+
+### Fixed
+
+* **reviewBonus** Fix WasUp if bonus was given on review.
+
 ## [2.18.8](https://github.com/wickeyware/wickeyappstore/compare/2.18.7...2.18.8) - 2018-02-14
 
 ### Fixed

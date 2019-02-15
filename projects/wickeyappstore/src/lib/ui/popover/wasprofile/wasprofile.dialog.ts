@@ -24,7 +24,7 @@ export class WasProfile implements OnInit {
   /**@ignore*/
   public loggedin = false;
   /** @ignore */
-  public version = '2.18.8';
+  public version = '2.18.9';
   /**@ignore*/
   constructor(
     public userService: UserService,
@@ -49,6 +49,7 @@ export class WasProfile implements OnInit {
       if (result.matches) {
         // NOTE: IFF mobile, set size to full screen
         this.dialogRef.updateSize('100%', '100%');
+        this.dialogRef.addPanelClass('was-modal-m');
       }
     });
   }

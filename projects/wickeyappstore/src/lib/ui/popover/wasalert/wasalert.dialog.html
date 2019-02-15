@@ -13,7 +13,8 @@
     <ng-template #normalinput>
       <input matInput [(ngModel)]="data.input_value">
     </ng-template>
-    <button mat-button *ngIf="data.input_value" matSuffix mat-icon-button aria-label="Clear" (click)="data.input_value=''">
+    <button mat-button *ngIf="data.input_value" matSuffix mat-icon-button aria-label="Clear"
+      (click)="data.input_value=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -22,7 +23,8 @@
   <button mat-raised-button (click)="onNoClick()" [color]="data.button_colors[0]">{{data.buttons[0]}}
     <mat-icon *ngIf="data.button_icons[0]" style="margin-left: 10px;">{{data.button_icons[0]}}</mat-icon>
   </button>
-  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]" cdkFocusInitial>{{data.buttons[1]}}
+  <button *ngIf="data.input" mat-raised-button [mat-dialog-close]="data.input_value" [color]="data.button_colors[1]"
+    cdkFocusInitial>{{data.buttons[1]}}
     <mat-icon style="margin-left: 10px">{{data.button_icons[1]}}</mat-icon>
   </button>
 </div>
@@ -36,6 +38,7 @@
     </button>
   </div>
   <ng-template #buttonlist>
-    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index" [mat-dialog-close]="indx">{{btn}}</button>
+    <button mat-raised-button *ngFor="let btn of data.buttons; let indx = index"
+      [mat-dialog-close]="indx">{{btn}}</button>
   </ng-template>
 </ng-template>
