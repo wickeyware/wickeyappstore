@@ -1312,28 +1312,49 @@ export class UserService {
     this.loadUser();
   }
 
-  /**
-   * Open SSO if not logged in, else confirm logout.
-   * @ignore
-  */
-  opensso() {
+  /** @ignore */
+  _opensso(): Observable<any> {
+    let _obs;
     if (this._isLoggedIn) {
-      this.dialog.open(WasAlert, {
+      _obs = this.dialog.open(WasAlert, {
         data: { title: 'Do you wish to log out?', body: 'Log out of your WickeyAppStore SSO account?', buttons: 'WasAlertStyleWarning' }
-      }).afterClosed().subscribe(result => {
+      }).afterClosed().pipe(map(retVal => retVal), mergeMap(result => {
         if (result === 1) {
           console.log('log out this user');
           this.logOut();
+          return observableOf(null);
+        } else {
+          return observableOf(null);
         }
-      });
+      }), share());
     } else {
-      this.dialog.open(WasSSO);
+      _obs = this.dialog.open(WasSSO).afterClosed();
     }
+    return _obs;
   }
   /**
- * Open WasProfile which shows Help or Account Info
- * @ignore
-*/
+   * Open SSO if not logged in, else confirm logout.
+   * NOTE: If using WASjs.
+  */
+  openssojs(): Observable<any> {
+    return this._ngZone.runTask(() => {
+      const _obs = this._opensso();
+      _obs.subscribe(_ret => { });
+      return _obs;
+    });
+  }
+  /**
+   * Open SSO if not logged in, else confirm logout.
+  */
+  opensso(): Observable<any> {
+    const _obs = this._opensso();
+    _obs.subscribe(_ret => { });
+    return _obs;
+  }
+  /**
+   * Open WasProfile which shows Help or Account Info
+   * @ignore
+  */
   openuserinfo() {
     this.dialog.open(WasProfile);
   }
