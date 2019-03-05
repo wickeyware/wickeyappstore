@@ -66,13 +66,15 @@
     </p>
     <p class="comment">
         <p>Leave an app review with WasReview</p>
-<div><pre class="line-numbers"><code class="language-js"> * import { WasReview } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+<p><code>js
+ * import { WasReview } from &#39;wickeyappstore&#39;;
+ * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
  * this.dialog.open(WasReview);
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -80,8 +82,8 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -294,12 +296,6 @@
   max-width: 500px;
   width: 100%;
 }
-
-.my-title-bar {
-  font-size: 2em;
-  width: 100%;
-  height: 80px;
-}
 .my-header-sidebar {
   width: 40px;
 }
@@ -358,7 +354,7 @@ background-color:#E7ECF1 !important;
 
 /* Pass a panel class to dialog to edit css directly */
 .was-dialog-nopadding .mat-dialog-container {
-      padding: 0!important;
+  padding: 0!important;
 }
 
 .was-leaderboard-titlebar {
@@ -381,7 +377,7 @@ background-color:#E7ECF1 !important;
   width: 50vw;
 }
 .was-leaderboard-content-m {
-  max-height: 99vh;
+  max-height: 80vh;
   padding: 0px;
 }
 .was-shop-content-m {
@@ -427,7 +423,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title wasup-title-sso">  <div class="icon-svg">    <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round"      stroke-miterlimit="1.41">      <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"        fill="#FF601F" />      <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />      <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />      <path fill="#FF601F" d="M230.48 92.7h49.98v23.55h-49.98z" />      <path d="M100.43 40l79.36.7-45.4 71.03-34-71.73z" fill="#006AEB" />      <path d="M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z" fill="#007BEB" />      <path d="M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z" fill="#007BEB" />      <path d="M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z" fill="#009BEB" />      <path d="M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z" fill="#006AEB" />      <path d="M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z" fill="#007BEB" />      <path d="M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z" fill="#007BEB" />      <path d="M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z" fill="#009BEB" />      <path d="M410.5 40l-79.37.7 45.38 71.03 34-71.72z" fill="#006AEB" />      <path d="M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z" fill="#007BEB" />      <path d="M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z" fill="#007BEB" />      <path d="M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z" fill="#009BEB" />      <path d="M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z" fill="#006AEB" />      <path d="M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z" fill="#007BEB" />      <path d="M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB" />      <path d="M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z" fill="#009BEB" />    </svg>  </div>  Add a review</div><div mat-dialog-content>  <div class="center-block">    <div class="icon-svg-stars" (click)="clickStar(1)">      <!-- Empty Star -->      <mat-icon class="gold-star-border" *ngIf="stars<1">star_border</mat-icon>      <!-- Full Star -->      <mat-icon class="gold-stars" *ngIf="stars>0">star</mat-icon>    </div>    <div class="icon-svg-stars" (click)="clickStar(2)">      <mat-icon class="gold-star-border" *ngIf="stars<2">star_border</mat-icon>      <mat-icon class="gold-stars" *ngIf="stars>1">star</mat-icon>    </div>    <div class="icon-svg-stars" (click)="clickStar(3)">      <mat-icon class="gold-star-border" *ngIf="stars<3">star_border</mat-icon>      <mat-icon class="gold-stars" *ngIf="stars>2">star</mat-icon>    </div>    <div class="icon-svg-stars" (click)="clickStar(4)">      <mat-icon class="gold-star-border" *ngIf="stars<4">star_border</mat-icon>      <mat-icon class="gold-stars" *ngIf="stars>3">star</mat-icon>    </div>    <div class="icon-svg-stars" (click)="clickStar(5)">      <mat-icon class="gold-star-border" *ngIf="stars<5">star_border</mat-icon>      <mat-icon class="gold-stars" *ngIf="stars>4">star</mat-icon>    </div>  </div>  <form class="example-form">    <mat-form-field style="width: 100%;">      <input name="title" matInput placeholder="Review title" [(ngModel)]="titleText">      <button mat-button *ngIf="titleText" matSuffix mat-icon-button aria-label="Clear" (click)="titleText=\'\'">        <mat-icon>close</mat-icon>      </button>    </mat-form-field>    <mat-form-field style="width: 100%;">      <textarea name="review" matInput placeholder="Review (optional)" [(ngModel)]="reviewText"></textarea>      <button mat-button *ngIf="reviewText" matSuffix mat-icon-button aria-label="Clear" (click)="reviewText=\'\'">        <mat-icon>close</mat-icon>      </button>    </mat-form-field>  </form></div><div mat-dialog-actions>  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>  <button mat-raised-button color="primary" (click)="testValidReview()">Send</button></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasNews', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasReview'};
 </script>

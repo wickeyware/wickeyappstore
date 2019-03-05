@@ -65,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-WickeyAppStoreModule-c983662ae4a65926ba02259903955614"' : 'data-target="#xs-components-links-module-WickeyAppStoreModule-c983662ae4a65926ba02259903955614"' }>
+                                            'data-target="#components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' : 'data-target="#xs-components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WickeyAppStoreModule-c983662ae4a65926ba02259903955614"' :
-                                            'id="xs-components-links-module-WickeyAppStoreModule-c983662ae4a65926ba02259903955614"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' :
+                                            'id="xs-components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' }>
                                             <li class="link">
                                                 <a href="components/WasAlert.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
@@ -79,6 +79,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             <li class="link">
                                                 <a href="components/WasLeaderboard.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasLeaderboard</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/WasNews.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasNews</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/WasPay.html"

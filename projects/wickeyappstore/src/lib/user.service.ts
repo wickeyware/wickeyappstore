@@ -13,7 +13,8 @@ import { WasAlert } from './ui/popover/wasalert/wasalert.dialog';
 import { WasUp } from './ui/popover/wasup/wasup.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
-import { User, Review, Inapp, App, AppGroup } from './app.models';
+import { User, Review, Inapp, App, AppGroup, NewsFeedObj } from './app.models';
+import { WasNews } from './ui/popover/wasnews/wasnews.dialog';
 export * from './app.models';
 /**@ignore*/
 export interface UserParams {
@@ -62,6 +63,8 @@ export class UserService {
   private _inapps: ReplaySubject<[Inapp]> = new ReplaySubject(1);
   private _favorites: ReplaySubject<AppGroup> = new ReplaySubject(1);
   private _favoritesObj: AppGroup;
+  private _newsfeedObj: [NewsFeedObj];
+  private _newsfeed: ReplaySubject<[NewsFeedObj]> = new ReplaySubject(1);
   private _is_favorite: ReplaySubject<Boolean> = new ReplaySubject(1);
   private _is_favoriteObj: Boolean;
   private _freebieSettings: ReplaySubject<any> = new ReplaySubject(1);
@@ -72,6 +75,10 @@ export class UserService {
   private _isLoggedIn = false;
   private _loaded = false;
   private standalone: boolean;
+  /** Number of new WasNews items. */
+  public badgeCountObj: number;
+  /** An observable of new WasNews items. */
+  public badgeCount: ReplaySubject<number> = new ReplaySubject(1);
   private lut = [];
   /**@ignore*/
   constructor(
@@ -110,6 +117,7 @@ export class UserService {
       this.loadInapps();
       this.loadFreebieSettings();
       this.loadIfFavorite();
+      this.loadNewsfeed();
     });
   }
 
@@ -207,6 +215,18 @@ export class UserService {
   get inappsObject() {
     return this._inappsObj;
   }
+  get newsfeed() {
+    return this._newsfeed;
+  }
+  /** @ignore */
+  savenewsfeed(updatednews: [NewsFeedObj]) {
+    this._newsfeedObj = updatednews;
+    this._newsfeed.next(updatednews);
+    this.saveLocal('was-newsfeed', updatednews);
+  }
+  get newsfeedObject() {
+    return this._newsfeedObj;
+  }
   get isLoaded() {
     return this._loaded;
   }
@@ -250,9 +270,7 @@ export class UserService {
   private saveLocal(_key: string, _obj: any) {
     this.localStorageService.set(_key, _obj);
   }
-  /**
-   * @ignore
-   */
+  /** @ignore */
   loadUser() {
     this.localStorageService.get('was-user')
       .then((value: any): void => {
@@ -278,9 +296,7 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
-  /**
- * @ignore
- */
+  /** @ignore */
   loadInapps() {
     this.localStorageService.get('was-inapps')
       .then((value: any): void => {
@@ -296,9 +312,7 @@ export class UserService {
       }
       ).catch(this.handleError);
   }
-  /**
- * @ignore
- */
+  /** @ignore */
   loadFreebieSettings() {
     this.localStorageService.get('was-freesettings')
       .then((value: any): void => {
@@ -311,6 +325,22 @@ export class UserService {
       }).catch(this.handleError);
   }
   /** @ignore */
+  loadNewsfeed() {
+    this.localStorageService.get('was-newsfeed')
+      .then((value: any): void => {
+        if (value && typeof value !== 'undefined') {
+          this._newsfeedObj = value as [NewsFeedObj];
+          this._newsfeed.next(this._newsfeedObj);
+          // normal load
+          // console.log('UserService loadNewsfeed: load newsfeed from db', this._newsfeedObj);
+          this.getNewsfeed();
+        } else {
+          this.getNewsfeed();
+        }
+      }
+      ).catch(this.handleError);
+  }
+  /** @ignore */
   loadIfFavorite() {
     this.localStorageService.get('was-isfavorite')
       .then((value: any): void => {
@@ -318,7 +348,7 @@ export class UserService {
           this._is_favoriteObj = value as Boolean;
           this._is_favorite.next(this._is_favoriteObj);
           // normal load
-          console.log('UserService loadFavorites: load favorites from db', this._is_favoriteObj);
+          // console.log('UserService loadFavorites: load favorites from db', this._is_favoriteObj);
           this.getFavoriteCheck();
         } else {
           this.getFavoriteCheck();
@@ -516,7 +546,7 @@ export class UserService {
    */
   updateUserPushId(push_id: string) {
     if (this._userObj.push_id !== push_id) {
-      console.log('UserService updateUserPushId: CHANGE:', push_id);
+      // console.log('UserService updateUserPushId: CHANGE:', push_id);
       this.updateUser({ 'push_id': push_id })
         .subscribe((usr) => {
           // console.log('UserService updateUserPushId: RETURN:', usr);
@@ -537,7 +567,7 @@ export class UserService {
   updateUsername(username: string): Observable<User | null> {
     let _obs;
     if (this._userObj.username !== username) {
-      console.log('UserService updateUsername: CHANGE:', username);
+      // console.log('UserService updateUsername: CHANGE:', username);
       _obs = this.updateUser({ 'username': username });
       _obs.subscribe((usr) => {
         // console.log('UserService updateUsername: RETURN:', usr);
@@ -553,6 +583,71 @@ export class UserService {
       // console.log('UserService updateUsername: NO CHANGE:', username);
       _obs = observableOf(null);
     }
+    return _obs;
+  }
+
+  private handleNewsfeedReturn(retNewsfeed: [NewsFeedObj]) {
+    let newcnt = 0;
+    for (const newsitm of retNewsfeed) {
+      if (newsitm.isNew === true) {
+        newcnt += 1;
+      }
+    }
+    if (newcnt > 0) {
+      this.badgeCount.next(newcnt);
+    } else {
+      this.badgeCount.next(undefined);
+    }
+    // setTimeout(() => {
+    //   this.badgeCount.next(3);
+    // }, 10000);
+    this.savenewsfeed(retNewsfeed);
+  }
+
+  /**
+  * Return a list of newsfeed items.
+  */
+  getNewsfeed(): Observable<{ newsfeed: [NewsFeedObj] }> {
+    let _obs;
+    _obs = this.apiConnectionService.getNewsfeed({ 'user_id': this._userObj.user_id });
+    _obs.subscribe((res: { newsfeed: [NewsFeedObj] }) => {
+      this.handleNewsfeedReturn(res.newsfeed);
+      // console.log('getNewsfeed', res);
+    }, (error) => {
+      this._newsfeedObj = (<any>{ newsfeed: [] });
+      this._newsfeed.next(this._newsfeedObj);
+      this.saveLocal('was-newsfeed', this._newsfeedObj);
+      _obs = observableOf(this._newsfeedObj);
+
+    });
+    return _obs;
+  }
+  /**
+  * Add an action to another user e.g. show an alert to the other person.
+  */
+  setNewsfeed(toUsername: string, action: string): Observable<{ newsfeed: [NewsFeedObj] }> {
+    let _obs;
+    _obs = this.apiConnectionService.setNewsfeed(this._userObj.user_id, toUsername, action);
+    _obs.subscribe((res: { newsfeed: [NewsFeedObj] }) => {
+      this.handleNewsfeedReturn(res.newsfeed);
+      // console.log('setNewsfeed', res);
+    }, (error) => {
+      console.log('setNewsfeed', error);
+    });
+    return _obs;
+  }
+  /**
+  * Sets news items as seen.
+  */
+  seenNewsfeed(newsIds: string[], globalNewsIds?: number[]): Observable<{ newsfeed: [NewsFeedObj] }> {
+    let _obs;
+    _obs = this.apiConnectionService.seenNewsfeed(this._userObj.user_id, newsIds, globalNewsIds);
+    _obs.subscribe((res: { newsfeed: [NewsFeedObj] }) => {
+      this.handleNewsfeedReturn(res.newsfeed);
+      // console.log('seenNewsfeed', res);
+    }, (error) => {
+      console.log('seenNewsfeed', error);
+    });
     return _obs;
   }
 
@@ -708,10 +803,10 @@ export class UserService {
     } else {
       this.savefavoriteLogin().subscribe(val => {
         if (val) {
-          console.log('updateFav', val);
+          // console.log('updateFav', val);
           this.dialog.open(WasUp, { data: { title: 'Favorite Added', icon: 'done', body: 'App added to favorites!' } });
         } else {
-          console.log('updateFav canceled', val);
+          // console.log('updateFav canceled', val);
           // this.dialog.open(WasUp, {data: { title: 'Canceled?', icon: 'done', body: 'Oh no, it no work'} });
         }
       });
@@ -1348,6 +1443,14 @@ export class UserService {
   */
   opensso(): Observable<any> {
     const _obs = this._opensso();
+    _obs.subscribe(_ret => { });
+    return _obs;
+  }
+  /**
+  * Opens WasNewsfeed
+  */
+  opennewsfeed(): Observable<any> {
+    const _obs = this.dialog.open(WasNews).afterClosed();
     _obs.subscribe(_ret => { });
     return _obs;
   }

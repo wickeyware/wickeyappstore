@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>WasSSO</li>
+  <li>WasNews</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,23 +58,22 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/wickeyappstore/src/lib/ui/popover/wassso/wassso.dialog.ts</code>
+    <code>projects/wickeyappstore/src/lib/ui/popover/wasnews/wasnews.dialog.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>WasSSO</p>
-<p>Open the single sign on dialog.
-<code>typescript
-* import { WasSSO } from &#39;wickeyappstore&#39;;
-* import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
-* ...
-* constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
-* ...
-* this.dialog.open(WasSSO);
-*</code></p>
+        <p>Open your newsfeed</p>
+<p><code>js
+ * import { WasNews } from &#39;wickeyappstore&#39;;
+ * import { MatDialog } from &#39;@angular/material&#39;;
+ * ...
+ * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
+ * ...
+ * this.dialog.open(WasNews);
+ *</code></p>
 
     </p>
 
@@ -84,7 +83,6 @@
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
                     <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
@@ -95,6 +93,10 @@
         <tbody>
 
 
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
 
 
 
@@ -114,7 +116,7 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./wassso.dialog.html</code></td>
+                <td class="col-md-9"><code>./wasnews.dialog.html</code></td>
             </tr>
 
 
@@ -141,72 +143,15 @@
 
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title class&#x3D;&quot;wasup-title&quot; [ngClass]&#x3D;&quot;add_class&quot;&gt;
-  &lt;div class&#x3D;&quot;icon-svg&quot;&gt;
-    &lt;svg viewBox&#x3D;&quot;0 0 511 363&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill-rule&#x3D;&quot;evenodd&quot; clip-rule&#x3D;&quot;evenodd&quot;
-      stroke-linejoin&#x3D;&quot;round&quot; stroke-miterlimit&#x3D;&quot;1.41&quot;&gt;
-      &lt;path
-        d&#x3D;&quot;M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z&quot;
-        fill&#x3D;&quot;#FF601F&quot; /&gt;
-      &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z&quot; /&gt;
-      &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z&quot; /&gt;
-      &lt;path fill&#x3D;&quot;#FF601F&quot; d&#x3D;&quot;M230.48 92.7h49.98v23.55h-49.98z&quot; /&gt;
-      &lt;path d&#x3D;&quot;M100.43 40l79.36.7-45.4 71.03-34-71.73z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M410.5 40l-79.37.7 45.38 71.03 34-71.72z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z&quot; fill&#x3D;&quot;#006AEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z&quot; fill&#x3D;&quot;#007BEB&quot; /&gt;
-      &lt;path d&#x3D;&quot;M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z&quot; fill&#x3D;&quot;#009BEB&quot; /&gt;
-    &lt;/svg&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;h1 mat-dialog-title style&#x3D;&quot;color:rgba(0,0,0,.87); margin: 5px 0;&quot;&gt;WAS News&lt;/h1&gt;
+&lt;mat-dialog-content [ngClass]&#x3D;&quot;add_class&quot;&gt;
+  &lt;div *ngFor&#x3D;&quot;let newsitem of newsList;&quot; class&#x3D;&quot;was-news-item&quot;&gt;
+    &lt;was-newsitem [newsitem]&#x3D;&quot;newsitem&quot;&gt;&lt;/was-newsitem&gt;
   &lt;/div&gt;
-  Single Sign On
-&lt;/div&gt;
-&lt;div mat-dialog-content&gt;
-  &lt;mat-horizontal-stepper [linear]&#x3D;&quot;true&quot; #stepper&gt;
-    &lt;mat-step [stepControl]&#x3D;&quot;firstFormGroup&quot;&gt;
-      &lt;form [formGroup]&#x3D;&quot;firstFormGroup&quot;&gt;
-        &lt;ng-template matStepLabel&gt;Email&lt;/ng-template&gt;
-        &lt;mat-form-field&gt;
-          &lt;input #emailInput matInput placeholder&#x3D;&quot;Enter your email&quot; formControlName&#x3D;&quot;email&quot; required&gt;
-        &lt;/mat-form-field&gt;
-        &lt;div&gt;
-          &lt;button mat-raised-button color&#x3D;&quot;primary&quot; [disabled]&#x3D;&quot;firstFormGroup.pristine || firstFormGroup.invalid&quot;
-            matStepperNext (click)&#x3D;&quot;tokenPerson();&quot;&gt;Send Token
-            &lt;mat-icon&gt;vpn_key&lt;/mat-icon&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    &lt;/mat-step&gt;
-    &lt;mat-step [stepControl]&#x3D;&quot;secondFormGroup&quot;&gt;
-      &lt;form [formGroup]&#x3D;&quot;secondFormGroup&quot;&gt;
-        &lt;ng-template matStepLabel&gt;Token&lt;/ng-template&gt;
-        &lt;mat-form-field&gt;
-          &lt;input #tokenInput cdkFocusInitial matInput placeholder&#x3D;&quot;Enter 6 digit token&quot; formControlName&#x3D;&quot;token&quot;
-            required&gt;
-        &lt;/mat-form-field&gt;
-        &lt;div&gt;
-          &lt;button mat-raised-button color&#x3D;&quot;primary&quot; [disabled]&#x3D;&quot;secondFormGroup.pristine || secondFormGroup.invalid&quot;
-            matStepperNext (click)&#x3D;&quot;verifyPerson();&quot;&gt;Login
-            &lt;mat-icon&gt;lock_open&lt;/mat-icon&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    &lt;/mat-step&gt;
-  &lt;/mat-horizontal-stepper&gt;
-&lt;/div&gt;
-&lt;div mat-dialog-actions&gt;
-  &lt;button mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;onNoClick()&quot;&gt;Cancel&lt;/button&gt;
-&lt;/div&gt;
+&lt;/mat-dialog-content&gt;
+&lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+  &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;true&quot; cdkFocusInitial color&#x3D;&quot;warn&quot;&gt;Close&lt;/button&gt;
+&lt;/mat-dialog-actions&gt;
 </code></pre>
     </div>
 
@@ -417,10 +362,10 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title" [ngClass]="add_class">  <div class="icon-svg">    <svg viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"      stroke-linejoin="round" stroke-miterlimit="1.41">      <path        d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"        fill="#FF601F" />      <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />      <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />      <path fill="#FF601F" d="M230.48 92.7h49.98v23.55h-49.98z" />      <path d="M100.43 40l79.36.7-45.4 71.03-34-71.73z" fill="#006AEB" />      <path d="M90.2 181.6l-34.63-71.34L10.9 181l79.3.6z" fill="#007BEB" />      <path d="M134.75 111.2l-34.23-71.5-45.03 70.68 79.2.82z" fill="#007BEB" />      <path d="M55.52 110.33l79.27.8-44.6 70.48-34.7-71.2z" fill="#009BEB" />      <path d="M98.3 323.15l79.38.5-44.32-71.7-35.05 71.2z" fill="#006AEB" />      <path d="M90.2 181.4l-35.7 70.83-43.6-71.4 79.3.58z" fill="#007BEB" />      <path d="M133.7 252.48l-35.3 70.98-43.98-71.35 79.27.4z" fill="#007BEB" />      <path d="M54.46 252.17l79.27.37L90.2 181.4l-35.74 70.77z" fill="#009BEB" />      <path d="M410.5 40l-79.37.7 45.38 71.03 34-71.72z" fill="#006AEB" />      <path d="M420.72 181.6l34.63-71.34L500.03 181l-79.3.6z" fill="#007BEB" />      <path d="M376.17 111.2l34.23-71.5 45.04 70.68-79.27.82z" fill="#007BEB" />      <path d="M455.4 110.33l-79.27.8 44.6 70.48 34.67-71.2z" fill="#009BEB" />      <path d="M412.6 323.15l-79.35.5 44.3-71.7 35.06 71.2z" fill="#006AEB" />      <path d="M420.72 181.4l35.7 70.83 43.6-71.4-79.3.58z" fill="#007BEB" />      <path d="M377.23 252.48l35.3 70.98 43.97-71.35-79.27.4z" fill="#007BEB" />      <path d="M456.46 252.17l-79.27.37 43.5-71.13 35.7 70.8z" fill="#009BEB" />    </svg>  </div>  Single Sign On</div><div mat-dialog-content>  <mat-horizontal-stepper [linear]="true" #stepper>    <mat-step [stepControl]="firstFormGroup">      <form [formGroup]="firstFormGroup">        <ng-template matStepLabel>Email</ng-template>        <mat-form-field>          <input #emailInput matInput placeholder="Enter your email" formControlName="email" required>        </mat-form-field>        <div>          <button mat-raised-button color="primary" [disabled]="firstFormGroup.pristine || firstFormGroup.invalid"            matStepperNext (click)="tokenPerson();">Send Token            <mat-icon>vpn_key</mat-icon>          </button>        </div>      </form>    </mat-step>    <mat-step [stepControl]="secondFormGroup">      <form [formGroup]="secondFormGroup">        <ng-template matStepLabel>Token</ng-template>        <mat-form-field>          <input #tokenInput cdkFocusInitial matInput placeholder="Enter 6 digit token" formControlName="token"            required>        </mat-form-field>        <div>          <button mat-raised-button color="primary" [disabled]="secondFormGroup.pristine || secondFormGroup.invalid"            matStepperNext (click)="verifyPerson();">Login            <mat-icon>lock_open</mat-icon>          </button>        </div>      </form>    </mat-step>  </mat-horizontal-stepper></div><div mat-dialog-actions>  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title style="color:rgba(0,0,0,.87); margin: 5px 0;">WAS News</h1><mat-dialog-content [ngClass]="add_class">  <div *ngFor="let newsitem of newsList;" class="was-news-item">    <was-newsitem [newsitem]="newsitem"></was-newsitem>  </div></mat-dialog-content><mat-dialog-actions align="end">  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Close</button></mat-dialog-actions></div>'
     var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasNews', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'WasSSO'};
+    var ACTUAL_COMPONENT = {'name': 'WasNews'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -454,7 +399,7 @@ background-color:#E7ECF1 !important;
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'WasSSO.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'WasNews.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

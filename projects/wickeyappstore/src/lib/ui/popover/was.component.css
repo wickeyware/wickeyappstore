@@ -75,12 +75,6 @@
   max-width: 500px;
   width: 100%;
 }
-
-.my-title-bar {
-  font-size: 2em;
-  width: 100%;
-  height: 80px;
-}
 .my-header-sidebar {
   width: 40px;
 }
@@ -139,7 +133,7 @@ background-color:#E7ECF1 !important;
 
 /* Pass a panel class to dialog to edit css directly */
 .was-dialog-nopadding .mat-dialog-container {
-      padding: 0!important;
+  padding: 0!important;
 }
 
 .was-leaderboard-titlebar {
@@ -162,7 +156,7 @@ background-color:#E7ECF1 !important;
   width: 50vw;
 }
 .was-leaderboard-content-m {
-  max-height: 99vh;
+  max-height: 80vh;
   padding: 0px;
 }
 .was-shop-content-m {

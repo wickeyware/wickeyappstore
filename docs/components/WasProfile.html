@@ -67,13 +67,15 @@
     <p class="comment">
         <p>WasProfile</p>
 <p>Show a user info panel if logged in. A help panel if not logged in.</p>
-<div><pre class="line-numbers"><code class="language-js"> * import { WasProfile } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+<p><code>js
+ * import { WasProfile } from &#39;wickeyappstore&#39;;
+ * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
  * this.dialog.open(WasProfile);
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -81,7 +83,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
 
@@ -266,12 +268,6 @@
   max-width: 500px;
   width: 100%;
 }
-
-.my-title-bar {
-  font-size: 2em;
-  width: 100%;
-  height: 80px;
-}
 .my-header-sidebar {
   width: 40px;
 }
@@ -330,7 +326,7 @@ background-color:#E7ECF1 !important;
 
 /* Pass a panel class to dialog to edit css directly */
 .was-dialog-nopadding .mat-dialog-container {
-      padding: 0!important;
+  padding: 0!important;
 }
 
 .was-leaderboard-titlebar {
@@ -353,7 +349,7 @@ background-color:#E7ECF1 !important;
   width: 50vw;
 }
 .was-leaderboard-content-m {
-  max-height: 99vh;
+  max-height: 80vh;
   padding: 0px;
 }
 .was-shop-content-m {
@@ -399,7 +395,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">WickeyAppStore SSO</div><div *ngIf="loggedin;else notloggedin">  <div mat-dialog-content>    <mat-card style="margin:2px 0 2px 0;">      <mat-card-header>        <div mat-card-avatar>          <mat-icon color="primary" style="font-size:40px;">person_pin</mat-icon>        </div>        <mat-card-title>Your account email is:</mat-card-title>        <mat-card-subtitle *ngIf="(userService.user | async) as _usr">{{_usr.email}}</mat-card-subtitle>      </mat-card-header>      <mat-card-content>        <br>        <p>You are logged in.</p>        <p>Your save data is securely saving to the cloud.</p>        <br>        <p><i>v{{version}}</i></p>      </mat-card-content>    </mat-card>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="warn" (click)="opensso()">Logout</button>  </div></div><ng-template #notloggedin>  <div mat-dialog-content>    <h3>WAS SSO login?</h3>    <br>    <p>WickeyAppStore apps use SSO (single sign on) for security and ease of use.</p>    <p>When you login it will email you a 6 digit token, which you then verify in the app.</p>    <br>    <p>Then, all other WickeyAppStore apps will *auto-magically be logged in.</p>    <br>    <p>*This only works on the same physical device</p>    <p>**Deleting cookies will log you out</p>    <br>    <p><i>v{{version}}</i></p>    <br>  </div>  <div mat-dialog-actions>    <button mat-raised-button (click)="onNoClick()">Okay</button>    <button mat-raised-button color="primary" (click)="opensso()">Login</button>  </div></ng-template></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasNews', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasProfile'};
 </script>

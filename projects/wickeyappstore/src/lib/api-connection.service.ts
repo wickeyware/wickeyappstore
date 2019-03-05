@@ -21,6 +21,8 @@ export class ApiConnectionService {
   private person_recover_token_url = 'https://api.wickeyappstore.com/person/recovery/token/';
   private person_recover_verify_url = 'https://api.wickeyappstore.com/person/recovery/verify/';
   private person_auth_url = 'https://api.wickeyappstore.com/person/auth/';
+  private personNewsUrl = 'https://api.wickeyappstore.com/person/newsfeed/';
+  private personNewsSeenUrl = 'https://api.wickeyappstore.com/person/newsfeed/seen/';
   private favorites_url = 'https://api.wickeyappstore.com/person/favorites/';
   private fav_del_url = 'https://api.wickeyappstore.com/person/favorites/remove/';
   private check_favorite_url = 'https://api.wickeyappstore.com/person/favorites/check/';
@@ -200,6 +202,56 @@ export class ApiConnectionService {
         return this.extractData(res);
       }), catchError(this.handleError), share());
   }
+
+  /**
+   * Return a list of newsfeed items.
+   *
+   * @param _params {"user_id": string}
+  */
+  getNewsfeed(_params: any): Observable<any> {
+    this.handleHeaders();
+    const _query_string = this.encode_query_string(_params);
+    return this.http.get(`${this.personNewsUrl}?${_query_string}`, { headers: this.apiHeaders }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share());
+  }
+  /**
+  * Add an action to another user e.g. show an alert to the other person.
+  *
+  * @param user_id
+  * @param to_username
+  * @param news_ids
+  * @param [global_news_ids]
+  */
+  setNewsfeed(user_id: string, to_username: string, action: string): Observable<any> {
+    this.handleHeaders();
+    const apiobject = { user_id, to_username, action };
+    return this.http.post(this.personNewsUrl, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share());
+  }
+
+  /**
+   * Sets news items as seen.
+   *
+   * @param user_id
+   * @param news_ids
+   * @param [global_news_ids]
+   */
+  seenNewsfeed(user_id: string, news_ids: string[], global_news_ids?: number[]): Observable<any> {
+    this.handleHeaders();
+    const apiobject = { user_id, news_ids };
+    if (global_news_ids) {
+      apiobject['global_news_ids'] = global_news_ids;
+    }
+    return this.http.post(this.personNewsSeenUrl, apiobject, { headers: this.apiHeaders, withCredentials: true }).pipe(
+      map((res: any) => {
+        return this.extractData(res);
+      }), catchError(this.handleError), share());
+  }
+
   /**
   * Return a list of favorite apps.
   *
@@ -517,8 +569,10 @@ export class ApiConnectionService {
    * @param _params string: username,
    * @returns Returns a leaderboard list (optional: and score and rank of passed in username).
    */
-  getLeaderboard(_params: { username?: string }): Observable<{ leaderboard: [any], rank?: number, score?: number,
-    name?: string, icon?: string}> {
+  getLeaderboard(_params: { username?: string }): Observable<{
+    leaderboard: [any], rank?: number, score?: number,
+    name?: string, icon?: string
+  }> {
     this.handleHeaders();
     // NOTE: Use share to avoid duplicate calls
     const _query_string = this.encode_query_string(_params);

@@ -1,6 +1,7 @@
 <button class="was-left-button" mat-fab color="" [matMenuTriggerFor]="menu" (menuOpened)="openEvent()"
   aria-label="wickey app store menu">
-  <div class="icon-large-svg">
+  <div class="icon-large-svg" matBadge="{{userService.badgeCount | async}}" matBadgeColor="warn"
+    matBadgePosition="above after" matBadgeSize="medium">
     <svg *ngIf="userService.loginChange | async;else notloggedin" viewBox="0 0 50 34" xmlns="http://www.w3.org/2000/svg"
       fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
       <path
@@ -72,6 +73,11 @@
       <span>Add to Favorites</span>
     </button>
   </ng-template>
+  <button mat-menu-item (click)="opennewsfeed()">
+    <mat-icon>announcement</mat-icon>
+    <span matBadge="{{userService.badgeCount | async}}" matBadgeColor="warn" matBadgePosition="above after"
+      matBadgeSize="small">Announcements</span>
+  </button>
   <mat-grid-list cols="4">
     <mat-grid-tile [colspan]="3">
       <button mat-menu-item (click)="opensso()">

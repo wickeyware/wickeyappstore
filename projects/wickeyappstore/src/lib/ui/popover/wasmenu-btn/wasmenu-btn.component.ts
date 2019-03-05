@@ -133,6 +133,10 @@ export class WasMenuBtn {
     this.userService.opensso();
   }
   /**@ignore*/
+  opennewsfeed() {
+    this.userService.opennewsfeed();
+  }
+  /**@ignore*/
   openuserinfo() {
     this.userService.openuserinfo();
   }

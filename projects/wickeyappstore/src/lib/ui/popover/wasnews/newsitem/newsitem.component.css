@@ -1,0 +1,9 @@
+.newsitem-card {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-radius: 0px;
+}
+.newsitem-icon {
+  /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+  background-size: cover;
+}

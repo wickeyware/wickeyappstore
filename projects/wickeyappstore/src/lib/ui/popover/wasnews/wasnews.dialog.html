@@ -1,0 +1,9 @@
+<h1 mat-dialog-title style="color:rgba(0,0,0,.87); margin: 5px 0;">WAS News</h1>
+<mat-dialog-content [ngClass]="add_class">
+  <div *ngFor="let newsitem of newsList;" class="was-news-item">
+    <was-newsitem [newsitem]="newsitem"></was-newsitem>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Close</button>
+</mat-dialog-actions>

@@ -3,19 +3,12 @@
 /*html {
   touch-action: manipulation;
 }*/
-body, input, textarea {
-  /* -webkit-font-smoothing: antialiased; */
-  color: #777;
-}
 h1 {
-  color: #369;
   font-size: 250%;
 }
 h2, h3 {
-  color: #444;
   font-weight: lighter;
   font-size: 150%;
-  /*font-weight: 500;*/
 }
 p {
   font-size: 0.875em; /* If the baseline is 16px, this will scale the font to 14px */

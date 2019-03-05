@@ -19,7 +19,7 @@ export class WickeyAppStoreComponent implements OnInit {
 
   /** @ignore */
   ngOnInit() {
-    console.log('%c WASjs 2.18.9 Initialized ', 'background: #222; color: #00BDFC');
+    console.log('%c WASjs 2.19.0 Initialized ', 'background: #222; color: #00BDFC');
     (<any>window).WAS = {};
     (<any>window).WAS.dataService = this.wasDataService;
     (<any>window).WAS.userService = this.userService;

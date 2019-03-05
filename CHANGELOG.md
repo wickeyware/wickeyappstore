@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.19.0](https://github.com/wickeyware/wickeyappstore/compare/2.18.9...2.19.0) - 2018-03-05
+
+### Added
+
+* **newsFeed** Add WasNews.
+* **leaderboard:actions** On leaderboard user select, show an action popup. (new was menu btn to open a news/alerts feed)
+
+### Fixed
+
+* **opensso** Return an observable.
+* **leaderboard** Show close button on bottom.
+
 ## [2.18.9](https://github.com/wickeyware/wickeyappstore/compare/2.18.8...2.18.9) - 2018-02-15
 
 ### Fixed

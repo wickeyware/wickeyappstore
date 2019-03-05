@@ -1,0 +1,19 @@
+<mat-card class="newsitem-card mat-elevation-z"
+  [style.background-color]="newsitem.isNew ? 'rgba(255, 0, 0, .04)' : 'inherit'">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <img mat-card-avatar class="newsitem-icon" *ngIf="newsitem.icon" [src]="newsitem.icon" alt="Alert icon">
+    <mat-card-title>{{newsitem.title}}</mat-card-title>
+    <!-- <mat-card-subtitle>{{getFromName()}}</mat-card-subtitle> -->
+    <!-- <mat-icon *ngIf="newsitem.isNew" aria-label="announcement">announcement</mat-icon> -->
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content>
+    {{newsitem.body}}<br>
+    <small>- {{getFromName()}} {{newsitem?.created*1000 | date:'mediumDate'}}</small>
+  </mat-card-content>
+  <mat-card-actions *ngIf="newsitem.url">
+    <a mat-raised-button *ngIf="newsitem.url" [href]="newsitem.url" target="_blank">Check it out</a>
+    <!-- <button mat-button>SHARE</button> -->
+  </mat-card-actions>
+</mat-card>

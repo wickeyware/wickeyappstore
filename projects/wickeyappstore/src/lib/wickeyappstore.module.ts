@@ -31,8 +31,9 @@ import {
   MatToolbarModule,
   MatStepperModule
 } from '@angular/material';
-import {CdkTableModule} from '@angular/cdk/table';
-import {LayoutModule} from '@angular/cdk/layout';
+import { MatBadgeModule } from '@angular/material/badge';
+import { CdkTableModule } from '@angular/cdk/table';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // WAS CORE //
 import { WasSpinnerComponent } from './was-spinner/was-spinner.component';
@@ -54,6 +55,9 @@ import { WasShop } from './ui/popover/wasshop/wasshop.dialog';
 import { WasPay } from './ui/popover/waspay/waspay.dialog';
 import { WasProfile } from './ui/popover/wasprofile/wasprofile.dialog';
 import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialog';
+import { WasNewsAction } from './ui/popover/wasnewsaction/wasnewsaction.dialog';
+import { WasNews } from './ui/popover/wasnews/wasnews.dialog';
+import { NewsitemComponent } from './ui/popover/wasnews/newsitem/newsitem.component';
 
 // Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.3'}).install();
 
@@ -95,6 +99,7 @@ import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialo
     MatRippleModule,
     MatSelectModule,
     MatTableModule,
+    MatBadgeModule,
     MatTabsModule,
     MatToolbarModule
   ],
@@ -109,6 +114,9 @@ import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialo
     WasShop,
     WasLeaderboard,
     WasPay,
+    WasNews,
+    WasNewsAction,
+    NewsitemComponent,
     WasProfile,
     ReviewsComponent,
     DisplayInAppComponent,
@@ -125,6 +133,9 @@ import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialo
     WasShop,
     WasLeaderboard,
     WasPay,
+    WasNews,
+    WasNewsAction,
+    NewsitemComponent,
     WasProfile,
     ReviewsComponent,
     DisplayInAppComponent,
@@ -151,8 +162,9 @@ import { WasLeaderboard } from './ui/popover/wasleaderboard/wasleaderboard.dialo
     MatTableModule,
     MatSelectModule,
     MatTabsModule,
+    MatBadgeModule,
     MatToolbarModule
   ],
-  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasProfile],
+  entryComponents: [WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasNews, WasNewsAction, WasProfile],
 })
 export class WickeyAppStoreModule { }

@@ -66,17 +66,20 @@
     </p>
     <p class="comment">
         <p>Create simple auto closing messages with icons</p>
-<p><b>SIMPLEST USE CASE</b></p>
-<div><pre class="line-numbers"><code class="language-js"> * import { WasUp } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
+<p><b>SIMPLEST USE CASE</b>
+<code>js
+ * import { WasUp } from &#39;wickeyappstore&#39;;
+ * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
  * this.dialog.open(WasUp, {data: { title: &#39;Review Sent&#39;, icon: &#39;edit&#39;, body: &#39;Thanks for your feedback.&#39;} });
- *</code></pre></div><p><i>icon</i> can be any material icon -&gt; <a href="https://material.io/icons/">https://material.io/icons/</a></p>
+ *</code>
+<i>icon</i> can be any material icon -&gt; https://material.io/icons/</p>
 <p>MORE USE CASES BELOW</p>
-<p>Add <b>WIDTH</b>, <b>SPINNER</b>, and <b>STAYOPEN</b> until closed</p>
-<div><pre class="line-numbers"><code class="language-js"> * private loadingdialogRef: MatDialogRef&lt;WasUp, Array&lt;string&gt;&gt;;
+<p>Add <b>WIDTH</b>, <b>SPINNER</b>, and <b>STAYOPEN</b> until closed
+<code>js
+ * private loadingdialogRef: MatDialogRef&lt;WasUp, Array&lt;string&gt;&gt;;
  * this.loadingdialogRef = this.dialog.open(WasUp, {
  *    width: &#39;300px&#39;,
  *    data: { title: &#39;Intializing game&#39;, icon: &#39;spinner&#39;, body: &#39;Loading...&#39;, stayopen: true}
@@ -85,10 +88,13 @@
  * ...
  * // CLOSE where you want - like when loading complete
  * this.loadingdialogRef.close();
- *</code></pre></div><p>The MatDialog has additional properties.
-By default, clicking outside the window does not close the dialog. Change by setting to false;</p>
-<div><pre class="line-numbers"><code class="language-js"> * this.loadingdialogRef.disableClose = false;
- *</code></pre></div>
+ *</code>
+The MatDialog has additional properties.
+By default, clicking outside the window does not close the dialog. Change by setting to false;
+<code>js
+ * this.loadingdialogRef.disableClose = false;
+ *</code></p>
+
     </p>
 
 
@@ -96,7 +102,7 @@ By default, clicking outside the window does not close the dialog. Change by set
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -243,12 +249,6 @@ By default, clicking outside the window does not close the dialog. Change by set
   max-width: 500px;
   width: 100%;
 }
-
-.my-title-bar {
-  font-size: 2em;
-  width: 100%;
-  height: 80px;
-}
 .my-header-sidebar {
   width: 40px;
 }
@@ -307,7 +307,7 @@ background-color:#E7ECF1 !important;
 
 /* Pass a panel class to dialog to edit css directly */
 .was-dialog-nopadding .mat-dialog-container {
-      padding: 0!important;
+  padding: 0!important;
 }
 
 .was-leaderboard-titlebar {
@@ -330,7 +330,7 @@ background-color:#E7ECF1 !important;
   width: 50vw;
 }
 .was-leaderboard-content-m {
-  max-height: 99vh;
+  max-height: 80vh;
   padding: 0px;
 }
 .was-shop-content-m {
@@ -376,7 +376,7 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div mat-dialog-title class="wasup-title">{{data.title}}</div><div mat-dialog-content>  <div class="wasup-body">    <i *ngIf="data.icon!=\'spinner\'" class="material-icons" style="font-size: 96px">{{data.icon}}</i>    <mat-spinner *ngIf="data.icon===\'spinner\'" style="margin:0 auto;"></mat-spinner>    <br><br> {{data.body}}  </div></div></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasNews', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasUp'};
 </script>

@@ -92,6 +92,20 @@ export interface Review {
   rating: number;
   last_modified?: number;
 }
+/**@ignore*/
+export interface NewsFeedObj {
+  id: string | number;
+  title: string;
+  body: string;
+  app: string;
+  appTitle: string;
+  from?: string;
+  created: number;
+  isGlobal: boolean;
+  isNew: boolean;
+  icon?: string;
+  url?: string;
+}
 /**
  * In-app Purchase data structure
  */

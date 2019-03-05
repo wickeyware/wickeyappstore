@@ -32,8 +32,9 @@ import {
   MatToolbarModule,
   MatStepperModule
 } from '@angular/material';
-import {CdkTableModule} from '@angular/cdk/table';
-import {LayoutModule} from '@angular/cdk/layout';
+import { MatBadgeModule } from '@angular/material/badge';
+import { CdkTableModule } from '@angular/cdk/table';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { WickeyAppStoreComponent } from './wickeyappstore.component';
 // WAS CORE //
@@ -52,8 +53,10 @@ import { WasMenuBtn } from '../../../wickeyappstore/src/lib/ui/popover/wasmenu-b
 import { WasShop } from '../../../wickeyappstore/src/lib/ui/popover/wasshop/wasshop.dialog';
 import { WasLeaderboard } from '../../../wickeyappstore/src/lib/ui/popover/wasleaderboard/wasleaderboard.dialog';
 import { WasPay } from '../../../wickeyappstore/src/lib/ui/popover/waspay/waspay.dialog';
+import { WasNewsAction } from '../../../wickeyappstore/src/lib/ui/popover/wasnewsaction/wasnewsaction.dialog';
 import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofile/wasprofile.dialog';
-
+import { WasNews } from '../../../wickeyappstore/src/lib/ui/popover/wasnews/wasnews.dialog';
+import { NewsitemComponent } from '../../../wickeyappstore/src/lib/ui/popover/wasnews/newsitem/newsitem.component';
 // Raven.config('https://69970e94d1d148dc84a0dfa43b3c2369@sentry.io/1246509', {release: '2.15.3'}).install();
 
 // /** @ignore */
@@ -77,6 +80,9 @@ import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofil
     WasShop,
     WasLeaderboard,
     WasPay,
+    WasNews,
+    WasNewsAction,
+    NewsitemComponent,
     WasProfile,
     ReviewsComponent,
     DisplayInAppComponent,
@@ -110,19 +116,20 @@ import { WasProfile } from '../../../wickeyappstore/src/lib/ui/popover/wasprofil
     MatRippleModule,
     MatSelectModule,
     MatTableModule,
+    MatBadgeModule,
     MatTabsModule,
     MatToolbarModule
   ],
   entryComponents: [
     WickeyAppStoreComponent,
-    WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasProfile
+    WasUp, WasAlert, WasReview, WasSSO, WasShop, WasLeaderboard, WasPay, WasNews, WasNewsAction, WasProfile
   ]
 })
 export class AppModule {
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) { }
 
   ngDoBootstrap() {
-    const customWAS = createCustomElement(WickeyAppStoreComponent, {injector: this.injector});
+    const customWAS = createCustomElement(WickeyAppStoreComponent, { injector: this.injector });
     customElements.define('wickey-appstore', customWAS);
   }
 }

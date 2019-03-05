@@ -1,0 +1,23 @@
+<h1 mat-dialog-title style="color:rgba(0,0,0,.87);">{{getActionName(actionControl.value)}} <i>{{data.username}}</i></h1>
+<mat-dialog-content [ngClass]="add_class">
+  <div style="margin-left: 10px;">
+    <mat-form-field style="min-width: 60%">
+      <mat-label>{{data.body}}</mat-label>
+      <select matNativeControl required [formControl]="actionControl">
+        <option *ngFor="let action of actions" [value]="action.id">{{action.name}}</option>
+      </select>
+      <mat-error *ngIf="actionControl.hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="undefined" cdkFocusInitial color="warn">Cancel</button>
+  <button *ngIf="userService.isLoggedInObs | async; else notLoggedIn" mat-raised-button
+    (click)="doAction()">Send</button>
+  <ng-template #notLoggedIn>
+    <button mat-raised-button (click)="userService.opensso()">
+      <mat-icon>person</mat-icon>
+      <span>Login to send alerts</span>
+    </button>
+  </ng-template>
+</mat-dialog-actions>

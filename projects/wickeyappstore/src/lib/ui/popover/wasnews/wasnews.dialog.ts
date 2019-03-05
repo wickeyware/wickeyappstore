@@ -1,28 +1,28 @@
 import { Component, Inject, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { UserService } from '../../../user.service';
-import { WasNewsAction } from '../wasnewsaction/wasnewsaction.dialog';
+import { UserService, NewsFeedObj } from '../../../user.service';
+import { LocalStorageService } from '../../../local-storage.service';
 
 // import { WasUp } from '../../../ui/popover/wasup/wasup.dialog';
 /**
- * Open your app's leaderboard.
+ * Open your newsfeed
  *
  * ```js
- * import { WasLeaderboard } from 'wickeyappstore';
+ * import { WasNews } from 'wickeyappstore';
  * import { MatDialog } from '@angular/material';
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
- * this.dialog.open(WasLeaderboard);
+ * this.dialog.open(WasNews);
  * ```
 */
 @Component({
-  templateUrl: './wasleaderboard.dialog.html',
+  templateUrl: './wasnews.dialog.html',
   styleUrls: ['../was.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class WasLeaderboard implements OnInit, OnDestroy {
+export class WasNews implements OnInit, OnDestroy {
   /**@ignore*/
   public add_class = 'was-leaderboard-content';
   /**@ignore*/
@@ -36,44 +36,46 @@ export class WasLeaderboard implements OnInit, OnDestroy {
   /**@ignore*/
   public myrank: number;
   /**@ignore*/
+  public newsList: NewsFeedObj[];
+  /** @ignore */
+  private seenItems: string[];
+  /** @ignore */
+  private globalSeenItems: number[];
+  /**@ignore*/
   constructor(
     public dialog: MatDialog,
     public userService: UserService,
-    public dialogRef: MatDialogRef<WasLeaderboard>,
+    private localStorageService: LocalStorageService,
+    public dialogRef: MatDialogRef<WasNews>,
     public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     // SET DEFAULT VALUES
     // dialogRef.disableClose = true; // do not close by clicking off by default
-    try {
-      const getSubdomain = function (hostname) {
-        if (hostname === 'localhost') {
-          return 'localhostwickeyappstore';
-        } else if (hostname === 'test.wickeyappstore.com') {
-          return 'testwickeyappstore';
-        } else if (hostname === 'wickeyappstore.com') {
-          return 'wickeyappstore';
-        } else {
-          const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
-          const urlParts = regexParse.exec(hostname);
-          return hostname.replace(urlParts[0], '').slice(0, -1);
-        }
-      };
-      this.appName = getSubdomain(window.location.hostname);
-    } catch (getdomainerror) {
-      console.error('Ads:getdomainerror', getdomainerror);
-      this.appName = '';
-    }
-    userService.getLeaderboard(userService.userObject.username).subscribe(res => {
-      this.leaderboard = res.leaderboard;
-      this.myrank = res.rank;
-      this.appName = res.name;
-      this.appIcon = res.icon;
-
-    });
+    this.seenItems = [];
+    this.globalSeenItems = [];
   }
 
   /** @ignore */
   ngOnInit() {
+    this.newsList = this.userService.newsfeedObject;
+    let cpynewsfeed: [NewsFeedObj];
+    cpynewsfeed = JSON.parse(JSON.stringify(this.userService.newsfeedObject));
+    for (const newsitm of cpynewsfeed) {
+      if (newsitm.isGlobal === true) {
+        this.globalSeenItems.push(newsitm.id as number);
+      } else {
+        this.seenItems.push(newsitm.id as string);
+      }
+      newsitm.isNew = false;
+    }
+    if (JSON.stringify(this.userService.newsfeedObject) !== JSON.stringify(cpynewsfeed)) {
+      console.log('UPDATE WAS NEWS', this.userService.newsfeedObject, cpynewsfeed);
+      if (this.seenItems.length > 0 || this.globalSeenItems.length > 0) {
+        this.userService.seenNewsfeed(this.seenItems, this.globalSeenItems);
+      }
+    }
+    this.userService.savenewsfeed(cpynewsfeed);
+
     // https://material.angular.io/cdk/layout/overview
     this.breakpointObserver.observe([
       Breakpoints.Handset,
@@ -82,9 +84,12 @@ export class WasLeaderboard implements OnInit, OnDestroy {
       if (result.matches) {
         // NOTE: IFF mobile, set size to full screen
         this.dialogRef.updateSize('100%', '100%');
-        // this.dialogRef.removePanelClass('was-leaderboard-modal');
+        // // this.dialogRef.removePanelClass('was-leaderboard-modal');
         this.dialogRef.addPanelClass('was-leaderboard-modal-m');
         this.add_class = 'was-leaderboard-content-m';
+      } else {
+        // this.dialogRef.updateSize('60%', '60%');
+        // this.add_class = 'was-leaderboard-content';
       }
     });
   }
@@ -95,15 +100,6 @@ export class WasLeaderboard implements OnInit, OnDestroy {
   /**@ignore*/
   onNoClick(): void {
     this.dialogRef.close();
-  }
-  /**@ignore*/
-  leaderboardAction(row: any) {
-    console.log('leaderboardAction', row);
-    this.dialog.open(WasNewsAction, {
-      data: { username: row.username }
-    }).afterClosed().subscribe(res => {
-      console.log('leaderboardAction:closed', res);
-    });
   }
 
 }

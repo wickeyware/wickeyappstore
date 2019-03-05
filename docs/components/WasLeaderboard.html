@@ -66,13 +66,15 @@
     </p>
     <p class="comment">
         <p>Open your app&#39;s leaderboard.</p>
-<div><pre class="line-numbers"><code class="language-js"> * import { WasLeaderboard } from &#39;wickeyappstore&#39;;
- * import { MatDialog } from &#39;&#64;angular/material&#39;;
+<p><code>js
+ * import { WasLeaderboard } from &#39;wickeyappstore&#39;;
+ * import { MatDialog } from &#39;@angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
  * this.dialog.open(WasLeaderboard);
- *</code></pre></div>
+ *</code></p>
+
     </p>
 
 
@@ -80,8 +82,8 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -141,47 +143,43 @@
 
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;mat-dialog-content [ngClass]&#x3D;&quot;add_class&quot;&gt;
-  &lt;div class&#x3D;&quot;wasup-title&quot;&gt;
-    &lt;div class&#x3D;&quot;was-leaderboard-titlebar&quot; role&#x3D;&quot;header&quot;&gt;
-      &lt;span class&#x3D;&quot;my-header-sidebar&quot;&gt;&lt;/span&gt;
-      &lt;span class&#x3D;&quot;my-header-text&quot;&gt;
-        &lt;img style&#x3D;&quot;width:80px;&quot; *ngIf&#x3D;&quot;appIcon&quot; src&#x3D;&quot;{{appIcon}}&quot; alt&#x3D;&quot;App icon&quot;&gt;
-      &lt;/span&gt;
-      &lt;button class&#x3D;&quot;my-header-sidebar&quot; mat-icon-button (click)&#x3D;&quot;onNoClick()&quot;&gt;
-        &lt;mat-icon aria-label&#x3D;&quot;close&quot;&gt;close&lt;/mat-icon&gt;
-      &lt;/button&gt;
-    &lt;/div&gt;
-    &lt;span&gt;{{appName}} Leaderboard&lt;/span&gt;
-    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;h1 mat-dialog-title style&#x3D;&quot;margin: 5px 0;&quot;&gt;
+  &lt;div class&#x3D;&quot;was-leaderboard-titlebar&quot;&gt;
+    &lt;img style&#x3D;&quot;width:40px; flex: 0;&quot; *ngIf&#x3D;&quot;appIcon&quot; [src]&#x3D;&quot;appIcon&quot; alt&#x3D;&quot;App icon&quot;&gt;
+    &lt;span style&#x3D;&quot;flex: 1; text-align: right;&quot;&gt;{{appName}}&lt;/span&gt;
   &lt;/div&gt;
-
+&lt;/h1&gt;
+&lt;mat-dialog-content [ngClass]&#x3D;&quot;add_class&quot;&gt;
   &lt;div class&#x3D;&quot;was-leaderboard-table mat-elevation-z8&quot;&gt;
+    &lt;!-- Make clickable, then show options (taunt, challange, commend/praise) --&gt;
     &lt;table mat-table [dataSource]&#x3D;&quot;leaderboard&quot;&gt;
 
       &lt;!-- Rank Column --&gt;
       &lt;ng-container matColumnDef&#x3D;&quot;rank&quot;&gt;
         &lt;th mat-header-cell *matHeaderCellDef&gt; Rank &lt;/th&gt;
-        &lt;td mat-cell *matCellDef&#x3D;&quot;let element; let i &#x3D; index&quot;&gt; {{i+1}} &lt;/td&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element; let i &#x3D; index&quot; matRipple&gt; {{i+1}} &lt;/td&gt;
       &lt;/ng-container&gt;
 
       &lt;!-- Username Column --&gt;
       &lt;ng-container matColumnDef&#x3D;&quot;username&quot;&gt;
         &lt;th mat-header-cell *matHeaderCellDef style&#x3D;&quot;text-align:center&quot;&gt; Username &lt;/th&gt;
-        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.username | slice:0:25}} &lt;/td&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot; matRipple&gt; {{element.username | slice:0:25}} &lt;/td&gt;
       &lt;/ng-container&gt;
 
       &lt;!-- Score Column --&gt;
       &lt;ng-container matColumnDef&#x3D;&quot;score&quot;&gt;
         &lt;th mat-header-cell *matHeaderCellDef&gt; Score &lt;/th&gt;
-        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.score}} &lt;/td&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot; matRipple&gt; {{element.score}} &lt;/td&gt;
       &lt;/ng-container&gt;
 
       &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;leaderboardColumns; sticky: true&quot; style&#x3D;&quot;height:40px;&quot;&gt;&lt;/tr&gt;
-      &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: leaderboardColumns;&quot;&gt;&lt;/tr&gt;
+      &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: leaderboardColumns;&quot; (click)&#x3D;&quot;leaderboardAction(row)&quot;&gt;&lt;/tr&gt;
     &lt;/table&gt;
   &lt;/div&gt;
 &lt;/mat-dialog-content&gt;
+&lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+  &lt;button mat-raised-button [mat-dialog-close]&#x3D;&quot;true&quot; cdkFocusInitial color&#x3D;&quot;warn&quot;&gt;Close&lt;/button&gt;
+&lt;/mat-dialog-actions&gt;
 </code></pre>
     </div>
 
@@ -266,12 +264,6 @@
   max-width: 500px;
   width: 100%;
 }
-
-.my-title-bar {
-  font-size: 2em;
-  width: 100%;
-  height: 80px;
-}
 .my-header-sidebar {
   width: 40px;
 }
@@ -330,7 +322,7 @@ background-color:#E7ECF1 !important;
 
 /* Pass a panel class to dialog to edit css directly */
 .was-dialog-nopadding .mat-dialog-container {
-      padding: 0!important;
+  padding: 0!important;
 }
 
 .was-leaderboard-titlebar {
@@ -353,7 +345,7 @@ background-color:#E7ECF1 !important;
   width: 50vw;
 }
 .was-leaderboard-content-m {
-  max-height: 99vh;
+  max-height: 80vh;
   padding: 0px;
 }
 .was-shop-content-m {
@@ -398,8 +390,8 @@ background-color:#E7ECF1 !important;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-dialog-content [ngClass]="add_class">  <div class="wasup-title">    <div class="was-leaderboard-titlebar" role="header">      <span class="my-header-sidebar"></span>      <span class="my-header-text">        <img style="width:80px;" *ngIf="appIcon" src="{{appIcon}}" alt="App icon">      </span>      <button class="my-header-sidebar" mat-icon-button (click)="onNoClick()">        <mat-icon aria-label="close">close</mat-icon>      </button>    </div>    <span>{{appName}} Leaderboard</span>    <mat-divider></mat-divider>  </div>  <div class="was-leaderboard-table mat-elevation-z8">    <table mat-table [dataSource]="leaderboard">      <!-- Rank Column -->      <ng-container matColumnDef="rank">        <th mat-header-cell *matHeaderCellDef> Rank </th>        <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>      </ng-container>      <!-- Username Column -->      <ng-container matColumnDef="username">        <th mat-header-cell *matHeaderCellDef style="text-align:center"> Username </th>        <td mat-cell *matCellDef="let element"> {{element.username | slice:0:25}} </td>      </ng-container>      <!-- Score Column -->      <ng-container matColumnDef="score">        <th mat-header-cell *matHeaderCellDef> Score </th>        <td mat-cell *matCellDef="let element"> {{element.score}} </td>      </ng-container>      <tr mat-header-row *matHeaderRowDef="leaderboardColumns; sticky: true" style="height:40px;"></tr>      <tr mat-row *matRowDef="let row; columns: leaderboardColumns;"></tr>    </table>  </div></mat-dialog-content></div>'
-    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
+        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title style="margin: 5px 0;">  <div class="was-leaderboard-titlebar">    <img style="width:40px; flex: 0;" *ngIf="appIcon" [src]="appIcon" alt="App icon">    <span style="flex: 1; text-align: right;">{{appName}}</span>  </div></h1><mat-dialog-content [ngClass]="add_class">  <div class="was-leaderboard-table mat-elevation-z8">    <!-- Make clickable, then show options (taunt, challange, commend/praise) -->    <table mat-table [dataSource]="leaderboard">      <!-- Rank Column -->      <ng-container matColumnDef="rank">        <th mat-header-cell *matHeaderCellDef> Rank </th>        <td mat-cell *matCellDef="let element; let i = index" matRipple> {{i+1}} </td>      </ng-container>      <!-- Username Column -->      <ng-container matColumnDef="username">        <th mat-header-cell *matHeaderCellDef style="text-align:center"> Username </th>        <td mat-cell *matCellDef="let element" matRipple> {{element.username | slice:0:25}} </td>      </ng-container>      <!-- Score Column -->      <ng-container matColumnDef="score">        <th mat-header-cell *matHeaderCellDef> Score </th>        <td mat-cell *matCellDef="let element" matRipple> {{element.score}} </td>      </ng-container>      <tr mat-header-row *matHeaderRowDef="leaderboardColumns; sticky: true" style="height:40px;"></tr>      <tr mat-row *matRowDef="let row; columns: leaderboardColumns;" (click)="leaderboardAction(row)"></tr>    </table>  </div></mat-dialog-content><mat-dialog-actions align="end">  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Close</button></mat-dialog-actions></div>'
+    var COMPONENTS = [{'name': 'WasAlert', 'selector': ''},{'name': 'WasLeaderboard', 'selector': ''},{'name': 'WasNews', 'selector': ''},{'name': 'WasPay', 'selector': ''},{'name': 'WasProfile', 'selector': ''},{'name': 'WasReview', 'selector': ''},{'name': 'WasShop', 'selector': ''},{'name': 'WasSSO', 'selector': ''},{'name': 'WasUp', 'selector': ''},{'name': 'WickeyAppStoreComponent', 'selector': 'wickey-appstore'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WasLeaderboard'};
 </script>
