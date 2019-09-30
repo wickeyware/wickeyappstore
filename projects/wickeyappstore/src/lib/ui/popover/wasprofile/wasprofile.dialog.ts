@@ -24,7 +24,7 @@ export class WasProfile implements OnInit {
   /**@ignore*/
   public loggedin = false;
   /** @ignore */
-  public version = '2.19.1';
+  public version = '2.19.2';
   /**@ignore*/
   constructor(
     public userService: UserService,
