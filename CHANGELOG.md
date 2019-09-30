@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.19.1](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.1) - 2019-09-30
+## [2.19.2](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.2) - 2019-09-30
 
 ### Fixed
 
