@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "2.19.2",
+  "version": "2.19.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --port 4200",
@@ -65,7 +65,7 @@
     "@angular/pwa": "^0.803.3",
     "@angular/router": "^8.2.8",
     "@angular/service-worker": "^8.2.8",
-    "core-js": "^2.6.5",
+    "core-js": "^3.2.1",
     "document-register-element": "1.8.1",
     "idb-keyval": "^3.2.0",
     "rxjs": "^6.5.3",

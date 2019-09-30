@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.19.2](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.2) - 2019-09-30
+## [2.19.3](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.3) - 2019-09-30
 
 ### Fixed
 
-* **package** Update to Angular 8.
+* **package** Update to Angular 8 and core-js 3.
 
 ## [2.19.0](https://github.com/wickeyware/wickeyappstore/compare/2.18.9...2.19.0) - 2019-03-05
 
