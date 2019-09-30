@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
-## [2.19.0](https://github.com/wickeyware/wickeyappstore/compare/2.18.9...2.19.0) - 2018-03-05
+## [2.19.1](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.1) - 2019-09-30
+
+### Fixed
+
+* **package** Update to Angular 8.
+
+## [2.19.0](https://github.com/wickeyware/wickeyappstore/compare/2.18.9...2.19.0) - 2019-03-05
 
 ### Added
 
@@ -21,19 +27,19 @@ This shows all commits since last release (actually, currently all commits).
 * **opensso** Return an observable.
 * **leaderboard** Show close button on bottom.
 
-## [2.18.9](https://github.com/wickeyware/wickeyappstore/compare/2.18.8...2.18.9) - 2018-02-15
+## [2.18.9](https://github.com/wickeyware/wickeyappstore/compare/2.18.8...2.18.9) - 2019-02-15
 
 ### Fixed
 
 * **reviewBonus** Fix WasUp if bonus was given on review.
 
-## [2.18.8](https://github.com/wickeyware/wickeyappstore/compare/2.18.7...2.18.8) - 2018-02-14
+## [2.18.8](https://github.com/wickeyware/wickeyappstore/compare/2.18.7...2.18.8) - 2019-02-14
 
 ### Fixed
 
 * **reviewBonus** Add WasUp if bonus was given on review.
 
-## [2.18.7](https://github.com/wickeyware/wickeyappstore/compare/2.18.6...2.18.7) - 2018-02-13
+## [2.18.7](https://github.com/wickeyware/wickeyappstore/compare/2.18.6...2.18.7) - 2019-02-13
 
 ### Fixed
 
@@ -41,7 +47,7 @@ This shows all commits since last release (actually, currently all commits).
 * **app_data** Remove deprecated userService.data.
 * **app_coins** Remove coins from UserService.updateUser, api does not allow updating coins this way (coins are purchased and consumed).
 
-## [2.18.6](https://github.com/wickeyware/wickeyappstore/compare/2.18.5...2.18.6) - 2018-01-28
+## [2.18.6](https://github.com/wickeyware/wickeyappstore/compare/2.18.5...2.18.6) - 2019-01-28
 
 ### Fixed
 
@@ -54,13 +60,13 @@ This shows all commits since last release (actually, currently all commits).
 * **getLeaderboard** Return user's leaderboard `score` (along with `rank`) if username was passed in.
 * **wickeyappstore.mudule** Add LayoutModule to exports.
 
-## [2.18.5](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.5) - 2018-01-23
+## [2.18.5](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.5) - 2019-01-23
 
 ### Fixed
 
 * **WasAlert** Make WasAlert dialog fullscreen on mobile, IFF it has an input, also move input to top of screen.
 
-## [2.18.4](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.4) - 2018-01-21
+## [2.18.4](https://github.com/wickeyware/wickeyappstore/compare/2.18.3...2.18.4) - 2019-01-21
 
 ### Fixed
 
@@ -69,7 +75,7 @@ This shows all commits since last release (actually, currently all commits).
 * **Review** Show WasUp (`Thanks for your feedback!`) on review submitted.
 * **WasPay** On successful purchase show WasUp instead of WasAlert.
 
-## [2.18.3](https://github.com/wickeyware/wickeyappstore/compare/2.18.2...2.18.3) - 2018-01-10
+## [2.18.3](https://github.com/wickeyware/wickeyappstore/compare/2.18.2...2.18.3) - 2019-01-10
 
 ### Fixed
 
@@ -95,7 +101,7 @@ This shows all commits since last release (actually, currently all commits).
 * **showLeaderboard** Return onClosed observable so caller knows when window closes (not available for WASjs).
 * **WASjsZoneRefresh** Fix refresh on `Safari`. Added new methods `addToLeaderboardjs`, `showLeaderboardjs`, and `leavereviewjs`.
 
-## [2.18.0](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.0) - 2018-01-04
+## [2.18.0](https://github.com/wickeyware/wickeyappstore/compare/2.17.5...2.18.0) - 2019-01-04
 
 ### Added
 

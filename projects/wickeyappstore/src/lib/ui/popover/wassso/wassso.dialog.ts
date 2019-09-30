@@ -34,7 +34,7 @@ export class WasSSO implements OnInit, OnChanges, OnDestroy {
   secondFormGroup: FormGroup;
   /**@ignore*/
   // https://angular.io/guide/static-query-migration
-  @ViewChild('stepper', { static: false }) stepper: MatStepper;
+  @ViewChild('stepper', { static: true }) stepper: MatStepper;
 
   /**@ignore*/
   constructor(
