@@ -61,33 +61,35 @@
             </p>
             <p class="comment">
                 <p>The WasDataService.</p>
-<p><code>typescript
- * // Import in any component this is to be used:
- * import { WasDataService } from &#39;WickeyAppStore&#39;;
- *
- * // Inject it in the constructor
- * constructor(wasDataService: WasDataService) { }
- *
- * // Restore from cloud/local.
- * // NOTE: Can pass in a save conflict mapping function that returns the desired save to keep.
- * // onSaveConflict(localSave: any, cloudSave: any) =&gt; any
- * this.wasDataService.restore().subscribe(mydata =&gt; {})
- *
- * // Persist to cloud.
- * this.wasDataService.persist();
- *
- * // Save a value (where value is json stringifiable).
- * this.wasDataService.save(&#39;key&#39;, &#39;value&#39;);
- *
- * // Get a value from db.
- * this.wasDataService.get(&#39;key&#39;);
- *
- * // Delete a value from db.
- * this.wasDataService.del(&#39;key&#39;);
- *
- * // listen for data observable.
- * this.wasDataService.data.subscribe(mydata =&gt; {});
- *</code></p>
+<p>```typescript</p>
+<ul>
+<li>// Import in any component this is to be used:</li>
+<li>import { WasDataService } from &#39;WickeyAppStore&#39;;</li>
+<li></li>
+<li>// Inject it in the constructor</li>
+<li>constructor(wasDataService: WasDataService) { }</li>
+<li></li>
+<li>// Restore from cloud/local.</li>
+<li>// NOTE: Can pass in a save conflict mapping function that returns the desired save to keep.</li>
+<li>// onSaveConflict(localSave: any, cloudSave: any) =&gt; any</li>
+<li>this.wasDataService.restore().subscribe(mydata =&gt; {})</li>
+<li></li>
+<li>// Persist to cloud.</li>
+<li>this.wasDataService.persist();</li>
+<li></li>
+<li>// Save a value (where value is json stringifiable).</li>
+<li>this.wasDataService.save(&#39;key&#39;, &#39;value&#39;);</li>
+<li></li>
+<li>// Get a value from db.</li>
+<li>this.wasDataService.get(&#39;key&#39;);</li>
+<li></li>
+<li>// Delete a value from db.</li>
+<li>this.wasDataService.del(&#39;key&#39;);</li>
+<li></li>
+<li>// listen for data observable.</li>
+<li>this.wasDataService.data.subscribe(mydata =&gt; {});</li>
+<li>```</li>
+</ul>
 
             </p>
 
@@ -666,6 +668,7 @@ Subscribe in ts: wasDataService.data.subscribe</code></pre>
 
 
 
+                   
 
 
 

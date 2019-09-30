@@ -66,18 +66,19 @@
     </p>
     <p class="comment">
         <p>Create simple modal popups with btns or input field to get user input.</p>
-<p><b>SIMPLEST USE CASE</b>
-<code>js
- * import { WasAlert } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
+<p><b>SIMPLEST USE CASE</b></p>
+<div><pre class="line-numbers"><code class="language-js"> * import { WasAlert } from &#39;wickeyappstore&#39;;
+ * import { MatDialog, MatDialogRef } from &#39;&#64;angular/material&#39;;
  * ...
  * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
  * ...
  * this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;This is a WasAlert&#39; } });
- *</code></p>
-<p>MORE USE CASES BELOW</p>
-<p><b>Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)</b>
-<code>js
+ * ```
+
+MORE USE CASES BELOW
+
+&lt;b&gt;Standard Confirm (WasAlertStyleConfirm / WasAlertStyleWarning)&lt;/b&gt;
+```js
   this.dialog.open(WasAlert, {
     data: {
       title: &#39;Please confirm.&#39;,
@@ -90,9 +91,10 @@
       console.log(&#39;Dialog was cancelled&#39;);
     }
   });
- *</code></p>
-<p><b>With Buttons</b>
-<code>js
+ * ```
+
+&lt;b&gt;With Buttons&lt;/b&gt;
+```js
   const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Confirm?&#39;, buttons: [&#39;Cancel&#39;, &#39;Option A&#39;, Option B] } });
       dialogRef.afterClosed().subscribe(result =&gt; {
      if (result !== undefined) {
@@ -101,9 +103,10 @@
        console.log(&#39;Dialog was cancelled&#39;);
      }
    });
- *</code></p>
-<p><b>With Input field</b>
-<code>js
+ * ```
+
+&lt;b&gt;With Input field&lt;/b&gt;
+```js
    const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Password&#39;, input: true, input_value: &#39;text&#39;, password: true } });
       dialogRef.afterClosed().subscribe(result =&gt; {
      if (result !== undefined) {
@@ -111,10 +114,8 @@
      } else {
        console.log(&#39;Dialog was cancelled&#39;);
      }
-   });</code></p>
-<p><b>With List of choices<b> ---<i>Deprecated</i>
-<code>js
-  const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, list: [&#39;item1&#39;, &#39;item2&#39;] } });
+   });</code></pre></div><p><b>With List of choices<b> ---<i>Deprecated</i></p>
+<div><pre class="line-numbers"><code class="language-js">  const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, list: [&#39;item1&#39;, &#39;item2&#39;] } });
       dialogRef.afterClosed().subscribe(result =&gt; {
      if (result !== undefined) {
        console.log(&#39;This is the index of the selected list item&#39;, result);
@@ -122,12 +123,16 @@
        console.log(&#39;Dialog was cancelled&#39;);
      }
    });
- *</code></p>
-<p><b>ADVANCED Options</b></p>
-<p>Can Pass TWO buttons, TWO button_icons, and TWO button_colors</p>
-<p><i>button_icons</i> can be any material icon -&gt; https://material.io/icons/</p>
-<p><i>button_colors</i> can be any material theme color. primary, accent, warn, or empty string
-<code>js
+ *```
+
+&lt;b&gt;ADVANCED Options&lt;/b&gt;
+
+Can Pass TWO buttons, TWO button_icons, and TWO button_colors
+
+&lt;i&gt;button_icons&lt;/i&gt; can be any material icon -&gt; https://material.io/icons/
+
+&lt;i&gt;button_colors&lt;/i&gt; can be any material theme color. primary, accent, warn, or empty string
+```js
   const dialogRef = this.dialog.open(WasAlert, {data: { title: &#39;Hi&#39;, body: &#39;Set Alarm?&#39;,
     buttons: [&#39;Cancel&#39;, &#39;Alarm&#39;], button_icons: [&#39;cancel&#39;, &#39;alarm&#39;], button_colors: [&#39;&#39;, &#39;accent&#39;] } });
   dialogRef.afterClosed().subscribe(result =&gt; {
@@ -136,10 +141,9 @@
     } else {
       console.log(&#39;Dialog was cancelled&#39;);
     }
-  });</code></p>
-<p>The MatDialog has additional properties.
-By default, clicking outside the window does not close the dialog. Change by setting to false;
-<code>js
+  });</code></pre></div><p>The MatDialog has additional properties.
+By default, clicking outside the window does not close the dialog. Change by setting to false;</p>
+<p><code>js
  this.dialogRef.disableClose = false;</code></p>
 
     </p>
@@ -476,6 +480,7 @@ background-color:#E7ECF1 !important;
 
 
 
+                   
 
 
 

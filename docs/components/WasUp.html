@@ -66,34 +66,36 @@
     </p>
     <p class="comment">
         <p>Create simple auto closing messages with icons</p>
-<p><b>SIMPLEST USE CASE</b>
-<code>js
- * import { WasUp } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
- * ...
- * constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor
- * ...
- * this.dialog.open(WasUp, {data: { title: &#39;Review Sent&#39;, icon: &#39;edit&#39;, body: &#39;Thanks for your feedback.&#39;} });
- *</code>
-<i>icon</i> can be any material icon -&gt; https://material.io/icons/</p>
+<p><b>SIMPLEST USE CASE</b></p>
+<p>```js</p>
+<ul>
+<li>import { WasUp } from &#39;wickeyappstore&#39;;</li>
+<li>import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;</li>
+<li>...</li>
+<li>constructor(public dialog: MatDialog) { } // and Inject MatDialog in the constructor</li>
+<li>...</li>
+<li>this.dialog.open(WasUp, {data: { title: &#39;Review Sent&#39;, icon: &#39;edit&#39;, body: &#39;Thanks for your feedback.&#39;} });</li>
+<li><div><pre class="line-numbers"><code class="language-none">&lt;i&gt;icon&lt;/i&gt; can be any material icon -&gt; https://material.io/icons/
+</code></pre></div></li>
+</ul>
 <p>MORE USE CASES BELOW</p>
-<p>Add <b>WIDTH</b>, <b>SPINNER</b>, and <b>STAYOPEN</b> until closed
-<code>js
- * private loadingdialogRef: MatDialogRef&lt;WasUp, Array&lt;string&gt;&gt;;
- * this.loadingdialogRef = this.dialog.open(WasUp, {
- *    width: &#39;300px&#39;,
- *    data: { title: &#39;Intializing game&#39;, icon: &#39;spinner&#39;, body: &#39;Loading...&#39;, stayopen: true}
- *    });
- * // IF you use stayopen then you have to close yourself. The user CANNOT close.
- * ...
- * // CLOSE where you want - like when loading complete
- * this.loadingdialogRef.close();
- *</code>
-The MatDialog has additional properties.
-By default, clicking outside the window does not close the dialog. Change by setting to false;
-<code>js
- * this.loadingdialogRef.disableClose = false;
- *</code></p>
+<p>Add <b>WIDTH</b>, <b>SPINNER</b>, and <b>STAYOPEN</b> until closed</p>
+<p>```js</p>
+<ul>
+<li>private loadingdialogRef: MatDialogRef&lt;WasUp, Array<string>&gt;;</li>
+<li>this.loadingdialogRef = this.dialog.open(WasUp, {</li>
+<li>width: &#39;300px&#39;,</li>
+<li>data: { title: &#39;Intializing game&#39;, icon: &#39;spinner&#39;, body: &#39;Loading...&#39;, stayopen: true}</li>
+<li>});</li>
+<li>// IF you use stayopen then you have to close yourself. The user CANNOT close.</li>
+<li>...</li>
+<li>// CLOSE where you want - like when loading complete</li>
+<li>this.loadingdialogRef.close();</li>
+<li><code>The MatDialog has additional properties.
+By default, clicking outside the window does not close the dialog. Change by setting to false;</code>js</li>
+<li>this.loadingdialogRef.disableClose = false;</li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -391,6 +393,7 @@ background-color:#E7ECF1 !important;
 
 
 
+                   
 
 
 

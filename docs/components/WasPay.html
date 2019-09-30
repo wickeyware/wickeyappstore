@@ -68,20 +68,22 @@
         <p>Directly open a purchase page with WasPay</p>
 <p>Alternatively use WasShop to show all available in-apps.</p>
 <p>Get your inapp purchaseid from your app in developer.wickeyappstore.com</p>
-<p><code>js
- * import { WasPay } from &#39;wickeyappstore&#39;;
- * import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;
- * import { UserService } from &#39;./user.service&#39;;
- * ...
- * constructor(public dialog: MatDialog, private userService: UserService) { } // and Inject MatDialog &amp; UserService in the constructor
- * ...
- * const _myInapp = this.userService.getInapp(this.myInappPurchaseId);
- * this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&gt; {
- *  if (_isSuccess === true) {
- *     // the inapp was purchased
- *     }
- *   });
- *</code></p>
+<p>```js</p>
+<ul>
+<li>import { WasPay } from &#39;wickeyappstore&#39;;</li>
+<li>import { MatDialog, MatDialogRef } from &#39;@angular/material&#39;;</li>
+<li>import { UserService } from &#39;./user.service&#39;;</li>
+<li>...</li>
+<li>constructor(public dialog: MatDialog, private userService: UserService) { } // and Inject MatDialog &amp; UserService in the constructor</li>
+<li>...</li>
+<li>const _myInapp = this.userService.getInapp(this.myInappPurchaseId);</li>
+<li>this.dialog.open(WasPay, {data: _myInapp}).afterClosed().subscribe(_isSuccess =&gt; {</li>
+<li>if (_isSuccess === true) {</li>
+<li>// the inapp was purchased</li>
+<li>}</li>
+<li>});</li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -401,6 +403,7 @@ background-color:#E7ECF1 !important;
 
 
 
+                   
 
 
 
