@@ -1,11 +1,12 @@
 <mat-dialog-content [ngClass]="add_class">
   <div class="wasup-title">
-      <div class="was-leaderboard-titlebar" role="header">
+    <div class="was-leaderboard-titlebar" role="header">
       <span class="my-header-sidebar"></span>
       <span class="my-header-text">
-        <svg style="width:80px;" viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
-          stroke-linejoin="round" stroke-miterlimit="1.41">
-          <path d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"
+        <svg style="width:80px;" viewBox="0 0 511 363" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+          clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41">
+          <path
+            d="M311.85 243.76c0-3.33-2.7-6.04-6.03-6.04h-91.24c-3.34 0-6.04 2.7-6.04 6.04v12.08c0 3.33 2.7 6.04 6.04 6.04h91.24c3.33 0 6.03-2.7 6.03-6.04v-12.08z"
             fill="#FF601F" />
           <path fill="#FF601F" d="M177.67 323.65L119.2 290.8 230.48 92.74l58.48 32.86z" />
           <path fill="#FF601F" d="M333.25 323.65l58.48-32.85-111.3-198.06-58.46 32.86z" />
@@ -39,7 +40,8 @@
     <mat-divider></mat-divider>
   </div>
 
-  <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoinsPanel()" (closed)="closedFreeCoinsPanel()">
+  <mat-expansion-panel *ngIf="isFreeCoinPanel | async" (opened)="openedFreeCoinsPanel()"
+    (closed)="closedFreeCoinsPanel()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         FREE!
@@ -49,14 +51,16 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div *ngIf="loginValue | async; else notLoggedIn">
-      <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary" href='https://wall.adgaterewards.com/naaUqQ/{{(userService.user | async)?.user_id}}__{{this.appName}}'
+      <a *ngIf="hasOfferwall" style="width:100%; margin-bottom:5px;" mat-raised-button color="primary"
+        href='https://wall.adgaterewards.com/nqycsA/{{(userService.user | async)?.user_id}}__{{this.appName}}'
         target='_blank'>Open the Offerwall</a>
       <button *ngIf="hasAds" [disabled]="rewardedVideoNOTReady" style="width:100%;" mat-raised-button color="accent"
         (click)="watchRewardedVideo()">
         <mat-grid-list cols="4" rowHeight="36px">
           <mat-grid-tile colspan=3>{{addBtnText}}</mat-grid-tile>
           <mat-grid-tile colspan=1>
-            <mat-spinner *ngIf="rewardedVideoNOTReady; else readytile" style="margin:auto;" [diameter]="20"></mat-spinner>
+            <mat-spinner *ngIf="rewardedVideoNOTReady; else readytile" style="margin:auto;" [diameter]="20">
+            </mat-spinner>
             <ng-template #readytile>
               <mat-icon style="margin:auto;" aria-label="watchvideo">play_arrow</mat-icon>
             </ng-template>

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.19.4](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.4) - 2019-10-30
+
+### Fixed
+
+* **offerwall** Fixed offerwall.
+
 ## [2.19.3](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.3) - 2019-09-30
 
 ### Fixed
