@@ -4,7 +4,7 @@ import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
 import { map, mergeMap, catchError, share } from 'rxjs/operators';
-import { MatDialog } from '@angular/material';  // MatDialogRef, MAT_DIALOG_DATA
+import { MatDialog } from '@angular/material/dialog';  // MatDialogRef, MAT_DIALOG_DATA
 import { WasSSO } from './ui/popover/wassso/wassso.dialog';
 import { WasReview } from './ui/popover/wasreview/wasreview.dialog';
 import { WasShop } from './ui/popover/wasshop/wasshop.dialog';

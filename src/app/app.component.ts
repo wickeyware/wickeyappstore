@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService, User, WasAlert, WasDataService } from 'wickeyappstore';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',

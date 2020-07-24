@@ -1,6 +1,6 @@
 import { Component, Inject, AfterViewChecked, OnDestroy } from '@angular/core';
 import { WasAlert } from '../wasalert/wasalert.dialog';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from '../../../user.service';
 import { WasUp } from '../wasup/wasup.dialog';
 /**@ignore*/
