@@ -1,4 +1,4 @@
-import { Injectable, HostListener } from '@angular/core';
+import { Injectable, HostListener, Directive } from '@angular/core';
 import { UserService } from './user.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
@@ -37,6 +37,7 @@ import { ApiConnectionService } from './api-connection.service';
  * this.wasDataService.data.subscribe(mydata => {});
  * ```
  */
+@Directive()
 @Injectable({
   providedIn: 'root'
 })
