@@ -5,9 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.17.0...HEAD)
+## [Unreleased](https://github.com/wickeyware/wickeyappstore/compare/2.20.0...HEAD)
 
 This shows all commits since last release (actually, currently all commits).
+
+## [2.20.0](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.20.0) - 2020-07-27
+
+### Fixed
+
+* **package** Update to Angular 10.
+* **compile** Set enableIvy to false for compatibility (as suggested by Angular cli).
 
 ## [2.19.4](https://github.com/wickeyware/wickeyappstore/compare/2.19.0...2.19.4) - 2019-10-30
 

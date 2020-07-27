@@ -65,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/WickeyAppStoreModule.html" data-type="entity-link">WickeyAppStoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' : 'data-target="#xs-components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' }>
+                                            'data-target="#components-links-module-WickeyAppStoreModule-eaea452d3ae482dd29a2c430f99e557a"' : 'data-target="#xs-components-links-module-WickeyAppStoreModule-eaea452d3ae482dd29a2c430f99e557a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' :
-                                            'id="xs-components-links-module-WickeyAppStoreModule-98e221094b306740bbeeb6045707a260"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WickeyAppStoreModule-eaea452d3ae482dd29a2c430f99e557a"' :
+                                            'id="xs-components-links-module-WickeyAppStoreModule-eaea452d3ae482dd29a2c430f99e557a"' }>
                                             <li class="link">
                                                 <a href="components/WasAlert.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">WasAlert</a>
