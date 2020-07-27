@@ -1,5 +1,5 @@
 // import * as Raven from 'raven-js';
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, Directive } from '@angular/core';
 import { ApiConnectionService } from './api-connection.service';
 import { LocalStorageService } from './local-storage.service';
 import { of as observableOf, from, Observable, ReplaySubject } from 'rxjs';
@@ -48,6 +48,7 @@ export interface UserParams {
  * this.userService.user().subscribe();
  * ```
  */
+@Directive()
 @Injectable({
   providedIn: 'root'
 })
