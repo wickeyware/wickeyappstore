@@ -42,7 +42,7 @@ export class WasMenuBtn {
       // we need the context of the script to pass into init
       (<any>window).Vijs.init(_thisscript);
     });
-    loadScriptWithCallback('https://ws.bluesnap.com/source/web-sdk/bluesnap.js', () => {
+    loadScriptWithCallback('https://ws.bluesnap.com/web-sdk/4/bluesnap.js', () => {
       console.log('P// script loaded');
     });
     loadLinkWithCallback('https://fonts.googleapis.com/icon?family=Material+Icons', () => {
