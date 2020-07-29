@@ -8,11 +8,11 @@
   <div style="margin-top:20px; min-width: 240px;">
     <div class="wasup-body">
       <div *ngIf="userService.isLoggedInObs | async; else notLoggedIn">
-        <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock" (click)="showWebPay()"
-          id="apple-pay-button"></button>
+        <button mat-raised-button class="waspay-buttons" *ngIf="isApplePayAvail; else notApplePayBlock"
+          (click)="showWebPay()" id="apple-pay-button"></button>
         <ng-template #notApplePayBlock>
-          <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button>
-          <div data-bluesnap="PaymentRequest"></div>
+          <!-- <button class="waspay-buttons" mat-raised-button color="none" (click)="showWebPay()">Pay Now</button> -->
+          <div data-bluesnap="paymentRequestButton"></div>
         </ng-template>
         <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
         <div id="paypal-checkout-btn"></div>

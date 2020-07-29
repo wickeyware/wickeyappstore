@@ -122,7 +122,7 @@ export class WasPay implements AfterViewChecked, OnDestroy {
   }
 
   /** @ignore */
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   /**@ignore */
   ngAfterViewChecked(): void {
@@ -133,6 +133,10 @@ export class WasPay implements AfterViewChecked, OnDestroy {
             paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
             this.paypalLoad = false;
           });
+          if (!this.isApplePayAvail) {
+            // Show web PaymentRequest button
+            this.showWebPay();
+          }
         }
       }
     });
@@ -169,12 +173,12 @@ export class WasPay implements AfterViewChecked, OnDestroy {
           data: { title: 'Already Owned', body: 'You already own: ' + this.data.title, buttons: ['Cool'] }
         });
       } else {
-        const loadingdialogRef = this.dialog.open(WasUp, {
-          width: '300px', data: { title: 'Preparing Payment', icon: 'spinner', body: 'Preparing...', stayopen: true }
-        });
+        // const loadingdialogRef = this.dialog.open(WasUp, {
+        //   width: '300px', data: { title: 'Preparing Payment', icon: 'spinner', body: 'Preparing...', stayopen: true }
+        // });
         this.userService.showWebPay(this.data).then((_goodPurchase: boolean) => {
           if (_goodPurchase) {
-            loadingdialogRef.close();
+            // loadingdialogRef.close();
             this.purchaseSuccess = true;
             const _tmpwasup = this.dialog.open(WasUp, {
               width: '300px', data: { title: 'Purchase Successful!', icon: 'done', body: 'Click anywhere to close', stayopen: true }
@@ -184,7 +188,7 @@ export class WasPay implements AfterViewChecked, OnDestroy {
             });
             _tmpwasup.disableClose = false;
           } else {
-            loadingdialogRef.close();
+            // loadingdialogRef.close();
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed.', buttons: ['Okay'] }
             }).afterClosed().subscribe(result => {
@@ -193,7 +197,7 @@ export class WasPay implements AfterViewChecked, OnDestroy {
           }
         }).catch((_failReason) => {
           console.error('showWebPay:error return:', _failReason);
-          loadingdialogRef.close();
+          // loadingdialogRef.close();
           if (_failReason !== 'cancelled') {
             this.dialog.open(WasAlert, {
               data: { title: 'Purchase Failed', body: 'Your purchase failed, contact us for help.', buttons: ['Okay'] }

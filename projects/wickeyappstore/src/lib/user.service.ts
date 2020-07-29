@@ -1671,145 +1671,200 @@ export class UserService {
 
   /**
   * Makes a purchase via PaymentRequest (not implemented).
+  * ref: https://developers.bluesnap.com/v8976-Basics/docs/payment-request-api
   * @ignore
   */
   makePaymentRequestPurchase(_inapp: Inapp) {
     return new Promise<boolean>((resolve, reject) => {
       const bluesnap = (<any>window).bluesnap;
       // (<any>window).PaymentRequest
-      if (bluesnap.isSupported('PaymentRequest')) {
+      if (bluesnap.paymentRequestSupported()) {
         this.apiConnectionService.getBluesnapToken().subscribe(res => {
-          let paymentRequest;
-          bluesnap.paymentRequest(res.token, instance => {
-            console.log('paymentRequest', instance);
-            paymentRequest = instance;
-            // const googlePayPaymentMethod = {
-            //   supportedMethods: ['https://google.com/pay'],
-            //   data: {
-            //     'environment': 'TEST',
-            //     'apiVersion': 1,
-            //     'allowedPaymentMethods': ['CARD', 'TOKENIZED_CARD'],
-            //     'paymentMethodTokenizationParameters': {
-            //       'tokenizationType': 'PAYMENT_GATEWAY',
-            //       // Check with your payment gateway on the parameters to pass.
-            //       'parameters': {}
-            //     },
-            //     'cardRequirements': {
-            //       'allowedCardNetworks': ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
-            //       'billingAddressRequired': true,
-            //       'billingAddressFormat': 'MIN'
-            //     },
-            //     'emailRequired': true
-            //   },
-            // };
-            const creditCardPaymentMethod = {
-              supportedMethods: ['basic-card'],
-              data: {
-                supportedNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
-                supportedTypes: ['debit', 'credit'],
-                emailRequired: true
-              }
-            };
-            // const applePayPaymentMethod = {
-            //   supportedMethods: ['https://apple.com/apple-pay'],
-            //   data: {
-            //     supportedNetworks: [
-            //       'amex', 'discover', 'masterCard', 'visa'
-            //     ],
-            //     total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
-            //     merchantCapabilities: ['supports3DS'],
-            //     countryCode: 'US',
-            //     currencyCode: 'USD',
-            //     version: 3,
-            //     validationEndpoint: 'https://api.wickeyappstore.com/bluesnap/wallet/',
-            //     merchantIdentifier: this.merchantID
-            //   }
-            // };
-            const _supportedPaymentMethods = <PaymentMethodData[]>[
-              creditCardPaymentMethod,
-              // googlePayPaymentMethod,
-              // applePayPaymentMethod
-            ];
-            const _paymentDetails = {
-              displayItems: [{
-                label: _inapp.title,
-                amount: { currency: 'USD', value: _inapp.price.toString() }
-              }],
-              total: { label: 'Total', amount: { currency: 'USD', value: _inapp.price.toString() } }
-            };
-            // Options isn't required.
-            const _options = { requestPayerEmail: true, requestPayerName: true };
-            const _detailsObj = {
-              'details': _paymentDetails,
-              'options': _options,
-              'methodData': _supportedPaymentMethods
-            };
-            // Use Payment Request API
-            paymentRequest.init(_detailsObj, 'PaymentRequest').then(() => {
-              console.log('paymentRequest init');
-              paymentRequest.on('shippingaddresschange', function (ev) {
-                console.log('shippingaddresschange', ev);
-              });
-              // Initialization was successful
-              paymentRequest.canMakePayment().then(result => {
-                if (result) {
-                  // The shopper has a supported card, show the Payment Request button
-                  paymentRequest.show()
-                    .then(ev => {
-                      console.log('paymentRequest.showButton confirmed', ev);
-                      // The shopper confirmed the purchase
-                      // Send ev.token to your server and process the transaction...
-                      const _idx = ev.billingAddress.recipient.lastIndexOf(' ');
-                      let _fname;
-                      let _lname;
-                      if (_idx === -1) {
-                        _fname = ev.billingAddress.recipient;
-                        _lname = '';
-                      } else {
-                        _fname = ev.billingAddress.recipient.substring(0, _idx);
-                        _lname = ev.billingAddress.recipient.substring(_idx + 1);
-                      }
-                      // NOTE: Change store_id (bluesnap) if other payment types are added, like googlepay.
-                      this.createPurchase(_inapp.purchaseId, ev.token, _inapp.price, ev.payerEmail,
-                        _fname, _lname, ev.billingAddress.postalCode, undefined, ev.billingAddress.addressLine,
-                        ev.billingAddress.city, ev.billingAddress.region, ev.billingAddress.country, 'bluesnap')
-                        .subscribe(purchres => {
-                          ev.complete('success');
-                          resolve(true);
-                        }, (error) => {
-                          ev.complete('fail');
-                          reject('payment failed');
-                        });
-                    }).catch(err => {
-                      // The shopper closed the payment UI
-                      console.log('paymentRequest.showButton cancel', err);
-                      reject('canceled');
-                    });
+          // const googlePayPaymentMethod = {
+          //   supportedMethods: ['https://google.com/pay'],
+          //   data: {
+          //     'environment': 'TEST',
+          //     'apiVersion': 1,
+          //     'allowedPaymentMethods': ['CARD', 'TOKENIZED_CARD'],
+          //     'paymentMethodTokenizationParameters': {
+          //       'tokenizationType': 'PAYMENT_GATEWAY',
+          //       // Check with your payment gateway on the parameters to pass.
+          //       'parameters': {}
+          //     },
+          //     'cardRequirements': {
+          //       'allowedCardNetworks': ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
+          //       'billingAddressRequired': true,
+          //       'billingAddressFormat': 'MIN'
+          //     },
+          //     'emailRequired': true
+          //   },
+          // };
+          const creditCardPaymentMethod = {
+            supportedMethods: ['basic-card'],
+            data: {
+              supportedNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
+              supportedTypes: ['debit', 'credit'],
+              emailRequired: true
+            }
+          };
+          // const applePayPaymentMethod = {
+          //   supportedMethods: ['https://apple.com/apple-pay'],
+          //   data: {
+          //     supportedNetworks: [
+          //       'amex', 'discover', 'masterCard', 'visa'
+          //     ],
+          //     total: { label: 'WickeyAppStore', amount: _inapp.price, type: 'final' },
+          //     merchantCapabilities: ['supports3DS'],
+          //     countryCode: 'US',
+          //     currencyCode: 'USD',
+          //     version: 3,
+          //     validationEndpoint: 'https://api.wickeyappstore.com/bluesnap/wallet/',
+          //     merchantIdentifier: this.merchantID
+          //   }
+          // };
+          const _supportedPaymentMethods = <PaymentMethodData[]>[
+            creditCardPaymentMethod,
+            // googlePayPaymentMethod,
+            // applePayPaymentMethod
+          ];
+          const _paymentDetails = {
+            displayItems: [{
+              label: _inapp.title,
+              amount: { currency: 'USD', value: _inapp.price.toString() }
+            }],
+            total: { label: 'Total', amount: { currency: 'USD', value: _inapp.price.toString() } }
+          };
+          // Options isn't required.
+          const _options = { requestPayerEmail: true, requestPayerName: true };
+          const _detailsObj = {
+            'details': _paymentDetails,
+            'options': _options,
+            'methodData': _supportedPaymentMethods
+          };
+
+          const sdkRequest = {
+            token: res.token, // The token you created in Step 1.
+            methodData: _supportedPaymentMethods, // Optional (see: "Deep dive into defining detailsObj" for more details)
+            // Required, The object that holds data about the transaction (such as the transaction total) that tells the browser what to
+            // display in the payment UI, among other things (see: "Deep dive into defining detailsObj" for more details).
+            details: _paymentDetails,
+            options: _options, // Optional (see: "Deep dive into defining detailsObj" for more details)
+            onEvent: { // this event handler handles all the events arriving from the Payment Request API
+              canMakePayment: function (promise) {
+                console.log('canMakePayment');
+                // Check whether the shopper has saved a supported card using canMakePayment().
+                // If they have one present, call showButton() to display the button that BlueSnap provides,
+                // which, when clicked, shows the payment UI provided by the browser.
+                // If the shopper doesn't have a supported card, it is recommended to set up a traditional checkout flow.
+                promise.then(result => {
+                  // setup was successful
+                  if (result.haveSupportedPaymentMethod) {
+                    // The shopper has a supported card
+                    // Show the Payment Request button
+                    result.showButton();
+                    // If you would rather use your own button to show the payment UI go refer to
+                    // "Using your own button to show the payment UI" to learn how.
+                  } else {
+                    // The shopper doesn't have a supported card
+                    // Set up traditional checkout flow
+                    console.log('no payment credit card available', result);
+                    reject('no payment credit card available');
+                  }
+                }).catch(error => {
+                  // setup failed, fallback to traditional checkout flow
+                  console.log(error);
+                  reject('payment initialization failed');
+                });
+              },
+              paymentAuthorized: function (data, complete) {
+                console.log('paymentAuthorized', data);
+                // here you create the transaction Server2Server call Auth / Capture
+                // transaction result decides transaction Complete Status
+                // IT IS MANDATORY TO CALL THE complete('success')  // receives 'success' or, 'fail' according to the transaction status
+                const _idx = data.billingAddress.recipient.lastIndexOf(' ');
+                let _fname;
+                let _lname;
+                if (_idx === -1) {
+                  _fname = data.billingAddress.recipient;
+                  _lname = '';
                 } else {
-                  console.log('no payment credit card available', result);
-                  // The shopper doesn't have a supported card. Set up traditional checkout flow
-                  reject('no payment credit card available');
+                  _fname = data.billingAddress.recipient.substring(0, _idx);
+                  _lname = data.billingAddress.recipient.substring(_idx + 1);
                 }
-              }).catch(err => {
-                console.log(err);
-                // Either call showButton() or fallback to traditional checkout flow
-                reject('payment method not available');
-              });
-            }).catch((err) => {
-              // Initialization failed
-              console.log(err);
-              reject('payment initialization failed');
-            });
-          });
+                console.log('paymentAuthorized: first and last name', _fname, _lname);
+                // NOTE: Change store_id (bluesnap) if other payment types are added, like googlepay.
+                this.createPurchase(_inapp.purchaseId, data.token, _inapp.price, data.payerEmail,
+                  _fname, _lname, data.billingAddress.postalCode, undefined, data.billingAddress.addressLine,
+                  data.billingAddress.city, data.billingAddress.region, data.billingAddress.country, 'bluesnap')
+                  .subscribe(purchres => {
+                    complete('success');
+                    resolve(true);
+                  }, (error) => {
+                    complete('fail');
+                    reject('payment failed');
+                  });
+                complete('fail');
+                reject('payment failed');
+              },
+              shippingOptionChange: function (data, updateWith) {
+                console.log('shippingOptionChange', data);
+                // relevant only if shipping option is true
+                // see: "Handle shipping address changes for more details
+                // IT IS MANDATORY TO CALL THE updateWith() IN ONE OF THE VARIATION BELOW
+                updateWith(); // Empty for no change
+              },
+              shippingAddressChange: function (data, updateWith) {
+                console.log('shippingaddresschange', data);
+                // relevant only if shipping option is true
+                // see: "Handle shipping options changes" for more details
+                // IT IS MANDATORY TO CALL THE updateWith() IN ONE OF THE VARIATION BELOW
+                updateWith(); // Empty for no change
+              },
+              error: function (event) {
+                // handle error event
+                /* for example when code = 30 (status is paymentRequestError)
+                event = {
+                    status: "paymentRequestError",
+                    code: "30",
+                    info: {
+                        errors: [
+                            {
+                                field: "AbortError",
+                                info: "User closed the Payment Request UI.",
+                                code: 20
+                            }
+                        ]
+                    }
+                this means user has closed the payment request.
+                */
+                console.log(event);
+                reject('canceled');
+                // this.dialog.open(WasAlert, {
+                //   data: { title: 'Attention', body: 'No Web Pay, currently only ApplePay & PayPal are available.' }
+                // });
+              },
+              warning: function (event) {
+                // handle warning event
+                console.warn(event);
+                reject('canceled');
+              },
+              complete: function () {
+                // returned after complete finished.
+                console.log('PaymentRequest completed');
+              },
+            },
+            threeDS: false, // Optional,
+          };
+          bluesnap.paymentRequestSetup(sdkRequest);
         }, (error) => {
           console.log(`UserService: getBluesnapToken: error:`, error);
           reject('payment auth failed');
         });
       } else {
         // Fallback to traditional checkout
-        this.dialog.open(WasAlert, {
-          data: { title: 'Attention', body: 'No Web Pay, currently only ApplePay is available.' }
-        });
+        // this.dialog.open(WasAlert, {
+        //   data: { title: 'Attention', body: 'No Web Pay, currently only ApplePay & PayPal are available.' }
+        // });
         reject('no payment option available');
       }
     });
