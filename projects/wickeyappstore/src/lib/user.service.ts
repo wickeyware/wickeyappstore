@@ -1702,7 +1702,7 @@ export class UserService {
           const creditCardPaymentMethod = {
             supportedMethods: ['basic-card'],
             data: {
-              supportedNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
+              supportedNetworks: ['AMEX', 'DINERS', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'],
               supportedTypes: ['debit', 'credit'],
               emailRequired: true
             }
