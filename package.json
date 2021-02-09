@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "2.20.2",
+  "version": "2.20.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --port 4200",
@@ -50,6 +50,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/wickeyware/wickeyappstore/issues"
+  },
+  "resolutions": {
+    "webpack": "^5.0.0"
   },
   "dependencies": {
     "@angular/animations": "^11.1.2",

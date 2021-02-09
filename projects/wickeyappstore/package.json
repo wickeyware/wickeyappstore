@@ -1,6 +1,6 @@
 {
   "name": "wickeyappstore",
-  "version": "2.20.2",
+  "version": "2.20.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/wickeyware/wickeyappstore"
@@ -34,16 +34,16 @@
     "url": "https://github.com/wickeyware/wickeyappstore/issues"
   },
   "peerDependencies": {
-    "@angular/animations": "^10.0.0",
-    "@angular/cdk": "^10.0.0",
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "@angular/forms": "^10.0.0",
-    "@angular/material": "^10.0.0",
-    "@angular/platform-browser": "^10.0.0",
-    "@angular/platform-browser-dynamic": "^10.0.0",
+    "@angular/animations": "^11.0.0",
+    "@angular/cdk": "^11.0.0",
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/forms": "^11.0.0",
+    "@angular/material": "^11.0.0",
+    "@angular/platform-browser": "^11.0.0",
+    "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/pwa": "^0.803.0",
-    "@angular/service-worker": "^10.0.0",
+    "@angular/service-worker": "^11.0.0",
     "core-js": "^3.2.1",
     "idb-keyval": "^3.0.3",
     "rxjs": "^6.6.0",
