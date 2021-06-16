@@ -20,5 +20,8 @@
         "dist/wickeyappstore"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
   }
 }

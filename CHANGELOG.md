@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.20.4](https://github.com/wickeyware/wickeyappstore/compare/2.20.0...2.20.4) - 2021-06-16
+
+### Fixed
+
+* **package** Update to Angular 12 (this removes core-js requirement).
+
 ## [2.20.3](https://github.com/wickeyware/wickeyappstore/compare/2.20.0...2.20.3) - 2021-02-09
 
 ### Fixed
