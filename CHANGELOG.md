@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 This shows all commits since last release (actually, currently all commits).
 
+## [2.20.6](https://github.com/wickeyware/wickeyappstore/compare/2.20.0...2.20.6) - 2021-07-14
+
+### Fixed
+
+* **WasPay** Enable 3DS payments (more secure payments).
+
 ## [2.20.5](https://github.com/wickeyware/wickeyappstore/compare/2.20.0...2.20.5) - 2021-06-16
 
 ### Fixed

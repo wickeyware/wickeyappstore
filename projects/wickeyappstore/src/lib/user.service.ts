@@ -1853,7 +1853,7 @@ export class UserService {
                 console.log('PaymentRequest completed');
               },
             },
-            threeDS: false, // Optional,
+            threeDS: true, // Optional,
           };
           bluesnap.paymentRequestSetup(sdkRequest);
         }, (error) => {
